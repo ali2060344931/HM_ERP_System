@@ -1,0 +1,17 @@
+Janus.Windows.EditControls.UIGroupBox, Janus.Windows.UI.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.Ribbon.RibbonStatusBar, Janus.Windows.Ribbon.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.EditControls.UICheckBox, Janus.Windows.UI.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.GridEX.EditControls.IntegerUpDown, Janus.Windows.GridEX.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.UI.Tab.UITab, Janus.Windows.UI.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.GridEX.EditControls.EditBox, Janus.Windows.GridEX.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.GridEX.EditControls.MultiColumnCombo, Janus.Windows.GridEX.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.Ribbon.OfficeFormAdorner, Janus.Windows.Ribbon.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Telerik.WinControls.UI.RadLayoutControl, Telerik.WinControls.UI, Version=2022.2.510.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e
+Janus.Windows.Ribbon.RibbonContextMenu, Janus.Windows.Ribbon.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.GridEX.EditControls.CheckedComboBox, Janus.Windows.GridEX.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.GridEX.EditControls.NumericEditBox, Janus.Windows.GridEX.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.EditControls.UIRadioButton, Janus.Windows.UI.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.Ribbon.Ribbon, Janus.Windows.Ribbon.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.GridEX.GridEX, Janus.Windows.GridEX.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.UI.Dock.UIPanelManager, Janus.Windows.UI.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf
+Janus.Windows.UI.CommandBars.UICommandManager, Janus.Windows.UI.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf

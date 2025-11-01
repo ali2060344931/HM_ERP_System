@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ProgName" xml:space="preserve">
+    <value>نـــرم افزار جامع مدیریت حمل و نقل ایــــــران خــــزر</value>
+  </data>
+  <data name="T001" xml:space="preserve">
+    <value>نام استان مورد نظر قبلا درسیستم ثبت گردید.</value>
+  </data>
+  <data name="T002" xml:space="preserve">
+    <value>نام استان را وارد نمائید.</value>
+  </data>
+  <data name="T003" xml:space="preserve">
+    <value>آیا آیتم مورد نظر ازلیست حذف گردد؟</value>
+  </data>
+  <data name="T004" xml:space="preserve">
+    <value>امکان حذف برای این آیتم وجود ندارد.</value>
+  </data>
+  <data name="T005" xml:space="preserve">
+    <value>نام شهر را وارد نمائید.</value>
+  </data>
+  <data name="T006" xml:space="preserve">
+    <value>نام شهر مورد نظر برای این استان قبلا درسیستم ثبت گردید.</value>
+  </data>
+  <data name="T007" xml:space="preserve">
+    <value>نام شخص را وارد نمائید.</value>
+  </data>
+  <data name="T008" xml:space="preserve">
+    <value>نام خانوادگی شخص را وارد نمائید.</value>
+  </data>
+  <data name="T009" xml:space="preserve">
+    <value>کد ملی را وارد نمائید.</value>
+  </data>
+  <data name="T010" xml:space="preserve">
+    <value>تلفن را وارد نمائید.</value>
+  </data>
+  <data name="T011" xml:space="preserve">
+    <value>شخصی با این کد ملی مورد نظر قبلا در سیستم ثبت گردید.</value>
+  </data>
+  <data name="T012" xml:space="preserve">
+    <value>نام راننده مورد نظر را انتخاب نمائید.</value>
+  </data>
+  <data name="T013" xml:space="preserve">
+    <value>جنسیت را انتخاب نمائید.</value>
+  </data>
+  <data name="T014" xml:space="preserve">
+    <value>شهر مورد نظر را انتخاب نمائید.</value>
+  </data>
+  <data name="T015" xml:space="preserve">
+    <value>آیا اطلاعات وارد شده ثبت(ذخیره) شوند؟</value>
+  </data>
+  <data name="T016" xml:space="preserve">
+    <value>ایران</value>
+  </data>
+  <data name="T017" xml:space="preserve">
+    <value>نام خودرو را وارد یا انتخاب نمائید.</value>
+  </data>
+  <data name="T018" xml:space="preserve">
+    <value>پلاک مورد نظر قبلا در سیستم ثبت گردید.</value>
+  </data>
+  <data name="T019" xml:space="preserve">
+    <value>شماره پلاک ها را صحیح وارد نمائید.</value>
+  </data>
+  <data name="T020" xml:space="preserve">
+    <value>تاریخ را صحیح وارد نمائید.</value>
+  </data>
+  <data name="T021" xml:space="preserve">
+    <value>نوع وضعیت مالکیت را انتخاب نمائید.</value>
+  </data>
+  <data name="T022" xml:space="preserve">
+    <value>نوع جابجایی را انتخاب نمائید.</value>
+  </data>
+  <data name="T023" xml:space="preserve">
+    <value>مکان بارگیری یا تخلیه را وارد نمائید.</value>
+  </data>
+  <data name="T024" xml:space="preserve">
+    <value>نام محل بارگیری یا تخلیه برای این نوع جابجایی قبلا در سیستم ثبت می باشد.</value>
+  </data>
+  <data name="T025" xml:space="preserve">
+    <value>نام کالا را وارد نمائید.</value>
+  </data>
+  <data name="T026" xml:space="preserve">
+    <value>نام کالای وارد شده تکراری می باشد.</value>
+  </data>
+  <data name="T027" xml:space="preserve">
+    <value>سریال پلاک را وارد نمائید.</value>
+  </data>
+  <data name="T028" xml:space="preserve">
+    <value>شماره پلاک وارد شده در سیستم ثبت نمی باشد.</value>
+  </data>
+  <data name="T029" xml:space="preserve">
+    <value>لطفا تمام آیتم ها را وارد نمائید.</value>
+  </data>
+  <data name="T030" xml:space="preserve">
+    <value>شماره حواله را وارد نمائید.</value>
+  </data>
+  <data name="T031" xml:space="preserve">
+    <value>وزن خالص بار را وارد نمائید.</value>
+  </data>
+  <data name="T032" xml:space="preserve">
+    <value>تناژ مجازکامیون را وارد نمائید.</value>
+  </data>
+  <data name="T033" xml:space="preserve">
+    <value>شماره پلاک کامیون وارد شده در این تاریخ قبلا ثبت گردید. آیا موافق به ادامه ثبت عملیات می باشید؟</value>
+  </data>
+  <data name="T034" xml:space="preserve">
+    <value>تعداد ارقام شماره کارت را کامل وارد نمائید.</value>
+  </data>
+  <data name="T035" xml:space="preserve">
+    <value>تعداد ارقام شماره شبا را کامل وارد نمائید.</value>
+  </data>
+  <data name="T036" xml:space="preserve">
+    <value>شماره بارنامه را وارد نمائید.</value>
+  </data>
+  <data name="T037" xml:space="preserve">
+    <value>بدلیل ثبت بارنامه برای این حواله امکان ویـــرایش وجود ندارد.</value>
+  </data>
+  <data name="T038" xml:space="preserve">
+    <value>بدلیل ثبت بارنامه برای این حواله امکان حــــــذف وجود ندارد.</value>
+  </data>
+  <data name="T039" xml:space="preserve">
+    <value>بدلیل صدور حواله جدید و یا عدم تحویل کالا برای این پلاک، امکان استفاده مجدد(صدور حواله جدید) از این کامیون نمی باشید.</value>
+  </data>
+  <data name="T040" xml:space="preserve">
+    <value>آیا وضعیت تحویل کالاهای سطرهای انتخاب شده انجام شود؟</value>
+  </data>
+  <data name="T041" xml:space="preserve">
+    <value>هیچ آیتمی از لیست انتخاب نشده است.</value>
+  </data>
+  <data name="T042" xml:space="preserve">
+    <value>طرف حساب را مشخص نمائید.</value>
+  </data>
+  <data name="T043" xml:space="preserve">
+    <value>نوع کاربری کامیون را مشخص نمائید.</value>
+  </data>
+  <data name="T044" xml:space="preserve">
+    <value>خطا در ثبت اطلاعات</value>
+  </data>
+  <data name="T045" xml:space="preserve">
+    <value>اطلاعات را صحیح وارد نمائید.</value>
+  </data>
+  <data name="T046" xml:space="preserve">
+    <value>شماره کوتاژ را وارد نمائید.</value>
+  </data>
+  <data name="T047" xml:space="preserve">
+    <value>مقدار وزن کالای تحویلی را وارد نمائید.</value>
+  </data>
+  <data name="T048" xml:space="preserve">
+    <value>فایل مورد نظر را انتخاب نمائید.</value>
+  </data>
+  <data name="T049" xml:space="preserve">
+    <value>عنوان(موضوع) فایل را وارد نمائید.</value>
+  </data>
+  <data name="T050" xml:space="preserve">
+    <value>نوع(فرمت) فایل را وارد یا انتخاب نمائید.</value>
+  </data>
+  <data name="T051" xml:space="preserve">
+    <value>حجم فایل انتخاب شده از مقدار ظرفیت مجاز بیشتر می باشد.</value>
+  </data>
+  <data name="T052" xml:space="preserve">
+    <value>شماره پلاک مورد نظر را انتخاب نمائید</value>
+  </data>
+  <data name="T053" xml:space="preserve">
+    <value>آیا اطلاعات مورد نظر حذف شوند؟</value>
+  </data>
+  <data name="T054" xml:space="preserve">
+    <value>آیتم مورد نظر دارای مدارک پیوست می باشد. آیا با وجود مدارک حذف گردد؟</value>
+  </data>
+  <data name="T055" xml:space="preserve">
+    <value>نام کاربری(کد ملی)  یا رمز عبور وارد شده معتبر نمیباشد.</value>
+  </data>
+  <data name="T056" xml:space="preserve">
+    <value>نام کاربری(کد ملی) را وارد نمائید.</value>
+  </data>
+  <data name="T057" xml:space="preserve">
+    <value>رمز عبور را وارد نمائید.</value>
+  </data>
+  <data name="T058" xml:space="preserve">
+    <value>نام کاربر را انتخاب نمائید.</value>
+  </data>
+  <data name="T059" xml:space="preserve">
+    <value>نوع کاربری را انتخاب نمائید.</value>
+  </data>
+  <data name="T060" xml:space="preserve">
+    <value>اطلاعات مورد نظر قبلا در سیستم ثبت گردید.</value>
+  </data>
+  <data name="T061" xml:space="preserve">
+    <value>رمز عبور و تکرار رمز عبور وارد نمائید.</value>
+  </data>
+  <data name="T062" xml:space="preserve">
+    <value>رمز عبور وارد شده با تکرار رمز عبور مغایرت دارد.</value>
+  </data>
+  <data name="T063" xml:space="preserve">
+    <value>نام کاربری و رمز عبور را وارد نمائید.</value>
+  </data>
+  <data name="T064" xml:space="preserve">
+    <value>نوع دسترسی را انتخاب نمائید.</value>
+  </data>
+  <data name="T065" xml:space="preserve">
+    <value>دسترسی این آیتــم به شمــا داده نشــده است</value>
+  </data>
+  <data name="T066" xml:space="preserve">
+    <value>نوع دسترسی را وارد نمائید.</value>
+  </data>
+  <data name="T067" xml:space="preserve">
+    <value>نوع دسترسی مورد نظر قبلا ثبت گردید.</value>
+  </data>
+  <data name="T068" xml:space="preserve">
+    <value>گروه حساب را انتخاب نمائید.</value>
+  </data>
+  <data name="T069" xml:space="preserve">
+    <value>نام حساب کل را وارد نمائید.</value>
+  </data>
+  <data name="T070" xml:space="preserve">
+    <value>حساب کل مورد نظر برای این گروه قبلا ثبت گردید.</value>
+  </data>
+  <data name="T071" xml:space="preserve">
+    <value>نام حساب معین را وارد نمائید.</value>
+  </data>
+  <data name="T072" xml:space="preserve">
+    <value>نام حساب معین برای این حساب کل تکراری می باشد.</value>
+  </data>
+  <data name="T073" xml:space="preserve">
+    <value>نام حســـاب را وارد نمائید.</value>
+  </data>
+  <data name="T074" xml:space="preserve">
+    <value>نام حساب وارد شده قبلا ثبت شده است.</value>
+  </data>
+  <data name="T075" xml:space="preserve">
+    <value>نوع حساب را انتخاب نمائید.</value>
+  </data>
+  <data name="T076" xml:space="preserve">
+    <value>لطفا یک آیتم را از لیست انتخاب نمائید.</value>
+  </data>
+  <data name="T077" xml:space="preserve">
+    <value>سریال حـــواله سطر انتخاب شده را وارد نمائید.</value>
+  </data>
+  <data name="T078" xml:space="preserve">
+    <value>حساب تفصیلی را انتخاب نمائید.</value>
+  </data>
+  <data name="T079" xml:space="preserve">
+    <value>حساب تفصیلی مورد نظر قبلا ثبت گردید.</value>
+  </data>
+  <data name="T080" xml:space="preserve">
+    <value>امکان ثبت سند برای حساب های یکجور امکانپذیر نمی باشد.</value>
+  </data>
+  <data name="T081" xml:space="preserve">
+    <value>مبلغ را وارد نمائید.</value>
+  </data>
+  <data name="T082" xml:space="preserve">
+    <value>لیست چند حسابی خالی می باشد.</value>
+  </data>
+  <data name="T083" xml:space="preserve">
+    <value>تاریخ بارنامه نمی تواند قبل از تاریخ حواله باشد.</value>
+  </data>
+  <data name="T084" xml:space="preserve">
+    <value>آیا موافق به ادامه و ثبت حواله جدید می باشید؟</value>
+  </data>
+  <data name="T085" xml:space="preserve">
+    <value>مقدار بار را وارد نمائید.</value>
+  </data>
+  <data name="T086" xml:space="preserve">
+    <value>شماره پلمپ را وارد نمائید.</value>
+  </data>
+  <data name="T087" xml:space="preserve">
+    <value>کرایه حمل را وارد نمائید.</value>
+  </data>
+  <data name="T088" xml:space="preserve">
+    <value>ارزش(بهاء) کالا را وارد نمائید.</value>
+  </data>
+  <data name="T089" xml:space="preserve">
+    <value>بارنامه نویس را انتخاب نمائید.</value>
+  </data>
+  <data name="T090" xml:space="preserve">
+    <value>استان مورد نظر قبلا انتخاب شد.</value>
+  </data>
+  <data name="T091" xml:space="preserve">
+    <value>تاریخ و ساعت را صحیح وارد نمائید.</value>
+  </data>
+  <data name="T092" xml:space="preserve">
+    <value>لیست شهرها را انتخاب نمائید.</value>
+  </data>
+  <data name="T093" xml:space="preserve">
+    <value>پلاک مورد نظر در این تاریخ قبلا ثبت شد. آیا ثبت مجدد انجام شود؟</value>
+  </data>
+  <data name="T094" xml:space="preserve">
+    <value>این راننده به عنوان راننده اول انتخاب شده. امکان انتخاب برای راننده دوم وجود ندارد.</value>
+  </data>
+  <data name="T095" xml:space="preserve">
+    <value>نام گروه را وارد نمائید.</value>
+  </data>
+  <data name="T096" xml:space="preserve">
+    <value>نام گروه مورد نظر قبلا ثبت گردید.</value>
+  </data>
+  <data name="T097" xml:space="preserve">
+    <value>گروه ها را انتخاب نمائید.</value>
+  </data>
+  <data name="T098" xml:space="preserve">
+    <value>محل بارگیری و تخلیه نمی تواند یکسان باشد.</value>
+  </data>
+  <data name="T099" xml:space="preserve">
+    <value>انتخاب مورد نظر تکراری می باشد. قبلا در سیستم ثبت گردید.</value>
+  </data>
+  <data name="T100" xml:space="preserve">
+    <value>آیا فرم مورد نظر بسته شود؟</value>
+  </data>
+  <data name="T101" xml:space="preserve">
+    <value>انتخاب مورد نظر بدلیل ثبت در لیست سیاه امکان استفاده نمی باشد.</value>
+  </data>
+  <data name="T102" xml:space="preserve">
+    <value>مبلغ یا طرف حساب پرداختی راننده به سایر را وارد نمائید.</value>
+  </data>
+  <data name="T103" xml:space="preserve">
+    <value>شماره(سریال) قرارداد را وارد نمائید.</value>
+  </data>
+  <data name="T104" xml:space="preserve">
+    <value>شماره(سریال) تانکر را وارد نمائید.</value>
+  </data>
+  <data name="T105" xml:space="preserve">
+    <value>مبلغ ضمانت را وارد نمائید</value>
+  </data>
+  <data name="T106" xml:space="preserve">
+    <value>مبلغ اجاره را وارد نمائید.</value>
+  </data>
+  <data name="T107" xml:space="preserve">
+    <value>شماره تانکر با این شماره قرارداد قبلا ثبت گردید.</value>
+  </data>
+  <data name="T108" xml:space="preserve">
+    <value>تاریخ شروع قرارداد نباید از تاریخ پایان قرارداد بیشتر یا مساوی باشد.</value>
+  </data>
+  <data name="T109" xml:space="preserve">
+    <value>آیا اطلاعات وارد شده برای باربری مورد نظر ارسال گردد؟</value>
+  </data>
+  <data name="T110" xml:space="preserve">
+    <value>سند حسابداری این بارنامه قبلا ثبت گردید.</value>
+  </data>
+  <data name="T111" xml:space="preserve">
+    <value>آیا سند حسابداری ثبت(ذخیـــره) شود؟</value>
+  </data>
+  <data name="T112" xml:space="preserve">
+    <value>نام گروه را وارد نمائید.</value>
+  </data>
+  <data name="T113" xml:space="preserve">
+    <value>نام گروه وارد شده تکراری می باشد.</value>
+  </data>
+  <data name="T114" xml:space="preserve">
+    <value>نام شرکت مورد نظر را انتخاب نمائید.</value>
+  </data>
+  <data name="T115" xml:space="preserve">
+    <value>بدلیل ثبت سند حسابداری بارنامه مورد نظر امکان ویرایش نمی باشد.</value>
+  </data>
+  <data name="T116" xml:space="preserve">
+    <value>مبلغ وارد شده بیش از مانده حساب می باشد.</value>
+  </data>
+  <data name="T117" xml:space="preserve">
+    <value>لطفا توضیحات راجع به قسط را وارد نمائید.</value>
+  </data>
+  <data name="T118" xml:space="preserve">
+    <value>تاریخ وارد شده معتبر نیست. تاریخ خارج از سال مالی قرار دارد.</value>
+  </data>
+  <data name="T119" xml:space="preserve">
+    <value>اطلاعات چک مورد نظر قبلا در سیستم ثبت گردید.</value>
+  </data>
+  <data name="T120" xml:space="preserve">
+    <value>هیچ سندی برای این چک صادر نشده است.</value>
+  </data>
+  <data name="T121" xml:space="preserve">
+    <value>مبلغ سند یا چک را وارد نمائید. هیچ آیتمی در اسناد موقت ثبت نشده است.</value>
+  </data>
+  <data name="T122" xml:space="preserve">
+    <value>آیا اطلاعات مورد نظر در لیست مقابل اضافه گردد؟</value>
+  </data>
+  <data name="T123" xml:space="preserve">
+    <value>سال را صحیح وارد نمائید.</value>
+  </data>
+  <data name="T124" xml:space="preserve">
+    <value>آیتم های انتخاب شده در سال و ماه مورد نظر قبلا در سیستم ثبت گردید.</value>
+  </data>
+  <data name="T125" xml:space="preserve">
+    <value>نوع عملیات را انتخاب نمائید.</value>
+  </data>
+  <data name="T126" xml:space="preserve">
+    <value>نام/عنوان گروه را وارد نمائید.</value>
+  </data>
+  <data name="T127" xml:space="preserve">
+    <value> عنوان حساب معین از را انتخاب نمائید.</value>
+  </data>
+  <data name="T128" xml:space="preserve">
+    <value> عنوان حساب معین به را انتخاب نمائید.</value>
+  </data>
+  <data name="T129" xml:space="preserve">
+    <value>اطلاعات تانکر مورد نظر قبلا در سیستم ثبت گردید.</value>
+  </data>
+  <data name="T130" xml:space="preserve">
+    <value>سال مالی را انتخاب نمائید.</value>
+  </data>
+  <data name="T131" xml:space="preserve">
+    <value>سریال گواهینامه را وارد نمائید.</value>
+  </data>
+  <data name="T132" xml:space="preserve">
+    <value>سریال کارت هوشمند را وارد نمائید.</value>
+  </data>
+  <data name="T133" xml:space="preserve">
+    <value>لطفا عنوان مورد نظر حتمـــا از لیست انتخاب شود.</value>
+  </data>
+  <data name="T134" xml:space="preserve">
+    <value>مبلغ سند با مجموع اسناد ثبت شده مغایرت دارد.</value>
+  </data>
+  <data name="T135" xml:space="preserve">
+    <value>نوع سند را انتخاب نمائید.</value>
+  </data>
+  <data name="T136" xml:space="preserve">
+    <value>شرح قلم(توضیح) را وارد نمائید.</value>
+  </data>
+  <data name="T137" xml:space="preserve">
+    <value>نام صاحب چک را وارد نمائید.</value>
+  </data>
+  <data name="T138" xml:space="preserve">
+    <value>سریال چک را وارد نمائید.</value>
+  </data>
+  <data name="T139" xml:space="preserve">
+    <value>نام بانک را وارد نمائید.</value>
+  </data>
+  <data name="T140" xml:space="preserve">
+    <value>چک موزد نظر را انتخــــاب نمائید.</value>
+  </data>
+  <data name="T141" xml:space="preserve">
+    <value>سریال چک وارد شده تکراری می باشد.</value>
+  </data>
+  <data name="T142" xml:space="preserve">
+    <value>حساب تفصیلی مورد نظر قبلا در لیست ثبت شده است.</value>
+  </data>
+  <data name="T143" xml:space="preserve">
+    <value>لطفا توضیح راجع به این سند را وارد نمائید.</value>
+  </data>
+  <data name="T144" xml:space="preserve">
+    <value>مشتری(شخص) مورد نظر در حساب مقابل قرار دارد. امکان سند جابجایی برای این مشتری(شخص) مقدور نمی باشید.</value>
+  </data>
+  <data name="T145" xml:space="preserve">
+    <value>دو حساب انتخاب شده نمی تواند یکی باشد.</value>
+  </data>
+  <data name="T146" xml:space="preserve">
+    <value>شماره سریال(فیش) را وارد نمائید.</value>
+  </data>
+  <data name="T147" xml:space="preserve">
+    <value>نام شعبه را وارد نمائید.</value>
+  </data>
+  <data name="T148" xml:space="preserve">
+    <value>نام بانک و شعبه وارد شده تکراری می باشد.</value>
+  </data>
+  <data name="T149" xml:space="preserve">
+    <value>آیتم مورد نظر بدلیل پیوست(ثبت مدارک) امکان حذف نمی باشد.</value>
+  </data>
+  <data name="T150" xml:space="preserve">
+    <value>آیا مانده ابتدای دوره حذف گردد؟</value>
+  </data>
+  <data name="T151" xml:space="preserve">
+    <value>آیا موافقید از برنامه(نــرم افزار) خارج شوید.</value>
+  </data>
+  <data name="T152" xml:space="preserve">
+    <value>نام بانک و شعبه را انتخـــاب نمائید.</value>
+    <comment>تست</comment>
+  </data>
+</root>

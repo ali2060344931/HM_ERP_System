@@ -25,6 +25,9 @@ namespace HM_ERP_System.Entity.Accessibility
         public bool Lavel7 { get; set; }
         public bool Lavel8 { get; set; }
         public bool Lavel9 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool Lavel10 { get; set; }
     }
         public class AccessibilityConfig : EntityTypeConfiguration<Accessibility>

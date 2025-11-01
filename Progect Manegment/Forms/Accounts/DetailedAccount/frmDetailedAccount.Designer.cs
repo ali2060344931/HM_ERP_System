@@ -154,8 +154,12 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(576, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(719, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.Location = new System.Drawing.Point(685, 0);
             // 
             // dgvList
             // 
@@ -220,7 +224,7 @@
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label19.Location = new System.Drawing.Point(320, 149);
+            this.label19.Location = new System.Drawing.Point(320, 150);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(44, 18);
             this.label19.TabIndex = 102;
@@ -244,7 +248,7 @@
             cmbNatureAccounts_DesignTimeLayout.LayoutString = resources.GetString("cmbNatureAccounts_DesignTimeLayout.LayoutString");
             this.cmbNatureAccounts.DesignTimeLayout = cmbNatureAccounts_DesignTimeLayout;
             this.cmbNatureAccounts.DisplayMember = "Name";
-            this.cmbNatureAccounts.Location = new System.Drawing.Point(184, 144);
+            this.cmbNatureAccounts.Location = new System.Drawing.Point(184, 145);
             this.cmbNatureAccounts.Name = "cmbNatureAccounts";
             this.cmbNatureAccounts.SelectedIndex = -1;
             this.cmbNatureAccounts.SelectedItem = null;

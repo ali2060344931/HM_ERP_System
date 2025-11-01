@@ -13,6 +13,9 @@ namespace HM_ERP_System.Entity.Accounts.Banck
     public  class Banck
     {
         public int Id { get; set; }
+       /// <summary>
+       ///نام بانک
+       /// </summary>
         public string Name { get; set; }
         //public string BranchName { get; set; }
 

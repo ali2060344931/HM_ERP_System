@@ -361,9 +361,9 @@
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label1.Location = new System.Drawing.Point(303, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 18);
+            this.label1.Size = new System.Drawing.Size(93, 18);
             this.label1.TabIndex = 98;
-            this.label1.Text = "نام خودرو:";
+            this.label1.Text = "نام(عنوان) خودرو:";
             // 
             // label2
             // 

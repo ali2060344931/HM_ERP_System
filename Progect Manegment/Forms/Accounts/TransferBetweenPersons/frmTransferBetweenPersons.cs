@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
 
-using Telerik.WinControls;
+//using Telerik.WinControls;
 
 namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
 {

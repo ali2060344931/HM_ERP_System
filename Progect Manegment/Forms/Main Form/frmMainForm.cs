@@ -72,30 +72,38 @@ namespace HM_ERP_System.Forms.Main_Form
         private void frmMainForm_Load(object sender, EventArgs e)
         {
 
-            this.Text=ResourceCode.ProgName;
-            WindowState= FormWindowState.Maximized;
-            IsMdiContainer = true;
+            try
             {
-                tabStrip1.AutoSelectAttachedControl = true;
-                tabStrip1.CanReorderTabs = true;
-                tabStrip1.CloseButtonOnTabsVisible = true;
-                tabStrip1.CloseButtonVisible = false;
-                tabStrip1.Dock = DockStyle.Top;
-                tabStrip1.Location = new Point(0, 50);
-                tabStrip1.MdiTabbedDocuments = true;
-                tabStrip1.Name = "tabStrip1";
-                tabStrip1.SelectedTab = null;
-                tabStrip1.SelectedTabFont = new Font("Tahoma", 10F, 0, GraphicsUnit.Point, 0);//Microsoft Sans Tahoma
-                tabStrip1.Size = new Size(512, 26);
-                tabStrip1.Style = eTabStripStyle.OneNote;
-                tabStrip1.TabAlignment = eTabStripAlignment.Top;
-                tabStrip1.TabIndex = 6;
-                tabStrip1.TabLayoutType = eTabLayoutType.FixedWithNavigationBox;
-                tabStrip1.Text = "tabStrip1";
+                this.Text=ResourceCode.ProgName;
+                WindowState= FormWindowState.Maximized;
+                IsMdiContainer = true;
+                {
+                    tabStrip1.AutoSelectAttachedControl = true;
+                    tabStrip1.CanReorderTabs = true;
+                    tabStrip1.CloseButtonOnTabsVisible = true;
+                    tabStrip1.CloseButtonVisible = false;
+                    tabStrip1.Dock = DockStyle.Top;
+                    tabStrip1.Location = new Point(0, 50);
+                    tabStrip1.MdiTabbedDocuments = true;
+                    tabStrip1.Name = "tabStrip1";
+                    tabStrip1.SelectedTab = null;
+                    tabStrip1.SelectedTabFont = new Font("Tahoma", 10F, 0, GraphicsUnit.Point, 0);//Microsoft Sans Tahoma
+                    tabStrip1.Size = new Size(512, 26);
+                    tabStrip1.Style = eTabStripStyle.OneNote;
+                    tabStrip1.TabAlignment = eTabStripAlignment.Top;
+                    tabStrip1.TabIndex = 6;
+                    tabStrip1.TabLayoutType = eTabLayoutType.FixedWithNavigationBox;
+                    tabStrip1.Text = "tabStrip1";
+                }
+                tabStrip1.MdiForm = this;
+                setPeremissions();//تنظیمات سطوح دسترسی
+                SetRibbonStatusBar();
+
             }
-            tabStrip1.MdiForm = this;
-            setPeremissions();//تنظیمات سطوح دسترسی
-            SetRibbonStatusBar();
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
         private void SetRibbonStatusBar()
@@ -154,34 +162,34 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void buttonCommand1_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmCustomer>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmCustomer>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void buttonCommand2_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmDraver>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmDraver>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void buttonCommand3_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmCar>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmCar>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         private void buttonCommand5_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmCiltys>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmCiltys>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         private void buttonCommand6_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmPlaceTransfer>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmPlaceTransfer>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void buttonCommand4_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmProduct>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmProduct>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         private void btnComers_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmComers>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmComers>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnDeledeTables_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
@@ -191,21 +199,21 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void buttonCommand7_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmUser>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmUser>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnPeremission_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmPeremission>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmPeremission>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         private void btnTotalAccount_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmTotalAccount>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmTotalAccount>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnSpecficAccount_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmSpecificAccount>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmSpecificAccount>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnCalculater_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
@@ -220,70 +228,70 @@ namespace HM_ERP_System.Forms.Main_Form
         /// </summary>
         private void buttonCommand8_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmContraAccounts>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmContraAccounts>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnCustomers_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmCustomer>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmCustomer>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnTransactionIE_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmTransaction>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmTransaction>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         private void btnRecevingPayment_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmRecevingPaymentNew>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmRecevingPaymentNew>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         private void btnSettingProg_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmSettings>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmSettings>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         /// <summary>
         /// نمایش فرم حساب های تفصیلی
         /// </summary>
         private void btnDetailedAccount_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmDetailedAccount>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmDetailedAccount>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnAppointmentScheduling_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmAppointmentScheduling>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmAppointmentScheduling>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnPersonGroup_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmPersonGroup>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmPersonGroup>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnCustomToGroup_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmCustomerToGroup>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmCustomerToGroup>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnBlacList_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmBlacList>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmBlacList>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void frmMainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Modifiers==Keys.Control && e.KeyCode==Keys.E)
+            if (e.Modifiers==Keys.Control && e.KeyCode==Keys.E)
             {
-                buttonCommand16_Click(null,null);
+                buttonCommand16_Click(null, null);
             }
 
         }
         private void btnTankerRental_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmTankerRental>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmTankerRental>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnReceving_Payment_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmRecevingPaymentNew>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmRecevingPaymentNew>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         /// <summary>
@@ -293,22 +301,22 @@ namespace HM_ERP_System.Forms.Main_Form
         /// <param name="e"></param>
         private void btnRegCheques_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmCheque>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmCheque>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         frmPurchase_Tanker frmPurchase_Tanker;
         private void btnTenkerPurchase_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmPurchase_Tanker>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmPurchase_Tanker>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnFinancialYears_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmFinancialYears>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmFinancialYears>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnTransferBetweenPersons_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmTransferBetweenPersons>(mdiParent: this,activeMdiChild: this.ActiveMdiChild);
+            FormManager.ShowMdiChildForm<frmTransferBetweenPersons>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         private void btnTransferBetweenBanks_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
@@ -356,14 +364,14 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void buttonCommand16_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            if (MessageBox.Show(ResourceCode.T151, MyClass.PublicClass.ProjectName, MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show(ResourceCode.T151, MyClass.PublicClass.ProjectName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 Application.Exit();
 
         }
 
         private void buttonCommand14_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            btnAddBancksAc_Click(null,null);
+            btnAddBancksAc_Click(null, null);
         }
 
         private void buttonCommand15_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)

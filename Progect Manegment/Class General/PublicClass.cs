@@ -35,7 +35,7 @@ using GridExEx;
 using System.IO;
 using System.ComponentModel;
 using System.Data.OleDb;
-using Telerik.WinControls.Svg;
+//using Telerik.WinControls.Svg;
 using System.Reflection;
 using Microsoft.Office.Interop.Excel;
 using System.Diagnostics;

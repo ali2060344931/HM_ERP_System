@@ -502,6 +502,7 @@
     <Compile Include="Entity\Ciltys\Ciltys.cs" />
     <Compile Include="Entity\Comers\ComersB.cs" />
     <Compile Include="Entity\Comers\ComersH.cs" />
+    <Compile Include="Entity\Commission\Commission.cs" />
     <Compile Include="Entity\CustomerToGroup\CustomerToGroup.cs" />
     <Compile Include="Entity\Customer\Customer.cs" />
     <Compile Include="Entity\DocumentBanck\DocumentBanck.cs" />
@@ -675,6 +676,12 @@
     </Compile>
     <Compile Include="Forms\Comers\frmComers.Designer.cs">
       <DependentUpon>frmComers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Commission\frmCommission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Commission\frmCommission.Designer.cs">
+      <DependentUpon>frmCommission.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CustomerToGroup\frmCustomerToGroup.cs">
       <SubType>Form</SubType>
@@ -885,6 +892,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Comers\frmComers.resx">
       <DependentUpon>frmComers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Commission\frmCommission.resx">
+      <DependentUpon>frmCommission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerToGroup\frmCustomerToGroup.resx">
       <DependentUpon>frmCustomerToGroup.cs</DependentUpon>

@@ -4774,5 +4774,9 @@ namespace HM_ERP_System.Forms.Comers
 
         }
 
+        private void lblCarOwnerShip_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

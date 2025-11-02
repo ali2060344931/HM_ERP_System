@@ -13,8 +13,18 @@ namespace HM_ERP_System.Entity.PersonGroup
     public class PersonGroup
     {
         public int Id { get; set; }
+        /// <summary>
+        /// عنوان گروه
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// کد
+        /// </summary>
         public int Code { get; set; }
+        /// <summary>
+        /// آیا گروه پورسانت بگیران می باشد
+        /// </summary>
+        public bool IsCommission { get; set; }
     }
         public class PersonGroupConfig : EntityTypeConfiguration<PersonGroup>
     {

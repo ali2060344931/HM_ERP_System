@@ -218,7 +218,7 @@
             this.btnAddGroup.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddGroup.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddGroup.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddGroup.Location = new System.Drawing.Point(103, 50);
+            this.btnAddGroup.Location = new System.Drawing.Point(17, 51);
             this.btnAddGroup.Name = "btnAddGroup";
             this.btnAddGroup.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddGroup.Size = new System.Drawing.Size(20, 28);
@@ -238,11 +238,11 @@
             this.cmbGroup.DesignTimeLayout = cmbGroup_DesignTimeLayout;
             this.cmbGroup.DropDownDisplayMember = "Name";
             this.cmbGroup.DropDownValueMember = "id";
-            this.cmbGroup.Location = new System.Drawing.Point(124, 50);
+            this.cmbGroup.Location = new System.Drawing.Point(38, 50);
             this.cmbGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGroup.Name = "cmbGroup";
             this.cmbGroup.SaveSettings = false;
-            this.cmbGroup.Size = new System.Drawing.Size(209, 28);
+            this.cmbGroup.Size = new System.Drawing.Size(295, 28);
             this.cmbGroup.TabIndex = 112;
             this.cmbGroup.ValuesDataMember = null;
             this.cmbGroup.CheckedValuesChanged += new System.EventHandler(this.cmbGroup_CheckedValuesChanged);

@@ -34,13 +34,13 @@ namespace HM_ERP_System.Forms.Car
             InitializeComponent();
             _updatableForms=updatableForms;
         }
-        public void UpdateData()
-        {
-            CallUpdateTata();
-        }
         private void frmCar_Load(object sender, EventArgs e)
         {
             UpdateData();
+        }
+        public void UpdateData()
+        {
+            CallUpdateTata();
         }
 
         private void CallUpdateTata()

@@ -82,7 +82,7 @@ namespace HM_ERP_System.Forms.PersonGroup
                     }
 
                     var userRepo = new Repository<Entity.PersonGroup.PersonGroup>(db);
-                    if (userRepo.SaveOrUpdate(new Entity.PersonGroup.PersonGroup { Id = LisId, Name = txtName.Text }, LisId))
+                    if (userRepo.SaveOrUpdate(new Entity.PersonGroup.PersonGroup { Id = LisId, Name = txtName.Text,IsCommission=chkCommission.Checked }, LisId))
                     {
                         PublicClass.WindowAlart("1");
                         FilldgvList();
@@ -104,6 +104,7 @@ namespace HM_ERP_System.Forms.PersonGroup
             LisId = 0;
             txtName.ResetText();
             txtName.Focus();
+            chkCommission.Checked = false;
         }
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
@@ -117,6 +118,7 @@ namespace HM_ERP_System.Forms.PersonGroup
                     {
                         var q = db.PersonGroups.Where(c => c.Id == LisId).First();
                         txtName.Text = q.Name;
+                        chkCommission.Checked = q.IsCommission;
                     }
                 }
 

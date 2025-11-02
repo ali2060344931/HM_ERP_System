@@ -18,6 +18,7 @@ using HM_ERP_System.Forms.BlacList;
 using HM_ERP_System.Forms.Car;
 using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.Comers;
+using HM_ERP_System.Forms.Commission;
 using HM_ERP_System.Forms.Customer;
 using HM_ERP_System.Forms.CustomerToGroup;
 using HM_ERP_System.Forms.Draver;
@@ -387,6 +388,11 @@ namespace HM_ERP_System.Forms.Main_Form
         private void buttonCommand9_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             buttonCommand1_Click(null, null);
+        }
+
+        private void buttonCommand17_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            FormManager.ShowMdiChildForm<frmCommission>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
     }
 }

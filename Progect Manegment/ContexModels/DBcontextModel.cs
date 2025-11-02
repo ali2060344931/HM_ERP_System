@@ -1,51 +1,53 @@
 ﻿
-using HM_ERP_System.Entity.Customer;
-using HM_ERP_System.Entity.Gender;
-using HM_ERP_System.Entity.Product;
-using HM_ERP_System.Entity.TypeCustomer;
-using HM_ERP_System.Entity.Unit;
+using HM_ERP_System.Entity.Accessibility;
+using HM_ERP_System.Entity.Accounts.Banck;
+using HM_ERP_System.Entity.Accounts.Cheque;
+using HM_ERP_System.Entity.Accounts.DetailedAccount;
+using HM_ERP_System.Entity.Accounts.GroupAccount;
+using HM_ERP_System.Entity.Accounts.NatureAccount;
+using HM_ERP_System.Entity.Accounts.SpecificAccount;
+using HM_ERP_System.Entity.Accounts.TotalAccount;
+using HM_ERP_System.Entity.Accounts.Transaction;
+using HM_ERP_System.Entity.Accounts.TransactionType;
 using HM_ERP_System.Entity.Alphabet;
-using HM_ERP_System.Entity.Ciltys;
-using HM_ERP_System.Entity.Provinces;
-using HM_ERP_System.Entity.Ship;
-using System.Data.Entity;
-using HM_ERP_System.Entity.Draver;
+using HM_ERP_System.Entity.AppointmentScheduling;
+using HM_ERP_System.Entity.BillLadingWriterPercent;
+using HM_ERP_System.Entity.BlacList;
 using HM_ERP_System.Entity.Car;
-using HM_ERP_System.Entity.Ownership;
-using HM_ERP_System.Entity.TypeDocument;
-using HM_ERP_System.Entity.PlaceTransfer;
+using HM_ERP_System.Entity.Ciltys;
+using HM_ERP_System.Entity.Comers;
+using HM_ERP_System.Entity.Commission;
+using HM_ERP_System.Entity.Customer;
+using HM_ERP_System.Entity.CustomerRole;
+using HM_ERP_System.Entity.CustomerToGroup;
+using HM_ERP_System.Entity.DocumentBanck;
+using HM_ERP_System.Entity.Draver;
 using HM_ERP_System.Entity.EvacuationDeployment;
 using HM_ERP_System.Entity.FareCalcMethod;
-using HM_ERP_System.Entity.TypeCalcMethod;
-using HM_ERP_System.Entity.Comers;
-using HM_ERP_System.Entity.PaymentMethod;
-using HM_ERP_System.Entity.TruckUsageType;
-using HM_ERP_System.Entity.DocumentBanck;
-using HM_ERP_System.Entity.SetingProg;
-using HM_ERP_System.Entity.TransactionFee;
-using HM_ERP_System.Entity.Accessibility;
-using HM_ERP_System.Entity.Peremission;
-using HM_ERP_System.Entity.CustomerRole;
-using HM_ERP_System.Entity.RolePermissione;
-using HM_ERP_System.Entity.Accounts.GroupAccount;
-using HM_ERP_System.Entity.Accounts.TotalAccount;
-using HM_ERP_System.Entity.Accounts.SpecificAccount;
-using HM_ERP_System.Entity.Accounts.NatureAccount;
-using HM_ERP_System.Entity.Accounts.TransactionType;
-using System.Transactions;
-using HM_ERP_System.Entity.Accounts.Transaction;
-using HM_ERP_System.Entity.Accounts.DetailedAccount;
-using HM_ERP_System.Entity.AppointmentScheduling;
-using HM_ERP_System.Entity.PersonGroup;
-using HM_ERP_System.Entity.CustomerToGroup;
-using HM_ERP_System.Entity.BlacList;
-using HM_ERP_System.Entity.Spare;
-using HM_ERP_System.Entity.WarantyType;
-using HM_ERP_System.Entity.BillLadingWriterPercent;
 using HM_ERP_System.Entity.FinancialYear;
-using HM_ERP_System.Entity.Accounts.Cheque;
+using HM_ERP_System.Entity.Gender;
+using HM_ERP_System.Entity.Ownership;
+using HM_ERP_System.Entity.PaymentMethod;
+using HM_ERP_System.Entity.Peremission;
+using HM_ERP_System.Entity.PersonGroup;
+using HM_ERP_System.Entity.PlaceTransfer;
+using HM_ERP_System.Entity.Product;
+using HM_ERP_System.Entity.Provinces;
 using HM_ERP_System.Entity.PurchaseTanker;
-using HM_ERP_System.Entity.Accounts.Banck;
+using HM_ERP_System.Entity.RolePermissione;
+using HM_ERP_System.Entity.SetingProg;
+using HM_ERP_System.Entity.Ship;
+using HM_ERP_System.Entity.Spare;
+using HM_ERP_System.Entity.TransactionFee;
+using HM_ERP_System.Entity.TruckUsageType;
+using HM_ERP_System.Entity.TypeCalcMethod;
+using HM_ERP_System.Entity.TypeCustomer;
+using HM_ERP_System.Entity.TypeDocument;
+using HM_ERP_System.Entity.Unit;
+using HM_ERP_System.Entity.WarantyType;
+
+using System.Data.Entity;
+using System.Transactions;
 
 namespace Progect_Manegment
 {
@@ -119,6 +121,7 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new PurchaseTankerConfig());
             modelBuilder.Configurations.Add(new BanckConfig());
             modelBuilder.Configurations.Add(new BankBranchConfig());
+            modelBuilder.Configurations.Add(new CommissionConfig());
 
             base.OnModelCreating(modelBuilder);
             #endregion
@@ -348,6 +351,10 @@ namespace Progect_Manegment
         /// جدول شعب بانک ها
         /// </summary>
         public virtual DbSet<BankBranch> BankBranches { get; set; }
+        /// <summary>
+        /// جدول پورسانت ها
+        /// </summary>
+        public virtual DbSet<Commission> Commissions { get; set; }
 
         #endregion
 

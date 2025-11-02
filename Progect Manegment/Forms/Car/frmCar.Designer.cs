@@ -249,11 +249,7 @@
             // 
             this.chkStatus.Checked = true;
             this.chkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-<<<<<<< HEAD
             this.chkStatus.Location = new System.Drawing.Point(248, 442);
-=======
-            this.chkStatus.Location = new System.Drawing.Point(248, 447);
->>>>>>> 5a7edfca7ffdc90f923662e3e2c3a393e0a60779
             this.chkStatus.Name = "chkStatus";
             this.chkStatus.Size = new System.Drawing.Size(49, 25);
             this.chkStatus.TabIndex = 13;
@@ -440,11 +436,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-<<<<<<< HEAD
             this.label8.Location = new System.Drawing.Point(302, 445);
-=======
-            this.label8.Location = new System.Drawing.Point(302, 450);
->>>>>>> 5a7edfca7ffdc90f923662e3e2c3a393e0a60779
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 18);
             this.label8.TabIndex = 98;

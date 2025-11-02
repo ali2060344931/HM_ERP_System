@@ -211,6 +211,7 @@
             this.chkShowZeroBalance.Text = "(0)مانده صفر";
             this.toolTip1.SetToolTip(this.chkShowZeroBalance, "نمایش حسابهای های دارای مانده صفر در تفصیلی");
             this.chkShowZeroBalance.UseVisualStyleBackColor = true;
+            this.chkShowZeroBalance.Visible = false;
             // 
             // checkBox2
             // 
@@ -222,6 +223,7 @@
             this.checkBox2.TabIndex = 204;
             this.checkBox2.Text = "بستن حساب ها";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Visible = false;
             // 
             // checkBox1
             // 
@@ -233,6 +235,7 @@
             this.checkBox1.TabIndex = 204;
             this.checkBox1.Text = "اختتامیه";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
             // chkIsBeginningBalanceFilter
             // 
@@ -247,6 +250,7 @@
             this.chkIsBeginningBalanceFilter.Text = "افتتاحیه";
             this.toolTip1.SetToolTip(this.chkIsBeginningBalanceFilter, "تاثیر حساب های افتتاحیه(ابتدای دوره)");
             this.chkIsBeginningBalanceFilter.UseVisualStyleBackColor = true;
+            this.chkIsBeginningBalanceFilter.Visible = false;
             // 
             // txtTransactionCodeE
             // 

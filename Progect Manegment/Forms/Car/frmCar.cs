@@ -279,7 +279,7 @@ namespace HM_ERP_System.Forms.Car
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("این کد برای تست گیت هاب نوشته شده است.");
             try
             {
                 //string Carplate_ = this.txtCarplate1.Text + " " + ResourceCode.T016 + " " + this.txtCarplate2.Text;

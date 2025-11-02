@@ -48,15 +48,19 @@ namespace HM_ERP_System.Forms.Commission
         {
             FilldgvList();
             FillcmbComers();
-            FillCommissionType();
+            FillcmbCommissionType();
 
         }
 
-        private void FillCommissionType()
+        DataTable dt_CommissionType;
+        private void FillcmbCommissionType()
         {
             using (var db = new DBcontextModel())
             {
-                //var q=db.
+                var q = db.PersonGroups.Where(c => c.IsCommission).ToList();
+                cmbCommissionType.DataSource=q;
+                dt_CommissionType = new System.Data.DataTable();
+                dt_CommissionType = PublicClass.AddEntityTableToDataTable(q.ToList());
             }
 
         }
@@ -112,6 +116,73 @@ namespace HM_ERP_System.Forms.Commission
             if (e.KeyCode == Keys.F2)
             {
                 PublicClass.SearchCmbId(cmbComers, dt_Comers);
+            }
+        }
+        int CommissionTypeId = 0;
+        private void cmbCommissionType_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CommissionTypeId = Convert.ToInt32(cmbCommissionType.Value);
+                cmbCustomer.ResetText();
+                FillcmbCustomer();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        DataTable dt_Customer ;
+
+        private void FillcmbCustomer()
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    var q = from ctg in db.CustomerToGroups
+                            join cu in db.Customers
+                            on ctg.CustomerId equals cu.Id
+
+                            join pg in db.PersonGroups
+                            on ctg.PersonGroupId equals pg.Id
+
+                            where pg.Id==CommissionTypeId
+                            select new
+                            {
+                                cu.Id,
+                                Name = cu.Family +" "+ cu.Name,
+                            };
+                    cmbCustomer.DataSource = q.ToList();
+                    dt_Customer = new System.Data.DataTable();
+                    dt_Customer = PublicClass.AddEntityTableToDataTable(q.ToList());
+                }
+            }
+                catch (Exception er)
+                {
+                    PublicClass.ShowErrorMessage(er);
+                }
+        }
+
+        private void cmbCommissionType_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
+
+            if (e.KeyCode == Keys.F2)
+            {
+                PublicClass.SearchCmbId(cmbCommissionType, dt_CommissionType);
+            }
+        }
+        int CustomerId = 0;
+        private void cmbCustomer_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CustomerId = Convert.ToInt32(cmbCustomer.Value);
+            }
+            catch (Exception)
+            {
             }
         }
     }

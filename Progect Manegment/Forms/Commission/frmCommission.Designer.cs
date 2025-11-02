@@ -318,6 +318,8 @@
             this.cmbCommissionType.TabIndex = 2;
             this.cmbCommissionType.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbCommissionType.ValueMember = "id";
+            this.cmbCommissionType.ValueChanged += new System.EventHandler(this.cmbCommissionType_ValueChanged);
+            this.cmbCommissionType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCommissionType_KeyDown);
             // 
             // buttonX3
             // 
@@ -350,6 +352,7 @@
             this.cmbCustomer.TabIndex = 3;
             this.cmbCustomer.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbCustomer.ValueMember = "id";
+            this.cmbCustomer.ValueChanged += new System.EventHandler(this.cmbCustomer_ValueChanged);
             // 
             // pictureBox1
             // 

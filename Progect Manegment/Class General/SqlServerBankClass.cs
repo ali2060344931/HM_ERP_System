@@ -12,7 +12,7 @@ namespace MyClass
 {
     static class SqlServerBankClass
     {
-        private static string CONNECTION_STRING ="";
+        private static string CONNECTION_STRING = MyClass.SqlBankClass.CONNECTION_STRING;
 
         public static bool Insert(string tableName, params string[] fieldValues)
         {
@@ -436,10 +436,10 @@ namespace MyClass
                 reportViewer.RefreshReport();
                 connection.Close();
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, ResourceCode.ProgName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                catch (Exception er)
+                {
+                    PublicClass.ShowErrorMessage(er);
+                }
         }
 
 /// <summary>

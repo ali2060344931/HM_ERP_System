@@ -26,6 +26,7 @@ using HM_ERP_System.Entity.EvacuationDeployment;
 using HM_ERP_System.Entity.FareCalcMethod;
 using HM_ERP_System.Entity.FinancialYear;
 using HM_ERP_System.Entity.Gender;
+using HM_ERP_System.Entity.ImageCo;
 using HM_ERP_System.Entity.Ownership;
 using HM_ERP_System.Entity.PaymentMethod;
 using HM_ERP_System.Entity.Peremission;
@@ -122,6 +123,7 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new BanckConfig());
             modelBuilder.Configurations.Add(new BankBranchConfig());
             modelBuilder.Configurations.Add(new CommissionConfig());
+            modelBuilder.Configurations.Add(new ImageCoConfig());
 
             base.OnModelCreating(modelBuilder);
             #endregion
@@ -355,6 +357,11 @@ namespace Progect_Manegment
         /// جدول پورسانت ها
         /// </summary>
         public virtual DbSet<Commission> Commissions { get; set; }
+        
+        /// <summary>
+        /// جدول لوگوی شرکت
+        /// </summary>
+        public virtual DbSet<ImageCo> ImageCos { get; set; }
 
         #endregion
 

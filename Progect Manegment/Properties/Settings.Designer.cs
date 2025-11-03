@@ -106,5 +106,16 @@ namespace HM_ERP_System.Properties {
                 this["StatusShowAccountBalance"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=HM_ERP_System1;Integrated Security=True;TrustServer" +
+            "Certificate=True")]
+        public string HM_ERP_System1ConnectionString {
+            get {
+                return ((string)(this["HM_ERP_System1ConnectionString"]));
+            }
+        }
     }
 }

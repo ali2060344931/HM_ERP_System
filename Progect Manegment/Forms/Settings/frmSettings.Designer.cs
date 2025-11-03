@@ -33,12 +33,15 @@
             this.uiTabPage2 = new Janus.Windows.UI.Tab.UITabPage();
             this.chkShowAccountBalance = new System.Windows.Forms.CheckBox();
             this.uiTabPage1 = new Janus.Windows.UI.Tab.UITabPage();
-            this.lblIEAmount = new System.Windows.Forms.Label();
+            this.btnAddPic = new DevComponents.DotNetBar.ButtonX();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.txtSetDayToReportList = new DevComponents.Editors.IntegerInput();
+            this.lblIEAmount = new System.Windows.Forms.Label();
             this.uiTab1 = new Janus.Windows.UI.Tab.UITab();
             this.panel1.SuspendLayout();
             this.uiTabPage2.SuspendLayout();
             this.uiTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSetDayToReportList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiTab1)).BeginInit();
             this.uiTab1.SuspendLayout();
@@ -93,6 +96,8 @@
             // 
             // uiTabPage1
             // 
+            this.uiTabPage1.Controls.Add(this.btnAddPic);
+            this.uiTabPage1.Controls.Add(this.picLogo);
             this.uiTabPage1.Controls.Add(this.txtSetDayToReportList);
             this.uiTabPage1.Controls.Add(this.lblIEAmount);
             this.uiTabPage1.Location = new System.Drawing.Point(1, 30);
@@ -101,17 +106,29 @@
             this.uiTabPage1.TabStop = true;
             this.uiTabPage1.Text = "تنظیمات عمومی";
             // 
-            // lblIEAmount
+            // btnAddPic
             // 
-            this.lblIEAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblIEAmount.AutoSize = true;
-            this.lblIEAmount.BackColor = System.Drawing.Color.Transparent;
-            this.lblIEAmount.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblIEAmount.Location = new System.Drawing.Point(387, 18);
-            this.lblIEAmount.Name = "lblIEAmount";
-            this.lblIEAmount.Size = new System.Drawing.Size(309, 18);
-            this.lblIEAmount.TabIndex = 109;
-            this.lblIEAmount.Text = "تعداد روز قبل از تاریخ جاری سیستم جهت نمایش لیست جداول:";
+            this.btnAddPic.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddPic.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddPic.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnAddPic.Location = new System.Drawing.Point(87, 165);
+            this.btnAddPic.Name = "btnAddPic";
+            this.btnAddPic.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnAddPic.Size = new System.Drawing.Size(100, 28);
+            this.btnAddPic.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddPic.SymbolSize = 12F;
+            this.btnAddPic.TabIndex = 112;
+            this.btnAddPic.Text = "انتخاب تصویر";
+            this.btnAddPic.Click += new System.EventHandler(this.btnAddPic_Click);
+            // 
+            // picLogo
+            // 
+            this.picLogo.Location = new System.Drawing.Point(22, 13);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(216, 146);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogo.TabIndex = 111;
+            this.picLogo.TabStop = false;
             // 
             // txtSetDayToReportList
             // 
@@ -130,6 +147,18 @@
             this.txtSetDayToReportList.TabIndex = 110;
             this.txtSetDayToReportList.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
             this.txtSetDayToReportList.WatermarkText = "روز";
+            // 
+            // lblIEAmount
+            // 
+            this.lblIEAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIEAmount.AutoSize = true;
+            this.lblIEAmount.BackColor = System.Drawing.Color.Transparent;
+            this.lblIEAmount.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblIEAmount.Location = new System.Drawing.Point(387, 18);
+            this.lblIEAmount.Name = "lblIEAmount";
+            this.lblIEAmount.Size = new System.Drawing.Size(309, 18);
+            this.lblIEAmount.TabIndex = 109;
+            this.lblIEAmount.Text = "تعداد روز قبل از تاریخ جاری سیستم جهت نمایش لیست جداول:";
             // 
             // uiTab1
             // 
@@ -166,6 +195,7 @@
             this.uiTabPage2.PerformLayout();
             this.uiTabPage1.ResumeLayout(false);
             this.uiTabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSetDayToReportList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiTab1)).EndInit();
             this.uiTab1.ResumeLayout(false);
@@ -182,5 +212,7 @@
         private DevComponents.Editors.IntegerInput txtSetDayToReportList;
         private System.Windows.Forms.Label lblIEAmount;
         private Janus.Windows.UI.Tab.UITab uiTab1;
+        private System.Windows.Forms.PictureBox picLogo;
+        public DevComponents.DotNetBar.ButtonX btnAddPic;
     }
 }

@@ -443,6 +443,7 @@
     <Compile Include="Class General\FormManager.cs" />
     <Compile Include="Class General\GridPrintColumn.cs" />
     <Compile Include="Class General\IUpdatableForms.cs" />
+    <Compile Include="Class General\Manage_Photos.cs" />
     <Compile Include="Class General\MyTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -511,6 +512,7 @@
     <Compile Include="Entity\FareCalcMethod\FareCalcMethod.cs" />
     <Compile Include="Entity\FinancialYear\FinancialYear.cs" />
     <Compile Include="Entity\Gender\Gender.cs" />
+    <Compile Include="Entity\ImageCo\ImageCo.cs" />
     <Compile Include="Entity\Ownership\Ownership.cs" />
     <Compile Include="Entity\PaymentMethod\PaymentMethod.cs" />
     <Compile Include="Entity\Peremission\Peremission.cs" />
@@ -779,6 +781,12 @@
     <Compile Include="Forms\PurchaseTanker\frmPurchase_Tanker.Designer.cs">
       <DependentUpon>frmPurchase_Tanker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Role\frmRole.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -944,6 +952,9 @@
     <EmbeddedResource Include="Forms\PurchaseTanker\frmPurchase_Tanker.resx">
       <DependentUpon>frmPurchase_Tanker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Role\frmRole.resx">
       <DependentUpon>frmRole.cs</DependentUpon>
     </EmbeddedResource>
@@ -970,6 +981,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportViewerMain\Report_KarkarRozaneh.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_KarkarRozaneh - Copy.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_KarkarRozaneh.rdlc" />
     <EmbeddedResource Include="ResourceCode.resx">
       <Generator>ResXFileCodeGenerator</Generator>

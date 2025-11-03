@@ -181,7 +181,11 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(465, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(608, 0);
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.Location = new System.Drawing.Point(574, 0);
             // 
             // dgvListH
             // 

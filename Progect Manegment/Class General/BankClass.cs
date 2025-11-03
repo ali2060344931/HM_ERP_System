@@ -49,8 +49,8 @@ namespace MyClass
         {
             get
             {
-                    return "";
-                    //return "Data Source=localhost;user id=root;database=library1;password=00000 ;"; 
+                string cs= File.ReadAllText(Application.StartupPath + @"\ConectionString.txt", Encoding.UTF8);
+                return cs;
             }
         }
 

@@ -394,5 +394,10 @@ namespace HM_ERP_System.Forms.Main_Form
         {
             FormManager.ShowMdiChildForm<frmCommission>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
+
+        private void btnRepCustomer1_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            MessageBox.Show("Test");
+        }
     }
 }

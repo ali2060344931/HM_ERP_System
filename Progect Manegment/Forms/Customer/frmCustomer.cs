@@ -517,6 +517,15 @@ namespace HM_ERP_System.Forms.Customer
             txtCodMeli.CheackCodeMeli=chkControlCodeMeli.Checked;
             Properties.Settings.Default.CheackCodeMeli=chkControlCodeMeli.Checked;
             Properties.Settings.Default.Save();
+            if(chkControlCodeMeli.Checked)
+            {
+                btnCratMelyCode.Enabled=false;
+            }
+            else
+            {
+                btnCratMelyCode.Enabled=true;
+
+            }
         }
 
         int NatureAccountsId = 0;
@@ -721,5 +730,14 @@ namespace HM_ERP_System.Forms.Customer
             frmBankBranch.ShowDialog();
             FillcmbBanck();
         }
+
+        private void btnCratMelyCode_Click(object sender, EventArgs e)
+        {
+            Random rand = new Random();
+            long tenDigitNumber =PublicClass.GenerateTenDigitRandomNumber(rand);
+            txtCodMeli.Text=tenDigitNumber.ToString();
+        }
+
+        
     }
 }

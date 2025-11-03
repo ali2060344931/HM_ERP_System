@@ -100,6 +100,7 @@
             this.ribbonGroup6 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnSettingProg = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnFinancialYears = new Janus.Windows.Ribbon.ButtonCommand();
+            this.backstageTabControl1 = new Janus.Windows.Ribbon.BackstageTabControl();
             this.ribbonStatusBar1 = new Janus.Windows.Ribbon.RibbonStatusBar();
             this.buttonCommand16 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnCalculater = new Janus.Windows.Ribbon.ButtonCommand();
@@ -112,6 +113,10 @@
             this.buttonCommand13 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnExitForProg = new Janus.Windows.Ribbon.ButtonCommand();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dropDownCommand1 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.btnRepCustomer1 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.btnRepCustomer2 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.btnRepCustomerAll = new Janus.Windows.Ribbon.DropDownCommand();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +136,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1441, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1473, 27);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -155,7 +160,7 @@
             this.ribbon1.Location = new System.Drawing.Point(0, 0);
             this.ribbon1.Name = "ribbon1";
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1441, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1473, 185);
             // 
             // 
             // 
@@ -660,6 +665,8 @@
             // 
             // ribbonGroup13
             // 
+            this.ribbonGroup13.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.dropDownCommand1});
             this.ribbonGroup13.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup13;
             this.ribbonGroup13.Key = "ribbonGroup13";
             this.ribbonGroup13.Name = "ribbonGroup13";
@@ -771,18 +778,25 @@
             this.btnFinancialYears.Text = "تعریف سال مالی";
             this.btnFinancialYears.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnFinancialYears_Click);
             // 
+            // backstageTabControl1
+            // 
+            this.backstageTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.backstageTabControl1.Name = "backstageTabControl1";
+            this.backstageTabControl1.Size = new System.Drawing.Size(0, 0);
+            this.backstageTabControl1.TabIndex = 0;
+            // 
             // ribbonStatusBar1
             // 
             this.ribbonStatusBar1.LeftPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 807);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 843);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1441, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1473, 23);
             // 
             // 
             // 
@@ -868,11 +882,42 @@
             this.btnExitForProg.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnExitForProg.Text = "خــروج";
             // 
+            // dropDownCommand1
+            // 
+            this.dropDownCommand1.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.btnRepCustomer1,
+            this.btnRepCustomer2,
+            this.btnRepCustomerAll});
+            this.dropDownCommand1.Image = ((System.Drawing.Image)(resources.GetObject("dropDownCommand1.Image")));
+            this.dropDownCommand1.Key = "dropDownCommand1";
+            this.dropDownCommand1.Name = "dropDownCommand1";
+            this.dropDownCommand1.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
+            this.dropDownCommand1.Text = "لیست اشخاص";
+            // 
+            // btnRepCustomer1
+            // 
+            this.btnRepCustomer1.Key = "dropDownCommand2";
+            this.btnRepCustomer1.Name = "btnRepCustomer1";
+            this.btnRepCustomer1.Text = "اشخاص حقیقی";
+            this.btnRepCustomer1.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnRepCustomer1_Click);
+            // 
+            // btnRepCustomer2
+            // 
+            this.btnRepCustomer2.Key = "dropDownCommand3";
+            this.btnRepCustomer2.Name = "btnRepCustomer2";
+            this.btnRepCustomer2.Text = "اشخاص حقوقی";
+            // 
+            // btnRepCustomerAll
+            // 
+            this.btnRepCustomerAll.Key = "dropDownCommand4";
+            this.btnRepCustomerAll.Name = "btnRepCustomerAll";
+            this.btnRepCustomerAll.Text = "همه اشخاص";
+            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1441, 830);
+            this.ClientSize = new System.Drawing.Size(1473, 866);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);
@@ -969,5 +1014,10 @@
         private Janus.Windows.Ribbon.RibbonGroup ribbonGroup16;
         private Janus.Windows.Ribbon.RibbonGroup ribbonGroup17;
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand17;
+        private Janus.Windows.Ribbon.BackstageTabControl backstageTabControl1;
+        private Janus.Windows.Ribbon.DropDownCommand dropDownCommand1;
+        private Janus.Windows.Ribbon.DropDownCommand btnRepCustomer1;
+        private Janus.Windows.Ribbon.DropDownCommand btnRepCustomer2;
+        private Janus.Windows.Ribbon.DropDownCommand btnRepCustomerAll;
     }
 }

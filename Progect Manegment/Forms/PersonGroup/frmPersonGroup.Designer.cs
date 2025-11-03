@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPersonGroup));
             this.label14 = new System.Windows.Forms.Label();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
             this.dgvList = new GridExEx.GridExEx();
             this.chkCommission = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label18 = new System.Windows.Forms.Label();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -56,8 +59,12 @@
             // 
             // pnlViewItemFoter
             // 
+            this.pnlViewItemFoter.Controls.Add(this.label18);
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 388);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(394, 28);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX1, 0);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.label18, 0);
             // 
             // pnlAddItemBodi
             // 
@@ -187,7 +194,21 @@
             this.chkCommission.Size = new System.Drawing.Size(143, 26);
             this.chkCommission.TabIndex = 109;
             this.chkCommission.Text = "گروه پورسانت بگیران";
+            this.toolTip1.SetToolTip(this.chkCommission, "آیا گروه مورد نظر جزء پورسنات بگیران هستند؟");
             this.chkCommission.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label18.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label18.ForeColor = System.Drawing.Color.Maroon;
+            this.label18.Location = new System.Drawing.Point(33, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(293, 18);
+            this.label18.TabIndex = 116;
+            this.label18.Text = "سطرهای با رنگ سبز جزء گروه های پورسانت بگیران می باشند";
             // 
             // frmPersonGroup
             // 
@@ -205,6 +226,7 @@
             this.pnlViewItemHeder.ResumeLayout(false);
             this.pnlViewItemHeder.PerformLayout();
             this.pnlViewItemFoter.ResumeLayout(false);
+            this.pnlViewItemFoter.PerformLayout();
             this.pnlAddItemBodi.ResumeLayout(false);
             this.pnlAddItemBodi.PerformLayout();
             this.pnlAddItemFoter.ResumeLayout(false);
@@ -221,5 +243,7 @@
         private Janus.Windows.GridEX.EditControls.EditBox txtName;
         public GridExEx.GridExEx dgvList;
         private System.Windows.Forms.CheckBox chkCommission;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label18;
     }
 }

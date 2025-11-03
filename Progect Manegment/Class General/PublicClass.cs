@@ -3643,5 +3643,46 @@ namespace MyClass
             }
         }
 
+        /// <summary>
+        /// ایجاد عدد تصادفی 10 رقمی
+        /// </summary>
+        /// <param name="random"></param>
+        
+        /// <returns>نحوه استفاده</returns>
+        /// <returns>Random rand = new Random();</returns>
+        /// <returns>long tenDigitNumber = GenerateTenDigitRandomNumber(rand);</returns>
+        public static long GetRandomLong(Random random)
+        {
+            // ایجاد یک آرایه 8 بایتی (8 بایت = 64 بیت = فضای ذخیره سازی یک long)
+            byte[] buffer = new byte[8];
+
+            // پر کردن آرایه با مقادیر تصادفی
+            random.NextBytes(buffer);
+
+            // تبدیل آرایه 8 بایتی به یک مقدار long (64-bit integer)
+            return BitConverter.ToInt64(buffer, 0);
+        }
+        public static long GenerateTenDigitRandomNumber(Random random)
+        {
+            // تعریف محدوده: حداقل (کوچکترین عدد ۱۰ رقمی) و حداکثر (بزرگترین عدد ۱۰ رقمی)
+            long min = 1_000_000_000L;
+            long max = 9_999_999_999L;
+
+            // تولید عدد long تصادفی و اعمال محدوده (Modulo arithmetic)
+            // این روش برای نسخه‌های قدیمی که NextLong ندارند، استفاده می‌شود.
+
+            // ۱. تفاوت بین حداکثر و حداقل را محاسبه کنید
+            long range = max - min + 1;
+
+            // ۲. یک عدد long تصادفی کامل تولید کنید
+            long randLong = GetRandomLong(random);
+
+            // ۳. آن را مثبت کنید (چون GetRandomLong می‌تواند منفی باشد)
+            long positiveRand = Math.Abs(randLong);
+
+            // ۴. آن را به محدوده مورد نظر محدود کنید
+            return (positiveRand % range) + min;
+        }
+
     }
 }

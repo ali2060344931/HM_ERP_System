@@ -87,6 +87,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddBanck = new DevComponents.DotNetBar.ButtonX();
             this.cmbBanck = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.btnCratMelyCode = new DevComponents.DotNetBar.ButtonX();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -127,6 +128,7 @@
             this.pnlAddItemBodi.Controls.Add(this.cmbCity);
             this.pnlAddItemBodi.Controls.Add(this.cmbGroup);
             this.pnlAddItemBodi.Controls.Add(this.label20);
+            this.pnlAddItemBodi.Controls.Add(this.btnCratMelyCode);
             this.pnlAddItemBodi.Controls.Add(this.btnAddGroup);
             this.pnlAddItemBodi.Controls.Add(this.chkControlCodeMeli);
             this.pnlAddItemBodi.Controls.Add(this.label8);
@@ -317,7 +319,7 @@
             this.txtAdders1.Location = new System.Drawing.Point(38, 273);
             this.txtAdders1.Name = "txtAdders1";
             this.txtAdders1.Size = new System.Drawing.Size(209, 28);
-            this.txtAdders1.TabIndex = 7;
+            this.txtAdders1.TabIndex = 8;
             this.txtAdders1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtAdders1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
@@ -326,7 +328,7 @@
             this.txtCodMeli.CheackCodeMeli = true;
             this.txtCodMeli.CodeMeliTextLength = 11;
             this.txtCodMeli.Day = 0;
-            this.txtCodMeli.Location = new System.Drawing.Point(129, 142);
+            this.txtCodMeli.Location = new System.Drawing.Point(128, 140);
             this.txtCodMeli.Miladi = new System.DateTime(((long)(0)));
             this.txtCodMeli.Month = 0;
             this.txtCodMeli.Name = "txtCodMeli";
@@ -351,7 +353,7 @@
             this.txtDes.Multiline = true;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(209, 56);
-            this.txtDes.TabIndex = 13;
+            this.txtDes.TabIndex = 14;
             this.txtDes.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtDes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
@@ -361,7 +363,7 @@
             this.txtDabitCardNumber.MaxLength = 16;
             this.txtDabitCardNumber.Name = "txtDabitCardNumber";
             this.txtDabitCardNumber.Size = new System.Drawing.Size(209, 28);
-            this.txtDabitCardNumber.TabIndex = 11;
+            this.txtDabitCardNumber.TabIndex = 12;
             this.txtDabitCardNumber.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtDabitCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             this.txtDabitCardNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
@@ -372,7 +374,7 @@
             this.txtSeryalShaba.MaxLength = 24;
             this.txtSeryalShaba.Name = "txtSeryalShaba";
             this.txtSeryalShaba.Size = new System.Drawing.Size(209, 28);
-            this.txtSeryalShaba.TabIndex = 12;
+            this.txtSeryalShaba.TabIndex = 13;
             this.txtSeryalShaba.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtSeryalShaba.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             this.txtSeryalShaba.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
@@ -514,7 +516,7 @@
             this.txtAdders2.Location = new System.Drawing.Point(38, 307);
             this.txtAdders2.Name = "txtAdders2";
             this.txtAdders2.Size = new System.Drawing.Size(209, 28);
-            this.txtAdders2.TabIndex = 8;
+            this.txtAdders2.TabIndex = 9;
             this.txtAdders2.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtAdders2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
@@ -545,7 +547,7 @@
             this.txtPostalCode.Location = new System.Drawing.Point(129, 341);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(118, 28);
-            this.txtPostalCode.TabIndex = 9;
+            this.txtPostalCode.TabIndex = 10;
             this.txtPostalCode.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtPostalCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             this.txtPostalCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
@@ -602,7 +604,7 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(116, 146);
+            this.label16.Location = new System.Drawing.Point(78, 144);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(15, 18);
             this.label16.TabIndex = 98;
@@ -624,7 +626,7 @@
             // chkControlCodeMeli
             // 
             this.chkControlCodeMeli.AutoSize = true;
-            this.chkControlCodeMeli.Location = new System.Drawing.Point(100, 149);
+            this.chkControlCodeMeli.Location = new System.Drawing.Point(93, 147);
             this.chkControlCodeMeli.Name = "chkControlCodeMeli";
             this.chkControlCodeMeli.Size = new System.Drawing.Size(15, 14);
             this.chkControlCodeMeli.TabIndex = 99;
@@ -647,7 +649,7 @@
             this.cmbCity.SelectedIndex = -1;
             this.cmbCity.SelectedItem = null;
             this.cmbCity.Size = new System.Drawing.Size(209, 30);
-            this.cmbCity.TabIndex = 6;
+            this.cmbCity.TabIndex = 7;
             this.cmbCity.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.toolTip1.SetToolTip(this.cmbCity, "F2 جستجوی بر اساس فیلدها");
             this.cmbCity.ValueMember = "id";
@@ -834,11 +836,29 @@
             this.cmbBanck.SelectedIndex = -1;
             this.cmbBanck.SelectedItem = null;
             this.cmbBanck.Size = new System.Drawing.Size(209, 30);
-            this.cmbBanck.TabIndex = 10;
+            this.cmbBanck.TabIndex = 11;
             this.cmbBanck.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.cmbBanck.ValueMember = "id";
             this.cmbBanck.ValueChanged += new System.EventHandler(this.cmbBanck_ValueChanged);
             this.cmbBanck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbBanck_KeyDown);
+            // 
+            // btnCratMelyCode
+            // 
+            this.btnCratMelyCode.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnCratMelyCode.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCratMelyCode.Enabled = false;
+            this.btnCratMelyCode.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnCratMelyCode.Location = new System.Drawing.Point(108, 140);
+            this.btnCratMelyCode.Name = "btnCratMelyCode";
+            this.btnCratMelyCode.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnCratMelyCode.Size = new System.Drawing.Size(20, 28);
+            this.btnCratMelyCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCratMelyCode.Symbol = "";
+            this.btnCratMelyCode.SymbolSize = 12F;
+            this.btnCratMelyCode.TabIndex = 113;
+            this.btnCratMelyCode.TabStop = false;
+            this.btnCratMelyCode.Tooltip = "ایجاد کد ملی مجازی";
+            this.btnCratMelyCode.Click += new System.EventHandler(this.btnCratMelyCode_Click);
             // 
             // frmCustomer
             // 
@@ -921,5 +941,6 @@
         private System.Windows.Forms.Label label2;
         public DevComponents.DotNetBar.ButtonX btnAddBanck;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbBanck;
+        public DevComponents.DotNetBar.ButtonX btnCratMelyCode;
     }
 }

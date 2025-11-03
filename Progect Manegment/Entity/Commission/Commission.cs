@@ -32,9 +32,9 @@ namespace HM_ERP_System.Entity.Commission
         /// <summary>
         /// تاریخ
         /// </summary>
-        public string Date {  get; set; }
+        public string Date { get; set; }
     }
-            public class CommissionConfig : EntityTypeConfiguration<Commission>
+    public class CommissionConfig : EntityTypeConfiguration<Commission>
     {
         public CommissionConfig()
         {

@@ -319,6 +319,16 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.SaveChanges();
                 }
 
+                var q24 = db.PersonGroups.Where(c => c.IsCommission).Count();
+                if (q24 == 0)
+                {
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب جذب کامیون", IsCommission=true });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب اعلام بار", IsCommission=true });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت بارنامه نویسی", IsCommission = true });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت مخازن", IsCommission = true });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت ترخیصکار", IsCommission = true });
+                    db.SaveChanges();
+                }
 
             }
             catch (Exception er)

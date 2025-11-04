@@ -116,7 +116,7 @@
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(89, 177);
+            this.txtName.Location = new System.Drawing.Point(189, 227);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(506, 28);
             this.txtName.TabIndex = 113;
@@ -127,7 +127,7 @@
             this.btnAddPic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddPic.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddPic.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddPic.Location = new System.Drawing.Point(373, 143);
+            this.btnAddPic.Location = new System.Drawing.Point(535, 168);
             this.btnAddPic.Name = "btnAddPic";
             this.btnAddPic.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddPic.Size = new System.Drawing.Size(100, 28);
@@ -141,7 +141,7 @@
             // 
             this.picLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picLogo.Location = new System.Drawing.Point(479, 25);
+            this.picLogo.Location = new System.Drawing.Point(477, 22);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(216, 146);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -158,7 +158,7 @@
             this.txtSetDayToReportList.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtSetDayToReportList.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtSetDayToReportList.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtSetDayToReportList.Location = new System.Drawing.Point(328, 279);
+            this.txtSetDayToReportList.Location = new System.Drawing.Point(328, 266);
             this.txtSetDayToReportList.Name = "txtSetDayToReportList";
             this.txtSetDayToReportList.ShowUpDown = true;
             this.txtSetDayToReportList.Size = new System.Drawing.Size(48, 28);
@@ -172,7 +172,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(597, 183);
+            this.label2.Location = new System.Drawing.Point(600, 209);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 18);
             this.label2.TabIndex = 109;
@@ -184,7 +184,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(537, 4);
+            this.label1.Location = new System.Drawing.Point(535, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 18);
             this.label1.TabIndex = 109;
@@ -196,7 +196,7 @@
             this.lblIEAmount.AutoSize = true;
             this.lblIEAmount.BackColor = System.Drawing.Color.Transparent;
             this.lblIEAmount.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblIEAmount.Location = new System.Drawing.Point(376, 284);
+            this.lblIEAmount.Location = new System.Drawing.Point(386, 271);
             this.lblIEAmount.Name = "lblIEAmount";
             this.lblIEAmount.Size = new System.Drawing.Size(309, 18);
             this.lblIEAmount.TabIndex = 109;

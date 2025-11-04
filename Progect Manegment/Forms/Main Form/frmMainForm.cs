@@ -400,7 +400,7 @@ namespace HM_ERP_System.Forms.Main_Form
         {
             frmReport f = new frmReport();
             //f.Cod="4";
-            f.Condition="";
+            //f.Condition="";
             f.DateReport="گزارش از تاریخ: "+"1404/01/01"+"  تا تاریخ: "+"1404/05/25";
             f.ShowDialog();
         }

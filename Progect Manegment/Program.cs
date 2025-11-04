@@ -55,8 +55,11 @@ namespace Progect_Manegment
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Basic_information.basic_information();
-
-
+            HM_ERP_System.Properties.Settings.Default.ConnectionString = connectionstring_db;
+            HM_ERP_System.Properties.Settings.Default.Save();
+            
+            
+            
             //Application.Run(new frmLoginProg());
 
             Application.Run(new frmMainForm());

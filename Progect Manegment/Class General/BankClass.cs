@@ -19,41 +19,15 @@ namespace MyClass
     /// </summary>
     static class SqlBankClass
     {
-        //public static string txtAdres1 = @"D:\BankSekeh\BankSekeh.mdf";
-
-        //public const string CONNECTION_STRING_ = @"Data Source=.\SQLEXPRESS;AttachDbFilename=" +Application.StartupPath+@"\Bank\ReportManagBanck.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
-
-        //string AdresBank= File.ReadAllText("AdresBanck.txt");
-
-        static string AdresBank
-        {
-            get
-            {
-                //return Application.StartupPath + @"\Banck_School\School_management_Banck.mdf";
-                return "";
-
-            }
-        }
-        //public static string CONNECTION_STRING
-        //{
-        //    get
-        //    {
-        //        return @"Data Source=.\SQLEXPRESS;AttachDbFilename=" + AdresBank + ";Integrated Security=True;Connect Timeout=30;User Instance=True";
-        //        //return @"Data Source=.\SQLEXPRESS;AttachDbFilename=D:\Banck_Restaurant_management\Restaurant_management_Banck.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
-        //        //return @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Banck_Restaurant_management\Restaurant_management_Banck.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
-
-        //    }
-        //}
-
         public static string CONNECTION_STRING
         {
             get
             {
-                string cs= File.ReadAllText(Application.StartupPath + @"\ConectionString.txt", Encoding.UTF8);
+                //string cs= File.ReadAllText(Application.StartupPath + @"\ConectionString.txt", Encoding.UTF8);
+                string cs= HM_ERP_System.Properties.Settings.Default.ConnectionString;
                 return cs;
             }
         }
-
 
         //--------------------------------------------------------------------------------
         public static string SerchOnCellString(string steSql, string CONNECTION_STRING_)

@@ -31,6 +31,7 @@ namespace HM_ERP_System.Entity.Basic_information
         {
             try
             {
+
                 //ثبت اطلاعات استان و شهرها از فایل
                 var q0 = db.Provinces.Count();
                 if (q0==0)

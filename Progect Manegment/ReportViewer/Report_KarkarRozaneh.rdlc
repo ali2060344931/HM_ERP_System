@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSet1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>0ef8af08-4e8f-4468-8988-b816de87e421</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
   <DataSets>
     <DataSet Name="DataSet2">
       <Query>
@@ -135,19 +144,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.64922cm</Width>
+                  <Width>1.29324cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.0215cm</Width>
+                  <Width>6.53625cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.59075cm</Width>
+                  <Width>3.0586cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.59075cm</Width>
+                  <Width>2.85909cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.18958cm</Width>
+                  <Width>4.86283cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -165,9 +174,8 @@
                                 <TextRun>
                                   <Value>ردیف</Value>
                                   <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -193,18 +201,17 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox16">
+                        <Textbox Name="Textbox11">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>نام</Value>
+                                  <Value>نام و نام خانوادگی</Value>
                                   <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -213,44 +220,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox16</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#7292cc</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox19">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>فامیلی</Value>
-                                  <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox19</rd:DefaultName>
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#7292cc</Color>
@@ -274,11 +244,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>کد ملی</Value>
+                                  <Value>شرکت / گروه</Value>
                                   <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -311,11 +280,44 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>تلفن</Value>
+                                  <Value>زمان: </Value>
                                   <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>↓</Value>
+                                  <Style>
+                                    <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Normal</FontWeight>
+                                    <TextDecoration>None</TextDecoration>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>رود / </Value>
+                                  <Style>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>↑</Value>
+                                  <Style>
+                                    <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontWeight>Normal</FontWeight>
+                                    <TextDecoration>None</TextDecoration>
+                                    <Color>#000000</Color>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>خروج</Value>
+                                  <Style>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -325,6 +327,42 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#7292cc</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>توضیحات</Value>
+                                  <Style>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#7292cc</Color>
@@ -355,7 +393,7 @@
                                 <TextRun>
                                   <Value>=RowNumber("DataSet1")</Value>
                                   <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
+                                    <FontFamily>vazir</FontFamily>
                                     <FontSize>8pt</FontSize>
                                     <Color>#4d4d4d</Color>
                                   </Style>
@@ -382,16 +420,17 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Name">
-                          <CanGrow>true</CanGrow>
+                        <Textbox Name="Name1">
+                          <CanShrink>true</CanShrink>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Name.Value</Value>
+                                  <Value>=Fields!Name.Value &amp; " " &amp; Fields!Family.Value</Value>
                                   <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
@@ -401,42 +440,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Name</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#e5e5e5</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Family">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Family.Value</Value>
-                                  <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
-                                    <Color>#4d4d4d</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Family</rd:DefaultName>
+                          <rd:DefaultName>Name1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#e5e5e5</Color>
@@ -453,7 +457,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="CodMeli">
-                          <CanGrow>true</CanGrow>
+                          <CanShrink>true</CanShrink>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -461,7 +465,8 @@
                                 <TextRun>
                                   <Value>=Fields!CodMeli.Value</Value>
                                   <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
@@ -489,6 +494,7 @@
                       <CellContents>
                         <Textbox Name="Tel">
                           <CanGrow>true</CanGrow>
+                          <CanShrink>true</CanShrink>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -496,17 +502,55 @@
                                 <TextRun>
                                   <Value>=Fields!Tel.Value</Value>
                                   <Style>
-                                    <FontFamily>B Nazanin</FontFamily>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
+                                <TextAlign>Left</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Tel</rd:DefaultName>
+                          <ToolTip>ساعت ورود خروج</ToolTip>
+                          <Style>
+                            <Border>
+                              <Color>#e5e5e5</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Description">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Description.Value</Value>
+                                  <Style>
+                                    <FontFamily>vazir</FontFamily>
+                                    <FontSize>7pt</FontSize>
+                                    <Color>#4d4d4d</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Description</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#e5e5e5</Color>
@@ -548,10 +592,10 @@
             <LayoutDirection>RTL</LayoutDirection>
             <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.07056cm</Top>
-            <Left>1.76438cm</Left>
+            <Top>0.32384cm</Top>
+            <Left>0.57179cm</Left>
             <Height>1.4cm</Height>
-            <Width>17.0418cm</Width>
+            <Width>18.61001cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -559,13 +603,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.85103in</Height>
+        <Height>0.80618in</Height>
         <Style />
       </Body>
-      <Width>7.96323in</Width>
+      <Width>7.83314in</Width>
       <Page>
         <PageHeader>
-          <Height>2.61872cm</Height>
+          <Height>2.66282cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -576,10 +620,9 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>گزارش کارکـــرد  روزانه</Value>
+                      <Value>=Parameters!TitelString.Value</Value>
                       <Style>
-                        <FontFamily>B Nazanin</FontFamily>
-                        <FontSize>11pt</FontSize>
+                        <FontFamily>vazir</FontFamily>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -590,14 +633,15 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox29</rd:DefaultName>
-              <Top>0.98806cm</Top>
-              <Left>8.00155cm</Left>
+              <Top>1.05862cm</Top>
+              <Left>5.59545cm</Left>
               <Height>0.77639cm</Height>
-              <Width>4.15992cm</Width>
+              <Width>8.77583cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <BackgroundColor>Silver</BackgroundColor>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -613,28 +657,28 @@
                     <TextRun>
                       <Value>=Globals!PageNumber</Value>
                       <Style>
-                        <FontFamily>B Nazanin</FontFamily>
+                        <FontFamily>vazir</FontFamily>
                         <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                     <TextRun>
                       <Value>/</Value>
                       <Style>
-                        <FontFamily>B Nazanin</FontFamily>
+                        <FontFamily>vazir</FontFamily>
                         <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                     <TextRun>
                       <Value>=Globals!TotalPages</Value>
                       <Style>
-                        <FontFamily>B Nazanin</FontFamily>
+                        <FontFamily>vazir</FontFamily>
                         <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                     <TextRun>
                       <Value> :صفحه</Value>
                       <Style>
-                        <FontFamily>B Nazanin</FontFamily>
+                        <FontFamily>vazir</FontFamily>
                         <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
@@ -645,10 +689,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.88222cm</Top>
+              <Top>0.95278cm</Top>
               <Left>0.11458in</Left>
               <Height>0.6cm</Height>
-              <Width>4.64311cm</Width>
+              <Width>5.16331cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -669,7 +713,7 @@
                     <TextRun>
                       <Value>="تاریخ گزارش: " &amp;Parameters!TarikhG.Value</Value>
                       <Style>
-                        <FontFamily>B Nazanin</FontFamily>
+                        <FontFamily>vazir</FontFamily>
                         <FontSize>6pt</FontSize>
                       </Style>
                     </TextRun>
@@ -680,10 +724,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Tarikh</rd:DefaultName>
-              <Top>1.55278cm</Top>
+              <Top>1.62334cm</Top>
               <Left>0.29103cm</Left>
               <Height>0.6cm</Height>
-              <Width>3.91074cm</Width>
+              <Width>5.44532cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -705,6 +749,8 @@
                       <Value>=Parameters!NameCompani.Value</Value>
                       <Style>
                         <FontFamily>B Titr</FontFamily>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
                         <Color>Blue</Color>
                       </Style>
                     </TextRun>
@@ -715,10 +761,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>NameCompani</rd:DefaultName>
-              <Top>0.00001cm</Top>
-              <Left>2.48428cm</Left>
+              <Top>0cm</Top>
+              <Left>4.38138cm</Left>
               <Height>0.88222cm</Height>
-              <Width>15.19446cm</Width>
+              <Width>11.46384cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -739,8 +785,8 @@
                     <TextRun>
                       <Value>=Parameters!DateReport.Value</Value>
                       <Style>
-                        <FontFamily>B Nazanin</FontFamily>
-                        <FontSize>9pt</FontSize>
+                        <FontFamily>vazir</FontFamily>
+                        <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -750,10 +796,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>NameHesab</rd:DefaultName>
-              <Top>1.89525cm</Top>
-              <Left>2.63307cm</Left>
+              <Top>1.96581cm</Top>
+              <Left>4.01228cm</Left>
               <Height>0.6cm</Height>
-              <Width>14.89688cm</Width>
+              <Width>11.87163cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -765,16 +811,17 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Image Name="Image2">
+            <Image Name="Image1">
               <Source>Database</Source>
               <Value>=First(Fields!Image.Value, "DataSet2")</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>0.31432cm</Top>
-              <Left>17.60051cm</Left>
-              <Height>2.19857cm</Height>
-              <Width>2.40855cm</Width>
+              <Top>0.05828cm</Top>
+              <Left>16.02161cm</Left>
+              <Height>2.42815cm</Height>
+              <Width>3.1602cm</Width>
               <ZIndex>5</ZIndex>
+              <ToolTip>لگوی شرکت</ToolTip>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -784,12 +831,14 @@
           </ReportItems>
           <Style>
             <Border>
-              <Style>None</Style>
+              <Color>Silver</Color>
+              <Style>Solid</Style>
+              <Width>1.5pt</Width>
             </Border>
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>0.68792cm</Height>
+          <Height>0.70583cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -847,8 +896,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
-              <Top>0.08792cm</Top>
-              <Left>16.20079cm</Left>
+              <Top>0.10583cm</Top>
+              <Left>13.5285cm</Left>
               <Height>0.6cm</Height>
               <Width>3.69539cm</Width>
               <ZIndex>1</ZIndex>
@@ -872,7 +921,7 @@
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>0.5cm</LeftMargin>
-        <RightMargin>0cm</RightMargin>
+        <RightMargin>0.5cm</RightMargin>
         <TopMargin>0.5cm</TopMargin>
         <BottomMargin>0.5cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
@@ -890,6 +939,10 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="DateReport">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TitelString">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -913,6 +966,11 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>1</RowIndex>
           <ParameterName>DateReport</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>TitelString</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

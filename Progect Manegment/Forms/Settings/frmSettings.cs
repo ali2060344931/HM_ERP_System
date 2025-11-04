@@ -1,5 +1,6 @@
 ﻿using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.TruckUsageType;
+using HM_ERP_System.Entity.TypeCustomer;
 using HM_ERP_System.Forms.Main_Form;
 
 using MyClass;
@@ -47,6 +48,23 @@ namespace HM_ERP_System.Forms.Settings
             onRec = MyClass.Manage_Photos.Read_TableFromBank_InsertToDataTable("SELECT * FROM ImageCoes where id=1");
             picLogo.Image = MyClass.Manage_Photos.GetImageFromeFieldValues(onRec.Rows[0]["Image"]);
 
+            using (var db = new DBcontextModel())
+            {
+                var q = db.Settings.Where(c => c.Code==1);
+                if (q.Count()==0)
+                {
+                    string txt = "نام شرکت";
+                    db.Settings.Add(new Entity.Settings.Setting { Code=1, Subject=txt });
+                    db.SaveChanges();
+                    txtName.Text=txt;
+                }
+                else
+                {
+                    txtName.Text=q.First().Subject;
+                }
+            }
+
+
         }
 
         int ListId = 0;
@@ -69,7 +87,10 @@ namespace HM_ERP_System.Forms.Settings
                 //    //ویرایش
                 //    MyClass.SqlBankClass.UpdateWithPicture("ImageCoes", "Image", picLogo.Image, new string[] { "Name" }, new string[] { "12" }, "Id=1");
 
+                var q_seting=db.Settings.Where(c=>c.Code==1).First();
+                q_seting.Subject=txtName.Text;
 
+                db.SaveChanges();
 
                 var q = db.ImageCos.Count();
                 if (q==0)
@@ -83,15 +104,14 @@ namespace HM_ERP_System.Forms.Settings
                 arrpic = mp.GetBuffer();
 
                 var car = new Repository<Entity.ImageCo.ImageCo>(db);
-                car.SaveOrUpdate(new Entity.ImageCo.ImageCo { Id = ListId,Name="Pic",Image= arrpic }, ListId);
+                car.SaveOrUpdate(new Entity.ImageCo.ImageCo { Id = ListId, Name="Pic", Image= arrpic }, ListId);
             }
 
-                Properties.Settings.Default.Save();
-            PublicClass.WindowAlart("1");
+            Properties.Settings.Default.Save();
             if (_updatableForms!=null)
                 _updatableForms.UpdateData();
-
-
+            
+            PublicClass.WindowAlart("1");
         }
 
         private void frmSettings_KeyDown(object sender, KeyEventArgs e)
@@ -105,12 +125,23 @@ namespace HM_ERP_System.Forms.Settings
 
         private void btnAddPic_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog_ = new OpenFileDialog();
-            openFileDialog_.FileName = "";
-            openFileDialog_.Filter = "jpeg Files(*.jpg)|*.jpg|png Files(*.png)|*.png|Bitmap Filse(*.bmp)|*.bmp|Tif Filse(*.tif)|*.tif";
-            DialogResult d = openFileDialog_.ShowDialog();
-            if (openFileDialog_.FileName != "" && d != DialogResult.Cancel)
-                picLogo.Image = Image.FromFile(openFileDialog_.FileName);
+
+            //OpenFileDialog openFileDialog_ = new OpenFileDialog();
+            //openFileDialog_.Title = "انتخاب تصویر";
+            //openFileDialog_.Filter =
+            //    "All Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.tif;*.tiff|" +
+            //    "JPEG Files (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+            //    "PNG Files (*.png)|*.png|" +
+            //    "Bitmap Files (*.bmp)|*.bmp|" +
+            //    "TIFF Files (*.tif;*.tiff)|*.tif;*.tiff";
+            //openFileDialog_.FileName = "";
+
+            //if (openFileDialog_.ShowDialog() == DialogResult.OK)
+            //{
+            //    picLogo.Image = Image.FromFile(openFileDialog_.FileName);
+            //}
+
+            picLogo.Image=MyClass.Manage_Photos.ShowImageToPicterBox(picLogo);
 
         }
     }

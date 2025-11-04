@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Microsoft.Reporting.WinForms;
 using System.IO;
+using System.Drawing;
 
 namespace MyClass
 {
@@ -31,9 +32,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
-
-                MessageBox.Show(er.Message);
-                return null;
+                PublicClass.ShowErrorMessage(er); return null;
             }
 
         }
@@ -71,9 +70,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
-
-                MessageBox.Show(er.Message);
-                return false;
+                PublicClass.ShowErrorMessage(er); return false;
             }
 
         }
@@ -124,11 +121,15 @@ namespace MyClass
                 connect_.Close();
                 return true;
             }
+            //catch (Exception er)
+            //{
+
+            //    MessageBox.Show(er.Message);
+            //    return false;
+            //}
             catch (Exception er)
             {
-
-                MessageBox.Show(er.Message);
-                return false;
+                PublicClass.ShowErrorMessage(er); return false;
             }
 
         }
@@ -185,33 +186,42 @@ namespace MyClass
             {
                 byte[] arrpic = (byte[])fildValue;
                 MemoryStream ms = new MemoryStream(arrpic);
-                
-                
                 return System.Drawing.Image.FromStream(ms);
             }
             catch (Exception)
             {
-                //MessageBox.Show(er.Message);
                 return null;
             }
 
         }
 
-        //public static System.IO.File showFile(object fildValue)
-        //{
-        //    //try
-        //    //{
-        //    //    byte[] b = (byte[])fildValue;
-        //    //    MemoryStream ms = new MemoryStream(b);
-        //    //    return System.IO.File.ReadAllBytes(fildValue);
-        //    //}
-        //    //catch (Exception)
-        //    //{
-        //    //    //MessageBox.Show(er.Message);
-        //    //    return null;
-        //    //}
+        public static Image ShowImageToPicterBox(PictureBox picture)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog_ = new OpenFileDialog();
+                openFileDialog_.Title = "انتخاب تصویر";
+                openFileDialog_.Filter =
+                    "All Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.tif;*.tiff|" +
+                    "JPEG Files (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+                    "PNG Files (*.png)|*.png|" +
+                    "Bitmap Files (*.bmp)|*.bmp|" +
+                    "TIFF Files (*.tif;*.tiff)|*.tif;*.tiff";
+                openFileDialog_.FileName = "";
 
-        //}
+                if (openFileDialog_.ShowDialog() == DialogResult.OK)
+                {
+                    return Image.FromFile(openFileDialog_.FileName);
+                }
+                return null;
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return null;
+            }
+        }
 
     }
 

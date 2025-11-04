@@ -401,35 +401,33 @@ namespace MyClass
             }
         }
 
-        public static void ShowReportRDLC_More_Than_One(string reportName, ReportViewer reportViewer, int n, params string[] a)
+        public static void ShowReportRDLC_More_Than_One(string reportName, ReportViewer reportViewer, int n, params string[] prm)
         {
             try
             {
                 SqlConnection connection = new SqlConnection();
                 connection.ConnectionString = CONNECTION_STRING;
                 connection.Open();
-                int Len = a.Length - n * 3;
+                int Len = prm.Length - n * 3;
 
                 for (int i = 0; i < n * 3; i += 3)
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("select * from " + a[i] + " " + a[i + 1], connection);
+                    SqlDataAdapter da = new SqlDataAdapter("select * from " + prm[i] + " " + prm[i + 1], connection);
                     DataTable table1 = new DataTable();
                     da.Fill(table1);
                     BindingSource bindingSource1 = new BindingSource();
                     bindingSource1.DataSource = table1;
-                    ReportDataSource reportDataSource = new ReportDataSource(a[i + 2]);
+                    ReportDataSource reportDataSource = new ReportDataSource(prm[i + 2]);
                     reportDataSource.Value = bindingSource1;
                     if (i == 0) reportViewer.LocalReport.DataSources.Clear();
                     reportViewer.LocalReport.DataSources.Add(reportDataSource);
                 }
                 reportViewer.LocalReport.ReportEmbeddedResource = reportName;
-                //فقط برای ارسال پارامترها به گزارش
-
                 if (Len != 0)//
                 {
                     ReportParameter[] p = new ReportParameter[Len / 2];
-                    for (int i = 0, j = n * 3; j < a.Length; i++, j += 2)
-                        p[i] = new ReportParameter(a[j], a[j + 1]);
+                    for (int i = 0, j = n * 3; j < prm.Length; i++, j += 2)
+                        p[i] = new ReportParameter(prm[j], prm[j + 1]);
                     reportViewer.LocalReport.SetParameters(p);
                 }
 
@@ -442,7 +440,45 @@ namespace MyClass
                 }
         }
 
-/// <summary>
+
+        public static void ShowReportRDLC_More_Than_One_(string tableName, string condition, string dataSetName, string reportName, ReportViewer reportViewer, params string[] a)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection();
+                connection.ConnectionString = CONNECTION_STRING;
+                connection.Open();
+
+                SqlDataAdapter da = new SqlDataAdapter("select * from " + tableName + " " + condition, connection);
+                DataTable table1 = new DataTable();
+                da.Fill(table1);
+                BindingSource bindingSource1 = new BindingSource();
+                bindingSource1.DataSource = table1;
+                ReportDataSource reportDataSource = new ReportDataSource(dataSetName);
+                reportDataSource.Value = bindingSource1;
+                reportViewer.LocalReport.DataSources.Clear();
+                reportViewer.LocalReport.DataSources.Add(reportDataSource);
+
+                reportViewer.LocalReport.ReportEmbeddedResource = reportName;
+                //فقط برای ارسال پارامترها به گزارش
+                if (a.Length != 0)//
+                {
+                    ReportParameter[] p = new ReportParameter[a.Length / 2];
+                    for (int i = 0, j = 0; j < a.Length; i++, j += 2)
+                        p[i] = new ReportParameter(a[j], a[j + 1]);
+                    reportViewer.LocalReport.SetParameters(p);
+                }
+                //-----
+                reportViewer.RefreshReport();
+                connection.Close();
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+        }
+
+        /// <summary>
         /// dt = MyClass.SqlServerBankClass.ReadTableFromBank_InsertToDataTable("Select * from TblSabtNobatVam");
         /// </summary>
         /// <param name="sqlString"></param>

@@ -37,6 +37,7 @@ using HM_ERP_System.Entity.Provinces;
 using HM_ERP_System.Entity.PurchaseTanker;
 using HM_ERP_System.Entity.RolePermissione;
 using HM_ERP_System.Entity.SetingProg;
+using HM_ERP_System.Entity.Settings;
 using HM_ERP_System.Entity.Ship;
 using HM_ERP_System.Entity.Spare;
 using HM_ERP_System.Entity.TransactionFee;
@@ -124,6 +125,7 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new BankBranchConfig());
             modelBuilder.Configurations.Add(new CommissionConfig());
             modelBuilder.Configurations.Add(new ImageCoConfig());
+            modelBuilder.Configurations.Add(new SettingConfig());
 
             base.OnModelCreating(modelBuilder);
             #endregion
@@ -362,6 +364,7 @@ namespace Progect_Manegment
         /// جدول لوگوی شرکت
         /// </summary>
         public virtual DbSet<ImageCo> ImageCos { get; set; }
+        public virtual DbSet<Setting> Settings { get; set; }
 
         #endregion
 

@@ -524,6 +524,7 @@
     <Compile Include="Entity\PurchaseTanker\PurchaseTanker.cs" />
     <Compile Include="Entity\RolePermissione\RolePermissione.cs" />
     <Compile Include="Entity\SetingProg\SetingProg.cs" />
+    <Compile Include="Entity\Settings\Setting.cs" />
     <Compile Include="Entity\Ship\Ship.cs" />
     <Compile Include="Entity\Spare\Spare.cs" />
     <Compile Include="Entity\TransactionFee\TransactionFee.cs" />
@@ -981,8 +982,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReportViewerMain\Report_KarkarRozaneh.rdlc" />
-    <EmbeddedResource Include="ReportViewer\Report_KarkarRozaneh - Copy.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_KarkarRozaneh.rdlc" />
     <EmbeddedResource Include="ResourceCode.resx">
       <Generator>ResXFileCodeGenerator</Generator>

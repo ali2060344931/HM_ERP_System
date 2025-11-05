@@ -1436,5 +1436,14 @@ namespace HM_ERP_System {
                 return ResourceManager.GetString("T152", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نوع پورسانت را انتخاب نمائید..
+        /// </summary>
+        internal static string T153 {
+            get {
+                return ResourceManager.GetString("T153", resourceCulture);
+            }
+        }
     }
 }

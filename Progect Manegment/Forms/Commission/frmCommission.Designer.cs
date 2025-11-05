@@ -34,6 +34,7 @@
             Janus.Windows.GridEX.GridEXLayout cmbComers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbCommissionType_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbCustomer_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cmbList_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.dgvList = new GridExEx.GridExEx();
             this.txtAmount = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
             this.label2 = new System.Windows.Forms.Label();
@@ -43,11 +44,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbComers = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowComers = new DevComponents.DotNetBar.ButtonX();
             this.cmbCommissionType = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.cmbCustomer = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtDes = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.chkSelectList = new System.Windows.Forms.CheckBox();
+            this.btnSelectList = new DevComponents.DotNetBar.ButtonX();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbList = new Janus.Windows.GridEX.EditControls.CheckedComboBox();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -65,7 +72,7 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(680, 338);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(680, 368);
             // 
             // pnlViewItemHeder
             // 
@@ -73,37 +80,48 @@
             // 
             // pnlViewItemFoter
             // 
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 388);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 418);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(680, 28);
             // 
             // pnlAddItemBodi
             // 
             this.pnlAddItemBodi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlAddItemBodi.Controls.Add(this.cmbList);
             this.pnlAddItemBodi.Controls.Add(this.cmbCommissionType);
             this.pnlAddItemBodi.Controls.Add(this.cmbCustomer);
             this.pnlAddItemBodi.Controls.Add(this.buttonX3);
             this.pnlAddItemBodi.Controls.Add(this.cmbComers);
-            this.pnlAddItemBodi.Controls.Add(this.buttonX2);
+            this.pnlAddItemBodi.Controls.Add(this.btnSelectList);
+            this.pnlAddItemBodi.Controls.Add(this.btnShowComers);
             this.pnlAddItemBodi.Controls.Add(this.txtDate);
+            this.pnlAddItemBodi.Controls.Add(this.label7);
             this.pnlAddItemBodi.Controls.Add(this.label5);
             this.pnlAddItemBodi.Controls.Add(this.label4);
             this.pnlAddItemBodi.Controls.Add(this.label3);
+            this.pnlAddItemBodi.Controls.Add(this.label6);
             this.pnlAddItemBodi.Controls.Add(this.label1);
             this.pnlAddItemBodi.Controls.Add(this.label2);
+            this.pnlAddItemBodi.Controls.Add(this.txtDes);
             this.pnlAddItemBodi.Controls.Add(this.txtAmount);
             this.pnlAddItemBodi.Controls.Add(this.pictureBox1);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(416, 388);
+            this.pnlAddItemBodi.Controls.Add(this.chkSelectList);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(416, 418);
             this.pnlAddItemBodi.TabIndex = 0;
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 388);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 418);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(416, 28);
             this.pnlAddItemFoter.TabIndex = 1;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnNew
             // 
             this.btnNew.Location = new System.Drawing.Point(341, 0);
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDateStart
             // 
@@ -118,6 +136,7 @@
             // btnShowListItems
             // 
             this.btnShowListItems.Location = new System.Drawing.Point(149, 15);
+            this.btnShowListItems.Click += new System.EventHandler(this.btnShowListItems_Click);
             // 
             // labelX2
             // 
@@ -139,12 +158,12 @@
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Size = new System.Drawing.Size(682, 444);
+            this.pnlViewItems.Size = new System.Drawing.Size(682, 474);
             // 
             // pnlAddItems
             // 
             this.pnlAddItems.Location = new System.Drawing.Point(685, 3);
-            this.pnlAddItems.Size = new System.Drawing.Size(422, 444);
+            this.pnlAddItems.Size = new System.Drawing.Size(422, 474);
             // 
             // btnExportToExcel
             // 
@@ -174,7 +193,7 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.Size = new System.Drawing.Size(680, 338);
+            this.dgvList.Size = new System.Drawing.Size(680, 368);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -183,12 +202,13 @@
             this.dgvList.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
+            this.dgvList.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvList_ColumnButtonClick);
             // 
             // txtAmount
             // 
             this.txtAmount.CheackCodeMeli = false;
             this.txtAmount.Day = 0;
-            this.txtAmount.Location = new System.Drawing.Point(154, 264);
+            this.txtAmount.Location = new System.Drawing.Point(154, 326);
             this.txtAmount.Miladi = new System.DateTime(((long)(0)));
             this.txtAmount.Month = 0;
             this.txtAmount.Name = "txtAmount";
@@ -221,18 +241,18 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(299, 158);
+            this.label1.Location = new System.Drawing.Point(299, 182);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 18);
+            this.label1.Size = new System.Drawing.Size(69, 18);
             this.label1.TabIndex = 99;
-            this.label1.Text = "حـــواله:";
+            this.label1.Text = "بارنامه(تکی):";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(299, 194);
+            this.label3.Location = new System.Drawing.Point(299, 257);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 18);
             this.label3.TabIndex = 99;
@@ -253,7 +273,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(299, 233);
+            this.label4.Location = new System.Drawing.Point(299, 296);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 18);
             this.label4.TabIndex = 99;
@@ -264,11 +284,11 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(299, 269);
+            this.label5.Location = new System.Drawing.Point(299, 331);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 18);
+            this.label5.Size = new System.Drawing.Size(49, 18);
             this.label5.TabIndex = 99;
-            this.label5.Text = "مبلغ:";
+            this.label5.Text = "مبلــــــــغ:";
             // 
             // cmbComers
             // 
@@ -277,7 +297,7 @@
             this.cmbComers.DesignTimeLayout = cmbComers_DesignTimeLayout;
             this.cmbComers.DisplayMember = "ComersH";
             this.cmbComers.Image = ((System.Drawing.Image)(resources.GetObject("cmbComers.Image")));
-            this.cmbComers.Location = new System.Drawing.Point(150, 152);
+            this.cmbComers.Location = new System.Drawing.Point(150, 176);
             this.cmbComers.Name = "cmbComers";
             this.cmbComers.SelectedIndex = -1;
             this.cmbComers.SelectedItem = null;
@@ -288,20 +308,20 @@
             this.cmbComers.ValueChanged += new System.EventHandler(this.cmbComers_ValueChanged);
             this.cmbComers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbComers_KeyDown);
             // 
-            // buttonX2
+            // btnShowComers
             // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.BackColor = System.Drawing.Color.Transparent;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX2.Location = new System.Drawing.Point(131, 153);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.buttonX2.Size = new System.Drawing.Size(18, 28);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.Symbol = "";
-            this.buttonX2.SymbolSize = 12F;
-            this.buttonX2.TabIndex = 102;
+            this.btnShowComers.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowComers.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowComers.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowComers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnShowComers.Location = new System.Drawing.Point(131, 177);
+            this.btnShowComers.Name = "btnShowComers";
+            this.btnShowComers.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnShowComers.Size = new System.Drawing.Size(18, 28);
+            this.btnShowComers.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowComers.Symbol = "";
+            this.btnShowComers.SymbolSize = 12F;
+            this.btnShowComers.TabIndex = 102;
             // 
             // cmbCommissionType
             // 
@@ -310,7 +330,7 @@
             this.cmbCommissionType.DesignTimeLayout = cmbCommissionType_DesignTimeLayout;
             this.cmbCommissionType.DisplayMember = "Name";
             this.cmbCommissionType.Image = ((System.Drawing.Image)(resources.GetObject("cmbCommissionType.Image")));
-            this.cmbCommissionType.Location = new System.Drawing.Point(28, 188);
+            this.cmbCommissionType.Location = new System.Drawing.Point(28, 251);
             this.cmbCommissionType.Name = "cmbCommissionType";
             this.cmbCommissionType.SelectedIndex = -1;
             this.cmbCommissionType.SelectedItem = null;
@@ -327,7 +347,7 @@
             this.buttonX3.BackColor = System.Drawing.Color.Transparent;
             this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX3.Location = new System.Drawing.Point(9, 229);
+            this.buttonX3.Location = new System.Drawing.Point(9, 292);
             this.buttonX3.Name = "buttonX3";
             this.buttonX3.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX3.Size = new System.Drawing.Size(18, 28);
@@ -344,7 +364,7 @@
             this.cmbCustomer.DesignTimeLayout = cmbCustomer_DesignTimeLayout;
             this.cmbCustomer.DisplayMember = "Name";
             this.cmbCustomer.Image = ((System.Drawing.Image)(resources.GetObject("cmbCustomer.Image")));
-            this.cmbCustomer.Location = new System.Drawing.Point(28, 227);
+            this.cmbCustomer.Location = new System.Drawing.Point(28, 290);
             this.cmbCustomer.Name = "cmbCustomer";
             this.cmbCustomer.SelectedIndex = -1;
             this.cmbCustomer.SelectedItem = null;
@@ -364,11 +384,93 @@
             this.pictureBox1.TabIndex = 103;
             this.pictureBox1.TabStop = false;
             // 
+            // txtDes
+            // 
+            this.txtDes.CheackCodeMeli = false;
+            this.txtDes.Day = 0;
+            this.txtDes.Location = new System.Drawing.Point(28, 360);
+            this.txtDes.Miladi = new System.DateTime(((long)(0)));
+            this.txtDes.Month = 0;
+            this.txtDes.Name = "txtDes";
+            this.txtDes.NowDateSelected = false;
+            this.txtDes.Number = null;
+            this.txtDes.SelectedDate = null;
+            this.txtDes.Shamsi = null;
+            this.txtDes.Size = new System.Drawing.Size(267, 28);
+            this.txtDes.TabIndex = 4;
+            this.txtDes.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
+            this.txtDes.TextSimple = "";
+            this.txtDes.TextWatermark = null;
+            this.txtDes.TextWatermarkForeColor = System.Drawing.Color.Gray;
+            this.txtDes.Year = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label7.Location = new System.Drawing.Point(299, 365);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 18);
+            this.label7.TabIndex = 99;
+            this.label7.Text = "توضیحــات:";
+            // 
+            // chkSelectList
+            // 
+            this.chkSelectList.AutoSize = true;
+            this.chkSelectList.Location = new System.Drawing.Point(231, 150);
+            this.chkSelectList.Name = "chkSelectList";
+            this.chkSelectList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chkSelectList.Size = new System.Drawing.Size(64, 26);
+            this.chkSelectList.TabIndex = 104;
+            this.chkSelectList.Text = "لیستی";
+            this.chkSelectList.UseVisualStyleBackColor = true;
+            this.chkSelectList.CheckedChanged += new System.EventHandler(this.chkSelectList_CheckedChanged);
+            // 
+            // btnSelectList
+            // 
+            this.btnSelectList.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSelectList.BackColor = System.Drawing.Color.Transparent;
+            this.btnSelectList.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSelectList.Enabled = false;
+            this.btnSelectList.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnSelectList.Location = new System.Drawing.Point(28, 215);
+            this.btnSelectList.Name = "btnSelectList";
+            this.btnSelectList.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnSelectList.Size = new System.Drawing.Size(121, 28);
+            this.btnSelectList.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSelectList.Symbol = "";
+            this.btnSelectList.SymbolSize = 12F;
+            this.btnSelectList.TabIndex = 102;
+            this.btnSelectList.Text = "انتخـــاب از لیست";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label6.Location = new System.Drawing.Point(299, 220);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 18);
+            this.label6.TabIndex = 99;
+            this.label6.Text = "بارنامه(لیست):";
+            // 
+            // cmbList
+            // 
+            cmbList_DesignTimeLayout.LayoutString = resources.GetString("cmbList_DesignTimeLayout.LayoutString");
+            this.cmbList.DesignTimeLayout = cmbList_DesignTimeLayout;
+            this.cmbList.Location = new System.Drawing.Point(150, 215);
+            this.cmbList.Name = "cmbList";
+            this.cmbList.SaveSettings = false;
+            this.cmbList.Size = new System.Drawing.Size(145, 28);
+            this.cmbList.TabIndex = 105;
+            this.cmbList.ValuesDataMember = null;
+            // 
             // frmCommission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 450);
+            this.ClientSize = new System.Drawing.Size(1110, 480);
             this.Name = "frmCommission";
             this.Text = "پـــورســـانت ها";
             this.Load += new System.EventHandler(this.frmCommission_Load);
@@ -403,10 +505,16 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbComers;
-        public DevComponents.DotNetBar.ButtonX buttonX2;
+        public DevComponents.DotNetBar.ButtonX btnShowComers;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbCommissionType;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbCustomer;
         public DevComponents.DotNetBar.ButtonX buttonX3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label7;
+        private Class_General.MyTextBoxJanus txtDes;
+        public DevComponents.DotNetBar.ButtonX btnSelectList;
+        private System.Windows.Forms.CheckBox chkSelectList;
+        private System.Windows.Forms.Label label6;
+        private Janus.Windows.GridEX.EditControls.CheckedComboBox cmbList;
     }
 }

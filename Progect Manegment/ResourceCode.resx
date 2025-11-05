@@ -577,4 +577,7 @@
     <value>نام بانک و شعبه را انتخـــاب نمائید.</value>
     <comment>تست</comment>
   </data>
+  <data name="T153" xml:space="preserve">
+    <value>نوع پورسانت را انتخاب نمائید.</value>
+  </data>
 </root>

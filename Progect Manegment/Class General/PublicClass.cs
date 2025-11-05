@@ -3647,7 +3647,6 @@ namespace MyClass
         /// ایجاد عدد تصادفی 10 رقمی
         /// </summary>
         /// <param name="random"></param>
-        
         /// <returns>نحوه استفاده</returns>
         /// <returns>Random rand = new Random();</returns>
         /// <returns>long tenDigitNumber = GenerateTenDigitRandomNumber(rand);</returns>
@@ -3662,6 +3661,7 @@ namespace MyClass
             // تبدیل آرایه 8 بایتی به یک مقدار long (64-bit integer)
             return BitConverter.ToInt64(buffer, 0);
         }
+        
         public static long GenerateTenDigitRandomNumber(Random random)
         {
             // تعریف محدوده: حداقل (کوچکترین عدد ۱۰ رقمی) و حداکثر (بزرگترین عدد ۱۰ رقمی)

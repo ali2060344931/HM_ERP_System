@@ -279,8 +279,6 @@ namespace HM_ERP_System.Forms.Car
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("این کد برای تست گیت هاب نوشته شده است.");
-            //return;
             try
             {
                 //string Carplate_ = this.txtCarplate1.Text + " " + ResourceCode.T016 + " " + this.txtCarplate2.Text;
@@ -402,56 +400,63 @@ namespace HM_ERP_System.Forms.Car
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
         {
-            ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
-            if (e.Column.Key == "Edit")
+            try
             {
-                using (var db = new DBcontextModel())
+                ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
+                if (e.Column.Key == "Edit")
                 {
-                    var q = db.Cars.Where(c => c.Id == ListId).First();
-                    txtCarName.Text = q.CarName;
-                    cmbDraverName.Value = q.DraverId;
-                    cmbGoodsAccount.Value=q.GoodsAccountId;
-                    cmbTruckUsageType.Value = q.TruckUsageTypeId;
-                    txtTruckCapacity.Text=q.TruckCapacity.ToString();
-                    txtLoadWeightCapacity.Text = q.LoadWeightCapacity.ToString();
-                    txtCarplate.Text = q.CarPlat;
-                    txtCarplateSeryal.Text = q.CarPlatSeryal.Substring(0, 2);
-                    txtSeryal.Text = q.Seryal;
-                    txtCreatModel.Value = q.CreatModel;
-                    txtAxisCount.Value = q.AxisCount;
-                    cmbOwnership.Value = q.OwnershipId;
-                    txtDes.Text = q.Description;
-                    chkStatus.Checked = q.Status;
-                    if (q.OwnershipCompanyId!=0)
-                    {
-                        cmbCompanys.Value = q.OwnershipCompanyId;
-                    }
-                }
-
-            }
-
-            else if (e.Column.Key == "Delete")
-            {
-                using (var db = new DBcontextModel())
-                {
-
-                    if (db.ComersHs.Where(c => c.CarId == ListId).Count() != 0)
-                    {
-                        PublicClass.ErrorMesseg(ResourceCode.T004);
-                        return;
-                    }
-
-                    if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    using (var db = new DBcontextModel())
                     {
                         var q = db.Cars.Where(c => c.Id == ListId).First();
-                        db.Cars.Remove(q);
-                        PublicClass.WindowAlart("2");
-                        db.SaveChanges();
-                        FilldgvList();
-                        CelearItems();
+                        txtCarName.Text = q.CarName;
+                        cmbDraverName.Value = q.DraverId;
+                        cmbGoodsAccount.Value=q.GoodsAccountId;
+                        cmbTruckUsageType.Value = q.TruckUsageTypeId;
+                        txtTruckCapacity.Text=q.TruckCapacity.ToString();
+                        txtLoadWeightCapacity.Text = q.LoadWeightCapacity.ToString();
+                        txtCarplate.Text = q.CarPlat;
+                        txtCarplateSeryal.Text = q.CarPlatSeryal.Substring(0, 2);
+                        txtSeryal.Text = q.Seryal;
+                        txtCreatModel.Value = q.CreatModel;
+                        txtAxisCount.Value = q.AxisCount;
+                        cmbOwnership.Value = q.OwnershipId;
+                        txtDes.Text = q.Description;
+                        chkStatus.Checked = q.Status;
+                        if (q.OwnershipCompanyId!=0)
+                        {
+                            cmbCompanys.Value = q.OwnershipCompanyId;
+                        }
                     }
+
                 }
 
+                else if (e.Column.Key == "Delete")
+                {
+                    using (var db = new DBcontextModel())
+                    {
+
+                        if (db.ComersHs.Where(c => c.CarId == ListId).Count() != 0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            return;
+                        }
+
+                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            var q = db.Cars.Where(c => c.Id == ListId).First();
+                            db.Cars.Remove(q);
+                            PublicClass.WindowAlart("2");
+                            db.SaveChanges();
+                            FilldgvList();
+                            CelearItems();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 

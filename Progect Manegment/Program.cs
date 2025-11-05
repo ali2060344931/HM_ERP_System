@@ -57,9 +57,13 @@ namespace Progect_Manegment
             Basic_information.basic_information();
             HM_ERP_System.Properties.Settings.Default.ConnectionString = connectionstring_db;
             HM_ERP_System.Properties.Settings.Default.Save();
-            
-            
-            
+
+            AppDomain.CurrentDomain.SetData("SQLServerTypesAssemblyFileName",
+    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes\"));
+            AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
+
+
             //Application.Run(new frmLoginProg());
 
             Application.Run(new frmMainForm());

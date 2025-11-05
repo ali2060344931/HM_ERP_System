@@ -364,6 +364,9 @@ namespace Progect_Manegment
         /// جدول لوگوی شرکت
         /// </summary>
         public virtual DbSet<ImageCo> ImageCos { get; set; }
+        /// <summary>
+        /// جدول تنظیمات
+        /// </summary>
         public virtual DbSet<Setting> Settings { get; set; }
 
         #endregion

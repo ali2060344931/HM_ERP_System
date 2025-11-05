@@ -1,4 +1,12 @@
-﻿using HM_ERP_System.Forms.Main_Form;
+﻿using GridExEx;
+
+using HM_ERP_System.Forms.Main_Form;
+
+using Janus.Windows.GridEX;
+
+using Microsoft.Reporting.WinForms;
+
+using MyClass;
 
 using Progect_Manegment;
 
@@ -7,6 +15,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +36,8 @@ namespace HM_ERP_System.Forms.Reports
         public string DayGharadad;
         public string DastmozdRozane;
         public string MablaghKarkard;
-        public string TitelString="گـــزارش تستی";
+        public string TitelString = "گـــزارش تستی";
+        public GridEX grid;
         string NameCompani;
 
         string TarikhRoz = MyClass.PersianDate.NowPersianDate;
@@ -48,69 +58,62 @@ namespace HM_ERP_System.Forms.Reports
                 this.reportViewer1.RefreshReport();
                 reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                 reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
-
-
-
-                MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("HM_ERP_System.ReportViewer.Report_KarkarRozaneh.rdlc", reportViewer1, 2, new string[] { "Customers", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "DateReport", DateReport, "TitelString", TitelString });
-
-                //MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One_("Customers", Condition, "DataSet1", "HM_ERP_System.ReportViewer.Report_View_ReportEnterExits.rdlc", reportViewer1, new string[] { "NameCompani", NameCompani, "TarikhG", TarikhRoz, "DateReport", DateReport });
-
-
                 switch (Cod)
                 {
-
-
                     case "0":
                         //کارکردماهانه
                         {
 
-                            MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("HM_ERP_System.ReportViewerMain.Report_ViwSoratHesab_Karkard.rdlc", reportViewer1, 2, new string[] { "View_Function", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "OnvanReport", OnvanReport, "DateReport", DateReport, "MablaghGharardad", MablaghGharardad, "DayGharadad", DayGharadad, "DastmozdRozane", DastmozdRozane, "MablaghKarkard", MablaghKarkard });
+                            //MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("HM_ERP_System.ReportViewerMain.Report_ViwSoratHesab_Karkard.rdlc", reportViewer1, 2, new string[] { "View_Function", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "OnvanReport", OnvanReport, "DateReport", DateReport, "MablaghGharardad", MablaghGharardad, "DayGharadad", DayGharadad, "DastmozdRozane", DastmozdRozane, "MablaghKarkard", MablaghKarkard });
 
 
-
+                            MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("HM_ERP_System.ReportViewer.Report_KarkarRozaneh.rdlc", reportViewer1, 2, new string[] { "V_Customers", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "DateReport", DateReport, "TitelString", TitelString });
                         }
                         break;
-
-                        /*
                     case "1":
-                        //کارکرد روزانه
+                        ReportParameter[] p = new ReportParameter[]
+    {
+        new ReportParameter("NameCompani", NameCompani),
+        new ReportParameter("TarikhG", TarikhRoz),
+        new ReportParameter("DateReport", DateReport),
+        new ReportParameter("TitelString", TitelString)
+    };
                         {
-                            MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("Accounting_Warehousing.ReportViewer.Report_KarkarRozaneh.rdlc", reportViewer1, 2, new string[] { "View_Function", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "DateReport", DateReport });
+                            var companyInfo = db.ImageCos
+                                                .Where(c => c.Id == 1)   // یا هر شرط دیگر
+                                                .Select(c => new
+                                                {
+                                                    c.Name,
+                                                    c.Image
+                                                })
+                                                .FirstOrDefault();
 
+                            if (companyInfo != null)
+                            {
+                                DataTable dtCompany = new DataTable();
+                                dtCompany.Columns.Add("Name");
+                                dtCompany.Columns.Add("image", typeof(byte[]));
+
+                                dtCompany.Rows.Add(companyInfo.Name, companyInfo.Image);
+
+                                // حالا dtCompany آماده است برای ارسال به ReportViewer
+                                var extraData = new List<(DataTable, string)>
+        {
+            (dtCompany, "DataSet2")
+        };
+
+                                ReportHelper.ShowReportFromGridEX(
+                                    grid,
+                                    "HM_ERP_System.ReportViewer.Report_KarkarRozaneh.rdlc",
+                                    reportViewer1,
+                                    "DataSet1",
+                                    extraData,
+                                    p
+                                );
+                            }
+                            break;
                         }
-                        break;
 
-                    case "2":
-                        //گزارش اموال
-                        {
-                            MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("Accounting_Warehousing.ReportViewer.Report_PropertyDefinitions.rdlc", reportViewer1, 2, new string[] { "PropertyDefinitions", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz });
-
-                        }
-                        break;
-
-                    case "3":
-                        //گزارش اموال
-                        {
-                            MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("Accounting_Warehousing.ReportViewer.Report_View_AnbarGardany.rdlc", reportViewer1, 2, new string[] { "View_AnbarGardany", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz });
-
-                        }
-                        break;
-                    case "4":
-                        //گزارش ورود خروج کالاها
-                        {
-                            MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("Accounting_Warehousing.ReportViewer.Report_View_Stores.rdlc", reportViewer1, 2, new string[] { "View_Stores", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "DateReport", DateReport });
-
-                        }
-                        break;
-
-                    case "5"://گزارش اسناد حسابداری
-
-                        {
-                            MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("Accounting_Warehousing.ReportViewer.Report_AccountDocuments.rdlc", reportViewer1, 2, new string[] { "AccountDocuments", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "DateReport", DateReport });
-
-                        }
-                        break;
-                        */
                 }
             }
         }

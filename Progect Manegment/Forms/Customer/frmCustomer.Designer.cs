@@ -232,6 +232,7 @@
             // buttonX1
             // 
             this.buttonX1.Location = new System.Drawing.Point(708, 0);
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // dgvList
             // 

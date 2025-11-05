@@ -7,10 +7,12 @@ using HM_ERP_System.Forms.Accounts.Banck;
 using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.PersonGroup;
+using HM_ERP_System.Forms.Reports;
 
 using Janus.Windows.UI.Tab;
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.Reporting.WinForms;
 
 using MyClass;
 
@@ -188,17 +190,13 @@ namespace HM_ERP_System.Forms.Customer
                         join doc in db.DocumentBancks
                         on cu.Id equals doc.ListInFoemId into docGroup
 
-                        // **تغییر ۱: Left Join کردن BankBranches برای مدیریت cu.BanckId = 0**
-                        // اگر BanckId اختیاری است و می تواند 0 باشد، بهتر است آن را Left Join کنیم.
                         join bb in db.BankBranches
-                        on cu.BanckId equals bb.Id into bbGroup // تبدیل به گروه برای Left Join
-                        from bb_ in bbGroup.DefaultIfEmpty()    // اعمال Left Join
+                        on cu.BanckId equals bb.Id into bbGroup
+                        from bb_ in bbGroup.DefaultIfEmpty()
 
-                            // **تغییر ۲: Left Join کردن Bancks بر اساس BankBranch**
-                            // این اتصال فقط زمانی رخ می دهد که bb_ نال نباشد.
                         join ba in db.Bancks
-                        on bb_.BanckId equals ba.Id into baGroup // تبدیل به گروه برای Left Join
-                        from ba_ in baGroup.DefaultIfEmpty()    // اعمال Left Join
+                        on bb_.BanckId equals ba.Id into baGroup 
+                        from ba_ in baGroup.DefaultIfEmpty()
 
                         join ct in db.Ciltys
                         on cu.CityId equals ct.Id into ctGroup
@@ -222,20 +220,16 @@ namespace HM_ERP_System.Forms.Customer
                             cu.Adders,
                             cu.Adders2,
                             cu.PostalCode,
-
-                            // **تغییر ۳: اعمال شرط در BanckName**
-                            // اگر cu.BanckId == 0 یا اتصال بانک/شعبه موفقیت‌آمیز نبود (bb_ == null)، خروجی "-"
-                            // در غیر این صورت، نام بانک و شعبه
                             BanckName = cu.BanckId == 0 || bb_ == null
                                         ? "-"
                                         : ba_.Name + "-" + bb_.Name,
-
                             cu.SeryalShaba,
                             cu.DabitCardNumber,
                             cu.Description,
-                            CityName = ct_ != null ? ct_.Name : "-",
+                            CiltysName = ct_ != null ? ct_.Name : "-",
                             ProvincesName = pr_ != null ? pr_.Name : "-",
                             CountDoc = docGroup.Where(c => c.FormName == this.Name).Count(),//آمار تعداد مدارک پیوست
+                            
                         };
                 dgvList.DataSource = q.ToList();
                 PublicClass.SettingGridEX(dgvList);
@@ -738,6 +732,15 @@ namespace HM_ERP_System.Forms.Customer
             txtCodMeli.Text=tenDigitNumber.ToString();
         }
 
-        
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            f.Cod="1";
+            f.grid=dgvList;
+            //f.Condition="";
+            f.DateReport="گزارش از تاریخ: "+"1404/01/01"+"  تا تاریخ: "+"1404/05/25";
+            f.ShowDialog();
+
+        }
     }
 }

@@ -2113,5 +2113,10 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             f.IdH=Convert.ToInt32(cmbListDoc.Value);
             f.ShowDialog();
         }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            PdfReportHelper.ExportJanusGridToPDF(dgvList, "لیست صورتحساب");
+        }
     }
 }

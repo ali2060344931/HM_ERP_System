@@ -74,6 +74,9 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="DateTimeSelector, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BeshelCoSystem\BotAplication\bin\Debug\DateTimeSelector.dll</HintPath>
@@ -100,6 +103,9 @@
     <Reference Include="GridExEx, Version=1.0.0.6, Culture=neutral, PublicKeyToken=d67bb4a0ddf85d23, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\GridExEx.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Data.v4, Version=4.0.32.0, Culture=neutral, PublicKeyToken=21d5517571b185bf, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -444,6 +450,7 @@
     <Compile Include="Class General\CreatView.cs" />
     <Compile Include="Class General\Cryptography.cs" />
     <Compile Include="Class General\FormManager.cs" />
+    <Compile Include="Class General\GridExporter.cs" />
     <Compile Include="Class General\GridPrintColumn.cs" />
     <Compile Include="Class General\IUpdatableForms.cs" />
     <Compile Include="Class General\Manage_Photos.cs" />
@@ -456,6 +463,7 @@
     <Compile Include="Class General\MyTextBoxJanus.Designer.cs">
       <DependentUpon>MyTextBoxJanus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class General\PdfReportHelper.cs" />
     <Compile Include="Class General\PersianDate.cs" />
     <Compile Include="Class General\PublicClass.cs" />
     <Compile Include="Class General\ReportHelper.cs" />

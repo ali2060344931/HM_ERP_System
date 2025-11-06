@@ -88,6 +88,8 @@
             this.btnAddBanck = new DevComponents.DotNetBar.ButtonX();
             this.cmbBanck = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.btnCratMelyCode = new DevComponents.DotNetBar.ButtonX();
+            this.btnRepC1 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -226,12 +228,18 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(674, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(612, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX1
             // 
-            this.buttonX1.Location = new System.Drawing.Point(708, 0);
+            this.buttonX1.AutoExpandOnClick = true;
+            this.buttonX1.Location = new System.Drawing.Point(646, 0);
+            this.buttonX1.Size = new System.Drawing.Size(96, 28);
+            this.buttonX1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.btnRepC1,
+            this.buttonItem1});
+            this.buttonX1.Text = "گزارشات";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // dgvList
@@ -861,6 +869,20 @@
             this.btnCratMelyCode.Tooltip = "ایجاد کد ملی مجازی";
             this.btnCratMelyCode.Click += new System.EventHandler(this.btnCratMelyCode_Click);
             // 
+            // btnRepC1
+            // 
+            this.btnRepC1.GlobalItem = false;
+            this.btnRepC1.Name = "btnRepC1";
+            this.btnRepC1.Text = "گزارش از لیست اشخاص";
+            this.btnRepC1.Click += new System.EventHandler(this.btnRepC1_Click);
+            // 
+            // buttonItem1
+            // 
+            this.buttonItem1.GlobalItem = false;
+            this.buttonItem1.Name = "buttonItem1";
+            this.buttonItem1.Text = "گزارش pdf";
+            this.buttonItem1.Click += new System.EventHandler(this.buttonItem1_Click);
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -943,5 +965,7 @@
         public DevComponents.DotNetBar.ButtonX btnAddBanck;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbBanck;
         public DevComponents.DotNetBar.ButtonX btnCratMelyCode;
+        private DevComponents.DotNetBar.ButtonItem btnRepC1;
+        private DevComponents.DotNetBar.ButtonItem buttonItem1;
     }
 }

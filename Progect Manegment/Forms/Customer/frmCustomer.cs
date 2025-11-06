@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -195,7 +196,7 @@ namespace HM_ERP_System.Forms.Customer
                         from bb_ in bbGroup.DefaultIfEmpty()
 
                         join ba in db.Bancks
-                        on bb_.BanckId equals ba.Id into baGroup 
+                        on bb_.BanckId equals ba.Id into baGroup
                         from ba_ in baGroup.DefaultIfEmpty()
 
                         join ct in db.Ciltys
@@ -229,7 +230,7 @@ namespace HM_ERP_System.Forms.Customer
                             CiltysName = ct_ != null ? ct_.Name : "-",
                             ProvincesName = pr_ != null ? pr_.Name : "-",
                             CountDoc = docGroup.Where(c => c.FormName == this.Name).Count(),//آمار تعداد مدارک پیوست
-                            
+
                         };
                 dgvList.DataSource = q.ToList();
                 PublicClass.SettingGridEX(dgvList);
@@ -403,9 +404,10 @@ namespace HM_ERP_System.Forms.Customer
                 if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
                 var userRepo = new Repository<HM_ERP_System.Entity.Customer.Customer>(db);
-                int CustomerId = userRepo.SaveOrUpdateRefId(new Entity.Customer.Customer { Id = ListId, Name = txtName.Text, Family = txtFamily.Text, CodMeli = txtCodMeli.Text, id_TypeCustomer = TypeCustomerId,CityId=CityId, Tel = txtTel1.Text, Tel2=txtTel2.Text, Adders = txtAdders1.Text, Adders2=txtAdders2.Text, PostalCode=txtPostalCode.Text, BanckId=BanckId, DabitCardNumber=txtDabitCardNumber.Text, SeryalShaba=txtSeryalShaba.Text, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
-                if(ListId == 0)
-                { if (CustomerId > 0)
+                int CustomerId = userRepo.SaveOrUpdateRefId(new Entity.Customer.Customer { Id = ListId, Name = txtName.Text, Family = txtFamily.Text, CodMeli = txtCodMeli.Text, id_TypeCustomer = TypeCustomerId, CityId=CityId, Tel = txtTel1.Text, Tel2=txtTel2.Text, Adders = txtAdders1.Text, Adders2=txtAdders2.Text, PostalCode=txtPostalCode.Text, BanckId=BanckId, DabitCardNumber=txtDabitCardNumber.Text, SeryalShaba=txtSeryalShaba.Text, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
+                if (ListId == 0)
+                {
+                    if (CustomerId > 0)
                     {
                         foreach (var GroupId in cmbGroup.CheckedValues)
                         {
@@ -426,7 +428,7 @@ namespace HM_ERP_System.Forms.Customer
                         }
                     }
                 }
-                
+
                 PublicClass.WindowAlart("1");
                 FilldgvList();
                 if (_updatableForms!=null)
@@ -511,7 +513,7 @@ namespace HM_ERP_System.Forms.Customer
             txtCodMeli.CheackCodeMeli=chkControlCodeMeli.Checked;
             Properties.Settings.Default.CheackCodeMeli=chkControlCodeMeli.Checked;
             Properties.Settings.Default.Save();
-            if(chkControlCodeMeli.Checked)
+            if (chkControlCodeMeli.Checked)
             {
                 btnCratMelyCode.Enabled=false;
             }
@@ -685,7 +687,7 @@ namespace HM_ERP_System.Forms.Customer
 
         private void cmbCity_KeyDown(object sender, KeyEventArgs e)
         {
-                        if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
 
             if (e.KeyCode == Keys.F2)
@@ -720,7 +722,7 @@ namespace HM_ERP_System.Forms.Customer
 
         private void btnAddBanck_Click(object sender, EventArgs e)
         {
-          frmBankBranch frmBankBranch = new frmBankBranch(this);
+            frmBankBranch frmBankBranch = new frmBankBranch(this);
             frmBankBranch.ShowDialog();
             FillcmbBanck();
         }
@@ -728,11 +730,22 @@ namespace HM_ERP_System.Forms.Customer
         private void btnCratMelyCode_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
-            long tenDigitNumber =PublicClass.GenerateTenDigitRandomNumber(rand);
+            long tenDigitNumber = PublicClass.GenerateTenDigitRandomNumber(rand);
             txtCodMeli.Text=tenDigitNumber.ToString();
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
+        {
+            //frmReport f = new frmReport();
+            //f.Cod="1";
+            //f.grid=dgvList;
+            ////f.Condition="";
+            //f.DateReport="گزارش از تاریخ: "+"1404/01/01"+"  تا تاریخ: "+"1404/05/25";
+            //f.ShowDialog();
+
+        }
+
+        private void btnRepC1_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
             f.Cod="1";
@@ -741,6 +754,31 @@ namespace HM_ERP_System.Forms.Customer
             f.DateReport="گزارش از تاریخ: "+"1404/01/01"+"  تا تاریخ: "+"1404/05/25";
             f.ShowDialog();
 
+        }
+
+        private void buttonItem1_Click(object sender, EventArgs e)
+        {
+            PdfReportHelper.ExportJanusGridToPDF(dgvList, "گزارش لیست مشتریان");
+        //    SaveFileDialog sfd = new SaveFileDialog();
+        //    sfd.Filter = "PDF File|*.pdf";
+        //    sfd.FileName = "Report_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".pdf";
+
+            //    if (sfd.ShowDialog() == DialogResult.OK)
+            //    {
+            //        using (var db = new DBcontextModel())
+            //        {
+            //            var companyName = db.Settings.Where(c => c.Code==1).First().Subject;
+            //            byte[] logo = db.ImageCos.Where(c => c.Id==1).First().Image;
+
+            //            PdfReportHelper.ExportJanusGridToPDF(dgvList, sfd.FileName, "گزارش لیست مشتریان", companyName: companyName, logo,
+            //isLandscape: false,   // 👈 ایستاده
+            //leftMargin: 30f,
+            //rightMargin: 30f,
+            //topMargin: 15f,       // 👈 فاصله بالای کمتر
+            //bottomMargin: 45f
+            //                );
+            //        }
+            //    }
         }
     }
 }

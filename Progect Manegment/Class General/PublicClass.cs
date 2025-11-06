@@ -1,47 +1,62 @@
-﻿using HM_ERP_System.Entity.Accounts.Transaction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Data;
-using System.Globalization;
-using System.Net;
-using BehComponents;
-using System.Drawing.Printing;
-using System.Runtime.InteropServices;
-using System.Net.Sockets;
-using Progect_Manegment;
-using Janus.Windows.GridEX.Export;
-using Janus.Windows.GridEX;
-using DevComponents.DotNetBar.Controls;
+﻿using BehComponents;
+
+using ClosedXML.Excel;
+
 using DevComponents.DotNetBar;
-using Janus.Windows.GridEX.EditControls;
-using HM_ERP_System;
+using DevComponents.DotNetBar.Controls;
 using DevComponents.Editors;
-using HM_ERP_System.Forms.SearchCombos;
+
 using FastMember;
-using System.Runtime.CompilerServices;
-using HM_ERP_System.Forms.DocumentBanck;
-using HM_ERP_System.Entity.Provinces;
-using System.Xml.Linq;
+
+using GridExEx;
+
+using HM_ERP_System;
+using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.Accounts.DetailedAccount;
 using HM_ERP_System.Entity.Accounts.SpecificAccount;
-using HM_ERP_System.Forms.BlacList;
+using HM_ERP_System.Entity.Accounts.Transaction;
 using HM_ERP_System.Entity.Accounts.TransactionType;
-using GridExEx;
-using System.IO;
+using HM_ERP_System.Entity.Provinces;
+using HM_ERP_System.Forms.Accounts.ReviewAccounts;
+using HM_ERP_System.Forms.BlacList;
+using HM_ERP_System.Forms.DocumentBanck;
+using HM_ERP_System.Forms.SearchCombos;
+
+using Janus.Windows.GridEX;
+using Janus.Windows.GridEX.EditControls;
+using Janus.Windows.GridEX.Export;
+
+using Microsoft.Office.Interop.Excel;
+
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+
+using Org.BouncyCastle.Crypto.Tls;
+
+using Progect_Manegment;
+
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Printing;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 //using Telerik.WinControls.Svg;
 using System.Reflection;
-using Microsoft.Office.Interop.Excel;
-using System.Diagnostics;
-using HM_ERP_System.Class_General;
-using HM_ERP_System.Forms.Accounts.ReviewAccounts;
-using Org.BouncyCastle.Crypto.Tls;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Linq;
 namespace MyClass
 {
     public static class PublicClass
@@ -396,7 +411,10 @@ namespace MyClass
             }
             else if (Cod == "2")//جهت ثبت
             {
-                DesktopAlert.Show("اطلاعات مورد نظر با موفقیت حذف گردید", "10008", eSymbolSet.Awesome, Color.Empty, eDesktopAlertColor.Red, eAlertPosition.BottomRight, 3, 0, null);
+
+                DesktopAlert.Show(MassegText=="" ? "اطلاعات مورد نظر با موفقیت حذف گردید" : MassegText, "10008", eSymbolSet.Awesome, Color.Empty, eDesktopAlertColor.Red, eAlertPosition.BottomRight, 3, 0, null);
+
+                //DesktopAlert.Show("اطلاعات مورد نظر با موفقیت حذف گردید", "10008", eSymbolSet.Awesome, Color.Empty, eDesktopAlertColor.Red, eAlertPosition.BottomRight, 3, 0, null);
             }
 
             else if (Cod == "3")
@@ -496,21 +514,77 @@ namespace MyClass
         /// خروجی جدول دیتاگرید جانوس به اکسل
         /// </summary>
         /// <param name="gridEXExporter"></param>
-        public static void SaveGridExToExcel(GridEX gridEX)
+        public static DialogResult SaveGridExToExcel(GridEX gridEX)
         {
             GridEXExporter gridEXExporter = new GridEXExporter();
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Excel File(*.xls)|*.xls";
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Excel File (*.xls)|*.xls"
+                , Title="ذخیر لیست به اکسل",FileName="Comers List_" + DateTime.Now.ToString("yyyyMMdd_HHmm")
+            };
+
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //gridEXExporter.ExportMode = ExportMode.SelectedRows;
-                //gridEXExporter.SheetName= saveFileDialog.FileName;
                 gridEXExporter.GridEX = gridEX;
-                gridEXExporter.Export(saveFileDialog.OpenFile());
+                using (var stream = saveFileDialog.OpenFile())
+                {
+                    gridEXExporter.Export(stream);
+                }
+
                 WindowAlart("1");
+                return DialogResult.OK;
+            }
+            else
+            {
+                return DialogResult.No;
+            }
+        }
+
+        public static void ExportVisibleColumnsToExcel(GridEX gridEX, string filePath)
+        {
+            IWorkbook workbook = new XSSFWorkbook();
+            ISheet sheet = workbook.CreateSheet("Data");
+
+            // Header (فقط ستون‌های قابل‌نمایش)
+            IRow headerRow = sheet.CreateRow(0);
+            int visibleColIndex = 0;
+            for (int i = 0; i < gridEX.RootTable.Columns.Count; i++)
+            {
+                var col = gridEX.RootTable.Columns[i];
+                if (col.Visible)
+                {
+                    headerRow.CreateCell(visibleColIndex).SetCellValue(col.Caption);
+                    visibleColIndex++;
+                }
             }
 
+            // Rows (فقط داده‌های ستون‌های قابل‌نمایش)
+            for (int r = 0; r < gridEX.RowCount; r++)
+            {
+                gridEX.MoveToRowIndex(r);
+                GridEXRow currentRow = gridEX.GetRow();
+                IRow row = sheet.CreateRow(r + 1);
+
+                visibleColIndex = 0;
+                for (int c = 0; c < gridEX.RootTable.Columns.Count; c++)
+                {
+                    var col = gridEX.RootTable.Columns[c];
+                    if (col.Visible)
+                    {
+                        string val = currentRow.Cells[col.Key].Value?.ToString() ?? "";
+                        row.CreateCell(visibleColIndex).SetCellValue(val);
+                        visibleColIndex++;
+                    }
+                }
+            }
+
+            // ذخیره فایل
+            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            {
+                workbook.Write(fs);
+            }
         }
+
 
         /// <summary>
         /// جستجو در کمبوباکس ها
@@ -3627,20 +3701,164 @@ namespace MyClass
         {
             try
             {
-                string ConnectionString_ = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source=" + AdresFit + ";Extended properties=\"Excel 8.0; HDR=yes;\";";
-                OleDbConnection con = new OleDbConnection(ConnectionString_);
-                OleDbDataAdapter adp = new OleDbDataAdapter("Select * from[Sheet1$]", con);
+                string connectionString =
+                    "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"" + AdresFit +
+                    "\";Extended Properties=\"Excel 12.0 Xml;HDR=YES;IMEX=1\";";
 
-                System.Data.DataTable dt = new System.Data.DataTable();
-                adp.Fill(dt);
-                return dt;
+                using (OleDbConnection con = new OleDbConnection(connectionString))
+                {
+                    con.Open();
+
+                    // خواندن نام اولین شیت
+                    System.Data.DataTable sheets = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                    string firstSheet = sheets.Rows[0]["TABLE_NAME"].ToString();
+
+                    OleDbDataAdapter adp = new OleDbDataAdapter("SELECT * FROM [" + firstSheet + "]", con);
+                    System.Data.DataTable dt = new System.Data.DataTable();
+                    adp.Fill(dt);
+                    return dt;
+                }
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
                 return null;
-                //MessageBox.Show(err.Message);
             }
+        }
+
+        public static System.Data.DataTable ReadExcel_ClosedXML(string path)
+        {
+            using (var workbook = new XLWorkbook(path))
+            {
+                var worksheet = workbook.Worksheet(1);
+                var dt = new System.Data.DataTable();
+
+                bool firstRow = true;
+                foreach (var row in worksheet.RowsUsed())
+                {
+                    if (firstRow)
+                    {
+                        foreach (var cell in row.Cells())
+                            dt.Columns.Add(cell.Value.ToString());
+                        firstRow = false;
+                    }
+                    else
+                    {
+                        dt.Rows.Add(row.Cells().Select(c => c.Value.ToString()).ToArray());
+                    }
+                }
+                return dt;
+            }
+        }
+
+        /// <summary>
+        /// متد خوانده از جدول دیتا گرید و قرار دادن در دیتاتیبل
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static System.Data.DataTable ReadExcel_NPOI(string path)
+        {
+            if (!File.Exists(path))
+                throw new FileNotFoundException("فایل پیدا نشد: " + path);
+
+            IWorkbook workbook;
+            using (FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read))
+            {
+                string ext = Path.GetExtension(path).ToLower();
+                if (ext == ".xls")
+                    workbook = new HSSFWorkbook(file);  // Excel 97-2003
+                else if (ext == ".xlsx")
+                    workbook = new XSSFWorkbook(file);  // Excel 2007+
+                else
+                    throw new Exception("فرمت فایل پشتیبانی نمی‌شود: " + ext);
+            }
+
+            ISheet sheet = workbook.GetSheetAt(0);
+            if (sheet == null)
+                throw new Exception("شیتی وجود ندارد.");
+
+            System.Data.DataTable dt = new System.Data.DataTable();
+
+            // Helper: خواندن متن یک سلول به صورت ایمن
+            string GetCellText(ICell cell)
+            {
+                if (cell == null) return string.Empty;
+                switch (cell.CellType)
+                {
+                    case CellType.String:
+                        return cell.StringCellValue;
+                    case CellType.Numeric:
+                        if (DateUtil.IsCellDateFormatted(cell))
+                            return cell.DateCellValue.ToString();
+                        return cell.NumericCellValue.ToString();
+                    case CellType.Boolean:
+                        return cell.BooleanCellValue.ToString();
+                    case CellType.Formula:
+                        try
+                        {
+                            // تلاش برای گرفتن مقدار محاسبه‌شده
+                            switch (cell.CachedFormulaResultType)
+                            {
+                                case CellType.String: return cell.StringCellValue;
+                                case CellType.Numeric:
+                                    if (DateUtil.IsCellDateFormatted(cell)) return cell.DateCellValue.ToString();
+                                    return cell.NumericCellValue.ToString();
+                                case CellType.Boolean: return cell.BooleanCellValue.ToString();
+                                default: return cell.ToString();
+                            }
+                        }
+                        catch { return cell.ToString(); }
+                    default:
+                        return cell.ToString();
+                }
+            }
+
+            // خواندن عنوان ستون‌ها و ایجاد نام یکتا
+            IRow headerRow = sheet.GetRow(0);
+            if (headerRow == null)
+                throw new Exception("ردیف عنوان ستون‌ها (سطر اول) خالی است.");
+
+            int cellCount = headerRow.LastCellNum;
+            var existingNames = new Dictionary<string, int>(StringComparer.InvariantCultureIgnoreCase);
+
+            for (int i = 0; i < cellCount; i++)
+            {
+                string rawName = GetCellText(headerRow.GetCell(i)).Trim();
+                if (string.IsNullOrEmpty(rawName))
+                    rawName = "Column" + (i + 1);
+
+                string uniqueName = rawName;
+                if (existingNames.ContainsKey(rawName))
+                {
+                    existingNames[rawName] = existingNames[rawName] + 1;
+                    uniqueName = $"{rawName} ({existingNames[rawName]})";
+                }
+                else
+                {
+                    existingNames[rawName] = 0;
+                }
+
+                // در DataTable از نام ستون یکتا استفاده می‌کنیم
+                dt.Columns.Add(uniqueName);
+            }
+
+            // خواندن سطرها
+            for (int i = 1; i <= sheet.LastRowNum; i++)
+            {
+                IRow row = sheet.GetRow(i);
+                if (row == null) continue;
+
+                DataRow dataRow = dt.NewRow();
+                for (int j = 0; j < cellCount; j++)
+                {
+                    dataRow[j] = GetCellText(row.GetCell(j));
+                }
+                dt.Rows.Add(dataRow);
+            }
+
+            return dt;
         }
 
         /// <summary>

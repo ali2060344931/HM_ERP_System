@@ -1,4 +1,6 @@
-﻿using HM_ERP_System.Class_General;
+﻿using GridExEx.GridForms;
+
+using HM_ERP_System.Class_General;
 using HM_ERP_System.Components;
 using HM_ERP_System.Entity.Accounts.DetailedAccount;
 using HM_ERP_System.Entity.Accounts.SpecificAccount;
@@ -15,7 +17,7 @@ using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.PlaceTransfer;
-using System.Runtime.InteropServices;
+
 using Janus.Windows.GridEX;
 using Janus.Windows.UI.Dock;
 
@@ -24,6 +26,8 @@ using K4os.Hash.xxHash;
 using Microsoft.Office.Interop.Excel;
 
 using MyClass;
+
+using NPOI.OpenXmlFormats.Vml;
 
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Tls;
@@ -41,13 +45,13 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Controls;
 using System.Windows.Forms;
-using GridExEx.GridForms;
 namespace HM_ERP_System.Forms.Comers
 {
     public partial class frmComers : frmMasterForm, IUpdatableForms
@@ -186,7 +190,7 @@ namespace HM_ERP_System.Forms.Comers
             FillcmbDraversH2();
 
             FillcmbProducts();
-            FilldgvListH(dgvListH,txtDateStart.Text,txtDateEnd.Text);
+            FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
         }
         System.Data.DataTable dt_Resiver2;
 
@@ -345,7 +349,7 @@ namespace HM_ERP_System.Forms.Comers
             panelDeleteEdit.Visible=true;
             txtSearch.Visible=true;
 
-            FilldgvListB(dgvListB,txtDateStart.Text, txtDateEnd.Text,null,txtSearch.Text);//لیست اسناد
+            FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);//لیست اسناد
             FillcmbCarPlatB();
             FillcmbPaymentMethod();
             FillcmbBillLadingCast();
@@ -773,7 +777,7 @@ namespace HM_ERP_System.Forms.Comers
         public System.Data.DataTable dt_ListSimilarComerB { get; private set; }
         public System.Data.DataTable dt_DraverB2 { get; private set; }
         public System.Data.DataTable dt_DraverB1 { get; private set; }
-        public System.Data.DataTable dt_CostAccountH{ get; private set; }
+        public System.Data.DataTable dt_CostAccountH { get; private set; }
 
         private void FillcmbDraversH1()
         {
@@ -1711,7 +1715,7 @@ namespace HM_ERP_System.Forms.Comers
                                 ResiverName2 = reciver2 !=null ? (reciver2.Family + " " + reciver2.Name).Trim() : "-",
 
                                 DaraverName1 = (cu1.Family + " " + cu1.Name).Trim(),
-                                DaraverName2 = cu2_!=null ? (cu2_.Family + " " + cu2_.Name).Trim():"-",
+                                DaraverName2 = cu2_!=null ? (cu2_.Family + " " + cu2_.Name).Trim() : "-",
 
                                 ProductsName = pr.Name,
                                 CarPlat = cr.CarPlat + "-" + cr.CarPlatSeryal,
@@ -1733,7 +1737,7 @@ namespace HM_ERP_System.Forms.Comers
             }
         }
 
-        public static GridEX FilldgvListB(GridEX  gx, string dateS, string dateE, int? Id = null,string serch=null)
+        public static GridEX FilldgvListB_(Janus.Windows.GridEX.GridEX gx, string dateS, string dateE, int? Id = null, string serch = null)
         {
             try
             {
@@ -1844,9 +1848,10 @@ namespace HM_ERP_System.Forms.Comers
 
                             where string.Compare(cmb.DateB, dateS) >= 0 && string.Compare(cmb.DateB, dateE) <= 0
 
-                            where  (string.IsNullOrEmpty(serch) ||((sd1.Family + " " + sd1.Name).Contains(serch) ||(sd2Left.Family + " " + sd2Left.Name).Contains(serch)||(rs1.Family + " " + rs1.Name).Contains(serch)||(rs2Left.Family + " " + rs2Left.Name).Contains(serch) ||(shLeft.Family+" "+shLeft.Name).Contains(serch)||(ct1.Name).Contains(serch)||(pt1.Name).Contains(serch)||(ct2.Name).Contains(serch)||(pt2.Name).Contains(serch) ||(ca.Family + " " + ca.Name).Contains(serch)||(ga.Family + " " + ga.Name).Contains(serch))) && (Id == null || cmh.Id == Id.Value)
+                            where (string.IsNullOrEmpty(serch) ||((sd1.Family + " " + sd1.Name).Contains(serch) ||(sd2Left.Family + " " + sd2Left.Name).Contains(serch)||(rs1.Family + " " + rs1.Name).Contains(serch)||(rs2Left.Family + " " + rs2Left.Name).Contains(serch) ||(shLeft.Family+" "+shLeft.Name).Contains(serch)||(ct1.Name).Contains(serch)||(pt1.Name).Contains(serch)||(ct2.Name).Contains(serch)||(pt2.Name).Contains(serch) ||(ca.Family + " " + ca.Name).Contains(serch)||(ga.Family + " " + ga.Name).Contains(serch))) && (Id == null || cmh.Id == Id.Value)
 
                             orderby cmb.Id descending
+
                             select new
                             {
                                 cmb.Id,
@@ -1858,13 +1863,9 @@ namespace HM_ERP_System.Forms.Comers
                                 LoadingLocationName = pt1.Name,
                                 UnLoadingOrinigName = ct2.Name,
                                 UnLoadingLocationName = pt2.Name,
-                                //طرف حساب کامیون
                                 CostAccountName = (ca.Family + " " + ca.Name).Trim(),
-                                //طرف حساب کالا
                                 GoodsAccountName = (ga.Family + " " + ga.Name).Trim(),
-                                //بارنامه نویس
                                 ShiperName = shLeft!=null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
-
                                 CarPlat = cr.CarPlatSeryal + " " + cr.CarPlat,
                                 DaraverName = cu1.Family + " " + cu1.Name,
                                 DaraverTel = cu1.Tel,
@@ -1905,11 +1906,8 @@ namespace HM_ERP_System.Forms.Comers
                                 cmb.Description,
                                 cmb.PaymentToOthers1,
                                 cmb.PaymentToOthers2,
-                                //شخص پرداختی سایر
                                 PaymentToOthersName = ptnGroup!=null ? (ptnGroup.Family + " " + ptnGroup.Name).Trim() : "-",
                                 DesToOthers = cmb.DesToOthers,
-                                //TypeCalcMethodsB = tcm1.Name,//نحوه محاسبه کرایه راننده
-                                //PaymentMethod = pm1.Name,//نحوه پرداخت هزینه بارگیری
                                 BillLadingCast = pm2.Name,//هزینه بارنامه
                                 BillLadingMethod = tcm2.Name,//نحوه محاسبه هزینه بارنامه
                                 cmb.BO,
@@ -1926,6 +1924,178 @@ namespace HM_ERP_System.Forms.Comers
                                 cmb.Ac,
                                 cmb.Bn,
                             };
+
+
+
+                    gx.DataSource = q.ToList();
+                    gx.AutoSizeColumns();
+                    //PublicClass.SettingGridEX(gx);
+                    return gx;
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return null;
+            }
+        }
+
+
+        public static GridEX FilldgvListB(
+            Janus.Windows.GridEX.GridEX gx,
+            string dateS,
+            string dateE,
+            int? Id = null,
+            string serch = null,
+            bool hideIfInCommission = false // 🔸 شرط پویا برای حذف بارنامه‌های دارای پورسانت
+        )
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    var q =
+                        from cmb in db.ComersBs
+
+                        join cmh in db.ComersHs on cmb.ComersHId equals cmh.Id
+                        join ct1 in db.Ciltys on cmh.LoadingOrinigId equals ct1.Id
+                        join pt1 in db.PlaceTransfers on cmh.LoadingLocationId equals pt1.Id
+                        join ct2 in db.Ciltys on cmh.UnLoadingOrinigId equals ct2.Id
+                        join pt2 in db.PlaceTransfers on cmh.UnLoadingLocationId equals pt2.Id
+                        join pr in db.Products on cmh.ProductsId equals pr.Id
+                        join dr1 in db.Dravers on cmb.DaraverId1_ equals dr1.Id
+                        join cu1 in db.Customers on dr1.CustomerId equals cu1.Id
+                        join dr2 in db.Dravers on cmb.DaraverId2_ equals dr2.Id
+                        join cu2 in db.Customers on dr2.CustomerId equals cu2.Id
+                        join ca in db.Customers on cmb.CostAccountId equals ca.Id
+                        join ga in db.Customers on cmb.GoodsAccountId equals ga.Id
+                        join sd1 in db.Customers on cmb.SenderId equals sd1.Id
+                        join rs1 in db.Customers on cmb.ResiverId equals rs1.Id
+
+                        join rs2 in db.Customers on cmb.ResiverId2 equals rs2.Id into rs2Group
+                        from rs2Left in rs2Group.DefaultIfEmpty()
+
+                        join sd2 in db.Customers on cmb.SenderId2 equals sd2.Id into sd2Group
+                        from sd2Left in sd2Group.DefaultIfEmpty()
+
+                        join tcf in db.FareCalcMethods on cmb.TypeCalFareId equals tcf.Id
+                        join mcf in db.TypeCalcMethods on cmb.MethodCalFareId equals mcf.Id
+                        join pm2 in db.PaymentMethods on cmb.BillLadingCastId equals pm2.Id
+                        join tcm2 in db.TypeCalcMethods on cmb.BillLadingMethodId equals tcm2.Id
+
+                        join sh in db.Customers on cmh.ShiperId equals sh.Id into shGroup
+                        from shLeft in shGroup.DefaultIfEmpty()
+
+                            // 🔸 اصلاح کامل بخش PaymentToOthers
+                        join ptonDA in db.DetailedAccounts
+                        on cmb.PaymentToOthersId equals ptonDA.Id into ptonDAGroup
+                        from ptonDA_Left in ptonDAGroup.DefaultIfEmpty()
+
+                        join ptonC in db.Customers
+                        on ptonDA_Left.CustomerId equals ptonC.Id into ptonCGroup
+                        from ptonC_Left in ptonCGroup.DefaultIfEmpty()
+
+                        join cr in db.Cars on cmh.CarId equals cr.Id
+                        join tf in db.TransactionFees on cmb.BT equals tf.Id
+
+                        join doc in db.DocumentBancks on cmb.Id equals doc.ListInFoemId into docGroup
+                        join tr in db.Transactions on cmb.Id equals tr.ComerBId into TrGroup
+
+                        where string.Compare(cmb.DateB, dateS) >= 0
+                           && string.Compare(cmb.DateB, dateE) <= 0
+                           && (string.IsNullOrEmpty(serch)
+                               || ((sd1.Family + " " + sd1.Name).Contains(serch)
+                                   || (sd2Left.Family + " " + sd2Left.Name).Contains(serch)
+                                   || (rs1.Family + " " + rs1.Name).Contains(serch)
+                                   || (rs2Left.Family + " " + rs2Left.Name).Contains(serch)
+                                   || (shLeft.Family + " " + shLeft.Name).Contains(serch)
+                                   || (ct1.Name).Contains(serch)
+                                   || (pt1.Name).Contains(serch)
+                                   || (ct2.Name).Contains(serch)
+                                   || (pt2.Name).Contains(serch)
+                                   || (ca.Family + " " + ca.Name).Contains(serch)
+                                   || (ga.Family + " " + ga.Name).Contains(serch)))
+                        //&& (Id == null || cmh.Id == Id.Value)
+                        //&& (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id && c.CustomerId == Id.Value))
+ && (
+    hideIfInCommission
+        ? (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id && c.CustomerId == Id.Value))
+        : (Id == null || cmh.Id == Id.Value)
+)
+
+                        orderby cmb.Id descending
+
+                        select new
+                        {
+                            cmb.Id,
+                            cmb.DateB,
+                            cmb.SeryalB,
+                            cmb.SeryalH,
+                            Transaction = TrGroup.Any(),
+                            LoadingOrinigName = ct1.Name,
+                            LoadingLocationName = pt1.Name,
+                            UnLoadingOrinigName = ct2.Name,
+                            UnLoadingLocationName = pt2.Name,
+                            CostAccountName = (ca.Family + " " + ca.Name).Trim(),
+                            GoodsAccountName = (ga.Family + " " + ga.Name).Trim(),
+                            ShiperName = shLeft != null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
+                            CarPlat = cr.CarPlatSeryal + " " + cr.CarPlat,
+                            DaraverName = cu1.Family + " " + cu1.Name,
+                            DaraverTel = cu1.Tel,
+                            DaraverName2 = cu2.Family + " " + cu2.Name,
+                            DaraverTel2 = cu2.Tel,
+                            SenderName = sd1.Family + " " + sd1.Name,
+                            ResiverName = rs1.Family + " " + rs1.Name,
+                            SenderName2 = sd2Left != null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
+                            ResiverName2 = rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
+                            ProductsName = pr.Name,
+                            FareCalcMethodName = tcf.Name,
+                            MethodCalFareName = mcf.Name,
+                            CountDoc = docGroup.Count(c => c.FormName == "frmComersB"),
+                            cmb.LoadWeight,
+                            cmb.WeightDeliveredGoods,
+                            cmb.FreightRate,
+                            cmb.CargoInsurance,
+                            cmb.LoadinCast,
+                            cmb.Incentive,
+                            cmb.StopCharge,
+                            cmb.Deduction,
+                            cmb.BalanceAccount,
+                            cmb.PaidFreightRate,
+                            cmb.InsurancCost,
+                            cmb.PaidIncentive,
+                            cmb.PaidStopCharge,
+                            cmb.DriverDeduction,
+                            cmb.BaseFreight,
+                            cmb.BillLadingAmount,
+                            cmb.InsuranceAmount,
+                            cmb.BillLadingWriterPercent,
+                            cmb.OtherBillLadingCosts,
+                            cmb.AmountPaidTruckDriver,
+                            cmb.BalanceAccountDraver,
+                            cmb.StatusDeliveryGoods,
+                            cmb.Description,
+                            cmb.PaymentToOthers1,
+                            cmb.PaymentToOthers2,
+                            PaymentToOthersName = ptonC_Left != null ? (ptonC_Left.Family + " " + ptonC_Left.Name).Trim() : "-",
+                            DesToOthers = cmb.DesToOthers,
+                            BillLadingCast = pm2.Name,
+                            BillLadingMethod = tcm2.Name,
+                            cmb.BO,
+                            cmb.AE,
+                            cmb.AV,
+                            cmb.AX,
+                            cmb.AZ,
+                            cmb.BP,
+                            cmb.BK,
+                            cmb.BS,
+                            BT = tf.Name,
+                            cmb.AY,
+                            cmb.BV,
+                            cmb.Ac,
+                            cmb.Bn,
+                        };
+
                     gx.DataSource = q.ToList();
                     gx.AutoSizeColumns();
                     return gx;
@@ -1934,9 +2104,13 @@ namespace HM_ERP_System.Forms.Comers
             catch (Exception er)
             {
                 PublicClass.ShowErrorMessage(er);
-               return  null;
+                return null;
             }
         }
+
+
+
+
 
         private void txtSeryal_KeyPress(object sender, KeyPressEventArgs e)
         {

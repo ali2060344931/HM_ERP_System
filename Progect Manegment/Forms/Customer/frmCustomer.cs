@@ -555,7 +555,8 @@ namespace HM_ERP_System.Forms.Customer
                 if (ofd.ShowDialog() == DialogResult.OK)
                     FileName = ofd.FileName;
                 DataTable dataTable = new DataTable();
-                dataTable= PublicClass.InputExcelToDataDataGridView(FileName);
+                
+                dataTable= PublicClass.ReadExcel_ClosedXML(FileName);
                 int UserId = PublicClass.UserId;
                 foreach (DataRow item in dataTable.Rows)
                 {

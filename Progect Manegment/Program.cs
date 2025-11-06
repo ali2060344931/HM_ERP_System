@@ -15,6 +15,7 @@ using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Car;
 using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.Comers;
+using HM_ERP_System.Forms.Commission;
 using HM_ERP_System.Forms.Customer;
 using HM_ERP_System.Forms.CustomerToGroup;
 using HM_ERP_System.Forms.DocumentBanck;
@@ -69,7 +70,7 @@ namespace Progect_Manegment
 
             Application.Run(new frmMainForm());
 
-            //Application.Run(new frmReviewAccounts());
+            //Application.Run(new frmCommissionCreateFile());
 
         }
     }

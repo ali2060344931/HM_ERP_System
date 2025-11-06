@@ -38,6 +38,9 @@ namespace HM_ERP_System.Forms.Commission
         {
             txtDate.Value= DateTime.Now;
             //chkSelectList.Checked= true;
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
+            txtDateEnd.Value = DateTime.Now;
+
             UpdateData();
         }
 
@@ -88,7 +91,7 @@ namespace HM_ERP_System.Forms.Commission
                                 ComersH = cm.SeryalH,
                                 ComersB = cm.SeryalB,
                             };
-                    cmbComers.DataSource=q.ToList();
+                    cmbComers1.DataSource=q.ToList();
                     dt_Comers = new System.Data.DataTable();
                     dt_Comers = PublicClass.AddEntityTableToDataTable(q.ToList());
                 }
@@ -141,7 +144,7 @@ namespace HM_ERP_System.Forms.Commission
         {
             try
             {
-                ComersBId = Convert.ToInt32(cmbComers.Value);
+                ComersBId = Convert.ToInt32(cmbComers1.Value);
             }
             catch (Exception er)
             {
@@ -156,7 +159,7 @@ namespace HM_ERP_System.Forms.Commission
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbComers, dt_Comers);
+                PublicClass.SearchCmbId(cmbComers1, dt_Comers);
             }
         }
         int CommissionTypeId = 0;
@@ -232,24 +235,15 @@ namespace HM_ERP_System.Forms.Commission
         {
             try
             {
-                if (PublicClass.FindEmptyControls(txtAmount, ResourceCode.T081))
+                if (PublicClass.FindEmptyControls(txtAmount1, ResourceCode.T081))
                     return;
 
-                if (!chkSelectList.Checked)
+                if (uiTab1.SelectedTab.Key=="ON")
                 {
-                    if (cmbComers.SelectedIndex==-1)//بارنامه:تکی
+                    if (cmbComers1.SelectedIndex==-1)//بارنامه:تکی
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T036);
-                        cmbComers.Focus();
-                        return;
-                    }
-                }
-                else
-                {
-                    if (cmbList.Text=="")//بارنامه:لیستی
-                    {
-                        PublicClass.ErrorMesseg(ResourceCode.T036);
-                        cmbList.Focus();
+                        cmbComers1.Focus();
                         return;
                     }
                 }
@@ -291,7 +285,7 @@ namespace HM_ERP_System.Forms.Commission
                         return;
 
                     var car = new Repository<Entity.Commission.Commission>(db);
-                    if (car.SaveOrUpdate(new Entity.Commission.Commission { Id = ListId, ComersBId=ComersBId, CommissionTypeId=CommissionTypeId, CustomerId=CustomerId, Date=txtDate.Text, Amount=Convert.ToInt64(txtAmount.TextSimple), Des=txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
+                    if (car.SaveOrUpdate(new Entity.Commission.Commission { Id = ListId, ComersBId=ComersBId, CommissionTypeId=CommissionTypeId, CustomerId=CustomerId, Date=txtDate.Text, Amount=Convert.ToInt64(txtAmount1.TextSimple), Des=txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
                         if (_updatableForms!=null)
@@ -313,11 +307,11 @@ namespace HM_ERP_System.Forms.Commission
         private void CelearItems()
         {
             ListId = 0;
-            txtAmount.ResetText();
+            txtAmount1.ResetText();
             txtDes.ResetText();
             cmbCommissionType.ResetText();
             cmbCustomer.ResetText();
-            cmbComers.Focus();
+            cmbComers1.Focus();
             FilldgvList();
         }
 
@@ -332,12 +326,12 @@ namespace HM_ERP_System.Forms.Commission
                     {
                         var q = db.Commissions.Where(c => c.Id == ListId).First();
                         txtDate.Text = q.Date;
-                        cmbComers.Value=q.ComersBId;
+                        cmbComers1.Value=q.ComersBId;
                         cmbCommissionType.Value=q.CommissionTypeId;
                         cmbCustomer.Value=q.CustomerId;
-                        txtAmount.Text=q.Amount.ToString();
+                        txtAmount1.Text=q.Amount.ToString();
                         txtDes.Text=q.Des;
-                        cmbComers.Focus();
+                        cmbComers1.Focus();
 
                     }
 
@@ -385,20 +379,101 @@ namespace HM_ERP_System.Forms.Commission
 
         private void chkSelectList_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkSelectList.Checked)
+            //if (chkSelectList.Checked)
+            //{
+            //    cmbComers.Enabled=false;
+            //    btnShowComers.Enabled=false;
+            //    cmbList.Enabled=true;
+            //    btnSelectList.Enabled=true;
+            //}
+            //else
+            //{
+            //    cmbComers.Enabled=true;
+            //    btnShowComers.Enabled=true;
+            //    cmbList.Enabled=false;
+            //    btnSelectList.Enabled=false;
+            //}
+        }
+
+        private void btnSelectList_Click(object sender, EventArgs e)
+        {
+            try
             {
-                cmbComers.Enabled=false;
-                btnShowComers.Enabled=false;
-                cmbList.Enabled=true;
-                btnSelectList.Enabled=true;
+
+                string FileName = "";
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Title = "Select File Excel";
+                ofd.Filter = "Excel Sheet(*.xlsx)|*.xlsx|All Files(*.*)|*.*";
+                ofd.FilterIndex = 1;
+                if (ofd.ShowDialog() == DialogResult.OK)
+                    FileName = ofd.FileName;
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Id", typeof(int));
+                dt.Columns.Add("SeryalH", typeof(int));
+                dt.Columns.Add("SeryalB", typeof(string));
+                dt.Columns.Add("Amount", typeof(long));
+
+                DataTable dataTable = new DataTable();
+                dataTable= PublicClass.ReadExcel_NPOI(FileName);
+                int Id = 0;
+                int UserId = PublicClass.UserId;
+                foreach (DataRow item in dataTable.Rows)
+                {
+                    var Amount = item["AmountCommission"]?.ToString()?.Trim();
+
+                    if (!string.IsNullOrEmpty(Amount))
+                    {
+                        using (var db = new DBcontextModel())
+                        {
+                            Id=Convert.ToInt32(item["Id"]);
+                            var q = db.ComersBs.Where(c => c.Id==Id).First();
+                            DataRow newRow = dt.NewRow();
+
+                            // فرض کنیم ستون‌های Excel همین نام‌ها را دارند
+                            newRow["Id"] = Convert.ToInt32(item["Id"]);
+                            newRow["SeryalH"] = q.SeryalH;
+                            newRow["SeryalB"] = q.SeryalB;
+                            long amount = Convert.ToInt64(item["AmountCommission"]);
+                            newRow["Amount"] =amount;
+                            if (amount > 0)
+                            {
+                                dt.Rows.Add(newRow);
+                            }
+                        }
+                    }
+                }
+                dgvList1.DataSource = dt;
+                PublicClass.WindowAlart("1", "اطلاعات مورد نظر با موفقیت در جدول قرار گرفتند");
             }
-            else
+            catch (Exception er)
             {
-                cmbComers.Enabled=true;
-                btnShowComers.Enabled=true;
-                cmbList.Enabled=false;
-                btnSelectList.Enabled=false;
+                if (er.Message.Contains("being used by another process"))
+                {
+                    PublicClass.WindowAlart("2", "فایل در حال استفاده است، لطفاً فایل اکسل را ببندید و دوباره تلاش کنید.");
+                }
+                else
+                {
+                    PublicClass.ShowErrorMessage(er);
+                }
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCreatFile_Click(object sender, EventArgs e)
+        {
+            if (cmbCustomer.SelectedIndex==-1)
+            {
+                PublicClass.StopMesseg(ResourceCode.T042); return;
+            }
+
+            frmCommissionCreateFile f = new frmCommissionCreateFile();
+            f.CustomerId=CustomerId;
+            f.ShowDialog();
         }
     }
 }

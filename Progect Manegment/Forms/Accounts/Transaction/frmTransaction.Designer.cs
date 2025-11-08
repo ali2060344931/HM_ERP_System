@@ -176,7 +176,11 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(619, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(762, 0);
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.Location = new System.Drawing.Point(728, 0);
             // 
             // cmbContraAccountFrom
             // 

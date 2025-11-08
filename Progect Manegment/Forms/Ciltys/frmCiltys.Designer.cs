@@ -136,8 +136,8 @@
             // 
             // buttonX1
             // 
-            this.buttonX1.Location = new System.Drawing.Point(403, 0);
-            this.buttonX1.Size = new System.Drawing.Size(34, 34);
+            this.buttonX01.Location = new System.Drawing.Point(403, 0);
+            this.buttonX01.Size = new System.Drawing.Size(34, 34);
             // 
             // dgvList
             // 

@@ -36,8 +36,12 @@
             this.dgvListB = new GridExEx.GridExEx();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnImportFile = new DevComponents.DotNetBar.ButtonX();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTitel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvListB
@@ -63,14 +67,14 @@
             dgvListB_Layout_0.LayoutString = resources.GetString("dgvListB_Layout_0.LayoutString");
             this.dgvListB.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvListB_Layout_0});
-            this.dgvListB.Location = new System.Drawing.Point(0, 0);
+            this.dgvListB.Location = new System.Drawing.Point(0, 29);
             this.dgvListB.Name = "dgvListB";
             this.dgvListB.RecordNavigator = true;
             this.dgvListB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListB.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListB.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListB.SettingsKey = "frmComersB";
-            this.dgvListB.Size = new System.Drawing.Size(1129, 418);
+            this.dgvListB.Size = new System.Drawing.Size(1129, 389);
             this.dgvListB.Sortable = true;
             this.dgvListB.TabIndex = 87;
             this.dgvListB.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -81,6 +85,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnImportFile);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 418);
@@ -107,12 +112,43 @@
             this.btnImportFile.Text = "ذخیره جدول به اکسل";
             this.btnImportFile.Click += new System.EventHandler(this.btnImportFile_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblTitel);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1129, 29);
+            this.panel2.TabIndex = 89;
+            // 
+            // lblTitel
+            // 
+            this.lblTitel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitel.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblTitel.Location = new System.Drawing.Point(0, 0);
+            this.lblTitel.Name = "lblTitel";
+            this.lblTitel.Size = new System.Drawing.Size(1129, 29);
+            this.lblTitel.TabIndex = 0;
+            this.lblTitel.Text = "لیست بارنامه های ثبت نشده پورسانت برای ";
+            this.lblTitel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(636, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(493, 32);
+            this.label1.TabIndex = 104;
+            this.label1.Text = "با فیلتر کردن لیست، آیتم های مورد نظر را انتخاب و سپس ذخیره نمائید.";
+            // 
             // frmCommissionCreateFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1129, 450);
             this.Controls.Add(this.dgvListB);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmCommissionCreateFile";
@@ -120,6 +156,7 @@
             this.Load += new System.EventHandler(this.frmCommissionCreateFile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -129,5 +166,8 @@
         public GridExEx.GridExEx dgvListB;
         private System.Windows.Forms.Panel panel1;
         public DevComponents.DotNetBar.ButtonX btnImportFile;
+        private System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.Label lblTitel;
+        private System.Windows.Forms.Label label1;
     }
 }

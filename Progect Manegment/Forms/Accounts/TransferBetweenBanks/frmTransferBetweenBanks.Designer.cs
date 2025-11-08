@@ -81,6 +81,7 @@
             this.dropDownCommand2 = new Janus.Windows.Ribbon.DropDownCommand();
             this.separatorCommand1 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.dropDownCommand3 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -191,7 +192,7 @@
             this.txtAmount2.Number = null;
             this.txtAmount2.SelectedDate = null;
             this.txtAmount2.Shamsi = null;
-            this.txtAmount2.Size = new System.Drawing.Size(173, 32);
+            this.txtAmount2.Size = new System.Drawing.Size(165, 32);
             this.txtAmount2.TabIndex = 3;
             this.txtAmount2.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtAmount2.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
@@ -208,7 +209,7 @@
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label28.Location = new System.Drawing.Point(725, 62);
+            this.label28.Location = new System.Drawing.Point(721, 62);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(68, 18);
             this.label28.TabIndex = 203;
@@ -245,7 +246,7 @@
             this.cmbDetailedAccountsTo.DesignTimeLayout = cmbDetailedAccountsTo_DesignTimeLayout;
             this.cmbDetailedAccountsTo.DisplayMember = "Name";
             this.cmbDetailedAccountsTo.Image = ((System.Drawing.Image)(resources.GetObject("cmbDetailedAccountsTo.Image")));
-            this.cmbDetailedAccountsTo.Location = new System.Drawing.Point(968, 56);
+            this.cmbDetailedAccountsTo.Location = new System.Drawing.Point(960, 56);
             this.cmbDetailedAccountsTo.MaxLength = 8;
             this.cmbDetailedAccountsTo.Name = "cmbDetailedAccountsTo";
             this.cmbDetailedAccountsTo.SelectedIndex = -1;
@@ -286,7 +287,7 @@
             this.cmbDetailedAccountsFr.DesignTimeLayout = cmbDetailedAccountsFr_DesignTimeLayout;
             this.cmbDetailedAccountsFr.DisplayMember = "Name";
             this.cmbDetailedAccountsFr.Image = ((System.Drawing.Image)(resources.GetObject("cmbDetailedAccountsFr.Image")));
-            this.cmbDetailedAccountsFr.Location = new System.Drawing.Point(968, 19);
+            this.cmbDetailedAccountsFr.Location = new System.Drawing.Point(960, 19);
             this.cmbDetailedAccountsFr.MaxLength = 8;
             this.cmbDetailedAccountsFr.Name = "cmbDetailedAccountsFr";
             this.cmbDetailedAccountsFr.SelectedIndex = -1;
@@ -352,7 +353,7 @@
             this.txtAmount1.Number = null;
             this.txtAmount1.SelectedDate = null;
             this.txtAmount1.Shamsi = null;
-            this.txtAmount1.Size = new System.Drawing.Size(173, 32);
+            this.txtAmount1.Size = new System.Drawing.Size(165, 32);
             this.txtAmount1.TabIndex = 2;
             this.txtAmount1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtAmount1.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
@@ -384,7 +385,8 @@
             this.lblAccountBalancT.Name = "lblAccountBalancT";
             this.lblAccountBalancT.Size = new System.Drawing.Size(133, 25);
             this.lblAccountBalancT.TabIndex = 198;
-            this.lblAccountBalancT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAccountBalancT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.lblAccountBalancT, "مــانده حســـاب");
             // 
             // lblAccountBalancF
             // 
@@ -395,7 +397,8 @@
             this.lblAccountBalancF.Name = "lblAccountBalancF";
             this.lblAccountBalancF.Size = new System.Drawing.Size(132, 25);
             this.lblAccountBalancF.TabIndex = 198;
-            this.lblAccountBalancF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAccountBalancF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip1.SetToolTip(this.lblAccountBalancF, "مــانده حســـاب");
             // 
             // label1
             // 
@@ -403,7 +406,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(1195, 62);
+            this.label1.Location = new System.Drawing.Point(1188, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 18);
             this.label1.TabIndex = 199;
@@ -418,7 +421,7 @@
             this.buttonX1.BackColor = System.Drawing.Color.Transparent;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX1.Location = new System.Drawing.Point(938, 57);
+            this.buttonX1.Location = new System.Drawing.Point(932, 57);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX1.Size = new System.Drawing.Size(28, 28);
@@ -453,7 +456,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(1195, 25);
+            this.label5.Location = new System.Drawing.Point(1188, 25);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 18);
             this.label5.TabIndex = 199;
@@ -467,7 +470,7 @@
             this.btnAddNewCustomer.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewCustomer.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewCustomer.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddNewCustomer.Location = new System.Drawing.Point(938, 20);
+            this.btnAddNewCustomer.Location = new System.Drawing.Point(932, 20);
             this.btnAddNewCustomer.Name = "btnAddNewCustomer";
             this.btnAddNewCustomer.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddNewCustomer.Size = new System.Drawing.Size(28, 28);
@@ -548,11 +551,11 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(729, 25);
+            this.label14.Location = new System.Drawing.Point(721, 25);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(59, 18);
+            this.label14.Size = new System.Drawing.Size(75, 18);
             this.label14.TabIndex = 196;
-            this.label14.Text = "مبلغ سنــد:";
+            this.label14.Text = "مبلغ جابجایی:";
             // 
             // uiPanelGroup1
             // 
@@ -856,5 +859,6 @@
         private Janus.Windows.Ribbon.DropDownCommand dropDownCommand2;
         private Janus.Windows.Ribbon.SeparatorCommand separatorCommand1;
         private Janus.Windows.Ribbon.DropDownCommand dropDownCommand3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

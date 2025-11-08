@@ -51,14 +51,21 @@
             this.txtDes = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.btnCreatFile = new DevComponents.DotNetBar.ButtonX();
-            this.uiTab1 = new Janus.Windows.UI.Tab.UITab();
-            this.uiTabPage2 = new Janus.Windows.UI.Tab.UITabPage();
-            this.uiTabPage3 = new Janus.Windows.UI.Tab.UITabPage();
             this.dgvList1 = new GridExEx.GridExEx();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnImportFile = new DevComponents.DotNetBar.ButtonX();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAddTolist = new DevComponents.DotNetBar.ButtonX();
+            this.chkRegAccount = new System.Windows.Forms.CheckBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.cmsdgv = new Janus.Windows.Ribbon.RibbonContextMenu(this.components);
+            this.dropDownCommand1 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.dropDownCommand2 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.separatorCommand1 = new Janus.Windows.Ribbon.SeparatorCommand();
+            this.dropDownCommand3 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.dropDownCommand4 = new Janus.Windows.Ribbon.DropDownCommand();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -70,67 +77,75 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbComers1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCommissionType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCustomer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiTab1)).BeginInit();
-            this.uiTab1.SuspendLayout();
-            this.uiTabPage2.SuspendLayout();
-            this.uiTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(599, 464);
+            this.pnlViewItemBody.Location = new System.Drawing.Point(0, 54);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(759, 460);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(599, 50);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(759, 54);
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 514);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(599, 28);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(759, 28);
             // 
             // pnlAddItemBodi
             // 
             this.pnlAddItemBodi.AutoScrollMinSize = new System.Drawing.Size(0, 200);
             this.pnlAddItemBodi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlAddItemBodi.Controls.Add(this.uiTab1);
+            this.pnlAddItemBodi.Controls.Add(this.dgvList1);
+            this.pnlAddItemBodi.Controls.Add(this.panel4);
+            this.pnlAddItemBodi.Controls.Add(this.panel2);
+            this.pnlAddItemBodi.Controls.Add(this.panel3);
             this.pnlAddItemBodi.Controls.Add(this.panel1);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(522, 514);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(521, 514);
             this.pnlAddItemBodi.TabIndex = 0;
             // 
             // pnlAddItemFoter
             // 
+            this.pnlAddItemFoter.Controls.Add(this.chkRegAccount);
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 514);
-            this.pnlAddItemFoter.Size = new System.Drawing.Size(522, 28);
+            this.pnlAddItemFoter.Size = new System.Drawing.Size(521, 28);
             this.pnlAddItemFoter.TabIndex = 1;
+            this.pnlAddItemFoter.Controls.SetChildIndex(this.btnSave, 0);
+            this.pnlAddItemFoter.Controls.SetChildIndex(this.btnNew, 0);
+            this.pnlAddItemFoter.Controls.SetChildIndex(this.chkRegAccount, 0);
             // 
             // btnSave
             // 
+            this.btnSave.Size = new System.Drawing.Size(153, 28);
+            this.btnSave.Text = "ذخیره(ثبت نهایی) F5";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(447, 0);
+            this.btnNew.Location = new System.Drawing.Point(446, 0);
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(360, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(444, 13);
             this.txtDateStart.Value = new System.DateTime(2025, 11, 2, 16, 4, 40, 280);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(158, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(242, 13);
             this.txtDateEnd.Value = new System.DateTime(2025, 11, 2, 16, 4, 40, 280);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(68, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(152, 16);
             this.btnShowListItems.Click += new System.EventHandler(this.btnShowListItems_Click);
             // 
             // labelX2
@@ -139,7 +154,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(288, 17);
+            this.labelX2.Location = new System.Drawing.Point(372, 18);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
@@ -148,25 +163,26 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(490, 17);
+            this.labelX1.Location = new System.Drawing.Point(574, 18);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Size = new System.Drawing.Size(601, 570);
+            this.pnlViewItems.Size = new System.Drawing.Size(761, 570);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(604, 3);
-            this.pnlAddItems.Size = new System.Drawing.Size(528, 570);
+            this.pnlAddItems.Location = new System.Drawing.Point(764, 3);
+            this.pnlAddItems.MinimumSize = new System.Drawing.Size(400, -1);
+            this.pnlAddItems.Size = new System.Drawing.Size(527, 570);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(565, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(725, 0);
             // 
-            // buttonX1
+            // buttonX01
             // 
-            this.buttonX1.Location = new System.Drawing.Point(531, 0);
+            this.buttonX01.Location = new System.Drawing.Point(691, 0);
             // 
             // dgvList
             // 
@@ -175,7 +191,7 @@
             this.dgvList.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
             this.dgvList.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.dgvList.FindCondition = null;
-            this.dgvList.FrozenColumns = 5;
+            this.dgvList.FrozenColumns = 3;
             this.dgvList.HiddenColumnSortingEnabled = false;
             this.dgvList.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
             dgvList_Layout_0.IsCurrentLayout = true;
@@ -188,7 +204,7 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.Size = new System.Drawing.Size(599, 464);
+            this.dgvList.Size = new System.Drawing.Size(759, 460);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -203,7 +219,7 @@
             // 
             this.txtAmount1.CheackCodeMeli = false;
             this.txtAmount1.Day = 0;
-            this.txtAmount1.Location = new System.Drawing.Point(272, 45);
+            this.txtAmount1.Location = new System.Drawing.Point(133, 4);
             this.txtAmount1.Miladi = new System.DateTime(((long)(0)));
             this.txtAmount1.Month = 0;
             this.txtAmount1.Name = "txtAmount1";
@@ -225,7 +241,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(418, 23);
+            this.label2.Location = new System.Drawing.Point(436, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 18);
             this.label2.TabIndex = 99;
@@ -236,18 +252,18 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(417, 15);
+            this.label1.Location = new System.Drawing.Point(469, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 18);
+            this.label1.Size = new System.Drawing.Size(42, 18);
             this.label1.TabIndex = 99;
-            this.label1.Text = "بارنامه(تکی):";
+            this.label1.Text = "بارنامه:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(418, 56);
+            this.label3.Location = new System.Drawing.Point(436, 41);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 18);
             this.label3.TabIndex = 99;
@@ -256,7 +272,7 @@
             // txtDate
             // 
             this.txtDate.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDate.Location = new System.Drawing.Point(269, 18);
+            this.txtDate.Location = new System.Drawing.Point(287, 5);
             this.txtDate.Name = "txtDate";
             this.txtDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDate.Size = new System.Drawing.Size(145, 29);
@@ -268,7 +284,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(418, 92);
+            this.label4.Location = new System.Drawing.Point(436, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 18);
             this.label4.TabIndex = 99;
@@ -279,7 +295,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(417, 50);
+            this.label5.Location = new System.Drawing.Point(274, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 18);
             this.label5.TabIndex = 99;
@@ -292,11 +308,11 @@
             this.cmbComers1.DesignTimeLayout = cmbComers1_DesignTimeLayout;
             this.cmbComers1.DisplayMember = "ComersH";
             this.cmbComers1.Image = ((System.Drawing.Image)(resources.GetObject("cmbComers1.Image")));
-            this.cmbComers1.Location = new System.Drawing.Point(268, 9);
+            this.cmbComers1.Location = new System.Drawing.Point(341, 4);
             this.cmbComers1.Name = "cmbComers1";
             this.cmbComers1.SelectedIndex = -1;
             this.cmbComers1.SelectedItem = null;
-            this.cmbComers1.Size = new System.Drawing.Size(145, 30);
+            this.cmbComers1.Size = new System.Drawing.Size(128, 30);
             this.cmbComers1.TabIndex = 1;
             this.cmbComers1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbComers1.ValueMember = "id";
@@ -309,7 +325,7 @@
             this.btnShowComers.BackColor = System.Drawing.Color.Transparent;
             this.btnShowComers.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnShowComers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowComers.Location = new System.Drawing.Point(249, 10);
+            this.btnShowComers.Location = new System.Drawing.Point(323, 5);
             this.btnShowComers.Name = "btnShowComers";
             this.btnShowComers.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnShowComers.Size = new System.Drawing.Size(18, 28);
@@ -325,11 +341,11 @@
             this.cmbCommissionType.DesignTimeLayout = cmbCommissionType_DesignTimeLayout;
             this.cmbCommissionType.DisplayMember = "Name";
             this.cmbCommissionType.Image = ((System.Drawing.Image)(resources.GetObject("cmbCommissionType.Image")));
-            this.cmbCommissionType.Location = new System.Drawing.Point(148, 50);
+            this.cmbCommissionType.Location = new System.Drawing.Point(167, 35);
             this.cmbCommissionType.Name = "cmbCommissionType";
             this.cmbCommissionType.SelectedIndex = -1;
             this.cmbCommissionType.SelectedItem = null;
-            this.cmbCommissionType.Size = new System.Drawing.Size(267, 30);
+            this.cmbCommissionType.Size = new System.Drawing.Size(266, 30);
             this.cmbCommissionType.TabIndex = 2;
             this.cmbCommissionType.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbCommissionType.ValueMember = "id";
@@ -342,7 +358,7 @@
             this.buttonX3.BackColor = System.Drawing.Color.Transparent;
             this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX3.Location = new System.Drawing.Point(129, 87);
+            this.buttonX3.Location = new System.Drawing.Point(148, 67);
             this.buttonX3.Name = "buttonX3";
             this.buttonX3.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX3.Size = new System.Drawing.Size(18, 28);
@@ -359,11 +375,11 @@
             this.cmbCustomer.DesignTimeLayout = cmbCustomer_DesignTimeLayout;
             this.cmbCustomer.DisplayMember = "Name";
             this.cmbCustomer.Image = ((System.Drawing.Image)(resources.GetObject("cmbCustomer.Image")));
-            this.cmbCustomer.Location = new System.Drawing.Point(148, 86);
+            this.cmbCustomer.Location = new System.Drawing.Point(167, 67);
             this.cmbCustomer.Name = "cmbCustomer";
             this.cmbCustomer.SelectedIndex = -1;
             this.cmbCustomer.SelectedItem = null;
-            this.cmbCustomer.Size = new System.Drawing.Size(267, 30);
+            this.cmbCustomer.Size = new System.Drawing.Size(266, 30);
             this.cmbCustomer.TabIndex = 3;
             this.cmbCustomer.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbCustomer.ValueMember = "id";
@@ -371,9 +387,10 @@
             // 
             // txtDes
             // 
+            this.txtDes.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtDes.CheackCodeMeli = false;
             this.txtDes.Day = 0;
-            this.txtDes.Location = new System.Drawing.Point(146, 79);
+            this.txtDes.Location = new System.Drawing.Point(3, 3);
             this.txtDes.Miladi = new System.DateTime(((long)(0)));
             this.txtDes.Month = 0;
             this.txtDes.Name = "txtDes";
@@ -381,7 +398,7 @@
             this.txtDes.Number = null;
             this.txtDes.SelectedDate = null;
             this.txtDes.Shamsi = null;
-            this.txtDes.Size = new System.Drawing.Size(267, 28);
+            this.txtDes.Size = new System.Drawing.Size(437, 28);
             this.txtDes.TabIndex = 4;
             this.txtDes.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
             this.txtDes.TextSimple = "";
@@ -391,10 +408,11 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(417, 84);
+            this.label7.Location = new System.Drawing.Point(446, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 18);
             this.label7.TabIndex = 99;
@@ -405,60 +423,19 @@
             this.btnCreatFile.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnCreatFile.BackColor = System.Drawing.Color.Transparent;
             this.btnCreatFile.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCreatFile.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCreatFile.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnCreatFile.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnCreatFile.Location = new System.Drawing.Point(372, 0);
+            this.btnCreatFile.Location = new System.Drawing.Point(127, 0);
             this.btnCreatFile.Name = "btnCreatFile";
             this.btnCreatFile.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnCreatFile.Size = new System.Drawing.Size(116, 30);
+            this.btnCreatFile.Size = new System.Drawing.Size(116, 25);
             this.btnCreatFile.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCreatFile.Symbol = "";
-            this.btnCreatFile.SymbolSize = 18F;
+            this.btnCreatFile.SymbolColor = System.Drawing.Color.LimeGreen;
+            this.btnCreatFile.SymbolSize = 15F;
             this.btnCreatFile.TabIndex = 102;
             this.btnCreatFile.Text = "ایجاد فایل";
             this.btnCreatFile.Click += new System.EventHandler(this.btnCreatFile_Click);
-            // 
-            // uiTab1
-            // 
-            this.uiTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTab1.FirstTabOffset = 3;
-            this.uiTab1.Location = new System.Drawing.Point(0, 124);
-            this.uiTab1.Name = "uiTab1";
-            this.uiTab1.Size = new System.Drawing.Size(522, 390);
-            this.uiTab1.TabIndex = 106;
-            this.uiTab1.TabPages.AddRange(new Janus.Windows.UI.Tab.UITabPage[] {
-            this.uiTabPage2,
-            this.uiTabPage3});
-            this.uiTab1.TabStripAlignment = Janus.Windows.UI.Tab.TabStripAlignment.Right;
-            this.uiTab1.TextOrientation = Janus.Windows.UI.Tab.TextOrientation.Horizontal;
-            this.uiTab1.VisualStyle = Janus.Windows.UI.Tab.TabVisualStyle.Office2010;
-            // 
-            // uiTabPage2
-            // 
-            this.uiTabPage2.Controls.Add(this.cmbComers1);
-            this.uiTabPage2.Controls.Add(this.txtAmount1);
-            this.uiTabPage2.Controls.Add(this.label5);
-            this.uiTabPage2.Controls.Add(this.label1);
-            this.uiTabPage2.Controls.Add(this.txtDes);
-            this.uiTabPage2.Controls.Add(this.label7);
-            this.uiTabPage2.Controls.Add(this.btnShowComers);
-            this.uiTabPage2.Key = "ON";
-            this.uiTabPage2.Location = new System.Drawing.Point(1, 1);
-            this.uiTabPage2.Name = "uiTabPage2";
-            this.uiTabPage2.Size = new System.Drawing.Size(488, 388);
-            this.uiTabPage2.TabStop = true;
-            this.uiTabPage2.Text = "تکی";
-            // 
-            // uiTabPage3
-            // 
-            this.uiTabPage3.Controls.Add(this.dgvList1);
-            this.uiTabPage3.Controls.Add(this.panel2);
-            this.uiTabPage3.Key = "List";
-            this.uiTabPage3.Location = new System.Drawing.Point(1, 1);
-            this.uiTabPage3.Name = "uiTabPage3";
-            this.uiTabPage3.Size = new System.Drawing.Size(488, 388);
-            this.uiTabPage3.TabStop = true;
-            this.uiTabPage3.Text = "فایل";
             // 
             // dgvList1
             // 
@@ -476,13 +453,13 @@
             dgvList1_Layout_0.LayoutString = resources.GetString("dgvList1_Layout_0.LayoutString");
             this.dgvList1.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvList1_Layout_0});
-            this.dgvList1.Location = new System.Drawing.Point(0, 30);
+            this.dgvList1.Location = new System.Drawing.Point(0, 167);
             this.dgvList1.Name = "dgvList1";
             this.dgvList1.RecordNavigator = true;
             this.dgvList1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList1.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList1.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList1.Size = new System.Drawing.Size(488, 358);
+            this.dgvList1.Size = new System.Drawing.Size(521, 313);
             this.dgvList1.Sortable = true;
             this.dgvList1.TabIndex = 106;
             this.dgvList1.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -493,12 +470,12 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnImportFile);
             this.panel2.Controls.Add(this.btnCreatFile);
+            this.panel2.Controls.Add(this.btnImportFile);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 142);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(488, 30);
+            this.panel2.Size = new System.Drawing.Size(521, 25);
             this.panel2.TabIndex = 107;
             // 
             // btnImportFile
@@ -511,10 +488,11 @@
             this.btnImportFile.Location = new System.Drawing.Point(0, 0);
             this.btnImportFile.Name = "btnImportFile";
             this.btnImportFile.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnImportFile.Size = new System.Drawing.Size(116, 30);
+            this.btnImportFile.Size = new System.Drawing.Size(127, 25);
             this.btnImportFile.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnImportFile.Symbol = "";
-            this.btnImportFile.SymbolSize = 20F;
+            this.btnImportFile.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnImportFile.SymbolSize = 15F;
             this.btnImportFile.TabIndex = 102;
             this.btnImportFile.Text = "دریافت از فایل";
             this.btnImportFile.Tooltip = "ورود اطلاعات از فایل اکسل به لیست";
@@ -522,6 +500,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtDate);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cmbCommissionType);
@@ -533,7 +512,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(522, 124);
+            this.panel1.Size = new System.Drawing.Size(521, 104);
             this.panel1.TabIndex = 107;
             // 
             // pictureBox1
@@ -542,16 +521,109 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(129, 124);
+            this.pictureBox1.Size = new System.Drawing.Size(129, 102);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 103;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnAddTolist
+            // 
+            this.btnAddTolist.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddTolist.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddTolist.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddTolist.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnAddTolist.Location = new System.Drawing.Point(3, 5);
+            this.btnAddTolist.Name = "btnAddTolist";
+            this.btnAddTolist.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnAddTolist.Size = new System.Drawing.Size(124, 25);
+            this.btnAddTolist.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddTolist.Symbol = "";
+            this.btnAddTolist.SymbolSize = 15F;
+            this.btnAddTolist.TabIndex = 102;
+            this.btnAddTolist.Text = "افزودن به لیست";
+            this.btnAddTolist.Click += new System.EventHandler(this.btnAddTolist_Click);
+            // 
+            // chkRegAccount
+            // 
+            this.chkRegAccount.AutoSize = true;
+            this.chkRegAccount.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkRegAccount.Location = new System.Drawing.Point(153, 0);
+            this.chkRegAccount.Name = "chkRegAccount";
+            this.chkRegAccount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chkRegAccount.Size = new System.Drawing.Size(140, 28);
+            this.chkRegAccount.TabIndex = 2;
+            this.chkRegAccount.Text = "ثبت سند حســابداری";
+            this.chkRegAccount.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtAmount1);
+            this.panel3.Controls.Add(this.cmbComers1);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.btnAddTolist);
+            this.panel3.Controls.Add(this.btnShowComers);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 104);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(521, 38);
+            this.panel3.TabIndex = 108;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.txtDes);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 480);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(521, 34);
+            this.panel4.TabIndex = 109;
+            // 
+            // cmsdgv
+            // 
+            this.cmsdgv.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.dropDownCommand1,
+            this.dropDownCommand2,
+            this.separatorCommand1,
+            this.dropDownCommand3,
+            this.dropDownCommand4});
+            this.cmsdgv.Name = "cmsdgv";
+            this.cmsdgv.CommandClick += new Janus.Windows.Ribbon.CommandEventHandler(this.ribbonContextMenu1_CommandClick);
+            // 
+            // dropDownCommand1
+            // 
+            this.dropDownCommand1.Key = "Edit";
+            this.dropDownCommand1.Name = "dropDownCommand1";
+            this.dropDownCommand1.Text = "ویرایش";
+            // 
+            // dropDownCommand2
+            // 
+            this.dropDownCommand2.Key = "Delete";
+            this.dropDownCommand2.Name = "dropDownCommand2";
+            this.dropDownCommand2.Text = "حذف";
+            // 
+            // separatorCommand1
+            // 
+            this.separatorCommand1.Key = "separatorCommand1";
+            this.separatorCommand1.Name = "separatorCommand1";
+            // 
+            // dropDownCommand3
+            // 
+            this.dropDownCommand3.Key = "AddDocumentToBanck";
+            this.dropDownCommand3.Name = "dropDownCommand3";
+            this.dropDownCommand3.Text = "ثبت مدارک";
+            // 
+            // dropDownCommand4
+            // 
+            this.dropDownCommand4.Key = "AddTransectionDocument";
+            this.dropDownCommand4.Name = "dropDownCommand4";
+            this.dropDownCommand4.Text = "ثبت سند حسابداری";
             // 
             // frmCommission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 576);
+            this.ClientSize = new System.Drawing.Size(1294, 576);
             this.Name = "frmCommission";
             this.Text = "پـــورســـانت ها";
             this.Load += new System.EventHandler(this.frmCommission_Load);
@@ -563,22 +635,22 @@
             this.pnlViewItemFoter.ResumeLayout(false);
             this.pnlAddItemBodi.ResumeLayout(false);
             this.pnlAddItemFoter.ResumeLayout(false);
+            this.pnlAddItemFoter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbComers1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCommissionType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCustomer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiTab1)).EndInit();
-            this.uiTab1.ResumeLayout(false);
-            this.uiTabPage2.ResumeLayout(false);
-            this.uiTabPage2.PerformLayout();
-            this.uiTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -602,12 +674,19 @@
         private Class_General.MyTextBoxJanus txtDes;
         public DevComponents.DotNetBar.ButtonX btnCreatFile;
         private System.Windows.Forms.Panel panel1;
-        private Janus.Windows.UI.Tab.UITab uiTab1;
-        private Janus.Windows.UI.Tab.UITabPage uiTabPage2;
-        private Janus.Windows.UI.Tab.UITabPage uiTabPage3;
         private System.Windows.Forms.PictureBox pictureBox1;
         public GridExEx.GridExEx dgvList1;
         private System.Windows.Forms.Panel panel2;
         public DevComponents.DotNetBar.ButtonX btnImportFile;
+        private System.Windows.Forms.CheckBox chkRegAccount;
+        public DevComponents.DotNetBar.ButtonX btnAddTolist;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private Janus.Windows.Ribbon.RibbonContextMenu cmsdgv;
+        private Janus.Windows.Ribbon.DropDownCommand dropDownCommand1;
+        private Janus.Windows.Ribbon.DropDownCommand dropDownCommand2;
+        private Janus.Windows.Ribbon.SeparatorCommand separatorCommand1;
+        private Janus.Windows.Ribbon.DropDownCommand dropDownCommand3;
+        private Janus.Windows.Ribbon.DropDownCommand dropDownCommand4;
     }
 }

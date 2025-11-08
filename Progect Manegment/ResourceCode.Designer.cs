@@ -1445,5 +1445,23 @@ namespace HM_ERP_System {
                 return ResourceManager.GetString("T153", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سریال بارنامه تکراری می باشد..
+        /// </summary>
+        internal static string T154 {
+            get {
+                return ResourceManager.GetString("T154", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to بدلیل ثبت سند حسابداری بارنامه مورد نظر امکان حذف نمی باشد..
+        /// </summary>
+        internal static string T155 {
+            get {
+                return ResourceManager.GetString("T155", resourceCulture);
+            }
+        }
     }
 }

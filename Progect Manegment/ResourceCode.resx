@@ -580,4 +580,10 @@
   <data name="T153" xml:space="preserve">
     <value>نوع پورسانت را انتخاب نمائید.</value>
   </data>
+  <data name="T154" xml:space="preserve">
+    <value>سریال بارنامه تکراری می باشد.</value>
+  </data>
+  <data name="T155" xml:space="preserve">
+    <value>بدلیل ثبت سند حسابداری بارنامه مورد نظر امکان حذف نمی باشد.</value>
+  </data>
 </root>

@@ -138,6 +138,9 @@
             this.uiPanel1 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel1Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
             this.dgvList = new GridExEx.GridExEx();
+            this.pnlViewItemFoter = new System.Windows.Forms.Panel();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
             this.uiPanel3 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel3Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
             this.txtDateEnd = new Atf.UI.DateTimeSelector();
@@ -155,9 +158,6 @@
             this.separatorCommand1 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.dropDownCommand3 = new Janus.Windows.Ribbon.DropDownCommand();
             this.dropDownCommand4 = new Janus.Windows.Ribbon.DropDownCommand();
-            this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
-            this.pnlViewItemFoter = new System.Windows.Forms.Panel();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlFrom)).BeginInit();
             this.pnlFrom.SuspendLayout();
@@ -193,11 +193,11 @@
             this.uiPanel1.SuspendLayout();
             this.uiPanel1Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            this.pnlViewItemFoter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel3)).BeginInit();
             this.uiPanel3.SuspendLayout();
             this.uiPanel3Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
-            this.pnlViewItemFoter.SuspendLayout();
             this.SuspendLayout();
             // 
             // uiPanelManager1
@@ -964,6 +964,7 @@
             this.lblAccountBalancT.Size = new System.Drawing.Size(161, 25);
             this.lblAccountBalancT.TabIndex = 158;
             this.lblAccountBalancT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.lblAccountBalancT, "مانده حساب");
             // 
             // label14
             // 
@@ -1448,6 +1449,7 @@
             this.lblAmontCheckDoc.Size = new System.Drawing.Size(152, 25);
             this.lblAmontCheckDoc.TabIndex = 165;
             this.lblAmontCheckDoc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.lblAmontCheckDoc, "مبلغ چک");
             // 
             // panel3
             // 
@@ -1727,6 +1729,52 @@
             this.dgvList.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
             this.dgvList.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvList_ColumnButtonClick);
             // 
+            // pnlViewItemFoter
+            // 
+            this.pnlViewItemFoter.Controls.Add(this.buttonX1);
+            this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
+            this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 280);
+            this.pnlViewItemFoter.Name = "pnlViewItemFoter";
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(1148, 28);
+            this.pnlViewItemFoter.TabIndex = 90;
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.buttonX1.Location = new System.Drawing.Point(1070, 0);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.buttonX1.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
+            this.buttonX1.Size = new System.Drawing.Size(39, 28);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.Symbol = "";
+            this.buttonX1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonX1.SymbolSize = 15F;
+            this.buttonX1.TabIndex = 4;
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnExportToExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnExportToExcel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnExportToExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnExportToExcel.Location = new System.Drawing.Point(1109, 0);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnExportToExcel.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
+            this.btnExportToExcel.Size = new System.Drawing.Size(39, 28);
+            this.btnExportToExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnExportToExcel.Symbol = "";
+            this.btnExportToExcel.SymbolColor = System.Drawing.Color.Green;
+            this.btnExportToExcel.SymbolSize = 15F;
+            this.btnExportToExcel.TabIndex = 3;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
             // uiPanel3
             // 
             this.uiPanel3.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
@@ -1891,52 +1939,6 @@
             this.dropDownCommand4.Name = "dropDownCommand4";
             this.dropDownCommand4.Text = "نمایش اسناد";
             // 
-            // btnExportToExcel
-            // 
-            this.btnExportToExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnExportToExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExportToExcel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnExportToExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnExportToExcel.Location = new System.Drawing.Point(1109, 0);
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnExportToExcel.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
-            this.btnExportToExcel.Size = new System.Drawing.Size(39, 28);
-            this.btnExportToExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnExportToExcel.Symbol = "";
-            this.btnExportToExcel.SymbolColor = System.Drawing.Color.Green;
-            this.btnExportToExcel.SymbolSize = 15F;
-            this.btnExportToExcel.TabIndex = 3;
-            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
-            // 
-            // pnlViewItemFoter
-            // 
-            this.pnlViewItemFoter.Controls.Add(this.buttonX1);
-            this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
-            this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 280);
-            this.pnlViewItemFoter.Name = "pnlViewItemFoter";
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(1148, 28);
-            this.pnlViewItemFoter.TabIndex = 90;
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX1.Location = new System.Drawing.Point(1070, 0);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.buttonX1.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
-            this.buttonX1.Size = new System.Drawing.Size(39, 28);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.Symbol = "";
-            this.buttonX1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonX1.SymbolSize = 15F;
-            this.buttonX1.TabIndex = 4;
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
-            // 
             // frmRecevingPaymentNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -1990,12 +1992,12 @@
             this.uiPanel1.ResumeLayout(false);
             this.uiPanel1Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
+            this.pnlViewItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel3)).EndInit();
             this.uiPanel3.ResumeLayout(false);
             this.uiPanel3Container.ResumeLayout(false);
             this.uiPanel3Container.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).EndInit();
-            this.pnlViewItemFoter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

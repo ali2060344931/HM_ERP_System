@@ -107,6 +107,7 @@
             this.pnlViewItemFoter.Controls.Add(this.btnRegGroupDoc);
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 490);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(703, 42);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnRegGroupDoc, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.label11, 0);
@@ -203,9 +204,14 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(524, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(490, 0);
             this.btnExportToExcel.Size = new System.Drawing.Size(179, 42);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.Location = new System.Drawing.Point(669, 0);
+            this.buttonX01.Size = new System.Drawing.Size(34, 42);
             // 
             // label1
             // 

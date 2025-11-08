@@ -89,6 +89,7 @@
             this.dropDownCommand2 = new Janus.Windows.Ribbon.DropDownCommand();
             this.separatorCommand1 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.dropDownCommand3 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -206,6 +207,7 @@
             this.lblAccountBalancF.Size = new System.Drawing.Size(154, 25);
             this.lblAccountBalancF.TabIndex = 183;
             this.lblAccountBalancF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.lblAccountBalancF, "مــانده حســـاب");
             // 
             // cmbDetailedAccountsFrom
             // 
@@ -452,6 +454,7 @@
             this.lblAccountBalancT.Size = new System.Drawing.Size(139, 25);
             this.lblAccountBalancT.TabIndex = 183;
             this.lblAccountBalancT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.lblAccountBalancT, "مــانده حســـاب");
             // 
             // cmbSpecificAccountTo
             // 
@@ -1006,5 +1009,6 @@
         private Janus.Windows.Ribbon.DropDownCommand dropDownCommand2;
         private Janus.Windows.Ribbon.SeparatorCommand separatorCommand1;
         private Janus.Windows.Ribbon.DropDownCommand dropDownCommand3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

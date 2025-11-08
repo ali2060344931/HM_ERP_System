@@ -1601,7 +1601,6 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     txtChequeOwner.Text="-";
                 }
 
-                //if (MessageBox.Show(ResourceCode.T122, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
                 //Todo DataTable کنترل ثبت رکوردهای تکراری در
                 DataRow existingRow = dt_Cheque1.Rows.Find(txtChequeNumber.Text);

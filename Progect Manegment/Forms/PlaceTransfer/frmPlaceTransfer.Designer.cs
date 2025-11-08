@@ -158,7 +158,7 @@
             // 
             // buttonX1
             // 
-            this.buttonX1.Location = new System.Drawing.Point(491, 0);
+            this.buttonX01.Location = new System.Drawing.Point(491, 0);
             // 
             // dgvList
             // 

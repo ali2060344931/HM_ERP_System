@@ -104,7 +104,7 @@
             // txtUserName
             // 
             this.txtUserName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtUserName.Location = new System.Drawing.Point(80, 89);
+            this.txtUserName.Location = new System.Drawing.Point(79, 89);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUserName.MaxLength = 10;
             this.txtUserName.Name = "txtUserName";
@@ -166,9 +166,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-1, 79);
+            this.pictureBox1.Location = new System.Drawing.Point(238, 89);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 97);
+            this.pictureBox1.Size = new System.Drawing.Size(67, 78);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 112;
             this.pictureBox1.TabStop = false;

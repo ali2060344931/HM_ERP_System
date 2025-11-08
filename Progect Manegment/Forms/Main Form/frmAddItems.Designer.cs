@@ -48,7 +48,7 @@
             this.pnlViewItemFoter = new System.Windows.Forms.Panel();
             this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
             this.gridEXExporter1 = new Janus.Windows.GridEX.Export.GridEXExporter(this.components);
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).BeginInit();
             this.pnlAddItems.SuspendLayout();
@@ -272,7 +272,7 @@
             // 
             // pnlViewItemFoter
             // 
-            this.pnlViewItemFoter.Controls.Add(this.buttonX1);
+            this.pnlViewItemFoter.Controls.Add(this.buttonX01);
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 504);
@@ -302,22 +302,22 @@
             // 
             // buttonX1
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX1.Location = new System.Drawing.Point(567, 0);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.buttonX1.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
-            this.buttonX1.Size = new System.Drawing.Size(34, 28);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.Symbol = "";
-            this.buttonX1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonX1.SymbolSize = 15F;
-            this.buttonX1.TabIndex = 4;
-            this.buttonX1.Tooltip = "چاپ جدول";
+            this.buttonX01.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX01.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX01.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX01.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonX01.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.buttonX01.Location = new System.Drawing.Point(567, 0);
+            this.buttonX01.Name = "buttonX1";
+            this.buttonX01.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.buttonX01.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
+            this.buttonX01.Size = new System.Drawing.Size(34, 28);
+            this.buttonX01.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX01.Symbol = "";
+            this.buttonX01.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonX01.SymbolSize = 15F;
+            this.buttonX01.TabIndex = 4;
+            this.buttonX01.Tooltip = "چاپ جدول";
             // 
             // frmAddItems
             // 
@@ -366,6 +366,6 @@
         public Janus.Windows.UI.Dock.UIPanel pnlAddItems;
         public DevComponents.DotNetBar.ButtonX btnExportToExcel;
         private Janus.Windows.GridEX.Export.GridEXExporter gridEXExporter1;
-        public DevComponents.DotNetBar.ButtonX buttonX1;
+        public DevComponents.DotNetBar.ButtonX buttonX01;
     }
 }

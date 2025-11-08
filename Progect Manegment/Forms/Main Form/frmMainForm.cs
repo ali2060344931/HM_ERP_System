@@ -58,7 +58,7 @@ namespace HM_ERP_System.Forms.Main_Form
         public void UpdateData()
         {
         }
-        /*
+
         protected override CreateParams CreateParams
         {
             get
@@ -70,7 +70,7 @@ namespace HM_ERP_System.Forms.Main_Form
                 return cp;
             }
         }
-       */
+
         private void frmMainForm_Load(object sender, EventArgs e)
         {
 

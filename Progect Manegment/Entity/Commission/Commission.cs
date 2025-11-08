@@ -30,6 +30,10 @@ namespace HM_ERP_System.Entity.Commission
         /// </summary>
         public long Amount { get; set; }
         /// <summary>
+        /// کد سند حسابداری
+        /// </summary>
+        public int TransactionId { get; set; }
+        /// <summary>
         /// تاریخ
         /// </summary>
         public string Date { get; set; }

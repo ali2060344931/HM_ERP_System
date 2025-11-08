@@ -95,7 +95,6 @@
             this.ribbonGroup6 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnSettingProg = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnFinancialYears = new Janus.Windows.Ribbon.ButtonCommand();
-            this.ribbonTab7 = new Janus.Windows.Ribbon.RibbonTab();
             this.backstageTabControl1 = new Janus.Windows.Ribbon.BackstageTabControl();
             this.ribbonStatusBar1 = new Janus.Windows.Ribbon.RibbonStatusBar();
             this.buttonCommand16 = new Janus.Windows.Ribbon.ButtonCommand();
@@ -128,7 +127,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1019, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1099, 27);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -152,7 +151,7 @@
             this.ribbon1.Location = new System.Drawing.Point(0, 0);
             this.ribbon1.Name = "ribbon1";
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1019, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1099, 185);
             // 
             // 
             // 
@@ -166,8 +165,7 @@
             this.ribbonTab5,
             this.ribbonTab6,
             this.ribbonTab2,
-            this.ribbonTab3,
-            this.ribbonTab7});
+            this.ribbonTab3});
             this.ribbon1.Text = "";
             // 
             // ribbonTab1
@@ -728,12 +726,6 @@
             this.btnFinancialYears.Text = "تعریف سال مالی";
             this.btnFinancialYears.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnFinancialYears_Click);
             // 
-            // ribbonTab7
-            // 
-            this.ribbonTab7.Key = "ribbonTab7";
-            this.ribbonTab7.Name = "ribbonTab7";
-            this.ribbonTab7.Text = "Tab 7";
-            // 
             // backstageTabControl1
             // 
             this.backstageTabControl1.Location = new System.Drawing.Point(0, 0);
@@ -746,13 +738,13 @@
             this.ribbonStatusBar1.LeftPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 669);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 759);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1019, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1099, 23);
             // 
             // 
             // 
@@ -842,7 +834,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 692);
+            this.ClientSize = new System.Drawing.Size(1099, 782);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);
@@ -935,6 +927,5 @@
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand17;
         private Janus.Windows.Ribbon.BackstageTabControl backstageTabControl1;
         private Janus.Windows.Ribbon.RibbonGroup ribbonGroup13;
-        private Janus.Windows.Ribbon.RibbonTab ribbonTab7;
     }
 }

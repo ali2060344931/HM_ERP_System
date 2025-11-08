@@ -3902,5 +3902,15 @@ namespace MyClass
             return (positiveRand % range) + min;
         }
 
+
+        public static (int,int) aaaa()
+        {
+
+
+
+
+
+            return (0, 0);
+        }
     }
 }

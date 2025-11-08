@@ -183,6 +183,15 @@ namespace HM_ERP_System.Entity.Basic_information
                 }
 
 
+                var q12_2 = db.Customers.Where(c=>c.SecretCode==11).Count();
+                if (q12_2 == 0)
+                {
+                    db.Customers.Add(new Customer.Customer { Name="هزینه پورسانت", CodMeli="1000000011", id_TypeCustomer=8, Tel="0", SecretCode=11 });
+                    db.SaveChanges();
+                }
+
+
+
                 var q13 = db.CustomerRoles.Count();
                 if (q13 == 0)
                 {

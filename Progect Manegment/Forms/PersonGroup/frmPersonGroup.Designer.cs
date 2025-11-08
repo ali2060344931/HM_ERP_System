@@ -63,7 +63,7 @@
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 388);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(394, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
-            this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX1, 0);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.label18, 0);
             // 
             // pnlAddItemBodi
@@ -135,7 +135,7 @@
             // 
             // buttonX1
             // 
-            this.buttonX1.Location = new System.Drawing.Point(326, 0);
+            this.buttonX01.Location = new System.Drawing.Point(326, 0);
             // 
             // label14
             // 

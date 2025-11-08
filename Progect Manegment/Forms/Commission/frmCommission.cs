@@ -1,6 +1,7 @@
 ﻿using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.Comers;
 using HM_ERP_System.Entity.TruckUsageType;
+using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Main_Form;
 
 using MyClass;
@@ -15,6 +16,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace HM_ERP_System.Forms.Commission
@@ -26,6 +28,8 @@ namespace HM_ERP_System.Forms.Commission
     {
         private readonly IUpdatableForms _updatableForms;
         public int ListId = 0;
+        public int ListId_ = 0;
+
         int UserId_ = PublicClass.UserId;
         public frmCommission(IUpdatableForms updatableForms)
         {
@@ -41,6 +45,13 @@ namespace HM_ERP_System.Forms.Commission
             txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
             txtDateEnd.Value = DateTime.Now;
 
+            dt.Columns.Add("Id", typeof(int));
+            dt.Columns.Add("SeryalH", typeof(int));
+            dt.Columns.Add("SeryalB", typeof(string));
+            dt.Columns.Add("Amount", typeof(long));
+            DataColumn productColumn = dt.Columns["Id"];//تعریف کلید اصلی
+            dt.PrimaryKey = new DataColumn[] { productColumn };
+
             UpdateData();
         }
 
@@ -52,7 +63,7 @@ namespace HM_ERP_System.Forms.Commission
         private void CallUpdateTata()
         {
             FilldgvList();
-            FillcmbComers();
+            //FillcmbComers();
             FillcmbCommissionType();
 
         }
@@ -85,6 +96,7 @@ namespace HM_ERP_System.Forms.Commission
                 using (var db = new DBcontextModel())
                 {
                     var q = from cm in db.ComersBs
+                            where !db.Commissions.Any(c => c.ComersBId == cm.Id && c.CustomerId == CustomerId)
                             select new
                             {
                                 cm.Id,
@@ -95,7 +107,6 @@ namespace HM_ERP_System.Forms.Commission
                     dt_Comers = new System.Data.DataTable();
                     dt_Comers = PublicClass.AddEntityTableToDataTable(q.ToList());
                 }
-
             }
             catch (Exception er)
             {
@@ -116,6 +127,10 @@ namespace HM_ERP_System.Forms.Commission
                             on co.CommissionTypeId equals pg.Id
                             join cu in db.Customers
                             on co.CustomerId equals cu.Id
+
+                            join tr in db.Transactions on co.TransactionId equals tr.Id into trj
+                            from tr in trj.DefaultIfEmpty() // در صورت نبود تراکنش
+
                             where string.Compare(co.Date, txtDateStart.Text) >= 0 && string.Compare(co.Date, txtDateEnd.Text) <= 0
 
                             select new
@@ -127,11 +142,11 @@ namespace HM_ERP_System.Forms.Commission
                                 ComersB = cm.SeryalH,
                                 CommissionType = pg.Name,
                                 Customer = cu.Family +" "+cu.Name,
+                                TransactionsSeryal = co.TransactionId==0 ? "" : tr.TransactionCode.ToString(),
                             };
                     dgvList.DataSource=q.ToList();
                     PublicClass.SettingGridEX(dgvList);
                 }
-
             }
             catch (Exception er)
             {
@@ -186,6 +201,7 @@ namespace HM_ERP_System.Forms.Commission
                 using (var db = new DBcontextModel())
                 {
                     var q = from ctg in db.CustomerToGroups
+
                             join cu in db.Customers
                             on ctg.CustomerId equals cu.Id
 
@@ -225,6 +241,7 @@ namespace HM_ERP_System.Forms.Commission
             try
             {
                 CustomerId = Convert.ToInt32(cmbCustomer.Value);
+                FillcmbComers();
             }
             catch (Exception)
             {
@@ -235,42 +252,43 @@ namespace HM_ERP_System.Forms.Commission
         {
             try
             {
-                if (PublicClass.FindEmptyControls(txtAmount1, ResourceCode.T081))
-                    return;
-
-                if (uiTab1.SelectedTab.Key=="ON")
-                {
-                    if (cmbComers1.SelectedIndex==-1)//بارنامه:تکی
-                    {
-                        PublicClass.ErrorMesseg(ResourceCode.T036);
-                        cmbComers1.Focus();
-                        return;
-                    }
-                }
-
-
-                if (cmbCommissionType.SelectedIndex==-1)//نوع پورسانت
-                {
-                    PublicClass.ErrorMesseg(ResourceCode.T153);
-                    cmbCommissionType.Focus();
-                    return;
-                }
-                if (cmbCustomer.SelectedIndex==-1)//طرف حساب
-                {
-                    PublicClass.ErrorMesseg(ResourceCode.T042);
-                    cmbCustomer.Focus();
-                    return;
-                }
-
                 using (var db = new DBcontextModel())
                 {
+
+                    if (cmbCommissionType.SelectedIndex==-1)//نوع پورسانت
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T153);
+                        cmbCommissionType.Focus();
+                        return;
+                    }
+                    if (cmbCustomer.SelectedIndex==-1)//طرف حساب
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T042);
+                        cmbCustomer.Focus();
+                        return;
+                    }
+
+
+
+                    if (dgvList1.RowCount==0 || dt.Rows.Count==0)
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T041);
+                        return;
+                    }
+
                     if (ListId == 0)
                     {
-                        int cont = db.Commissions.Count(c => c.ComersBId == ComersBId && c.CustomerId == CustomerId);
-                        if (cont > 0)
+                        foreach (DataRow item in dt.Rows)
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T060); return;
+                            int Id = Convert.ToInt32(item["Id"]);
+                            int cont = db.Commissions.Count(c => c.ComersBId == Id && c.CustomerId == CustomerId);
+                            if (cont > 0)
+                            {
+                                PublicClass.ErrorMesseg(ResourceCode.T060+'\n'+"سریال حواله: "+item["SeryalH"].ToString());
+                                return;
+                            }
                         }
+
                     }
                     else
                     {
@@ -283,19 +301,57 @@ namespace HM_ERP_System.Forms.Commission
 
                     if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                         return;
+                    string TransactionDate = PersianDate.NowPersianDate;
+                    
 
-                    var car = new Repository<Entity.Commission.Commission>(db);
-                    if (car.SaveOrUpdate(new Entity.Commission.Commission { Id = ListId, ComersBId=ComersBId, CommissionTypeId=CommissionTypeId, CustomerId=CustomerId, Date=txtDate.Text, Amount=Convert.ToInt64(txtAmount1.TextSimple), Des=txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
+                    int Series = 0;
                     {
-                        PublicClass.WindowAlart("1");
-                        if (_updatableForms!=null)
-                            _updatableForms.UpdateData();
-                        CelearItems();
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            int TransactionId = 0;long Amount = 0;
+                            Amount =Convert.ToInt64(item["Amount"]);
+
+                            //------------------ثبت سند حسابداری-----------------
+                            if (chkRegAccount.Checked)//ثبت سند حسابداری
+                            {
+                                string TransactionCode = PublicClass.CreatTransactionCode();
+
+                                Series++;
+                                int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجارى ،
+                                int DetailedAccountId = 0;
+                                int customertId = CustomerId;
+                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                if (serch1.Count()==0)
+                                    DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                else
+                                    DetailedAccountId=serch1.First().Id;
+                                TransactionId= PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, 0, Amount, 0, txtDes.Text, Series, false);
+
+
+                                Series++;
+                                //حساب معین
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80801).First().Id;//هزینه حمل کالا
+                                customertId = db.Customers.Where(c => c.SecretCode==11).First().Id;
+                                serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                if (serch1.Count()==0)
+                                    DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                else
+                                    DetailedAccountId=serch1.First().Id;
+                                PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, Amount, 0, 0, "بابت پورسانت", "", Series, true);
+
+                            }
+
+                            //------------------ثبت سند پورسنات-----------------
+                            var car = new Repository<Entity.Commission.Commission>(db);
+                            car.SaveOrUpdate(new Entity.Commission.Commission { Id = ListId, ComersBId=Convert.ToInt32(item["Id"]), CommissionTypeId=CommissionTypeId, CustomerId=CustomerId, Date=txtDate.Text, Amount=Amount, TransactionId=TransactionId, Des=txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
+                        }
                     }
-                    else
-                    {
-                        PublicClass.ErrorMesseg(ResourceCode.T044);
-                    }
+
+                    PublicClass.WindowAlart("1");
+                    if (_updatableForms!=null)
+                        _updatableForms.UpdateData();
+                    CelearItems();
+
                 }
             }
             catch (Exception er)
@@ -304,14 +360,51 @@ namespace HM_ERP_System.Forms.Commission
             }
         }
 
+        private void btnAddTolist_Click(object sender, EventArgs e)
+        {
+            if (PublicClass.FindEmptyControls(txtAmount1, ResourceCode.T081))
+                return;
+
+            if (cmbComers1.SelectedIndex==-1)//بارنامه:تکی
+            {
+                PublicClass.ErrorMesseg(ResourceCode.T036);
+                cmbComers1.Focus();
+                return;
+            }
+            DataRow existingRow = dt.Rows.Find(ComersBId);
+            if (existingRow == null)
+            {
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.ComersBs.Where(c => c.Id==ComersBId).First();
+                    DataRow newRow = dt.NewRow();
+                    newRow["Id"] =ComersBId;
+                    newRow["SeryalH"] = q.SeryalH;
+                    newRow["SeryalB"] = q.SeryalB;
+                    long amount = Convert.ToInt64(txtAmount1.TextSimple);
+                    newRow["Amount"] =amount;
+                    dt.Rows.Add(newRow);
+                    dgvList1.DataSource = dt;
+                }
+            }
+            else
+            {
+                PublicClass.StopMesseg(ResourceCode.T154);
+                return;
+
+            }
+        }
+
         private void CelearItems()
         {
+            ListId_ = 0;
             ListId = 0;
             txtAmount1.ResetText();
             txtDes.ResetText();
             cmbCommissionType.ResetText();
             cmbCustomer.ResetText();
             cmbComers1.Focus();
+            dt.Clear();
             FilldgvList();
         }
 
@@ -319,6 +412,13 @@ namespace HM_ERP_System.Forms.Commission
         {
             try
             {
+                ListId_ = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
+                if (e.Column.Key == "Details")
+                {
+                    cmsdgv.Show(Cursor.Position);
+                }
+                return;
+
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
@@ -332,7 +432,6 @@ namespace HM_ERP_System.Forms.Commission
                         txtAmount1.Text=q.Amount.ToString();
                         txtDes.Text=q.Des;
                         cmbComers1.Focus();
-
                     }
 
                 }
@@ -394,7 +493,7 @@ namespace HM_ERP_System.Forms.Commission
             //    btnSelectList.Enabled=false;
             //}
         }
-
+        DataTable dt = new DataTable();
         private void btnSelectList_Click(object sender, EventArgs e)
         {
             try
@@ -408,41 +507,56 @@ namespace HM_ERP_System.Forms.Commission
                 if (ofd.ShowDialog() == DialogResult.OK)
                     FileName = ofd.FileName;
 
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Id", typeof(int));
-                dt.Columns.Add("SeryalH", typeof(int));
-                dt.Columns.Add("SeryalB", typeof(string));
-                dt.Columns.Add("Amount", typeof(long));
+
+                //dt.Columns.Add("Id", typeof(int));
+                //dt.Columns.Add("SeryalH", typeof(int));
+                //dt.Columns.Add("SeryalB", typeof(string));
+                //dt.Columns.Add("Amount", typeof(long));
 
                 DataTable dataTable = new DataTable();
                 dataTable= PublicClass.ReadExcel_NPOI(FileName);
                 int Id = 0;
                 int UserId = PublicClass.UserId;
+                int i = 0;
                 foreach (DataRow item in dataTable.Rows)
                 {
                     var Amount = item["AmountCommission"]?.ToString()?.Trim();
 
-                    if (!string.IsNullOrEmpty(Amount))
-                    {
-                        using (var db = new DBcontextModel())
-                        {
-                            Id=Convert.ToInt32(item["Id"]);
-                            var q = db.ComersBs.Where(c => c.Id==Id).First();
-                            DataRow newRow = dt.NewRow();
+                    //DataRow existingRow = dt.Rows.Find(ComersBId);
 
-                            // فرض کنیم ستون‌های Excel همین نام‌ها را دارند
-                            newRow["Id"] = Convert.ToInt32(item["Id"]);
-                            newRow["SeryalH"] = q.SeryalH;
-                            newRow["SeryalB"] = q.SeryalB;
-                            long amount = Convert.ToInt64(item["AmountCommission"]);
-                            newRow["Amount"] =amount;
-                            if (amount > 0)
+                    //if (existingRow == null)
+                    {
+                        if (!string.IsNullOrEmpty(Amount))
+                        {
+                            using (var db = new DBcontextModel())
                             {
-                                dt.Rows.Add(newRow);
+                                Id=Convert.ToInt32(item["Id"]);
+                                var q = db.ComersBs.Where(c => c.Id==Id).First();
+                                DataRow newRow = dt.NewRow();
+                                // فرض کنیم ستون‌های Excel همین نام‌ها را دارند
+                                newRow["Id"] = Convert.ToInt32(item["Id"]);
+                                newRow["SeryalH"] = q.SeryalH;
+                                newRow["SeryalB"] = q.SeryalB;
+                                long amount = Convert.ToInt64(item["AmountCommission"]);
+                                newRow["Amount"] =amount;
+                                if (amount > 0)
+                                {
+                                    dt.Rows.Add(newRow);
+                                }
                             }
                         }
                     }
+                    //else
+                    //{
+                    //    i++;
+                    //}
                 }
+                //if (i!=0)
+                //{
+                //    PublicClass.StopMesseg("تعداد بارنامه ای تکراری در لیست: "+i.ToString());
+                //}
+
+
                 dgvList1.DataSource = dt;
                 PublicClass.WindowAlart("1", "اطلاعات مورد نظر با موفقیت در جدول قرار گرفتند");
             }
@@ -459,11 +573,6 @@ namespace HM_ERP_System.Forms.Commission
             }
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCreatFile_Click(object sender, EventArgs e)
         {
             if (cmbCustomer.SelectedIndex==-1)
@@ -472,8 +581,137 @@ namespace HM_ERP_System.Forms.Commission
             }
 
             frmCommissionCreateFile f = new frmCommissionCreateFile();
+            f.lblTitel.Text="لیست بارنامه های ثبت نشده برای "+cmbCustomer.Text;
             f.CustomerId=CustomerId;
             f.ShowDialog();
+        }
+
+        private void ribbonContextMenu1_CommandClick(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            switch (e.Command.Key)
+            {
+                case "Edit":
+                    using (var db = new DBcontextModel())
+                    {
+                        ListId=ListId_;
+                        var q0 = db.Commissions.Where(c => c.Id==ListId).First();
+                        if (q0.TransactionId==0)
+
+                        {
+                            var q = db.Commissions.Where(c => c.Id == ListId).First();
+                            txtDate.Text = q.Date;
+                            cmbComers1.Value=q.ComersBId;
+                            cmbCommissionType.Value=q.CommissionTypeId;
+                            cmbCustomer.Value=q.CustomerId;
+                            txtAmount1.Text=q.Amount.ToString();
+                            txtDes.Text=q.Des;
+                            cmbComers1.Focus();
+                        }
+                        else
+                        {
+                            PublicClass.StopMesseg(ResourceCode.T115); return;
+                        }
+
+                    }
+                    break;
+
+                case "Delete":
+                    using (var db = new DBcontextModel())
+                    {
+                        ListId=ListId_;
+                        var q0 = db.Commissions.Where(c => c.Id==ListId).First();
+                        if (q0.TransactionId==0)
+                        {
+                            if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                var q = db.Commissions.Where(c => c.Id == ListId).First();
+                                db.Commissions.Remove(q);
+                                PublicClass.WindowAlart("2");
+                                db.SaveChanges();
+                                FilldgvList();
+                                CelearItems();
+                            }
+                            ListId=0;
+                        }
+                        else
+                        {
+                            PublicClass.StopMesseg(ResourceCode.T155); return;
+                        }
+                    }
+
+                    break;
+                case "AddDocumentToBanck"://ثبت مدارک
+                    ListId=ListId_;
+                    string lblCaption = "شماره حواله:" + dgvList.GetRow().Cells["ComersB"].Value.ToString();
+
+                    PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
+                    FilldgvList();
+                    ListId=0;
+                    break;
+                case "AddTransectionDocument"://ثبت سند حسابداری
+                    ListId=ListId_;
+                    using (var db = new DBcontextModel())
+                    {
+                        var q = db.Commissions.Where(c => c.Id==ListId).First();
+                        if (q.TransactionId==0)
+                        {
+
+                            string TransactionCode = PublicClass.CreatTransactionCode();
+                            string TransactionDate = PersianDate.NowPersianDate;
+                            long Amount = q.Amount;
+
+                            int TransactionId = 0;
+                            int Series = 0;
+
+                            if (MessageBox.Show(ResourceCode.T111, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                return;
+
+                            //------------------ثبت سند حسابداری-----------------
+                            //if (chkRegAccount.Checked)//ثبت سند حسابداری
+                            {
+                                Series++;
+                                int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجارى ،
+                                int DetailedAccountId = 0;
+                                int customertId = q.CustomerId;
+                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                if (serch1.Count()==0)
+                                    DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                else
+                                    DetailedAccountId=serch1.First().Id;
+                                TransactionId= PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, 0, Amount, 0, txtDes.Text, Series, false);
+
+
+                                Series++;
+                                //حساب معین
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80801).First().Id;//هزینه حمل کالا
+                                customertId = db.Customers.Where(c => c.SecretCode==11).First().Id;
+                                serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                if (serch1.Count()==0)
+                                    DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                else
+                                    DetailedAccountId=serch1.First().Id;
+                                PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, Amount, 0, 0, "بابت پورسانت", "", Series, true);
+
+                                q.TransactionId=TransactionId;
+                                db.SaveChanges();
+
+                            }
+
+
+                            PublicClass.WindowAlart("1");
+                            if (_updatableForms!=null)
+                                _updatableForms.UpdateData();
+                            CelearItems();
+
+                        }
+                        else
+                        {
+                            PublicClass.StopMesseg(ResourceCode.T110); return;
+                        }
+                    }
+                    break;
+            }
+
         }
     }
 }

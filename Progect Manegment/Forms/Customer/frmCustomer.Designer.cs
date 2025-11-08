@@ -118,7 +118,7 @@
             this.pnlViewItemFoter.Controls.Add(this.btnAddCustomerByExcelFil);
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 583);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(742, 28);
-            this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX1, 0);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnAddCustomerByExcelFil, 0);
             // 
@@ -233,14 +233,14 @@
             // 
             // buttonX1
             // 
-            this.buttonX1.AutoExpandOnClick = true;
-            this.buttonX1.Location = new System.Drawing.Point(646, 0);
-            this.buttonX1.Size = new System.Drawing.Size(96, 28);
-            this.buttonX1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonX01.AutoExpandOnClick = true;
+            this.buttonX01.Location = new System.Drawing.Point(646, 0);
+            this.buttonX01.Size = new System.Drawing.Size(96, 28);
+            this.buttonX01.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnRepC1,
             this.buttonItem1});
-            this.buttonX1.Text = "گزارشات";
-            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
+            this.buttonX01.Text = "گزارشات";
+            this.buttonX01.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // dgvList
             // 

@@ -24,7 +24,9 @@ namespace HM_ERP_System.Entity.Commission
         /// <summary>
         /// کد مشتری
         /// </summary>
-        public int CustomerId { get; set; }
+        //public int? CustomerId { get; set; }
+        
+        public int CustomerToGroupsId { get; set; }
         /// <summary>
         /// مبلغ
         /// </summary>

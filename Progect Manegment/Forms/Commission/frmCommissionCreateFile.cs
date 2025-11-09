@@ -18,7 +18,7 @@ namespace HM_ERP_System.Forms.Commission
 {
     public partial class frmCommissionCreateFile : frmMasterForm
     {
-        public int? CustomerId;
+        public int? CustomerToGroupId;
         public frmCommissionCreateFile()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace HM_ERP_System.Forms.Commission
                 {
                     dgvListB.LoadLayoutFile(fs);
                 }
-                frmComers.FilldgvListB(dgvListB, "1400/01/01", "1500/01/01", CustomerId, null, true);
+                frmComers.FilldgvListB(dgvListB, "1400/01/01", "1500/01/01", CustomerToGroupId, null, true);
                 dgvListB.RootTable.Columns["Details"].Visible=false;
                 dgvListB.RootTable.Columns["select"].Visible=false;
                 //PublicClass.SettingGridEX(dgvListB);

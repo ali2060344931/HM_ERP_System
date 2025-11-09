@@ -135,35 +135,40 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(444, 13);
+            this.txtDateStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtDateStart.Location = new System.Drawing.Point(408, 13);
             this.txtDateStart.Value = new System.DateTime(2025, 11, 2, 16, 4, 40, 280);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(242, 13);
+            this.txtDateEnd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtDateEnd.Location = new System.Drawing.Point(206, 13);
             this.txtDateEnd.Value = new System.DateTime(2025, 11, 2, 16, 4, 40, 280);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(152, 16);
+            this.btnShowListItems.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnShowListItems.Location = new System.Drawing.Point(116, 16);
             this.btnShowListItems.Click += new System.EventHandler(this.btnShowListItems_Click);
             // 
             // labelX2
             // 
+            this.labelX2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(372, 18);
+            this.labelX2.Location = new System.Drawing.Point(336, 18);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
             // 
+            this.labelX1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(574, 18);
+            this.labelX1.Location = new System.Drawing.Point(538, 18);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems

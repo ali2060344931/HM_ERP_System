@@ -41,30 +41,40 @@ namespace HM_ERP_System.Forms.Settings
         }
         private void CallUpdateTata()
         {
-            txtSetDayToReportList.Value=Properties.Settings.Default.SetDayToReportList;
-            chkShowAccountBalance.Checked=Properties.Settings.Default.StatusShowAccountBalance;
-            //Todo: دستور نمایش عکس ها
-            DataTable onRec = new DataTable();
-            onRec = MyClass.Manage_Photos.Read_TableFromBank_InsertToDataTable("SELECT * FROM ImageCoes where id=1");
-            picLogo.Image = MyClass.Manage_Photos.GetImageFromeFieldValues(onRec.Rows[0]["Image"]);
-
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = db.Settings.Where(c => c.Code==1);
-                if (q.Count()==0)
+                txtSetDayToReportList.Value=Properties.Settings.Default.SetDayToReportList;
+                chkShowAccountBalance.Checked=Properties.Settings.Default.StatusShowAccountBalance;
+
+                using (var db = new DBcontextModel())
                 {
-                    string txt = "نام شرکت";
-                    db.Settings.Add(new Entity.Settings.Setting { Code=1, Subject=txt });
-                    db.SaveChanges();
-                    txtName.Text=txt;
+                    var q = db.Settings.Where(c => c.Code==1);
+                    if (q.Count()==0)
+                    {
+                        string txt = "نام شرکت";
+                        db.Settings.Add(new Entity.Settings.Setting { Code=1, Subject=txt });
+                        db.SaveChanges();
+                        txtName.Text=txt;
+                    }
+                    else
+                    {
+                        txtName.Text=q.First().Subject;
+                    }
+
+                //Todo: دستور نمایش عکس ها
+                DataTable onRec = new DataTable();
+                onRec = MyClass.Manage_Photos.Read_TableFromBank_InsertToDataTable("SELECT * FROM ImageCoes where id=1");
+                picLogo.Image = MyClass.Manage_Photos.GetImageFromeFieldValues(onRec.Rows[0]["Image"]);
+
+
                 }
-                else
-                {
-                    txtName.Text=q.First().Subject;
-                }
+
+
             }
-
-
+                catch (Exception er)
+                {
+                    PublicClass.ShowErrorMessage(er);
+                }
         }
 
         int ListId = 0;

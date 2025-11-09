@@ -111,6 +111,7 @@
             this.buttonCommand13 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnExitForProg = new Janus.Windows.Ribbon.ButtonCommand();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonCommand18 = new Janus.Windows.Ribbon.ButtonCommand();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,7 +131,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1131, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1139, 27);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -145,6 +146,8 @@
             // 
             this.ribbon1.BackstageMenuData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><BackstageMenu><ImageKey /><Key /><Text>Fil" +
     "e</Text></BackstageMenu>";
+            this.ribbon1.ControlBoxMenu.BottomCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.buttonCommand18});
             // 
             // 
             // 
@@ -154,7 +157,7 @@
             this.ribbon1.Location = new System.Drawing.Point(0, 0);
             this.ribbon1.Name = "ribbon1";
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1131, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1139, 185);
             // 
             // 
             // 
@@ -769,13 +772,13 @@
             this.ribbonStatusBar1.LeftPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 795);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 804);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1131, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1139, 23);
             // 
             // 
             // 
@@ -861,11 +864,17 @@
             this.btnExitForProg.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnExitForProg.Text = "خــروج";
             // 
+            // buttonCommand18
+            // 
+            this.buttonCommand18.Key = "ButtonCommand1";
+            this.buttonCommand18.Name = "buttonCommand18";
+            this.buttonCommand18.Text = "تست";
+            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1131, 818);
+            this.ClientSize = new System.Drawing.Size(1139, 827);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);
@@ -961,5 +970,6 @@
         private Janus.Windows.Ribbon.ButtonCommand btnShowListComersH;
         private Janus.Windows.Ribbon.ButtonCommand btnShowListComersB;
         private Janus.Windows.Ribbon.ButtonCommand btnShowListCommission;
+        private Janus.Windows.Ribbon.ButtonCommand buttonCommand18;
     }
 }

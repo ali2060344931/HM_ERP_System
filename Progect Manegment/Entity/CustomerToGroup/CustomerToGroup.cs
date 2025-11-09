@@ -16,7 +16,7 @@ namespace HM_ERP_System.Entity.CustomerToGroup
         public int CustomerId { get; set; }
         public int PersonGroupId { get; set; }
     }
-        public class CustomerToGroupConfig : EntityTypeConfiguration<CustomerToGroup>
+    public class CustomerToGroupConfig : EntityTypeConfiguration<CustomerToGroup>
     {
         public CustomerToGroupConfig()
         {

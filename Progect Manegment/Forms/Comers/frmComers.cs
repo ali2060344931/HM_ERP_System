@@ -1826,12 +1826,8 @@ namespace HM_ERP_System.Forms.Comers
                                    || (pt2.Name).Contains(serch)
                                    || (ca.Family + " " + ca.Name).Contains(serch)
                                    || (ga.Family + " " + ga.Name).Contains(serch)))
-                        //&& (Id == null || cmh.Id == Id.Value)
-                        //&& (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id && c.CustomerId == Id.Value))
- && (
-    hideIfInCommission
-        ? (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id && c.CustomerId == Id.Value))
-        : (Id == null || cmh.Id == Id.Value)
+
+ && (hideIfInCommission ? (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id &&c.CustomerToGroupsId == Id.Value)): (Id == null || cmh.Id == Id.Value)
 )
 
                         orderby cmb.Id descending

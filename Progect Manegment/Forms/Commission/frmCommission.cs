@@ -72,7 +72,7 @@ namespace HM_ERP_System.Forms.Commission
 
         private void CallUpdateTata()
         {
-            FilldgvList(dgvList,txtDateStart.Text, txtDateEnd.Text);
+            FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
 
             FillcmbCommissionType();
 
@@ -124,7 +124,7 @@ namespace HM_ERP_System.Forms.Commission
             }
         }
 
-        public static GridEX FilldgvList(Janus.Windows.GridEX.GridEX DG, string dateS, string dateE)
+        public static GridEX FilldgvList(GridExEx.GridExEx DG, string dateS, string dateE)
         {
             try
             {
@@ -155,7 +155,7 @@ namespace HM_ERP_System.Forms.Commission
                                 TransactionsSeryal = co.TransactionId==0 ? "" : tr.TransactionCode.ToString(),
                             };
                     DG.DataSource=q.ToList();
-                    //PublicClass.SettingGridEX(dx);
+                    PublicClass.SettingGridEX(DG);
                     return DG;
                 }
             }
@@ -253,6 +253,9 @@ namespace HM_ERP_System.Forms.Commission
             try
             {
                 CustomerId = Convert.ToInt32(cmbCustomer.Value);
+                cmbComers1.ResetText();
+                txtAmount1.ResetText();
+                dt.Clear();
                 FillcmbComers();
             }
             catch (Exception)
@@ -279,8 +282,12 @@ namespace HM_ERP_System.Forms.Commission
                         cmbCustomer.Focus();
                         return;
                     }
-
-
+                    if (txtDes.Text=="")//توضیحات
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T143);
+                        txtDes.Focus();
+                        return;
+                    }
 
                     if (dgvList1.RowCount==0 || dt.Rows.Count==0)
                     {
@@ -314,13 +321,13 @@ namespace HM_ERP_System.Forms.Commission
                     if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                         return;
                     string TransactionDate = PersianDate.NowPersianDate;
-                    
+
 
                     int Series = 0;
                     {
                         foreach (DataRow item in dt.Rows)
                         {
-                            int TransactionId = 0;long Amount = 0;
+                            int TransactionId = 0; long Amount = 0;
                             Amount =Convert.ToInt64(item["Amount"]);
 
                             //------------------ثبت سند حسابداری-----------------
@@ -397,13 +404,17 @@ namespace HM_ERP_System.Forms.Commission
                     newRow["Amount"] =amount;
                     dt.Rows.Add(newRow);
                     dgvList1.DataSource = dt;
+
+                    txtAmount1.ResetText();
+                    //cmbCustomer.ResetText();
+                    cmbComers1.ResetText();
+                    cmbComers1.Focus();
                 }
             }
             else
             {
                 PublicClass.StopMesseg(ResourceCode.T154);
                 return;
-
             }
         }
 
@@ -722,6 +733,13 @@ namespace HM_ERP_System.Forms.Commission
                     }
                     break;
             }
+
+        }
+
+        private void txtAmount1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
 
         }
     }

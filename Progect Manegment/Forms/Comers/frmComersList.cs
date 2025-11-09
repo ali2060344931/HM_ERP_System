@@ -65,6 +65,7 @@ namespace HM_ERP_System.Forms.Comers
                 PublicClass.ShowErrorMessage(er);
             }
         }
+        
         public void UpdateData()
         {
             CallUpdateTata();
@@ -83,7 +84,7 @@ namespace HM_ERP_System.Forms.Comers
                     this.Text="لیست بـــارنامه ها";
                     dgvListB.RootTable.Columns["Details"].Visible=false;
                     dgvListB.RootTable.Columns["select"].Visible=false;
-                    PublicClass.SettingGridEX(dgvListB);
+                    //PublicClass.SettingGridEX(dgvListB);
 
                 }
 
@@ -95,7 +96,7 @@ namespace HM_ERP_System.Forms.Comers
                     dgvListCommission.Visible=false;
                     this.Text="لیست حـــواله ها";
                     dgvListH.RootTable.Columns["Details"].Visible=false;
-                    PublicClass.SettingGridEX(dgvListH);
+                    //PublicClass.SettingGridEX(dgvListH);
 
                 }
 
@@ -107,7 +108,7 @@ namespace HM_ERP_System.Forms.Comers
                     dgvListH.Visible=false;
                     this.Text="لیست پورسانت ها";
                     dgvListCommission.RootTable.Columns["Details"].Visible=false;
-                    PublicClass.SettingGridEX(dgvListCommission);
+                    //PublicClass.SettingGridEX(dgvListCommission);
                 }
             }
             catch (Exception er)
@@ -123,20 +124,17 @@ namespace HM_ERP_System.Forms.Comers
             {
                 if (FormName=="ComersB")
                 {
-                    frmComers.FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, "");//لیست اسناد
+                    frmComers.FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, "");
                 }
 
                 else if (FormName=="ComersH")
                 {
                     frmComers.FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
-
                 }
                 else if (FormName=="Commission")
                 {
-                    frmComers.FilldgvListH(dgvListCommission, txtDateStart.Text, txtDateEnd.Text);
-
+                    frmCommission.FilldgvList(dgvListCommission, txtDateStart.Text, txtDateEnd.Text);
                 }
-
             }
             catch (Exception er)
             {

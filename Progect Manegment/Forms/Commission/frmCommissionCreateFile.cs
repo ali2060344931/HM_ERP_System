@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,21 +26,44 @@ namespace HM_ERP_System.Forms.Commission
 
         private void frmCommissionCreateFile_Load(object sender, EventArgs e)
         {
-            frmComers.FilldgvListB(dgvListB, "1400/01/01", "1500/01/01", CustomerId, null, true);
+            try
+            {
+                string layoutPathComersB = Path.Combine(Application.StartupPath, "DefaultGridLayoutComersB.xml");
+                using (var fs = new FileStream(layoutPathComersB, FileMode.OpenOrCreate, FileAccess.Read))
+                {
+                    dgvListB.LoadLayoutFile(fs);
+                }
+                frmComers.FilldgvListB(dgvListB, "1400/01/01", "1500/01/01", CustomerId, null, true);
+                dgvListB.RootTable.Columns["Details"].Visible=false;
+                dgvListB.RootTable.Columns["select"].Visible=false;
+                //PublicClass.SettingGridEX(dgvListB);
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
         private void btnImportFile_Click(object sender, EventArgs e)
         {
-            dgvListB.RootTable.Columns["Id"].Visible=true;
-            dgvListB.RootTable.Columns["AmountCommission"].Visible=true;
-            if (PublicClass.SaveGridExToExcel(dgvListB)==DialogResult.OK)
+            try
             {
-                Close();
+                dgvListB.RootTable.Columns["Id"].Visible=true;
+                dgvListB.RootTable.Columns["AmountCommission"].Visible=true;
+                if (PublicClass.SaveGridExToExcel(dgvListB)==DialogResult.OK)
+                {
+                    Close();
+                }
+                else
+                {
+                    dgvListB.RootTable.Columns["Id"].Visible=false;
+                    dgvListB.RootTable.Columns["AmountCommission"].Visible=false;
+                }
+
             }
-            else
+            catch (Exception er)
             {
-                dgvListB.RootTable.Columns["Id"].Visible=false;
-                dgvListB.RootTable.Columns["AmountCommission"].Visible=false;
+                PublicClass.ShowErrorMessage(er);
             }
         }
     }

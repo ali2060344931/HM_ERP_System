@@ -69,9 +69,9 @@
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_3 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column28.ButtonImage");
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_4 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column29.ButtonImage");
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column71.ButtonImage");
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_1 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column72.ButtonImage");
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_2 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column73.ButtonImage");
+            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column72.ButtonImage");
+            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_1 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column73.ButtonImage");
+            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_2 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column74.ButtonImage");
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel0Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
@@ -528,7 +528,7 @@
             this.uiTabPage1,
             this.uiTabPage2});
             this.uiTab1.TabStripAlignment = Janus.Windows.UI.Tab.TabStripAlignment.Right;
-            this.uiTab1.VisualStyle = Janus.Windows.UI.Tab.TabVisualStyle.Office2003;
+            this.uiTab1.VisualStyle = Janus.Windows.UI.Tab.TabVisualStyle.Office2007;
             this.uiTab1.SelectedTabChanged += new Janus.Windows.UI.Tab.TabEventHandler(this.uiTab1_SelectedTabChanged);
             // 
             // uiTabPage1
@@ -2193,7 +2193,7 @@
             // 
             this.uiGroupBox6.AutoScroll = true;
             this.uiGroupBox6.AutoScrollMinSize = new System.Drawing.Size(300, 0);
-            this.uiGroupBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("uiGroupBox6.BackgroundImage")));
+            this.uiGroupBox6.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.uiGroupBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.uiGroupBox6.Controls.Add(this.cmbBillLadingCast);
             this.uiGroupBox6.Controls.Add(this.cmbMethodCalFare);

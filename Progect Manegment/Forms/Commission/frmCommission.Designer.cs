@@ -228,13 +228,14 @@
             this.txtAmount1.SelectedDate = null;
             this.txtAmount1.Shamsi = null;
             this.txtAmount1.Size = new System.Drawing.Size(141, 28);
-            this.txtAmount1.TabIndex = 4;
+            this.txtAmount1.TabIndex = 1;
             this.txtAmount1.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
             this.txtAmount1.TextMode = HM_ERP_System.Class_General.MyTextBoxJanus.TextBoxMode.IntNumber;
             this.txtAmount1.TextSimple = "";
             this.txtAmount1.TextWatermark = null;
             this.txtAmount1.TextWatermarkForeColor = System.Drawing.Color.Gray;
             this.txtAmount1.Year = 0;
+            this.txtAmount1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAmount1_KeyDown);
             // 
             // label2
             // 
@@ -313,7 +314,7 @@
             this.cmbComers1.SelectedIndex = -1;
             this.cmbComers1.SelectedItem = null;
             this.cmbComers1.Size = new System.Drawing.Size(128, 30);
-            this.cmbComers1.TabIndex = 1;
+            this.cmbComers1.TabIndex = 0;
             this.cmbComers1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbComers1.ValueMember = "id";
             this.cmbComers1.ValueChanged += new System.EventHandler(this.cmbComers_ValueChanged);
@@ -346,7 +347,7 @@
             this.cmbCommissionType.SelectedIndex = -1;
             this.cmbCommissionType.SelectedItem = null;
             this.cmbCommissionType.Size = new System.Drawing.Size(266, 30);
-            this.cmbCommissionType.TabIndex = 2;
+            this.cmbCommissionType.TabIndex = 1;
             this.cmbCommissionType.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbCommissionType.ValueMember = "id";
             this.cmbCommissionType.ValueChanged += new System.EventHandler(this.cmbCommissionType_ValueChanged);
@@ -380,7 +381,7 @@
             this.cmbCustomer.SelectedIndex = -1;
             this.cmbCustomer.SelectedItem = null;
             this.cmbCustomer.Size = new System.Drawing.Size(266, 30);
-            this.cmbCustomer.TabIndex = 3;
+            this.cmbCustomer.TabIndex = 2;
             this.cmbCustomer.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbCustomer.ValueMember = "id";
             this.cmbCustomer.ValueChanged += new System.EventHandler(this.cmbCustomer_ValueChanged);
@@ -433,7 +434,7 @@
             this.btnCreatFile.Symbol = "";
             this.btnCreatFile.SymbolColor = System.Drawing.Color.LimeGreen;
             this.btnCreatFile.SymbolSize = 15F;
-            this.btnCreatFile.TabIndex = 102;
+            this.btnCreatFile.TabIndex = 0;
             this.btnCreatFile.Text = "ایجاد فایل";
             this.btnCreatFile.Click += new System.EventHandler(this.btnCreatFile_Click);
             // 
@@ -476,7 +477,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 142);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(521, 25);
-            this.panel2.TabIndex = 107;
+            this.panel2.TabIndex = 2;
             // 
             // btnImportFile
             // 
@@ -493,7 +494,7 @@
             this.btnImportFile.Symbol = "";
             this.btnImportFile.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnImportFile.SymbolSize = 15F;
-            this.btnImportFile.TabIndex = 102;
+            this.btnImportFile.TabIndex = 1;
             this.btnImportFile.Text = "دریافت از فایل";
             this.btnImportFile.Tooltip = "ورود اطلاعات از فایل اکسل به لیست";
             this.btnImportFile.Click += new System.EventHandler(this.btnSelectList_Click);
@@ -513,7 +514,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(521, 104);
-            this.panel1.TabIndex = 107;
+            this.panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
@@ -539,7 +540,7 @@
             this.btnAddTolist.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddTolist.Symbol = "";
             this.btnAddTolist.SymbolSize = 15F;
-            this.btnAddTolist.TabIndex = 102;
+            this.btnAddTolist.TabIndex = 2;
             this.btnAddTolist.Text = "افزودن به لیست";
             this.btnAddTolist.Click += new System.EventHandler(this.btnAddTolist_Click);
             // 
@@ -567,7 +568,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 104);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(521, 38);
-            this.panel3.TabIndex = 108;
+            this.panel3.TabIndex = 1;
             // 
             // panel4
             // 

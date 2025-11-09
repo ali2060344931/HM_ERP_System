@@ -1632,7 +1632,7 @@ namespace HM_ERP_System.Forms.Comers
             }
         }
 
-        public static GridEX FilldgvListH(GridEX dx, string dateS, string dateE, int? Id = null)
+        public static GridEX FilldgvListH(GridExEx.GridExEx dx, string dateS, string dateE, int? Id = null)
         {
             try
             {
@@ -1740,8 +1740,8 @@ namespace HM_ERP_System.Forms.Comers
                                 cmh.CotajNumber,
                             };
                     dx.DataSource = q.ToList();
-                    dx.AutoSizeColumns();
-                    //PublicClass.SettingGridEX(dgvListH);
+                    //dx.AutoSizeColumns();
+                    PublicClass.SettingGridEX(dx);
                     return dx;
                 }
             }
@@ -1752,212 +1752,8 @@ namespace HM_ERP_System.Forms.Comers
             }
         }
 
-        public static GridEX FilldgvListB_(Janus.Windows.GridEX.GridEX gx, string dateS, string dateE, int? Id = null, string serch = null)
-        {
-            try
-            {
-                using (var db = new DBcontextModel())
-                {
-                    var q = from cmb in db.ComersBs//جدول بارنامه
-
-                            join cmh in db.ComersHs
-                            on cmb.ComersHId equals cmh.Id//جدول حواله
-
-                            join ct1 in db.Ciltys
-                            on cmh.LoadingOrinigId equals ct1.Id
-
-                            join pt1 in db.PlaceTransfers
-                            on cmh.LoadingLocationId equals pt1.Id
-
-                            join ct2 in db.Ciltys
-                            on cmh.UnLoadingOrinigId equals ct2.Id
-
-                            join pt2 in db.PlaceTransfers
-                            on cmh.UnLoadingLocationId equals pt2.Id
-
-                            join pr in db.Products
-                            on cmh.ProductsId equals pr.Id
-
-                            join dr1 in db.Dravers
-                            on cmb.DaraverId1_ equals dr1.Id
-
-                            join cu1 in db.Customers
-                            on dr1.CustomerId equals cu1.Id
-
-                            join dr2 in db.Dravers
-                            on cmb.DaraverId2_ equals dr2.Id
-
-                            join cu2 in db.Customers
-                            on dr1.CustomerId equals cu2.Id
-
-                            join ca in db.Customers
-                            on cmb.CostAccountId equals ca.Id
-
-                            join ga in db.Customers
-                            on cmb.GoodsAccountId equals ga.Id
-
-                            join sd1 in db.Customers
-                            on cmb.SenderId equals sd1.Id
-
-                            join rs1 in db.Customers
-                            on cmb.ResiverId equals rs1.Id
-
-                            join rs2 in db.Customers
-                            on cmb.ResiverId2 equals rs2.Id into rs2Group
-                            from rs2Left in rs2Group.DefaultIfEmpty()
-
-                            join sd2 in db.Customers
-                            on cmb.SenderId2 equals sd2.Id into sd2Group
-                            from sd2Left in sd2Group.DefaultIfEmpty()
-
-                            join tcf in db.FareCalcMethods
-                            on cmb.TypeCalFareId equals tcf.Id
-
-                            //join tcm1 in db.TypeCalcMethods
-                            //on cmb.TypeCalcMethodsBId equals tcm1.Id//بارنامه ای، تناژی،درصدی، ندارد
-
-                            join mcf in db.TypeCalcMethods
-                            on cmb.MethodCalFareId equals mcf.Id
-
-                            //join pm1 in db.PaymentMethods
-                            //on cmb.PaymentMethodId equals pm1.Id//پیمانکار،راننده، ندارد
-
-                            join pm2 in db.PaymentMethods
-                            on cmb.BillLadingCastId equals pm2.Id//پیمانکار،راننده، ندارد
-
-                            join tcm2 in db.TypeCalcMethods
-                            on cmb.BillLadingMethodId equals tcm2.Id//بارنامه ای، تناژی،درصدی، ندارد
-
-                            //بارنامه نویس
-                            join sh in db.Customers
-                            on cmh.ShiperId equals sh.Id into shGroup
-                            from shLeft in shGroup.DefaultIfEmpty()
-
-
-                                //DetailedAccounts
-
-                                //join pton in db.Customers
-                                //on cmb.PaymentToOthersId equals pton.Id into ptonGroup
-                                //from ptnGroup in ptonGroup.DefaultIfEmpty()
-
-                            join pton in db.DetailedAccounts
-                            on cmb.PaymentToOthersId equals pton.Id into ptonGroup0
-                            from ptnGroup0 in ptonGroup0.DefaultIfEmpty()
-
-                            join pton2 in db.Customers
-                            on ptnGroup0.CustomerId equals pton2.Id into ptonGroup
-                            from ptnGroup in ptonGroup.DefaultIfEmpty()
-
-                            join cr in db.Cars
-                            on cmh.CarId equals cr.Id
-
-                            join tf in db.TransactionFees
-                            on cmb.BT equals tf.Id
-
-                            join doc in db.DocumentBancks
-                            on cmb.Id equals doc.ListInFoemId into docGroup
-                            //سند حسابداری
-                            join tr in db.Transactions
-                            on cmb.Id equals tr.ComerBId into TrGroup
-
-
-                            where string.Compare(cmb.DateB, dateS) >= 0 && string.Compare(cmb.DateB, dateE) <= 0
-
-                            where (string.IsNullOrEmpty(serch) ||((sd1.Family + " " + sd1.Name).Contains(serch) ||(sd2Left.Family + " " + sd2Left.Name).Contains(serch)||(rs1.Family + " " + rs1.Name).Contains(serch)||(rs2Left.Family + " " + rs2Left.Name).Contains(serch) ||(shLeft.Family+" "+shLeft.Name).Contains(serch)||(ct1.Name).Contains(serch)||(pt1.Name).Contains(serch)||(ct2.Name).Contains(serch)||(pt2.Name).Contains(serch) ||(ca.Family + " " + ca.Name).Contains(serch)||(ga.Family + " " + ga.Name).Contains(serch))) && (Id == null || cmh.Id == Id.Value)
-
-                            orderby cmb.Id descending
-
-                            select new
-                            {
-                                cmb.Id,
-                                cmb.DateB,
-                                cmb.SeryalB,
-                                cmb.SeryalH,
-                                Transaction = TrGroup.Count()!=0 ? true : false,
-                                LoadingOrinigName = ct1.Name,
-                                LoadingLocationName = pt1.Name,
-                                UnLoadingOrinigName = ct2.Name,
-                                UnLoadingLocationName = pt2.Name,
-                                CostAccountName = (ca.Family + " " + ca.Name).Trim(),
-                                GoodsAccountName = (ga.Family + " " + ga.Name).Trim(),
-                                ShiperName = shLeft!=null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
-                                CarPlat = cr.CarPlatSeryal + " " + cr.CarPlat,
-                                DaraverName = cu1.Family + " " + cu1.Name,
-                                DaraverTel = cu1.Tel,
-                                DaraverName2 = cu2.Family + " " + cu2.Name,
-                                DaraverTel2 = cu2.Tel,
-                                SenderName = sd1.Family + " " + sd1.Name,
-                                ResiverName = rs1.Family + " " + rs1.Name,
-                                SenderName2 = sd2Left!=null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
-                                ResiverName2 = rs2Left!=null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
-
-                                ProductsName = pr.Name,
-                                FareCalcMethodName = tcf.Name,
-                                MethodCalFareName = mcf.Name,
-
-                                CountDoc = docGroup.Where(c => c.FormName=="frmComersB").Count(),//آمار تعداد مدارک پیوست
-                                cmb.LoadWeight,
-                                cmb.WeightDeliveredGoods,
-                                cmb.FreightRate,
-                                cmb.CargoInsurance,
-                                cmb.LoadinCast,
-                                cmb.Incentive,
-                                cmb.StopCharge,
-                                cmb.Deduction,
-                                cmb.BalanceAccount,
-                                cmb.PaidFreightRate,
-                                cmb.InsurancCost,
-                                cmb.PaidIncentive,
-                                cmb.PaidStopCharge,
-                                cmb.DriverDeduction,
-                                cmb.BaseFreight,
-                                cmb.BillLadingAmount,
-                                cmb.InsuranceAmount,
-                                cmb.BillLadingWriterPercent,
-                                cmb.OtherBillLadingCosts,
-                                cmb.AmountPaidTruckDriver,
-                                cmb.BalanceAccountDraver,
-                                cmb.StatusDeliveryGoods,
-                                cmb.Description,
-                                cmb.PaymentToOthers1,
-                                cmb.PaymentToOthers2,
-                                PaymentToOthersName = ptnGroup!=null ? (ptnGroup.Family + " " + ptnGroup.Name).Trim() : "-",
-                                DesToOthers = cmb.DesToOthers,
-                                BillLadingCast = pm2.Name,//هزینه بارنامه
-                                BillLadingMethod = tcm2.Name,//نحوه محاسبه هزینه بارنامه
-                                cmb.BO,
-                                cmb.AE,
-                                cmb.AV,
-                                cmb.AX,
-                                cmb.AZ,
-                                cmb.BP,
-                                cmb.BK,
-                                cmb.BS,
-                                BT = tf.Name,
-                                cmb.AY,
-                                cmb.BV,
-                                cmb.Ac,
-                                cmb.Bn,
-                            };
-
-
-
-                    gx.DataSource = q.ToList();
-                    gx.AutoSizeColumns();
-                    //PublicClass.SettingGridEX(gx);
-                    return gx;
-                }
-            }
-            catch (Exception er)
-            {
-                PublicClass.ShowErrorMessage(er);
-                return null;
-            }
-        }
-
-
         public static GridEX FilldgvListB(
-            Janus.Windows.GridEX.GridEX gx,
+            GridExEx.GridExEx Gx,
             string dateS,
             string dateE,
             int? Id = null,
@@ -2111,10 +1907,11 @@ namespace HM_ERP_System.Forms.Comers
                             cmb.Bn,
                         };
 
-                    gx.DataSource = q.ToList();
-                    gx.AutoSizeColumns();
+                    Gx.DataSource = q.ToList();
+                    //gx.AutoSizeColumns();
+                    PublicClass.SettingGridEX(Gx);
                     
-                    return gx;
+                    return Gx;
                 }
             }
             catch (Exception er)
@@ -3381,9 +3178,7 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     cms_cmsDgvB.Show(Cursor.Position);
                 }
-
-
-
+                /*
                 else if (e.Column.Key == "Delete")
                 {
 
@@ -3396,7 +3191,7 @@ namespace HM_ERP_System.Forms.Comers
                     PublicClass.AddDocumentToBanck(this.Name + "B", ListId, lblCaption);
                     FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                 }
-
+                */
             }
             catch (Exception er)
             {
@@ -4476,13 +4271,13 @@ namespace HM_ERP_System.Forms.Comers
                         if (q.Count()==0)
                         {
                             AccountingDocumentRegistration(ListId);
+                            
                             FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                         }
                         else
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T110);
                         }
-
                     }
 
                     break;

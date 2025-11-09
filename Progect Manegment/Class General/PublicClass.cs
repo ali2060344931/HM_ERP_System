@@ -1633,7 +1633,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage(er);
+                //PublicClass.ShowErrorMessage(er);
                 return null;
             }
         }
@@ -3273,7 +3273,6 @@ namespace MyClass
             }
         }
 
-
         /// <summary>
         /// ثبت اسناد حسابداری بارنامه ها
         /// </summary>
@@ -3292,10 +3291,6 @@ namespace MyClass
         {
             using (var db = new DBcontextModel())
             {
-
-
-
-
                 using (var transaction = db.Database.BeginTransaction())
                 {
                     try
@@ -3359,7 +3354,7 @@ namespace MyClass
                         //AV سند کرایه راننده
                         {
                             double qcomBV = Math.Abs(qcom.BV);
-                            if (qcom.BV<0)//AX
+                            if (qcom.BV<0)//AXسند هرینه
                             {
                                 Series++;
 
@@ -3376,8 +3371,6 @@ namespace MyClass
                                     DetailedAccountId=serch1.First().Id;
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, "بابت هزینه کرایه حمل", "", Series, true);
-
-
 
 
                                 //*****************
@@ -3397,7 +3390,7 @@ namespace MyClass
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, 0, qcomBV, ComerBId, "بابت هزینه کرایه حمل", "", Series, true);
 
                             }
-                            else if (qcom.BV>0)//AV
+                            else if (qcom.BV>0)//AV سند درآمد
                             {
                                 Series++;
 
@@ -3447,7 +3440,7 @@ namespace MyClass
 
                             if (!StatusLading)
                             {
-                                if (qcom.AZ<0)//پرداخت شود
+                                if (qcom.AZ<0)//(پرداخت شود(سند هزینه
                                 {
                                     Series++;
                                     //حساب معین
@@ -3484,7 +3477,7 @@ namespace MyClass
                                     PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomAZ, 0, qcomAZ, ComerBId, "بابت هزینه بارنامه نویسی", "", Series, true);
 
                                 }
-                                else if (qcom.AZ>0)//دریافت شود
+                                else if (qcom.AZ>0)//(دریافت شود(سند درآمد
                                 {
                                     Series++;
                                     //حساب معین

@@ -29,59 +29,17 @@
         private void InitializeComponent()
         {
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column72.ButtonImage");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCommissionCreateFile));
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_1 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column73.ButtonImage");
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_2 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column74.ButtonImage");
-            this.dgvListB = new GridExEx.GridExEx();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnImportFile = new DevComponents.DotNetBar.ButtonX();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTitel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).BeginInit();
+            this.dgvListB = new GridExEx.GridExEx();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvListB
-            // 
-            this.dgvListB.DefaultComment = null;
-            this.dgvListB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvListB.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
-            this.dgvListB.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
-            this.dgvListB.FindCondition = null;
-            this.dgvListB.FrozenColumns = 9;
-            this.dgvListB.GroupTotals = Janus.Windows.GridEX.GroupTotals.Always;
-            this.dgvListB.HiddenColumnSortingEnabled = false;
-            this.dgvListB.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
-            dgvListB_Layout_0.IsCurrentLayout = true;
-            dgvListB_Layout_0.Key = "MyGrig";
-            dgvListB_Layout_0_Reference_0.Instance = ((object)(resources.GetObject("dgvListB_Layout_0_Reference_0.Instance")));
-            dgvListB_Layout_0_Reference_1.Instance = ((object)(resources.GetObject("dgvListB_Layout_0_Reference_1.Instance")));
-            dgvListB_Layout_0_Reference_2.Instance = ((object)(resources.GetObject("dgvListB_Layout_0_Reference_2.Instance")));
-            dgvListB_Layout_0.LayoutReferences.AddRange(new Janus.Windows.Common.Layouts.JanusLayoutReference[] {
-            dgvListB_Layout_0_Reference_0,
-            dgvListB_Layout_0_Reference_1,
-            dgvListB_Layout_0_Reference_2});
-            dgvListB_Layout_0.LayoutString = resources.GetString("dgvListB_Layout_0.LayoutString");
-            this.dgvListB.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
-            dgvListB_Layout_0});
-            this.dgvListB.Location = new System.Drawing.Point(0, 29);
-            this.dgvListB.Name = "dgvListB";
-            this.dgvListB.RecordNavigator = true;
-            this.dgvListB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dgvListB.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
-            this.dgvListB.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListB.SettingsKey = "frmComersB";
-            this.dgvListB.Size = new System.Drawing.Size(1129, 389);
-            this.dgvListB.Sortable = true;
-            this.dgvListB.TabIndex = 87;
-            this.dgvListB.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvListB.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
-            this.dgvListB.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.dgvListB.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListB.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
             // 
             // panel1
             // 
@@ -92,6 +50,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1129, 32);
             this.panel1.TabIndex = 88;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(636, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(493, 32);
+            this.label1.TabIndex = 104;
+            this.label1.Text = "با فیلتر کردن لیست، آیتم های مورد نظر را انتخاب و سپس ذخیره نمائید.";
             // 
             // btnImportFile
             // 
@@ -132,15 +100,35 @@
             this.lblTitel.Text = "لیست بارنامه های ثبت نشده پورسانت برای ";
             this.lblTitel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // dgvListB
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(636, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(493, 32);
-            this.label1.TabIndex = 104;
-            this.label1.Text = "با فیلتر کردن لیست، آیتم های مورد نظر را انتخاب و سپس ذخیره نمائید.";
+            this.dgvListB.DefaultComment = null;
+            this.dgvListB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvListB.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
+            this.dgvListB.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
+            this.dgvListB.FindCondition = null;
+            this.dgvListB.FrozenColumns = 5;
+            this.dgvListB.HiddenColumnSortingEnabled = false;
+            this.dgvListB.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
+            dgvListB_Layout_0.IsCurrentLayout = true;
+            dgvListB_Layout_0.Key = "MyGrig";
+            dgvListB_Layout_0.LayoutString = resources.GetString("dgvListB_Layout_0.LayoutString");
+            this.dgvListB.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
+            dgvListB_Layout_0});
+            this.dgvListB.Location = new System.Drawing.Point(0, 29);
+            this.dgvListB.Name = "dgvListB";
+            this.dgvListB.RecordNavigator = true;
+            this.dgvListB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dgvListB.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
+            this.dgvListB.Size = new System.Drawing.Size(1129, 389);
+            this.dgvListB.Sortable = true;
+            this.dgvListB.TabIndex = 90;
+            this.dgvListB.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dgvListB.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
+            this.dgvListB.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.dgvListB.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListB.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListB.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
             // 
             // frmCommissionCreateFile
             // 
@@ -154,20 +142,19 @@
             this.Name = "frmCommissionCreateFile";
             this.Text = "ایجاد فایل";
             this.Load += new System.EventHandler(this.frmCommissionCreateFile_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        public GridExEx.GridExEx dgvListB;
         private System.Windows.Forms.Panel panel1;
         public DevComponents.DotNetBar.ButtonX btnImportFile;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Label lblTitel;
         private System.Windows.Forms.Label label1;
+        public GridExEx.GridExEx dgvListB;
     }
 }

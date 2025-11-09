@@ -404,5 +404,28 @@ namespace HM_ERP_System.Forms.Main_Form
             f.DateReport="گزارش از تاریخ: "+"1404/01/01"+"  تا تاریخ: "+"1404/05/25";
             f.ShowDialog();
         }
+
+        private void btnShowListComersH_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            frmComersList frmComersList = new frmComersList();
+            frmComersList.FormName="ComersH";
+            frmComersList.ShowDialog();
+        }
+
+        private void btnShowListComersB_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            frmComersList frmComersList = new frmComersList();
+            frmComersList.FormName="ComersB";
+            frmComersList.ShowDialog();
+
+        }
+
+        private void btnShowListCommission_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            frmComersList frmComersList = new frmComersList();
+            frmComersList.FormName="Commission";
+            frmComersList.ShowDialog();
+
+        }
     }
 }

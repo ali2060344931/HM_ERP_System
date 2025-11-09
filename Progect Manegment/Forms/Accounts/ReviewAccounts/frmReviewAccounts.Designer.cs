@@ -355,7 +355,7 @@
             this.btnListRefresh.TabIndex = 202;
             this.btnListRefresh.TabStop = false;
             this.btnListRefresh.Text = "F5";
-            this.btnListRefresh.Tooltip = "لیست حواله یا بارنامه های دارای سند";
+            this.btnListRefresh.Tooltip = "نمایش(بروز رسانی) لیســـت";
             this.btnListRefresh.Click += new System.EventHandler(this.btnListRefresh_Click);
             // 
             // txtDateE

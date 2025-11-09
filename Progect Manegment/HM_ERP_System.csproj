@@ -759,6 +759,12 @@
     <Compile Include="Forms\Comers\frmComers.Designer.cs">
       <DependentUpon>frmComers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Comers\frmComersList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Comers\frmComersList.Designer.cs">
+      <DependentUpon>frmComersList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Commission\frmCommission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -991,6 +997,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Comers\frmComers.resx">
       <DependentUpon>frmComers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Comers\frmComersList.resx">
+      <DependentUpon>frmComersList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Commission\frmCommission.resx">
       <DependentUpon>frmCommission.cs</DependentUpon>

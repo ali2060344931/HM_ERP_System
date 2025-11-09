@@ -1,4 +1,5 @@
-﻿using GridExEx.GridForms;
+﻿using GridExEx;
+using GridExEx.GridForms;
 
 using HM_ERP_System.Class_General;
 using HM_ERP_System.Components;
@@ -40,6 +41,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -123,7 +125,20 @@ namespace HM_ERP_System.Forms.Comers
             cmbListSimilarComerB.Size=new Size(126, 30);
             btnEditCB.Visible=true;
             btnDeleteCB.Visible=true;
-            //cmbListSimilarComerB.Location=new Point(1083, 62);
+            
+            
+            string layoutPathComersB = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutComersB.xml");
+
+            using (var fs = new FileStream(layoutPathComersB, FileMode.Create, FileAccess.Write))
+            {
+                dgvListB.SaveLayoutFile(fs);
+            }
+            string layoutPathComersH = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutComersH.xml");
+
+            using (var fs = new FileStream(layoutPathComersH, FileMode.Create, FileAccess.Write))
+            {
+                dgvListH.SaveLayoutFile(fs);
+            }
             FormLoded=true;
 
             CallUpdateTataH();
@@ -2098,6 +2113,7 @@ namespace HM_ERP_System.Forms.Comers
 
                     gx.DataSource = q.ToList();
                     gx.AutoSizeColumns();
+                    
                     return gx;
                 }
             }

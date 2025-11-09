@@ -70,7 +70,7 @@ namespace Progect_Manegment
 
             Application.Run(new frmMainForm());
 
-            //Application.Run(new frmCommissionCreateFile());
+            //Application.Run(new frmComersList());
 
         }
     }

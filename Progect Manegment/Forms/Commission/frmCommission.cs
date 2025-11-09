@@ -4,6 +4,8 @@ using HM_ERP_System.Entity.TruckUsageType;
 using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Main_Form;
 
+using Janus.Windows.GridEX;
+
 using MyClass;
 
 using Progect_Manegment;
@@ -13,6 +15,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +48,13 @@ namespace HM_ERP_System.Forms.Commission
             txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
             txtDateEnd.Value = DateTime.Now;
 
+            string layoutPathCommission = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutCommission.xml");
+            using (var fs = new FileStream(layoutPathCommission, FileMode.Create, FileAccess.Write))
+            {
+                dgvList.SaveLayoutFile(fs);
+            }
+
+
             dt.Columns.Add("Id", typeof(int));
             dt.Columns.Add("SeryalH", typeof(int));
             dt.Columns.Add("SeryalB", typeof(string));
@@ -62,8 +72,8 @@ namespace HM_ERP_System.Forms.Commission
 
         private void CallUpdateTata()
         {
-            FilldgvList();
-            //FillcmbComers();
+            FilldgvList(dgvList,txtDateStart.Text, txtDateEnd.Text);
+
             FillcmbCommissionType();
 
         }
@@ -114,7 +124,7 @@ namespace HM_ERP_System.Forms.Commission
             }
         }
 
-        private void FilldgvList()
+        public static GridEX FilldgvList(Janus.Windows.GridEX.GridEX DG, string dateS, string dateE)
         {
             try
             {
@@ -129,9 +139,9 @@ namespace HM_ERP_System.Forms.Commission
                             on co.CustomerId equals cu.Id
 
                             join tr in db.Transactions on co.TransactionId equals tr.Id into trj
-                            from tr in trj.DefaultIfEmpty() // در صورت نبود تراکنش
+                            from tr in trj.DefaultIfEmpty()
 
-                            where string.Compare(co.Date, txtDateStart.Text) >= 0 && string.Compare(co.Date, txtDateEnd.Text) <= 0
+                            where string.Compare(co.Date, dateS) >= 0 && string.Compare(co.Date, dateE) <= 0
 
                             select new
                             {
@@ -144,13 +154,15 @@ namespace HM_ERP_System.Forms.Commission
                                 Customer = cu.Family +" "+cu.Name,
                                 TransactionsSeryal = co.TransactionId==0 ? "" : tr.TransactionCode.ToString(),
                             };
-                    dgvList.DataSource=q.ToList();
-                    PublicClass.SettingGridEX(dgvList);
+                    DG.DataSource=q.ToList();
+                    //PublicClass.SettingGridEX(dx);
+                    return DG;
                 }
             }
             catch (Exception er)
             {
                 PublicClass.ShowErrorMessage(er);
+                return null;
             }
         }
 
@@ -405,7 +417,7 @@ namespace HM_ERP_System.Forms.Commission
             cmbCustomer.ResetText();
             cmbComers1.Focus();
             dt.Clear();
-            FilldgvList();
+            FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
         }
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
@@ -468,7 +480,7 @@ namespace HM_ERP_System.Forms.Commission
 
         private void btnShowListItems_Click(object sender, EventArgs e)
         {
-            FilldgvList();
+            FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -611,7 +623,6 @@ namespace HM_ERP_System.Forms.Commission
                         {
                             PublicClass.StopMesseg(ResourceCode.T115); return;
                         }
-
                     }
                     break;
 
@@ -628,7 +639,7 @@ namespace HM_ERP_System.Forms.Commission
                                 db.Commissions.Remove(q);
                                 PublicClass.WindowAlart("2");
                                 db.SaveChanges();
-                                FilldgvList();
+                                FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
                                 CelearItems();
                             }
                             ListId=0;
@@ -645,7 +656,7 @@ namespace HM_ERP_System.Forms.Commission
                     string lblCaption = "شماره حواله:" + dgvList.GetRow().Cells["ComersB"].Value.ToString();
 
                     PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
-                    FilldgvList();
+                    FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
                     ListId=0;
                     break;
                 case "AddTransectionDocument"://ثبت سند حسابداری

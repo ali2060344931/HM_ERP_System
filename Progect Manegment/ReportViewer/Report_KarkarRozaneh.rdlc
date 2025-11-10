@@ -533,7 +533,6 @@
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -569,7 +568,6 @@
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -605,7 +603,6 @@
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -642,7 +639,6 @@
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -679,7 +675,6 @@
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
-                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -715,7 +710,6 @@
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>7pt</FontSize>
-                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -751,7 +745,6 @@
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>7pt</FontSize>
-                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -772,7 +765,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -788,7 +780,6 @@
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>7pt</FontSize>
-                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -824,7 +815,6 @@
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>7pt</FontSize>
-                                    <Color>#4d4d4d</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -882,7 +872,7 @@
             <Top>0.32384cm</Top>
             <Left>0.31037cm</Left>
             <Height>1.4cm</Height>
-            <Width>27.903cm</Width>
+            <Width>27.90302cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

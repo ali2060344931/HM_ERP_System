@@ -66,6 +66,7 @@
             this.separatorCommand1 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.dropDownCommand3 = new Janus.Windows.Ribbon.DropDownCommand();
             this.dropDownCommand4 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.dropDownCommand5 = new Janus.Windows.Ribbon.DropDownCommand();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -135,25 +136,21 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateStart.Location = new System.Drawing.Point(408, 13);
             this.txtDateStart.Value = new System.DateTime(2025, 11, 2, 16, 4, 40, 280);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateEnd.Location = new System.Drawing.Point(206, 13);
             this.txtDateEnd.Value = new System.DateTime(2025, 11, 2, 16, 4, 40, 280);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnShowListItems.Location = new System.Drawing.Point(116, 16);
             this.btnShowListItems.Click += new System.EventHandler(this.btnShowListItems_Click);
             // 
             // labelX2
             // 
-            this.labelX2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -163,7 +160,6 @@
             // 
             // labelX1
             // 
-            this.labelX1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -184,10 +180,12 @@
             // btnExportToExcel
             // 
             this.btnExportToExcel.Location = new System.Drawing.Point(725, 0);
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(691, 0);
+            this.buttonX01.Visible = false;
             // 
             // dgvList
             // 
@@ -592,7 +590,8 @@
             this.dropDownCommand2,
             this.separatorCommand1,
             this.dropDownCommand3,
-            this.dropDownCommand4});
+            this.dropDownCommand4,
+            this.dropDownCommand5});
             this.cmsdgv.Name = "cmsdgv";
             this.cmsdgv.CommandClick += new Janus.Windows.Ribbon.CommandEventHandler(this.ribbonContextMenu1_CommandClick);
             // 
@@ -624,6 +623,12 @@
             this.dropDownCommand4.Key = "AddTransectionDocument";
             this.dropDownCommand4.Name = "dropDownCommand4";
             this.dropDownCommand4.Text = "ثبت سند حسابداری";
+            // 
+            // dropDownCommand5
+            // 
+            this.dropDownCommand5.Key = "detailsComersHB";
+            this.dropDownCommand5.Name = "dropDownCommand5";
+            this.dropDownCommand5.Text = "مشخصات حواله و بارنامه";
             // 
             // frmCommission
             // 
@@ -694,5 +699,6 @@
         private Janus.Windows.Ribbon.SeparatorCommand separatorCommand1;
         private Janus.Windows.Ribbon.DropDownCommand dropDownCommand3;
         private Janus.Windows.Ribbon.DropDownCommand dropDownCommand4;
+        private Janus.Windows.Ribbon.DropDownCommand dropDownCommand5;
     }
 }

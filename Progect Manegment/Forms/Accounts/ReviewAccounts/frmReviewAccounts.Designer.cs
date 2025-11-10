@@ -36,7 +36,8 @@
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListS_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column2.ButtonImage");
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListS_Layout_0_Reference_1 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.ChildTables.Table0.Columns.Column2.ButtonImage");
             Janus.Windows.GridEX.GridEXLayout dgvListD_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListD_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.ChildTables.Table0.Columns.Column2.ButtonImage");
+            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListD_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column2.ButtonImage");
+            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListD_Layout_0_Reference_1 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.ChildTables.Table0.Columns.Column2.ButtonImage");
             Janus.Windows.GridEX.GridEXLayout dgvListAllAcconts_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListAllAcconts_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column2.ButtonImage");
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
@@ -596,8 +597,10 @@
             dgvListD_Layout_0.IsCurrentLayout = true;
             dgvListD_Layout_0.Key = "MyGrig";
             dgvListD_Layout_0_Reference_0.Instance = ((object)(resources.GetObject("dgvListD_Layout_0_Reference_0.Instance")));
+            dgvListD_Layout_0_Reference_1.Instance = ((object)(resources.GetObject("dgvListD_Layout_0_Reference_1.Instance")));
             dgvListD_Layout_0.LayoutReferences.AddRange(new Janus.Windows.Common.Layouts.JanusLayoutReference[] {
-            dgvListD_Layout_0_Reference_0});
+            dgvListD_Layout_0_Reference_0,
+            dgvListD_Layout_0_Reference_1});
             dgvListD_Layout_0.LayoutString = resources.GetString("dgvListD_Layout_0.LayoutString");
             this.dgvListD.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvListD_Layout_0});

@@ -416,23 +416,29 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             {
                 ListId = Convert.ToInt32(dgvListD.CurrentRow.Cells["Id"].Value);
 
-
-                if (e.Column.Key == "Transaction")
+                if (e.Column.Key == "Transaction0")
                 {
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
-                        //MessageBox.Show(ListId.ToString());
-
+                        //var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
                         List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
-                        PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
+                        PublicClass.FilldgvListTransactionDA(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
 
-                        //uiTab1.SelectedIndex=5;
                         uiTab1.TabPages["List"].Selected=true;
-
                     }
 
                 }
+               else if (e.Column.Key == "Transaction")
+                {
+                    using (var db = new DBcontextModel())
+                    {
+                        //var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
+                        List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
+                        PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
+                        uiTab1.TabPages["List"].Selected=true;
+                    }
+                }
+
             }
             catch (Exception er)
             {

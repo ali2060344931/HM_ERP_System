@@ -46,9 +46,9 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.pnlViewItemFoter = new System.Windows.Forms.Panel();
+            this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
             this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
             this.gridEXExporter1 = new Janus.Windows.GridEX.Export.GridEXExporter(this.components);
-            this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).BeginInit();
             this.pnlAddItems.SuspendLayout();
@@ -86,7 +86,7 @@
             this.pnlAddItems.Name = "pnlAddItems";
             this.pnlAddItems.Size = new System.Drawing.Size(318, 560);
             this.pnlAddItems.TabIndex = 4;
-            this.pnlAddItems.Text = "بخش ثبت اطلاعات";
+            this.pnlAddItems.Text = "ثبت اطلاعات";
             this.pnlAddItems.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
             // 
             // pnlAddItemsContainer
@@ -161,7 +161,7 @@
             this.pnlViewItems.Name = "pnlViewItems";
             this.pnlViewItems.Size = new System.Drawing.Size(637, 560);
             this.pnlViewItems.TabIndex = 4;
-            this.pnlViewItems.Text = "بخش نمایش اطلاعات";
+            this.pnlViewItems.Text = "نمایش اطلاعات";
             this.pnlViewItems.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
             // 
             // pnlViewItemsContainer
@@ -199,9 +199,9 @@
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDateEnd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateEnd.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateEnd.Location = new System.Drawing.Point(194, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(144, 12);
             this.txtDateEnd.Name = "txtDateEnd";
             this.txtDateEnd.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDateEnd.Size = new System.Drawing.Size(124, 29);
@@ -211,10 +211,10 @@
             // btnShowListItems
             // 
             this.btnShowListItems.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShowListItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowListItems.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnShowListItems.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnShowListItems.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowListItems.Location = new System.Drawing.Point(104, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(54, 15);
             this.btnShowListItems.Name = "btnShowListItems";
             this.btnShowListItems.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnShowListItems.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F8);
@@ -227,9 +227,9 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDateStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateStart.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateStart.Location = new System.Drawing.Point(396, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(346, 12);
             this.txtDateStart.Name = "txtDateStart";
             this.txtDateStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDateStart.Size = new System.Drawing.Size(124, 29);
@@ -238,13 +238,13 @@
             // 
             // labelX1
             // 
-            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelX1.AutoSize = true;
             // 
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(526, 17);
+            this.labelX1.Location = new System.Drawing.Point(476, 17);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             this.labelX1.Symbol = "";
@@ -255,13 +255,13 @@
             // 
             // labelX2
             // 
-            this.labelX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelX2.AutoSize = true;
             // 
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(324, 17);
+            this.labelX2.Location = new System.Drawing.Point(274, 17);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             this.labelX2.Symbol = "";
@@ -279,6 +279,25 @@
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
             this.pnlViewItemFoter.Size = new System.Drawing.Size(635, 28);
             this.pnlViewItemFoter.TabIndex = 1;
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX01.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX01.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX01.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonX01.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.buttonX01.Location = new System.Drawing.Point(567, 0);
+            this.buttonX01.Name = "buttonX01";
+            this.buttonX01.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.buttonX01.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
+            this.buttonX01.Size = new System.Drawing.Size(34, 28);
+            this.buttonX01.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX01.Symbol = "";
+            this.buttonX01.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonX01.SymbolSize = 15F;
+            this.buttonX01.TabIndex = 4;
+            this.buttonX01.Tooltip = "چاپ جدول";
             // 
             // btnExportToExcel
             // 
@@ -299,25 +318,6 @@
             this.btnExportToExcel.TabIndex = 3;
             this.btnExportToExcel.Tooltip = "خروجی لیست به اکسل F9";
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
-            // 
-            // buttonX1
-            // 
-            this.buttonX01.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX01.BackColor = System.Drawing.Color.Transparent;
-            this.buttonX01.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX01.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonX01.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX01.Location = new System.Drawing.Point(567, 0);
-            this.buttonX01.Name = "buttonX1";
-            this.buttonX01.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.buttonX01.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
-            this.buttonX01.Size = new System.Drawing.Size(34, 28);
-            this.buttonX01.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX01.Symbol = "";
-            this.buttonX01.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonX01.SymbolSize = 15F;
-            this.buttonX01.TabIndex = 4;
-            this.buttonX01.Tooltip = "چاپ جدول";
             // 
             // frmAddItems
             // 

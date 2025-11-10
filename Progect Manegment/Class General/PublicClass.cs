@@ -1469,61 +1469,6 @@ namespace MyClass
                     SettingGridEX(gx);
                     return gx;
                 }
-                /*
-                using (var db = new DBcontextModel())
-                {
-                    var q = from tr in db.Transactions
-                            join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
-                            join da in db.DetailedAccounts on tr.DetailedAccountId equals da.Id
-                            join cu in db.Customers on da.CustomerId equals cu.Id
-                            join tt in db.TransactionTypes on tr.TransactionTypeId equals tt.Id
-                            join User in db.CustomerRoles on tr.UserId equals User.Id
-                            join CuUser in db.Customers on User.Id equals CuUser.Id
-                            join coB in db.ComersBs on tr.ComerBId equals coB.Id into coBGroup
-                            from coB_ in coBGroup.DefaultIfEmpty()
-
-                            join coH in db.ComersHs on coB_.ComersHId equals coH.Id into coHGroup
-                            from coH_ in coHGroup.DefaultIfEmpty()
-
-                            where !tr.Status
-                            && transactionTypeListIds.Contains(tr.TransactionTypeId)
-                            && string.Compare(tr.TransactionDate, DateStart) >= 0
-                            && string.Compare(tr.TransactionDate, DateEnd) <= 0
-
-                            && (
-                                (DetailedAccountId != 0 && tr.DetailedAccountId == DetailedAccountId)
-                                || (DetailedAccountId == 0 && (SpecificAccountId == 0 || tr.SpecificAccountId == SpecificAccountId))
-                            )
-
-                            && (TransactionCodeS == 0 || tr.TransactionCode >= TransactionCodeS)
-                            && (TransactionCodeE == 0 || tr.TransactionCode <= TransactionCodeE)
-
-                            orderby tr.Id
-
-                            select new
-                            {
-                                Id=tr.DetailedAccountId,
-                                tr.Series,
-                                tr.TransactionCode,
-                                tr.TransactionDate,
-                                TransactionType = tt.Name,
-                                SpecificAccountName = sp.Name,
-                                ContraAccountName = (cu.Family + " " + cu.Name).Trim(),
-                                TotalAmount = tr.Amount,
-                                tr.PaymentBed,
-                                tr.PaymentBes,
-                                tr.Description,
-                                AccountCode = da.CodeAccount,
-                                tr.IsAutoRejDoc,
-                                ComerSeryal = tr.ComerBId == 0 ? 0 : (coH_ != null ? coH_.RemiaanceSeryal : 0),
-                                User = CuUser.Family + " "+ CuUser.Name,
-                            };
-
-                    gx.DataSource = q.ToList();
-                    SettingGridEX(gx);
-                    return gx;
-                }  
-               */
             }
             catch (Exception er)
             {
@@ -1531,6 +1476,136 @@ namespace MyClass
                 return null;
             }
         }
+
+
+        public static GridExEx.GridExEx FilldgvListTransactionDA(GridExEx.GridExEx gx, string DateStart, string DateEnd, IEnumerable<int> transactionTypeListIds, int? CustomerId = 0, int? TransactionCodeS = 0, int? TransactionCodeE = 0, int? SpecificAccountId = 0)
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    // ----------------------------------------------------------------
+                    // 1. تعریف فیلتر اصلی حساب‌ها (برای استفاده در هر دو کوئری)
+                    // ----------------------------------------------------------------
+
+                    var accountFilter = db.Transactions
+                        .Where(tr => !tr.Status && transactionTypeListIds.Contains(tr.TransactionTypeId))
+                        .Where(tr =>
+                            (CustomerId != 0 && db.DetailedAccounts
+                                                   .Where(da => da.CustomerId == CustomerId)
+                                                   .Select(da => da.Id)
+                                                   .Contains(tr.DetailedAccountId))
+                            || (CustomerId == 0 && (SpecificAccountId == 0 || tr.SpecificAccountId == SpecificAccountId))
+                        );
+
+                    // ----------------------------------------------------------------
+                    // 2. محاسبه مانده اول دوره (Beginning Balance)
+                    // ----------------------------------------------------------------
+
+                    var qBeginningBalance = accountFilter
+                        .Where(tr => string.Compare(tr.TransactionDate, DateStart) < 0)
+                        .GroupBy(tr => 1)
+                        .Select(g => new
+                        {
+                            TotalPaymentBed = g.Sum(tr => (double?)tr.PaymentBed) ?? 0.0,
+                            TotalPaymentBes = g.Sum(tr => (double?)tr.PaymentBes) ?? 0.0
+                        })
+                        .FirstOrDefault();
+
+                    // ----------------------------------------------------------------
+                    // 3. کوئری تراکنش‌های داخل دوره (Current Transactions)
+                    // ----------------------------------------------------------------
+
+                    var qCurrent = from tr in accountFilter
+                                   join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
+                                   join da in db.DetailedAccounts on tr.DetailedAccountId equals da.Id
+                                   join cu in db.Customers on da.CustomerId equals cu.Id
+                                   join tt in db.TransactionTypes on tr.TransactionTypeId equals tt.Id
+                                   join User in db.CustomerRoles on tr.UserId equals User.Id
+                                   join CuUser in db.Customers on User.Id equals CuUser.Id
+
+                                   where string.Compare(tr.TransactionDate, DateStart) >= 0
+                                   && string.Compare(tr.TransactionDate, DateEnd) <= 0
+                                   && (TransactionCodeS == 0 || tr.TransactionCode >= TransactionCodeS)
+                                   && (TransactionCodeE == 0 || tr.TransactionCode <= TransactionCodeE)
+
+                                   join coB in db.ComersBs on tr.ComerBId equals coB.Id into coBGroup
+                                   from coB_ in coBGroup.DefaultIfEmpty()
+
+                                   join coH in db.ComersHs on coB_.ComersHId equals coH.Id into coHGroup
+                                   from coH_ in coHGroup.DefaultIfEmpty()
+
+                                   orderby tr.Id
+
+                                   select new
+                                   {
+                                       Id = tr.DetailedAccountId,
+                                       tr.Series,
+                                       tr.TransactionCode,
+                                       tr.TransactionDate,
+                                       TransactionType = tt.Name,
+                                       SpecificAccountName = sp.Name,
+                                       ContraAccountName = (cu.Family + " " + cu.Name).Trim(),
+                                       TotalAmount = tr.Amount,
+                                       tr.PaymentBed,
+                                       tr.PaymentBes,
+                                       tr.Description,
+                                       AccountCode = da.CodeAccount,
+                                       tr.IsAutoRejDoc,
+                                       ComerSeryal = tr.ComerBId == 0 ? 0 : (coH_ != null ? coH_.RemiaanceSeryal : 0),
+                                       User = CuUser.Family + " " + CuUser.Name,
+                                   };
+
+                    // ----------------------------------------------------------------
+                    // 4. ایجاد سطر مانده اول دوره و ادغام با تراکنش‌های جاری
+                    // ----------------------------------------------------------------
+
+                    List<object> finalResult = new List<object>();
+
+                    if (qBeginningBalance != null)
+                    {
+                        var beginningBalanceRow = new
+                        {
+                            Id = 0,
+                            Series = "",
+                            TransactionCode = "",
+                            TransactionDate = DateStart,
+                            TransactionType = "مانده اول دوره",
+                            SpecificAccountName = string.Empty,
+                            ContraAccountName = string.Empty,
+                            TotalAmount = 0.0,
+                            PaymentBed = qBeginningBalance.TotalPaymentBed,
+                            PaymentBes = qBeginningBalance.TotalPaymentBes,
+                            Description = "مانده حساب قبل از تاریخ " + DateStart,
+                            AccountCode = "",
+                            IsAutoRejDoc = false,
+                            ComerSeryal = 0,
+                            User = "",
+                        };
+
+                        finalResult.Add(beginningBalanceRow);
+                    }
+
+                    finalResult.AddRange(qCurrent.ToList());
+
+                    // ----------------------------------------------------------------
+                    // 5. اتصال به GridEX
+                    // ----------------------------------------------------------------
+
+                    gx.DataSource = finalResult;
+                    SettingGridEX(gx);
+                    return gx;
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return null;
+            }
+        }
+
+
+
 
         /// <summary>
         ///  نمایش اطلاعات در جدول درآمد/هزینه و دریافت/پرداخت و جابجایی ها

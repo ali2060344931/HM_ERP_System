@@ -1,6 +1,7 @@
 ﻿using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.Comers;
 using HM_ERP_System.Entity.TruckUsageType;
+using HM_ERP_System.Forms.Accounts.RecevingPayment;
 using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Main_Form;
 
@@ -106,7 +107,8 @@ namespace HM_ERP_System.Forms.Commission
                 using (var db = new DBcontextModel())
                 {
                     var q = from cm in db.ComersBs
-                            where !db.Commissions.Any(c => c.ComersBId == cm.Id && c.CustomerToGroupsId == CustomerToGroupId)
+                            
+                            where !db.Commissions.Any(c => c.ComersBId == cm.Id && c.CommissionTypeId==CommissionTypeId)
                             select new
                             {
                                 cm.Id,
@@ -131,8 +133,13 @@ namespace HM_ERP_System.Forms.Commission
                 using (var db = new DBcontextModel())
                 {
                     var q = from co in db.Commissions
-                            join cm in db.ComersBs
-                            on co.ComersBId equals cm.Id
+                            
+                            join cmB in db.ComersBs
+                            on co.ComersBId equals cmB.Id
+                            
+                            join cmH in db.ComersHs
+                            on cmB.ComersHId equals cmH.Id
+
                             join pg in db.PersonGroups
                             on co.CommissionTypeId equals pg.Id
                             
@@ -153,7 +160,7 @@ namespace HM_ERP_System.Forms.Commission
                                 co.Date,
                                 co.Amount,
                                 co.Des,
-                                ComersB = cm.SeryalH,
+                                ComersB = cmB.SeryalH,
                                 CommissionType = pg.Name,
                                 Customer = cu.Family +" "+cu.Name,
                                 TransactionsSeryal = co.TransactionId==0 ? "" : tr.TransactionCode.ToString(),
@@ -436,56 +443,18 @@ namespace HM_ERP_System.Forms.Commission
             FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
         }
 
+        string DocTitel = "";
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
         {
             try
             {
                 ListId_ = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
+                DocTitel="نــوع پورسانت: "+dgvList.CurrentRow.Cells["CommissionType"].Value.ToString()+"  مشتـــری: "+dgvList.CurrentRow.Cells["Customer"].Value.ToString();
                 if (e.Column.Key == "Details")
                 {
                     cmsdgv.Show(Cursor.Position);
                 }
                 return;
-
-                ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
-                if (e.Column.Key == "Edit")
-                {
-                    using (var db = new DBcontextModel())
-                    {
-                        var q = db.Commissions.Where(c => c.Id == ListId).First();
-                        txtDate.Text = q.Date;
-                        cmbComers1.Value=q.ComersBId;
-                        cmbCommissionType.Value=q.CommissionTypeId;
-                        //cmbCustomer.Value=q.CustomerId;
-                        txtAmount1.Text=q.Amount.ToString();
-                        txtDes.Text=q.Des;
-                        cmbComers1.Focus();
-                    }
-
-                }
-
-                else if (e.Column.Key == "Delete")
-                {
-                    using (var db = new DBcontextModel())
-                    {
-
-                        //if (db.ComersHs.Where(c => c.CarId == ListId).Count() != 0)
-                        //{
-                        //    PublicClass.ErrorMesseg(ResourceCode.T004);
-                        //    return;
-                        //}
-
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            var q = db.Commissions.Where(c => c.Id == ListId).First();
-                            db.Commissions.Remove(q);
-                            PublicClass.WindowAlart("2");
-                            db.SaveChanges();
-                            CelearItems();
-                        }
-                    }
-
-                }
             }
             catch (Exception er)
             {
@@ -614,7 +583,7 @@ namespace HM_ERP_System.Forms.Commission
 
             frmCommissionCreateFile f = new frmCommissionCreateFile();
             f.lblTitel.Text="لیست بارنامه های ثبت نشده برای "+cmbCustomer.Text;
-            f.CustomerToGroupId=CustomerToGroupId;
+            f.PersonGroupsId=CommissionTypeId;
             f.ShowDialog();
             }
         }
@@ -729,12 +698,10 @@ namespace HM_ERP_System.Forms.Commission
 
                             }
 
-
                             PublicClass.WindowAlart("1");
                             if (_updatableForms!=null)
                                 _updatableForms.UpdateData();
                             CelearItems();
-
                         }
                         else
                         {
@@ -742,6 +709,19 @@ namespace HM_ERP_System.Forms.Commission
                         }
                     }
                     break;
+                case "detailsComersHB"://نمایش جزئیات حواله و بارنامه
+                    using (var db = new DBcontextModel())
+                    {
+                        ListId=ListId_;
+                        frmRecevingPaymentDoc f = new frmRecevingPaymentDoc();
+                        f.DocTitel=DocTitel;
+                        var q = db.Commissions.Where(c => c.Id==ListId).First();
+                        var idh = db.ComersBs.Where(c => c.Id==q.ComersBId).First().ComersHId;
+                        f.IdH=idh;
+                        f.ShowDialog();
+                    }
+                    break;
+
             }
 
         }
@@ -751,6 +731,11 @@ namespace HM_ERP_System.Forms.Commission
             if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
 
+        }
+
+        private void btnExportToExcel_Click(object sender, EventArgs e)
+        {
+            PublicClass.SaveGridExToExcel(dgvList);
         }
     }
 }

@@ -57,9 +57,10 @@
             this.GroupBoxComersH.Dock = System.Windows.Forms.DockStyle.Top;
             this.GroupBoxComersH.Location = new System.Drawing.Point(0, 0);
             this.GroupBoxComersH.Name = "GroupBoxComersH";
-            this.GroupBoxComersH.Size = new System.Drawing.Size(859, 237);
+            this.GroupBoxComersH.Size = new System.Drawing.Size(1642, 237);
             this.GroupBoxComersH.TabIndex = 0;
-            this.GroupBoxComersH.Text = "حواله";
+            this.GroupBoxComersH.Text = "حوالـــــــــــــه";
+            this.GroupBoxComersH.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
             // 
             // dgvListH
             // 
@@ -94,7 +95,7 @@
             this.dgvListH.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListH.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListH.SettingsKey = "frmComersH";
-            this.dgvListH.Size = new System.Drawing.Size(853, 210);
+            this.dgvListH.Size = new System.Drawing.Size(1636, 210);
             this.dgvListH.Sortable = true;
             this.dgvListH.TabIndex = 86;
             this.dgvListH.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -109,9 +110,10 @@
             this.GroupBoxComersB.Dock = System.Windows.Forms.DockStyle.Top;
             this.GroupBoxComersB.Location = new System.Drawing.Point(0, 237);
             this.GroupBoxComersB.Name = "GroupBoxComersB";
-            this.GroupBoxComersB.Size = new System.Drawing.Size(859, 232);
+            this.GroupBoxComersB.Size = new System.Drawing.Size(1642, 232);
             this.GroupBoxComersB.TabIndex = 0;
-            this.GroupBoxComersB.Text = "بارنامه";
+            this.GroupBoxComersB.Text = "بارنامــــــــــه";
+            this.GroupBoxComersB.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
             // 
             // dgvListB
             // 
@@ -142,7 +144,7 @@
             this.dgvListB.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListB.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListB.SettingsKey = "frmComersB";
-            this.dgvListB.Size = new System.Drawing.Size(853, 205);
+            this.dgvListB.Size = new System.Drawing.Size(1636, 205);
             this.dgvListB.Sortable = true;
             this.dgvListB.TabIndex = 87;
             this.dgvListB.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -155,7 +157,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 537);
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(0, 300);
+            this.ClientSize = new System.Drawing.Size(1642, 505);
             this.Controls.Add(this.GroupBoxComersB);
             this.Controls.Add(this.GroupBoxComersH);
             this.Location = new System.Drawing.Point(0, 0);

@@ -1,8 +1,11 @@
 ﻿using HM_ERP_System.Class_General;
+using HM_ERP_System.Forms.Accounts.RecevingPayment;
 using HM_ERP_System.Forms.Commission;
 using HM_ERP_System.Forms.Main_Form;
 
 using MyClass;
+
+using Progect_Manegment;
 
 using System;
 using System.Collections.Generic;
@@ -108,6 +111,7 @@ namespace HM_ERP_System.Forms.Comers
                     dgvListH.Visible=false;
                     this.Text="لیست پورسانت ها";
                     dgvListCommission.RootTable.Columns["Details"].Visible=false;
+                    dgvListCommission.RootTable.Columns["Details2"].Visible=true;
                     //PublicClass.SettingGridEX(dgvListCommission);
                 }
             }
@@ -164,6 +168,21 @@ namespace HM_ERP_System.Forms.Comers
             catch (Exception er)
             {
                 PublicClass.ShowErrorMessage(er);
+            }
+
+        }
+
+        
+        private void dgvListCommission_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
+        {
+            using (var db = new DBcontextModel())
+            {
+                ListId=Convert.ToInt32(dgvListCommission.CurrentRow.Cells["Id"].Value); ;
+                frmRecevingPaymentDoc f = new frmRecevingPaymentDoc();
+                var q = db.Commissions.Where(c => c.Id==ListId).First();
+                var idh = db.ComersBs.Where(c => c.Id==q.ComersBId).First().ComersHId;
+                f.IdH=idh;
+                f.ShowDialog();
             }
 
         }

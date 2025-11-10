@@ -246,12 +246,15 @@
             this.dgvListCommission.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListCommission.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListCommission.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
+            this.dgvListCommission.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvListCommission_ColumnButtonClick);
             // 
             // frmComersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 510);
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(0, 250);
+            this.ClientSize = new System.Drawing.Size(788, 429);
             this.Controls.Add(this.dgvListCommission);
             this.Controls.Add(this.dgvListH);
             this.Controls.Add(this.dgvListB);

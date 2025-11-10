@@ -34,6 +34,12 @@
             this.tabStrip1 = new DevComponents.DotNetBar.TabStrip();
             this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
             this.ribbon1 = new Janus.Windows.Ribbon.Ribbon();
+            this.buttonCommand18 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnExitProgram = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnComers = new Janus.Windows.Ribbon.ButtonCommand();
+            this.buttonCommand17 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnReviewAccounts = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnSettingProg = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTab1 = new Janus.Windows.Ribbon.RibbonTab();
             this.ribbonGroup1 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnPersonGroup = new Janus.Windows.Ribbon.ButtonCommand();
@@ -47,8 +53,6 @@
             this.buttonCommand4 = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommand5 = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup2 = new Janus.Windows.Ribbon.RibbonGroup();
-            this.btnComers = new Janus.Windows.Ribbon.ButtonCommand();
-            this.buttonCommand17 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnAppointmentScheduling = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnBlacList = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup13 = new Janus.Windows.Ribbon.RibbonGroup();
@@ -69,7 +73,6 @@
             this.btnRecevingPayment = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup10 = new Janus.Windows.Ribbon.RibbonGroup();
             this.buttonCommand10 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.btnReviewAccounts = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup11 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnRegCheques = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTab5 = new Janus.Windows.Ribbon.RibbonTab();
@@ -96,7 +99,6 @@
             this.buttonCommand7 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnPeremission = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup6 = new Janus.Windows.Ribbon.RibbonGroup();
-            this.btnSettingProg = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnFinancialYears = new Janus.Windows.Ribbon.ButtonCommand();
             this.backstageTabControl1 = new Janus.Windows.Ribbon.BackstageTabControl();
             this.ribbonStatusBar1 = new Janus.Windows.Ribbon.RibbonStatusBar();
@@ -111,7 +113,6 @@
             this.buttonCommand13 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnExitForProg = new Janus.Windows.Ribbon.ButtonCommand();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonCommand18 = new Janus.Windows.Ribbon.ButtonCommand();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +132,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1139, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1026, 27);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -144,10 +145,11 @@
             // 
             // ribbon1
             // 
-            this.ribbon1.BackstageMenuData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><BackstageMenu><ImageKey /><Key /><Text>Fil" +
-    "e</Text></BackstageMenu>";
-            this.ribbon1.ControlBoxMenu.BottomCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.ribbon1.BackstageCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.buttonCommand18});
+            this.ribbon1.BackstageMenuData = resources.GetString("ribbon1.BackstageMenuData");
+            this.ribbon1.ControlBoxMenu.BottomCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.btnExitProgram});
             // 
             // 
             // 
@@ -156,14 +158,23 @@
             this.ribbon1.HelpButton.Text = "";
             this.ribbon1.Location = new System.Drawing.Point(0, 0);
             this.ribbon1.Name = "ribbon1";
+            this.ribbon1.QuickAccessCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.btnComers,
+            this.buttonCommand17,
+            this.btnReviewAccounts,
+            this.btnSettingProg});
+            this.ribbon1.QuickAccessCustomizeList.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.btnReviewAccounts});
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1139, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1026, 185);
             // 
             // 
             // 
-            this.ribbon1.SuperTipComponent.AutoPopDelay = 2000;
+            this.ribbon1.SuperTipComponent.AutoPopDelay = 9000;
             this.ribbon1.SuperTipComponent.Font = new System.Drawing.Font("Vazir FD", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.ribbon1.SuperTipComponent.ImageList = null;
+            this.ribbon1.SuperTipComponent.OfficeColorScheme = Janus.Windows.Common.OfficeColorScheme.Blue;
+            this.ribbon1.SuperTipComponent.OfficeCustomColor = System.Drawing.SystemColors.Control;
             this.ribbon1.TabIndex = 2;
             this.ribbon1.Tabs.AddRange(new Janus.Windows.Ribbon.RibbonTab[] {
             this.ribbonTab1,
@@ -173,6 +184,55 @@
             this.ribbonTab2,
             this.ribbonTab3});
             this.ribbon1.Text = "";
+            // 
+            // buttonCommand18
+            // 
+            this.buttonCommand18.Key = "ButtonCommand1";
+            this.buttonCommand18.Name = "buttonCommand18";
+            this.buttonCommand18.Text = "تست 1";
+            // 
+            // btnExitProgram
+            // 
+            this.btnExitProgram.Icon = ((System.Drawing.Icon)(resources.GetObject("btnExitProgram.Icon")));
+            this.btnExitProgram.Key = "Exit";
+            this.btnExitProgram.Name = "btnExitProgram";
+            this.btnExitProgram.Text = "خروج";
+            this.btnExitProgram.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnExitProgram_Click);
+            // 
+            // btnComers
+            // 
+            this.btnComers.Image = ((System.Drawing.Image)(resources.GetObject("btnComers.Image")));
+            this.btnComers.Key = "btnComers";
+            this.btnComers.Name = "btnComers";
+            this.btnComers.SupertipSettingsData = resources.GetString("btnComers.SupertipSettingsData");
+            this.btnComers.Text = "ثبت حواله و بارنامه";
+            this.btnComers.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnComers_Click);
+            // 
+            // buttonCommand17
+            // 
+            this.buttonCommand17.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand17.Image")));
+            this.buttonCommand17.Key = "buttonCommand17";
+            this.buttonCommand17.Name = "buttonCommand17";
+            this.buttonCommand17.SupertipSettingsData = resources.GetString("buttonCommand17.SupertipSettingsData");
+            this.buttonCommand17.Text = "پورســـانت";
+            this.buttonCommand17.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand17_Click);
+            // 
+            // btnReviewAccounts
+            // 
+            this.btnReviewAccounts.Image = ((System.Drawing.Image)(resources.GetObject("btnReviewAccounts.Image")));
+            this.btnReviewAccounts.Key = "buttonCommand16";
+            this.btnReviewAccounts.Name = "btnReviewAccounts";
+            this.btnReviewAccounts.Text = "مـــــرور حسابها";
+            this.btnReviewAccounts.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnReviewAccounts_Click);
+            // 
+            // btnSettingProg
+            // 
+            this.btnSettingProg.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingProg.Image")));
+            this.btnSettingProg.Key = "buttonCommand9";
+            this.btnSettingProg.Name = "btnSettingProg";
+            this.btnSettingProg.SupertipSettingsData = resources.GetString("btnSettingProg.SupertipSettingsData");
+            this.btnSettingProg.Text = "تنظیمات نرم افزار";
+            this.btnSettingProg.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnSettingProg_Click);
             // 
             // ribbonTab1
             // 
@@ -297,24 +357,6 @@
             this.ribbonGroup2.Name = "ribbonGroup2";
             this.ribbonGroup2.Text = "ثبت اسناد";
             // 
-            // btnComers
-            // 
-            this.btnComers.Image = ((System.Drawing.Image)(resources.GetObject("btnComers.Image")));
-            this.btnComers.Key = "btnComers";
-            this.btnComers.Name = "btnComers";
-            this.btnComers.SupertipSettingsData = resources.GetString("btnComers.SupertipSettingsData");
-            this.btnComers.Text = "ثبت حواله و بارنامه";
-            this.btnComers.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnComers_Click);
-            // 
-            // buttonCommand17
-            // 
-            this.buttonCommand17.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand17.Image")));
-            this.buttonCommand17.Key = "buttonCommand17";
-            this.buttonCommand17.Name = "buttonCommand17";
-            this.buttonCommand17.SupertipSettingsData = resources.GetString("buttonCommand17.SupertipSettingsData");
-            this.buttonCommand17.Text = "پورســـانت";
-            this.buttonCommand17.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand17_Click);
-            // 
             // btnAppointmentScheduling
             // 
             this.btnAppointmentScheduling.Image = ((System.Drawing.Image)(resources.GetObject("btnAppointmentScheduling.Image")));
@@ -339,6 +381,7 @@
             this.btnShowListComersB,
             this.btnShowListCommission});
             this.ribbonGroup13.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup13;
+            this.ribbonGroup13.ImageKey = "";
             this.ribbonGroup13.Key = "ribbonGroup13";
             this.ribbonGroup13.Name = "ribbonGroup13";
             this.ribbonGroup13.Text = "گــزارشات";
@@ -495,14 +538,6 @@
             this.buttonCommand10.Name = "buttonCommand10";
             this.buttonCommand10.Text = "دفتر کل";
             this.buttonCommand10.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand10_Click);
-            // 
-            // btnReviewAccounts
-            // 
-            this.btnReviewAccounts.Image = ((System.Drawing.Image)(resources.GetObject("btnReviewAccounts.Image")));
-            this.btnReviewAccounts.Key = "buttonCommand16";
-            this.btnReviewAccounts.Name = "btnReviewAccounts";
-            this.btnReviewAccounts.Text = "مـــــرور حسابها";
-            this.btnReviewAccounts.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnReviewAccounts_Click);
             // 
             // ribbonGroup11
             // 
@@ -744,19 +779,14 @@
             this.ribbonGroup6.Name = "ribbonGroup6";
             this.ribbonGroup6.Text = "تنظیمات نرم افزار";
             // 
-            // btnSettingProg
-            // 
-            this.btnSettingProg.Key = "buttonCommand9";
-            this.btnSettingProg.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettingProg.LargeImage")));
-            this.btnSettingProg.Name = "btnSettingProg";
-            this.btnSettingProg.Text = "تنظیمات نرم افزار";
-            this.btnSettingProg.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnSettingProg_Click);
-            // 
             // btnFinancialYears
             // 
             this.btnFinancialYears.Image = ((System.Drawing.Image)(resources.GetObject("btnFinancialYears.Image")));
             this.btnFinancialYears.Key = "buttonCommand9";
             this.btnFinancialYears.Name = "btnFinancialYears";
+            this.btnFinancialYears.SupertipSettingsData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><SupertipSettings><HeaderText>تنظیمات بــرن" +
+    "امه</HeaderText><Text>در این بخش تنظمات برنامه انجام می شود.</Text></SupertipSet" +
+    "tings>";
             this.btnFinancialYears.Text = "تعریف سال مالی";
             this.btnFinancialYears.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnFinancialYears_Click);
             // 
@@ -772,13 +802,13 @@
             this.ribbonStatusBar1.LeftPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 804);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 458);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1139, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1026, 23);
             // 
             // 
             // 
@@ -795,6 +825,7 @@
             this.buttonCommand16.Shortcut = System.Windows.Forms.Shortcut.CtrlE;
             this.buttonCommand16.SupertipSettingsData = resources.GetString("buttonCommand16.SupertipSettingsData");
             this.buttonCommand16.Text = "خــروج";
+            this.buttonCommand16.Visible = false;
             this.buttonCommand16.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand16_Click);
             // 
             // btnCalculater
@@ -864,17 +895,11 @@
             this.btnExitForProg.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnExitForProg.Text = "خــروج";
             // 
-            // buttonCommand18
-            // 
-            this.buttonCommand18.Key = "ButtonCommand1";
-            this.buttonCommand18.Name = "buttonCommand18";
-            this.buttonCommand18.Text = "تست";
-            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 827);
+            this.ClientSize = new System.Drawing.Size(1026, 481);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);
@@ -970,6 +995,7 @@
         private Janus.Windows.Ribbon.ButtonCommand btnShowListComersH;
         private Janus.Windows.Ribbon.ButtonCommand btnShowListComersB;
         private Janus.Windows.Ribbon.ButtonCommand btnShowListCommission;
+        private Janus.Windows.Ribbon.ButtonCommand btnExitProgram;
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand18;
     }
 }

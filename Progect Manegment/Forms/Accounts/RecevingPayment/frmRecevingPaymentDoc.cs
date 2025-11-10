@@ -15,7 +15,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 {
     public partial class frmRecevingPaymentDoc : frmMasterForm
     {
-        public string DocName = "";
+        public string DocTitel = "";
         public int IdH = 0;
         public int IdB = 0;
         public frmRecevingPaymentDoc()
@@ -25,9 +25,11 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void frmRecevingPaymentDoc_Load(object sender, EventArgs e)
         {
-
+            this.WindowState= FormWindowState.Normal;
             FillGroupBoxComersH();
             FillGroupBoxComersB();
+            if (DocTitel!="")
+                this.Text=DocTitel;
             /*
             switch (DocName)
             {

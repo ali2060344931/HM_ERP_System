@@ -427,5 +427,11 @@ namespace HM_ERP_System.Forms.Main_Form
             frmComersList.ShowDialog();
 
         }
+
+        private void btnExitProgram_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            if (MessageBox.Show(ResourceCode.T151, MyClass.PublicClass.ProjectName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                Application.Exit();
+        }
     }
 }

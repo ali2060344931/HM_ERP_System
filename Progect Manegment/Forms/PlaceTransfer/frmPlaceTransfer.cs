@@ -52,22 +52,29 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         }
         private void fillcmbCity()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = (from ct in db.Ciltys
-                         join pr in db.Provinces
-                         on ct.ProvincesId equals pr.Id
-                         select new
-                         {
-                             ct.Id,
-                             ct.Name,
-                             Provinces = pr.Name,
-                         }).ToList();
+                using (var db = new DBcontextModel())
+                {
+                    var q = (from ct in db.Ciltys
+                             join pr in db.Provinces
+                             on ct.ProvincesId equals pr.Id
+                             select new
+                             {
+                                 ct.Id,
+                                 ct.Name,
+                                 Provinces = pr.Name,
+                             }).ToList();
 
-                cmbCity.DataSource = q;
-                dt_City = new DataTable();
-                dt_City = PublicClass.AddEntityTableToDataTable(q);
+                    cmbCity.DataSource = q;
+                    dt_City = new DataTable();
+                    dt_City = PublicClass.AddEntityTableToDataTable(q);
 
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -76,79 +83,102 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         /// </summary>
         private void FillcmbEvacuationDeployment()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = db.EvacuationDeployments.ToList();
-                cmbEvacuationDeployment.DataSource = q;
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.EvacuationDeployments.ToList();
+                    cmbEvacuationDeployment.DataSource = q;
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
         private void FilldgvList()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = from pt in db.PlaceTransfers
+                using (var db = new DBcontextModel())
+                {
+                    var q = from pt in db.PlaceTransfers
 
-                        join ed in db.EvacuationDeployments
-                        on pt.EvacuationDeploymentId equals ed.Id
+                            join ed in db.EvacuationDeployments
+                            on pt.EvacuationDeploymentId equals ed.Id
 
-                        join ct in db.Ciltys
-                        on pt.CiltyId equals ct.Id
+                            join ct in db.Ciltys
+                            on pt.CiltyId equals ct.Id
 
-                        join pr in db.Provinces
-                        on ct.ProvincesId equals pr.Id
+                            join pr in db.Provinces
+                            on ct.ProvincesId equals pr.Id
 
-                        select new
-                        {
-                            pt.Id,
-                            EvacuationDeploymentName = ed.Name,
-                            PlaceTransferName = pt.Name,
-                            CityName = ct.Name,
-                            ProvincesName = pr.Name,
-                            pt.publicStatus,
-                            pt.PostalCode,
-                            pt.Addres,
-                        };
-                dgvList.DataSource = q.ToList();
-                //AutoSizeColumns();
-                PublicClass.SettingGridEX(dgvList);
+                            select new
+                            {
+                                pt.Id,
+                                EvacuationDeploymentName = ed.Name,
+                                PlaceTransferName = pt.Name,
+                                CityName = ct.Name,
+                                ProvincesName = pr.Name,
+                                pt.publicStatus,
+                                pt.PostalCode,
+                                pt.Addres,
+                            };
+                    dgvList.DataSource = q.ToList();
+                    //AutoSizeColumns();
+                    PublicClass.SettingGridEX(dgvList);
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (PublicClass.FindEmptyControls(cmbEvacuationDeployment, ResourceCode.
-                        T022, cmbCity, ResourceCode.
-                        T014, txtPlaceTransferName, ResourceCode.
-                        T023))
-                return;
-            using (var db = new DBcontextModel())
+            try
             {
-                if (LisId == 0)
+                if (PublicClass.FindEmptyControls(cmbEvacuationDeployment, ResourceCode.
+                                T022, cmbCity, ResourceCode.
+                                T014, txtPlaceTransferName, ResourceCode.
+                                T023))
+                    return;
+                using (var db = new DBcontextModel())
                 {
-                    int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.EvacuationDeploymentId == EvacuationDeploymentId && c.CiltyId == CityId);
-                    if (cont > 0)
+                    if (LisId == 0)
                     {
-                        PublicClass.ErrorMesseg(ResourceCode.T024); return;
+                        int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.EvacuationDeploymentId == EvacuationDeploymentId && c.CiltyId == CityId);
+                        if (cont > 0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T024); return;
+                        }
                     }
-                }
-                else
-                {
-                    int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.EvacuationDeploymentId == EvacuationDeploymentId && c.CiltyId == CityId && c.Id != LisId);
-                    if (cont > 0)
+                    else
                     {
-                        PublicClass.ErrorMesseg(ResourceCode.T006); return;
+                        int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.EvacuationDeploymentId == EvacuationDeploymentId && c.CiltyId == CityId && c.Id != LisId);
+                        if (cont > 0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T006); return;
+                        }
                     }
-                }
 
-                var userRepo = new Repository<Entity.PlaceTransfer.PlaceTransfer>(db);
-                if (userRepo.SaveOrUpdate(new Entity.PlaceTransfer.PlaceTransfer { Id = LisId, Name = txtPlaceTransferName.Text, EvacuationDeploymentId = EvacuationDeploymentId, CiltyId = CityId, PostalCode=txtPostalCode.Text, Addres=txtAddres.Text, publicStatus=chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, LisId))
-                {
-                    PublicClass.WindowAlart("1");
-                    if (_updatableForms!=null)
-                        _updatableForms.UpdateData();
-                    CelearItems();
+                    var userRepo = new Repository<Entity.PlaceTransfer.PlaceTransfer>(db);
+                    if (userRepo.SaveOrUpdate(new Entity.PlaceTransfer.PlaceTransfer { Id = LisId, Name = txtPlaceTransferName.Text, EvacuationDeploymentId = EvacuationDeploymentId, CiltyId = CityId, PostalCode=txtPostalCode.Text, Addres=txtAddres.Text, publicStatus=chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, LisId))
+                    {
+                        PublicClass.WindowAlart("1");
+                        if (_updatableForms!=null)
+                            _updatableForms.UpdateData();
+                        CelearItems();
+                    }
                 }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -182,45 +212,52 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
         {
-            LisId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
-            if (e.Column.Key == "Edit")
+            try
             {
-                using (var db = new DBcontextModel())
+                LisId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
+                if (e.Column.Key == "Edit")
                 {
-                    var q = db.PlaceTransfers.Where(c => c.Id == LisId).First();
-
-                    cmbEvacuationDeployment.Value = q.EvacuationDeploymentId;
-                    cmbCity.Value = q.CiltyId;
-                    txtPlaceTransferName.Text = q.Name;
-                    chkPublic.Checked=q.publicStatus;
-                    txtPostalCode.Text= q.PostalCode;
-                    txtAddres.Text= q.Addres;
-                }
-
-            }
-
-            else if (e.Column.Key == "Delete")
-            {
-                using (var db = new DBcontextModel())
-                {
-
-                    if (db.ComersHs.Where(c => c.LoadingLocationId == LisId || c.UnLoadingLocationId == LisId).Count() != 0)
-                    {
-                        PublicClass.ErrorMesseg(ResourceCode.T004);
-                        return;
-                    }
-
-                    if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    using (var db = new DBcontextModel())
                     {
                         var q = db.PlaceTransfers.Where(c => c.Id == LisId).First();
-                        db.PlaceTransfers.Remove(q);
-                        PublicClass.WindowAlart("2");
-                        db.SaveChanges();
-                        FilldgvList();
-                        CelearItems();
+
+                        cmbEvacuationDeployment.Value = q.EvacuationDeploymentId;
+                        cmbCity.Value = q.CiltyId;
+                        txtPlaceTransferName.Text = q.Name;
+                        chkPublic.Checked=q.publicStatus;
+                        txtPostalCode.Text= q.PostalCode;
+                        txtAddres.Text= q.Addres;
                     }
+
                 }
 
+                else if (e.Column.Key == "Delete")
+                {
+                    using (var db = new DBcontextModel())
+                    {
+
+                        if (db.ComersHs.Where(c => c.LoadingLocationId == LisId || c.UnLoadingLocationId == LisId).Count() != 0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            return;
+                        }
+
+                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            var q = db.PlaceTransfers.Where(c => c.Id == LisId).First();
+                            db.PlaceTransfers.Remove(q);
+                            PublicClass.WindowAlart("2");
+                            db.SaveChanges();
+                            FilldgvList();
+                            CelearItems();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -259,10 +296,10 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                 }
 
             }
-                catch (Exception er)
-                {
-                    PublicClass.ShowErrorMessage(er);
-                }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
         private void cmbEvacuationDeployment_KeyDown(object sender, KeyEventArgs e)

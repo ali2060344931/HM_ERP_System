@@ -59,11 +59,11 @@
             Janus.Windows.GridEX.GridEXLayout cmbDraversB2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbGoodsAccountB_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbBillLadingMethod_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout cmbCostAccountB_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbPaymentToOthers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column25.ButtonImage");
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_1 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column26.ButtonImage");
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_2 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column27.ButtonImage");
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_3 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column28.ButtonImage");
@@ -371,6 +371,9 @@
             this.separatorCommand3 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.btnAddDocCB = new Janus.Windows.Ribbon.DropDownCommand();
             this.btnAccountingDocumentRegistration = new Janus.Windows.Ribbon.DropDownCommand();
+            this.chkIncomeDocument = new System.Windows.Forms.CheckBox();
+            this.rdbCostAccount = new System.Windows.Forms.RadioButton();
+            this.rdbShiper = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -3664,6 +3667,7 @@
             // panelLanding
             // 
             this.panelLanding.AutoScroll = true;
+            this.panelLanding.Controls.Add(this.chkIncomeDocument);
             this.panelLanding.Controls.Add(this.txtBaseFreight);
             this.panelLanding.Controls.Add(this.txtBillLadingAmount);
             this.panelLanding.Controls.Add(this.txtInsuranceAmount);
@@ -3683,6 +3687,8 @@
             this.panelLanding.Controls.Add(this.label46);
             this.panelLanding.Controls.Add(this.lblShiperName);
             this.panelLanding.Controls.Add(this.label111);
+            this.panelLanding.Controls.Add(this.rdbShiper);
+            this.panelLanding.Controls.Add(this.rdbCostAccount);
             this.panelLanding.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLanding.Location = new System.Drawing.Point(423, 5);
             this.panelLanding.Name = "panelLanding";
@@ -5139,6 +5145,47 @@
             this.btnAccountingDocumentRegistration.Name = "btnAccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Text = "ثبت سند حسابداری";
             // 
+            // chkIncomeDocument
+            // 
+            this.chkIncomeDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkIncomeDocument.AutoSize = true;
+            this.chkIncomeDocument.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkIncomeDocument.Location = new System.Drawing.Point(140, 269);
+            this.chkIncomeDocument.Name = "chkIncomeDocument";
+            this.chkIncomeDocument.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.chkIncomeDocument.Size = new System.Drawing.Size(73, 19);
+            this.chkIncomeDocument.TabIndex = 6;
+            this.chkIncomeDocument.Text = "سند درآمدی";
+            this.chkIncomeDocument.UseVisualStyleBackColor = true;
+            this.chkIncomeDocument.CheckedChanged += new System.EventHandler(this.chkIncomeDocument_CheckedChanged);
+            this.chkIncomeDocument.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeryalB_KeyDown);
+            // 
+            // rdbCostAccount
+            // 
+            this.rdbCostAccount.AutoSize = true;
+            this.rdbCostAccount.Checked = true;
+            this.rdbCostAccount.Enabled = false;
+            this.rdbCostAccount.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rdbCostAccount.Location = new System.Drawing.Point(47, 257);
+            this.rdbCostAccount.Name = "rdbCostAccount";
+            this.rdbCostAccount.Size = new System.Drawing.Size(89, 21);
+            this.rdbCostAccount.TabIndex = 115;
+            this.rdbCostAccount.TabStop = true;
+            this.rdbCostAccount.Text = "صاحب کامیون";
+            this.rdbCostAccount.UseVisualStyleBackColor = true;
+            // 
+            // rdbShiper
+            // 
+            this.rdbShiper.AutoSize = true;
+            this.rdbShiper.Enabled = false;
+            this.rdbShiper.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.rdbShiper.Location = new System.Drawing.Point(54, 276);
+            this.rdbShiper.Name = "rdbShiper";
+            this.rdbShiper.Size = new System.Drawing.Size(82, 21);
+            this.rdbShiper.TabIndex = 115;
+            this.rdbShiper.Text = "بارنامه نویس";
+            this.rdbShiper.UseVisualStyleBackColor = true;
+            // 
             // frmComers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -5566,5 +5613,8 @@
         private System.Windows.Forms.Label label105;
         private DevComponents.Editors.IntegerInput txtLoadWeightCapacity;
         private System.Windows.Forms.Label label117;
+        private System.Windows.Forms.CheckBox chkIncomeDocument;
+        private System.Windows.Forms.RadioButton rdbShiper;
+        private System.Windows.Forms.RadioButton rdbCostAccount;
     }
 }

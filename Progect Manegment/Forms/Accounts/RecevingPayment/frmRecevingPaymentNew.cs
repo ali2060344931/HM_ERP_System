@@ -285,6 +285,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                             name = (cu.Family+" "+cu.Name).Trim(),
                             TypeAccount = tc.Name,
                             AccountCode = dt.CodeAccount,
+                            CodeMeli=cu.CodMeli,
                         };
                 cmbDetailedAccountsFrom.DataSource= q.ToList();
 

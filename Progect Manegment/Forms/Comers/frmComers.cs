@@ -4759,5 +4759,14 @@ namespace HM_ERP_System.Forms.Comers
         {
 
         }
+
+        private void chkIncomeDocument_CheckedChanged(object sender, EventArgs e)
+        {
+            //if (chkIncomeDocument.Checked)
+            {
+                rdbCostAccount.Enabled=chkIncomeDocument.Checked;
+                rdbShiper.Enabled=chkIncomeDocument.Checked;
+            }
+        }
     }
 }

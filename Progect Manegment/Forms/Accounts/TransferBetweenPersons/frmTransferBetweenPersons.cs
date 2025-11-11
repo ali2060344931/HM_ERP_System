@@ -149,6 +149,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                                 cu.CodMeli,
                                 TypeAccount = tc.Name,
                             };
+
                     cmbDetailedAccountsFrom.DataSource=q.ToList();
                     dt_DetailedAccountsFrom = new System.Data.DataTable();
                     dt_DetailedAccountsFrom = PublicClass.AddEntityTableToDataTable(q.ToList());

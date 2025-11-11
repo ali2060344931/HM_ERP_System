@@ -156,7 +156,7 @@
             this.btnExportToExcel.Location = new System.Drawing.Point(525, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
-            // buttonX1
+            // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(491, 0);
             // 

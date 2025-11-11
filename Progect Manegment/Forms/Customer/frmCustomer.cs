@@ -52,7 +52,6 @@ namespace HM_ERP_System.Forms.Customer
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            //chkControlCodeMeli.Checked=Properties.Settings.Default.CheackCodeMeli;
             chkControlCodeMeli.Checked=true;
             UpdateData();
         }
@@ -63,9 +62,7 @@ namespace HM_ERP_System.Forms.Customer
             FilldgvList();
             FillcmbTypeCustomer();
             FillcmbBanck();
-            //FillBanckName();
             FillcmbCity();
-            //FillcmbNatureAccounts();
             FillcmbGroup();
             if (RequestFromExternalForms=="frmCar")
             {
@@ -79,36 +76,33 @@ namespace HM_ERP_System.Forms.Customer
 
         }
 
-        //private void FillcmbNatureAccounts()
-        //{
-        //    using (var db = new DBcontextModel())
-        //    {
-        //        var q = db.NatureAccounts.Where(c => c.Id<=2).ToList();
-        //        cmbNatureAccounts.DataSource=q;
-        //        cmbNatureAccounts.SelectedIndex=0;
-        //    }
-        //}
-
         DataTable dt_Banck;
 
         private void FillcmbBanck()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = from bb in db.BankBranches
-                        join ba in db.Bancks
-                        on bb.BanckId equals ba.Id
-                        select new
-                        {
-                            bb.Id,
-                            bb.Name,
-                            BanckName = ba.Name,
-                        };
-                cmbBanck.DataSource=q.ToList();
-                dt_Banck = new System.Data.DataTable();
-                dt_Banck = PublicClass.AddEntityTableToDataTable(q.ToList());
-            }
+                using (var db = new DBcontextModel())
+                {
+                    var q = from bb in db.BankBranches
+                            join ba in db.Bancks
+                            on bb.BanckId equals ba.Id
+                            select new
+                            {
+                                bb.Id,
+                                bb.Name,
+                                BanckName = ba.Name,
+                            };
+                    cmbBanck.DataSource=q.ToList();
+                    dt_Banck = new System.Data.DataTable();
+                    dt_Banck = PublicClass.AddEntityTableToDataTable(q.ToList());
+                }
 
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
 
@@ -145,147 +139,102 @@ namespace HM_ERP_System.Forms.Customer
 
         private void FillcmbTypeCustomer()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = db.TypeCustomers.Where(c => c.Id<=2).ToList();
-                cmbTypeCustomer.DataSource = q;
-                cmbTypeCustomer.Value = 1;
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.TypeCustomers.Where(c => c.Id<=2).ToList();
+                    cmbTypeCustomer.DataSource = q;
+                    cmbTypeCustomer.Value = 1;
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
         private void FillcmbGroup()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = db.PersonGroups.ToList();
-                cmbGroup.DropDownDataSource= q;
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.PersonGroups.ToList();
+                    cmbGroup.DropDownDataSource= q;
+                }
+
             }
-        }
-
-        private void FillBanckName()
-        {
-            //using (var db = new DBcontextModel())
-            //{
-            //    txtBanckName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            //    txtBanckName.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            //    AutoCompleteStringCollection ac = new AutoCompleteStringCollection();
-
-            //    var q = db.Customers.ToList();
-            //    foreach (var c in q)
-            //    {
-            //        ac.Add(c.BanckName);
-            //    }
-            //    txtBanckName.AutoCompleteCustomSource = ac;
-            //}
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
         private void FilldgvList()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = from cu in db.Customers
+                using (var db = new DBcontextModel())
+                {
+                    var q = from cu in db.Customers
 
-                        join tc in db.TypeCustomers
-                        on cu.id_TypeCustomer equals tc.Id
+                            join tc in db.TypeCustomers
+                            on cu.id_TypeCustomer equals tc.Id
 
-                        join doc in db.DocumentBancks
-                        on cu.Id equals doc.ListInFoemId into docGroup
+                            join doc in db.DocumentBancks
+                            on cu.Id equals doc.ListInFoemId into docGroup
 
-                        join bb in db.BankBranches
-                        on cu.BanckId equals bb.Id into bbGroup
-                        from bb_ in bbGroup.DefaultIfEmpty()
+                            join bb in db.BankBranches
+                            on cu.BanckId equals bb.Id into bbGroup
+                            from bb_ in bbGroup.DefaultIfEmpty()
 
-                        join ba in db.Bancks
-                        on bb_.BanckId equals ba.Id into baGroup
-                        from ba_ in baGroup.DefaultIfEmpty()
+                            join ba in db.Bancks
+                            on bb_.BanckId equals ba.Id into baGroup
+                            from ba_ in baGroup.DefaultIfEmpty()
 
-                        join ct in db.Ciltys
-                        on cu.CityId equals ct.Id into ctGroup
-                        from ct_ in ctGroup.DefaultIfEmpty()
+                            join ct in db.Ciltys
+                            on cu.CityId equals ct.Id into ctGroup
+                            from ct_ in ctGroup.DefaultIfEmpty()
 
-                        join pr in db.Provinces
-                        on ct_.ProvincesId equals pr.Id into prGroup
-                        from pr_ in prGroup.DefaultIfEmpty()
+                            join pr in db.Provinces
+                            on ct_.ProvincesId equals pr.Id into prGroup
+                            from pr_ in prGroup.DefaultIfEmpty()
 
-                        where cu.id_TypeCustomer <= 2
+                            where cu.id_TypeCustomer <= 2
 
-                        select new
-                        {
-                            cu.Id,
-                            Name = cu.Name,
-                            cu.Family,
-                            TypeCustomerName = tc.Name,
-                            cu.CodMeli,
-                            cu.Tel,
-                            cu.Tel2,
-                            cu.Adders,
-                            cu.Adders2,
-                            cu.PostalCode,
-                            BanckName = cu.BanckId == 0 || bb_ == null
-                                        ? "-"
-                                        : ba_.Name + "-" + bb_.Name,
-                            cu.SeryalShaba,
-                            cu.DabitCardNumber,
-                            cu.Description,
-                            CiltysName = ct_ != null ? ct_.Name : "-",
-                            ProvincesName = pr_ != null ? pr_.Name : "-",
-                            CountDoc = docGroup.Where(c => c.FormName == this.Name).Count(),//آمار تعداد مدارک پیوست
+                            select new
+                            {
+                                cu.Id,
+                                Name = cu.Name,
+                                cu.Family,
+                                TypeCustomerName = tc.Name,
+                                cu.CodMeli,
+                                cu.Tel,
+                                cu.Tel2,
+                                cu.Adders,
+                                cu.Adders2,
+                                cu.PostalCode,
+                                BanckName = cu.BanckId == 0 || bb_ == null
+                                            ? "-"
+                                            : ba_.Name + "-" + bb_.Name,
+                                cu.SeryalShaba,
+                                cu.DabitCardNumber,
+                                cu.Description,
+                                CiltysName = ct_ != null ? ct_.Name : "-",
+                                ProvincesName = pr_ != null ? pr_.Name : "-",
+                                CountDoc = docGroup.Where(c => c.FormName == this.Name).Count(),//آمار تعداد مدارک پیوست
 
-                        };
-                dgvList.DataSource = q.ToList();
-                PublicClass.SettingGridEX(dgvList);
+                            };
+                    dgvList.DataSource = q.ToList();
+                    PublicClass.SettingGridEX(dgvList);
+                }
             }
-            /*
-            using (var db = new DBcontextModel())
+            catch (Exception er)
             {
-                var q = from cu in db.Customers
-
-                        join tc in db.TypeCustomers
-                        on cu.id_TypeCustomer equals tc.Id
-
-                        join doc in db.DocumentBancks
-                        on cu.Id equals doc.ListInFoemId into docGroup
-
-                        join bb in db.BankBranches 
-                        on cu.BanckId equals bb.Id
-
-                        join ba in db.Bancks
-                        on bb.BanckId equals ba.Id
-
-                        join ct in db.Ciltys
-                        on cu.CityId equals ct.Id into ctGroup
-                        from ct_ in ctGroup.DefaultIfEmpty()
-
-                        join pr in db.Provinces
-                        on ct_.ProvincesId equals pr.Id into prGroup
-                        from pr_ in prGroup.DefaultIfEmpty()
-
-                        where cu.id_TypeCustomer<=2
-
-                        select new
-                        {
-                            cu.Id,
-                            Name = cu.Name,
-                            cu.Family,
-                            TypeCustomerName = tc.Name,
-                            cu.CodMeli,
-                            cu.Tel,
-                            cu.Tel2,
-                            cu.Adders,
-                            cu.Adders2,
-                            cu.PostalCode,
-                            BanckName = ba.Name +"-"+bb.Name,
-                            cu.SeryalShaba,
-                            cu.DabitCardNumber,
-                            cu.Description,
-                            CityName= ct_ !=null ? ct_.Name : "-",
-                            ProvincesName= pr_ !=null ? pr_.Name : "-",
-                            CountDoc = docGroup.Where(c => c.FormName==this.Name).Count(),//آمار تعداد مدارک پیوست
-                        };
-                dgvList.DataSource = q.ToList();
-                PublicClass.SettingGridEX(dgvList);
-            }        
-            */
+                PublicClass.ShowErrorMessage(er);
+            }
         }
         int TypeCustomerId = 0;
         private void cmbTypeCustomer_ValueChanged(object sender, EventArgs e)
@@ -320,121 +269,128 @@ namespace HM_ERP_System.Forms.Customer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (PublicClass.FindEmptyControls(cmbTypeCustomer, ResourceCode.T002, txtName, ResourceCode.T005, txtTel1, ResourceCode.T010))
-                return;
-
-            if (TypeCustomerId == 1)
+            try
             {
-                if (PublicClass.FindEmptyControls(txtFamily, ResourceCode.T008, txtCodMeli, ResourceCode.T009))
+                if (PublicClass.FindEmptyControls(cmbTypeCustomer, ResourceCode.T002, txtName, ResourceCode.T005, txtTel1, ResourceCode.T010))
                     return;
-            }
-            if (cmbCity.SelectedIndex == -1)
-            {
-                PublicClass.ErrorMesseg(ResourceCode.T014);
-                return;
-            }
 
-            if (txtDabitCardNumber.Text!="" && txtDabitCardNumber.Text.Length!=16)
-            {
-                PublicClass.ErrorMesseg(ResourceCode.T034);
-                return;
-            }
-
-            if (txtSeryalShaba.Text != "" && txtSeryalShaba.Text.Length != 24)
-            {
-                PublicClass.ErrorMesseg(ResourceCode.T035);
-                return;
-            }
-            if (cmbGroup.Text == "")
-            {
-                PublicClass.ErrorMesseg(ResourceCode.T097);
-                cmbGroup.Focus();
-                return;
-            }
-
-
-            using (var db = new DBcontextModel())
-            {
-
-                if (ListId == 0)
+                if (TypeCustomerId == 1)
                 {
-                    if (TypeCustomerId == 1)
-                    {
-                        int cont = db.Customers.Count(c => c.CodMeli == txtCodMeli.Text);
-                        if (cont > 0)
-                        {
-                            PublicClass.ErrorMesseg(ResourceCode.
+                    if (PublicClass.FindEmptyControls(txtFamily, ResourceCode.T008, txtCodMeli, ResourceCode.T009))
+                        return;
+                }
+                if (cmbCity.SelectedIndex == -1)
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T014);
+                    return;
+                }
 
-                                T011); return;
+                if (txtDabitCardNumber.Text!="" && txtDabitCardNumber.Text.Length!=16)
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T034);
+                    return;
+                }
+
+                if (txtSeryalShaba.Text != "" && txtSeryalShaba.Text.Length != 24)
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T035);
+                    return;
+                }
+                if (cmbGroup.Text == "")
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T097);
+                    cmbGroup.Focus();
+                    return;
+                }
+
+
+                using (var db = new DBcontextModel())
+                {
+
+                    if (ListId == 0)
+                    {
+                        if (TypeCustomerId == 1)
+                        {
+                            int cont = db.Customers.Count(c => c.CodMeli == txtCodMeli.Text);
+                            if (cont > 0)
+                            {
+                                PublicClass.ErrorMesseg(ResourceCode.
+
+                                    T011); return;
+                            }
+                        }
+                        else
+                        {
+                            int cont = db.Customers.Count(c => c.Name == txtName.Text);
+                            if (cont > 0)
+                            {
+                                PublicClass.ErrorMesseg(ResourceCode.
+
+                                    T011); return;
+                            }
+
                         }
                     }
                     else
                     {
-                        int cont = db.Customers.Count(c => c.Name == txtName.Text);
-                        if (cont > 0)
+                        if (TypeCustomerId == 1)
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.
-
-                                T011); return;
-                        }
-
-                    }
-                }
-                else
-                {
-                    if (TypeCustomerId == 1)
-                    {
-                        int cont = db.Customers.Count(c => c.CodMeli == txtCodMeli.Text && c.Id != ListId);
-                        if (cont > 0)
-                        {
-                            PublicClass.ErrorMesseg(ResourceCode.
-                                T011); return;
-                        }
-                    }
-                    else
-                    {
-                        int cont = db.Customers.Count(c => c.Name == txtName.Text && c.Id != ListId);
-                        if (cont > 0)
-                        {
-                            PublicClass.ErrorMesseg(ResourceCode.
-                                T011); return;
-                        }
-                    }
-                }
-                if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
-
-                var userRepo = new Repository<HM_ERP_System.Entity.Customer.Customer>(db);
-                int CustomerId = userRepo.SaveOrUpdateRefId(new Entity.Customer.Customer { Id = ListId, Name = txtName.Text, Family = txtFamily.Text, CodMeli = txtCodMeli.Text, id_TypeCustomer = TypeCustomerId, CityId=CityId, Tel = txtTel1.Text, Tel2=txtTel2.Text, Adders = txtAdders1.Text, Adders2=txtAdders2.Text, PostalCode=txtPostalCode.Text, BanckId=BanckId, DabitCardNumber=txtDabitCardNumber.Text, SeryalShaba=txtSeryalShaba.Text, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
-                if (ListId == 0)
-                {
-                    if (CustomerId > 0)
-                    {
-                        foreach (var GroupId in cmbGroup.CheckedValues)
-                        {
-                            int grId = Convert.ToInt32(GroupId);
-                            var q = db.CustomerToGroups.Where(c => c.CustomerId==CustomerId && c.PersonGroupId==grId);
-
-                            if (q.Count()==0)
+                            int cont = db.Customers.Count(c => c.CodMeli == txtCodMeli.Text && c.Id != ListId);
+                            if (cont > 0)
                             {
-                                var save = new Repository<Entity.CustomerToGroup.CustomerToGroup>(db);
-                                save.SaveOrUpdate(new Entity.CustomerToGroup.CustomerToGroup { Id = ListId, CustomerId=CustomerId, PersonGroupId= grId }, ListId);
+                                PublicClass.ErrorMesseg(ResourceCode.
+                                    T011); return;
                             }
-                            else
+                        }
+                        else
+                        {
+                            int cont = db.Customers.Count(c => c.Name == txtName.Text && c.Id != ListId);
+                            if (cont > 0)
                             {
-                                var delet = db.CustomerToGroups.Where(c => c.Id==q.FirstOrDefault().Id).First();
-                                db.CustomerToGroups.Remove(delet);
-                                db.SaveChanges();
+                                PublicClass.ErrorMesseg(ResourceCode.
+                                    T011); return;
                             }
                         }
                     }
+                    if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+
+                    var userRepo = new Repository<HM_ERP_System.Entity.Customer.Customer>(db);
+                    int CustomerId = userRepo.SaveOrUpdateRefId(new Entity.Customer.Customer { Id = ListId, Name = txtName.Text, Family = txtFamily.Text, CodMeli = txtCodMeli.Text, id_TypeCustomer = TypeCustomerId, CityId=CityId, Tel = txtTel1.Text, Tel2=txtTel2.Text, Adders = txtAdders1.Text, Adders2=txtAdders2.Text, PostalCode=txtPostalCode.Text, BanckId=BanckId, DabitCardNumber=txtDabitCardNumber.Text, SeryalShaba=txtSeryalShaba.Text, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
+                    if (ListId == 0)
+                    {
+                        if (CustomerId > 0)
+                        {
+                            foreach (var GroupId in cmbGroup.CheckedValues)
+                            {
+                                int grId = Convert.ToInt32(GroupId);
+                                var q = db.CustomerToGroups.Where(c => c.CustomerId==CustomerId && c.PersonGroupId==grId);
+
+                                if (q.Count()==0)
+                                {
+                                    var save = new Repository<Entity.CustomerToGroup.CustomerToGroup>(db);
+                                    save.SaveOrUpdate(new Entity.CustomerToGroup.CustomerToGroup { Id = ListId, CustomerId=CustomerId, PersonGroupId= grId }, ListId);
+                                }
+                                else
+                                {
+                                    var delet = db.CustomerToGroups.Where(c => c.Id==q.FirstOrDefault().Id).First();
+                                    db.CustomerToGroups.Remove(delet);
+                                    db.SaveChanges();
+                                }
+                            }
+                        }
+                    }
+
+                    PublicClass.WindowAlart("1");
+                    FilldgvList();
+                    if (_updatableForms!=null)
+                        _updatableForms.UpdateData();
+                    CelearItems();
+
                 }
-
-                PublicClass.WindowAlart("1");
-                FilldgvList();
-                if (_updatableForms!=null)
-                    _updatableForms.UpdateData();
-                CelearItems();
-
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -555,7 +511,7 @@ namespace HM_ERP_System.Forms.Customer
                 if (ofd.ShowDialog() == DialogResult.OK)
                     FileName = ofd.FileName;
                 DataTable dataTable = new DataTable();
-                
+
                 dataTable= PublicClass.ReadExcel_ClosedXML(FileName);
                 int UserId = PublicClass.UserId;
                 foreach (DataRow item in dataTable.Rows)
@@ -597,80 +553,96 @@ namespace HM_ERP_System.Forms.Customer
 
         private void cmsdgv_CommandClick(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            ListId=ListId_;
-            switch (e.Command.Key)
+            try
             {
-                case "Edit":
-                    using (var db = new DBcontextModel())
-                    {
-                        var q = db.Customers.Where(c => c.Id == ListId).First();
-                        cmbTypeCustomer.Value = q.id_TypeCustomer;
-                        txtName.Text = q.Name;
-                        txtFamily.Text = q.Family;
-                        txtCodMeli.Text = q.CodMeli;
-                        txtTel1.Text = q.Tel;
-                        txtAdders1.Text = q.Adders;
-                        txtTel2.Text = q.Tel2;
-                        txtAdders2.Text = q.Adders2;
-                        txtPostalCode.Text = q.PostalCode;
-                        cmbBanck.Value = q.BanckId;
-                        txtSeryalShaba.Text = q.SeryalShaba;
-                        txtDabitCardNumber.Text = q.DabitCardNumber;
-                        txtDes.Text = q.Description;
-                        cmbCity.Value=q.CityId;
-
-                        var qg = db.CustomerToGroups.Where(c => c.CustomerId==ListId).ToList();
-                        string txt = "";
-                        foreach (var item in qg)
-                        {
-                            var s = db.PersonGroups.Where(c => c.Id==item.PersonGroupId).First();
-                            txt+= s.Name+",";
-                        }
-
-                        cmbGroup.Text=txt.Remove(txt.Length-1);
-                        cmbGroup.Enabled=false;
-                        btnAddGroup.Enabled=false;
-                        //txtAmount.Value=q.BeginningBanace;
-                        //cmbNatureAccounts.SelectedIndex =(int)q.NatureAccountsId;
-
-
-
-                    }
-                    break;
-                case "Delete":
-                    if (!PublicClass.SetPeremission("d1", 1)) return;
-
-                    using (var db = new DBcontextModel())
-                    {
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+                ListId=ListId_;
+                switch (e.Command.Key)
+                {
+                    case "Edit":
+                        using (var db = new DBcontextModel())
                         {
                             var q = db.Customers.Where(c => c.Id == ListId).First();
-                            db.Customers.Remove(q);
+                            cmbTypeCustomer.Value = q.id_TypeCustomer;
+                            txtName.Text = q.Name;
+                            txtFamily.Text = q.Family;
+                            txtCodMeli.Text = q.CodMeli;
+                            txtTel1.Text = q.Tel;
+                            txtAdders1.Text = q.Adders;
+                            txtTel2.Text = q.Tel2;
+                            txtAdders2.Text = q.Adders2;
+                            txtPostalCode.Text = q.PostalCode;
+                            cmbBanck.Value = q.BanckId;
+                            txtSeryalShaba.Text = q.SeryalShaba;
+                            txtDabitCardNumber.Text = q.DabitCardNumber;
+                            txtDes.Text = q.Description;
+                            cmbCity.Value=q.CityId;
 
-                            var doc = db.DocumentBancks.Where(c => c.FormName==this.Name && c.ListInFoemId==ListId).ToList();
-                            db.DocumentBancks.RemoveRange(doc);
+                            var qg = db.CustomerToGroups.Where(c => c.CustomerId==ListId).ToList();
+                            string txt = "";
+                            foreach (var item in qg)
+                            {
+                                var s = db.PersonGroups.Where(c => c.Id==item.PersonGroupId);
+                                if(s.Count()!=0)
+                                txt+= s.First().Name+",";
+                            }
 
-                            PublicClass.WindowAlart("2");
-                            db.SaveChanges();
-                            FilldgvList();
-                            CelearItems();
+                            cmbGroup.Text=txt.Remove(txt.Length-1);
+                            cmbGroup.Enabled=false;
+                            btnAddGroup.Enabled=false;
+                            //txtAmount.Value=q.BeginningBanace;
+                            //cmbNatureAccounts.SelectedIndex =(int)q.NatureAccountsId;
+                        }
+                        break;
+                    case "Delete":
+                        //if (!PublicClass.SetPeremission("d1", 1)) return;
+
+                        using (var db = new DBcontextModel())
+                        {
+
+                            var c1 = db.DetailedAccounts.Where(c => c.CustomerId==ListId);
+                            var c2 = db.CustomerToGroups.Where(c => c.CustomerId==ListId);
+                            var c3 = db.CustomerRoles.Where(c => c.CustomerId==ListId);
+                            var c4 = db.CustomerRoles.Where(c => c.CustomerId==ListId);
+
+                            if(c1!= null || c2!= null || c3!= null || c4!= null)
+                            {
+                                PublicClass.StopMesseg(ResourceCode.T004);return;
+                            }
+
+                            if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                            {
+                                var q = db.Customers.Where(c => c.Id == ListId).First();
+                                db.Customers.Remove(q);
+
+                                var doc = db.DocumentBancks.Where(c => c.FormName==this.Name && c.ListInFoemId==ListId).ToList();
+                                db.DocumentBancks.RemoveRange(doc);
+
+                                PublicClass.WindowAlart("2");
+                                db.SaveChanges();
+                                FilldgvList();
+                                CelearItems();
+                            }
+
                         }
 
-                    }
 
+                        break;
+                    case "AddDocumentToBanck"://ثبت مدارک
+                        string lblCaption = "نام و نام خانوادگی: " + dgvList.GetRow().Cells["Name"].Value.ToString()+" "+ dgvList.GetRow().Cells["Family"].Value.ToString() + " کد ملی: " + dgvList.GetRow().Cells["CodMeli"].Value.ToString();
 
-                    break;
-                case "AddDocumentToBanck"://ثبت مدارک
-                    string lblCaption = "نام و نام خانوادگی: " + dgvList.GetRow().Cells["Name"].Value.ToString()+" "+ dgvList.GetRow().Cells["Family"].Value.ToString() + " کد ملی: " + dgvList.GetRow().Cells["CodMeli"].Value.ToString();
+                        PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
+                        FilldgvList();
+                        ListId=0;
+                        break;
 
-                    PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
-                    FilldgvList();
-                    ListId=0;
-                    break;
-
+                }
+                //ListId=0;
             }
-            //ListId=0;
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
         int CityId = 0;
@@ -760,9 +732,9 @@ namespace HM_ERP_System.Forms.Customer
         private void buttonItem1_Click(object sender, EventArgs e)
         {
             PdfReportHelper.ExportJanusGridToPDF(dgvList, "گزارش لیست مشتریان");
-        //    SaveFileDialog sfd = new SaveFileDialog();
-        //    sfd.Filter = "PDF File|*.pdf";
-        //    sfd.FileName = "Report_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".pdf";
+            //    SaveFileDialog sfd = new SaveFileDialog();
+            //    sfd.Filter = "PDF File|*.pdf";
+            //    sfd.FileName = "Report_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".pdf";
 
             //    if (sfd.ShowDialog() == DialogResult.OK)
             //    {

@@ -168,12 +168,16 @@ namespace HM_ERP_System.Forms.Ciltys
                 {
                     using (var db = new DBcontextModel())
                     {
+                        var q1=db.Customers.Where(c=>c.CityId == ListId).Count();
+                        var q2=db.ComersHs.Where(c=>c.LoadingOrinigId == ListId).Count();
+                        var q3=db.ComersHs.Where(c=>c.UnLoadingOrinigId == ListId).Count();
 
-                        //if (db.Ciltys.Where(c => c.ProvincesId == LisId).Count() != 0)
-                        //{
-                        //    PublicClass.ErrorMesseg(ResourceCode.T004);
-                        //    return;
-                        //}
+
+                        if (q1 != 0 ||q2 != 0 ||q3 != 0 )
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            return;
+                        }
 
                         if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {

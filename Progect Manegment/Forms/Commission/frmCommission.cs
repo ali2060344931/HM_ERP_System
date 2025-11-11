@@ -9,6 +9,8 @@ using Janus.Windows.GridEX;
 
 using MyClass;
 
+using NPOI.SS.Formula.PTG;
+
 using Progect_Manegment;
 
 using System;
@@ -18,6 +20,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -134,11 +137,11 @@ namespace HM_ERP_System.Forms.Commission
                 {
                     var q = from co in db.Commissions
                             
-                            join cmB in db.ComersBs
-                            on co.ComersBId equals cmB.Id
+                            join cmb in db.ComersBs
+                            on co.ComersBId equals cmb.Id
                             
                             join cmH in db.ComersHs
-                            on cmB.ComersHId equals cmH.Id
+                            on cmb.ComersHId equals cmH.Id
 
                             join pg in db.PersonGroups
                             on co.CommissionTypeId equals pg.Id
@@ -151,6 +154,50 @@ namespace HM_ERP_System.Forms.Commission
 
                             join tr in db.Transactions on co.TransactionId equals tr.Id into trj
                             from tr in trj.DefaultIfEmpty()
+                                //---------------
+
+                            join cmh in db.ComersHs on cmb.ComersHId equals cmh.Id
+                            join ct1 in db.Ciltys on cmh.LoadingOrinigId equals ct1.Id
+                            join pt1 in db.PlaceTransfers on cmh.LoadingLocationId equals pt1.Id
+                            join ct2 in db.Ciltys on cmh.UnLoadingOrinigId equals ct2.Id
+                            join pt2 in db.PlaceTransfers on cmh.UnLoadingLocationId equals pt2.Id
+                            join pr in db.Products on cmh.ProductsId equals pr.Id
+                            join dr1 in db.Dravers on cmb.DaraverId1_ equals dr1.Id
+                            join cu1 in db.Customers on dr1.CustomerId equals cu1.Id
+                            join dr2 in db.Dravers on cmb.DaraverId2_ equals dr2.Id
+                            join cu2 in db.Customers on dr2.CustomerId equals cu2.Id
+                            join ca in db.Customers on cmb.CostAccountId equals ca.Id
+                            join ga in db.Customers on cmb.GoodsAccountId equals ga.Id
+                            join sd1 in db.Customers on cmb.SenderId equals sd1.Id
+                            join rs1 in db.Customers on cmb.ResiverId equals rs1.Id
+
+                            join rs2 in db.Customers on cmb.ResiverId2 equals rs2.Id into rs2Group
+                            from rs2Left in rs2Group.DefaultIfEmpty()
+
+                            join sd2 in db.Customers on cmb.SenderId2 equals sd2.Id into sd2Group
+                            from sd2Left in sd2Group.DefaultIfEmpty()
+
+                            join tcf in db.FareCalcMethods on cmb.TypeCalFareId equals tcf.Id
+                            join mcf in db.TypeCalcMethods on cmb.MethodCalFareId equals mcf.Id
+                            join pm2 in db.PaymentMethods on cmb.BillLadingCastId equals pm2.Id
+                            join tcm2 in db.TypeCalcMethods on cmb.BillLadingMethodId equals tcm2.Id
+
+                            join sh in db.Customers on cmh.ShiperId equals sh.Id into shGroup
+                            from shLeft in shGroup.DefaultIfEmpty()
+
+                                // 🔸 اصلاح کامل بخش PaymentToOthers
+                            join ptonDA in db.DetailedAccounts
+                            on cmb.PaymentToOthersId equals ptonDA.Id into ptonDAGroup
+                            from ptonDA_Left in ptonDAGroup.DefaultIfEmpty()
+
+                            join ptonC in db.Customers
+                            on ptonDA_Left.CustomerId equals ptonC.Id into ptonCGroup
+                            from ptonC_Left in ptonCGroup.DefaultIfEmpty()
+
+                            join cr in db.Cars on cmh.CarId equals cr.Id
+                            join tf in db.TransactionFees on cmb.BT equals tf.Id
+                            //---------------
+
 
                             where string.Compare(co.Date, dateS) >= 0 && string.Compare(co.Date, dateE) <= 0
 
@@ -160,10 +207,31 @@ namespace HM_ERP_System.Forms.Commission
                                 co.Date,
                                 co.Amount,
                                 co.Des,
-                                ComersB = cmB.SeryalH,
+                                ComersB = cmb.SeryalH,
                                 CommissionType = pg.Name,
                                 Customer = cu.Family +" "+cu.Name,
                                 TransactionsSeryal = co.TransactionId==0 ? "" : tr.TransactionCode.ToString(),
+                                cmb.DateB,
+                                cmb.SeryalB,
+                                LoadingOrinigName = ct1.Name,
+                                LoadingLocationName = pt1.Name,
+                                UnLoadingOrinigName = ct2.Name,
+                                ProductsName = pr.Name,
+                                UnLoadingLocationName = pt2.Name,
+                                CostAccountName = (ca.Family + " " + ca.Name).Trim(),
+                                GoodsAccountName = (ga.Family + " " + ga.Name).Trim(),
+                                ShiperName = shLeft != null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
+                                CarPlat = cr.CarPlat + "-" + cr.CarPlatSeryal,
+                                DaraverName = cu1.Family + " " + cu1.Name,
+                                DaraverTel = cu1.Tel,
+                                DaraverName2 = cu2.Family + " " + cu2.Name,
+                                DaraverTel2 = cu2.Tel,
+                                SenderName = sd1.Family + " " + sd1.Name,
+                                ResiverName = rs1.Family + " " + rs1.Name,
+                                SenderName2 = sd2Left != null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
+                                ResiverName2 = rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
+                                cmb.Bn,
+
                             };
                     DG.DataSource=q.ToList();
                     PublicClass.SettingGridEX(DG);

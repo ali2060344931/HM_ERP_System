@@ -41,6 +41,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace HM_ERP_System.Forms.Main_Form
@@ -119,6 +120,8 @@ namespace HM_ERP_System.Forms.Main_Form
                 lblUserName.Text="نام کاربر: "+UserName.Name+ ""+UserName.Family;
                 lblUserRole.Text="نوع کاربری: "+RoleName.Name;
                 lblDate.Text="تاریخ: "+ PersianDate.NowPersianDate;
+                var version = Assembly.GetExecutingAssembly().GetName().Version;
+                lblVersion_.Text="نسخه برنامه: "+version.ToString();
             }
         }
 
@@ -303,7 +306,6 @@ namespace HM_ERP_System.Forms.Main_Form
         /// <param name="e"></param>
         private void btnRegCheques_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            FormManager.ShowMdiChildForm<frmCheque>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
         frmPurchase_Tanker frmPurchase_Tanker;
         private void btnTenkerPurchase_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
@@ -430,8 +432,13 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void btnExitProgram_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            if (MessageBox.Show(ResourceCode.T151, MyClass.PublicClass.ProjectName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBox.Show(ResourceCode.T151, MyClass.PublicClass.ProjectName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 Application.Exit();
+        }
+
+        private void btnRegCheques__Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            FormManager.ShowMdiChildForm<frmCheque>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
     }
 }

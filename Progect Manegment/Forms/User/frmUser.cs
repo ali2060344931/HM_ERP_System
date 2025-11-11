@@ -89,7 +89,7 @@ namespace HM_ERP_System.Forms.User
 
                             select new
                             {
-                                cu.Id,
+                                CR.Id,
                                 UserName = cu.Family +" "+ cu.Name,
                                 TypeUserName = rl.Name,
                             };
@@ -150,7 +150,7 @@ namespace HM_ERP_System.Forms.User
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T062); return;
                         }
-
+                        pas=PublicClass.GenerateHash(txtPassword.Text);
                     }
                     else
                     {

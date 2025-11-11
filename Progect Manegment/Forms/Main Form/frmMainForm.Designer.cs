@@ -31,11 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainForm));
             this.labelCommand1 = new Janus.Windows.Ribbon.LabelCommand();
+            this.buttonCommand18 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnExitProgram = new Janus.Windows.Ribbon.ButtonCommand();
+            this.backstageTabControl1 = new Janus.Windows.Ribbon.BackstageTabControl();
+            this.buttonCommand8 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.buttonCommand11 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.buttonCommand12 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.buttonCommand13 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnExitForProg = new Janus.Windows.Ribbon.ButtonCommand();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabStrip1 = new DevComponents.DotNetBar.TabStrip();
             this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
             this.ribbon1 = new Janus.Windows.Ribbon.Ribbon();
-            this.buttonCommand18 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.btnExitProgram = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnComers = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommand17 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnReviewAccounts = new Janus.Windows.Ribbon.ButtonCommand();
@@ -72,9 +79,6 @@
             this.btnTransactionIE = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnRecevingPayment = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup10 = new Janus.Windows.Ribbon.RibbonGroup();
-            this.buttonCommand10 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.ribbonGroup11 = new Janus.Windows.Ribbon.RibbonGroup();
-            this.btnRegCheques = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTab5 = new Janus.Windows.Ribbon.RibbonTab();
             this.ribbonGroup8 = new Janus.Windows.Ribbon.RibbonGroup();
             this.buttonCommand9 = new Janus.Windows.Ribbon.ButtonCommand();
@@ -88,6 +92,7 @@
             this.btnTransferBetweenBanks = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup12 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnReviewAccounts2 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnRegCheques_ = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTab6 = new Janus.Windows.Ribbon.RibbonTab();
             this.ribbonGroup7 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnTankerRental = new Janus.Windows.Ribbon.ButtonCommand();
@@ -100,19 +105,14 @@
             this.btnPeremission = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup6 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnFinancialYears = new Janus.Windows.Ribbon.ButtonCommand();
-            this.backstageTabControl1 = new Janus.Windows.Ribbon.BackstageTabControl();
             this.ribbonStatusBar1 = new Janus.Windows.Ribbon.RibbonStatusBar();
+            this.lblVersion_ = new Janus.Windows.Ribbon.LabelCommand();
             this.buttonCommand16 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnCalculater = new Janus.Windows.Ribbon.ButtonCommand();
             this.lblUserRole = new Janus.Windows.Ribbon.LabelCommand();
             this.lblUserName = new Janus.Windows.Ribbon.LabelCommand();
             this.lblDate = new Janus.Windows.Ribbon.LabelCommand();
-            this.buttonCommand8 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.buttonCommand11 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.buttonCommand12 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.buttonCommand13 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.btnExitForProg = new Janus.Windows.Ribbon.ButtonCommand();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblVersion = new Janus.Windows.Ribbon.LabelCommand();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,6 +121,63 @@
             this.labelCommand1.Key = "UserName";
             this.labelCommand1.Name = "labelCommand1";
             this.labelCommand1.Text = "نام کاربر";
+            // 
+            // buttonCommand18
+            // 
+            this.buttonCommand18.Key = "ButtonCommand1";
+            this.buttonCommand18.Name = "buttonCommand18";
+            this.buttonCommand18.Text = "تست 1";
+            // 
+            // btnExitProgram
+            // 
+            this.btnExitProgram.Icon = ((System.Drawing.Icon)(resources.GetObject("btnExitProgram.Icon")));
+            this.btnExitProgram.Key = "Exit";
+            this.btnExitProgram.Name = "btnExitProgram";
+            this.btnExitProgram.Text = "خروج";
+            this.btnExitProgram.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnExitProgram_Click);
+            // 
+            // backstageTabControl1
+            // 
+            this.backstageTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.backstageTabControl1.Name = "backstageTabControl1";
+            this.backstageTabControl1.Size = new System.Drawing.Size(0, 0);
+            this.backstageTabControl1.TabIndex = 0;
+            // 
+            // buttonCommand8
+            // 
+            this.buttonCommand8.Key = "btnRecevingPayment";
+            this.buttonCommand8.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonCommand8.LargeImage")));
+            this.buttonCommand8.Name = "btnRecevingPayment";
+            this.buttonCommand8.Text = "دریافت پرداخت";
+            // 
+            // buttonCommand11
+            // 
+            this.buttonCommand11.Key = "AddCustomAc";
+            this.buttonCommand11.Name = "btnAddCustomAc";
+            this.buttonCommand11.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
+            this.buttonCommand11.Text = "اشخـــــــــــــــــــــــاص";
+            // 
+            // buttonCommand12
+            // 
+            this.buttonCommand12.Key = "AddBancksAc";
+            this.buttonCommand12.Name = "btnAddBancksAc";
+            this.buttonCommand12.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
+            this.buttonCommand12.Text = "حساب های بانکی";
+            // 
+            // buttonCommand13
+            // 
+            this.buttonCommand13.Key = "AddCofersAc";
+            this.buttonCommand13.Name = "btnAddCofersAc";
+            this.buttonCommand13.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
+            this.buttonCommand13.Text = "صنــــــــــــــــدوق ها";
+            // 
+            // btnExitForProg
+            // 
+            this.btnExitForProg.Image = ((System.Drawing.Image)(resources.GetObject("btnExitForProg.Image")));
+            this.btnExitForProg.Key = "buttonCommand16";
+            this.btnExitForProg.Name = "btnExitForProg";
+            this.btnExitForProg.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
+            this.btnExitForProg.Text = "خــروج";
             // 
             // tabStrip1
             // 
@@ -132,7 +189,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1026, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1090, 27);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -166,7 +223,7 @@
             this.ribbon1.QuickAccessCustomizeList.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.btnReviewAccounts});
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1026, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1090, 185);
             // 
             // 
             // 
@@ -184,20 +241,6 @@
             this.ribbonTab2,
             this.ribbonTab3});
             this.ribbon1.Text = "";
-            // 
-            // buttonCommand18
-            // 
-            this.buttonCommand18.Key = "ButtonCommand1";
-            this.buttonCommand18.Name = "buttonCommand18";
-            this.buttonCommand18.Text = "تست 1";
-            // 
-            // btnExitProgram
-            // 
-            this.btnExitProgram.Icon = ((System.Drawing.Icon)(resources.GetObject("btnExitProgram.Icon")));
-            this.btnExitProgram.Key = "Exit";
-            this.btnExitProgram.Name = "btnExitProgram";
-            this.btnExitProgram.Text = "خروج";
-            this.btnExitProgram.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnExitProgram_Click);
             // 
             // btnComers
             // 
@@ -415,8 +458,7 @@
             this.ribbonTab4.Groups.AddRange(new Janus.Windows.Ribbon.RibbonGroup[] {
             this.ribbonGroup4,
             this.ribbonGroup5,
-            this.ribbonGroup10,
-            this.ribbonGroup11});
+            this.ribbonGroup10});
             this.ribbonTab4.Icon = ((System.Drawing.Icon)(resources.GetObject("ribbonTab4.Icon")));
             this.ribbonTab4.Key = "Accounting";
             this.ribbonTab4.Name = "ribbonTab4";
@@ -522,41 +564,12 @@
             // ribbonGroup10
             // 
             this.ribbonGroup10.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.buttonCommand10,
             this.btnReviewAccounts});
             this.ribbonGroup10.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup10;
             this.ribbonGroup10.ImageKey = "";
             this.ribbonGroup10.Key = "ribbonGroup10";
             this.ribbonGroup10.Name = "ribbonGroup10";
             this.ribbonGroup10.Text = "گزارشــــــات";
-            // 
-            // buttonCommand10
-            // 
-            this.buttonCommand10.Enabled = false;
-            this.buttonCommand10.Icon = ((System.Drawing.Icon)(resources.GetObject("buttonCommand10.Icon")));
-            this.buttonCommand10.Key = "buttonCommand10";
-            this.buttonCommand10.Name = "buttonCommand10";
-            this.buttonCommand10.Text = "دفتر کل";
-            this.buttonCommand10.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand10_Click);
-            // 
-            // ribbonGroup11
-            // 
-            this.ribbonGroup11.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.btnRegCheques});
-            this.ribbonGroup11.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup11;
-            this.ribbonGroup11.ImageKey = "";
-            this.ribbonGroup11.Key = "ribbonGroup11";
-            this.ribbonGroup11.Name = "ribbonGroup11";
-            this.ribbonGroup11.Text = "چک ها";
-            // 
-            // btnRegCheques
-            // 
-            this.btnRegCheques.Icon = ((System.Drawing.Icon)(resources.GetObject("btnRegCheques.Icon")));
-            this.btnRegCheques.Key = "RegCheques";
-            this.btnRegCheques.Name = "btnRegCheques";
-            this.btnRegCheques.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
-            this.btnRegCheques.Text = "مدیریت چک ها";
-            this.btnRegCheques.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnRegCheques_Click);
             // 
             // ribbonTab5
             // 
@@ -659,7 +672,8 @@
             // ribbonGroup12
             // 
             this.ribbonGroup12.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.btnReviewAccounts2});
+            this.btnReviewAccounts2,
+            this.btnRegCheques_});
             this.ribbonGroup12.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup12;
             this.ribbonGroup12.ImageKey = "";
             this.ribbonGroup12.Key = "ribbonGroup12";
@@ -673,6 +687,14 @@
             this.btnReviewAccounts2.Name = "btnReviewAccounts2";
             this.btnReviewAccounts2.Text = "مـــرور حســـاب ها";
             this.btnReviewAccounts2.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnReviewAccounts2_Click);
+            // 
+            // btnRegCheques_
+            // 
+            this.btnRegCheques_.Image = ((System.Drawing.Image)(resources.GetObject("btnRegCheques_.Image")));
+            this.btnRegCheques_.Key = "buttonCommand19";
+            this.btnRegCheques_.Name = "btnRegCheques_";
+            this.btnRegCheques_.Text = "مدیریت چک ها";
+            this.btnRegCheques_.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnRegCheques__Click);
             // 
             // ribbonTab6
             // 
@@ -750,7 +772,6 @@
             // 
             // buttonCommand7
             // 
-            this.buttonCommand7.Enabled = false;
             this.buttonCommand7.Icon = ((System.Drawing.Icon)(resources.GetObject("buttonCommand7.Icon")));
             this.buttonCommand7.Key = "buttonCommand7";
             this.buttonCommand7.Name = "buttonCommand7";
@@ -790,25 +811,19 @@
             this.btnFinancialYears.Text = "تعریف سال مالی";
             this.btnFinancialYears.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnFinancialYears_Click);
             // 
-            // backstageTabControl1
-            // 
-            this.backstageTabControl1.Location = new System.Drawing.Point(0, 0);
-            this.backstageTabControl1.Name = "backstageTabControl1";
-            this.backstageTabControl1.Size = new System.Drawing.Size(0, 0);
-            this.backstageTabControl1.TabIndex = 0;
-            // 
             // ribbonStatusBar1
             // 
             this.ribbonStatusBar1.LeftPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.lblVersion_,
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 458);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 530);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1026, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1090, 23);
             // 
             // 
             // 
@@ -816,6 +831,14 @@
             this.ribbonStatusBar1.SuperTipComponent.ImageList = null;
             this.ribbonStatusBar1.TabIndex = 1;
             this.ribbonStatusBar1.Text = "ribbonStatusBar1";
+            // 
+            // lblVersion_
+            // 
+            this.lblVersion_.Image = ((System.Drawing.Image)(resources.GetObject("lblVersion_.Image")));
+            this.lblVersion_.Key = "lblVersion";
+            this.lblVersion_.Name = "lblVersion_";
+            this.lblVersion_.SupertipSettingsData = resources.GetString("lblVersion_.SupertipSettingsData");
+            this.lblVersion_.Text = "نسخه برنامه";
             // 
             // buttonCommand16
             // 
@@ -859,47 +882,17 @@
     "eaderText><Text>جهت نمایش تاریخ جاری سیستم</Text></SupertipSettings>";
             this.lblDate.Text = "تاریخ سیستم";
             // 
-            // buttonCommand8
+            // lblVersion
             // 
-            this.buttonCommand8.Key = "btnRecevingPayment";
-            this.buttonCommand8.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonCommand8.LargeImage")));
-            this.buttonCommand8.Name = "btnRecevingPayment";
-            this.buttonCommand8.Text = "دریافت پرداخت";
-            // 
-            // buttonCommand11
-            // 
-            this.buttonCommand11.Key = "AddCustomAc";
-            this.buttonCommand11.Name = "btnAddCustomAc";
-            this.buttonCommand11.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
-            this.buttonCommand11.Text = "اشخـــــــــــــــــــــــاص";
-            // 
-            // buttonCommand12
-            // 
-            this.buttonCommand12.Key = "AddBancksAc";
-            this.buttonCommand12.Name = "btnAddBancksAc";
-            this.buttonCommand12.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
-            this.buttonCommand12.Text = "حساب های بانکی";
-            // 
-            // buttonCommand13
-            // 
-            this.buttonCommand13.Key = "AddCofersAc";
-            this.buttonCommand13.Name = "btnAddCofersAc";
-            this.buttonCommand13.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
-            this.buttonCommand13.Text = "صنــــــــــــــــدوق ها";
-            // 
-            // btnExitForProg
-            // 
-            this.btnExitForProg.Image = ((System.Drawing.Image)(resources.GetObject("btnExitForProg.Image")));
-            this.btnExitForProg.Key = "buttonCommand16";
-            this.btnExitForProg.Name = "btnExitForProg";
-            this.btnExitForProg.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
-            this.btnExitForProg.Text = "خــروج";
+            this.lblVersion.Key = "labelCommand2";
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Text = "labelCommand2";
             // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 481);
+            this.ClientSize = new System.Drawing.Size(1090, 553);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);
@@ -963,9 +956,6 @@
         private Janus.Windows.Ribbon.ButtonCommand btnReceving_Payment;
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand8;
         private Janus.Windows.Ribbon.RibbonGroup ribbonGroup10;
-        private Janus.Windows.Ribbon.ButtonCommand buttonCommand10;
-        private Janus.Windows.Ribbon.RibbonGroup ribbonGroup11;
-        private Janus.Windows.Ribbon.ButtonCommand btnRegCheques;
         private Janus.Windows.Ribbon.ButtonCommand btnFinancialYears;
         private Janus.Windows.Ribbon.ButtonCommand btnTransferBetweenPersons;
         private Janus.Windows.Ribbon.ButtonCommand btnTransferBetweenBanks;
@@ -997,5 +987,8 @@
         private Janus.Windows.Ribbon.ButtonCommand btnShowListCommission;
         private Janus.Windows.Ribbon.ButtonCommand btnExitProgram;
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand18;
+        private Janus.Windows.Ribbon.ButtonCommand btnRegCheques_;
+        private Janus.Windows.Ribbon.LabelCommand lblVersion_;
+        private Janus.Windows.Ribbon.LabelCommand lblVersion;
     }
 }

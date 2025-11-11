@@ -45,12 +45,12 @@ namespace HM_ERP_System.Forms.Login
                     var q = from CrRl in db.CustomerRoles
 
                             join cu in db.Customers
-                            on CrRl.Id equals cu.Id
+                            on CrRl.CustomerId equals cu.Id
 
-                            join rl in db.Roles
-                            on CrRl.RoleId equals rl.Id
+                            //join rl in db.Roles
+                            //on CrRl.RoleId equals rl.Id
 
-                            where cu.CodMeli==txtUserName.Text
+                            where cu.CodMeli==txtUserName.Text.Trim()
                             select new
                             {
                                 CrRl.Id,
@@ -58,7 +58,7 @@ namespace HM_ERP_System.Forms.Login
                                 CrRl.Status,
                                 cu.CodMeli,
                                 CrRl.Password,
-                                RoleId = rl.Id
+                                //RoleId = rl.Id
                             };
 
                     if (q.Count() == 0)

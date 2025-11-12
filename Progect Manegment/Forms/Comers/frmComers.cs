@@ -228,6 +228,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbResiver2.DataSource = q.ToList();
                     dt_Resiver2 = new System.Data.DataTable();
@@ -262,6 +263,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbSender2.DataSource = q.ToList();
                     dt_Sender2 = new System.Data.DataTable();
@@ -297,6 +299,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbCostAccountB.DataSource = q.ToList();
 
@@ -332,6 +335,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbGoodsAccountB.DataSource = q.ToList();
                     dt_GoodsAccountB = new System.Data.DataTable();
@@ -922,6 +926,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbShiper.DataSource = q.ToList();
                     dt_Shiper = new System.Data.DataTable();
@@ -963,6 +968,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbResiver1.DataSource = q.ToList();
                     dt_Resiver1 = new System.Data.DataTable();
@@ -996,6 +1002,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbResiverB1.DataSource = q.ToList();
                     dt_ResiverB1 = new System.Data.DataTable();
@@ -1027,6 +1034,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbResiverB2.DataSource = q.ToList();
                     dt_ResiverB2 = new System.Data.DataTable();
@@ -1062,6 +1070,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbSender1.DataSource = q.ToList();
                     dt_bSender1 = new System.Data.DataTable();
@@ -1095,6 +1104,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbSenderB1.DataSource = q.ToList();
 
@@ -1127,6 +1137,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbSenderB2.DataSource = q.ToList();
                     dt_cmbSenderB2 = new System.Data.DataTable();
@@ -1161,6 +1172,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbGoodsAccountH.DataSource = q.ToList();
                     dt_GoodsAccountH = new System.Data.DataTable();
@@ -1195,6 +1207,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 Name = pr.Family + " " + pr.Name,
+                                pr.CodMeli,
                             };
                     cmbCostAccountH.DataSource = q.ToList();
                     dt_CostAccountH = new System.Data.DataTable();

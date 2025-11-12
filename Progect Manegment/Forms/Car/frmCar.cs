@@ -105,7 +105,9 @@ namespace HM_ERP_System.Forms.Car
                         {
                             pr.Id,
                             Name = pr.Family + " " + pr.Name,
+                            pr.CodMeli,
                         };
+               
                 cmbGoodsAccount.DataSource = q.ToList();
                 dt_GoodsAccount = new System.Data.DataTable();
                 dt_GoodsAccount = PublicClass.AddEntityTableToDataTable(q.ToList());
@@ -159,6 +161,7 @@ namespace HM_ERP_System.Forms.Car
                         {
                             dr.Id,
                             Name = cu.Family + " " + cu.Name,
+                            cu.CodMeli,
                         };
                 cmbDraverName.DataSource = q.ToList();
                 dt_DraverName = new System.Data.DataTable();

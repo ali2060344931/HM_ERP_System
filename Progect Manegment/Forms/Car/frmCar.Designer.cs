@@ -162,17 +162,11 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(346, 12);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 21, 8, 39, 40, 911);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(144, 12);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 21, 8, 39, 40, 911);
-            // 
-            // btnShowListItems
-            // 
-            this.btnShowListItems.Location = new System.Drawing.Point(54, 15);
             // 
             // labelX2
             // 
@@ -180,7 +174,6 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(274, 17);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
@@ -190,7 +183,6 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(476, 17);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
@@ -210,7 +202,7 @@
             this.btnExportToExcel.Location = new System.Drawing.Point(551, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
-            // buttonX1
+            // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(517, 0);
             // 

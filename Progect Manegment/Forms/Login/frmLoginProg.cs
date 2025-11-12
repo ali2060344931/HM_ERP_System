@@ -4,6 +4,7 @@ using HM_ERP_System.Forms.FinancialYears;
 using HM_ERP_System.Forms.Main_Form;
 
 using MyClass;
+
 using Progect_Manegment;
 
 using System;
@@ -12,6 +13,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -135,6 +137,9 @@ namespace HM_ERP_System.Forms.Login
             this.Text=ResourceCode.ProgName;
             FillcmbProvinces();
             cmbFinancialYears.Value= Properties.Settings.Default.FinancialYear;
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            lblVersion.Text="نسخه برنامه: "+version.ToString();
+
 
         }
 

@@ -182,7 +182,7 @@
             this.btnExportToExcel.Location = new System.Drawing.Point(444, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
-            // buttonX1
+            // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(410, 0);
             // 
@@ -223,16 +223,17 @@
             cmbPerson_DesignTimeLayout.LayoutString = resources.GetString("cmbPerson_DesignTimeLayout.LayoutString");
             this.cmbPerson.DesignTimeLayout = cmbPerson_DesignTimeLayout;
             this.cmbPerson.DisplayMember = "Name";
+            this.cmbPerson.Image = ((System.Drawing.Image)(resources.GetObject("cmbPerson.Image")));
             this.cmbPerson.Location = new System.Drawing.Point(41, 19);
             this.cmbPerson.Name = "cmbPerson";
             this.cmbPerson.SelectedIndex = -1;
             this.cmbPerson.SelectedItem = null;
-            this.cmbPerson.Size = new System.Drawing.Size(245, 28);
+            this.cmbPerson.Size = new System.Drawing.Size(245, 30);
             this.cmbPerson.TabIndex = 0;
             this.cmbPerson.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbPerson.ValueMember = "id";
             this.cmbPerson.ValueChanged += new System.EventHandler(this.cmbPerson_ValueChanged);
-            this.cmbPerson.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPerson_KeyDown);
+            this.cmbPerson.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPerson_KeyDown_1);
             this.cmbPerson.Leave += new System.EventHandler(this.cmbPerson_Leave);
             // 
             // txtDes
@@ -569,7 +570,6 @@
             this.Name = "frmDraver";
             this.Text = "فرم ثبت راننده ها";
             this.Load += new System.EventHandler(this.frmDraver_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDraver_KeyDown);
             this.Controls.SetChildIndex(this.pnlAddItems, 0);
             this.Controls.SetChildIndex(this.pnlViewItems, 0);
             this.pnlViewItemBody.ResumeLayout(false);

@@ -39,6 +39,7 @@
             this.btnAddNewItem = new DevComponents.DotNetBar.ButtonX();
             this.cmbFinancialYears = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblVersion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFinancialYears)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -173,13 +174,26 @@
             this.pictureBox1.TabIndex = 112;
             this.pictureBox1.TabStop = false;
             // 
+            // lblVersion
+            // 
+            this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblVersion.BackColor = System.Drawing.Color.Transparent;
+            this.lblVersion.ForeColor = System.Drawing.Color.Maroon;
+            this.lblVersion.Location = new System.Drawing.Point(81, 224);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(157, 22);
+            this.lblVersion.TabIndex = 10;
+            this.lblVersion.Text = "نسخه برنامه";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmLoginProg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(321, 231);
+            this.ClientSize = new System.Drawing.Size(321, 255);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAddNewItem);
             this.Controls.Add(this.cmbFinancialYears);
@@ -188,6 +202,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label3);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Vazir FD", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
@@ -220,5 +235,6 @@
         public DevComponents.DotNetBar.ButtonX btnAddNewItem;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbFinancialYears;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblVersion;
     }
 }

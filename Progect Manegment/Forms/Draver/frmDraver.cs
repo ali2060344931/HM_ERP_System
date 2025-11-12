@@ -74,7 +74,7 @@ namespace HM_ERP_System.Forms.Draver
                 cmbProvinces.DataSource = q;
             }
         }
-
+        DataTable dt_Person;
         private void FillcmbPerson()
         {
 
@@ -90,8 +90,12 @@ namespace HM_ERP_System.Forms.Draver
                         {
                             c.Id,
                             Name = c.Family + " " + c.Name,
+                            c.CodMeli,
                         };
                 cmbPerson.DataSource = q.ToList();
+                dt_Person = new System.Data.DataTable();
+                dt_Person = PublicClass.AddEntityTableToDataTable(q.ToList());
+
             }
         }
 
@@ -337,10 +341,10 @@ namespace HM_ERP_System.Forms.Draver
 
                 }
             }
-                catch (Exception er)
-                {
-                    PublicClass.ShowErrorMessage(er);
-                }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
         //private IUpdatableForms _updatableForms;
         private void btnAddNewItem_Click(object sender, EventArgs e)
@@ -374,24 +378,29 @@ namespace HM_ERP_System.Forms.Draver
         {
             using (var db = new DBcontextModel())
             {
-                if (ListId == 0)
+                if (ListId == 0 )
                 {
                     int cont = db.Dravers.Count(c => c.CustomerId == PersonId);
                     if (cont > 0)
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T011);
+                        cmbPerson.SelectedIndex=-1;
+                        cmbPerson.Focus();
                     }
                 }
             }
         }
 
-        private void frmDraver_KeyDown(object sender, KeyEventArgs e)
+        private void cmbPerson_KeyDown_1(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
+
+            if (e.KeyCode == Keys.F2)
             {
-                if (PublicClass.CloseForm())
-                    this.Close();
+                PublicClass.SearchCmbId(cmbPerson, dt_Person);
             }
+
         }
     }
 }

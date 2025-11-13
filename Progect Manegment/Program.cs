@@ -48,6 +48,7 @@ namespace Progect_Manegment
         [STAThread]
         private static void Main()
         {
+            
             try
             {
                 string appPath = Application.StartupPath; // مسیر اجرای برنامه
@@ -61,7 +62,7 @@ namespace Progect_Manegment
                 }
 
                 // مسیر سرور
-                string serverPath = @"\\192.168.0.200\Publish_HM_ERP_System";
+                string serverPath = @"\\192.168.0.200\Share\Publish";
                 string serverVersionFile = Path.Combine(serverPath, "HM_ERP_SystemAppUpdater.txt");
 
                 if (File.Exists(serverVersionFile))
@@ -99,7 +100,7 @@ namespace Progect_Manegment
             {
                 PublicClass.ShowErrorMessage(er);
             }
-
+            
             #region AppSeting
             string connectionstring_db = File.ReadAllText(Application.StartupPath + @"\ConectionString.txt", Encoding.UTF8);
 

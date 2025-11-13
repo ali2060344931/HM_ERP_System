@@ -582,8 +582,8 @@ namespace HM_ERP_System.Forms.Customer
                             foreach (var item in qg)
                             {
                                 var s = db.PersonGroups.Where(c => c.Id==item.PersonGroupId);
-                                if(s.Count()!=0)
-                                txt+= s.First().Name+",";
+                                if (s.Count()!=0)
+                                    txt+= s.First().Name+",";
                             }
 
                             cmbGroup.Text=txt.Remove(txt.Length-1);
@@ -604,9 +604,9 @@ namespace HM_ERP_System.Forms.Customer
                             var c3 = db.CustomerRoles.Where(c => c.CustomerId==ListId);
                             var c4 = db.CustomerRoles.Where(c => c.CustomerId==ListId);
 
-                            if(c1!= null || c2!= null || c3!= null || c4!= null)
+                            if (c1!= null || c2!= null || c3!= null || c4!= null)
                             {
-                                PublicClass.StopMesseg(ResourceCode.T004);return;
+                                PublicClass.StopMesseg(ResourceCode.T004); return;
                             }
 
                             if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -752,6 +752,24 @@ namespace HM_ERP_System.Forms.Customer
             //                );
             //        }
             //    }
+        }
+
+        private void txtCodMeli_Leave(object sender, EventArgs e)
+        {
+            if (txtCodMeli.Text!="")
+            {
+                using (var db = new DBcontextModel())
+                {
+                    var q=db.Customers.Where(c=>c.CodMeli==txtCodMeli.Text);
+                    if(q.Count()!=0 && ListId==0)
+                    {
+                        PublicClass.StopMesseg(ResourceCode.T011);
+                        txtCodMeli.ResetText();
+                        txtCodMeli.Focus();
+                    }
+                }
+
+            }
         }
     }
 }

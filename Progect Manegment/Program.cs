@@ -32,8 +32,12 @@ using HM_ERP_System.Forms.User;
 
 using Manegmen_Machinery.ContexModels;
 
+using MyClass;
+
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -44,11 +48,61 @@ namespace Progect_Manegment
         [STAThread]
         private static void Main()
         {
+            try
+            {
+                string appPath = Application.StartupPath; // مسیر اجرای برنامه
+                string localVersionFile = Path.Combine(appPath, "HM_ERP_SystemAppUpdater.txt");
+
+                // ایجاد فایل نسخه در صورت عدم وجود
+                //if (!File.Exists(localVersionFile))
+                {
+                    Version version = Assembly.GetExecutingAssembly().GetName().Version;
+                    File.WriteAllText(localVersionFile, version.ToString());
+                }
+
+                // مسیر سرور
+                string serverPath = @"\\192.168.0.200\Publish_HM_ERP_System";
+                string serverVersionFile = Path.Combine(serverPath, "HM_ERP_SystemAppUpdater.txt");
+
+                if (File.Exists(serverVersionFile))
+                {
+                    string serverVersion = File.ReadAllText(serverVersionFile).Trim();
+                    string localVersion = File.ReadAllText(localVersionFile).Trim();
+
+                    if (serverVersion != localVersion)
+                    {
+                        DialogResult dr = MessageBox.Show(
+                            $"نسخه جدیدی از برنامه موجود است ({serverVersion}). آیا می‌خواهید بروزرسانی شود؟",
+                            "بروزرسانی برنامه",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Information
+                        );
+
+                        if (dr == DialogResult.Yes)
+                        {
+                            string updaterPath = Path.Combine(appPath, "AppUpdater.exe");
+                            if (File.Exists(updaterPath))
+                            {
+                                // اجرای Updater با مسیر سرور به عنوان آرگومان
+                                Process.Start(updaterPath, $"\"{serverPath}\"");
+                                return; // برنامه اصلی بسته شود تا بروزرسانی انجام شود
+                            }
+                            else
+                            {
+                                MessageBox.Show("فایل Updater.exe یافت نشد. لطفاً با مدیر سیستم تماس بگیرید.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+
             #region AppSeting
             string connectionstring_db = File.ReadAllText(Application.StartupPath + @"\ConectionString.txt", Encoding.UTF8);
 
-            //string connectionstring_db = @"Initial Catalog=HM_ERP_System1; Data Source=.;Trusted_Connection=True;";
-            //string connectionstring_db = @"Initial Catalog=HM_ERP_System1; Data Source=PC1\MSSQLSERVER2016;Trusted_Connection=True;";
             AppSeting seting = new AppSeting();
             seting.SaveConnectionString("DBcontextModel", connectionstring_db);
             #endregion

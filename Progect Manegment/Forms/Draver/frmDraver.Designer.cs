@@ -32,25 +32,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDraver));
             Janus.Windows.GridEX.GridEXLayout cmbPerson_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbGender_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout cmbProvinces_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout cmbCity_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.dgvList = new GridExEx.GridExEx();
             this.cmbPerson = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtDes = new Janus.Windows.GridEX.EditControls.EditBox();
             this.txtSeryalGovahiname = new Janus.Windows.GridEX.EditControls.EditBox();
             this.txtBirDate = new Atf.UI.DateTimeSelector();
             this.cmbGender = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.cmbProvinces = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.cmbCity = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.chkStatus = new Janus.Windows.EditControls.UICheckBox();
             this.btnAddNewItem = new DevComponents.DotNetBar.ButtonX();
-            this.btnAddNewCity = new DevComponents.DotNetBar.ButtonX();
             this.txtSmartCard = new Janus.Windows.GridEX.EditControls.EditBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,8 +51,6 @@
             this.label97 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.pnlViewItemBody.SuspendLayout();
@@ -72,8 +63,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPerson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbProvinces)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbCity)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlViewItemBody
@@ -95,8 +84,6 @@
             // 
             this.pnlAddItemBodi.Controls.Add(this.label15);
             this.pnlAddItemBodi.Controls.Add(this.label13);
-            this.pnlAddItemBodi.Controls.Add(this.label12);
-            this.pnlAddItemBodi.Controls.Add(this.label11);
             this.pnlAddItemBodi.Controls.Add(this.label10);
             this.pnlAddItemBodi.Controls.Add(this.label9);
             this.pnlAddItemBodi.Controls.Add(this.label97);
@@ -104,16 +91,11 @@
             this.pnlAddItemBodi.Controls.Add(this.label7);
             this.pnlAddItemBodi.Controls.Add(this.label6);
             this.pnlAddItemBodi.Controls.Add(this.label5);
-            this.pnlAddItemBodi.Controls.Add(this.label4);
-            this.pnlAddItemBodi.Controls.Add(this.label3);
             this.pnlAddItemBodi.Controls.Add(this.label2);
             this.pnlAddItemBodi.Controls.Add(this.label1);
             this.pnlAddItemBodi.Controls.Add(this.label14);
-            this.pnlAddItemBodi.Controls.Add(this.btnAddNewCity);
             this.pnlAddItemBodi.Controls.Add(this.btnAddNewItem);
             this.pnlAddItemBodi.Controls.Add(this.chkStatus);
-            this.pnlAddItemBodi.Controls.Add(this.cmbCity);
-            this.pnlAddItemBodi.Controls.Add(this.cmbProvinces);
             this.pnlAddItemBodi.Controls.Add(this.txtBirDate);
             this.pnlAddItemBodi.Controls.Add(this.cmbGender);
             this.pnlAddItemBodi.Controls.Add(this.cmbPerson);
@@ -238,7 +220,7 @@
             // 
             // txtDes
             // 
-            this.txtDes.Location = new System.Drawing.Point(41, 253);
+            this.txtDes.Location = new System.Drawing.Point(41, 187);
             this.txtDes.Multiline = true;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(245, 81);
@@ -248,7 +230,7 @@
             // 
             // txtSeryalGovahiname
             // 
-            this.txtSeryalGovahiname.Location = new System.Drawing.Point(150, 187);
+            this.txtSeryalGovahiname.Location = new System.Drawing.Point(150, 121);
             this.txtSeryalGovahiname.Name = "txtSeryalGovahiname";
             this.txtSeryalGovahiname.Size = new System.Drawing.Size(136, 28);
             this.txtSeryalGovahiname.TabIndex = 5;
@@ -283,45 +265,11 @@
             this.cmbGender.ValueChanged += new System.EventHandler(this.cmbGender_ValueChanged);
             this.cmbGender.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPerson_KeyDown);
             // 
-            // cmbProvinces
-            // 
-            this.cmbProvinces.DataMember = "id";
-            cmbProvinces_DesignTimeLayout.LayoutString = resources.GetString("cmbProvinces_DesignTimeLayout.LayoutString");
-            this.cmbProvinces.DesignTimeLayout = cmbProvinces_DesignTimeLayout;
-            this.cmbProvinces.DisplayMember = "Name";
-            this.cmbProvinces.Location = new System.Drawing.Point(103, 120);
-            this.cmbProvinces.Name = "cmbProvinces";
-            this.cmbProvinces.SelectedIndex = -1;
-            this.cmbProvinces.SelectedItem = null;
-            this.cmbProvinces.Size = new System.Drawing.Size(183, 28);
-            this.cmbProvinces.TabIndex = 3;
-            this.cmbProvinces.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.cmbProvinces.ValueMember = "id";
-            this.cmbProvinces.ValueChanged += new System.EventHandler(this.cmbProvinces_ValueChanged);
-            this.cmbProvinces.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPerson_KeyDown);
-            // 
-            // cmbCity
-            // 
-            this.cmbCity.DataMember = "id";
-            cmbCity_DesignTimeLayout.LayoutString = resources.GetString("cmbCity_DesignTimeLayout.LayoutString");
-            this.cmbCity.DesignTimeLayout = cmbCity_DesignTimeLayout;
-            this.cmbCity.DisplayMember = "Name";
-            this.cmbCity.Location = new System.Drawing.Point(103, 153);
-            this.cmbCity.Name = "cmbCity";
-            this.cmbCity.SelectedIndex = -1;
-            this.cmbCity.SelectedItem = null;
-            this.cmbCity.Size = new System.Drawing.Size(183, 28);
-            this.cmbCity.TabIndex = 4;
-            this.cmbCity.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.cmbCity.ValueMember = "id";
-            this.cmbCity.ValueChanged += new System.EventHandler(this.cmbCity_ValueChanged);
-            this.cmbCity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPerson_KeyDown);
-            // 
             // chkStatus
             // 
             this.chkStatus.Checked = true;
             this.chkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatus.Location = new System.Drawing.Point(237, 339);
+            this.chkStatus.Location = new System.Drawing.Point(237, 273);
             this.chkStatus.Name = "chkStatus";
             this.chkStatus.Size = new System.Drawing.Size(49, 25);
             this.chkStatus.TabIndex = 8;
@@ -345,26 +293,9 @@
             this.btnAddNewItem.Tooltip = "ثبت آیتم جدید";
             this.btnAddNewItem.Click += new System.EventHandler(this.btnAddNewItem_Click);
             // 
-            // btnAddNewCity
-            // 
-            this.btnAddNewCity.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddNewCity.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddNewCity.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddNewCity.Location = new System.Drawing.Point(84, 154);
-            this.btnAddNewCity.Name = "btnAddNewCity";
-            this.btnAddNewCity.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddNewCity.Size = new System.Drawing.Size(18, 28);
-            this.btnAddNewCity.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAddNewCity.Symbol = "";
-            this.btnAddNewCity.SymbolSize = 15F;
-            this.btnAddNewCity.TabIndex = 25;
-            this.btnAddNewCity.TabStop = false;
-            this.btnAddNewCity.Tooltip = "ثبت آیتم جدید";
-            this.btnAddNewCity.Click += new System.EventHandler(this.btnAddNewCity_Click);
-            // 
             // txtSmartCard
             // 
-            this.txtSmartCard.Location = new System.Drawing.Point(150, 219);
+            this.txtSmartCard.Location = new System.Drawing.Point(150, 153);
             this.txtSmartCard.Name = "txtSmartCard";
             this.txtSmartCard.Size = new System.Drawing.Size(136, 28);
             this.txtSmartCard.TabIndex = 6;
@@ -404,34 +335,12 @@
             this.label2.TabIndex = 106;
             this.label2.Text = "جنسیت:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(288, 125);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 18);
-            this.label3.TabIndex = 106;
-            this.label3.Text = "استان محل اقامت:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(288, 158);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 18);
-            this.label4.TabIndex = 106;
-            this.label4.Text = "شهر محل اقامت:";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(288, 192);
+            this.label5.Location = new System.Drawing.Point(288, 126);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 18);
             this.label5.TabIndex = 106;
@@ -442,7 +351,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(288, 224);
+            this.label6.Location = new System.Drawing.Point(288, 158);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 18);
             this.label6.TabIndex = 106;
@@ -453,7 +362,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(288, 257);
+            this.label7.Location = new System.Drawing.Point(288, 191);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 18);
             this.label7.TabIndex = 106;
@@ -464,7 +373,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(288, 342);
+            this.label8.Location = new System.Drawing.Point(288, 276);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 18);
             this.label8.TabIndex = 106;
@@ -509,39 +418,13 @@
             this.label10.Text = "*";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(384, 125);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(15, 15);
-            this.label11.TabIndex = 107;
-            this.label11.Text = "*";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(372, 158);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(15, 15);
-            this.label12.TabIndex = 107;
-            this.label12.Text = "*";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label13
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(372, 193);
+            this.label13.Location = new System.Drawing.Point(372, 127);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(15, 15);
             this.label13.TabIndex = 107;
@@ -554,7 +437,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(393, 225);
+            this.label15.Location = new System.Drawing.Point(393, 159);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 15);
             this.label15.TabIndex = 107;
@@ -584,8 +467,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPerson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbGender)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbProvinces)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbCity)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -598,25 +479,18 @@
         private Janus.Windows.GridEX.EditControls.EditBox txtSeryalGovahiname;
         public Atf.UI.DateTimeSelector txtBirDate;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbGender;
-        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbCity;
-        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbProvinces;
         private Janus.Windows.EditControls.UICheckBox chkStatus;
         public DevComponents.DotNetBar.ButtonX btnAddNewItem;
-        public DevComponents.DotNetBar.ButtonX btnAddNewCity;
         private Janus.Windows.GridEX.EditControls.EditBox txtSmartCard;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label97;

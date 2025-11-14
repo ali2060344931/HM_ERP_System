@@ -85,18 +85,14 @@ namespace HM_ERP_System.Entity.Customer
         /// شماره کارت عابربانک
         /// </summary>
         public string  DabitCardNumber {  get; set; }
-        ///// <summary>
-        ///// مانده ابتدای دوره
-        ///// </summary>
-        //public double BeginningBanace   { get; set; }
-        ///// <summary>
-        ///// ماهیت حساب
-        ///// </summary>
-        //public int? NatureAccountsId { get; set; }
-        ///// <summary>
-        ///// کد حساب معین
-        ///// </summary>
-        //public int SpecificAccountsId { get; set; }
+        /// <summary>
+        /// کد نوع حساب
+        /// </summary>
+        public int? TypeAccountId { get; set; } = 0;
+        /// <summary>
+        /// شماره حساب بلنکی
+        /// </summary>
+        public string AccountNumber { get; set; }
 
         /// <summary>
         /// تاریخ ثبت
@@ -130,6 +126,7 @@ namespace HM_ERP_System.Entity.Customer
             Property(c => c.Adders2).HasMaxLength(150);
             Property(c => c.PostalCode).HasMaxLength(12);
             Property(c => c.BanckName).HasMaxLength(50);
+            Property(c => c.AccountNumber).HasMaxLength(20);
 
             Property(c => c.Description).HasMaxLength(int.MaxValue);
         }

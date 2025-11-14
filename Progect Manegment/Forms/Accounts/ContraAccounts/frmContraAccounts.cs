@@ -39,14 +39,17 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             ShowList(TypeAccounts_Id);
             if (TypeAccounts_Id != 0)
             {
-                panel1.Visible=true;
 
+                panel1.Visible=true;
                 using (var db = new DBcontextModel())
                 {
                     SpecificAccountId_ = db.SpecificAccounts.Where(c => c.Cod==SpecificAccountCode).First().Id;
                     lblCodeAccount.Text=PublicClass.CeratDetailedAccountCode(SpecificAccountId_).ToString();
                 }
-
+                if (TypeAccounts_Id == 3)
+                {
+                    panel2.Visible=true;
+                }
             }
         }
 
@@ -84,7 +87,17 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             FillcmbTypeAccounts();
             FillcmbNatureAccounts();
             FillcmbBanck();
+            FillcmbTypeAccount();
 
+        }
+
+        private void FillcmbTypeAccount()
+        {
+            using (var db = new DBcontextModel())
+            {
+                var q = db.TypeAccounts.ToList();
+                cmbTypeAccount.DataSource=q;
+            }
         }
 
         DataTable dt_Banck;
@@ -133,8 +146,8 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                                     cu.Id,
                                     cu.Name,
                                     TypeAccount = tc.Name,
-                                    da.BankBrancheId, 
-                                    BankName = (string)null 
+                                    da.BankBrancheId,
+                                    BankName = (string)null
                                 };
 
                 IQueryable<dynamic> finalQuery;
@@ -142,7 +155,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                 if (TypeAccounts_Id == 3)
                 {
                     finalQuery = from item in baseQuery
-                                 
+
                                  join bb in db.BankBranches
                                  on item.BankBrancheId equals bb.Id into bankBranchGroup
                                  from bb_left in bankBranchGroup.DefaultIfEmpty()
@@ -156,7 +169,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                                      item.Name,
                                      item.TypeAccount,
                                      banckName = (item.BankBrancheId != null && item.BankBrancheId != 0 && ba != null)
-                                                 ? ba.Name +" - "+bb_left.Name: ""
+                                                 ? ba.Name +" - "+bb_left.Name : ""
                                  };
                 }
                 else
@@ -173,7 +186,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                 dgvList.DataSource = finalQuery.ToList();
                 PublicClass.SettingGridEX(dgvList);
             }
-            
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -182,9 +195,9 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             {
                 if (PublicClass.FindEmptyControls(cmbTypeAccounts, ResourceCode.T075, txtName, ResourceCode.T073))
                     return;
-                
-                
-                if(TypeAccountsId_==3 && cmbBanck.SelectedIndex==-1)
+
+
+                if (TypeAccountsId_==3 && cmbBanck.SelectedIndex==-1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T152); return;
                 }
@@ -216,7 +229,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                     if (TypeAccounts_Id!=0 && LisId==0)
                     {
                         var userRepo1 = new Repository<Entity.Accounts.DetailedAccount.DetailedAccount>(db);
-                        userRepo1.SaveOrUpdate(new Entity.Accounts.DetailedAccount.DetailedAccount { Id = LisId, SpecificAccountId=SpecificAccountId_, CustomerId=id, CodeAccount=Convert.ToInt32(lblCodeAccount.Text),BankBrancheId=BanckId }, LisId);
+                        userRepo1.SaveOrUpdate(new Entity.Accounts.DetailedAccount.DetailedAccount { Id = LisId, SpecificAccountId=SpecificAccountId_, CustomerId=id, CodeAccount=Convert.ToInt32(lblCodeAccount.Text), BankBrancheId=BanckId }, LisId);
                     }
                     {
                         PublicClass.WindowAlart("1");
@@ -298,7 +311,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             {
                 TypeAccountsId_ = Convert.ToInt32(cmbTypeAccounts.Value);
                 TypeAccounts_Id=TypeAccountsId_;
-                if(TypeAccountsId_==3)
+                if (TypeAccountsId_==3)
                 {
                     label4.Visible=true;
                     cmbBanck.Visible=true;
@@ -354,12 +367,25 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             FillcmbBanck();
         }
 
-        int BanckId =0;
+        int BanckId = 0;
         private void cmbBanck_ValueChanged(object sender, EventArgs e)
         {
             try
             {
                 BanckId = Convert.ToInt32(cmbBanck.Value);
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+
+        int TypeAccountId = 0;
+        private void cmbTypeAccount_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TypeAccountId = Convert.ToInt32(cmbTypeAccount.Value);
             }
             catch (Exception)
             {

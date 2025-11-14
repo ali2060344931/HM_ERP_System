@@ -1690,6 +1690,8 @@ namespace MyClass
             {
                 GX.AllowRemoveColumns=InheritableBoolean.True; GX.RowHeaders=InheritableBoolean.True;
                 GX.RowHeaderContent=RowHeaderContent.RowIndex;
+                GX.RootTable.RowHeaderWidth = 80;
+                GX.RootTable.RowHeaderFormatStyle.TextAlignment =TextAlignment.Center;
                 foreach (GridEXColumn column in GX.RootTable.Columns)
                 {
                     column.HeaderStyle.TextAlignment=TextAlignment.Center;

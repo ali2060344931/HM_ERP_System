@@ -447,7 +447,7 @@ namespace HM_ERP_System.Forms.Comers
                             on dr.CustomerId equals cu.Id
 
                             join ct in db.Ciltys
-                            on dr.CityId equals ct.Id
+                            on cu.CityId equals ct.Id
 
                             join pr in db.Provinces
                             on ct.ProvincesId equals pr.Id
@@ -486,7 +486,7 @@ namespace HM_ERP_System.Forms.Comers
                             on dr.CustomerId equals cu.Id
 
                             join ct in db.Ciltys
-                            on dr.CityId equals ct.Id
+                            on cu.CityId equals ct.Id
 
                             join pr in db.Provinces
                             on ct.ProvincesId equals pr.Id
@@ -684,7 +684,7 @@ namespace HM_ERP_System.Forms.Comers
                              on dr.CustomerId equals cu.Id
 
                              join ct in db.Ciltys
-                             on dr.CityId equals ct.Id
+                             on cu.CityId equals ct.Id
 
                              join pr in db.Provinces
                              on ct.ProvincesId equals pr.Id
@@ -811,7 +811,7 @@ namespace HM_ERP_System.Forms.Comers
                             on dr.CustomerId equals cu.Id
 
                             join ct in db.Ciltys
-                            on dr.CityId equals ct.Id
+                            on cu.CityId equals ct.Id
 
                             join pr in db.Provinces
                             on ct.ProvincesId equals pr.Id
@@ -878,7 +878,7 @@ namespace HM_ERP_System.Forms.Comers
                             on dr.CustomerId equals cu.Id
 
                             join ct in db.Ciltys
-                            on dr.CityId equals ct.Id
+                            on cu.CityId equals ct.Id
 
                             join pr in db.Provinces
                             on ct.ProvincesId equals pr.Id
@@ -1379,12 +1379,16 @@ namespace HM_ERP_System.Forms.Comers
                 using (var db = new DBcontextModel())
                 {
                     var q = db.Cars.Where(c => c.Id == CarIdH_);
+                    var cuId = db.Customers.Where(c => c.Id ==q.FirstOrDefault().DraverId).First().Id;
+                    var q1 = db.Customers.Where(c => c.Id ==q.FirstOrDefault().DraverId);
                     if (q.Count() != 0)
                     {
                         CarIdH_ = q.First().Id;
-                        var drv = db.Dravers.Where(c => c.Id == q.FirstOrDefault().DraverId).First();
+                        var drv = db.Customers.Where(c => c.Id == cuId).First();
+                        
+                        
                         cmbDraversH1.Value = drv.Id;
-                        var per = db.Customers.Where(c => c.Id == drv.CustomerId).First();
+                        var per = db.Customers.Where(c => c.Id == cuId).First();
                         lblTelDraver1.Text = per.Tel;
 
                         lblCarName.Text = q.First().CarName;

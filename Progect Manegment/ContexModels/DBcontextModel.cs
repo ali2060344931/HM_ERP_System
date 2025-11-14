@@ -9,6 +9,7 @@ using HM_ERP_System.Entity.Accounts.SpecificAccount;
 using HM_ERP_System.Entity.Accounts.TotalAccount;
 using HM_ERP_System.Entity.Accounts.Transaction;
 using HM_ERP_System.Entity.Accounts.TransactionType;
+using HM_ERP_System.Entity.Accounts.TypeAccount;
 using HM_ERP_System.Entity.Alphabet;
 using HM_ERP_System.Entity.AppointmentScheduling;
 using HM_ERP_System.Entity.BillLadingWriterPercent;
@@ -126,6 +127,7 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new CommissionConfig());
             modelBuilder.Configurations.Add(new ImageCoConfig());
             modelBuilder.Configurations.Add(new SettingConfig());
+            modelBuilder.Configurations.Add(new TypeAccountConfig());
 
             base.OnModelCreating(modelBuilder);
             #endregion
@@ -368,6 +370,10 @@ namespace Progect_Manegment
         /// جدول تنظیمات
         /// </summary>
         public virtual DbSet<Setting> Settings { get; set; }
+        /// <summary>
+        /// نوع حساب های بانکی
+        /// </summary>
+        public virtual DbSet<TypeAccount> TypeAccounts { get; set; }
 
         #endregion
 

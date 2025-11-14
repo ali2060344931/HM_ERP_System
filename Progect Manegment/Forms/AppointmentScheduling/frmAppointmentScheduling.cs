@@ -153,7 +153,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                              on dr.CustomerId equals cu.Id
 
                              join ct in db.Ciltys
-                             on dr.CityId equals ct.Id
+                             on cu.CityId equals ct.Id
 
                              join pr in db.Provinces
                              on ct.ProvincesId equals pr.Id

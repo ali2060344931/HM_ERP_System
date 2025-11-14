@@ -136,7 +136,7 @@
             // 
             this.btnExportToExcel.Location = new System.Drawing.Point(395, 0);
             // 
-            // buttonX1
+            // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(361, 0);
             // 
@@ -161,6 +161,7 @@
             this.dgvList.Name = "dgvList";
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dgvList.RowFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "GridExEx";
             this.dgvList.Size = new System.Drawing.Size(429, 345);

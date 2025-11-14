@@ -54,7 +54,6 @@ namespace HM_ERP_System.Forms.Draver
             FilldgvList();
             FillcmbPerson();
             FillcmbGender();
-            FillCmbProvinces();
         }
 
         private void FillcmbGender()
@@ -66,14 +65,6 @@ namespace HM_ERP_System.Forms.Draver
             }
         }
 
-        private void FillCmbProvinces()
-        {
-            using (var db = new DBcontextModel())
-            {
-                var q = db.Provinces.ToList();
-                cmbProvinces.DataSource = q;
-            }
-        }
         DataTable dt_Person;
         private void FillcmbPerson()
         {
@@ -114,7 +105,7 @@ namespace HM_ERP_System.Forms.Draver
                             on dr.GenderId equals gn.Id
 
                             join ct in db.Ciltys
-                            on dr.CityId equals ct.Id
+                            on cu.CityId equals ct.Id
 
                             join pr in db.Provinces
                             on ct.ProvincesId equals pr.Id
@@ -134,11 +125,9 @@ namespace HM_ERP_System.Forms.Draver
                                 dr.Status,
                                 dr.SmartCard,
                                 dr.SeryalGovahiname,
-                                //CountComerB = cmbGroup.Count(),
 
                             };
                     dgvList.DataSource = q.ToList();
-                    //dgvList.AutoSizeColumns();
                     PublicClass.SettingGridEX(dgvList);
                 }
             }
@@ -154,7 +143,6 @@ namespace HM_ERP_System.Forms.Draver
             try
             {
                 PersonId = Convert.ToInt32(cmbPerson.Value);
-                //PublicClass.CheckBlacList(PersonId);
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
@@ -184,46 +172,13 @@ namespace HM_ERP_System.Forms.Draver
 
         }
 
-        int ProvincesId = 0;
-        private void cmbProvinces_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ProvincesId = Convert.ToInt32(cmbProvinces.Value);
-                FillcmbCity();
-            }
-            catch (Exception)
-            {
-            }
 
-        }
-
-        private void FillcmbCity()
-        {
-            using (var db = new DBcontextModel())
-            {
-                var q = db.Ciltys.Where(c => c.ProvincesId == ProvincesId).ToList();
-                cmbCity.DataSource = q;
-            }
-        }
-
-        int cityId = 0;
-        private void cmbCity_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                cityId = Convert.ToInt32(cmbCity.Value);
-            }
-            catch (Exception)
-            {
-            }
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                if (PublicClass.FindEmptyControls(cmbPerson, ResourceCode.T012, cmbGender, ResourceCode.T013, cmbProvinces, ResourceCode.T002, cmbCity, ResourceCode.T014, txtSeryalGovahiname, ResourceCode.T131, txtSmartCard, ResourceCode.T132))
+                if (PublicClass.FindEmptyControls(cmbPerson, ResourceCode.T012, cmbGender, ResourceCode.T013, txtSeryalGovahiname, ResourceCode.T131, txtSmartCard, ResourceCode.T132))
                     return;
 
                 if (txtBirDate.Text.Length != 10)
@@ -257,7 +212,7 @@ namespace HM_ERP_System.Forms.Draver
                         return;
 
                     var userRepo = new Repository<Entity.Draver.Draver>(db);
-                    if (userRepo.SaveOrUpdate(new Entity.Draver.Draver { Id = ListId, CustomerId = PersonId, BirDate = txtBirDate.Text, GenderId = GenderId, CityId = cityId, SeryalGovahiname = txtSeryalGovahiname.Text, SmartCard = txtSmartCard.Text, Status = chkStatus.Checked, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
+                    if (userRepo.SaveOrUpdate(new Entity.Draver.Draver { Id = ListId, CustomerId = PersonId, BirDate = txtBirDate.Text, GenderId = GenderId, SeryalGovahiname = txtSeryalGovahiname.Text, SmartCard = txtSmartCard.Text, Status = chkStatus.Checked, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
                         if (_updatableForms!=null)
@@ -277,8 +232,6 @@ namespace HM_ERP_System.Forms.Draver
             cmbPerson.SelectedIndex = -1;
             cmbGender.SelectedIndex = -1;
             cmbPerson.SelectedIndex = -1;
-            cmbProvinces.SelectedIndex = -1;
-            cmbCity.SelectedIndex = -1;
             txtSeryalGovahiname.ResetText();
             txtSmartCard.ResetText();
             txtBirDate.ResetText();
@@ -307,8 +260,6 @@ namespace HM_ERP_System.Forms.Draver
                         cmbPerson.Value = q.CustomerId;
                         txtBirDate.Text = q.BirDate;
                         cmbGender.Value = q.GenderId;
-                        cmbProvinces.Value = db.Ciltys.Where(c => c.Id == q.CityId).First().ProvincesId;
-                        cmbCity.Value = q.CityId;
                         txtSeryalGovahiname.Text = q.SeryalGovahiname;
                         txtSmartCard.Text = q.SmartCard;
                         txtDes.Text = q.Description;
@@ -355,12 +306,6 @@ namespace HM_ERP_System.Forms.Draver
             FilldgvList();
         }
 
-        private void btnAddNewCity_Click(object sender, EventArgs e)
-        {
-            frmCiltys f = new frmCiltys(this);
-            f.ShowDialog();
-            FillcmbCity();
-        }
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {

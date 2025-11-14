@@ -572,6 +572,7 @@
     <Compile Include="Entity\Accounts\TotalAccount\TotalAccount.cs" />
     <Compile Include="Entity\Accounts\TransactionType\TransactionType.cs" />
     <Compile Include="Entity\Accounts\Transaction\Transaction.cs" />
+    <Compile Include="Entity\Accounts\TypeAccount\TypeAccount.cs" />
     <Compile Include="Entity\Alphabet\Alphabet.cs" />
     <Compile Include="Entity\AppointmentScheduling\AppointmentScheduling.cs" />
     <Compile Include="Entity\Basic information\Basic_information.cs" />

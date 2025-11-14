@@ -78,7 +78,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                             cg.Id,
                             personName = cu.Family +" "+ cu.Name,
                             groupName = pg.Name,
-
+                            cu.CodMeli,
                         };
                 dgvList.DataSource=q.ToList();
                 PublicClass.SettingGridEX(dgvList);

@@ -339,6 +339,13 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت ترخیصکار", IsCommission = true });
                     db.SaveChanges();
                 }
+                var q25 = db.TypeAccounts.Count();
+                if (q25 == 0)
+                {
+                    db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name="جاری" });
+                    db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name="پس انداز" });
+                    db.SaveChanges();
+                }
 
             }
             catch (Exception er)

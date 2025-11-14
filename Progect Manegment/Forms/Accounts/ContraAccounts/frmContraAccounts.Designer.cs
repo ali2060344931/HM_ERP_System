@@ -33,6 +33,7 @@
             Janus.Windows.GridEX.GridEXLayout cmbTypeAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbNatureAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbBanck_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cmbTypeAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.dgvList = new GridExEx.GridExEx();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
             this.cmbTypeAccounts = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -48,6 +49,16 @@
             this.btnAddBanck = new DevComponents.DotNetBar.ButtonX();
             this.cmbBanck = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.label4 = new System.Windows.Forms.Label();
+            this.cmbTypeAccount = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSeryalShaba = new Janus.Windows.GridEX.EditControls.EditBox();
+            this.txtDabitCardNumber = new Janus.Windows.GridEX.EditControls.EditBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.editBox1 = new Janus.Windows.GridEX.EditControls.EditBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -61,12 +72,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNatureAccounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTypeAccount)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(655, 333);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(655, 550);
             // 
             // pnlViewItemHeder
             // 
@@ -75,11 +88,12 @@
             // 
             // pnlViewItemFoter
             // 
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 383);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 600);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(655, 28);
             // 
             // pnlAddItemBodi
             // 
+            this.pnlAddItemBodi.Controls.Add(this.panel2);
             this.pnlAddItemBodi.Controls.Add(this.btnAddBanck);
             this.pnlAddItemBodi.Controls.Add(this.cmbBanck);
             this.pnlAddItemBodi.Controls.Add(this.label4);
@@ -88,11 +102,11 @@
             this.pnlAddItemBodi.Controls.Add(this.label7);
             this.pnlAddItemBodi.Controls.Add(this.cmbTypeAccounts);
             this.pnlAddItemBodi.Controls.Add(this.txtName);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(375, 383);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(375, 600);
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 383);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 600);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(375, 28);
             // 
             // btnSave
@@ -141,20 +155,20 @@
             // pnlViewItems
             // 
             this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlViewItems.Size = new System.Drawing.Size(657, 439);
+            this.pnlViewItems.Size = new System.Drawing.Size(657, 656);
             // 
             // pnlAddItems
             // 
             this.pnlAddItems.Location = new System.Drawing.Point(660, 3);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlAddItems.Size = new System.Drawing.Size(381, 439);
+            this.pnlAddItems.Size = new System.Drawing.Size(381, 656);
             // 
             // btnExportToExcel
             // 
             this.btnExportToExcel.Location = new System.Drawing.Point(621, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
-            // buttonX1
+            // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(587, 0);
             // 
@@ -177,7 +191,7 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.Size = new System.Drawing.Size(655, 333);
+            this.dgvList.Size = new System.Drawing.Size(655, 550);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 83;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -220,9 +234,9 @@
             this.label7.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label7.Location = new System.Drawing.Point(253, 23);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 18);
+            this.label7.Size = new System.Drawing.Size(80, 18);
             this.label7.TabIndex = 99;
-            this.label7.Text = "نوع حســـاب:";
+            this.label7.Text = "عنوان حســـاب:";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label1
@@ -245,9 +259,9 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.label18);
-            this.panel1.Location = new System.Drawing.Point(118, 119);
+            this.panel1.Location = new System.Drawing.Point(99, 119);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(228, 108);
+            this.panel1.Size = new System.Drawing.Size(254, 108);
             this.panel1.TabIndex = 100;
             this.panel1.Visible = false;
             // 
@@ -256,7 +270,7 @@
             this.lblCodeAccount.BackColor = System.Drawing.Color.Transparent;
             this.lblCodeAccount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCodeAccount.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCodeAccount.Location = new System.Drawing.Point(3, 10);
+            this.lblCodeAccount.Location = new System.Drawing.Point(24, 10);
             this.lblCodeAccount.Name = "lblCodeAccount";
             this.lblCodeAccount.Size = new System.Drawing.Size(130, 23);
             this.lblCodeAccount.TabIndex = 108;
@@ -274,7 +288,7 @@
             this.txtAmount.DisplayFormat = "#,##0";
             this.txtAmount.Increment = 1D;
             this.txtAmount.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtAmount.Location = new System.Drawing.Point(1, 36);
+            this.txtAmount.Location = new System.Drawing.Point(22, 36);
             this.txtAmount.MaxValue = 1797693134862.3157D;
             this.txtAmount.MinValue = 0D;
             this.txtAmount.Name = "txtAmount";
@@ -290,7 +304,7 @@
             cmbNatureAccounts_DesignTimeLayout.LayoutString = resources.GetString("cmbNatureAccounts_DesignTimeLayout.LayoutString");
             this.cmbNatureAccounts.DesignTimeLayout = cmbNatureAccounts_DesignTimeLayout;
             this.cmbNatureAccounts.DisplayMember = "Name";
-            this.cmbNatureAccounts.Location = new System.Drawing.Point(1, 69);
+            this.cmbNatureAccounts.Location = new System.Drawing.Point(22, 69);
             this.cmbNatureAccounts.Name = "cmbNatureAccounts";
             this.cmbNatureAccounts.SelectedIndex = -1;
             this.cmbNatureAccounts.SelectedItem = null;
@@ -305,7 +319,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(133, 13);
+            this.label3.Location = new System.Drawing.Point(154, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 18);
             this.label3.TabIndex = 109;
@@ -316,7 +330,7 @@
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label19.Location = new System.Drawing.Point(133, 74);
+            this.label19.Location = new System.Drawing.Point(154, 74);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(44, 18);
             this.label19.TabIndex = 106;
@@ -327,7 +341,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label18.Location = new System.Drawing.Point(133, 41);
+            this.label18.Location = new System.Drawing.Point(154, 41);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(93, 18);
             this.label18.TabIndex = 107;
@@ -379,11 +393,128 @@
             this.label4.TabIndex = 156;
             this.label4.Text = "نام بانک:";
             // 
+            // cmbTypeAccount
+            // 
+            this.cmbTypeAccount.ComboStyle = Janus.Windows.GridEX.ComboStyle.DropDownList;
+            this.cmbTypeAccount.DataMember = "id";
+            cmbTypeAccount_DesignTimeLayout.LayoutString = resources.GetString("cmbTypeAccount_DesignTimeLayout.LayoutString");
+            this.cmbTypeAccount.DesignTimeLayout = cmbTypeAccount_DesignTimeLayout;
+            this.cmbTypeAccount.DisplayMember = "Name";
+            this.cmbTypeAccount.Location = new System.Drawing.Point(104, 6);
+            this.cmbTypeAccount.Name = "cmbTypeAccount";
+            this.cmbTypeAccount.SelectedIndex = -1;
+            this.cmbTypeAccount.SelectedItem = null;
+            this.cmbTypeAccount.Size = new System.Drawing.Size(135, 28);
+            this.cmbTypeAccount.TabIndex = 4;
+            this.cmbTypeAccount.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.cmbTypeAccount.ValueMember = "id";
+            this.cmbTypeAccount.ValueChanged += new System.EventHandler(this.cmbTypeAccount_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label2.Location = new System.Drawing.Point(241, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 18);
+            this.label2.TabIndex = 99;
+            this.label2.Text = "نوع حســــــــاب:";
+            this.label2.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label5.Location = new System.Drawing.Point(241, 112);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 18);
+            this.label5.TabIndex = 161;
+            this.label5.Text = "شماره شبــــــــا:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label6.Location = new System.Drawing.Point(241, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 18);
+            this.label6.TabIndex = 162;
+            this.label6.Text = "شماره کـــــارت:";
+            // 
+            // txtSeryalShaba
+            // 
+            this.txtSeryalShaba.Location = new System.Drawing.Point(30, 106);
+            this.txtSeryalShaba.MaxLength = 24;
+            this.txtSeryalShaba.Name = "txtSeryalShaba";
+            this.txtSeryalShaba.Size = new System.Drawing.Size(209, 28);
+            this.txtSeryalShaba.TabIndex = 160;
+            this.txtSeryalShaba.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            // 
+            // txtDabitCardNumber
+            // 
+            this.txtDabitCardNumber.Location = new System.Drawing.Point(30, 74);
+            this.txtDabitCardNumber.MaxLength = 16;
+            this.txtDabitCardNumber.Name = "txtDabitCardNumber";
+            this.txtDabitCardNumber.Size = new System.Drawing.Size(209, 28);
+            this.txtDabitCardNumber.TabIndex = 159;
+            this.txtDabitCardNumber.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label9.Location = new System.Drawing.Point(10, 109);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(23, 23);
+            this.label9.TabIndex = 163;
+            this.label9.Text = "IR";
+            // 
+            // editBox1
+            // 
+            this.editBox1.Location = new System.Drawing.Point(30, 40);
+            this.editBox1.MaxLength = 16;
+            this.editBox1.Name = "editBox1";
+            this.editBox1.Size = new System.Drawing.Size(209, 28);
+            this.editBox1.TabIndex = 159;
+            this.editBox1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label8.Location = new System.Drawing.Point(241, 46);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 18);
+            this.label8.TabIndex = 162;
+            this.label8.Text = "شماره حساب:";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.cmbTypeAccount);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.txtDabitCardNumber);
+            this.panel2.Controls.Add(this.txtSeryalShaba);
+            this.panel2.Controls.Add(this.editBox1);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Location = new System.Drawing.Point(14, 233);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(339, 142);
+            this.panel2.TabIndex = 164;
+            this.panel2.Visible = false;
+            // 
             // frmContraAccounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1044, 445);
+            this.ClientSize = new System.Drawing.Size(1044, 662);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "frmContraAccounts";
@@ -408,6 +539,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNatureAccounts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTypeAccount)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -429,5 +563,15 @@
         public DevComponents.DotNetBar.ButtonX btnAddBanck;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbBanck;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        public Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbTypeAccount;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private Janus.Windows.GridEX.EditControls.EditBox txtSeryalShaba;
+        private Janus.Windows.GridEX.EditControls.EditBox txtDabitCardNumber;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label8;
+        private Janus.Windows.GridEX.EditControls.EditBox editBox1;
     }
 }

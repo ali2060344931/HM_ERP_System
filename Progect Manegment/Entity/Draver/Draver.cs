@@ -32,7 +32,7 @@ namespace HM_ERP_System.Entity.Draver
         /// <summary>
         /// شهر
         /// </summary>
-        public int CityId { get; set; }
+        //public int CityId { get; set; }
         
         /// <summary>
         /// سریال گواهینامه

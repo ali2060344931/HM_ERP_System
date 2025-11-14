@@ -48,83 +48,85 @@ namespace Progect_Manegment
         [STAThread]
         private static void Main()
         {
-            
             try
             {
+                string searchKey = "Data Source=.";
                 string appPath = Application.StartupPath; // مسیر اجرای برنامه
+                string connectionstring_db = File.ReadAllText(appPath + @"\ConectionString.txt", Encoding.UTF8);
+
                 string localVersionFile = Path.Combine(appPath, "HM_ERP_SystemAppUpdater.txt");
+                string cone = Path.Combine(appPath, "HM_ERP_SystemAppUpdater.txt");
 
                 // ایجاد فایل نسخه در صورت عدم وجود
-                //if (!File.Exists(localVersionFile))
-                {
-                    Version version = Assembly.GetExecutingAssembly().GetName().Version;
-                    File.WriteAllText(localVersionFile, version.ToString());
-                }
+                Version version = Assembly.GetExecutingAssembly().GetName().Version;
+                File.WriteAllText(localVersionFile, version.ToString());
 
                 // مسیر سرور
-                string serverPath = @"\\192.168.0.200\Share\Publish";
-                string serverVersionFile = Path.Combine(serverPath, "HM_ERP_SystemAppUpdater.txt");
-
-                if (File.Exists(serverVersionFile))
+                if (!connectionstring_db.Contains(searchKey))
                 {
-                    string serverVersion = File.ReadAllText(serverVersionFile).Trim();
-                    string localVersion = File.ReadAllText(localVersionFile).Trim();
+                    string serverPath = @"\\192.168.0.200\Share\Publish";
+                    string serverVersionFile = Path.Combine(serverPath, "HM_ERP_SystemAppUpdater.txt");
 
-                    if (serverVersion != localVersion)
+                    if (File.Exists(serverVersionFile))
                     {
-                        DialogResult dr = MessageBox.Show(
-                            $"نسخه جدیدی از برنامه موجود است ({serverVersion}). آیا می‌خواهید بروزرسانی شود؟",
-                            "بروزرسانی برنامه",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Information
-                        );
+                        string serverVersion = File.ReadAllText(serverVersionFile).Trim();
+                        string localVersion = File.ReadAllText(localVersionFile).Trim();
 
-                        if (dr == DialogResult.Yes)
+                        if (serverVersion != localVersion)
                         {
-                            string updaterPath = Path.Combine(appPath, "AppUpdater.exe");
-                            if (File.Exists(updaterPath))
+                            DialogResult dr = MessageBox.Show(
+                                $"نسخه جدیدی از برنامه موجود است ({serverVersion}). آیا می‌خواهید بروزرسانی شود؟",
+                                "بروزرسانی برنامه",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Information
+                            );
+
+                            if (dr == DialogResult.Yes)
                             {
-                                // اجرای Updater با مسیر سرور به عنوان آرگومان
-                                Process.Start(updaterPath, $"\"{serverPath}\"");
-                                return; // برنامه اصلی بسته شود تا بروزرسانی انجام شود
-                            }
-                            else
-                            {
-                                MessageBox.Show("فایل Updater.exe یافت نشد. لطفاً با مدیر سیستم تماس بگیرید.");
+                                string updaterPath = Path.Combine(appPath, "AppUpdater.exe");
+                                if (File.Exists(updaterPath))
+                                {
+                                    // اجرای Updater با مسیر سرور به عنوان آرگومان
+                                    Process.Start(updaterPath, $"\"{serverPath}\"");
+                                    return; // برنامه اصلی بسته شود تا بروزرسانی انجام شود
+                                }
+                                else
+                                {
+                                    MessageBox.Show("فایل Updater.exe یافت نشد. لطفاً با مدیر سیستم تماس بگیرید.");
+                                }
                             }
                         }
                     }
                 }
+
+                #region AppSeting
+
+                AppSeting seting = new AppSeting();
+                seting.SaveConnectionString("DBcontextModel", connectionstring_db);
+                #endregion
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Basic_information.basic_information();
+                HM_ERP_System.Class_General.CreatView.BanckEdid();
+                HM_ERP_System.Properties.Settings.Default.ConnectionString = connectionstring_db;
+                HM_ERP_System.Properties.Settings.Default.Save();
+
+                AppDomain.CurrentDomain.SetData("SQLServerTypesAssemblyFileName",
+        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes\"));
+                AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
+
+                Application.Run(new frmLoginProg());
+
+                //Application.Run(new frmMainForm());
+
+                //Application.Run(new frmComersList());
             }
             catch (Exception er)
             {
                 PublicClass.ShowErrorMessage(er);
             }
-            
-            #region AppSeting
-            string connectionstring_db = File.ReadAllText(Application.StartupPath + @"\ConectionString.txt", Encoding.UTF8);
-
-            AppSeting seting = new AppSeting();
-            seting.SaveConnectionString("DBcontextModel", connectionstring_db);
-            #endregion
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Basic_information.basic_information();
-            HM_ERP_System.Class_General.CreatView.BanckEdid();
-            HM_ERP_System.Properties.Settings.Default.ConnectionString = connectionstring_db;
-            HM_ERP_System.Properties.Settings.Default.Save();
-
-            AppDomain.CurrentDomain.SetData("SQLServerTypesAssemblyFileName",
-    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes\"));
-            AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
-
-            Application.Run(new frmLoginProg());
-
-            //Application.Run(new frmMainForm());
-
-            //Application.Run(new frmComersList());
 
         }
     }

@@ -296,6 +296,7 @@ namespace HM_ERP_System.Forms.Customer
                     PublicClass.ErrorMesseg(ResourceCode.T035);
                     return;
                 }
+
                 if (cmbGroup.Text == "")
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T097);

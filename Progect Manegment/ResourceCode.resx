@@ -586,4 +586,7 @@
   <data name="T155" xml:space="preserve">
     <value>بدلیل ثبت سند حسابداری بارنامه مورد نظر امکان حذف نمی باشد.</value>
   </data>
+  <data name="T156" xml:space="preserve">
+    <value>شماره حساب را وارد نمائید.</value>
+  </data>
 </root>

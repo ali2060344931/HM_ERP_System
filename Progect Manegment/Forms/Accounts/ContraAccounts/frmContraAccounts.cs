@@ -37,6 +37,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
         {
             UpdateData();
             ShowList(TypeAccounts_Id);
+            lblBanckName.ResetText();
             if (TypeAccounts_Id != 0)
             {
 
@@ -96,7 +97,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             using (var db = new DBcontextModel())
             {
                 var q = db.TypeAccounts.ToList();
-                cmbTypeAccount.DataSource=q;
+                cmbType_Account.DataSource=q;
             }
         }
 
@@ -136,10 +137,17 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             using (var db = new DBcontextModel())
             {
                 var baseQuery = from cu in db.Customers
+
                                 join tc in db.TypeCustomers
                                 on cu.id_TypeCustomer equals tc.Id
+
                                 join da in db.DetailedAccounts
                                 on cu.Id equals da.CustomerId
+
+                                join taN in db.TypeAccounts
+                                on cu.TypeAccountId equals taN.Id into taNGroup
+                                from tan_ in taNGroup.DefaultIfEmpty()
+
                                 where cu.id_TypeCustomer == TypeAccounts_Id
                                 select new
                                 {
@@ -147,7 +155,11 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                                     cu.Name,
                                     TypeAccount = tc.Name,
                                     da.BankBrancheId,
-                                    BankName = (string)null
+                                    BankName = (string)null,
+                                    cu.SeryalShaba,
+                                    cu.AccountNumber,
+                                    cu.DabitCardNumber,
+                                    TypeAccountId0 = tan_!=null ? tan_.Id : 0,
                                 };
 
                 IQueryable<dynamic> finalQuery;
@@ -163,13 +175,23 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                                  join ba in db.Bancks
                                  on bb_left.BanckId equals ba.Id
 
+                                 join taN in db.TypeAccounts
+                                 on item.TypeAccountId0 equals taN.Id into taNGroup
+                                 from tan_ in taNGroup.DefaultIfEmpty()
+
                                  select new
                                  {
                                      item.Id,
                                      item.Name,
                                      item.TypeAccount,
                                      banckName = (item.BankBrancheId != null && item.BankBrancheId != 0 && ba != null)
-                                                 ? ba.Name +" - "+bb_left.Name : ""
+                                                 ? ba.Name +" - "+bb_left.Name : "",
+                                     item.SeryalShaba,
+                                     item.AccountNumber,
+                                     item.DabitCardNumber,
+                                     TypeAccountNamu = tan_!=null ? tan_.Name : "",
+
+
                                  };
                 }
                 else
@@ -202,30 +224,82 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                     PublicClass.ErrorMesseg(ResourceCode.T152); return;
                 }
 
+                if (TypeAccountsId_==3)//در صورت ثبت بانک
+                {
+                    if (cmbType_Account.SelectedIndex==-1)
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T057);
+                        cmbType_Account.Focus();
+                        return;
+                    }
+                    if (txtAccountNumber.Text=="")
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T156);
+                        txtAccountNumber.Focus();
+                        return;
+                    }
+
+                    if (txtDabitCardNumber.Text!="" && txtDabitCardNumber.Text.Length!=16)
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T034);
+                        return;
+                    }
+
+                    if (txtSeryalShaba.Text != "" && txtSeryalShaba.Text.Length != 24)
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T035);
+                        return;
+                    }
+
+                }
+
 
                 using (var db = new DBcontextModel())
                 {
-
-                    if (LisId == 0)
+                    if (LisId == 0)//ثبت
                     {
-                        int cont = db.Customers.Where(c => c.id_TypeCustomer==TypeAccountsId_).Count(c => c.Name == txtName.Text);
-                        if (cont > 0)
+                        if (TypeAccounts_Id == 3)//بانک
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T074); return;
+                            int cont = db.Customers.Where(c => c.id_TypeCustomer==TypeAccountsId_).Count(c => c.Name == txtName.Text && c.AccountNumber==txtAccountNumber.Text);
+                            if (cont > 0)
+                            {
+                                PublicClass.ErrorMesseg(ResourceCode.T074); return;
+                            }
+                        }
+                        else
+
+                        {
+                            int cont = db.Customers.Where(c => c.id_TypeCustomer==TypeAccountsId_).Count(c => c.Name == txtName.Text);
+                            if (cont > 0)
+                            {
+                                PublicClass.ErrorMesseg(ResourceCode.T074); return;
+                            }
                         }
                     }
-                    else
+                    else//ویرایش
                     {
-                        int cont = db.Customers.Where(c => c.id_TypeCustomer==TypeAccountsId_).Count(c => c.Name == txtName.Text && c.Id != LisId);
-                        if (cont > 0)
+                        if (TypeAccounts_Id == 3)//بانک
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T074); return;
+                            int cont = db.Customers.Where(c => c.id_TypeCustomer==TypeAccountsId_).Count(c => c.Name == txtName.Text && c.AccountNumber==txtAccountNumber.Text && c.Id != LisId);
+                            if (cont > 0)
+                            {
+                                PublicClass.ErrorMesseg(ResourceCode.T074); return;
+                            }
+                        }
+                        else
+                        {
+                            int cont = db.Customers.Where(c => c.id_TypeCustomer==TypeAccountsId_).Count(c => c.Name == txtName.Text && c.Id != LisId);
+                            if (cont > 0)
+                            {
+                                PublicClass.ErrorMesseg(ResourceCode.T074); return;
+                            }
                         }
                     }
-
+                    if (txtAccountNumber.Text=="")
+                        txtAccountNumber.Text="0";
                     var userRepo = new Repository<Entity.Customer.Customer>(db);
-                    //if (userRepo.SaveOrUpdate(new Entity.Customer.Customer { Id = LisId, Name = txtName.Text, id_TypeCustomer=TypeAccountsId_}, LisId))
-                    int id = userRepo.SaveOrUpdateRefId(new Entity.Customer.Customer { Id = LisId, Name = txtName.Text, id_TypeCustomer=TypeAccountsId_ }, LisId);
+                    int id = userRepo.SaveOrUpdateRefId(new Entity.Customer.Customer { Id = LisId, Name = txtName.Text, id_TypeCustomer=TypeAccountsId_, TypeAccountId=TypeAccountId, AccountNumber=txtAccountNumber.Text, DabitCardNumber=txtDabitCardNumber.Text, SeryalShaba=txtSeryalShaba.Text }, LisId);
+
                     if (TypeAccounts_Id!=0 && LisId==0)
                     {
                         var userRepo1 = new Repository<Entity.Accounts.DetailedAccount.DetailedAccount>(db);
@@ -250,6 +324,10 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             LisId = 0;
             txtName.ResetText();
             txtName.Focus();
+            txtAccountNumber.ResetText();
+            txtSeryalShaba.ResetText();
+            txtDabitCardNumber.ResetText();
+            cmbType_Account.SelectedIndex=-1;
             FilldgvList();
         }
 
@@ -263,10 +341,16 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                     using (var db = new DBcontextModel())
                     {
                         var q = db.Customers.Where(c => c.Id == LisId).First();
+                        var qb = db.DetailedAccounts.Where(c => c.SpecificAccountId==2 && c.CustomerId==LisId).First().BankBrancheId;
+
+                        //var BankBranche = db.BankBranches.Where(c => c.Id==qb).First().Id;
+                        cmbBanck.Value=qb;
                         txtName.Text = q.Name;
                         cmbTypeAccounts.Value=q.id_TypeCustomer;
-                        //txtAmount.Value=q.BeginningBanace;
-                        //cmbNatureAccounts.Value=q.NatureAccountsId;
+                        cmbType_Account.Value=q.TypeAccountId;
+                        txtAccountNumber.Text= q.AccountNumber;
+                        txtSeryalShaba.Text= q.SeryalShaba;
+                        txtDabitCardNumber.Text= q.DabitCardNumber;
                     }
                 }
 
@@ -275,11 +359,11 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                     using (var db = new DBcontextModel())
                     {
 
-                        //if (db.Ciltys.Where(c => c.ProvincesId == LisId).Count() != 0)
-                        //{
-                        //    PublicClass.ErrorMesseg(ResourceCode.T004);
-                        //    return;
-                        //}
+                        if (db.DetailedAccounts.Where(c => c.CustomerId == LisId).Count() != 0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            return;
+                        }
 
                         if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
@@ -372,7 +456,21 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
         {
             try
             {
-                BanckId = Convert.ToInt32(cmbBanck.Value);
+                if (cmbBanck.SelectedIndex!=-1)
+                {
+                    BanckId = Convert.ToInt32(cmbBanck.Value);
+                    using (var db = new DBcontextModel())
+                    {
+                        var q = db.Bancks.Where(c => c.Id==db.BankBranches.Where(x => x.Id==BanckId).FirstOrDefault().Id).First().Name;
+
+                        lblBanckName.Text=q;
+                    }
+                }
+                else
+                {
+                    lblBanckName.ResetText();
+                }
+
             }
             catch (Exception)
             {
@@ -385,7 +483,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
         {
             try
             {
-                TypeAccountId = Convert.ToInt32(cmbTypeAccount.Value);
+                TypeAccountId = Convert.ToInt32(cmbType_Account.Value);
             }
             catch (Exception)
             {

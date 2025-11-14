@@ -33,7 +33,7 @@
             Janus.Windows.GridEX.GridEXLayout cmbTypeAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbNatureAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbBanck_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout cmbTypeAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cmbType_Account_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.dgvList = new GridExEx.GridExEx();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
             this.cmbTypeAccounts = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -49,16 +49,18 @@
             this.btnAddBanck = new DevComponents.DotNetBar.ButtonX();
             this.cmbBanck = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmbTypeAccount = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.cmbType_Account = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtSeryalShaba = new Janus.Windows.GridEX.EditControls.EditBox();
             this.txtDabitCardNumber = new Janus.Windows.GridEX.EditControls.EditBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.editBox1 = new Janus.Windows.GridEX.EditControls.EditBox();
+            this.txtAccountNumber = new Janus.Windows.GridEX.EditControls.EditBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblBanckName = new System.Windows.Forms.Label();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -72,7 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNatureAccounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTypeAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbType_Account)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +100,8 @@
             this.pnlAddItemBodi.Controls.Add(this.cmbBanck);
             this.pnlAddItemBodi.Controls.Add(this.label4);
             this.pnlAddItemBodi.Controls.Add(this.panel1);
+            this.pnlAddItemBodi.Controls.Add(this.lblBanckName);
+            this.pnlAddItemBodi.Controls.Add(this.label10);
             this.pnlAddItemBodi.Controls.Add(this.label1);
             this.pnlAddItemBodi.Controls.Add(this.label7);
             this.pnlAddItemBodi.Controls.Add(this.cmbTypeAccounts);
@@ -204,7 +208,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(32, 85);
+            this.txtName.Location = new System.Drawing.Point(32, 107);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(221, 28);
             this.txtName.TabIndex = 3;
@@ -232,7 +236,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(253, 23);
+            this.label7.Location = new System.Drawing.Point(255, 28);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 18);
             this.label7.TabIndex = 99;
@@ -244,7 +248,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(253, 90);
+            this.label1.Location = new System.Drawing.Point(255, 117);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 18);
             this.label1.TabIndex = 99;
@@ -259,7 +263,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.label18);
-            this.panel1.Location = new System.Drawing.Point(99, 119);
+            this.panel1.Location = new System.Drawing.Point(99, 141);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(254, 108);
             this.panel1.TabIndex = 100;
@@ -389,26 +393,25 @@
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label4.Location = new System.Drawing.Point(253, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 18);
+            this.label4.Size = new System.Drawing.Size(0, 18);
             this.label4.TabIndex = 156;
-            this.label4.Text = "نام بانک:";
             // 
-            // cmbTypeAccount
+            // cmbType_Account
             // 
-            this.cmbTypeAccount.ComboStyle = Janus.Windows.GridEX.ComboStyle.DropDownList;
-            this.cmbTypeAccount.DataMember = "id";
-            cmbTypeAccount_DesignTimeLayout.LayoutString = resources.GetString("cmbTypeAccount_DesignTimeLayout.LayoutString");
-            this.cmbTypeAccount.DesignTimeLayout = cmbTypeAccount_DesignTimeLayout;
-            this.cmbTypeAccount.DisplayMember = "Name";
-            this.cmbTypeAccount.Location = new System.Drawing.Point(104, 6);
-            this.cmbTypeAccount.Name = "cmbTypeAccount";
-            this.cmbTypeAccount.SelectedIndex = -1;
-            this.cmbTypeAccount.SelectedItem = null;
-            this.cmbTypeAccount.Size = new System.Drawing.Size(135, 28);
-            this.cmbTypeAccount.TabIndex = 4;
-            this.cmbTypeAccount.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.cmbTypeAccount.ValueMember = "id";
-            this.cmbTypeAccount.ValueChanged += new System.EventHandler(this.cmbTypeAccount_ValueChanged);
+            this.cmbType_Account.ComboStyle = Janus.Windows.GridEX.ComboStyle.DropDownList;
+            this.cmbType_Account.DataMember = "id";
+            cmbType_Account_DesignTimeLayout.LayoutString = resources.GetString("cmbType_Account_DesignTimeLayout.LayoutString");
+            this.cmbType_Account.DesignTimeLayout = cmbType_Account_DesignTimeLayout;
+            this.cmbType_Account.DisplayMember = "Name";
+            this.cmbType_Account.Location = new System.Drawing.Point(104, 6);
+            this.cmbType_Account.Name = "cmbType_Account";
+            this.cmbType_Account.SelectedIndex = -1;
+            this.cmbType_Account.SelectedItem = null;
+            this.cmbType_Account.Size = new System.Drawing.Size(135, 28);
+            this.cmbType_Account.TabIndex = 4;
+            this.cmbType_Account.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.cmbType_Account.ValueMember = "id";
+            this.cmbType_Account.ValueChanged += new System.EventHandler(this.cmbTypeAccount_ValueChanged);
             // 
             // label2
             // 
@@ -473,14 +476,14 @@
             this.label9.TabIndex = 163;
             this.label9.Text = "IR";
             // 
-            // editBox1
+            // txtAccountNumber
             // 
-            this.editBox1.Location = new System.Drawing.Point(30, 40);
-            this.editBox1.MaxLength = 16;
-            this.editBox1.Name = "editBox1";
-            this.editBox1.Size = new System.Drawing.Size(209, 28);
-            this.editBox1.TabIndex = 159;
-            this.editBox1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtAccountNumber.Location = new System.Drawing.Point(30, 40);
+            this.txtAccountNumber.MaxLength = 16;
+            this.txtAccountNumber.Name = "txtAccountNumber";
+            this.txtAccountNumber.Size = new System.Drawing.Size(209, 28);
+            this.txtAccountNumber.TabIndex = 159;
+            this.txtAccountNumber.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             // 
             // label8
             // 
@@ -495,20 +498,43 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.cmbTypeAccount);
+            this.panel2.Controls.Add(this.cmbType_Account);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtDabitCardNumber);
             this.panel2.Controls.Add(this.txtSeryalShaba);
-            this.panel2.Controls.Add(this.editBox1);
+            this.panel2.Controls.Add(this.txtAccountNumber);
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Location = new System.Drawing.Point(14, 233);
+            this.panel2.Location = new System.Drawing.Point(14, 255);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(339, 142);
             this.panel2.TabIndex = 164;
             this.panel2.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label10.Location = new System.Drawing.Point(255, 57);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 18);
+            this.label10.TabIndex = 99;
+            this.label10.Text = "نام حساب:";
+            this.label10.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // lblBanckName
+            // 
+            this.lblBanckName.BackColor = System.Drawing.Color.Transparent;
+            this.lblBanckName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblBanckName.Location = new System.Drawing.Point(32, 83);
+            this.lblBanckName.Name = "lblBanckName";
+            this.lblBanckName.Size = new System.Drawing.Size(221, 18);
+            this.lblBanckName.TabIndex = 99;
+            this.lblBanckName.Text = "نام بانک";
+            this.lblBanckName.Click += new System.EventHandler(this.label7_Click);
             // 
             // frmContraAccounts
             // 
@@ -539,7 +565,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNatureAccounts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTypeAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbType_Account)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -564,7 +590,7 @@
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbBanck;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        public Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbTypeAccount;
+        public Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbType_Account;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private Janus.Windows.GridEX.EditControls.EditBox txtSeryalShaba;
@@ -572,6 +598,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label8;
-        private Janus.Windows.GridEX.EditControls.EditBox editBox1;
+        private Janus.Windows.GridEX.EditControls.EditBox txtAccountNumber;
+        private System.Windows.Forms.Label lblBanckName;
+        private System.Windows.Forms.Label label10;
     }
 }

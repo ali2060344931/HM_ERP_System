@@ -1463,5 +1463,14 @@ namespace HM_ERP_System {
                 return ResourceManager.GetString("T155", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شماره حساب را وارد نمائید..
+        /// </summary>
+        internal static string T156 {
+            get {
+                return ResourceManager.GetString("T156", resourceCulture);
+            }
+        }
     }
 }

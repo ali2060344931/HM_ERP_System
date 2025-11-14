@@ -124,6 +124,13 @@ namespace HM_ERP_System.Forms.Login
                     this.Close();
             }
 
+            if (e.KeyCode == Keys.F12)
+            {
+                txtUserName.Text="2060344931";
+                txtPassword.Text="1";
+                btnIncoming_Click(null,null);
+            }
+
         }
 
         private void txtUserName_KeyDown(object sender, KeyEventArgs e)

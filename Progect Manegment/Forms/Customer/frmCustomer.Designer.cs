@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvList_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column23.ButtonImage");
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             Janus.Windows.GridEX.GridEXLayout cmbTypeCustomer_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbCity_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference cmbCity_DesignTimeLayout_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.WatermarkImage.Image");
             Janus.Windows.GridEX.GridEXLayout cmbGroup_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbBanck_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             this.dgvList = new GridExEx.GridExEx();
             this.cmbTypeCustomer = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
@@ -106,7 +106,7 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(742, 511);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(742, 533);
             // 
             // pnlViewItemHeder
             // 
@@ -116,7 +116,7 @@
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnAddCustomerByExcelFil);
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 561);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 583);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(742, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
@@ -167,11 +167,11 @@
             this.pnlAddItemBodi.Controls.Add(this.label15);
             this.pnlAddItemBodi.Controls.Add(this.label14);
             this.pnlAddItemBodi.Controls.Add(this.label3);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(345, 555);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(345, 577);
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 555);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 577);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(345, 34);
             // 
             // btnSave
@@ -219,13 +219,12 @@
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Location = new System.Drawing.Point(3, 25);
-            this.pnlViewItems.Size = new System.Drawing.Size(744, 617);
+            this.pnlViewItems.Size = new System.Drawing.Size(744, 639);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(747, 25);
-            this.pnlAddItems.Size = new System.Drawing.Size(351, 617);
+            this.pnlAddItems.Location = new System.Drawing.Point(747, 3);
+            this.pnlAddItems.Size = new System.Drawing.Size(351, 639);
             // 
             // btnExportToExcel
             // 
@@ -267,7 +266,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCustomer";
-            this.dgvList.Size = new System.Drawing.Size(742, 511);
+            this.dgvList.Size = new System.Drawing.Size(742, 533);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -297,19 +296,19 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(38, 71);
+            this.txtName.Location = new System.Drawing.Point(38, 105);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(209, 28);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 3;
             this.txtName.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // txtFamily
             // 
-            this.txtFamily.Location = new System.Drawing.Point(38, 106);
+            this.txtFamily.Location = new System.Drawing.Point(38, 140);
             this.txtFamily.Name = "txtFamily";
             this.txtFamily.Size = new System.Drawing.Size(209, 28);
-            this.txtFamily.TabIndex = 3;
+            this.txtFamily.TabIndex = 4;
             this.txtFamily.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtFamily.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
@@ -338,7 +337,7 @@
             this.txtCodMeli.CheackCodeMeli = true;
             this.txtCodMeli.CodeMeliTextLength = 11;
             this.txtCodMeli.Day = 0;
-            this.txtCodMeli.Location = new System.Drawing.Point(128, 140);
+            this.txtCodMeli.Location = new System.Drawing.Point(129, 71);
             this.txtCodMeli.Miladi = new System.DateTime(((long)(0)));
             this.txtCodMeli.Month = 0;
             this.txtCodMeli.Name = "txtCodMeli";
@@ -347,7 +346,7 @@
             this.txtCodMeli.SelectedDate = null;
             this.txtCodMeli.Shamsi = null;
             this.txtCodMeli.Size = new System.Drawing.Size(118, 28);
-            this.txtCodMeli.TabIndex = 4;
+            this.txtCodMeli.TabIndex = 2;
             this.txtCodMeli.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCodMeli.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
             this.txtCodMeli.TextMode = MyClass.MyTextBox.TextBoxMode.CodMeli;
@@ -356,6 +355,7 @@
             this.txtCodMeli.TextWatermarkForeColor = System.Drawing.Color.Gray;
             this.txtCodMeli.Year = 0;
             this.txtCodMeli.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
+            this.txtCodMeli.Leave += new System.EventHandler(this.txtCodMeli_Leave);
             // 
             // txtDes
             // 
@@ -405,7 +405,7 @@
             this.lblName.AutoSize = true;
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblName.Location = new System.Drawing.Point(252, 76);
+            this.lblName.Location = new System.Drawing.Point(252, 110);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(26, 18);
             this.lblName.TabIndex = 98;
@@ -416,7 +416,7 @@
             this.lblFamily.AutoSize = true;
             this.lblFamily.BackColor = System.Drawing.Color.Transparent;
             this.lblFamily.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblFamily.Location = new System.Drawing.Point(252, 111);
+            this.lblFamily.Location = new System.Drawing.Point(252, 145);
             this.lblFamily.Name = "lblFamily";
             this.lblFamily.Size = new System.Drawing.Size(73, 18);
             this.lblFamily.TabIndex = 98;
@@ -427,7 +427,7 @@
             this.lblCcodeMeli.AutoSize = true;
             this.lblCcodeMeli.BackColor = System.Drawing.Color.Transparent;
             this.lblCcodeMeli.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCcodeMeli.Location = new System.Drawing.Point(252, 147);
+            this.lblCcodeMeli.Location = new System.Drawing.Point(253, 78);
             this.lblCcodeMeli.Name = "lblCcodeMeli";
             this.lblCcodeMeli.Size = new System.Drawing.Size(46, 18);
             this.lblCcodeMeli.TabIndex = 98;
@@ -590,7 +590,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(25, 75);
+            this.label14.Location = new System.Drawing.Point(25, 109);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(15, 18);
             this.label14.TabIndex = 98;
@@ -602,7 +602,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(25, 110);
+            this.label15.Location = new System.Drawing.Point(25, 144);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 18);
             this.label15.TabIndex = 98;
@@ -614,7 +614,7 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(78, 144);
+            this.label16.Location = new System.Drawing.Point(79, 75);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(15, 18);
             this.label16.TabIndex = 98;
@@ -636,7 +636,7 @@
             // chkControlCodeMeli
             // 
             this.chkControlCodeMeli.AutoSize = true;
-            this.chkControlCodeMeli.Location = new System.Drawing.Point(93, 147);
+            this.chkControlCodeMeli.Location = new System.Drawing.Point(94, 78);
             this.chkControlCodeMeli.Name = "chkControlCodeMeli";
             this.chkControlCodeMeli.Size = new System.Drawing.Size(15, 14);
             this.chkControlCodeMeli.TabIndex = 99;
@@ -858,7 +858,7 @@
             this.btnCratMelyCode.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCratMelyCode.Enabled = false;
             this.btnCratMelyCode.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnCratMelyCode.Location = new System.Drawing.Point(108, 140);
+            this.btnCratMelyCode.Location = new System.Drawing.Point(109, 71);
             this.btnCratMelyCode.Name = "btnCratMelyCode";
             this.btnCratMelyCode.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnCratMelyCode.Size = new System.Drawing.Size(20, 28);

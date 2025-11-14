@@ -64,7 +64,7 @@
             this.btnIncoming.BackColor = System.Drawing.Color.Transparent;
             this.btnIncoming.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnIncoming.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnIncoming.Location = new System.Drawing.Point(80, 187);
+            this.btnIncoming.Location = new System.Drawing.Point(80, 171);
             this.btnIncoming.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnIncoming.Name = "btnIncoming";
             this.btnIncoming.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -179,13 +179,15 @@
             this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblVersion.BackColor = System.Drawing.Color.Transparent;
             this.lblVersion.ForeColor = System.Drawing.Color.Maroon;
-            this.lblVersion.Location = new System.Drawing.Point(81, 224);
+            this.lblVersion.Image = ((System.Drawing.Image)(resources.GetObject("lblVersion.Image")));
+            this.lblVersion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblVersion.Location = new System.Drawing.Point(79, 209);
             this.lblVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(157, 22);
+            this.lblVersion.Size = new System.Drawing.Size(157, 46);
             this.lblVersion.TabIndex = 10;
             this.lblVersion.Text = "نسخه برنامه";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmLoginProg
             // 
@@ -206,6 +208,7 @@
             this.Controls.Add(this.label3);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Vazir FD", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

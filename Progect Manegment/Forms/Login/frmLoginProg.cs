@@ -78,6 +78,7 @@ namespace HM_ERP_System.Forms.Login
                             PublicClass.StopMesseg(ResourceCode.T055);
                             return;
                         }
+
                         OPenMainForm(q.First().Id);
                     }
                 }
@@ -103,7 +104,7 @@ namespace HM_ERP_System.Forms.Login
                 }
                 f.UsersId = UsersId;
                 Properties.Settings.Default.UsersId = UsersId;
-                Properties.Settings.Default.FinancialYear =  FinancialYearsId.ToString();
+                Properties.Settings.Default.FinancialYear =  cmbFinancialYears.Text;
                 Properties.Settings.Default.Save();
                 PublicClass.SetUserId();
                 PublicClass.SetFinancialYear();
@@ -136,7 +137,7 @@ namespace HM_ERP_System.Forms.Login
         {
             this.Text=ResourceCode.ProgName;
             FillcmbProvinces();
-            cmbFinancialYears.Value= Properties.Settings.Default.FinancialYear;
+            cmbFinancialYears.Text= Properties.Settings.Default.FinancialYear.Trim();
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             lblVersion.Text="نسخه برنامه: "+version.ToString();
 

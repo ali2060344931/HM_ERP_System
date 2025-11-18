@@ -75,10 +75,10 @@ namespace MyClass
         /// کد کاربر
         /// </summary>
         public static int UserId = HM_ERP_System.Properties.Settings.Default.UsersId;
+        
         /// <summary>
         /// سال مالی
         /// </summary>
-
         public static string FinancialYear = HM_ERP_System.Properties.Settings.Default.FinancialYear;
 
 

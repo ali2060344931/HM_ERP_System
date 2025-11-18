@@ -1229,8 +1229,8 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     var q = from pr in db.PlaceTransfers
 
-                            join ed in db.EvacuationDeployments
-                            on pr.EvacuationDeploymentId equals ed.Id
+                            //join ed in db.EvacuationDeployments
+                            //on pr.EvacuationDeploymentId equals ed.Id
 
                             where pr.CiltyId == cityId || pr.publicStatus
 
@@ -1238,7 +1238,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 pr.Name,
-                                EvacuationDeploymentsName = ed.Name,
+                                //EvacuationDeploymentsName = ed.Name,
                             };
                     cmbUnLoadingLocation.DataSource = q.ToList();
                     dt_UnLoadingLocation = new System.Data.DataTable();
@@ -1266,8 +1266,8 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     var q = from pr in db.PlaceTransfers
 
-                            join ed in db.EvacuationDeployments
-                            on pr.EvacuationDeploymentId equals ed.Id
+                            //join ed in db.EvacuationDeployments
+                            //on pr.EvacuationDeploymentId equals ed.Id
 
                             where pr.CiltyId == CitiId || pr.publicStatus
 
@@ -1275,7 +1275,7 @@ namespace HM_ERP_System.Forms.Comers
                             {
                                 pr.Id,
                                 pr.Name,
-                                EvacuationDeploymentsName = ed.Name,
+                                //EvacuationDeploymentsName = ed.Name,
                             };
                     cmbLoadingLocation.DataSource = q.ToList();
                     dt_LoadingLocation = new System.Data.DataTable();

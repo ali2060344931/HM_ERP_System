@@ -14,13 +14,13 @@ namespace HM_ERP_System.Entity.PlaceTransfer
     {
         public int Id { get; set; }
         /// <summary>
-        /// نام(عنوان) محل بارگیری، تخلیه
+        /// (نام انبار(محل بارگیری یا تخلیه
         /// </summary>
         public string Name { get; set; }
         /// <summary>
         /// کد بارگیری، تخلیه
         /// </summary>
-        public int EvacuationDeploymentId { get; set; }
+        //public int EvacuationDeploymentId { get; set; }
         
         /// <summary>
         /// شهر

@@ -59,7 +59,6 @@
             this.txtAccountNumber = new Janus.Windows.GridEX.EditControls.EditBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
             this.lblBanckName = new System.Windows.Forms.Label();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
@@ -101,17 +100,18 @@
             this.pnlAddItemBodi.Controls.Add(this.label4);
             this.pnlAddItemBodi.Controls.Add(this.panel1);
             this.pnlAddItemBodi.Controls.Add(this.lblBanckName);
-            this.pnlAddItemBodi.Controls.Add(this.label10);
             this.pnlAddItemBodi.Controls.Add(this.label1);
             this.pnlAddItemBodi.Controls.Add(this.label7);
             this.pnlAddItemBodi.Controls.Add(this.cmbTypeAccounts);
             this.pnlAddItemBodi.Controls.Add(this.txtName);
             this.pnlAddItemBodi.Size = new System.Drawing.Size(375, 600);
+            this.pnlAddItemBodi.TabIndex = 0;
             // 
             // pnlAddItemFoter
             // 
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 600);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(375, 28);
+            this.pnlAddItemFoter.TabIndex = 1;
             // 
             // btnSave
             // 
@@ -211,8 +211,9 @@
             this.txtName.Location = new System.Drawing.Point(32, 107);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(221, 28);
-            this.txtName.TabIndex = 3;
+            this.txtName.TabIndex = 2;
             this.txtName.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // cmbTypeAccounts
             // 
@@ -226,7 +227,7 @@
             this.cmbTypeAccounts.SelectedIndex = -1;
             this.cmbTypeAccounts.SelectedItem = null;
             this.cmbTypeAccounts.Size = new System.Drawing.Size(221, 28);
-            this.cmbTypeAccounts.TabIndex = 4;
+            this.cmbTypeAccounts.TabIndex = 0;
             this.cmbTypeAccounts.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbTypeAccounts.ValueMember = "id";
             this.cmbTypeAccounts.ValueChanged += new System.EventHandler(this.cmbTypeAccounts_ValueChanged);
@@ -248,7 +249,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(255, 117);
+            this.label1.Location = new System.Drawing.Point(255, 112);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 18);
             this.label1.TabIndex = 99;
@@ -266,7 +267,7 @@
             this.panel1.Location = new System.Drawing.Point(99, 141);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(254, 108);
-            this.panel1.TabIndex = 100;
+            this.panel1.TabIndex = 3;
             this.panel1.Visible = false;
             // 
             // lblCodeAccount
@@ -297,9 +298,10 @@
             this.txtAmount.MinValue = 0D;
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(132, 28);
-            this.txtAmount.TabIndex = 104;
+            this.txtAmount.TabIndex = 0;
             this.txtAmount.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
             this.txtAmount.WatermarkText = "مبــــلغ";
+            this.txtAmount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // cmbNatureAccounts
             // 
@@ -313,10 +315,11 @@
             this.cmbNatureAccounts.SelectedIndex = -1;
             this.cmbNatureAccounts.SelectedItem = null;
             this.cmbNatureAccounts.Size = new System.Drawing.Size(132, 28);
-            this.cmbNatureAccounts.TabIndex = 105;
+            this.cmbNatureAccounts.TabIndex = 1;
             this.cmbNatureAccounts.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbNatureAccounts.ValueMember = "id";
             this.cmbNatureAccounts.ValueChanged += new System.EventHandler(this.cmbNatureAccounts_ValueChanged);
+            this.cmbNatureAccounts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // label3
             // 
@@ -381,10 +384,11 @@
             this.cmbBanck.SelectedIndex = -1;
             this.cmbBanck.SelectedItem = null;
             this.cmbBanck.Size = new System.Drawing.Size(221, 30);
-            this.cmbBanck.TabIndex = 157;
+            this.cmbBanck.TabIndex = 1;
             this.cmbBanck.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.cmbBanck.ValueMember = "id";
             this.cmbBanck.ValueChanged += new System.EventHandler(this.cmbBanck_ValueChanged);
+            this.cmbBanck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbBanck_KeyDown);
             // 
             // label4
             // 
@@ -393,8 +397,9 @@
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label4.Location = new System.Drawing.Point(253, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 18);
+            this.label4.Size = new System.Drawing.Size(63, 18);
             this.label4.TabIndex = 156;
+            this.label4.Text = "شعبه بانک:";
             // 
             // cmbType_Account
             // 
@@ -403,15 +408,16 @@
             cmbType_Account_DesignTimeLayout.LayoutString = resources.GetString("cmbType_Account_DesignTimeLayout.LayoutString");
             this.cmbType_Account.DesignTimeLayout = cmbType_Account_DesignTimeLayout;
             this.cmbType_Account.DisplayMember = "Name";
-            this.cmbType_Account.Location = new System.Drawing.Point(104, 6);
+            this.cmbType_Account.Location = new System.Drawing.Point(107, 6);
             this.cmbType_Account.Name = "cmbType_Account";
             this.cmbType_Account.SelectedIndex = -1;
             this.cmbType_Account.SelectedItem = null;
-            this.cmbType_Account.Size = new System.Drawing.Size(135, 28);
-            this.cmbType_Account.TabIndex = 4;
+            this.cmbType_Account.Size = new System.Drawing.Size(132, 28);
+            this.cmbType_Account.TabIndex = 0;
             this.cmbType_Account.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbType_Account.ValueMember = "id";
             this.cmbType_Account.ValueChanged += new System.EventHandler(this.cmbTypeAccount_ValueChanged);
+            this.cmbType_Account.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // label2
             // 
@@ -453,8 +459,9 @@
             this.txtSeryalShaba.MaxLength = 24;
             this.txtSeryalShaba.Name = "txtSeryalShaba";
             this.txtSeryalShaba.Size = new System.Drawing.Size(209, 28);
-            this.txtSeryalShaba.TabIndex = 160;
+            this.txtSeryalShaba.TabIndex = 3;
             this.txtSeryalShaba.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtSeryalShaba.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // txtDabitCardNumber
             // 
@@ -462,8 +469,9 @@
             this.txtDabitCardNumber.MaxLength = 16;
             this.txtDabitCardNumber.Name = "txtDabitCardNumber";
             this.txtDabitCardNumber.Size = new System.Drawing.Size(209, 28);
-            this.txtDabitCardNumber.TabIndex = 159;
+            this.txtDabitCardNumber.TabIndex = 2;
             this.txtDabitCardNumber.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtDabitCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // label9
             // 
@@ -482,8 +490,9 @@
             this.txtAccountNumber.MaxLength = 16;
             this.txtAccountNumber.Name = "txtAccountNumber";
             this.txtAccountNumber.Size = new System.Drawing.Size(209, 28);
-            this.txtAccountNumber.TabIndex = 159;
+            this.txtAccountNumber.TabIndex = 1;
             this.txtAccountNumber.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtAccountNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // label8
             // 
@@ -510,20 +519,8 @@
             this.panel2.Location = new System.Drawing.Point(14, 255);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(339, 142);
-            this.panel2.TabIndex = 164;
+            this.panel2.TabIndex = 4;
             this.panel2.Visible = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(255, 57);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 18);
-            this.label10.TabIndex = 99;
-            this.label10.Text = "نام حساب:";
-            this.label10.Click += new System.EventHandler(this.label7_Click);
             // 
             // lblBanckName
             // 
@@ -600,6 +597,5 @@
         private System.Windows.Forms.Label label8;
         private Janus.Windows.GridEX.EditControls.EditBox txtAccountNumber;
         private System.Windows.Forms.Label lblBanckName;
-        private System.Windows.Forms.Label label10;
     }
 }

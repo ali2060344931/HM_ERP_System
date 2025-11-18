@@ -104,7 +104,7 @@ namespace HM_ERP_System.Forms.Login
                 }
                 f.UsersId = UsersId;
                 Properties.Settings.Default.UsersId = UsersId;
-                Properties.Settings.Default.FinancialYear =  cmbFinancialYears.Text;
+                Properties.Settings.Default.FinancialYear =  cmbFinancialYears.Value.ToString();
                 Properties.Settings.Default.Save();
                 PublicClass.SetUserId();
                 PublicClass.SetFinancialYear();
@@ -144,7 +144,7 @@ namespace HM_ERP_System.Forms.Login
         {
             this.Text=ResourceCode.ProgName;
             FillcmbProvinces();
-            cmbFinancialYears.Text= Properties.Settings.Default.FinancialYear.Trim();
+            cmbFinancialYears.Value= Properties.Settings.Default.FinancialYear.Trim();
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             lblVersion.Text="نسخه برنامه: "+version.ToString();
 

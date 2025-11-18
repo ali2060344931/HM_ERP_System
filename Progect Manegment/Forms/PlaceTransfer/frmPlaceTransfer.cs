@@ -42,7 +42,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
 
             FilldgvList();
-            FillcmbEvacuationDeployment();
+            //FillcmbEvacuationDeployment();
             fillcmbCity();
         }
 
@@ -106,8 +106,8 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                 {
                     var q = from pt in db.PlaceTransfers
 
-                            join ed in db.EvacuationDeployments
-                            on pt.EvacuationDeploymentId equals ed.Id
+                                //join ed in db.EvacuationDeployments
+                                //on pt.EvacuationDeploymentId equals ed.Id
 
                             join ct in db.Ciltys
                             on pt.CiltyId equals ct.Id
@@ -118,7 +118,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                             select new
                             {
                                 pt.Id,
-                                EvacuationDeploymentName = ed.Name,
+                                //EvacuationDeploymentName = ed.Name,
                                 PlaceTransferName = pt.Name,
                                 CityName = ct.Name,
                                 ProvincesName = pr.Name,
@@ -142,16 +142,13 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
             try
             {
-                if (PublicClass.FindEmptyControls(cmbEvacuationDeployment, ResourceCode.
-                                T022, cmbCity, ResourceCode.
-                                T014, txtPlaceTransferName, ResourceCode.
-                                T023))
+                if (PublicClass.FindEmptyControls(/*cmbEvacuationDeployment, ResourceCode.T022,*/ cmbCity, ResourceCode.T014, txtPlaceTransferName, ResourceCode.T023))
                     return;
                 using (var db = new DBcontextModel())
                 {
                     if (LisId == 0)
                     {
-                        int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.EvacuationDeploymentId == EvacuationDeploymentId && c.CiltyId == CityId);
+                        int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text /*&& c.EvacuationDeploymentId == EvacuationDeploymentId*/ && c.CiltyId == CityId);
                         if (cont > 0)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T024); return;
@@ -159,7 +156,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     }
                     else
                     {
-                        int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.EvacuationDeploymentId == EvacuationDeploymentId && c.CiltyId == CityId && c.Id != LisId);
+                        int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text /*&& c.EvacuationDeploymentId == EvacuationDeploymentId*/ && c.CiltyId == CityId && c.Id != LisId);
                         if (cont > 0)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T006); return;
@@ -167,7 +164,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     }
 
                     var userRepo = new Repository<Entity.PlaceTransfer.PlaceTransfer>(db);
-                    if (userRepo.SaveOrUpdate(new Entity.PlaceTransfer.PlaceTransfer { Id = LisId, Name = txtPlaceTransferName.Text, EvacuationDeploymentId = EvacuationDeploymentId, CiltyId = CityId, PostalCode=txtPostalCode.Text, Addres=txtAddres.Text, publicStatus=chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, LisId))
+                    if (userRepo.SaveOrUpdate(new Entity.PlaceTransfer.PlaceTransfer { Id = LisId, Name = txtPlaceTransferName.Text/*, EvacuationDeploymentId = EvacuationDeploymentId*/, CiltyId = CityId, PostalCode=txtPostalCode.Text, Addres=txtAddres.Text, publicStatus=chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, LisId))
                     {
                         PublicClass.WindowAlart("1");
                         if (_updatableForms!=null)
@@ -188,7 +185,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             txtPostalCode.ResetText();
             txtAddres.ResetText();
             LisId = 0;
-            txtPlaceTransferName.Focus();
+            txtPostalCode.Focus();
             chkPublic.Checked=false;
             FilldgvList();
         }
@@ -221,7 +218,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     {
                         var q = db.PlaceTransfers.Where(c => c.Id == LisId).First();
 
-                        cmbEvacuationDeployment.Value = q.EvacuationDeploymentId;
+                        //cmbEvacuationDeployment.Value = q.EvacuationDeploymentId;
                         cmbCity.Value = q.CiltyId;
                         txtPlaceTransferName.Text = q.Name;
                         chkPublic.Checked=q.publicStatus;
@@ -318,6 +315,25 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         private void frmPlaceTransfer_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) if (PublicClass.CloseForm()) this.Close();
+        }
+
+        private void txtPostalCode_Leave(object sender, EventArgs e)
+        {
+            using (var db = new DBcontextModel())
+            {
+                if (txtPostalCode.Text!="")
+                {
+                    var q = db.PlaceTransfers.Where(c => c.PostalCode==txtPostalCode.Text);
+                    if (q.Count() > 0)
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T157);
+                        txtPostalCode.ResetText();
+                        txtPostalCode.Focus();
+                        return;
+                    }
+                }
+            }
+
         }
     }
 }

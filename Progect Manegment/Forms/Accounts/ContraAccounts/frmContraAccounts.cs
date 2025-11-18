@@ -40,7 +40,6 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             lblBanckName.ResetText();
             if (TypeAccounts_Id != 0)
             {
-
                 panel1.Visible=true;
                 using (var db = new DBcontextModel())
                 {
@@ -393,21 +392,24 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
         {
             try
             {
+                label7.Visible = false;
                 TypeAccountsId_ = Convert.ToInt32(cmbTypeAccounts.Value);
                 TypeAccounts_Id=TypeAccountsId_;
-                if (TypeAccountsId_==3)
+                if (TypeAccountsId_==3)//بانک ها
                 {
                     label4.Visible=true;
                     cmbBanck.Visible=true;
                     btnAddBanck.Visible=true;
                     dgvList.RootTable.Columns["BanckName"].Visible=true;
+                    label1.Text="نام(عنوان) حساب:";
                 }
-                else
+                else//صندوق ها
                 {
                     label4.Visible=false;
                     cmbBanck.Visible=false;
                     btnAddBanck.Visible=false;
                     dgvList.RootTable.Columns["BanckName"].Visible=false;
+                    label1.Text="نام(عنوان) صندوق:";
 
                 }
                 FilldgvList();
@@ -463,7 +465,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                     {
                         var q = db.Bancks.Where(c => c.Id==db.BankBranches.Where(x => x.Id==BanckId).FirstOrDefault().Id).First().Name;
 
-                        lblBanckName.Text=q;
+                        lblBanckName.Text="نام بانک: "+q;
                     }
                 }
                 else
@@ -489,6 +491,24 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             {
             }
 
+        }
+
+        private void cmbBanck_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
+
+            if (e.KeyCode == Keys.F2)
+            {
+                PublicClass.SearchCmbId(cmbBanck, dt_Banck);
+            }
+
+        }
+
+        private void txtName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
         }
     }
 }

@@ -1472,5 +1472,14 @@ namespace HM_ERP_System {
                 return ResourceManager.GetString("T156", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to کد پستی وارد شده تکراری می باشد..
+        /// </summary>
+        internal static string T157 {
+            get {
+                return ResourceManager.GetString("T157", resourceCulture);
+            }
+        }
     }
 }

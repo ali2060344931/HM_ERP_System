@@ -127,7 +127,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage(   er);
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -138,7 +138,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         {
             try
             {
-                PublicClass.GroupAccountTransactions(dgvListG, txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value,chkIsBeginningBalanceFilter.Checked);
+                PublicClass.GroupAccountTransactions(dgvListG, txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value, chkIsBeginningBalanceFilter.Checked);
                 dgvListG.AutoSizeColumns();
             }
             catch (Exception er)
@@ -154,7 +154,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         {
             try
             {
-                PublicClass.TotalAccountTransactions(dgvListT, txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value,chkIsBeginningBalanceFilter.Checked);
+                PublicClass.TotalAccountTransactions(dgvListT, txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value, chkIsBeginningBalanceFilter.Checked);
                 dgvListT.AutoSizeColumns();
             }
             catch (Exception er)
@@ -220,7 +220,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage( er);
+                PublicClass.ShowErrorMessage(er);
             }
 
         }
@@ -318,12 +318,19 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
         private void btnFinancialYear_Click(object sender, EventArgs e)
         {
-            int Id = Convert.ToInt32(PublicClass.FinancialYear);
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = db.FinancialYears.Where(c => c.Id==Id).First();
-                txtDateS.Text=q.DateStart.ToString();
-                txtDateE.Text=q.DateEnd.ToString();
+                int  id =Convert.ToInt32( PublicClass.FinancialYear);
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.FinancialYears.Where(c => c.Id==id).First();
+                    txtDateS.Text=q.DateStart.ToString();
+                    txtDateE.Text=q.DateEnd.ToString();
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -428,7 +435,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                     }
 
                 }
-               else if (e.Column.Key == "Transaction")
+                else if (e.Column.Key == "Transaction")
                 {
                     using (var db = new DBcontextModel())
                     {

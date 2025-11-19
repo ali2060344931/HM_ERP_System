@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -241,5 +242,22 @@ namespace HM_ERP_System.Forms.Ciltys
             }
 
         }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            dgvList.ShowFieldChooser();
+
+        }
+
+        private void frmCiltys_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+               
+                dgvList.SaveComponentSettings();
+            }
+            catch { }
+        }
+
     }
 }

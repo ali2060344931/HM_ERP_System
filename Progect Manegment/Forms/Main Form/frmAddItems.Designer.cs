@@ -46,6 +46,7 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.pnlViewItemFoter = new System.Windows.Forms.Panel();
+            this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
             this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
             this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
             this.gridEXExporter1 = new Janus.Windows.GridEX.Export.GridEXExporter(this.components);
@@ -272,6 +273,7 @@
             // 
             // pnlViewItemFoter
             // 
+            this.pnlViewItemFoter.Controls.Add(this.btnShowGridExHideColumns);
             this.pnlViewItemFoter.Controls.Add(this.buttonX01);
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -279,6 +281,26 @@
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
             this.pnlViewItemFoter.Size = new System.Drawing.Size(635, 28);
             this.pnlViewItemFoter.TabIndex = 1;
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowGridExHideColumns.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(532, 0);
+            this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
+            this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
+            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 28);
+            this.btnShowGridExHideColumns.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowGridExHideColumns.Symbol = "59635";
+            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Lime;
+            this.btnShowGridExHideColumns.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
+            this.btnShowGridExHideColumns.SymbolSize = 15F;
+            this.btnShowGridExHideColumns.TabIndex = 5;
+            this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
             // 
             // buttonX01
             // 
@@ -367,5 +389,6 @@
         public DevComponents.DotNetBar.ButtonX btnExportToExcel;
         private Janus.Windows.GridEX.Export.GridEXExporter gridEXExporter1;
         public DevComponents.DotNetBar.ButtonX buttonX01;
+        public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
     }
 }

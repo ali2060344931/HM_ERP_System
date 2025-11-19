@@ -9,6 +9,7 @@ using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.PersonGroup;
 using HM_ERP_System.Forms.Reports;
 
+using Janus.Windows.GridEX;
 using Janus.Windows.UI.Tab;
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -52,9 +53,36 @@ namespace HM_ERP_System.Forms.Customer
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (File.Exists("GridLayout.xml"))
+                {
+                    string layout = File.ReadAllText("GridLayout.xml");
+                    dgvList.LoadComponentSettings();
+                    dgvList.SaveComponentSettings();
+                }
+            }
+            catch { }
+
             chkControlCodeMeli.Checked=true;
             UpdateData();
         }
+
+        public void SaveLayout(GridEX grid, string userId, string gridName)
+        {
+            //try
+            //{
+            //    string file = Path.Combine(Application.StartupPath, "Layouts",
+            //                               $"{gridName}_{userId}.xml");
+
+            //    Directory.CreateDirectory(Path.GetDirectoryName(file));
+
+            //    string xml = grid.GetSettingsAsString();
+            //    File.WriteAllText(file, xml);
+            //}
+            //catch { }
+        }
+
 
         private void CallUpdateTata()
         {
@@ -771,6 +799,11 @@ namespace HM_ERP_System.Forms.Customer
                 }
 
             }
+        }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            dgvList.ShowFieldChooser();
         }
     }
 }

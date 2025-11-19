@@ -37,6 +37,7 @@
             this.btnAddNewItem = new DevComponents.DotNetBar.ButtonX();
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.schedulePrintDocument1 = new Janus.Windows.Schedule.SchedulePrintDocument();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -134,10 +135,16 @@
             this.btnExportToExcel.Size = new System.Drawing.Size(37, 34);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
-            // buttonX1
+            // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(403, 0);
             this.buttonX01.Size = new System.Drawing.Size(34, 34);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(368, 0);
+            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 34);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
             // 
@@ -235,6 +242,10 @@
             this.label1.TabIndex = 109;
             this.label1.Text = "نام شهـــر:";
             // 
+            // schedulePrintDocument1
+            // 
+            //this.schedulePrintDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.schedulePrintDocument1_PrintPage);
+            // 
             // frmCiltys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -243,6 +254,7 @@
             this.KeyPreview = true;
             this.Name = "frmCiltys";
             this.Text = "فرم تعاریف شهرها";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCiltys_FormClosing);
             this.Load += new System.EventHandler(this.frmCiltys_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCiltys_KeyDown);
             this.Controls.SetChildIndex(this.pnlAddItems, 0);
@@ -270,5 +282,6 @@
         public DevComponents.DotNetBar.ButtonX btnAddNewItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label14;
+        private Janus.Windows.Schedule.SchedulePrintDocument schedulePrintDocument1;
     }
 }

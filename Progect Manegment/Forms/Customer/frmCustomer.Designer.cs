@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvList_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column23.ButtonImage");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             Janus.Windows.GridEX.GridEXLayout cmbTypeCustomer_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbCity_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference cmbCity_DesignTimeLayout_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.WatermarkImage.Image");
             Janus.Windows.GridEX.GridEXLayout cmbGroup_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbBanck_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             this.dgvList = new GridExEx.GridExEx();
             this.cmbTypeCustomer = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
@@ -118,6 +118,7 @@
             this.pnlViewItemFoter.Controls.Add(this.btnAddCustomerByExcelFil);
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 583);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(742, 28);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnAddCustomerByExcelFil, 0);
@@ -228,19 +229,24 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(612, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(577, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
             this.buttonX01.AutoExpandOnClick = true;
-            this.buttonX01.Location = new System.Drawing.Point(646, 0);
+            this.buttonX01.Location = new System.Drawing.Point(611, 0);
             this.buttonX01.Size = new System.Drawing.Size(96, 28);
             this.buttonX01.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnRepC1,
             this.buttonItem1});
             this.buttonX01.Text = "گزارشات";
             this.buttonX01.Click += new System.EventHandler(this.buttonX1_Click);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(707, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
             // 

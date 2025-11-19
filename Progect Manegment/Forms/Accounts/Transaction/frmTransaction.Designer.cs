@@ -182,6 +182,11 @@
             // 
             this.buttonX01.Location = new System.Drawing.Point(728, 0);
             // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(693, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            // 
             // cmbContraAccountFrom
             // 
             this.cmbContraAccountFrom.DataMember = "id";
@@ -512,6 +517,7 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
+            this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmTransaction";
             this.dgvList.Size = new System.Drawing.Size(796, 372);
             this.dgvList.Sortable = true;
@@ -617,6 +623,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIEAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSpecificAccount)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTaxAmount)).EndInit();
             this.ResumeLayout(false);

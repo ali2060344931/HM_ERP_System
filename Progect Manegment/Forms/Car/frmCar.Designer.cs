@@ -162,11 +162,17 @@
             // 
             // txtDateStart
             // 
+            this.txtDateStart.Location = new System.Drawing.Point(321, 12);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 21, 8, 39, 40, 911);
             // 
             // txtDateEnd
             // 
+            this.txtDateEnd.Location = new System.Drawing.Point(119, 12);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 21, 8, 39, 40, 911);
+            // 
+            // btnShowListItems
+            // 
+            this.btnShowListItems.Location = new System.Drawing.Point(29, 15);
             // 
             // labelX2
             // 
@@ -174,6 +180,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Location = new System.Drawing.Point(249, 17);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
@@ -183,6 +190,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(451, 17);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
@@ -206,6 +214,11 @@
             // 
             this.buttonX01.Location = new System.Drawing.Point(517, 0);
             // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(482, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            // 
             // dgvList
             // 
             this.dgvList.DefaultComment = null;
@@ -226,6 +239,8 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
+            this.dgvList.SaveSettings = true;
+            this.dgvList.SettingsKey = "frmCar";
             this.dgvList.Size = new System.Drawing.Size(585, 444);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 86;
@@ -710,6 +725,7 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDraverName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbOwnership)).EndInit();

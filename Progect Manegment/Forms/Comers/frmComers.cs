@@ -4785,5 +4785,19 @@ namespace HM_ERP_System.Forms.Comers
                 rdbShiper.Enabled=chkIncomeDocument.Checked;
             }
         }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            switch (ComerTabKey)
+            {
+                case "ComersH":
+                    dgvListH.ShowFieldChooser(this,  ResourceCode.T158);
+                    break;
+                case "ComersB":
+                    dgvListB.ShowFieldChooser(this,  ResourceCode.T158);
+                    break;
+            }
+
+        }
     }
 }

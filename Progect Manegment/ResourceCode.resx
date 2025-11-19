@@ -592,4 +592,7 @@
   <data name="T157" xml:space="preserve">
     <value>کد پستی وارد شده تکراری می باشد.</value>
   </data>
+  <data name="T158" xml:space="preserve">
+    <value>لیست ستونهای حذف شده</value>
+  </data>
 </root>

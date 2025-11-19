@@ -183,9 +183,14 @@
             // 
             this.btnExportToExcel.Location = new System.Drawing.Point(608, 0);
             // 
-            // buttonX1
+            // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(574, 0);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(539, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvListH
             // 
@@ -217,7 +222,8 @@
             this.dgvListH.RecordNavigator = true;
             this.dgvListH.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListH.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListH.SettingsKey = "frmComersH";
+            this.dgvListH.SaveSettings = true;
+            this.dgvListH.SettingsKey = "frmBillLadingRequest";
             this.dgvListH.Size = new System.Drawing.Size(642, 426);
             this.dgvListH.Sortable = true;
             this.dgvListH.TabIndex = 86;
@@ -608,6 +614,7 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvListH)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbShiper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PanelH)).EndInit();

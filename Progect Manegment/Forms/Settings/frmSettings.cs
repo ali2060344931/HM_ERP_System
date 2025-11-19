@@ -61,20 +61,20 @@ namespace HM_ERP_System.Forms.Settings
                         txtName.Text=q.First().Subject;
                     }
 
-                //Todo: دستور نمایش عکس ها
-                DataTable onRec = new DataTable();
-                onRec = MyClass.Manage_Photos.Read_TableFromBank_InsertToDataTable("SELECT * FROM ImageCoes where id=1");
-                picLogo.Image = MyClass.Manage_Photos.GetImageFromeFieldValues(onRec.Rows[0]["Image"]);
+                    //Todo: دستور نمایش عکس ها
+                    DataTable onRec = new DataTable();
+                    onRec = MyClass.Manage_Photos.Read_TableFromBank_InsertToDataTable("SELECT * FROM ImageCoes where id=1");
+                    picLogo.Image = MyClass.Manage_Photos.GetImageFromeFieldValues(onRec.Rows[0]["Image"]);
 
 
                 }
 
 
             }
-                catch (Exception er)
-                {
-                    PublicClass.ShowErrorMessage(er);
-                }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
         int ListId = 0;
@@ -97,7 +97,7 @@ namespace HM_ERP_System.Forms.Settings
                 //    //ویرایش
                 //    MyClass.SqlBankClass.UpdateWithPicture("ImageCoes", "Image", picLogo.Image, new string[] { "Name" }, new string[] { "12" }, "Id=1");
 
-                var q_seting=db.Settings.Where(c=>c.Code==1).First();
+                var q_seting = db.Settings.Where(c => c.Code==1).First();
                 q_seting.Subject=txtName.Text;
 
                 db.SaveChanges();
@@ -120,7 +120,7 @@ namespace HM_ERP_System.Forms.Settings
             Properties.Settings.Default.Save();
             if (_updatableForms!=null)
                 _updatableForms.UpdateData();
-            
+
             PublicClass.WindowAlart("1");
         }
 

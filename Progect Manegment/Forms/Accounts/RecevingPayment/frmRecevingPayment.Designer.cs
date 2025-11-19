@@ -267,7 +267,16 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(332, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(475, 0);
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.Location = new System.Drawing.Point(441, 0);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(406, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // rdbIncomr
             // 
@@ -497,6 +506,8 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvList.SaveSettings = true;
+            this.dgvList.SettingsKey = "frmRecevingPayment";
             this.dgvList.Size = new System.Drawing.Size(509, 566);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 85;
@@ -1273,6 +1284,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSpecificAccountFrom)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSpecificAccountTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDetailedAccountsFrom)).EndInit();

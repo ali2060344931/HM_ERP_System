@@ -540,5 +540,10 @@ namespace HM_ERP_System.Forms.BillLadingRequest
             Customer.frmCustomer frmCustomer = new Customer.frmCustomer(this);
             frmCustomer.ShowDialog();
         }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            dgvListH.ShowFieldChooser(this, ResourceCode.T158);
+        }
     }
 }

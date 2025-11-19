@@ -96,6 +96,7 @@
             this.pnlViewItemFoter.Controls.Add(this.btnSelectCheque);
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 490);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(606, 28);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnSelectCheque, 0);
@@ -186,11 +187,16 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(538, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(503, 0);
             // 
-            // buttonX1
+            // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(572, 0);
+            this.buttonX01.Location = new System.Drawing.Point(537, 0);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(571, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // cmbChequeType
             // 
@@ -347,7 +353,8 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.SettingsKey = "GridExEx";
+            this.dgvList.SaveSettings = true;
+            this.dgvList.SettingsKey = "frmCheque";
             this.dgvList.Size = new System.Drawing.Size(606, 288);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
@@ -572,7 +579,7 @@
             this.btnSelectCheque.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSelectCheque.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSelectCheque.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSelectCheque.Location = new System.Drawing.Point(256, 0);
+            this.btnSelectCheque.Location = new System.Drawing.Point(221, 0);
             this.btnSelectCheque.Name = "btnSelectCheque";
             this.btnSelectCheque.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnSelectCheque.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlF5);
@@ -642,6 +649,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbChequeType)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPayer_Payee_Acc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlListChequeStatus)).EndInit();

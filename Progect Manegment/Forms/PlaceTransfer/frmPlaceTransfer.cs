@@ -335,6 +335,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             }
 
         }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
     }
 }
 

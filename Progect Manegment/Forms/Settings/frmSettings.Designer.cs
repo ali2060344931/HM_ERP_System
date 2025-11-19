@@ -63,9 +63,9 @@
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSave.Location = new System.Drawing.Point(0, 0);
+            this.btnSave.Location = new System.Drawing.Point(622, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnSave.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
@@ -158,7 +158,7 @@
             this.txtSetDayToReportList.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtSetDayToReportList.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtSetDayToReportList.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtSetDayToReportList.Location = new System.Drawing.Point(328, 266);
+            this.txtSetDayToReportList.Location = new System.Drawing.Point(336, 261);
             this.txtSetDayToReportList.Name = "txtSetDayToReportList";
             this.txtSetDayToReportList.ShowUpDown = true;
             this.txtSetDayToReportList.Size = new System.Drawing.Size(48, 28);
@@ -196,7 +196,7 @@
             this.lblIEAmount.AutoSize = true;
             this.lblIEAmount.BackColor = System.Drawing.Color.Transparent;
             this.lblIEAmount.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblIEAmount.Location = new System.Drawing.Point(386, 271);
+            this.lblIEAmount.Location = new System.Drawing.Point(384, 266);
             this.lblIEAmount.Name = "lblIEAmount";
             this.lblIEAmount.Size = new System.Drawing.Size(309, 18);
             this.lblIEAmount.TabIndex = 109;

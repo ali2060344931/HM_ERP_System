@@ -29,31 +29,23 @@
         private void InitializeComponent()
         {
             Janus.Windows.GridEX.GridEXLayout cmbGroupAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTotalAccount));
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTotalAccount));
             this.cmbGroupAccount = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
             this.dgvList = new GridExEx.GridExEx();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlAddItemBodi.SuspendLayout();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
+            this.pnlAddItemBodi.SuspendLayout();
             this.pnlAddItemFoter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbGroupAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pnlAddItemBodi
-            // 
-            this.pnlAddItemBodi.Controls.Add(this.label1);
-            this.pnlAddItemBodi.Controls.Add(this.label7);
-            this.pnlAddItemBodi.Controls.Add(this.cmbGroupAccount);
-            this.pnlAddItemBodi.Controls.Add(this.txtName);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(350, 388);
             // 
             // pnlViewItemBody
             // 
@@ -69,6 +61,14 @@
             // 
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 388);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(436, 28);
+            // 
+            // pnlAddItemBodi
+            // 
+            this.pnlAddItemBodi.Controls.Add(this.label1);
+            this.pnlAddItemBodi.Controls.Add(this.label7);
+            this.pnlAddItemBodi.Controls.Add(this.cmbGroupAccount);
+            this.pnlAddItemBodi.Controls.Add(this.txtName);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(350, 388);
             // 
             // pnlAddItemFoter
             // 
@@ -127,8 +127,17 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(259, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(402, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.Location = new System.Drawing.Point(368, 0);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(333, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // cmbGroupAccount
             // 
@@ -225,12 +234,12 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTotalAccount_KeyDown);
             this.Controls.SetChildIndex(this.pnlAddItems, 0);
             this.Controls.SetChildIndex(this.pnlViewItems, 0);
-            this.pnlAddItemBodi.ResumeLayout(false);
-            this.pnlAddItemBodi.PerformLayout();
             this.pnlViewItemBody.ResumeLayout(false);
             this.pnlViewItemHeder.ResumeLayout(false);
             this.pnlViewItemHeder.PerformLayout();
             this.pnlViewItemFoter.ResumeLayout(false);
+            this.pnlAddItemBodi.ResumeLayout(false);
+            this.pnlAddItemBodi.PerformLayout();
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();

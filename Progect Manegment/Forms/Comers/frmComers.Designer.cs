@@ -62,16 +62,8 @@
             Janus.Windows.GridEX.GridEXLayout cmbCostAccountB_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbPaymentToOthers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column25.ButtonImage");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_1 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column26.ButtonImage");
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_2 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column27.ButtonImage");
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_3 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column28.ButtonImage");
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListH_Layout_0_Reference_4 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column29.ButtonImage");
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column72.ButtonImage");
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_1 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column73.ButtonImage");
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvListB_Layout_0_Reference_2 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column74.ButtonImage");
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel0Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
@@ -374,6 +366,7 @@
             this.separatorCommand3 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.btnAddDocCB = new Janus.Windows.Ribbon.DropDownCommand();
             this.btnAccountingDocumentRegistration = new Janus.Windows.Ribbon.DropDownCommand();
+            this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -4868,26 +4861,16 @@
             this.dgvListH.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
             dgvListH_Layout_0.IsCurrentLayout = true;
             dgvListH_Layout_0.Key = "MyGrig";
-            dgvListH_Layout_0_Reference_0.Instance = ((object)(resources.GetObject("dgvListH_Layout_0_Reference_0.Instance")));
-            dgvListH_Layout_0_Reference_1.Instance = ((object)(resources.GetObject("dgvListH_Layout_0_Reference_1.Instance")));
-            dgvListH_Layout_0_Reference_2.Instance = ((object)(resources.GetObject("dgvListH_Layout_0_Reference_2.Instance")));
-            dgvListH_Layout_0_Reference_3.Instance = ((object)(resources.GetObject("dgvListH_Layout_0_Reference_3.Instance")));
-            dgvListH_Layout_0_Reference_4.Instance = ((object)(resources.GetObject("dgvListH_Layout_0_Reference_4.Instance")));
-            dgvListH_Layout_0.LayoutReferences.AddRange(new Janus.Windows.Common.Layouts.JanusLayoutReference[] {
-            dgvListH_Layout_0_Reference_0,
-            dgvListH_Layout_0_Reference_1,
-            dgvListH_Layout_0_Reference_2,
-            dgvListH_Layout_0_Reference_3,
-            dgvListH_Layout_0_Reference_4});
             dgvListH_Layout_0.LayoutString = resources.GetString("dgvListH_Layout_0.LayoutString");
             this.dgvListH.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvListH_Layout_0});
-            this.dgvListH.Location = new System.Drawing.Point(13, 0);
+            this.dgvListH.Location = new System.Drawing.Point(126, 4);
             this.dgvListH.Name = "dgvListH";
             this.dgvListH.RecordNavigator = true;
             this.dgvListH.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListH.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListH.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListH.SaveSettings = true;
             this.dgvListH.SettingsKey = "frmComersH";
             this.dgvListH.Size = new System.Drawing.Size(572, 195);
             this.dgvListH.Sortable = true;
@@ -4911,13 +4894,6 @@
             this.dgvListB.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
             dgvListB_Layout_0.IsCurrentLayout = true;
             dgvListB_Layout_0.Key = "MyGrig";
-            dgvListB_Layout_0_Reference_0.Instance = ((object)(resources.GetObject("dgvListB_Layout_0_Reference_0.Instance")));
-            dgvListB_Layout_0_Reference_1.Instance = ((object)(resources.GetObject("dgvListB_Layout_0_Reference_1.Instance")));
-            dgvListB_Layout_0_Reference_2.Instance = ((object)(resources.GetObject("dgvListB_Layout_0_Reference_2.Instance")));
-            dgvListB_Layout_0.LayoutReferences.AddRange(new Janus.Windows.Common.Layouts.JanusLayoutReference[] {
-            dgvListB_Layout_0_Reference_0,
-            dgvListB_Layout_0_Reference_1,
-            dgvListB_Layout_0_Reference_2});
             dgvListB_Layout_0.LayoutString = resources.GetString("dgvListB_Layout_0.LayoutString");
             this.dgvListB.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvListB_Layout_0});
@@ -4927,6 +4903,7 @@
             this.dgvListB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListB.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListB.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListB.SaveSettings = true;
             this.dgvListB.SettingsKey = "frmComersB";
             this.dgvListB.Size = new System.Drawing.Size(589, 195);
             this.dgvListB.Sortable = true;
@@ -4944,6 +4921,7 @@
             this.pnlViewItemFoter.Controls.Add(this.txtWeightDeliveredGoods);
             this.pnlViewItemFoter.Controls.Add(this.btnChangStatusGoods);
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
+            this.pnlViewItemFoter.Controls.Add(this.btnShowGridExHideColumns);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 219);
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
@@ -5029,7 +5007,7 @@
             this.txtWeightDeliveredGoods.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtWeightDeliveredGoods.Dock = System.Windows.Forms.DockStyle.Right;
             this.txtWeightDeliveredGoods.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtWeightDeliveredGoods.Location = new System.Drawing.Point(1254, 0);
+            this.txtWeightDeliveredGoods.Location = new System.Drawing.Point(1219, 0);
             this.txtWeightDeliveredGoods.MaxValue = 999999;
             this.txtWeightDeliveredGoods.MinValue = 0;
             this.txtWeightDeliveredGoods.Name = "txtWeightDeliveredGoods";
@@ -5046,7 +5024,7 @@
             this.btnChangStatusGoods.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnChangStatusGoods.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnChangStatusGoods.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnChangStatusGoods.Location = new System.Drawing.Point(1377, 0);
+            this.btnChangStatusGoods.Location = new System.Drawing.Point(1342, 0);
             this.btnChangStatusGoods.Name = "btnChangStatusGoods";
             this.btnChangStatusGoods.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnChangStatusGoods.Size = new System.Drawing.Size(148, 27);
@@ -5079,7 +5057,7 @@
             this.btnExportToExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnExportToExcel.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnExportToExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnExportToExcel.Location = new System.Drawing.Point(1525, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(1490, 0);
             this.btnExportToExcel.Name = "btnExportToExcel";
             this.btnExportToExcel.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnExportToExcel.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
@@ -5185,6 +5163,27 @@
             this.btnAccountingDocumentRegistration.Key = "AccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Name = "btnAccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Text = "ثبت سند حسابداری";
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowGridExHideColumns.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(1525, 0);
+            this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
+            this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlQ);
+            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 27);
+            this.btnShowGridExHideColumns.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowGridExHideColumns.Symbol = "59635";
+            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Black;
+            this.btnShowGridExHideColumns.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
+            this.btnShowGridExHideColumns.SymbolSize = 15F;
+            this.btnShowGridExHideColumns.TabIndex = 17;
+            this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // frmComers
             // 
@@ -5302,7 +5301,9 @@
             this.uiPanel1.ResumeLayout(false);
             this.uiPanel1Container.ResumeLayout(false);
             this.pnlViewItemBody.ResumeLayout(false);
+            ((System.Configuration.IPersistComponentSettings)(this.dgvListH)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvListB)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).EndInit();
             this.pnlViewItemFoter.ResumeLayout(false);
             this.panelDeleteEdit.ResumeLayout(false);
@@ -5616,5 +5617,6 @@
         private System.Windows.Forms.CheckBox chkIncomeDocument;
         private System.Windows.Forms.RadioButton rdbShiper;
         private System.Windows.Forms.RadioButton rdbCostAccount;
+        public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
     }
 }

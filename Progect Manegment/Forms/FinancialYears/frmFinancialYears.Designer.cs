@@ -129,8 +129,17 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(335, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(478, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.Location = new System.Drawing.Point(444, 0);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(409, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // txtName
             // 
@@ -212,7 +221,8 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.SettingsKey = "GridExEx";
+            this.dgvList.SaveSettings = true;
+            this.dgvList.SettingsKey = "frmFinancialYears";
             this.dgvList.Size = new System.Drawing.Size(512, 338);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
@@ -243,6 +253,7 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);
 

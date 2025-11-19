@@ -119,6 +119,17 @@
             this.btnExportToExcel.Size = new System.Drawing.Size(178, 34);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
+            // buttonX01
+            // 
+            this.buttonX01.Location = new System.Drawing.Point(262, 0);
+            this.buttonX01.Size = new System.Drawing.Size(34, 34);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(227, 0);
+            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 34);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            // 
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -147,6 +158,8 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
+            this.dgvList.SaveSettings = true;
+            this.dgvList.SettingsKey = "frmProvinces";
             this.dgvList.Size = new System.Drawing.Size(474, 332);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 82;
@@ -190,6 +203,7 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);
 

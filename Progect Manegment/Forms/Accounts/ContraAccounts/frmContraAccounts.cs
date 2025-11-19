@@ -510,5 +510,10 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
         }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            dgvList.ShowFieldChooser(this,  ResourceCode.T158);
+        }
     }
 }

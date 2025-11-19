@@ -161,6 +161,11 @@
             // 
             this.buttonX01.Location = new System.Drawing.Point(491, 0);
             // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(456, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            // 
             // dgvList
             // 
             this.dgvList.DefaultComment = null;
@@ -180,6 +185,8 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
+            this.dgvList.SaveSettings = true;
+            this.dgvList.SettingsKey = "frmPlaceTransfer";
             this.dgvList.Size = new System.Drawing.Size(559, 261);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
@@ -387,6 +394,7 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbEvacuationDeployment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCity)).EndInit();

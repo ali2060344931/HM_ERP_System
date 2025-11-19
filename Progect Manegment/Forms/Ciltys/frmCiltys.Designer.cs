@@ -165,7 +165,8 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.SettingsKey = "GridExEx";
+            this.dgvList.SaveSettings = true;
+            this.dgvList.SettingsKey = "frmCiltys";
             this.dgvList.Size = new System.Drawing.Size(474, 332);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 83;
@@ -242,10 +243,6 @@
             this.label1.TabIndex = 109;
             this.label1.Text = "نام شهـــر:";
             // 
-            // schedulePrintDocument1
-            // 
-            //this.schedulePrintDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.schedulePrintDocument1_PrintPage);
-            // 
             // frmCiltys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -268,6 +265,7 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProvinces)).EndInit();
             this.ResumeLayout(false);

@@ -77,6 +77,8 @@
             this.pnlViewItemFoter.Controls.Add(this.chkSelected);
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 465);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(696, 28);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.chkSelected, 0);
             // 
@@ -159,7 +161,16 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(519, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(593, 0);
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.Location = new System.Drawing.Point(662, 0);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(627, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // label64
             // 
@@ -360,6 +371,8 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
+            this.dgvList.SaveSettings = true;
+            this.dgvList.SettingsKey = "frmAppointmentScheduling";
             this.dgvList.Size = new System.Drawing.Size(696, 421);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
@@ -406,7 +419,7 @@
             // 
             this.chkSelected.AutoSize = true;
             this.chkSelected.Dock = System.Windows.Forms.DockStyle.Right;
-            this.chkSelected.Location = new System.Drawing.Point(327, 0);
+            this.chkSelected.Location = new System.Drawing.Point(401, 0);
             this.chkSelected.Name = "chkSelected";
             this.chkSelected.Size = new System.Drawing.Size(192, 28);
             this.chkSelected.TabIndex = 3;
@@ -437,6 +450,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCarplate)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbProvinces)).EndInit();
             this.ResumeLayout(false);

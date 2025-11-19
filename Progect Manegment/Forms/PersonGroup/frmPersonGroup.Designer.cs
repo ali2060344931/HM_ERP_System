@@ -62,6 +62,7 @@
             this.pnlViewItemFoter.Controls.Add(this.label18);
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 388);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(394, 28);
+            this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.label18, 0);
@@ -130,12 +131,17 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(360, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(325, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
-            // buttonX1
+            // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(326, 0);
+            this.buttonX01.Location = new System.Drawing.Point(291, 0);
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(359, 0);
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // label14
             // 
@@ -175,6 +181,8 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
+            this.dgvList.SaveSettings = true;
+            this.dgvList.SettingsKey = "frmPersonGroup";
             this.dgvList.Size = new System.Drawing.Size(394, 338);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 83;
@@ -204,7 +212,7 @@
             this.label18.Dock = System.Windows.Forms.DockStyle.Right;
             this.label18.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label18.ForeColor = System.Drawing.Color.Maroon;
-            this.label18.Location = new System.Drawing.Point(33, 0);
+            this.label18.Location = new System.Drawing.Point(-2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(293, 18);
             this.label18.TabIndex = 116;
@@ -232,6 +240,7 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
+            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);
 

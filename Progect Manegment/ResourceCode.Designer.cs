@@ -1481,5 +1481,14 @@ namespace HM_ERP_System {
                 return ResourceManager.GetString("T157", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست ستونهای حذف شده.
+        /// </summary>
+        internal static string T158 {
+            get {
+                return ResourceManager.GetString("T158", resourceCulture);
+            }
+        }
     }
 }

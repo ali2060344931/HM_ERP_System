@@ -281,5 +281,10 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
         {
              PublicClass.SaveGridExToExcel(dgvList);
         }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
     }
 }

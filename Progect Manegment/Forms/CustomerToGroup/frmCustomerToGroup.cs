@@ -229,5 +229,10 @@ namespace HM_ERP_System.Forms.CustomerToGroup
             }
 
         }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            dgvList.ShowFieldChooser(owner: this, caption: "لیست ستون ها");
+        }
     }
 }

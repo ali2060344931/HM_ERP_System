@@ -803,7 +803,7 @@ namespace HM_ERP_System.Forms.Customer
 
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
-            dgvList.ShowFieldChooser();
+            dgvList.ShowFieldChooser(this,  ResourceCode.T158);
         }
     }
 }

@@ -292,11 +292,11 @@
             this.btnShowGridExHideColumns.Location = new System.Drawing.Point(532, 0);
             this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
             this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
+            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlQ);
             this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 28);
             this.btnShowGridExHideColumns.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnShowGridExHideColumns.Symbol = "59635";
-            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Lime;
+            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Black;
             this.btnShowGridExHideColumns.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.btnShowGridExHideColumns.SymbolSize = 15F;
             this.btnShowGridExHideColumns.TabIndex = 5;

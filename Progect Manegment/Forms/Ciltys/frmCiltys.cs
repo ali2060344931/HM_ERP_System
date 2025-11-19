@@ -245,8 +245,7 @@ namespace HM_ERP_System.Forms.Ciltys
 
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
-            dgvList.ShowFieldChooser();
-
+            dgvList.ShowFieldChooser(this, ResourceCode.T158);
         }
 
         private void frmCiltys_FormClosing(object sender, FormClosingEventArgs e)

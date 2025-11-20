@@ -3,6 +3,7 @@ using HM_ERP_System.Forms.Customer;
 using HM_ERP_System.Forms.CustomerToGroup;
 using HM_ERP_System.Forms.Draver;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
 
 using MyClass;
 
@@ -182,7 +183,6 @@ namespace HM_ERP_System.Forms.Car
                         join cu in db.Customers
                         on dr.CustomerId equals cu.Id
 
-
                         join ct in db.Ciltys
                         on cu.CityId equals ct.Id into ctGroup
                         from ct_ in ctGroup.DefaultIfEmpty()
@@ -205,13 +205,9 @@ namespace HM_ERP_System.Forms.Car
                         from OWCompany in bGroup.DefaultIfEmpty()
 
 
-                            //join sh in db.Customers
-                            //on cmh.ShiperId equals sh.Id into shGroup
-                            //from shLeft in shGroup.DefaultIfEmpty()
 
                         select new
                         {
-                            //CountComerB=bGroup.Count(),
                             cr.Id,
                             cr.CarName,
                             DraverName = cu.Family + " " + cu.Name,
@@ -647,6 +643,19 @@ namespace HM_ERP_System.Forms.Car
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            //f.Cod="3";
+            f.grid=dgvList;
+            //f.Condition="";
+            //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
+            f.TitelString ="لیست کامیون ها";
+            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Cars.rdlc";
+            f.ShowDialog();
+
         }
     }
 }

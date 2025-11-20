@@ -97,39 +97,43 @@ namespace HM_ERP_System.Forms.Draver
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = from dr in db.Dravers
-
-                            join cu in db.Customers
+                    var q =
+                        from dr in db.Dravers
+                        join cu in db.Customers
                             on dr.CustomerId equals cu.Id
 
-                            join gn in db.Genders
+                        join gn in db.Genders
                             on dr.GenderId equals gn.Id
 
-                            join ct in db.Ciltys
-                            on cu.CityId equals ct.Id
+                        // ---- Left Join برای City ----
+                        join ct in db.Ciltys
+                            on cu.CityId equals ct.Id into cityGroup
+                        from ct in cityGroup.DefaultIfEmpty()
 
-                            join pr in db.Provinces
-                            on ct.ProvincesId equals pr.Id
+                            // ---- Left Join برای Province ----
+                        join pr in db.Provinces
+                            on ct.ProvincesId equals pr.Id into provGroup
+                        from pr in provGroup.DefaultIfEmpty()
 
-                            select new
-                            {
-                                dr.Id,
-                                Name = cu.Family + " " + cu.Name,
-                                cu.CodMeli,
-                                cu.Tel,
-                                cu.Adders,
-                                dr.Description,
-                                dr.BirDate,
-                                Gender = gn.Name,
-                                Provinces = pr.Name,
-                                City = ct.Name,
-                                dr.Status,
-                                dr.SmartCard,
-                                dr.SeryalGovahiname,
+                        select new
+                        {
+                            dr.Id,
+                            Name = cu.Family + " " + cu.Name,
+                            cu.CodMeli,
+                            cu.Tel,
+                            cu.Adders,
+                            dr.Description,
+                            dr.BirDate,
+                            Gender = gn.Name,
+                            Provinces = pr != null ? pr.Name : "",   // اگر استان خالی بود
+                            City = ct != null ? ct.Name : "",        // اگر شهر خالی بود
+                            dr.Status,
+                            dr.SmartCard,
+                            dr.SeryalGovahiname,
+                        };
 
-                            };
                     dgvList.DataSource = q.ToList();
-                    PublicClass.SettingGridEX(dgvList,Name);
+                    PublicClass.SettingGridEX(dgvList, Name);
                 }
             }
             catch (Exception er)
@@ -357,12 +361,12 @@ namespace HM_ERP_System.Forms.Draver
         private void buttonX01_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
-            f.Cod="2";
+            //f.Cod="2";
             f.grid=dgvList;
             //f.Condition="";
             //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
             f.TitelString ="لیست راننده ها";
-
+            f.ReporFileName="HM_ERP_System.ReportViewer.Report_Dravers.rdlc";
             f.ShowDialog();
         }
     }

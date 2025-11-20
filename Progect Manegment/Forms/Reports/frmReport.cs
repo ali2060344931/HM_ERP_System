@@ -30,13 +30,14 @@ namespace HM_ERP_System.Forms.Reports
         public string tblName;
         public string Condition = "";
         public string OnvanReport;
-        public string DateReport=" ";
+        public string DateReport = " ";
         public string MandehSorathseb;//مانده صورتحساب
         public string MablaghGharardad;
         public string DayGharadad;
         public string DastmozdRozane;
         public string MablaghKarkard;
         public string TitelString = "";
+        public string ReporFileName = "";
         public GridEX grid;
         string NameCompani;
 
@@ -58,6 +59,9 @@ namespace HM_ERP_System.Forms.Reports
                 this.reportViewer1.RefreshReport();
                 reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                 reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+
+                SetReport();
+                return;
                 switch (Cod)
                 {
                     case "0":
@@ -70,89 +74,49 @@ namespace HM_ERP_System.Forms.Reports
                             MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("HM_ERP_System.ReportViewer.Report_KarkarRozaneh.rdlc", reportViewer1, 2, new string[] { "V_Customers", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "DateReport", DateReport, "TitelString", TitelString });
                         }
                         break;
-                    case "1":
-                        ReportParameter[] p1 = new ReportParameter[]
-    {
-        new ReportParameter("NameCompani", NameCompani),
-        new ReportParameter("TarikhG", TarikhRoz),
-        new ReportParameter("DateReport", DateReport),
-        new ReportParameter("TitelString", TitelString)
-    };
-                        {
-                            var companyInfo = db.ImageCos
-                                                .Where(c => c.Id == 1)
-                                                .Select(c => new
-                                                {
-                                                    c.Name,
-                                                    c.Image
-                                                })
-                                                .FirstOrDefault();
 
-                            if (companyInfo != null)
-                            {
-                                DataTable dtCompany = new DataTable();
-                                dtCompany.Columns.Add("Name");
-                                dtCompany.Columns.Add("image", typeof(byte[]));
 
-                                dtCompany.Rows.Add(companyInfo.Name, companyInfo.Image);
+                }
+            }
+        }
 
-                                // حالا dtCompany آماده است برای ارسال به ReportViewer
-                                var extraData = new List<(DataTable, string)>
+
+        public void SetReport()
         {
-            (dtCompany, "DataSet2")
-        };
-
-                                ReportHelper.ShowReportFromGridEX(
-                                    grid,
-                                    "HM_ERP_System.ReportViewer.Report_Customer.rdlc",
-                                    reportViewer1,
-                                    "DataSet1",
-                                    extraData,
-                                    p1
-                                );
-                            }
-                            break;
-                        }//اشخاص
-                    case "2"://راننده ها
-                        ReportParameter[] p2 = new ReportParameter[]
+            ReportParameter[] p5 = new ReportParameter[]
                         {
                             new ReportParameter("NameCompani", NameCompani),
                             new ReportParameter("TarikhG", TarikhRoz),
                             new ReportParameter("DateReport", DateReport),
                             new ReportParameter("TitelString", TitelString)
                         };
-                        {
-                            var companyInfo = db.ImageCos
-                                                .Where(c => c.Id == 1)
-                                                .Select(c => new
-                                                {
-                                                    c.Name,
-                                                    c.Image
-                                                })
-                                                .FirstOrDefault();
+            {
+                var companyInfo = db.ImageCos
+                                    .Where(c => c.Id == 1)
+                                    .Select(c => new
+                                    {
+                                        c.Name,
+                                        c.Image
+                                    })
+                                    .FirstOrDefault();
 
-                            if (companyInfo != null)
-                            {
-                                DataTable dtCompany = new DataTable();
-                                dtCompany.Columns.Add("Name");
-                                dtCompany.Columns.Add("image", typeof(byte[]));
-                                dtCompany.Rows.Add(companyInfo.Name, companyInfo.Image);
-                                
-                                var extraData = new List<(DataTable, string)>
+                if (companyInfo != null)
+                {
+                    DataTable dtCompany = new DataTable();
+                    dtCompany.Columns.Add("Name");
+                    dtCompany.Columns.Add("image", typeof(byte[]));
+                    dtCompany.Rows.Add(companyInfo.Name, companyInfo.Image);
+
+                    var extraData = new List<(DataTable, string)>
                                 {(dtCompany, "DataSet2")};
-                                ReportHelper.ShowReportFromGridEX(
-                                    grid,
-                                    "HM_ERP_System.ReportViewer.Report_Customer.rdlc",
-                                    reportViewer1,
-                                    "DataSet1",
-                                    extraData,
-                                    p2
-                                );
-                            }
-                            break;
-                        }
-
-
+                    ReportHelper.ShowReportFromGridEX(
+                        grid,
+                        ReporFileName,
+                        reportViewer1,
+                        "DataSet1",
+                        extraData,
+                        p5
+                    );
                 }
             }
         }

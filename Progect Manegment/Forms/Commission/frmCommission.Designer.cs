@@ -90,16 +90,16 @@
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Location = new System.Drawing.Point(0, 54);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(759, 460);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(874, 237);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(759, 54);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(874, 54);
             // 
             // pnlViewItemFoter
             // 
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 514);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(759, 28);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 291);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(874, 28);
             // 
             // pnlAddItemBodi
             // 
@@ -110,13 +110,13 @@
             this.pnlAddItemBodi.Controls.Add(this.panel2);
             this.pnlAddItemBodi.Controls.Add(this.panel3);
             this.pnlAddItemBodi.Controls.Add(this.panel1);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(521, 514);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(521, 291);
             this.pnlAddItemBodi.TabIndex = 0;
             // 
             // pnlAddItemFoter
             // 
             this.pnlAddItemFoter.Controls.Add(this.chkRegAccount);
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 514);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 291);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(521, 28);
             this.pnlAddItemFoter.TabIndex = 1;
             this.pnlAddItemFoter.Controls.SetChildIndex(this.btnSave, 0);
@@ -136,17 +136,17 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(408, 13);
+            this.txtDateStart.Location = new System.Drawing.Point(466, 13);
             this.txtDateStart.Value = new System.DateTime(2025, 11, 2, 16, 4, 40, 280);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(206, 13);
+            this.txtDateEnd.Location = new System.Drawing.Point(264, 13);
             this.txtDateEnd.Value = new System.DateTime(2025, 11, 2, 16, 4, 40, 280);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(116, 16);
+            this.btnShowListItems.Location = new System.Drawing.Point(174, 16);
             this.btnShowListItems.Click += new System.EventHandler(this.btnShowListItems_Click);
             // 
             // labelX2
@@ -155,7 +155,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(336, 18);
+            this.labelX2.Location = new System.Drawing.Point(394, 18);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
@@ -164,32 +164,32 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(538, 18);
+            this.labelX1.Location = new System.Drawing.Point(596, 18);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Size = new System.Drawing.Size(761, 570);
+            this.pnlViewItems.Size = new System.Drawing.Size(876, 347);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(764, 3);
+            this.pnlAddItems.Location = new System.Drawing.Point(879, 3);
             this.pnlAddItems.MinimumSize = new System.Drawing.Size(400, -1);
-            this.pnlAddItems.Size = new System.Drawing.Size(527, 570);
+            this.pnlAddItems.Size = new System.Drawing.Size(527, 347);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(725, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(840, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(691, 0);
-            this.buttonX01.Visible = false;
+            this.buttonX01.Location = new System.Drawing.Point(806, 0);
+            this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(656, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(771, 0);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
@@ -214,7 +214,7 @@
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmCommission";
-            this.dgvList.Size = new System.Drawing.Size(759, 460);
+            this.dgvList.Size = new System.Drawing.Size(874, 237);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -470,7 +470,7 @@
             this.dgvList1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList1.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList1.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList1.Size = new System.Drawing.Size(521, 313);
+            this.dgvList1.Size = new System.Drawing.Size(521, 90);
             this.dgvList1.Sortable = true;
             this.dgvList1.TabIndex = 106;
             this.dgvList1.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -585,7 +585,7 @@
             this.panel4.Controls.Add(this.txtDes);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 480);
+            this.panel4.Location = new System.Drawing.Point(0, 257);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(521, 34);
             this.panel4.TabIndex = 109;
@@ -641,7 +641,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1294, 576);
+            this.ClientSize = new System.Drawing.Size(1409, 353);
             this.Name = "frmCommission";
             this.Text = "پـــورســـانت ها";
             this.Load += new System.EventHandler(this.frmCommission_Load);

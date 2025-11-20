@@ -336,7 +336,7 @@ namespace HM_ERP_System.Forms.Customer
                 using (var db = new DBcontextModel())
                 {
 
-                    if (ListId == 0)
+                    if (ListId_ == 0)
                     {
                         if (TypeCustomerId == 1)
                         {
@@ -446,6 +446,7 @@ namespace HM_ERP_System.Forms.Customer
             btnAddGroup.Enabled=true;
 
             ListId = 0;
+            ListId_ = 0;
             BanckId = 0;
             txtName.Focus();
         }
@@ -750,11 +751,12 @@ namespace HM_ERP_System.Forms.Customer
         private void btnRepC1_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
-            f.Cod="1";
+            //f.Cod="1";
             f.grid=dgvList;
             //f.Condition="";
             //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
             f.TitelString ="لیست اشخـــاص";
+            f.ReporFileName="HM_ERP_System.ReportViewer.Report_Customer.rdlc";
             f.ShowDialog();
         }
 

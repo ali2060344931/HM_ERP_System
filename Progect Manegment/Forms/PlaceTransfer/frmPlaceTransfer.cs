@@ -3,6 +3,7 @@ using HM_ERP_System.Entity.Provinces;
 using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.CustomerToGroup;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
 
 using MyClass;
 
@@ -106,8 +107,6 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                 {
                     var q = from pt in db.PlaceTransfers
 
-                                //join ed in db.EvacuationDeployments
-                                //on pt.EvacuationDeploymentId equals ed.Id
 
                             join ct in db.Ciltys
                             on pt.CiltyId equals ct.Id
@@ -118,7 +117,6 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                             select new
                             {
                                 pt.Id,
-                                //EvacuationDeploymentName = ed.Name,
                                 PlaceTransferName = pt.Name,
                                 CityName = ct.Name,
                                 ProvincesName = pr.Name,
@@ -127,7 +125,6 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                 pt.Addres,
                             };
                     dgvList.DataSource = q.ToList();
-                    //AutoSizeColumns();
                     PublicClass.SettingGridEX(dgvList,Name);
                 }
 
@@ -339,6 +336,19 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            //f.Cod="4";
+            f.grid=dgvList;
+            //f.Condition="";
+            //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
+            f.TitelString ="لیست انبارهای بارگیری و تخلیه";
+            f.ReporFileName="HM_ERP_System.ReportViewer.Report_PlaceTransfer.rdlc";
+            f.ShowDialog();
+
         }
     }
 }

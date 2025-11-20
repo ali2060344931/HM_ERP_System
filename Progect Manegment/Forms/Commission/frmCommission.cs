@@ -4,6 +4,7 @@ using HM_ERP_System.Entity.TruckUsageType;
 using HM_ERP_System.Forms.Accounts.RecevingPayment;
 using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
 
 using Janus.Windows.GridEX;
 
@@ -874,6 +875,17 @@ namespace HM_ERP_System.Forms.Commission
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            f.grid=dgvList;
+            f.DateReport="گــزارش   از تاریخ: "+txtDateStart.Text+ "   تا تاریخ: "+txtDateEnd.Text;
+            f.TitelString ="لیست پورســـانت ها";
+            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Commission.rdlc";
+            //f.SetReport();
+            f.ShowDialog();
         }
     }
 }

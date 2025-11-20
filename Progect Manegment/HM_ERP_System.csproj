@@ -1085,6 +1085,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportViewer\Report_Cars.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_Commission.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_PlaceTransfer.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_Dravers.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_Customer.rdlc" />
     <EmbeddedResource Include="ResourceCode.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -38,16 +38,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnAddNewItem = new DevComponents.DotNetBar.ButtonX();
             this.cmbFinancialYears = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblVersion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFinancialYears)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPassword
             // 
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPassword.Location = new System.Drawing.Point(81, 139);
+            this.txtPassword.Location = new System.Drawing.Point(30, 139);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -64,7 +62,7 @@
             this.btnIncoming.BackColor = System.Drawing.Color.Transparent;
             this.btnIncoming.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnIncoming.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnIncoming.Location = new System.Drawing.Point(80, 171);
+            this.btnIncoming.Location = new System.Drawing.Point(29, 171);
             this.btnIncoming.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnIncoming.Name = "btnIncoming";
             this.btnIncoming.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -83,7 +81,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(132, 117);
+            this.label2.Location = new System.Drawing.Point(81, 117);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 22);
@@ -95,7 +93,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(125, 67);
+            this.label1.Location = new System.Drawing.Point(74, 67);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 22);
@@ -105,7 +103,7 @@
             // txtUserName
             // 
             this.txtUserName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtUserName.Location = new System.Drawing.Point(79, 89);
+            this.txtUserName.Location = new System.Drawing.Point(28, 89);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUserName.MaxLength = 10;
             this.txtUserName.Name = "txtUserName";
@@ -119,7 +117,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(125, 15);
+            this.label3.Location = new System.Drawing.Point(74, 15);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 22);
@@ -133,7 +131,7 @@
             this.btnAddNewItem.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewItem.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewItem.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddNewItem.Location = new System.Drawing.Point(63, 34);
+            this.btnAddNewItem.Location = new System.Drawing.Point(11, 34);
             this.btnAddNewItem.Name = "btnAddNewItem";
             this.btnAddNewItem.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddNewItem.Size = new System.Drawing.Size(18, 28);
@@ -152,7 +150,7 @@
             cmbFinancialYears_DesignTimeLayout.LayoutString = resources.GetString("cmbFinancialYears_DesignTimeLayout.LayoutString");
             this.cmbFinancialYears.DesignTimeLayout = cmbFinancialYears_DesignTimeLayout;
             this.cmbFinancialYears.DisplayMember = "Name";
-            this.cmbFinancialYears.Location = new System.Drawing.Point(81, 34);
+            this.cmbFinancialYears.Location = new System.Drawing.Point(30, 34);
             this.cmbFinancialYears.Name = "cmbFinancialYears";
             this.cmbFinancialYears.SelectedIndex = -1;
             this.cmbFinancialYears.SelectedItem = null;
@@ -163,17 +161,6 @@
             this.cmbFinancialYears.ValueMember = "id";
             this.cmbFinancialYears.ValueChanged += new System.EventHandler(this.cmbFinancialYears_ValueChanged);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(238, 89);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 78);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 112;
-            this.pictureBox1.TabStop = false;
-            // 
             // lblVersion
             // 
             this.lblVersion.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -181,7 +168,7 @@
             this.lblVersion.ForeColor = System.Drawing.Color.Maroon;
             this.lblVersion.Image = ((System.Drawing.Image)(resources.GetObject("lblVersion.Image")));
             this.lblVersion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblVersion.Location = new System.Drawing.Point(79, 209);
+            this.lblVersion.Location = new System.Drawing.Point(31, 209);
             this.lblVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(157, 46);
@@ -195,8 +182,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(321, 255);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(217, 262);
             this.Controls.Add(this.btnAddNewItem);
             this.Controls.Add(this.cmbFinancialYears);
             this.Controls.Add(this.txtPassword);
@@ -221,7 +207,6 @@
             this.Load += new System.EventHandler(this.frmLoginProg_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLoginProg_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.cmbFinancialYears)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,7 +222,6 @@
         private System.Windows.Forms.Label label3;
         public DevComponents.DotNetBar.ButtonX btnAddNewItem;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbFinancialYears;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblVersion;
     }
 }

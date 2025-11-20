@@ -350,6 +350,7 @@
             this.btnChangStatusGoods = new DevComponents.DotNetBar.ButtonX();
             this.btnUnChangStatusGoods = new DevComponents.DotNetBar.ButtonItem();
             this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
             this.gridEXExporter1 = new Janus.Windows.GridEX.Export.GridEXExporter(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.cms_cmsDgvH = new Janus.Windows.Ribbon.RibbonContextMenu(this.components);
@@ -366,7 +367,6 @@
             this.separatorCommand3 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.btnAddDocCB = new Janus.Windows.Ribbon.DropDownCommand();
             this.btnAccountingDocumentRegistration = new Janus.Windows.Ribbon.DropDownCommand();
-            this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -5069,6 +5069,27 @@
             this.btnExportToExcel.TabIndex = 3;
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowGridExHideColumns.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(1525, 0);
+            this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
+            this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlQ);
+            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 27);
+            this.btnShowGridExHideColumns.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowGridExHideColumns.Symbol = "59635";
+            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Black;
+            this.btnShowGridExHideColumns.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
+            this.btnShowGridExHideColumns.SymbolSize = 15F;
+            this.btnShowGridExHideColumns.TabIndex = 17;
+            this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            // 
             // cms_cmsDgvH
             // 
             this.cms_cmsDgvH.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
@@ -5163,27 +5184,6 @@
             this.btnAccountingDocumentRegistration.Key = "AccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Name = "btnAccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Text = "ثبت سند حسابداری";
-            // 
-            // btnShowGridExHideColumns
-            // 
-            this.btnShowGridExHideColumns.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShowGridExHideColumns.BackColor = System.Drawing.Color.Transparent;
-            this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(1525, 0);
-            this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
-            this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlQ);
-            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 27);
-            this.btnShowGridExHideColumns.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnShowGridExHideColumns.Symbol = "59635";
-            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Black;
-            this.btnShowGridExHideColumns.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
-            this.btnShowGridExHideColumns.SymbolSize = 15F;
-            this.btnShowGridExHideColumns.TabIndex = 17;
-            this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
-            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // frmComers
             // 

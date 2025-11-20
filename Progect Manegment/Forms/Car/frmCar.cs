@@ -235,7 +235,7 @@ namespace HM_ERP_System.Forms.Car
 
                         };
                 dgvList.DataSource = q.ToList();
-                PublicClass.SettingGridEX(dgvList);
+                PublicClass.SettingGridEX(dgvList,Name);
             }
         }
 

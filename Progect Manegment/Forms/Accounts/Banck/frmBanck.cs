@@ -50,7 +50,7 @@ namespace HM_ERP_System.Forms.Accounts.Banck
                 var q = db.Bancks.ToList();
                 dgvList.DataSource = q;
 
-                PublicClass.SettingGridEX(dgvList);
+                PublicClass.SettingGridEX(dgvList,Name);
             }
         }
 

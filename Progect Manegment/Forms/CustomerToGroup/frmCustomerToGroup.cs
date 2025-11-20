@@ -81,7 +81,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                             cu.CodMeli,
                         };
                 dgvList.DataSource=q.ToList();
-                PublicClass.SettingGridEX(dgvList);
+                PublicClass.SettingGridEX(dgvList,Name);
             }
         }
 

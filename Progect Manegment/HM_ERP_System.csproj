@@ -1085,7 +1085,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReportViewer\Report_KarkarRozaneh.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_Customer.rdlc" />
     <EmbeddedResource Include="ResourceCode.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceCode.Designer.cs</LastGenOutput>

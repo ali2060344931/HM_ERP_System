@@ -256,7 +256,7 @@ namespace HM_ERP_System.Forms.Customer
 
                             };
                     dgvList.DataSource = q.ToList();
-                    PublicClass.SettingGridEX(dgvList);
+                    PublicClass.SettingGridEX(dgvList,Name);
                 }
             }
             catch (Exception er)
@@ -753,9 +753,9 @@ namespace HM_ERP_System.Forms.Customer
             f.Cod="1";
             f.grid=dgvList;
             //f.Condition="";
-            f.DateReport="گزارش از تاریخ: "+"1404/01/01"+"  تا تاریخ: "+"1404/05/25";
+            //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
+            f.TitelString ="لیست اشخـــاص";
             f.ShowDialog();
-
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)
@@ -797,7 +797,6 @@ namespace HM_ERP_System.Forms.Customer
                         txtCodMeli.Focus();
                     }
                 }
-
             }
         }
 

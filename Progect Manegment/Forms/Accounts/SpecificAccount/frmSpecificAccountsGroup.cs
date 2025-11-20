@@ -48,7 +48,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
             FilldgvList();
             FillcmbTransactionTypes();
             FillcmbSpecificAccountF();
-            PublicClass.SettingGridEX(dgvList);
+            PublicClass.SettingGridEX(dgvList,Name);
         }
 
         private void FilldgvList()

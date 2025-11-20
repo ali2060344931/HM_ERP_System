@@ -60,7 +60,7 @@ namespace HM_ERP_System.Forms.Product
                 
                 dgvList.DataSource = q.ToList();
                 //dgvList.AutoSizeColumns();
-                PublicClass.SettingGridEX(dgvList);
+                PublicClass.SettingGridEX(dgvList,Name);
             }
         }
         DataTable dt_ProductGroup;

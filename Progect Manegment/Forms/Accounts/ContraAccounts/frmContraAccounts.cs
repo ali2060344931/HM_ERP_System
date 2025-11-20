@@ -205,7 +205,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                                  };
                 }
                 dgvList.DataSource = finalQuery.ToList();
-                PublicClass.SettingGridEX(dgvList);
+                PublicClass.SettingGridEX(dgvList,Name);
             }
 
         }

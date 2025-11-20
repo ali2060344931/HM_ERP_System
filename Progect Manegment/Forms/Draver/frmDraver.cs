@@ -5,6 +5,7 @@ using HM_ERP_System.Entity.TypeCustomer;
 using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.Customer;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
 
 using MyClass;
 
@@ -128,7 +129,7 @@ namespace HM_ERP_System.Forms.Draver
 
                             };
                     dgvList.DataSource = q.ToList();
-                    PublicClass.SettingGridEX(dgvList);
+                    PublicClass.SettingGridEX(dgvList,Name);
                 }
             }
             catch (Exception er)
@@ -351,6 +352,18 @@ namespace HM_ERP_System.Forms.Draver
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            f.Cod="2";
+            f.grid=dgvList;
+            //f.Condition="";
+            //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
+            f.TitelString ="لیست راننده ها";
+
+            f.ShowDialog();
         }
     }
 }

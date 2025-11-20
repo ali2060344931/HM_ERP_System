@@ -1684,7 +1684,7 @@ namespace MyClass
         /// </summary>
         /// <param name="GX"></param>
         /// <returns></returns>
-        public static GridExEx.GridExEx SettingGridEX(GridExEx.GridExEx GX)
+        public static GridExEx.GridExEx SettingGridEX( GridExEx.GridExEx GX, string formName=null)
         {
             try
             {
@@ -1692,6 +1692,41 @@ namespace MyClass
                 GX.RowHeaderContent=RowHeaderContent.RowIndex;
                 GX.RootTable.RowHeaderWidth = 80;
                 GX.RootTable.RowHeaderFormatStyle.TextAlignment =TextAlignment.Center;
+
+                GX.RootTable.Columns["Id"].Selectable = false;
+                GX.RootTable.Columns["Id"].ShowInFieldChooser = false;
+                
+                if (GX.RootTable.Columns.Contains("Select"))
+                {
+                    GX.RootTable.Columns["Select"].Selectable = false;
+                    GX.RootTable.Columns["Select"].ShowInFieldChooser = false;
+                    GX.RootTable.Columns["Select"].AllowRemove =InheritableBoolean.False;
+                }
+
+                if (GX.RootTable.Columns.Contains("Edit"))
+                {
+                    GX.RootTable.Columns["Edit"].Selectable = false;
+                    GX.RootTable.Columns["Edit"].ShowInFieldChooser = false;
+                    GX.RootTable.Columns["Edit"].AllowRemove =InheritableBoolean.False;
+                }
+
+                if (GX.RootTable.Columns.Contains("Delete"))
+                {
+                    GX.RootTable.Columns["Delete"].Selectable = false;
+                    GX.RootTable.Columns["Delete"].ShowInFieldChooser = false;
+                    GX.RootTable.Columns["Delete"].AllowRemove =InheritableBoolean.False;
+                }
+
+                if (GX.RootTable.Columns.Contains("Details"))
+                {
+                    GX.RootTable.Columns["Details"].Selectable = false;
+                    GX.RootTable.Columns["Details"].ShowInFieldChooser = false;
+                    GX.RootTable.Columns["Details"].AllowRemove = InheritableBoolean.False;
+                }
+
+                GX.SaveSettings=true;
+                GX.SettingsKey=formName;
+
                 foreach (GridEXColumn column in GX.RootTable.Columns)
                 {
                     column.HeaderStyle.TextAlignment=TextAlignment.Center;
@@ -1710,7 +1745,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
-                //PublicClass.ShowErrorMessage(er);
+                PublicClass.ShowErrorMessage(er);
                 return null;
             }
         }

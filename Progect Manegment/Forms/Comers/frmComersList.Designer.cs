@@ -42,10 +42,13 @@
             this.dgvListH = new GridExEx.GridExEx();
             this.dgvListB = new GridExEx.GridExEx();
             this.dgvListCommission = new GridExEx.GridExEx();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
             this.pnlViewItemHeder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListCommission)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlViewItemHeder
@@ -248,6 +251,36 @@
             this.dgvListCommission.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
             this.dgvListCommission.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvListCommission_ColumnButtonClick);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnShowGridExHideColumns);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 403);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(788, 26);
+            this.panel1.TabIndex = 89;
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowGridExHideColumns.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(753, 0);
+            this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
+            this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlQ);
+            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 26);
+            this.btnShowGridExHideColumns.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowGridExHideColumns.Symbol = "59635";
+            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Black;
+            this.btnShowGridExHideColumns.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
+            this.btnShowGridExHideColumns.SymbolSize = 15F;
+            this.btnShowGridExHideColumns.TabIndex = 6;
+            this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            // 
             // frmComersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -259,6 +292,7 @@
             this.Controls.Add(this.dgvListH);
             this.Controls.Add(this.dgvListB);
             this.Controls.Add(this.pnlViewItemHeder);
+            this.Controls.Add(this.panel1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmComersList";
             this.Text = "frmComersList";
@@ -268,6 +302,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListCommission)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -284,5 +319,7 @@
         public DevComponents.DotNetBar.LabelX labelX2;
         public DevComponents.DotNetBar.ButtonX btnExportToExcel;
         public GridExEx.GridExEx dgvListCommission;
+        private System.Windows.Forms.Panel panel1;
+        public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
     }
 }

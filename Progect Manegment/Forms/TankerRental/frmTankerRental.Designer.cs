@@ -85,7 +85,7 @@
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Location = new System.Drawing.Point(0, 33);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(703, 457);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(703, 471);
             // 
             // pnlViewItemHeder
             // 
@@ -105,8 +105,7 @@
             this.pnlViewItemFoter.Controls.Add(this.label12);
             this.pnlViewItemFoter.Controls.Add(this.label11);
             this.pnlViewItemFoter.Controls.Add(this.btnRegGroupDoc);
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 490);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(703, 42);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(703, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
@@ -205,19 +204,17 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(455, 0);
-            this.btnExportToExcel.Size = new System.Drawing.Size(179, 42);
+            this.btnExportToExcel.Location = new System.Drawing.Point(597, 0);
+            this.btnExportToExcel.Size = new System.Drawing.Size(37, 28);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(634, 0);
-            this.buttonX01.Size = new System.Drawing.Size(34, 42);
             // 
             // btnShowGridExHideColumns
             // 
             this.btnShowGridExHideColumns.Location = new System.Drawing.Point(668, 0);
-            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 42);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // label1
@@ -464,7 +461,7 @@
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmTankerRental";
-            this.dgvList.Size = new System.Drawing.Size(703, 457);
+            this.dgvList.Size = new System.Drawing.Size(703, 471);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -563,7 +560,7 @@
             this.btnRegGroupDoc.Location = new System.Drawing.Point(0, 0);
             this.btnRegGroupDoc.Name = "btnRegGroupDoc";
             this.btnRegGroupDoc.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnRegGroupDoc.Size = new System.Drawing.Size(168, 42);
+            this.btnRegGroupDoc.Size = new System.Drawing.Size(168, 28);
             this.btnRegGroupDoc.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRegGroupDoc.Symbol = "";
             this.btnRegGroupDoc.SymbolSize = 15F;
@@ -590,7 +587,7 @@
             "دی",
             "بهمن",
             "اسفند"});
-            this.cmbMont.Location = new System.Drawing.Point(168, 7);
+            this.cmbMont.Location = new System.Drawing.Point(168, 0);
             this.cmbMont.Name = "cmbMont";
             this.cmbMont.Size = new System.Drawing.Size(107, 28);
             this.cmbMont.TabIndex = 129;
@@ -601,7 +598,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.Location = new System.Drawing.Point(371, 12);
+            this.label11.Location = new System.Drawing.Point(371, 5);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(32, 18);
             this.label11.TabIndex = 128;
@@ -613,7 +610,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(275, 12);
+            this.label12.Location = new System.Drawing.Point(275, 5);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(27, 18);
             this.label12.TabIndex = 128;
@@ -624,7 +621,7 @@
             this.txtYear.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtYear.CheackCodeMeli = false;
             this.txtYear.Day = 0;
-            this.txtYear.Location = new System.Drawing.Point(302, 7);
+            this.txtYear.Location = new System.Drawing.Point(302, 0);
             this.txtYear.Miladi = new System.DateTime(((long)(0)));
             this.txtYear.Month = 0;
             this.txtYear.Name = "txtYear";

@@ -50,7 +50,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         {
             txtDueDate.Value= DateTime.Now;
             txtIssueDate.Value= DateTime.Now;
-            PublicClass.SettingGridEX(dgvList);
+            PublicClass.SettingGridEX(dgvList,Name);
             PublicClass.SettingGridEX(dgvListChequeStatus);
 
             if (IsReqoestExitForm=="frmRecevingPayment")

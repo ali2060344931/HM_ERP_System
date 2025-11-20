@@ -80,7 +80,7 @@ namespace HM_ERP_System.Forms.Comers
             {
                 if (FormName=="ComersB")
                 {
-                    frmComers.FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, "");
+                    frmComers.FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, "",false, "ComersB");
                     dgvListB.Dock= DockStyle.Fill;
                     dgvListH.Visible=false;
                     dgvListCommission.Visible=false;
@@ -93,7 +93,7 @@ namespace HM_ERP_System.Forms.Comers
 
                 else if (FormName=="ComersH")
                 {
-                    frmComers.FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
+                    frmComers.FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text,null, "ComersH");
                     dgvListH.Dock= DockStyle.Fill;
                     dgvListB.Visible=false;
                     dgvListCommission.Visible=false;
@@ -105,7 +105,7 @@ namespace HM_ERP_System.Forms.Comers
 
                 else if (FormName=="Commission")
                 {
-                    frmCommission.FilldgvList(dgvListCommission, txtDateStart.Text, txtDateEnd.Text);
+                    frmCommission.FilldgvList(dgvListCommission, txtDateStart.Text, txtDateEnd.Text, "Commission");
                     dgvListCommission.Dock= DockStyle.Fill;
                     dgvListB.Visible=false;
                     dgvListH.Visible=false;
@@ -183,6 +183,26 @@ namespace HM_ERP_System.Forms.Comers
                 var idh = db.ComersBs.Where(c => c.Id==q.ComersBId).First().ComersHId;
                 f.IdH=idh;
                 f.ShowDialog();
+            }
+
+        }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            if (FormName=="ComersB")
+            {
+                dgvListB.ShowFieldChooser(this, ResourceCode.T158);
+
+            }
+            else if (FormName=="ComersH")
+            {
+                dgvListH.ShowFieldChooser(this, ResourceCode.T158);
+
+            }
+            else if (FormName=="Commission")
+            {
+                dgvListCommission.ShowFieldChooser(this, ResourceCode.T158);
+
             }
 
         }

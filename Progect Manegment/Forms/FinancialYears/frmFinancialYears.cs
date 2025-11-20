@@ -44,7 +44,7 @@ namespace HM_ERP_System.Forms.FinancialYears
             {
                 var q=db.FinancialYears.ToList();
                 dgvList.DataSource = q;
-                PublicClass.SettingGridEX(dgvList);
+                PublicClass.SettingGridEX(dgvList,Name);
             }
         }
 

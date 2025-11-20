@@ -128,7 +128,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                             };
                     dgvList.DataSource = q.ToList();
                     //AutoSizeColumns();
-                    PublicClass.SettingGridEX(dgvList);
+                    PublicClass.SettingGridEX(dgvList,Name);
                 }
 
             }

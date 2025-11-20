@@ -115,7 +115,7 @@ namespace HM_ERP_System.Forms.TankerRental
                         };
 
                 dgvList.DataSource=q.ToList();
-                dgvList.AutoSizeColumns();
+                PublicClass.SettingGridEX(dgvList,Name);
             }
         }
 

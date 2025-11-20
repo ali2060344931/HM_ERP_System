@@ -9,6 +9,7 @@ using Janus.Windows.GridEX;
 
 using MyClass;
 
+using NPOI.SS.Formula.Functions;
 using NPOI.SS.Formula.PTG;
 
 using Progect_Manegment;
@@ -110,7 +111,7 @@ namespace HM_ERP_System.Forms.Commission
                 using (var db = new DBcontextModel())
                 {
                     var q = from cm in db.ComersBs
-                            
+
                             where !db.Commissions.Any(c => c.ComersBId == cm.Id && c.CommissionTypeId==CommissionTypeId)
                             select new
                             {
@@ -129,26 +130,26 @@ namespace HM_ERP_System.Forms.Commission
             }
         }
 
-        public static GridEX FilldgvList(GridExEx.GridExEx DG, string dateS, string dateE)
+        public static GridEX FilldgvList(GridExEx.GridExEx DG, string dateS, string dateE,string formname=null)
         {
             try
             {
                 using (var db = new DBcontextModel())
                 {
                     var q = from co in db.Commissions
-                            
+
                             join cmb in db.ComersBs
                             on co.ComersBId equals cmb.Id
-                            
+
                             join cmH in db.ComersHs
                             on cmb.ComersHId equals cmH.Id
 
                             join pg in db.PersonGroups
                             on co.CommissionTypeId equals pg.Id
-                            
+
                             join ctg in db.CustomerToGroups
                             on co.CustomerToGroupsId equals ctg.Id
-                            
+
                             join cu in db.Customers
                             on ctg.CustomerId equals cu.Id
 
@@ -234,7 +235,7 @@ namespace HM_ERP_System.Forms.Commission
 
                             };
                     DG.DataSource=q.ToList();
-                    PublicClass.SettingGridEX(DG);
+                    PublicClass.SettingGridEX(DG, formname);
                     return DG;
                 }
             }
@@ -342,6 +343,7 @@ namespace HM_ERP_System.Forms.Commission
             }
         }
 
+        int Series = 0;
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -400,9 +402,7 @@ namespace HM_ERP_System.Forms.Commission
                     if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                         return;
                     string TransactionDate = PersianDate.NowPersianDate;
-
-
-                    int Series = 0;
+                    string TransactionCode = PublicClass.CreatTransactionCode();
                     {
                         foreach (DataRow item in dt.Rows)
                         {
@@ -412,32 +412,32 @@ namespace HM_ERP_System.Forms.Commission
                             //------------------ثبت سند حسابداری-----------------
                             if (chkRegAccount.Checked)//ثبت سند حسابداری
                             {
+                                TransactionId= AccountingDocumentRegistration(TransactionDate, TransactionCode, Amount);
+                                /*
+                                string TransactionCode = PublicClass.CreatTransactionCode();
+                                Series++;
+                                int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجارى ،
+                                int DetailedAccountId = 0;
+                                int customertId = db.CustomerToGroups.Where(c => c.Id==CustomerToGroupId).First().CustomerId;
+                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                if (serch1.Count()==0)
+                                    DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                else
+                                    DetailedAccountId=serch1.First().Id;
+                                TransactionId= PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, 0, Amount, 0, txtDes.Text, Series, false);
 
 
-
-                                    string TransactionCode = PublicClass.CreatTransactionCode();
-                                    Series++;
-                                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجارى ،
-                                    int DetailedAccountId = 0;
-                                    int customertId = db.CustomerToGroups.Where(c=>c.Id==CustomerToGroupId).First().CustomerId;
-                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                    if (serch1.Count()==0)
-                                        DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
-                                    else
-                                        DetailedAccountId=serch1.First().Id;
-                                    TransactionId= PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, 0, Amount, 0, txtDes.Text, Series, false);
-
-
-                                    Series++;
-                                    //حساب معین
-                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80801).First().Id;//هزینه حمل کالا
-                                    customertId = db.Customers.Where(c => c.SecretCode==11).First().Id;
-                                    serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                    if (serch1.Count()==0)
-                                        DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
-                                    else
-                                        DetailedAccountId=serch1.First().Id;
-                                    PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, Amount, 0, 0, "بابت پورسانت", "", Series, true);
+                                Series++;
+                                //حساب معین
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80801).First().Id;//هزینه حمل کالا
+                                customertId = db.Customers.Where(c => c.SecretCode==11).First().Id;
+                                serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                if (serch1.Count()==0)
+                                    DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                else
+                                    DetailedAccountId=serch1.First().Id;
+                                PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, Amount, 0, 0, "بابت پورسانت", "", Series, true);
+                                */
                             }
 
                             //------------------ثبت سند پورسنات-----------------
@@ -458,6 +458,60 @@ namespace HM_ERP_System.Forms.Commission
                 PublicClass.ShowErrorMessage(er);
             }
         }
+
+        /// <summary>
+        /// ثبت سند حسابداری
+        /// </summary>
+        /// <param name="TransactionDate">تاریخ سند</param>
+        /// <param name="TransactionCode">شماره سریال سند</param>
+        /// <param name="Amount">مبلغ</param>
+        /// <param name="listId">سریال سطر</param>
+        /// <returns></returns>
+        int AccountingDocumentRegistration(string TransactionDate, string TransactionCode, long Amount, int listId = 0)
+        {
+            try
+            {
+                int TransactionId = 0;
+                using (var db = new DBcontextModel())
+                {
+                    Series++;
+                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجارى ،
+                    int DetailedAccountId = 0;
+
+                    if (listId!=0)
+                        CustomerToGroupId=db.Commissions.Where(c => c.Id==listId).First().CustomerToGroupsId;
+                    int customertId = db.CustomerToGroups.Where(c => c.Id==CustomerToGroupId).First().CustomerId;
+
+                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                    if (serch1.Count()==0)
+                        DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                    else
+                        DetailedAccountId=serch1.First().Id;
+                    TransactionId= PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, 0, Amount, 0, txtDes.Text, Series, false);
+
+
+                    Series++;
+                    //حساب معین
+                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80801).First().Id;//هزینه حمل کالا
+                    customertId = db.Customers.Where(c => c.SecretCode==11).First().Id;
+                    serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                    if (serch1.Count()==0)
+                        DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                    else
+                        DetailedAccountId=serch1.First().Id;
+                    PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, Amount, 0, 0, "بابت پورسانت", "", Series, true);
+                    db.SaveChanges();
+                    return TransactionId;
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return 0;
+            }
+        }
+
+
 
         private void btnAddTolist_Click(object sender, EventArgs e)
         {
@@ -644,152 +698,163 @@ namespace HM_ERP_System.Forms.Commission
             {
                 PublicClass.StopMesseg(ResourceCode.T042); return;
             }
-                        using (var db = new DBcontextModel())
+            using (var db = new DBcontextModel())
             {
 
-            
 
-            frmCommissionCreateFile f = new frmCommissionCreateFile();
-            f.lblTitel.Text="لیست بارنامه های ثبت نشده برای "+cmbCustomer.Text;
-            f.PersonGroupsId=CommissionTypeId;
-            f.ShowDialog();
+
+                frmCommissionCreateFile f = new frmCommissionCreateFile();
+                f.lblTitel.Text="لیست بارنامه های ثبت نشده برای "+cmbCustomer.Text;
+                f.PersonGroupsId=CommissionTypeId;
+                f.ShowDialog();
             }
         }
 
         private void ribbonContextMenu1_CommandClick(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            switch (e.Command.Key)
+            try
             {
-                case "Edit":
-                    using (var db = new DBcontextModel())
-                    {
-                        ListId=ListId_;
-                        var q0 = db.Commissions.Where(c => c.Id==ListId).First();
-                        if (q0.TransactionId==0)
+                switch (e.Command.Key)
+                {
+                    case "Edit":
+                        using (var db = new DBcontextModel())
+                        {
+                            ListId=ListId_;
+                            var q0 = db.Commissions.Where(c => c.Id==ListId).First();
+                            if (q0.TransactionId==0)
 
-                        {
-                            var q = db.Commissions.Where(c => c.Id == ListId).First();
-                            txtDate.Text = q.Date;
-                            cmbComers1.Value=q.ComersBId;
-                            cmbCommissionType.Value=q.CommissionTypeId;
-                            cmbCustomer.Value=q.CustomerToGroupsId;
-                            txtAmount1.Text=q.Amount.ToString();
-                            txtDes.Text=q.Des;
-                            cmbComers1.Focus();
-                        }
-                        else
-                        {
-                            PublicClass.StopMesseg(ResourceCode.T115); return;
-                        }
-                    }
-                    break;
-
-                case "Delete":
-                    using (var db = new DBcontextModel())
-                    {
-                        ListId=ListId_;
-                        var q0 = db.Commissions.Where(c => c.Id==ListId).First();
-                        if (q0.TransactionId==0)
-                        {
-                            if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 var q = db.Commissions.Where(c => c.Id == ListId).First();
-                                db.Commissions.Remove(q);
-                                PublicClass.WindowAlart("2");
-                                db.SaveChanges();
-                                FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
+                                txtDate.Text = q.Date;
+                                cmbComers1.Value=q.ComersBId;
+                                cmbCommissionType.Value=q.CommissionTypeId;
+                                cmbCustomer.Value=q.CustomerToGroupsId;
+                                txtAmount1.Text=q.Amount.ToString();
+                                txtDes.Text=q.Des;
+                                cmbComers1.Focus();
+                            }
+                            else
+                            {
+                                PublicClass.StopMesseg(ResourceCode.T115); return;
+                            }
+                        }
+                        break;
+
+                    case "Delete":
+                        using (var db = new DBcontextModel())
+                        {
+                            ListId=ListId_;
+                            var q0 = db.Commissions.Where(c => c.Id==ListId).First();
+                            if (q0.TransactionId==0)
+                            {
+                                if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    var q = db.Commissions.Where(c => c.Id == ListId).First();
+                                    db.Commissions.Remove(q);
+                                    PublicClass.WindowAlart("2");
+                                    db.SaveChanges();
+                                    FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
+                                    CelearItems();
+                                }
+                                ListId=0;
+                            }
+                            else
+                            {
+                                PublicClass.StopMesseg(ResourceCode.T155); return;
+                            }
+                        }
+
+                        break;
+                    case "AddDocumentToBanck"://ثبت مدارک
+                        ListId=ListId_;
+                        string lblCaption = "شماره حواله:" + dgvList.GetRow().Cells["ComersB"].Value.ToString();
+
+                        PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
+                        FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
+                        ListId=0;
+                        break;
+                    case "AddTransectionDocument"://ثبت سند حسابداری
+                        ListId=ListId_;
+                        using (var db = new DBcontextModel())
+                        {
+                            var q = db.Commissions.Where(c => c.Id==ListId).First();
+                            if (q.TransactionId==0)
+                            {
+
+                                string TransactionCode = PublicClass.CreatTransactionCode();
+                                string TransactionDate = PersianDate.NowPersianDate;
+                                long Amount = q.Amount;
+
+                                int TransactionId = 0;
+                                int Series = 0;
+
+                                if (MessageBox.Show(ResourceCode.T111, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                                    return;
+
+                                //------------------ثبت سند حسابداری-----------------
+                                //if (chkRegAccount.Checked)//ثبت سند حسابداری
+                                {
+                                    TransactionId= AccountingDocumentRegistration(TransactionDate, TransactionCode, Amount, ListId);
+                                    /*
+                                    Series++;
+                                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجارى ،
+                                    int DetailedAccountId = 0;
+
+                                    CustomerToGroupId=db.Commissions.Where(c => c.Id==ListId).First().CustomerToGroupsId;
+                                    int customertId = db.CustomerToGroups.Where(c => c.Id==CustomerToGroupId).First().CustomerId;
+                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                    if (serch1.Count()==0)
+                                        DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    else
+                                        DetailedAccountId=serch1.First().Id;
+                                    TransactionId= PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, 0, Amount, 0, txtDes.Text, Series, false);
+
+
+                                    Series++;
+                                    //حساب معین
+                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80801).First().Id;//هزینه حمل کالا
+                                    customertId = db.Customers.Where(c => c.SecretCode==11).First().Id;
+                                    serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                    if (serch1.Count()==0)
+                                        DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    else
+                                        DetailedAccountId=serch1.First().Id;
+                                    PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, Amount, 0, 0, "بابت پورسانت", "", Series, true);
+                                    */
+                                    q.TransactionId=TransactionId;
+                                    db.SaveChanges();
+
+                                }
+
+                                PublicClass.WindowAlart("1");
+                                if (_updatableForms!=null)
+                                    _updatableForms.UpdateData();
                                 CelearItems();
                             }
-                            ListId=0;
-                        }
-                        else
-                        {
-                            PublicClass.StopMesseg(ResourceCode.T155); return;
-                        }
-                    }
-
-                    break;
-                case "AddDocumentToBanck"://ثبت مدارک
-                    ListId=ListId_;
-                    string lblCaption = "شماره حواله:" + dgvList.GetRow().Cells["ComersB"].Value.ToString();
-
-                    PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
-                    FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
-                    ListId=0;
-                    break;
-                case "AddTransectionDocument"://ثبت سند حسابداری
-                    ListId=ListId_;
-                    using (var db = new DBcontextModel())
-                    {
-                        var q = db.Commissions.Where(c => c.Id==ListId).First();
-                        if (q.TransactionId==0)
-                        {
-
-                            string TransactionCode = PublicClass.CreatTransactionCode();
-                            string TransactionDate = PersianDate.NowPersianDate;
-                            long Amount = q.Amount;
-
-                            int TransactionId = 0;
-                            int Series = 0;
-
-                            if (MessageBox.Show(ResourceCode.T111, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                                return;
-
-                            //------------------ثبت سند حسابداری-----------------
-                            //if (chkRegAccount.Checked)//ثبت سند حسابداری
+                            else
                             {
-                                Series++;
-                                int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجارى ،
-                                int DetailedAccountId = 0;
-                                int customertId =db.CustomerToGroups.Where(c=>c.Id==CustomerToGroupId).First().CustomerId;
-                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                if (serch1.Count()==0)
-                                    DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
-                                else
-                                    DetailedAccountId=serch1.First().Id;
-                                TransactionId= PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, 0, Amount, 0, txtDes.Text, Series, false);
-
-
-                                Series++;
-                                //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80801).First().Id;//هزینه حمل کالا
-                                customertId = db.Customers.Where(c => c.SecretCode==11).First().Id;
-                                serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                if (serch1.Count()==0)
-                                    DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
-                                else
-                                    DetailedAccountId=serch1.First().Id;
-                                PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, Amount, 0, 0, "بابت پورسانت", "", Series, true);
-
-                                q.TransactionId=TransactionId;
-                                db.SaveChanges();
-
+                                PublicClass.StopMesseg(ResourceCode.T110); return;
                             }
-
-                            PublicClass.WindowAlart("1");
-                            if (_updatableForms!=null)
-                                _updatableForms.UpdateData();
-                            CelearItems();
                         }
-                        else
+                        break;
+                    case "detailsComersHB"://نمایش جزئیات حواله و بارنامه
+                        using (var db = new DBcontextModel())
                         {
-                            PublicClass.StopMesseg(ResourceCode.T110); return;
+                            ListId=ListId_;
+                            frmRecevingPaymentDoc f = new frmRecevingPaymentDoc();
+                            f.DocTitel=DocTitel;
+                            var q = db.Commissions.Where(c => c.Id==ListId).First();
+                            var idh = db.ComersBs.Where(c => c.Id==q.ComersBId).First().ComersHId;
+                            f.IdH=idh;
+                            f.ShowDialog();
                         }
-                    }
-                    break;
-                case "detailsComersHB"://نمایش جزئیات حواله و بارنامه
-                    using (var db = new DBcontextModel())
-                    {
-                        ListId=ListId_;
-                        frmRecevingPaymentDoc f = new frmRecevingPaymentDoc();
-                        f.DocTitel=DocTitel;
-                        var q = db.Commissions.Where(c => c.Id==ListId).First();
-                        var idh = db.ComersBs.Where(c => c.Id==q.ComersBId).First().ComersHId;
-                        f.IdH=idh;
-                        f.ShowDialog();
-                    }
-                    break;
+                        break;
 
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
 
         }
@@ -808,7 +873,7 @@ namespace HM_ERP_System.Forms.Commission
 
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
-            dgvList.ShowFieldChooser(this,  ResourceCode.T158);
+            dgvList.ShowFieldChooser(this, ResourceCode.T158);
         }
     }
 }

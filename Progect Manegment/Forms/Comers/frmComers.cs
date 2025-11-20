@@ -1649,7 +1649,7 @@ namespace HM_ERP_System.Forms.Comers
             }
         }
 
-        public static GridEX FilldgvListH(GridExEx.GridExEx dx, string dateS, string dateE, int? Id = null)
+        public static GridEX FilldgvListH(GridExEx.GridExEx dx, string dateS, string dateE, int? Id = null,string formname=null)
         {
             try
             {
@@ -1758,7 +1758,7 @@ namespace HM_ERP_System.Forms.Comers
                             };
                     dx.DataSource = q.ToList();
                     //dx.AutoSizeColumns();
-                    PublicClass.SettingGridEX(dx);
+                    PublicClass.SettingGridEX(dx, formname);
                     return dx;
                 }
             }
@@ -1775,7 +1775,9 @@ namespace HM_ERP_System.Forms.Comers
             string dateE,
             int? Id = null,
             string serch = null,
-            bool hideIfInCommission = false // 🔸 شرط پویا برای حذف بارنامه‌های دارای پورسانت
+            bool hideIfInCommission = false, // 🔸 شرط پویا برای حذف بارنامه‌های دارای پورسانت
+            string formNmane=null
+       
         )
         {
             try
@@ -1922,7 +1924,7 @@ namespace HM_ERP_System.Forms.Comers
 
                     Gx.DataSource = q.ToList();
                     //gx.AutoSizeColumns();
-                    PublicClass.SettingGridEX(Gx);
+                    PublicClass.SettingGridEX(Gx,formNmane);
                     
                     return Gx;
                 }

@@ -30,13 +30,13 @@ namespace HM_ERP_System.Forms.Reports
         public string tblName;
         public string Condition = "";
         public string OnvanReport;
-        public string DateReport;
+        public string DateReport=" ";
         public string MandehSorathseb;//مانده صورتحساب
         public string MablaghGharardad;
         public string DayGharadad;
         public string DastmozdRozane;
         public string MablaghKarkard;
-        public string TitelString = "گـــزارش تستی";
+        public string TitelString = "";
         public GridEX grid;
         string NameCompani;
 
@@ -71,7 +71,7 @@ namespace HM_ERP_System.Forms.Reports
                         }
                         break;
                     case "1":
-                        ReportParameter[] p = new ReportParameter[]
+                        ReportParameter[] p1 = new ReportParameter[]
     {
         new ReportParameter("NameCompani", NameCompani),
         new ReportParameter("TarikhG", TarikhRoz),
@@ -80,7 +80,7 @@ namespace HM_ERP_System.Forms.Reports
     };
                         {
                             var companyInfo = db.ImageCos
-                                                .Where(c => c.Id == 1)   // یا هر شرط دیگر
+                                                .Where(c => c.Id == 1)
                                                 .Select(c => new
                                                 {
                                                     c.Name,
@@ -104,15 +104,54 @@ namespace HM_ERP_System.Forms.Reports
 
                                 ReportHelper.ShowReportFromGridEX(
                                     grid,
-                                    "HM_ERP_System.ReportViewer.Report_KarkarRozaneh.rdlc",
+                                    "HM_ERP_System.ReportViewer.Report_Customer.rdlc",
                                     reportViewer1,
                                     "DataSet1",
                                     extraData,
-                                    p
+                                    p1
+                                );
+                            }
+                            break;
+                        }//اشخاص
+                    case "2"://راننده ها
+                        ReportParameter[] p2 = new ReportParameter[]
+                        {
+                            new ReportParameter("NameCompani", NameCompani),
+                            new ReportParameter("TarikhG", TarikhRoz),
+                            new ReportParameter("DateReport", DateReport),
+                            new ReportParameter("TitelString", TitelString)
+                        };
+                        {
+                            var companyInfo = db.ImageCos
+                                                .Where(c => c.Id == 1)
+                                                .Select(c => new
+                                                {
+                                                    c.Name,
+                                                    c.Image
+                                                })
+                                                .FirstOrDefault();
+
+                            if (companyInfo != null)
+                            {
+                                DataTable dtCompany = new DataTable();
+                                dtCompany.Columns.Add("Name");
+                                dtCompany.Columns.Add("image", typeof(byte[]));
+                                dtCompany.Rows.Add(companyInfo.Name, companyInfo.Image);
+                                
+                                var extraData = new List<(DataTable, string)>
+                                {(dtCompany, "DataSet2")};
+                                ReportHelper.ShowReportFromGridEX(
+                                    grid,
+                                    "HM_ERP_System.ReportViewer.Report_Customer.rdlc",
+                                    reportViewer1,
+                                    "DataSet1",
+                                    extraData,
+                                    p2
                                 );
                             }
                             break;
                         }
+
 
                 }
             }

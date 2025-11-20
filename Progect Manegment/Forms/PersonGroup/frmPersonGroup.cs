@@ -51,7 +51,7 @@ namespace HM_ERP_System.Forms.PersonGroup
                 var q = db.PersonGroups.ToList();
                 dgvList.DataSource = q;
                 //dgvList.AutoSizeColumns();
-                PublicClass.SettingGridEX(dgvList);
+                PublicClass.SettingGridEX(dgvList,Name);
             }
         }
 

@@ -1086,7 +1086,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReportViewer\Report_Cars.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_ComersB.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_Commission.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_AppointmentScheduling.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_ComersH.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_Purchase_Tanker.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_TankerRental.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_PlaceTransfer.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_Dravers.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_Customer.rdlc" />

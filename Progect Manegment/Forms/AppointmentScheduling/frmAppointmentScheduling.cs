@@ -7,6 +7,7 @@ using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.Comers;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.Persons;
+using HM_ERP_System.Forms.Reports;
 
 using MyClass;
 
@@ -468,6 +469,16 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            f.grid=dgvList;
+            f.DateReport="گــزارش   از تاریخ: "+txtDateStart.Text+ "   تا تاریخ: "+txtDateEnd.Text;
+            f.TitelString ="لیست نوبت دهی کامیون ها";
+            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_AppointmentScheduling.rdlc";
+            f.ShowDialog();
         }
     }
 }

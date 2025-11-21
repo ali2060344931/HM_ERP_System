@@ -38,6 +38,7 @@ namespace HM_ERP_System.Forms.Reports
         public string MablaghKarkard;
         public string TitelString = "";
         public string ReporFileName = "";
+        public string Description = " ";
         public GridEX grid;
         string NameCompani;
 
@@ -51,74 +52,71 @@ namespace HM_ERP_System.Forms.Reports
 
         private void frmReport_Load(object sender, EventArgs e)
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                //نام(عنوان) شرکت
-                NameCompani=db.Settings.Where(c => c.Code==1).First().Subject;
-
-                this.reportViewer1.RefreshReport();
-                reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
-                reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
-
-                SetReport();
-                return;
-                switch (Cod)
+                using (var db = new DBcontextModel())
                 {
-                    case "0":
-                        //کارکردماهانه
-                        {
-
-                            //MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("HM_ERP_System.ReportViewerMain.Report_ViwSoratHesab_Karkard.rdlc", reportViewer1, 2, new string[] { "View_Function", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "OnvanReport", OnvanReport, "DateReport", DateReport, "MablaghGharardad", MablaghGharardad, "DayGharadad", DayGharadad, "DastmozdRozane", DastmozdRozane, "MablaghKarkard", MablaghKarkard });
-
-
-                            MyClass.SqlServerBankClass.ShowReportRDLC_More_Than_One("HM_ERP_System.ReportViewer.Report_KarkarRozaneh.rdlc", reportViewer1, 2, new string[] { "V_Customers", Condition, "DataSet1", "ImageCoes", "where id=1", "DataSet2", "NameCompani", NameCompani, "TarikhG", TarikhRoz, "DateReport", DateReport, "TitelString", TitelString });
-                        }
-                        break;
-
-
+                    //نام(عنوان) شرکت
+                    NameCompani=db.Settings.Where(c => c.Code==1).First().Subject;
+                    this.reportViewer1.RefreshReport();
+                    reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                    reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+                    SetReport();
                 }
             }
+                catch (Exception er)
+                {
+                    PublicClass.ShowErrorMessage(er);
+                }
         }
 
 
         public void SetReport()
         {
-            ReportParameter[] p5 = new ReportParameter[]
-                        {
+            try
+            {
+                ReportParameter[] p5 = new ReportParameter[]
+                                {
                             new ReportParameter("NameCompani", NameCompani),
                             new ReportParameter("TarikhG", TarikhRoz),
                             new ReportParameter("DateReport", DateReport),
-                            new ReportParameter("TitelString", TitelString)
-                        };
-            {
-                var companyInfo = db.ImageCos
-                                    .Where(c => c.Id == 1)
-                                    .Select(c => new
-                                    {
-                                        c.Name,
-                                        c.Image
-                                    })
-                                    .FirstOrDefault();
-
-                if (companyInfo != null)
+                            new ReportParameter("TitelString", TitelString),
+                            new ReportParameter("Description", Description)
+                                };
                 {
-                    DataTable dtCompany = new DataTable();
-                    dtCompany.Columns.Add("Name");
-                    dtCompany.Columns.Add("image", typeof(byte[]));
-                    dtCompany.Rows.Add(companyInfo.Name, companyInfo.Image);
+                    var companyInfo = db.ImageCos
+                                        .Where(c => c.Id == 1)
+                                        .Select(c => new
+                                        {
+                                            c.Name,
+                                            c.Image
+                                        })
+                                        .FirstOrDefault();
 
-                    var extraData = new List<(DataTable, string)>
+                    if (companyInfo != null)
+                    {
+                        DataTable dtCompany = new DataTable();
+                        dtCompany.Columns.Add("Name");
+                        dtCompany.Columns.Add("image", typeof(byte[]));
+                        dtCompany.Rows.Add(companyInfo.Name, companyInfo.Image);
+
+                        var extraData = new List<(DataTable, string)>
                                 {(dtCompany, "DataSet2")};
-                    ReportHelper.ShowReportFromGridEX(
-                        grid,
-                        ReporFileName,
-                        reportViewer1,
-                        "DataSet1",
-                        extraData,
-                        p5
-                    );
+                        ReportHelper.ShowReportFromGridEX(
+                            grid,
+                            ReporFileName,
+                            reportViewer1,
+                            "DataSet1",
+                            extraData,
+                            p5
+                        );
+                    }
                 }
             }
+                catch (Exception er)
+                {
+                    PublicClass.ShowErrorMessage(er);
+                }
         }
     }
 }

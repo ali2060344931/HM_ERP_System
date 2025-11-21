@@ -2,6 +2,7 @@
 using HM_ERP_System.Forms.Accounts.RecevingPayment;
 using HM_ERP_System.Forms.Commission;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
 
 using MyClass;
 
@@ -192,16 +193,72 @@ namespace HM_ERP_System.Forms.Comers
             if (FormName=="ComersB")
             {
                 dgvListB.ShowFieldChooser(this, ResourceCode.T158);
-
             }
             else if (FormName=="ComersH")
             {
                 dgvListH.ShowFieldChooser(this, ResourceCode.T158);
-
             }
             else if (FormName=="Commission")
             {
                 dgvListCommission.ShowFieldChooser(this, ResourceCode.T158);
+            }
+
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (FormName=="ComersB")
+                {
+                    frmReport f = new frmReport();
+                    f.grid=dgvListB;
+                    f.DateReport="گــزارش   از تاریخ: "+txtDateStart.Text+ "   تا تاریخ: "+txtDateEnd.Text;
+                    f.TitelString ="لیست بــارنام ها";
+                    f.Description="متن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشی";
+                    f.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
+                    f.ShowDialog();
+
+                }
+
+                else if (FormName=="ComersH")
+                {
+                    frmReport f = new frmReport();
+                    f.grid=dgvListH;
+                    f.DateReport="گــزارش   از تاریخ: "+txtDateStart.Text+ "   تا تاریخ: "+txtDateEnd.Text;
+                    f.TitelString ="لیست حـــواله ها";
+                    f.Description="متن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشی";
+                    f.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersH.rdlc";
+                    f.ShowDialog();
+
+                }
+
+                else if (FormName=="Commission")
+                {
+
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+
+        }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            if (FormName=="ComersB")
+            {
+
+            }
+
+            else if (FormName=="ComersH")
+            {
+
+            }
+
+            else if (FormName=="Commission")
+            {
 
             }
 

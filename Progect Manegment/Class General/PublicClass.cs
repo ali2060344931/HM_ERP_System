@@ -75,7 +75,7 @@ namespace MyClass
         /// کد کاربر
         /// </summary>
         public static int UserId = HM_ERP_System.Properties.Settings.Default.UsersId;
-        
+
         /// <summary>
         /// سال مالی
         /// </summary>
@@ -520,7 +520,9 @@ namespace MyClass
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "Excel File (*.xls)|*.xls"
-                , Title="ذخیر لیست به اکسل",FileName="Comers List_" + DateTime.Now.ToString("yyyyMMdd_HHmm")
+                ,
+                Title="ذخیر لیست به اکسل",
+                FileName="Comers List_" + DateTime.Now.ToString("yyyyMMdd_HHmm")
             };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -1684,18 +1686,19 @@ namespace MyClass
         /// </summary>
         /// <param name="GX"></param>
         /// <returns></returns>
-        public static GridExEx.GridExEx SettingGridEX( GridExEx.GridExEx GX, string formName=null)
+        public static GridExEx.GridExEx SettingGridEX(GridExEx.GridExEx GX, string formName = null)
         {
             try
             {
-                GX.AllowRemoveColumns=InheritableBoolean.True; GX.RowHeaders=InheritableBoolean.True;
+                GX.AllowRemoveColumns=InheritableBoolean.True;
+                GX.RowHeaders=InheritableBoolean.True;
                 GX.RowHeaderContent=RowHeaderContent.RowIndex;
-                GX.RootTable.RowHeaderWidth = 80;
+                GX.RootTable.RowHeaderWidth = 60;
                 GX.RootTable.RowHeaderFormatStyle.TextAlignment =TextAlignment.Center;
 
                 GX.RootTable.Columns["Id"].Selectable = false;
                 GX.RootTable.Columns["Id"].ShowInFieldChooser = false;
-                
+
                 if (GX.RootTable.Columns.Contains("Select"))
                 {
                     GX.RootTable.Columns["Select"].Selectable = false;
@@ -1745,7 +1748,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage(er);
+                //PublicClass.ShowErrorMessage(er);
                 return null;
             }
         }
@@ -3984,7 +3987,7 @@ namespace MyClass
             // تبدیل آرایه 8 بایتی به یک مقدار long (64-bit integer)
             return BitConverter.ToInt64(buffer, 0);
         }
-        
+
         public static long GenerateTenDigitRandomNumber(Random random)
         {
             // تعریف محدوده: حداقل (کوچکترین عدد ۱۰ رقمی) و حداکثر (بزرگترین عدد ۱۰ رقمی)
@@ -4008,7 +4011,7 @@ namespace MyClass
         }
 
 
-        public static (int,int) aaaa()
+        public static (int, int) aaaa()
         {
 
 

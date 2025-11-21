@@ -44,6 +44,8 @@
             this.dgvListCommission = new GridExEx.GridExEx();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.pnlViewItemHeder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).BeginInit();
@@ -253,6 +255,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonX01);
+            this.panel1.Controls.Add(this.buttonX1);
             this.panel1.Controls.Add(this.btnShowGridExHideColumns);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 403);
@@ -280,6 +284,46 @@
             this.btnShowGridExHideColumns.TabIndex = 6;
             this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX01.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX01.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX01.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonX01.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.buttonX01.Location = new System.Drawing.Point(685, 0);
+            this.buttonX01.Name = "buttonX01";
+            this.buttonX01.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.buttonX01.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
+            this.buttonX01.Size = new System.Drawing.Size(34, 26);
+            this.buttonX01.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX01.Symbol = "";
+            this.buttonX01.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonX01.SymbolSize = 15F;
+            this.buttonX01.TabIndex = 8;
+            this.buttonX01.Tooltip = "چاپ جدول";
+            this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
+            // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.buttonX1.Location = new System.Drawing.Point(719, 0);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.buttonX1.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
+            this.buttonX1.Size = new System.Drawing.Size(34, 26);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.Symbol = "";
+            this.buttonX1.SymbolColor = System.Drawing.Color.Green;
+            this.buttonX1.SymbolSize = 15F;
+            this.buttonX1.TabIndex = 7;
+            this.buttonX1.Tooltip = "خروجی لیست به اکسل F9";
+            this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // frmComersList
             // 
@@ -321,5 +365,7 @@
         public GridExEx.GridExEx dgvListCommission;
         private System.Windows.Forms.Panel panel1;
         public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
+        public DevComponents.DotNetBar.ButtonX buttonX01;
+        public DevComponents.DotNetBar.ButtonX buttonX1;
     }
 }

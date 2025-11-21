@@ -4897,7 +4897,7 @@
             dgvListB_Layout_0.LayoutString = resources.GetString("dgvListB_Layout_0.LayoutString");
             this.dgvListB.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvListB_Layout_0});
-            this.dgvListB.Location = new System.Drawing.Point(814, 4);
+            this.dgvListB.Location = new System.Drawing.Point(704, 4);
             this.dgvListB.Name = "dgvListB";
             this.dgvListB.RecordNavigator = true;
             this.dgvListB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -4905,7 +4905,7 @@
             this.dgvListB.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListB.SaveSettings = true;
             this.dgvListB.SettingsKey = "frmComersB";
-            this.dgvListB.Size = new System.Drawing.Size(589, 195);
+            this.dgvListB.Size = new System.Drawing.Size(821, 195);
             this.dgvListB.Sortable = true;
             this.dgvListB.TabIndex = 86;
             this.dgvListB.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);

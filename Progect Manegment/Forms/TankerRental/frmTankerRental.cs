@@ -3,6 +3,7 @@ using HM_ERP_System.Entity.TruckUsageType;
 using HM_ERP_System.Entity.WarantyType;
 using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
 
 using Janus.Windows.GridEX;
 using Janus.Windows.UI.Tab;
@@ -541,6 +542,15 @@ namespace HM_ERP_System.Forms.TankerRental
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            f.grid=dgvList;
+            f.TitelString ="لیست اجـــاره تانکـــرها";
+            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_TankerRental.rdlc";
+            f.ShowDialog();
         }
     }
 }

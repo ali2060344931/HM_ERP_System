@@ -1490,5 +1490,176 @@ namespace HM_ERP_System {
                 return ResourceManager.GetString("T158", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to گـــزارش   از تاریــخ: .
+        /// </summary>
+        internal static string T159 {
+            get {
+                return ResourceManager.GetString("T159", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تـــا تاریـــخ: .
+        /// </summary>
+        internal static string T160 {
+            get {
+                return ResourceManager.GetString("T160", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
+        /// </summary>
+        internal static string TRappointmentScheduling {
+            get {
+                return ResourceManager.GetString("TRappointmentScheduling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست کامیــــون ها.
+        /// </summary>
+        internal static string TRcars {
+            get {
+                return ResourceManager.GetString("TRcars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست بارنامــــه ها.
+        /// </summary>
+        internal static string TRcomerB {
+            get {
+                return ResourceManager.GetString("TRcomerB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست حـــواله ها.
+        /// </summary>
+        internal static string TRcomerH {
+            get {
+                return ResourceManager.GetString("TRcomerH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست پورســــانت ها.
+        /// </summary>
+        internal static string TRCommission {
+            get {
+                return ResourceManager.GetString("TRCommission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست اشخـــــاص.
+        /// </summary>
+        internal static string TRcustomer {
+            get {
+                return ResourceManager.GetString("TRcustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست حســـــاب های تفصیلی.
+        /// </summary>
+        internal static string TRdataileAccounts {
+            get {
+                return ResourceManager.GetString("TRdataileAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست راننـــــده ها.
+        /// </summary>
+        internal static string TRdraver {
+            get {
+                return ResourceManager.GetString("TRdraver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست انبارهای بارگیری و تخلیه.
+        /// </summary>
+        internal static string TRplaseTransfer {
+            get {
+                return ResourceManager.GetString("TRplaseTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست کـــــالاها.
+        /// </summary>
+        internal static string TRproduct {
+            get {
+                return ResourceManager.GetString("TRproduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست خرید تانکرها.
+        /// </summary>
+        internal static string TRPurchase_Tanker {
+            get {
+                return ResourceManager.GetString("TRPurchase_Tanker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست همه حســــــاب ها.
+        /// </summary>
+        internal static string TRreviewAccountsAllAcconts {
+            get {
+                return ResourceManager.GetString("TRreviewAccountsAllAcconts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست حســـــاب های تفصیلی.
+        /// </summary>
+        internal static string TRreviewAccountsD {
+            get {
+                return ResourceManager.GetString("TRreviewAccountsD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست گــــروه حسابها.
+        /// </summary>
+        internal static string TRreviewAccountsG {
+            get {
+                return ResourceManager.GetString("TRreviewAccountsG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیســت حســـــاب های معیــــــن.
+        /// </summary>
+        internal static string TRreviewAccountsS {
+            get {
+                return ResourceManager.GetString("TRreviewAccountsS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست حســــــاب های کــــــل.
+        /// </summary>
+        internal static string TRreviewAccountsT {
+            get {
+                return ResourceManager.GetString("TRreviewAccountsT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست اجـــاره تانکـــرها.
+        /// </summary>
+        internal static string TRtankerRental {
+            get {
+                return ResourceManager.GetString("TRtankerRental", resourceCulture);
+            }
+        }
     }
 }

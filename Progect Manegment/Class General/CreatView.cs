@@ -8,7 +8,6 @@ namespace HM_ERP_System.Class_General
 {
     public static class CreatView
     {
-
         public static void BanckEdid()
         {
             V_Customers();
@@ -21,6 +20,14 @@ namespace HM_ERP_System.Class_General
             V_ComersB();
             V_TankerRental();
             V_Purchase_Tanker();
+            V_Product();
+            V_DetailedAccount();
+            V_ReviewAccountsG();
+            V_ReviewAccountsT();
+            V_ReviewAccountsS();
+            V_ReviewAccountsD();
+            V_ReviewAccountsAllAcconts();
+            V_ReviewAccountsList();
         }
 
         /// <summary>
@@ -28,7 +35,7 @@ namespace HM_ERP_System.Class_General
         /// </summary>
         static void V_Customers()
         {
-            string txt = "SELECT     dbo.Customers.Id, dbo.Customers.Name, dbo.Customers.Family, dbo.Customers.CodMeli, dbo.TypeCustomers.Name AS TypeCustomersName, dbo.Customers.Tel, dbo.Customers.Tel2, \r\n                      dbo.Customers.Adders, dbo.Customers.Adders2, dbo.Customers.PostalCode, dbo.Customers.Description, dbo.Customers.BanckName, dbo.Customers.SeryalShaba, \r\n                      dbo.Customers.DabitCardNumber, dbo.Customers.RecordDateTime, dbo.BankBranches.Name AS BankBranchesName, dbo.Bancks.Name AS BancksName, dbo.Customers.SecretCode, \r\n                      dbo.Ciltys.Name AS CiltysName, dbo.Customers.id_TypeCustomer, dbo.Customers.UserId, dbo.Customers.BanckId, dbo.Customers.CityId, dbo.Customers.TypeCustomer_Id\r\nFROM         dbo.TypeCustomers INNER JOIN\r\n                      dbo.Customers ON dbo.TypeCustomers.Id = dbo.Customers.id_TypeCustomer LEFT OUTER JOIN\r\n                      dbo.Ciltys ON dbo.Customers.CityId = dbo.Ciltys.Id LEFT OUTER JOIN\r\n                      dbo.BankBranches INNER JOIN\r\n                      dbo.Bancks ON dbo.BankBranches.BanckId = dbo.Bancks.Id ON dbo.Customers.BanckId = dbo.BankBranches.Id";
+            string txt = "SELECT        dbo.Customers.Id, dbo.Customers.Name, dbo.Customers.Family, dbo.Customers.CodMeli, dbo.TypeCustomers.Name AS TypeCustomersName, dbo.Customers.Tel, dbo.Customers.Tel2, dbo.Customers.Adders, \r\n                         dbo.Customers.Adders2, dbo.Customers.PostalCode, dbo.Customers.Description, dbo.Customers.BanckName, dbo.Customers.SeryalShaba, dbo.Customers.DabitCardNumber, dbo.Customers.RecordDateTime, \r\n                         dbo.BankBranches.Name AS BankBranchesName, dbo.Bancks.Name AS BancksName, dbo.Customers.SecretCode, dbo.Ciltys.Name AS CiltysName, dbo.Customers.id_TypeCustomer, dbo.Customers.UserId, \r\n                         dbo.Customers.BanckId, dbo.Customers.CityId, dbo.Customers.TypeCustomer_Id\r\nFROM            dbo.TypeCustomers INNER JOIN\r\n                         dbo.Customers ON dbo.TypeCustomers.Id = dbo.Customers.id_TypeCustomer LEFT OUTER JOIN\r\n                         dbo.Ciltys ON dbo.Customers.CityId = dbo.Ciltys.Id LEFT OUTER JOIN\r\n                         dbo.BankBranches INNER JOIN\r\n                         dbo.Bancks ON dbo.BankBranches.BanckId = dbo.Bancks.Id ON dbo.Customers.BanckId = dbo.BankBranches.Id";
             MyClass.SqlBankClass.AddColumnInTable("Drop view  V_Customers");
             MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_Customers] AS " + txt);
 
@@ -116,7 +123,75 @@ namespace HM_ERP_System.Class_General
             MyClass.SqlBankClass.AddColumnInTable("Drop view  V_Purchase_Tanker");
             MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_Purchase_Tanker] AS " + txt);
         }
+        /// <summary>
+        /// لیست کالاها
+        /// </summary>
+        static void V_Product()
+        {
+            string txt = "SELECT \r\n    pr.Id,\r\n    pr.Name,\r\n    ProductGroupName = prg.Name\r\nFROM Products pr\r\n    INNER JOIN ProductGroups prg ON pr.ProductGroupId = prg.Id";
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_Product");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_Product] AS " + txt);
+        }
+        /// <summary>
+        /// حساب های تفصیلی
+        /// </summary>
+        static void V_DetailedAccount()
+        {
+            string txt = "SELECT \r\n    da.Id,\r\n    ga.Name AS GroupAccountName,\r\n    ta.Name AS TotalAccountName,\r\n    sa.Name AS SpecificAccountName,\r\n    LTRIM(RTRIM(cu.Family + ' ' + cu.Name)) AS Name,\r\n    na.Name AS NatureAccounts,\r\n    da.CodeAccount AS DetailedAccountCode,\r\n\r\n    -- مجموع بدهکار\r\n    ISNULL((\r\n        SELECT SUM(t.PaymentBed)\r\n        FROM Transactions t\r\n        WHERE \r\n            t.DetailedAccountId = da.Id\r\n            AND t.Status = 0\r\n    ), 0) AS Bed,\r\n\r\n    -- مجموع بستانکار\r\n    ISNULL((\r\n        SELECT SUM(t.PaymentBes)\r\n        FROM Transactions t\r\n        WHERE \r\n            t.DetailedAccountId = da.Id\r\n            AND t.Status = 0\r\n    ), 0) AS Bes,\r\n\r\n    -- مانده\r\n    ABS(\r\n        ISNULL((\r\n            SELECT SUM(t.PaymentBes)\r\n            FROM Transactions t\r\n            WHERE t.DetailedAccountId = da.Id AND t.Status = 0\r\n        ), 0)\r\n        -\r\n        ISNULL((\r\n            SELECT SUM(t.PaymentBed)\r\n            FROM Transactions t\r\n            WHERE t.DetailedAccountId = da.Id AND t.Status = 0\r\n        ), 0)\r\n    ) AS Balance\r\n\r\nFROM DetailedAccounts da\r\nLEFT JOIN SpecificAccounts sa ON da.SpecificAccountId = sa.Id\r\nLEFT JOIN TotalAccounts ta ON sa.Id_TotalAccount = ta.Id\r\nLEFT JOIN GroupAccounts ga ON ta.Id_GroupAccount = ga.Id\r\nLEFT JOIN Customers cu ON da.CustomerId = cu.Id\r\nLEFT JOIN NatureAccounts na ON ga.IdMahiyat = na.Id";
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_DetailedAccount");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_DetailedAccount] AS " + txt);
+        }
+        /// <summary>
+        /// مرور حسابها- گروه
+        /// </summary>
+        static void V_ReviewAccountsG()
+        {
+            string txt = "WITH TransSums AS \r\n(\r\n    SELECT \r\n        da.Id AS DetailedAccountId,\r\n        ta.Id_GroupAccount AS GroupAccountId,\r\n        SUM(CASE WHEN tr.PaymentBed IS NULL THEN 0 ELSE tr.PaymentBed END) AS DebitTurnover,\r\n        SUM(CASE WHEN tr.PaymentBes IS NULL THEN 0 ELSE tr.PaymentBes END) AS CreditTurnover\r\n    FROM DetailedAccounts da\r\n    INNER JOIN SpecificAccounts sa ON da.SpecificAccountId = sa.Id\r\n    INNER JOIN TotalAccounts ta ON sa.Id_TotalAccount = ta.Id\r\n\r\n    LEFT JOIN Transactions tr \r\n        ON da.Id = tr.DetailedAccountId\r\n        AND tr.Status = 0              -- فیلتر مشابه LINQ\r\n        -- AND tr.FinancialYear = '1403'   (در صورت نیاز فعال کنید)\r\n\r\n    GROUP BY \r\n        da.Id,\r\n        ta.Id_GroupAccount\r\n),\r\n\r\nGroupCalc AS\r\n(\r\n    SELECT \r\n        g.GroupAccountId,\r\n        SUM(g.DebitTurnover) AS TotalDebitTurnover,\r\n        SUM(g.CreditTurnover) AS TotalCreditTurnover,\r\n        SUM(g.DebitTurnover - g.CreditTurnover) AS EndingBalance\r\n    FROM TransSums g\r\n    GROUP BY g.GroupAccountId\r\n)\r\n\r\nSELECT\r\n    ga.Id AS Id,\r\n    ga.Name AS GroupAccountName,\r\n    '' AS TotalAccountName,\r\n    '' AS SpecificAccountName,\r\n    ga.Id AS Code,\r\n    ga.Name AS Name,\r\n\r\n    na.Name AS NatureAccounts,\r\n\r\n    gc.TotalDebitTurnover AS DebitTurnover,\r\n    gc.TotalCreditTurnover AS CreditTurnover,\r\n\r\n    CASE \r\n        WHEN gc.EndingBalance > 0 THEN gc.EndingBalance\r\n        ELSE 0 \r\n    END AS DebitBalance,\r\n\r\n    CASE \r\n        WHEN gc.EndingBalance < 0 THEN ABS(gc.EndingBalance)\r\n        ELSE 0 \r\n    END AS CreditBalance\r\n\r\nFROM GroupCalc gc\r\nINNER JOIN GroupAccounts ga \r\n    ON ga.Id = gc.GroupAccountId\r\nINNER JOIN NatureAccounts na\r\n    ON na.Id = ga.IdMahiyat\r\n\r\nWHERE \r\n    ABS(gc.EndingBalance) > 0.00000001;";
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ReviewAccountsG");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ReviewAccountsG] AS " + txt);
+        }
+        /// <summary>
+        /// مرور حساب ها- کل
+        /// </summary>
+        static void V_ReviewAccountsT()
+        {
+            string txt = "WITH TransSums AS\r\n(\r\n    SELECT \r\n        da.Id AS DetailedAccountId,\r\n        sa.Id AS SpecificAccountId,\r\n        sa.Id_TotalAccount AS TotalAccountId,\r\n        SUM(CASE WHEN tr.PaymentBed IS NULL THEN 0 ELSE tr.PaymentBed END) AS DebitTurnover,\r\n        SUM(CASE WHEN tr.PaymentBes IS NULL THEN 0 ELSE tr.PaymentBes END) AS CreditTurnover\r\n    FROM DetailedAccounts da\r\n    INNER JOIN SpecificAccounts sa ON da.SpecificAccountId = sa.Id\r\n    LEFT JOIN Transactions tr \r\n        ON da.Id = tr.DetailedAccountId\r\n        AND tr.Status = 0  -- مشابه filteredTransactions\r\n    GROUP BY da.Id, sa.Id, sa.Id_TotalAccount\r\n),\r\nTotalAccountCalc AS\r\n(\r\n    SELECT\r\n        ts.TotalAccountId,\r\n        SUM(ts.DebitTurnover) AS DebitTurnoverSum,\r\n        SUM(ts.CreditTurnover) AS CreditTurnoverSum,\r\n        -- BeginningBalance = 0 برای ساده‌سازی مشابه LINQ\r\n        0 AS BeginningBalance\r\n    FROM TransSums ts\r\n    GROUP BY ts.TotalAccountId\r\n)\r\nSELECT\r\n    ta.Id AS Id,\r\n    ga.Name AS GroupAccountName,\r\n    ta.Name AS TotalAccountName,\r\n    ' ' AS SpecificAccountName,  -- مقدار پیش‌فرض برای RDLC\r\n    ta.Cod AS Code,\r\n    ta.Name AS Name,\r\n    tac.BeginningBalance AS BeginningBanace,\r\n    na.Name AS NatureAccounts,\r\n    tac.DebitTurnoverSum AS DebitTurnover,\r\n    tac.CreditTurnoverSum AS CreditTurnover,\r\n    CASE WHEN (tac.BeginningBalance + tac.DebitTurnoverSum - tac.CreditTurnoverSum) > 0 \r\n         THEN (tac.BeginningBalance + tac.DebitTurnoverSum - tac.CreditTurnoverSum)\r\n         ELSE 0 \r\n    END AS DebitBalance,\r\n    CASE WHEN (tac.BeginningBalance + tac.DebitTurnoverSum - tac.CreditTurnoverSum) < 0 \r\n         THEN ABS(tac.BeginningBalance + tac.DebitTurnoverSum - tac.CreditTurnoverSum)\r\n         ELSE 0 \r\n    END AS CreditBalance\r\nFROM TotalAccountCalc tac\r\nINNER JOIN TotalAccounts ta ON ta.Id = tac.TotalAccountId\r\nINNER JOIN GroupAccounts ga ON ta.Id_GroupAccount = ga.Id\r\nINNER JOIN NatureAccounts na ON na.Id = ga.IdMahiyat\r\nWHERE ABS(tac.DebitTurnoverSum - tac.CreditTurnoverSum) > 0.00000001";
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ReviewAccountsT");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ReviewAccountsT] AS " + txt);
+        }
+        /// <summary>
+        /// مرور حساب ها- معین
+        /// </summary>
+        static void V_ReviewAccountsS()
+        {
+            string txt = "WITH TransFiltered AS (SELECT        Id, FinancialYear, TransactionCode, Series, TransactionDate, TransactionTypeId, SpecificAccountId, DetailedAccountId, Amount, PaymentBed, PaymentBes, ComerBId, Description, Status, FinalRegistry, \r\n                                                                             IsAutoRejDoc, UserId, DateTime, SeryalNumber, IsBeginningBalance\r\n                                                    FROM            Transactions\r\n                                                    WHERE        (Status = 0)), SpecificAgg AS\r\n    (SELECT        da.SpecificAccountId, sa.Name AS SpecificAccountName, sa.Cod AS SpecificAccountCode, SUM(ISNULL(tr.PaymentBed, 0)) AS DebitTurnover, SUM(ISNULL(tr.PaymentBes, 0)) AS CreditTurnover, 0 AS BeginningBalance, \r\n                                ga.IdMahiyat AS NatureAccountId\r\n       FROM            DetailedAccounts AS da LEFT OUTER JOIN\r\n                                TransFiltered AS tr ON da.Id = tr.DetailedAccountId INNER JOIN\r\n                                SpecificAccounts AS sa ON da.SpecificAccountId = sa.Id INNER JOIN\r\n                                TotalAccounts AS ta ON sa.Id_TotalAccount = ta.Id INNER JOIN\r\n                                GroupAccounts AS ga ON ta.Id_GroupAccount = ga.Id\r\n       GROUP BY da.SpecificAccountId, sa.Name, sa.Cod, ga.IdMahiyat)\r\n    SELECT        SpecificAccountId AS Id, SpecificAccountName AS Name, SpecificAccountCode AS Code, DebitTurnover, CreditTurnover, CASE WHEN (0 + DebitTurnover - CreditTurnover) > 0 THEN (0 + DebitTurnover - CreditTurnover) \r\n                              ELSE 0 END AS DebitBalance, CASE WHEN (0 + DebitTurnover - CreditTurnover) < 0 THEN ABS(0 + DebitTurnover - CreditTurnover) ELSE 0 END AS CreditBalance\r\n     FROM            SpecificAgg\r\n     WHERE        (ABS(0 + DebitTurnover - CreditTurnover) <> 0) OR\r\n                              (ABS(DebitTurnover) <> 0) OR\r\n                              (ABS(CreditTurnover) <> 0)";
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ReviewAccountsS");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ReviewAccountsS] AS " + txt);
+        }
+        /// <summary>
+        /// مرور حساب ها- تفصیلی
+        /// </summary>
+        static void V_ReviewAccountsD()
+        {
+            string txt = "WITH TransFiltered AS (SELECT        Id, FinancialYear, TransactionCode, Series, TransactionDate, TransactionTypeId, SpecificAccountId, DetailedAccountId, Amount, PaymentBed, PaymentBes, ComerBId, Description, Status, FinalRegistry, \r\n                                                                             IsAutoRejDoc, UserId, DateTime, SeryalNumber, IsBeginningBalance\r\n                                                    FROM            Transactions\r\n                                                    WHERE        (Status = 0)), CustomerAgg AS\r\n    (SELECT        cu.Id AS CustomerId, cu.Name AS FirstName, cu.Family AS LastName, SUM(ISNULL(tr.PaymentBed, 0)) AS DebitTurnover, SUM(ISNULL(tr.PaymentBes, 0)) AS CreditTurnover\r\n       FROM            DetailedAccounts AS da INNER JOIN\r\n                                Customers AS cu ON da.CustomerId = cu.Id INNER JOIN\r\n                                SpecificAccounts AS sa ON da.SpecificAccountId = sa.Id INNER JOIN\r\n                                TotalAccounts AS ta ON sa.Id_TotalAccount = ta.Id INNER JOIN\r\n                                GroupAccounts AS ga ON ta.Id_GroupAccount = ga.Id LEFT OUTER JOIN\r\n                                TransFiltered AS tr ON da.Id = tr.DetailedAccountId\r\n       WHERE        (ga.Id IN (1, 2, 3, 4, 5))\r\n       GROUP BY cu.Id, cu.Name, cu.Family)\r\n    SELECT        CustomerId AS Id, RTRIM(LTRIM(LastName + ' ' + FirstName)) AS Name, CustomerId AS Code, DebitTurnover, CreditTurnover, CASE WHEN (DebitTurnover - CreditTurnover) > 0 THEN (DebitTurnover - CreditTurnover) \r\n                              ELSE 0 END AS DebitBalance, CASE WHEN (DebitTurnover - CreditTurnover) < 0 THEN ABS(DebitTurnover - CreditTurnover) ELSE 0 END AS CreditBalance\r\n     FROM            CustomerAgg\r\n     WHERE        (ABS(DebitTurnover - CreditTurnover) <> 0) OR\r\n                              (ABS(DebitTurnover) <> 0) OR\r\n                              (ABS(CreditTurnover) <> 0)";
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ReviewAccountsD");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ReviewAccountsD] AS " + txt);
+        }
+        static void V_ReviewAccountsAllAcconts()
+        {
+            string txt = "SELECT\r\n    ga.Name AS GName,\r\n    ta.Name AS TName,\r\n    sa.Name AS sName,\r\n    da.Id,\r\n    cu.Family + ' ' + cu.Name AS DName,\r\n    da.CodeAccount AS Code,\r\n\r\n    -- جمع کل بدهکارها\r\n    ISNULL(SUM(tr.PaymentBed), 0) AS DebitTurnover,\r\n\r\n    -- جمع کل بستانکارها\r\n    ISNULL(SUM(tr.PaymentBes), 0) AS CreditTurnover,\r\n\r\n    -- مانده بدهکار\r\n    CASE \r\n        WHEN ISNULL(SUM(tr.PaymentBed), 0) - ISNULL(SUM(tr.PaymentBes), 0) > 0\r\n        THEN ISNULL(SUM(tr.PaymentBed), 0) - ISNULL(SUM(tr.PaymentBes), 0)\r\n        ELSE 0\r\n    END AS DebitBalance,\r\n\r\n    -- مانده بستانکار\r\n    CASE \r\n        WHEN ISNULL(SUM(tr.PaymentBed), 0) - ISNULL(SUM(tr.PaymentBes), 0) < 0\r\n        THEN ABS(ISNULL(SUM(tr.PaymentBed), 0) - ISNULL(SUM(tr.PaymentBes), 0))\r\n        ELSE 0\r\n    END AS CreditBalance\r\n\r\nFROM DetailedAccounts da\r\nJOIN SpecificAccounts sa ON da.SpecificAccountId = sa.Id\r\nJOIN TotalAccounts ta ON sa.Id_TotalAccount = ta.Id\r\nJOIN GroupAccounts ga ON ta.Id_GroupAccount = ga.Id\r\nJOIN Customers cu ON da.CustomerId = cu.Id\r\nJOIN NatureAccounts na ON ga.IdMahiyat = na.Id\r\n\r\n-- تمام تراکنش‌ها بدون شرط\r\nLEFT JOIN Transactions tr ON da.Id = tr.DetailedAccountId\r\n\r\nGROUP BY\r\n    ga.Name,\r\n    ta.Name,\r\n    sa.Name,\r\n    da.Id,\r\n    cu.Family,\r\n    cu.Name,\r\n    da.CodeAccount;";
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ReviewAccountsAllAcconts");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ReviewAccountsAllAcconts] AS " + txt);
+        }
+        /// <summary>
+        /// مرور حساب ها- لیست تراکنش ها
+        /// </summary>
 
-
+        static void V_ReviewAccountsList()
+        {
+            string txt = "SELECT        da.Id AS DetailedAccountId, tr.Series, tr.TransactionCode, tr.TransactionDate, tt.Name AS TransactionType, sp.Name AS SpecificAccountName, cu.Family + ' ' + cu.Name AS ContraAccountName, tr.Amount AS TotalAmount, \r\n                         tr.PaymentBed, tr.PaymentBes, tr.Description, da.CodeAccount AS AccountCode, tr.IsAutoRejDoc, ISNULL(coH.RemiaanceSeryal, 0) AS ComerSeryal, CuUser.Family + ' ' + CuUser.Name AS [User]\r\nFROM            Transactions AS tr INNER JOIN\r\n                         SpecificAccounts AS sp ON tr.SpecificAccountId = sp.Id INNER JOIN\r\n                         DetailedAccounts AS da ON tr.DetailedAccountId = da.Id INNER JOIN\r\n                         Customers AS cu ON da.CustomerId = cu.Id INNER JOIN\r\n                         TransactionTypes AS tt ON tr.TransactionTypeId = tt.Id INNER JOIN\r\n                         CustomerRoles AS cr ON tr.UserId = cr.Id INNER JOIN\r\n                         Customers AS CuUser ON cr.Id = CuUser.Id LEFT OUTER JOIN\r\n                         ComersBs AS coB ON tr.ComerBId = coB.Id LEFT OUTER JOIN\r\n                         ComersHes AS coH ON coB.ComersHId = coH.Id\r\nWHERE        (tr.Status = 0)";
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ReviewAccountsList");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ReviewAccountsList] AS " + txt);
+        }
     }
 }

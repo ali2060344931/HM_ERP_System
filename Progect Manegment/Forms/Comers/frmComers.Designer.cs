@@ -349,6 +349,7 @@
             this.txtWeightDeliveredGoods = new DevComponents.Editors.IntegerInput();
             this.btnChangStatusGoods = new DevComponents.DotNetBar.ButtonX();
             this.btnUnChangStatusGoods = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
             this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
             this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
             this.gridEXExporter1 = new Janus.Windows.GridEX.Export.GridEXExporter(this.components);
@@ -4920,6 +4921,7 @@
             this.pnlViewItemFoter.Controls.Add(this.panelDeleteEdit);
             this.pnlViewItemFoter.Controls.Add(this.txtWeightDeliveredGoods);
             this.pnlViewItemFoter.Controls.Add(this.btnChangStatusGoods);
+            this.pnlViewItemFoter.Controls.Add(this.buttonX01);
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Controls.Add(this.btnShowGridExHideColumns);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -5007,7 +5009,7 @@
             this.txtWeightDeliveredGoods.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtWeightDeliveredGoods.Dock = System.Windows.Forms.DockStyle.Right;
             this.txtWeightDeliveredGoods.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtWeightDeliveredGoods.Location = new System.Drawing.Point(1219, 0);
+            this.txtWeightDeliveredGoods.Location = new System.Drawing.Point(1185, 0);
             this.txtWeightDeliveredGoods.MaxValue = 999999;
             this.txtWeightDeliveredGoods.MinValue = 0;
             this.txtWeightDeliveredGoods.Name = "txtWeightDeliveredGoods";
@@ -5024,7 +5026,7 @@
             this.btnChangStatusGoods.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnChangStatusGoods.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnChangStatusGoods.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnChangStatusGoods.Location = new System.Drawing.Point(1342, 0);
+            this.btnChangStatusGoods.Location = new System.Drawing.Point(1308, 0);
             this.btnChangStatusGoods.Name = "btnChangStatusGoods";
             this.btnChangStatusGoods.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnChangStatusGoods.Size = new System.Drawing.Size(148, 27);
@@ -5050,6 +5052,26 @@
             this.btnUnChangStatusGoods.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
             this.btnUnChangStatusGoods.Text = "عدم نحویل کالا";
             this.btnUnChangStatusGoods.Click += new System.EventHandler(this.btnUnChangStatusGoods_Click);
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX01.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX01.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX01.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonX01.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.buttonX01.Location = new System.Drawing.Point(1456, 0);
+            this.buttonX01.Name = "buttonX01";
+            this.buttonX01.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.buttonX01.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
+            this.buttonX01.Size = new System.Drawing.Size(34, 27);
+            this.buttonX01.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX01.Symbol = "";
+            this.buttonX01.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonX01.SymbolSize = 15F;
+            this.buttonX01.TabIndex = 18;
+            this.buttonX01.Tooltip = "چاپ جدول";
+            this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnExportToExcel
             // 
@@ -5618,5 +5640,6 @@
         private System.Windows.Forms.RadioButton rdbShiper;
         private System.Windows.Forms.RadioButton rdbCostAccount;
         public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
+        public DevComponents.DotNetBar.ButtonX buttonX01;
     }
 }

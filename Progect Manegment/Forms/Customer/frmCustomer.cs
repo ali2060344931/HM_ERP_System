@@ -755,7 +755,7 @@ namespace HM_ERP_System.Forms.Customer
             f.grid=dgvList;
             //f.Condition="";
             //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
-            f.TitelString ="لیست اشخـــاص";
+            f.TitelString =ResourceCode.TRcustomer;
             f.ReporFileName="HM_ERP_System.ReportViewer.Report_Customer.rdlc";
             f.ShowDialog();
         }

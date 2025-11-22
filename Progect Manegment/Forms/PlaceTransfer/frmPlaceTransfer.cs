@@ -345,7 +345,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             f.grid=dgvList;
             //f.Condition="";
             //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
-            f.TitelString ="لیست انبارهای بارگیری و تخلیه";
+            f.TitelString =ResourceCode.TRplaseTransfer;
             f.ReporFileName="HM_ERP_System.ReportViewer.Report_PlaceTransfer.rdlc";
             f.ShowDialog();
 

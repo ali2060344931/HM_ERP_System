@@ -881,8 +881,8 @@ namespace HM_ERP_System.Forms.Commission
         {
             frmReport f = new frmReport();
             f.grid=dgvList;
-            f.DateReport="گــزارش   از تاریخ: "+txtDateStart.Text+ "   تا تاریخ: "+txtDateEnd.Text;
-            f.TitelString ="لیست پورســـانت ها";
+            f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
+            f.TitelString =ResourceCode.TRCommission;
             f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Commission.rdlc";
             //f.SetReport();
             f.ShowDialog();

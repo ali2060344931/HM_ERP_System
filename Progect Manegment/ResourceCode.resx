@@ -595,4 +595,61 @@
   <data name="T158" xml:space="preserve">
     <value>لیست ستونهای حذف شده</value>
   </data>
+  <data name="T159" xml:space="preserve">
+    <value>گـــزارش   از تاریــخ: </value>
+  </data>
+  <data name="T160" xml:space="preserve">
+    <value>تـــا تاریـــخ: </value>
+  </data>
+  <data name="TRappointmentScheduling" xml:space="preserve">
+    <value>لیست نوبت دهی کامیـــون ها</value>
+  </data>
+  <data name="TRcars" xml:space="preserve">
+    <value>لیست کامیــــون ها</value>
+  </data>
+  <data name="TRcomerB" xml:space="preserve">
+    <value>لیست بارنامــــه ها</value>
+  </data>
+  <data name="TRcomerH" xml:space="preserve">
+    <value>لیست حـــواله ها</value>
+  </data>
+  <data name="TRCommission" xml:space="preserve">
+    <value>لیست پورســــانت ها</value>
+  </data>
+  <data name="TRcustomer" xml:space="preserve">
+    <value>لیست اشخـــــاص</value>
+  </data>
+  <data name="TRdataileAccounts" xml:space="preserve">
+    <value>لیست حســـــاب های تفصیلی</value>
+  </data>
+  <data name="TRdraver" xml:space="preserve">
+    <value>لیست راننـــــده ها</value>
+  </data>
+  <data name="TRplaseTransfer" xml:space="preserve">
+    <value>لیست انبارهای بارگیری و تخلیه</value>
+  </data>
+  <data name="TRproduct" xml:space="preserve">
+    <value>لیست کـــــالاها</value>
+  </data>
+  <data name="TRPurchase_Tanker" xml:space="preserve">
+    <value>لیست خرید تانکرها</value>
+  </data>
+  <data name="TRreviewAccountsAllAcconts" xml:space="preserve">
+    <value>لیست همه حســــــاب ها</value>
+  </data>
+  <data name="TRreviewAccountsD" xml:space="preserve">
+    <value>لیست حســـــاب های تفصیلی</value>
+  </data>
+  <data name="TRreviewAccountsG" xml:space="preserve">
+    <value>لیست گــــروه حسابها</value>
+  </data>
+  <data name="TRreviewAccountsS" xml:space="preserve">
+    <value>لیســت حســـــاب های معیــــــن</value>
+  </data>
+  <data name="TRreviewAccountsT" xml:space="preserve">
+    <value>لیست حســــــاب های کــــــل</value>
+  </data>
+  <data name="TRtankerRental" xml:space="preserve">
+    <value>لیست اجـــاره تانکـــرها</value>
+  </data>
 </root>

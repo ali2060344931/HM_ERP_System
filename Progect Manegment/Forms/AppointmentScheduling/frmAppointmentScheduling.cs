@@ -475,8 +475,8 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
         {
             frmReport f = new frmReport();
             f.grid=dgvList;
-            f.DateReport="گــزارش   از تاریخ: "+txtDateStart.Text+ "   تا تاریخ: "+txtDateEnd.Text;
-            f.TitelString ="لیست نوبت دهی کامیون ها";
+            f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
+            f.TitelString =ResourceCode.TRappointmentScheduling;
             f.ReporFileName ="HM_ERP_System.ReportViewer.Report_AppointmentScheduling.rdlc";
             f.ShowDialog();
         }

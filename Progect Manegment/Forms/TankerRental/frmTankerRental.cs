@@ -548,7 +548,7 @@ namespace HM_ERP_System.Forms.TankerRental
         {
             frmReport f = new frmReport();
             f.grid=dgvList;
-            f.TitelString ="لیست اجـــاره تانکـــرها";
+            f.TitelString =ResourceCode.TRtankerRental;
             f.ReporFileName ="HM_ERP_System.ReportViewer.Report_TankerRental.rdlc";
             f.ShowDialog();
         }

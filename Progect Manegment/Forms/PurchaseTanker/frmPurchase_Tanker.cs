@@ -421,7 +421,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
         {
             frmReport f = new frmReport();
             f.grid=dgvList;
-            f.TitelString ="لیست خــرید تانکـــرها";
+            f.TitelString =ResourceCode.TRPurchase_Tanker;
             f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Purchase_Tanker.rdlc";
             f.ShowDialog();
         }

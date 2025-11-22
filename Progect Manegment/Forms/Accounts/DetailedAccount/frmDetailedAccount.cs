@@ -9,6 +9,7 @@ using HM_ERP_System.Forms.Accounts.SpecificAccount;
 using HM_ERP_System.Forms.Comers;
 using HM_ERP_System.Forms.Customer;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
 
 using Microsoft.Office.Interop.Excel;
 
@@ -222,7 +223,8 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                             };
 
                     dgvList.DataSource = q.ToList();
-                    dgvList.AutoSizeColumns();
+                    //dgvList.AutoSizeColumns();
+                    PublicClass.SettingGridEX(dgvList);
                 }
             }
             catch (Exception er)
@@ -632,6 +634,19 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            //f.Cod="1";
+            f.grid=dgvList;
+            //f.Condition="";
+            //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
+            f.TitelString =ResourceCode.TRdataileAccounts;
+            f.ReporFileName="HM_ERP_System.ReportViewer.Report_DetailedAccount.rdlc";
+            f.ShowDialog();
+
         }
     }
 }

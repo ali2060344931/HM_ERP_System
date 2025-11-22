@@ -85,6 +85,7 @@
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
             this.label4 = new System.Windows.Forms.Label();
             this.ribbonStatusBar1 = new Janus.Windows.Ribbon.RibbonStatusBar();
+            this.btnRepirts = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommand1 = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommand2 = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommand3 = new Janus.Windows.Ribbon.ButtonCommand();
@@ -855,6 +856,7 @@
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 451);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.btnRepirts,
             this.buttonCommand1,
             this.buttonCommand2,
             this.buttonCommand3,
@@ -868,6 +870,17 @@
             this.ribbonStatusBar1.TabIndex = 5;
             this.ribbonStatusBar1.Text = "ribbonStatusBar1";
             this.ribbonStatusBar1.CommandClick += new Janus.Windows.Ribbon.CommandEventHandler(this.ribbonStatusBar1_CommandClick);
+            // 
+            // btnRepirts
+            // 
+            this.btnRepirts.Icon = ((System.Drawing.Icon)(resources.GetObject("btnRepirts.Icon")));
+            this.btnRepirts.Key = "buttonCommand5";
+            this.btnRepirts.Name = "btnRepirts";
+            this.btnRepirts.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
+            this.btnRepirts.SupertipSettingsData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><SupertipSettings><HeaderText>گزارشــــات</" +
+    "HeaderText><Text>نمایش و چاپ گزارشات</Text></SupertipSettings>";
+            this.btnRepirts.Text = "";
+            this.btnRepirts.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnRepirts_Click);
             // 
             // buttonCommand1
             // 
@@ -1009,5 +1022,6 @@
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand4;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private Janus.Windows.Ribbon.ButtonCommand btnRepirts;
     }
 }

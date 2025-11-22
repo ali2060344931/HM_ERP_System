@@ -18,6 +18,7 @@ using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.PlaceTransfer;
+using HM_ERP_System.Forms.Reports;
 
 using Janus.Windows.GridEX;
 using Janus.Windows.UI.Dock;
@@ -4797,6 +4798,33 @@ namespace HM_ERP_System.Forms.Comers
                     break;
                 case "ComersB":
                     dgvListB.ShowFieldChooser(this,  ResourceCode.T158);
+                    break;
+            }
+
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            switch (ComerTabKey)
+            {
+                case "ComersH":
+                    frmReport f = new frmReport();
+                    f.grid=dgvListH;
+                    f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
+                    f.TitelString =ResourceCode.TRcomerH;
+                    f.Description=" ";
+                    f.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersH.rdlc";
+                    f.ShowDialog();
+
+                    break;
+                case "ComersB":
+                    frmReport f1 = new frmReport();
+                    f1.grid=dgvListB;
+                    f1.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
+                    f1.TitelString =ResourceCode.TRcomerB;
+                    f1.Description=" ";
+                    f1.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
+                    f1.ShowDialog();
                     break;
             }
 

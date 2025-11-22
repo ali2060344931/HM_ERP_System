@@ -2,6 +2,7 @@
 using HM_ERP_System.Entity.Product;
 using HM_ERP_System.Entity.Provinces;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
 
 using MyClass;
 
@@ -47,7 +48,6 @@ namespace HM_ERP_System.Forms.Product
         {
             using (var db = new DBcontextModel())
             {
-                //var q = db.Products.ToList();
                 var q = from pr in db.Products
                         join prg in db.ProductGroups
                         on pr.ProductGroupId equals prg.Id
@@ -59,7 +59,6 @@ namespace HM_ERP_System.Forms.Product
                         };
                 
                 dgvList.DataSource = q.ToList();
-                //dgvList.AutoSizeColumns();
                 PublicClass.SettingGridEX(dgvList,Name);
             }
         }
@@ -214,6 +213,18 @@ namespace HM_ERP_System.Forms.Product
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            f.grid=dgvList;
+            //f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
+            f.TitelString =ResourceCode.TRproduct;
+            f.Description=" ";
+            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Product.rdlc";
+            f.ShowDialog();
+
         }
     }
 }

@@ -365,7 +365,7 @@ namespace HM_ERP_System.Forms.Draver
             f.grid=dgvList;
             //f.Condition="";
             //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
-            f.TitelString ="لیست راننده ها";
+            f.TitelString =ResourceCode.TRdraver;
             f.ReporFileName="HM_ERP_System.ReportViewer.Report_Dravers.rdlc";
             f.ShowDialog();
         }

@@ -1,5 +1,12 @@
-﻿using HM_ERP_System.Class_General;
+﻿using GridExEx;
+
+using HM_ERP_System.Class_General;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
+
+using Janus.Windows.GridEX;
+
+using Microsoft.Reporting.Map.WebForms.BingMaps;
 
 using MyClass;
 
@@ -9,16 +16,17 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Janus.Windows.GridEX;
-using GridExEx;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Drawing.Printing;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
@@ -320,7 +328,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         {
             try
             {
-                int  id =Convert.ToInt32( PublicClass.FinancialYear);
+                int id = Convert.ToInt32(PublicClass.FinancialYear);
                 using (var db = new DBcontextModel())
                 {
                     var q = db.FinancialYears.Where(c => c.Id==id).First();
@@ -456,6 +464,62 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
         private void buttonCommand4_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
+        }
+
+        private void btnRepirts_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            frmReport f = new frmReport();
+            string DateReport= ResourceCode.T159+txtDateS.Text+ ResourceCode.T160+txtDateE.Text;
+            switch (TabKey)
+            {
+                case "G"://گروه
+                    f.grid=dgvListG;
+                    f.DateReport=DateReport;
+                    f.TitelString =ResourceCode.TRreviewAccountsG;
+                    f.Description=" ";
+                    f.ReporFileName ="HM_ERP_System.ReportViewer.ReviewAccountsG.rdlc";
+                    f.ShowDialog();
+                    break;
+                case "T"://کل
+                    f.grid=dgvListT;
+                    f.DateReport=DateReport;
+                    f.TitelString =ResourceCode.TRreviewAccountsT;
+                    f.Description=" ";
+                    f.ReporFileName ="HM_ERP_System.ReportViewer.ReviewAccountsT.rdlc";
+                    f.ShowDialog();
+                    break;
+                case "S"://معیین
+                    f.grid=dgvListS;
+                    f.DateReport=DateReport;
+                    f.TitelString =ResourceCode.TRreviewAccountsS;
+                    f.Description=" ";
+                    f.ReporFileName ="HM_ERP_System.ReportViewer.ReviewAccountsS.rdlc";
+                    f.ShowDialog();
+                    break;
+                case "D"://تفصیلی
+                    f.grid=dgvListD;
+                    f.DateReport=DateReport;
+                    f.TitelString =ResourceCode.TRreviewAccountsD;
+                    f.Description=" ";
+                    f.ReporFileName ="HM_ERP_System.ReportViewer.ReviewAccountsD.rdlc";
+                    f.ShowDialog();
+                    break;
+                case "AllAcconts"://تفصیلی
+                    f.grid=dgvListAllAcconts;
+                    f.DateReport=DateReport;
+                    f.TitelString =ResourceCode.TRreviewAccountsAllAcconts;
+                    f.ReporFileName="HM_ERP_System.ReportViewer.ReviewAccountsAllAcconts.rdlc";
+                    f.ShowDialog();
+                    break;
+                case "List"://لیست تراکنش ها
+                    f.grid=dgvListAllAcconts;
+                    f.DateReport=DateReport;
+                    f.TitelString =ResourceCode.TRreviewAccountsAllAcconts;
+                    f.ReporFileName="HM_ERP_System.ReportViewer.ReviewAccountsAllAcconts.rdlc";
+                    f.ShowDialog();
+                    break;
+            }
+
         }
     }
 }

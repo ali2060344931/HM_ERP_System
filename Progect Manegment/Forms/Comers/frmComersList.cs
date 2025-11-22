@@ -213,9 +213,9 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     frmReport f = new frmReport();
                     f.grid=dgvListB;
-                    f.DateReport="گــزارش   از تاریخ: "+txtDateStart.Text+ "   تا تاریخ: "+txtDateEnd.Text;
-                    f.TitelString ="لیست بــارنام ها";
-                    f.Description="متن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشی";
+                    f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
+                    f.TitelString =ResourceCode.TRcomerB;
+                    f.Description=" ";
                     f.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
                     f.ShowDialog();
 
@@ -225,9 +225,9 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     frmReport f = new frmReport();
                     f.grid=dgvListH;
-                    f.DateReport="گــزارش   از تاریخ: "+txtDateStart.Text+ "   تا تاریخ: "+txtDateEnd.Text;
-                    f.TitelString ="لیست حـــواله ها";
-                    f.Description="متن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشیمتن آزمایشی";
+                    f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
+                    f.TitelString =ResourceCode.TRcomerH;
+                    f.Description=" ";
                     f.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersH.rdlc";
                     f.ShowDialog();
 
@@ -235,6 +235,13 @@ namespace HM_ERP_System.Forms.Comers
 
                 else if (FormName=="Commission")
                 {
+                    frmReport f = new frmReport();
+                    f.grid=dgvListCommission;
+                    f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
+                    f.TitelString =ResourceCode.TRCommission;
+                    f.Description=" ";
+                    f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Commission.rdlc";
+                    f.ShowDialog();
 
                 }
             }

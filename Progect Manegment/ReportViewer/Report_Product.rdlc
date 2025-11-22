@@ -53,102 +53,18 @@
           <DataField>Name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Family">
-          <DataField>Family</DataField>
+        <Field Name="ProductGroupName">
+          <DataField>ProductGroupName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CodMeli">
-          <DataField>CodMeli</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TypeCustomersName">
-          <DataField>TypeCustomersName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Tel">
-          <DataField>Tel</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Tel2">
-          <DataField>Tel2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Adders">
-          <DataField>Adders</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Adders2">
-          <DataField>Adders2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PostalCode">
-          <DataField>PostalCode</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Description">
-          <DataField>Description</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="BanckName">
-          <DataField>BanckName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SeryalShaba">
-          <DataField>SeryalShaba</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DabitCardNumber">
-          <DataField>DabitCardNumber</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="RecordDateTime">
-          <DataField>RecordDateTime</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="BankBranchesName">
-          <DataField>BankBranchesName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="BancksName">
-          <DataField>BancksName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="SecretCode">
-          <DataField>SecretCode</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="CiltysName">
-          <DataField>CiltysName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="id_TypeCustomer">
-          <DataField>id_TypeCustomer</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="UserId">
-          <DataField>UserId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="BanckId">
-          <DataField>BanckId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="CityId">
-          <DataField>CityId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="TypeCustomer_Id">
-          <DataField>TypeCustomer_Id</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet1</rd:DataSetName>
         <rd:SchemaPath>C:\Users\Administrator\source\repos\HM_ERP_System\Progect Manegment\DataSet1.xsd</rd:SchemaPath>
-        <rd:TableName>V_Customers</rd:TableName>
+        <rd:TableName>V_Product</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>V_CustomersTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>V_ProductTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -160,34 +76,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.9728cm</Width>
+                  <Width>0.96069cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.39755cm</Width>
+                  <Width>5.13717cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.31166cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.28258cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.31186cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>4.5424cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.05682cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.97172cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>3.50407cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.73519cm</Width>
+                  <Width>6.38287cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -232,186 +127,6 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox11">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>نام و نام خانوادگی</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox11</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#7292cc</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox5">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>کد ملی</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox5</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#7292cc</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox8">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>تلفن</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#7292cc</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox9">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>نام شهر</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox9</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#7292cc</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox7">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>آدرس</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox7</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#7292cc</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="Textbox2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -419,7 +134,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>کد پستی</Value>
+                                  <Value>نام کالا</Value>
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -448,14 +163,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox15">
+                        <Textbox Name="Textbox3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>نام بانک - شعبه</Value>
+                                  <Value>گروه کالا</Value>
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -467,79 +182,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox15</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#7292cc</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox20">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>شماره حساب شبا</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox20</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#7292cc</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox21">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>شماره کارت</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox21</rd:DefaultName>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#7292cc</Color>
@@ -571,7 +214,7 @@
                                   <Value>=RowNumber("DataSet1")</Value>
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -596,14 +239,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Name1">
+                        <Textbox Name="Name">
                           <CanShrink>true</CanShrink>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Family.Value &amp; " " &amp; Fields!Name.Value</Value>
+                                  <Value>=Fields!Name.Value</Value>
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -615,7 +258,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Name1</rd:DefaultName>
+                          <rd:DefaultName>Name</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#e5e5e5</Color>
@@ -631,14 +274,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CodMeli">
-                          <CanShrink>true</CanShrink>
+                        <Textbox Name="ProductGroupName">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CodMeli.Value</Value>
+                                  <Value>=Fields!ProductGroupName.Value</Value>
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -646,259 +289,11 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>CodMeli</rd:DefaultName>
-                          <ToolTip>تست برنامه</ToolTip>
-                          <Style>
-                            <Border>
-                              <Color>#e5e5e5</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Tel">
-                          <CanGrow>true</CanGrow>
-                          <CanShrink>true</CanShrink>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Tel.Value</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Tel</rd:DefaultName>
-                          <ToolTip>ساعت ورود خروج</ToolTip>
-                          <Style>
-                            <Border>
-                              <Color>#e5e5e5</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="CiltysName">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!CiltysName.Value</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>CiltysName</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#e5e5e5</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Adders">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Adders.Value</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
                                 <TextAlign>Right</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Adders</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#e5e5e5</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="PostalCode">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!PostalCode.Value</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>PostalCode</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#e5e5e5</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="BancksName">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!BancksName.Value</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>BancksName</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#e5e5e5</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="SeryalShaba">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!SeryalShaba.Value</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>SeryalShaba</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>#e5e5e5</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="DabitCardNumber1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!DabitCardNumber.Value</Value>
-                                  <Style>
-                                    <FontFamily>vazir FD</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>DabitCardNumber1</rd:DefaultName>
+                          <rd:DefaultName>ProductGroupName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#e5e5e5</Color>
@@ -921,13 +316,6 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -945,10 +333,10 @@
             <LayoutDirection>RTL</LayoutDirection>
             <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.635cm</Top>
-            <Left>0.31037cm</Left>
+            <Top>0.60325cm</Top>
+            <Left>3.63678cm</Left>
             <Height>1.4cm</Height>
-            <Width>28.08664cm</Width>
+            <Width>12.48072cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -976,9 +364,9 @@
             </Paragraphs>
             <rd:DefaultName>NameHesab</rd:DefaultName>
             <Top>0cm</Top>
-            <Left>0.9969cm</Left>
+            <Left>1.5308cm</Left>
             <Height>0.6cm</Height>
-            <Width>26.58683cm</Width>
+            <Width>17.43352cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -991,13 +379,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>0.80118in</Height>
+        <Height>0.78868in</Height>
         <Style />
       </Body>
-      <Width>11.25793in</Width>
+      <Width>7.77728in</Width>
       <Page>
         <PageHeader>
-          <Height>2.31403cm</Height>
+          <Height>2.34578cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1021,8 +409,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox29</rd:DefaultName>
-              <Top>0.92897cm</Top>
-              <Left>10.92167cm</Left>
+              <Top>0.94485cm</Top>
+              <Left>6.5085cm</Left>
               <Height>0.77639cm</Height>
               <Width>6.73729cm</Width>
               <Style>
@@ -1058,8 +446,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>NameCompani</rd:DefaultName>
-              <Top>0.0291cm</Top>
-              <Left>8.5584cm</Left>
+              <Top>0.04498cm</Top>
+              <Left>4.14522cm</Left>
               <Height>0.88222cm</Height>
               <Width>11.46384cm</Width>
               <ZIndex>1</ZIndex>
@@ -1078,8 +466,8 @@
               <Value>=First(Fields!Image.Value, "DataSet2")</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
-              <Top>0.08738cm</Top>
-              <Left>25.22673cm</Left>
+              <Top>0.10326cm</Top>
+              <Left>16.1531cm</Left>
               <Height>2.16506cm</Height>
               <Width>3.17028cm</Width>
               <ZIndex>2</ZIndex>
@@ -1131,9 +519,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.0291cm</Top>
+              <Top>0.04498cm</Top>
               <Height>0.6cm</Height>
-              <Width>4.1224cm</Width>
+              <Width>3.59323cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -1165,10 +553,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Tarikh</rd:DefaultName>
-              <Top>0.61147cm</Top>
+              <Top>0.62735cm</Top>
               <Left>0cm</Left>
               <Height>0.6cm</Height>
-              <Width>4.1224cm</Width>
+              <Width>3.59323cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -1200,8 +588,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>NameHesab</rd:DefaultName>
-              <Top>1.68493cm</Top>
-              <Left>10.92167cm</Left>
+              <Top>1.70081cm</Top>
+              <Left>6.5085cm</Left>
               <Height>0.6cm</Height>
               <Width>6.73729cm</Width>
               <ZIndex>5</ZIndex>
@@ -1250,7 +638,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
               <Top>0.05291cm</Top>
-              <Left>0.67945cm</Left>
+              <Left>0.3358cm</Left>
               <Height>0.6cm</Height>
               <Width>3.5848cm</Width>
               <Style>
@@ -1284,7 +672,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox6</rd:DefaultName>
               <Top>0.05291cm</Top>
-              <Left>23.93274cm</Left>
+              <Left>15.65159cm</Left>
               <Height>0.6cm</Height>
               <Width>3.69539cm</Width>
               <ZIndex>1</ZIndex>
@@ -1305,8 +693,8 @@
             </Border>
           </Style>
         </PageFooter>
-        <PageHeight>21cm</PageHeight>
-        <PageWidth>29.7cm</PageWidth>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
         <LeftMargin>0.5cm</LeftMargin>
         <RightMargin>0.5cm</RightMargin>
         <TopMargin>0.5cm</TopMargin>

@@ -1415,6 +1415,8 @@ namespace MyClass
                                        TransactionType = tt.Name,
                                        SpecificAccountName = sp.Name,
                                        ContraAccountName = (cu.Family + " " + cu.Name).Trim(),
+                                       cu.CodMeli,
+                                       cu.Tel,
                                        TotalAmount = tr.Amount,
                                        tr.PaymentBed,
                                        tr.PaymentBes,
@@ -1517,10 +1519,12 @@ namespace MyClass
                     // ----------------------------------------------------------------
                     // 3. کوئری تراکنش‌های داخل دوره (Current Transactions)
                     // ----------------------------------------------------------------
-
+                   
                     var qCurrent = from tr in accountFilter
                                    join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
                                    join da in db.DetailedAccounts on tr.DetailedAccountId equals da.Id
+                                   join ta in db.TotalAccounts on sp.Id_TotalAccount equals ta.Id
+                                   join ga in db.GroupAccounts on ta.Id_GroupAccount equals ga.Id
                                    join cu in db.Customers on da.CustomerId equals cu.Id
                                    join tt in db.TransactionTypes on tr.TransactionTypeId equals tt.Id
                                    join User in db.CustomerRoles on tr.UserId equals User.Id
@@ -1548,6 +1552,8 @@ namespace MyClass
                                        TransactionType = tt.Name,
                                        SpecificAccountName = sp.Name,
                                        ContraAccountName = (cu.Family + " " + cu.Name).Trim(),
+                                       cu.CodMeli,
+                                       cu.Tel,
                                        TotalAmount = tr.Amount,
                                        tr.PaymentBed,
                                        tr.PaymentBes,

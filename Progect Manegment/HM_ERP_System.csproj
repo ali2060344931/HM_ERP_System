@@ -1090,6 +1090,7 @@
     <EmbeddedResource Include="ReportViewer\Report_Commission.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_AppointmentScheduling.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_ComersH.rdlc" />
+    <EmbeddedResource Include="ReportViewer\ReviewAccountsList.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsAllAcconts.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_DetailedAccount.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsD.rdlc" />

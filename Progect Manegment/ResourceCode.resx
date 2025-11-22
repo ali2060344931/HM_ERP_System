@@ -643,6 +643,9 @@
   <data name="TRreviewAccountsG" xml:space="preserve">
     <value>لیست گــــروه حسابها</value>
   </data>
+  <data name="TRreviewAccountsList" xml:space="preserve">
+    <value>گــزارش گــــردش حســـــاب</value>
+  </data>
   <data name="TRreviewAccountsS" xml:space="preserve">
     <value>لیســت حســـــاب های معیــــــن</value>
   </data>

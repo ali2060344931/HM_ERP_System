@@ -92,15 +92,14 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
         void FillAllList()
         {
-
             FilldgvListG();//گروه
             FilldgvListT();//کل
             FilldgvListS();//معیین
             FilldgvListD();//تفصیلی
             FilldgvListAllAcconts();//تفصیلی
+            dgvList.DataSource=null;
+            dgvListِDocs.DataSource=null;
             PublicClass.WindowAlart("1", "بروز رسانی انجام شد.");
-
-
             /*
             switch (TabKey)
             {
@@ -512,10 +511,11 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                     f.ShowDialog();
                     break;
                 case "List"://لیست تراکنش ها
-                    f.grid=dgvListAllAcconts;
+                    f.grid=dgvList;
                     f.DateReport=DateReport;
-                    f.TitelString =ResourceCode.TRreviewAccountsAllAcconts;
-                    f.ReporFileName="HM_ERP_System.ReportViewer.ReviewAccountsAllAcconts.rdlc";
+                    f.Description="نام حســــاب(مشتری): "+dgvList.GetRow(0).Cells["ContraAccountName"].Value; ;
+                    f.TitelString =ResourceCode.TRreviewAccountsList;
+                    f.ReporFileName="HM_ERP_System.ReportViewer.ReviewAccountsList.rdlc";
                     f.ShowDialog();
                     break;
             }

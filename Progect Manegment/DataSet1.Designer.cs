@@ -10434,7 +10434,7 @@ namespace HM_ERP_System {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class V_ReviewAccountsListDataTable : global::System.Data.TypedTableBase<V_ReviewAccountsListRow> {
             
-            private global::System.Data.DataColumn columnDetailedAccountId;
+            private global::System.Data.DataColumn columnId;
             
             private global::System.Data.DataColumn columnSeries;
             
@@ -10447,6 +10447,10 @@ namespace HM_ERP_System {
             private global::System.Data.DataColumn columnSpecificAccountName;
             
             private global::System.Data.DataColumn columnContraAccountName;
+            
+            private global::System.Data.DataColumn columnCodMeli;
+            
+            private global::System.Data.DataColumn columnTel;
             
             private global::System.Data.DataColumn columnTotalAmount;
             
@@ -10463,6 +10467,24 @@ namespace HM_ERP_System {
             private global::System.Data.DataColumn columnComerSeryal;
             
             private global::System.Data.DataColumn columnUser;
+            
+            private global::System.Data.DataColumn columnGroupAccountName;
+            
+            private global::System.Data.DataColumn columnTotalAccountName;
+            
+            private global::System.Data.DataColumn columnSpecificAccountCode;
+            
+            private global::System.Data.DataColumn columnCustomerId;
+            
+            private global::System.Data.DataColumn columnSpecificAccountId;
+            
+            private global::System.Data.DataColumn columnCodeAccount;
+            
+            private global::System.Data.DataColumn columnStatus;
+            
+            private global::System.Data.DataColumn columnUserId;
+            
+            private global::System.Data.DataColumn columnComerBId;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -10499,9 +10521,9 @@ namespace HM_ERP_System {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DetailedAccountIdColumn {
+            public global::System.Data.DataColumn IdColumn {
                 get {
-                    return this.columnDetailedAccountId;
+                    return this.columnId;
                 }
             }
             
@@ -10550,6 +10572,22 @@ namespace HM_ERP_System {
             public global::System.Data.DataColumn ContraAccountNameColumn {
                 get {
                     return this.columnContraAccountName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CodMeliColumn {
+                get {
+                    return this.columnCodMeli;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TelColumn {
+                get {
+                    return this.columnTel;
                 }
             }
             
@@ -10619,6 +10657,78 @@ namespace HM_ERP_System {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn GroupAccountNameColumn {
+                get {
+                    return this.columnGroupAccountName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TotalAccountNameColumn {
+                get {
+                    return this.columnTotalAccountName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SpecificAccountCodeColumn {
+                get {
+                    return this.columnSpecificAccountCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CustomerIdColumn {
+                get {
+                    return this.columnCustomerId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SpecificAccountIdColumn {
+                get {
+                    return this.columnSpecificAccountId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CodeAccountColumn {
+                get {
+                    return this.columnCodeAccount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn StatusColumn {
+                get {
+                    return this.columnStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UserIdColumn {
+                get {
+                    return this.columnUserId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ComerBIdColumn {
+                get {
+                    return this.columnComerBId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -10654,16 +10764,44 @@ namespace HM_ERP_System {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public V_ReviewAccountsListRow AddV_ReviewAccountsListRow(int DetailedAccountId, int Series, int TransactionCode, string TransactionDate, string TransactionType, string SpecificAccountName, string ContraAccountName, double TotalAmount, double PaymentBed, double PaymentBes, string Description, int AccountCode, bool IsAutoRejDoc, int ComerSeryal, string User) {
+            public V_ReviewAccountsListRow AddV_ReviewAccountsListRow(
+                        int Id, 
+                        int Series, 
+                        int TransactionCode, 
+                        string TransactionDate, 
+                        string TransactionType, 
+                        string SpecificAccountName, 
+                        string ContraAccountName, 
+                        string CodMeli, 
+                        string Tel, 
+                        double TotalAmount, 
+                        double PaymentBed, 
+                        double PaymentBes, 
+                        string Description, 
+                        int AccountCode, 
+                        bool IsAutoRejDoc, 
+                        int ComerSeryal, 
+                        string User, 
+                        string GroupAccountName, 
+                        string TotalAccountName, 
+                        int SpecificAccountCode, 
+                        int CustomerId, 
+                        int SpecificAccountId, 
+                        int CodeAccount, 
+                        bool Status, 
+                        int UserId, 
+                        int ComerBId) {
                 V_ReviewAccountsListRow rowV_ReviewAccountsListRow = ((V_ReviewAccountsListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        DetailedAccountId,
+                        Id,
                         Series,
                         TransactionCode,
                         TransactionDate,
                         TransactionType,
                         SpecificAccountName,
                         ContraAccountName,
+                        CodMeli,
+                        Tel,
                         TotalAmount,
                         PaymentBed,
                         PaymentBes,
@@ -10671,17 +10809,19 @@ namespace HM_ERP_System {
                         AccountCode,
                         IsAutoRejDoc,
                         ComerSeryal,
-                        User};
+                        User,
+                        GroupAccountName,
+                        TotalAccountName,
+                        SpecificAccountCode,
+                        CustomerId,
+                        SpecificAccountId,
+                        CodeAccount,
+                        Status,
+                        UserId,
+                        ComerBId};
                 rowV_ReviewAccountsListRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowV_ReviewAccountsListRow);
                 return rowV_ReviewAccountsListRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public V_ReviewAccountsListRow FindByDetailedAccountId(int DetailedAccountId) {
-                return ((V_ReviewAccountsListRow)(this.Rows.Find(new object[] {
-                            DetailedAccountId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10701,13 +10841,15 @@ namespace HM_ERP_System {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnDetailedAccountId = base.Columns["DetailedAccountId"];
+                this.columnId = base.Columns["Id"];
                 this.columnSeries = base.Columns["Series"];
                 this.columnTransactionCode = base.Columns["TransactionCode"];
                 this.columnTransactionDate = base.Columns["TransactionDate"];
                 this.columnTransactionType = base.Columns["TransactionType"];
                 this.columnSpecificAccountName = base.Columns["SpecificAccountName"];
                 this.columnContraAccountName = base.Columns["ContraAccountName"];
+                this.columnCodMeli = base.Columns["CodMeli"];
+                this.columnTel = base.Columns["Tel"];
                 this.columnTotalAmount = base.Columns["TotalAmount"];
                 this.columnPaymentBed = base.Columns["PaymentBed"];
                 this.columnPaymentBes = base.Columns["PaymentBes"];
@@ -10716,13 +10858,22 @@ namespace HM_ERP_System {
                 this.columnIsAutoRejDoc = base.Columns["IsAutoRejDoc"];
                 this.columnComerSeryal = base.Columns["ComerSeryal"];
                 this.columnUser = base.Columns["User"];
+                this.columnGroupAccountName = base.Columns["GroupAccountName"];
+                this.columnTotalAccountName = base.Columns["TotalAccountName"];
+                this.columnSpecificAccountCode = base.Columns["SpecificAccountCode"];
+                this.columnCustomerId = base.Columns["CustomerId"];
+                this.columnSpecificAccountId = base.Columns["SpecificAccountId"];
+                this.columnCodeAccount = base.Columns["CodeAccount"];
+                this.columnStatus = base.Columns["Status"];
+                this.columnUserId = base.Columns["UserId"];
+                this.columnComerBId = base.Columns["ComerBId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnDetailedAccountId = new global::System.Data.DataColumn("DetailedAccountId", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDetailedAccountId);
+                this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId);
                 this.columnSeries = new global::System.Data.DataColumn("Series", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSeries);
                 this.columnTransactionCode = new global::System.Data.DataColumn("TransactionCode", typeof(int), null, global::System.Data.MappingType.Element);
@@ -10735,6 +10886,10 @@ namespace HM_ERP_System {
                 base.Columns.Add(this.columnSpecificAccountName);
                 this.columnContraAccountName = new global::System.Data.DataColumn("ContraAccountName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnContraAccountName);
+                this.columnCodMeli = new global::System.Data.DataColumn("CodMeli", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodMeli);
+                this.columnTel = new global::System.Data.DataColumn("Tel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTel);
                 this.columnTotalAmount = new global::System.Data.DataColumn("TotalAmount", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalAmount);
                 this.columnPaymentBed = new global::System.Data.DataColumn("PaymentBed", typeof(double), null, global::System.Data.MappingType.Element);
@@ -10751,10 +10906,25 @@ namespace HM_ERP_System {
                 base.Columns.Add(this.columnComerSeryal);
                 this.columnUser = new global::System.Data.DataColumn("User", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUser);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnDetailedAccountId}, true));
-                this.columnDetailedAccountId.AllowDBNull = false;
-                this.columnDetailedAccountId.Unique = true;
+                this.columnGroupAccountName = new global::System.Data.DataColumn("GroupAccountName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGroupAccountName);
+                this.columnTotalAccountName = new global::System.Data.DataColumn("TotalAccountName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalAccountName);
+                this.columnSpecificAccountCode = new global::System.Data.DataColumn("SpecificAccountCode", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpecificAccountCode);
+                this.columnCustomerId = new global::System.Data.DataColumn("CustomerId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomerId);
+                this.columnSpecificAccountId = new global::System.Data.DataColumn("SpecificAccountId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpecificAccountId);
+                this.columnCodeAccount = new global::System.Data.DataColumn("CodeAccount", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodeAccount);
+                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatus);
+                this.columnUserId = new global::System.Data.DataColumn("UserId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUserId);
+                this.columnComerBId = new global::System.Data.DataColumn("ComerBId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComerBId);
+                this.columnId.AllowDBNull = false;
                 this.columnSeries.AllowDBNull = false;
                 this.columnTransactionCode.AllowDBNull = false;
                 this.columnTransactionDate.AllowDBNull = false;
@@ -10765,6 +10935,8 @@ namespace HM_ERP_System {
                 this.columnSpecificAccountName.MaxLength = 200;
                 this.columnContraAccountName.ReadOnly = true;
                 this.columnContraAccountName.MaxLength = 201;
+                this.columnCodMeli.MaxLength = 12;
+                this.columnTel.MaxLength = 12;
                 this.columnTotalAmount.AllowDBNull = false;
                 this.columnPaymentBed.AllowDBNull = false;
                 this.columnPaymentBes.AllowDBNull = false;
@@ -10774,6 +10946,16 @@ namespace HM_ERP_System {
                 this.columnComerSeryal.ReadOnly = true;
                 this.columnUser.ReadOnly = true;
                 this.columnUser.MaxLength = 201;
+                this.columnGroupAccountName.AllowDBNull = false;
+                this.columnGroupAccountName.MaxLength = 100;
+                this.columnTotalAccountName.AllowDBNull = false;
+                this.columnTotalAccountName.MaxLength = 100;
+                this.columnSpecificAccountCode.AllowDBNull = false;
+                this.columnCustomerId.AllowDBNull = false;
+                this.columnSpecificAccountId.AllowDBNull = false;
+                this.columnCodeAccount.AllowDBNull = false;
+                this.columnStatus.AllowDBNull = false;
+                this.columnUserId.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16916,12 +17098,12 @@ namespace HM_ERP_System {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int DetailedAccountId {
+            public int Id {
                 get {
-                    return ((int)(this[this.tableV_ReviewAccountsList.DetailedAccountIdColumn]));
+                    return ((int)(this[this.tableV_ReviewAccountsList.IdColumn]));
                 }
                 set {
-                    this[this.tableV_ReviewAccountsList.DetailedAccountIdColumn] = value;
+                    this[this.tableV_ReviewAccountsList.IdColumn] = value;
                 }
             }
             
@@ -16994,6 +17176,38 @@ namespace HM_ERP_System {
                 }
                 set {
                     this[this.tableV_ReviewAccountsList.ContraAccountNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string CodMeli {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_ReviewAccountsList.CodMeliColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CodMeli\' in table \'V_ReviewAccountsList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.CodMeliColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Tel {
+                get {
+                    try {
+                        return ((string)(this[this.tableV_ReviewAccountsList.TelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Tel\' in table \'V_ReviewAccountsList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.TelColumn] = value;
                 }
             }
             
@@ -17102,6 +17316,110 @@ namespace HM_ERP_System {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string GroupAccountName {
+                get {
+                    return ((string)(this[this.tableV_ReviewAccountsList.GroupAccountNameColumn]));
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.GroupAccountNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string TotalAccountName {
+                get {
+                    return ((string)(this[this.tableV_ReviewAccountsList.TotalAccountNameColumn]));
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.TotalAccountNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int SpecificAccountCode {
+                get {
+                    return ((int)(this[this.tableV_ReviewAccountsList.SpecificAccountCodeColumn]));
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.SpecificAccountCodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int CustomerId {
+                get {
+                    return ((int)(this[this.tableV_ReviewAccountsList.CustomerIdColumn]));
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.CustomerIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int SpecificAccountId {
+                get {
+                    return ((int)(this[this.tableV_ReviewAccountsList.SpecificAccountIdColumn]));
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.SpecificAccountIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int CodeAccount {
+                get {
+                    return ((int)(this[this.tableV_ReviewAccountsList.CodeAccountColumn]));
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.CodeAccountColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Status {
+                get {
+                    return ((bool)(this[this.tableV_ReviewAccountsList.StatusColumn]));
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.StatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int UserId {
+                get {
+                    return ((int)(this[this.tableV_ReviewAccountsList.UserIdColumn]));
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.UserIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ComerBId {
+                get {
+                    try {
+                        return ((int)(this[this.tableV_ReviewAccountsList.ComerBIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ComerBId\' in table \'V_ReviewAccountsList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableV_ReviewAccountsList.ComerBIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsContraAccountNameNull() {
                 return this.IsNull(this.tableV_ReviewAccountsList.ContraAccountNameColumn);
             }
@@ -17110,6 +17428,30 @@ namespace HM_ERP_System {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetContraAccountNameNull() {
                 this[this.tableV_ReviewAccountsList.ContraAccountNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCodMeliNull() {
+                return this.IsNull(this.tableV_ReviewAccountsList.CodMeliColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCodMeliNull() {
+                this[this.tableV_ReviewAccountsList.CodMeliColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsTelNull() {
+                return this.IsNull(this.tableV_ReviewAccountsList.TelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetTelNull() {
+                this[this.tableV_ReviewAccountsList.TelColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17146,6 +17488,18 @@ namespace HM_ERP_System {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetUserNull() {
                 this[this.tableV_ReviewAccountsList.UserColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsComerBIdNull() {
+                return this.IsNull(this.tableV_ReviewAccountsList.ComerBIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetComerBIdNull() {
+                this[this.tableV_ReviewAccountsList.ComerBIdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -17989,7 +18343,7 @@ namespace HM_ERP_System.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::HM_ERP_System.Properties.Settings.Default.Manegmen_Machinery4ConnectionString;
+            //this._connection.ConnectionString = global::HM_ERP_System.Properties.Settings.Default.Manegmen_Machinery4ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22292,13 +22646,15 @@ SELECT Id, Name, Family, CodMeli, id_TypeCustomer, Tel, Tel2, Adders, Adders2, P
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "V_ReviewAccountsList";
-            tableMapping.ColumnMappings.Add("DetailedAccountId", "DetailedAccountId");
+            tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("Series", "Series");
             tableMapping.ColumnMappings.Add("TransactionCode", "TransactionCode");
             tableMapping.ColumnMappings.Add("TransactionDate", "TransactionDate");
             tableMapping.ColumnMappings.Add("TransactionType", "TransactionType");
             tableMapping.ColumnMappings.Add("SpecificAccountName", "SpecificAccountName");
             tableMapping.ColumnMappings.Add("ContraAccountName", "ContraAccountName");
+            tableMapping.ColumnMappings.Add("CodMeli", "CodMeli");
+            tableMapping.ColumnMappings.Add("Tel", "Tel");
             tableMapping.ColumnMappings.Add("TotalAmount", "TotalAmount");
             tableMapping.ColumnMappings.Add("PaymentBed", "PaymentBed");
             tableMapping.ColumnMappings.Add("PaymentBes", "PaymentBes");
@@ -22307,6 +22663,15 @@ SELECT Id, Name, Family, CodMeli, id_TypeCustomer, Tel, Tel2, Adders, Adders2, P
             tableMapping.ColumnMappings.Add("IsAutoRejDoc", "IsAutoRejDoc");
             tableMapping.ColumnMappings.Add("ComerSeryal", "ComerSeryal");
             tableMapping.ColumnMappings.Add("User", "User");
+            tableMapping.ColumnMappings.Add("GroupAccountName", "GroupAccountName");
+            tableMapping.ColumnMappings.Add("TotalAccountName", "TotalAccountName");
+            tableMapping.ColumnMappings.Add("SpecificAccountCode", "SpecificAccountCode");
+            tableMapping.ColumnMappings.Add("CustomerId", "CustomerId");
+            tableMapping.ColumnMappings.Add("SpecificAccountId", "SpecificAccountId");
+            tableMapping.ColumnMappings.Add("CodeAccount", "CodeAccount");
+            tableMapping.ColumnMappings.Add("Status", "Status");
+            tableMapping.ColumnMappings.Add("UserId", "UserId");
+            tableMapping.ColumnMappings.Add("ComerBId", "ComerBId");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -22323,10 +22688,7 @@ SELECT Id, Name, Family, CodMeli, id_TypeCustomer, Tel, Tel2, Adders, Adders2, P
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DetailedAccountId, Series, TransactionCode, TransactionDate, TransactionTy" +
-                "pe, SpecificAccountName, ContraAccountName, TotalAmount, PaymentBed, PaymentBes," +
-                " Description, AccountCode, IsAutoRejDoc, ComerSeryal, [User] FROM dbo.V_ReviewAc" +
-                "countsList";
+            this._commandCollection[0].CommandText = @"SELECT Id, Series, TransactionCode, TransactionDate, TransactionType, SpecificAccountName, ContraAccountName, CodMeli, Tel, TotalAmount, PaymentBed, PaymentBes, Description, AccountCode, IsAutoRejDoc, ComerSeryal, [User], GroupAccountName, TotalAccountName, SpecificAccountCode, CustomerId, SpecificAccountId, CodeAccount, Status, UserId, ComerBId FROM dbo.V_ReviewAccountsList";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

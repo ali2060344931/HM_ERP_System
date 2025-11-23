@@ -76,7 +76,7 @@ namespace HM_ERP_System.Forms.Ciltys
                             // اگر ProvincesId برابر با 0 باشد، یا pr برابر با null باشد، خالی نشان بده
                             ProvincesName = (ct.ProvincesId == 0 || pr == null) ? "" : pr.Name
                         };
-                dgvList.DataSource = q.ToList();
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                 //dgvList.AutoSizeColumns();
                 PublicClass.SettingGridEX(dgvList,Name);
             }

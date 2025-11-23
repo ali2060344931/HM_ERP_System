@@ -72,7 +72,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                             SpecificAccount = spaF.Name,
                             
                         };
-                dgvList.DataSource=q.ToList();
+                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 dgvList.AutoSizeColumns();
 
             }

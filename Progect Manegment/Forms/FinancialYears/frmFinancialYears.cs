@@ -42,9 +42,8 @@ namespace HM_ERP_System.Forms.FinancialYears
         {
             using (var db = new DBcontextModel())
             {
-                var q=db.FinancialYears.ToList();
-                dgvList.DataSource = q;
-                PublicClass.SettingGridEX(dgvList,Name);
+                var q=db.FinancialYears;
+                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList,Name);
             }
         }
 

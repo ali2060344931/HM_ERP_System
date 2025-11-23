@@ -222,7 +222,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                                 Balance = Math.Abs((trGroup.Sum(t => (double?)t.PaymentBes) ?? 0) - (trGroup.Where(c => c.FinancialYear == FinancialYear && !c.Status).Sum(t => (double?)t.PaymentBed) ?? 0))
                             };
 
-                    dgvList.DataSource = q.ToList();
+                   System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                     //dgvList.AutoSizeColumns();
                     PublicClass.SettingGridEX(dgvList);
                 }

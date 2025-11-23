@@ -339,7 +339,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                             Payer_Payee_Acc = cu.Family +" "+cu.Name,
                             ChequeStatusTypes = chst.Name,
                         };
-                dgvList.DataSource = q.ToList();
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                 dgvList.AutoSizeColumns();
             }
         }

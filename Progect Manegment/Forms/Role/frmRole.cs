@@ -46,8 +46,8 @@ namespace HM_ERP_System.Forms.Role
         {
             using (var db = new DBcontextModel())
             {
-                var q = db.Roles.ToList();
-                dgvList.DataSource = q;
+                var q = db.Roles;
+                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 dgvList.AutoSizeColumns();
             }
         }

@@ -80,8 +80,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                             groupName = pg.Name,
                             cu.CodMeli,
                         };
-                dgvList.DataSource=q.ToList();
-                PublicClass.SettingGridEX(dgvList,Name);
+                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList,Name);
             }
         }
 

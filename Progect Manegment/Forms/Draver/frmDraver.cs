@@ -132,7 +132,7 @@ namespace HM_ERP_System.Forms.Draver
                             dr.SeryalGovahiname,
                         };
 
-                    dgvList.DataSource = q.ToList();
+                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                     PublicClass.SettingGridEX(dgvList, Name);
                 }
             }

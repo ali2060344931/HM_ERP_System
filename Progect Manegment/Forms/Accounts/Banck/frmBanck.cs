@@ -48,8 +48,7 @@ namespace HM_ERP_System.Forms.Accounts.Banck
             using (var db = new DBcontextModel())
             {
                 var q = db.Bancks.ToList();
-                dgvList.DataSource = q;
-
+                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 PublicClass.SettingGridEX(dgvList,Name);
             }
         }

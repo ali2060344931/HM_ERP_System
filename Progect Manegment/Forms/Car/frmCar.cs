@@ -230,7 +230,7 @@ namespace HM_ERP_System.Forms.Car
                             ProvincesName = pr_ !=null ? pr_.Name : "-",
 
                         };
-                dgvList.DataSource = q.ToList();
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                 PublicClass.SettingGridEX(dgvList,Name);
             }
         }

@@ -124,7 +124,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                 pt.PostalCode,
                                 pt.Addres,
                             };
-                    dgvList.DataSource = q.ToList();
+                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                     PublicClass.SettingGridEX(dgvList,Name);
                 }
 

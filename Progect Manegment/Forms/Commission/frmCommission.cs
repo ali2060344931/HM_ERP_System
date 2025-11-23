@@ -235,7 +235,8 @@ namespace HM_ERP_System.Forms.Commission
                                 cmb.Bn,
 
                             };
-                    DG.DataSource=q.ToList();
+                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());
+                    DG.DataSource = dt;
                     PublicClass.SettingGridEX(DG, formname);
                     return DG;
                 }

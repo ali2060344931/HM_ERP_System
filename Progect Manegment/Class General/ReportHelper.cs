@@ -5,6 +5,7 @@ using Microsoft.Reporting.WinForms;
 using Janus.Windows.GridEX;
 using System.Collections.Generic;
 using System.Linq;
+using GridExEx;
 
 namespace MyClass
 {
@@ -16,7 +17,7 @@ namespace MyClass
         /// <summary>
         ///Janus GridEX استخراج داده‌های فیلتر شده از
         /// </summary>
-        public static DataTable GetFilteredDataFromJanus(Janus.Windows.GridEX.GridEX grid)
+        public static DataTable GetFilteredDataFromJanus0(Janus.Windows.GridEX.GridEX grid)
         {
             try
             {
@@ -55,6 +56,117 @@ namespace MyClass
                 MessageBox.Show("خطا در استخراج داده‌های فیلترشده از GridEX: " + ex.Message);
                 return null;
             }
+        }
+
+        public static DataTable GetFilteredDataFromJanus(GridExEx.GridExEx grid)
+        {
+            try
+            {
+                // *** مرحله ۱: تشخیص DataTable واقعی ***
+                DataTable sourceTable = null;
+
+                if (grid.DataSource is DataTable dt1)
+                    sourceTable = dt1;
+
+                else if (grid.DataSource is DataView dv)
+                    sourceTable = dv.Table;
+
+                else if (grid.DataSource is BindingSource bs)
+                {
+                    if (bs.DataSource is DataTable dt2)
+                        sourceTable = dt2;
+                    else if (bs.DataSource is DataView dv2)
+                        sourceTable = dv2.Table;
+                }
+
+                // اگر باز هم DataTable نبود یعنی DataSource لیست یا AnonymousType است
+                if (sourceTable == null)
+                {
+                    // تبدیل خودکار DataSource به DataTable
+                    sourceTable = ToDataTableFromList(grid.DataSource);
+                }
+
+                if (sourceTable == null)
+                    return null;
+
+
+                // *** مرحله ۲: ساخت DataTable خروجی براساس ستون‌های DataSource ***
+                DataTable dt = new DataTable();
+
+                foreach (DataColumn col in sourceTable.Columns)
+                    dt.Columns.Add(col.ColumnName, col.DataType);
+
+
+                // اگر هیچ ردیفی در گرید نبود
+                if (grid.GetRows().Count() == 0)
+                    return dt;
+
+
+                // *** مرحله ۳: استخراج ایمن سطرهای فیلترشده ***
+                foreach (Janus.Windows.GridEX.GridEXRow row in grid.GetRows())
+                {
+                    if (row.RowType == Janus.Windows.GridEX.RowType.Record)
+                    {
+                        DataRow dr = dt.NewRow();
+
+                        foreach (DataColumn col in sourceTable.Columns)
+                        {
+                            // اول چک کنیم ستون در GridEX وجود دارد
+                            if (grid.RootTable.Columns.Contains(col.ColumnName))
+                            {
+                                var cell = row.Cells[col.ColumnName];
+                                dr[col.ColumnName] = cell?.Value ?? DBNull.Value;
+                            }
+                            else
+                            {
+                                // اگر ستون در GridEX نبود مقدار خالی قرار می‌دهیم
+                                dr[col.ColumnName] = DBNull.Value;
+                            }
+                        }
+
+                        dt.Rows.Add(dr);
+                    }
+                }
+
+                return dt;
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return null;
+            }
+        }
+
+        private static DataTable ToDataTableFromList(object listObj)
+        {
+            if (listObj is System.Collections.IEnumerable list)
+            {
+                DataTable dt = new DataTable();
+                bool structureCreated = false;
+
+                foreach (var item in list)
+                {
+                    if (!structureCreated)
+                    {
+                        foreach (var prop in item.GetType().GetProperties())
+                        {
+                            dt.Columns.Add(prop.Name, prop.PropertyType);
+                        }
+                        structureCreated = true;
+                    }
+
+                    DataRow row = dt.NewRow();
+                    foreach (var prop in item.GetType().GetProperties())
+                    {
+                        row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                    }
+                    dt.Rows.Add(row);
+                }
+
+                return dt;
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -106,7 +218,7 @@ namespace MyClass
         /// نمایش گزارش از GridEX به همراه چند DataTable جانبی (مثلاً لوگو یا اطلاعات شرکت)
         /// </summary>
         public static void ShowReportFromGridEX(
-            GridEX grid,
+            GridExEx.GridExEx grid,
             string reportName,
             ReportViewer reportViewer,
             string mainDataSetName,

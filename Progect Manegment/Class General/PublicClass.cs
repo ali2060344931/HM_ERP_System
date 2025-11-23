@@ -1519,7 +1519,7 @@ namespace MyClass
                     // ----------------------------------------------------------------
                     // 3. کوئری تراکنش‌های داخل دوره (Current Transactions)
                     // ----------------------------------------------------------------
-                   
+
                     var qCurrent = from tr in accountFilter
                                    join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
                                    join da in db.DetailedAccounts on tr.DetailedAccountId equals da.Id
@@ -1995,7 +1995,7 @@ namespace MyClass
                                     };
 
 
-                    dtSpecificAccounts = PublicClass.ToDataTable(qSpecific.ToList(), "SpecificAccounts");
+                    dtSpecificAccounts = PublicClass.EntityTableToDataTable(qSpecific.ToList(), "SpecificAccounts");
                     ds.Tables.Remove("SpecificAccounts");
                     ds.Tables.Add(dtSpecificAccounts);
 
@@ -2036,7 +2036,7 @@ namespace MyClass
                                         CreditBalance = EndingBalanceD < 0 ? Math.Abs(EndingBalanceD) : 0.0,
                                     };
 
-                    dtDetailedAccounts = PublicClass.ToDataTable(qDetailed.ToList(), "DetailedAccounts");
+                    dtDetailedAccounts = PublicClass.EntityTableToDataTable(qDetailed.ToList(), "DetailedAccounts");
                     ds.Tables.Remove("DetailedAccounts");
                     ds.Tables.Add(dtDetailedAccounts);
                 }
@@ -2139,7 +2139,7 @@ namespace MyClass
                                         CreditBalance = EndingBalance < 0 ? Math.Abs(EndingBalance) : 0.0,
                                     };
 
-                    dtSpecificAccounts = PublicClass.ToDataTable(qSpecific.ToList(), "SpecificAccounts");
+                    dtSpecificAccounts = PublicClass.EntityTableToDataTable(qSpecific.ToList(), "SpecificAccounts");
                     ds.Tables.Remove("SpecificAccounts");
                     ds.Tables.Add(dtSpecificAccounts);
 
@@ -2181,7 +2181,7 @@ namespace MyClass
                                         CreditBalance = EndingBalanceD < 0 ? Math.Abs(EndingBalanceD) : 0.0,
                                     };
 
-                    dtDetailedAccounts = PublicClass.ToDataTable(qDetailed.ToList(), "DetailedAccounts");
+                    dtDetailedAccounts = PublicClass.EntityTableToDataTable(qDetailed.ToList(), "DetailedAccounts");
                     ds.Tables.Remove("DetailedAccounts");
                     ds.Tables.Add(dtDetailedAccounts);
                 }
@@ -2204,52 +2204,26 @@ namespace MyClass
         }
 
 
-        public static System.Data.DataTable ToDataTable<T>(List<T> items, string tableName = "Data")
+        public static System.Data.DataTable EntityTableToDataTable<T>(List<T> items, string tableName = "Data")
         {
             try
             {
+                System.Data.DataTable dt = new System.Data.DataTable(tableName);
+
                 if (items == null || items.Count == 0)
+                    return dt;
+
+                // ایجاد reader بسیار سریع از لیست
+                using (var reader = ObjectReader.Create(items))
                 {
-                    return new System.Data.DataTable(tableName);
+                    dt.Load(reader);
                 }
 
-                System.Data.DataTable dataTable = new System.Data.DataTable(tableName);
-                Type itemType = typeof(T);
-
-                // دریافت تمامی Propertyهای public آن کلاس/نوع ناشناس
-                PropertyInfo[] props = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-                // ایجاد ستون‌ها
-                foreach (PropertyInfo prop in props)
-                {
-                    // مدیریت انواع Nullable (اختیاری: برای اینکه ستون‌ها در صورت Nullable بودن خطا ندهند)
-                    Type colType = prop.PropertyType;
-                    if (colType.IsGenericType && colType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                    {
-                        colType = Nullable.GetUnderlyingType(colType);
-                    }
-
-                    dataTable.Columns.Add(prop.Name, colType);
-                }
-
-                // پر کردن سطرها
-                foreach (T item in items)
-                {
-                    var values = new object[props.Length];
-                    for (int i = 0; i < props.Length; i++)
-                    {
-                        // خواندن مقدار Property
-                        values[i] = props[i].GetValue(item, null);
-                    }
-
-                    dataTable.Rows.Add(values);
-                }
-
-                return dataTable;
+                return dt;
             }
-            catch (Exception er)
+            catch (Exception ex)
             {
-                PublicClass.ShowErrorMessage(er);
+                PublicClass.ShowErrorMessage(ex);
                 return null;
             }
         }
@@ -2423,10 +2397,10 @@ namespace MyClass
                                     CreditBalance = EndingBalanceD < 0 ? Math.Abs(EndingBalanceD) : 0.0,
                                 };
 
-                System.Data.DataTable dtCustomers = PublicClass.ToDataTable(qCustomers.ToList(), "Customers");
+                System.Data.DataTable dtCustomers = PublicClass.EntityTableToDataTable(qCustomers.ToList(), "Customers");
                 ds.Tables.Add(dtCustomers);
 
-                System.Data.DataTable dtDetailedAccounts = PublicClass.ToDataTable(qDetailed.ToList(), "DetailedAccounts");
+                System.Data.DataTable dtDetailedAccounts = PublicClass.EntityTableToDataTable(qDetailed.ToList(), "DetailedAccounts");
                 ds.Tables.Add(dtDetailedAccounts);
             }
             DataColumn parentCol = ds.Tables["Customers"].Columns["Id"];
@@ -2547,10 +2521,10 @@ namespace MyClass
                 // ----------------------------------------------------------------
                 // ساخت DataSet و DataRelation
                 // ----------------------------------------------------------------
-                System.Data.DataTable dtCustomers = PublicClass.ToDataTable(qCustomers.ToList(), "Customers");
+                System.Data.DataTable dtCustomers = PublicClass.EntityTableToDataTable(qCustomers.ToList(), "Customers");
                 ds.Tables.Add(dtCustomers);
 
-                System.Data.DataTable dtDetailedAccounts = PublicClass.ToDataTable(qDetailed.ToList(), "DetailedAccounts");
+                System.Data.DataTable dtDetailedAccounts = PublicClass.EntityTableToDataTable(qDetailed.ToList(), "DetailedAccounts");
                 ds.Tables.Add(dtDetailedAccounts);
             }
 
@@ -2681,10 +2655,10 @@ namespace MyClass
                 // ----------------------------------------------------------------
                 // ساخت DataSet و DataRelation
                 // ----------------------------------------------------------------
-                System.Data.DataTable dtCustomers = PublicClass.ToDataTable(qCustomers.ToList(), "Customers");
+                System.Data.DataTable dtCustomers = PublicClass.EntityTableToDataTable(qCustomers.ToList(), "Customers");
                 ds.Tables.Add(dtCustomers);
 
-                System.Data.DataTable dtDetailedAccounts = PublicClass.ToDataTable(qDetailed.ToList(), "DetailedAccounts");
+                System.Data.DataTable dtDetailedAccounts = PublicClass.EntityTableToDataTable(qDetailed.ToList(), "DetailedAccounts");
                 ds.Tables.Add(dtDetailedAccounts);
             }
 
@@ -3330,7 +3304,7 @@ namespace MyClass
                                 CreditBalance = EndingBalance < 0 ? Math.Abs(EndingBalance) : 0.0,
                             };
 
-                    GX.DataSource = q.ToList();
+                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); GX.DataSource = dt;
                     PublicClass.SettingGridEX(GX);
                     return GX;
                 }

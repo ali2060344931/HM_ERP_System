@@ -101,7 +101,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                                 GoodsAccount = GA.Family +" "+GA.Name,
                             };
 
-                    dgvList.DataSource = q.ToList();
+                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                     dgvList.AutoSizeColumns();
                 }
             }

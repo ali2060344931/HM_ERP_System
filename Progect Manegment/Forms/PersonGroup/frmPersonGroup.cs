@@ -48,9 +48,8 @@ namespace HM_ERP_System.Forms.PersonGroup
         {
             using (var db = new DBcontextModel())
             {
-                var q = db.PersonGroups.ToList();
-                dgvList.DataSource = q;
-                //dgvList.AutoSizeColumns();
+                var q = db.PersonGroups;
+                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 PublicClass.SettingGridEX(dgvList,Name);
             }
         }

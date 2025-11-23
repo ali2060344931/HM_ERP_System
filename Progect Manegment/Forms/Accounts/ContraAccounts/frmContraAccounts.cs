@@ -204,8 +204,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                                      banckName = ""
                                  };
                 }
-                dgvList.DataSource = finalQuery.ToList();
-                PublicClass.SettingGridEX(dgvList,Name);
+                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(finalQuery.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList,Name);
             }
 
         }

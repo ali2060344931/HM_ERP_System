@@ -43,8 +43,8 @@ namespace HM_ERP_System.Forms.Persons
         {
             using (var db = new DBcontextModel())
             {
-                var q = db.Provinces.ToList();
-                dgvList.DataSource = q;
+                var q = db.Provinces;
+                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 dgvList.AutoSizeColumns();
             }
         }

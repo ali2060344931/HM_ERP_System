@@ -39,7 +39,7 @@ namespace HM_ERP_System.Forms.Reports
         public string TitelString = "";
         public string ReporFileName = "";
         public string Description = " ";
-        public GridEX grid;
+        public GridExEx.GridExEx grid;
         string NameCompani;
 
         string TarikhRoz = MyClass.PersianDate.NowPersianDate;
@@ -59,7 +59,7 @@ namespace HM_ERP_System.Forms.Reports
                     //نام(عنوان) شرکت
                     NameCompani=db.Settings.Where(c => c.Code==1).First().Subject;
                     this.reportViewer1.RefreshReport();
-                    reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                    //reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                     reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
                     SetReport();
                 }

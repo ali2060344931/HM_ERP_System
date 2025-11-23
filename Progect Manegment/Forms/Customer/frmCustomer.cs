@@ -255,7 +255,7 @@ namespace HM_ERP_System.Forms.Customer
                                 CountDoc = docGroup.Where(c => c.FormName == this.Name).Count(),//آمار تعداد مدارک پیوست
 
                             };
-                    dgvList.DataSource = q.ToList();
+                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                     PublicClass.SettingGridEX(dgvList,Name);
                 }
             }

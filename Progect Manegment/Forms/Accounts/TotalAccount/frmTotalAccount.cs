@@ -77,7 +77,7 @@ namespace HM_ERP_System.Forms.Accounts.TotalAccount
                             AccountName = ta.Name,
                             AccountCode = ta.Cod,
                         };
-                dgvList.DataSource = q.ToList();
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                 dgvList.AutoSizeColumns();
             }
         }

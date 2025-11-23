@@ -265,7 +265,7 @@ namespace HM_ERP_System.Forms.BillLadingRequest
                                 cmh.DH_SealNumber,
                                 cmh.DH_StatusRejistered
                             };
-                    dgvListH.DataSource = q.ToList();
+                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvListH.DataSource = dt;
                     dgvListH.AutoSizeColumns();
                 }
             }

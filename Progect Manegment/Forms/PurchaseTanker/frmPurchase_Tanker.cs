@@ -194,8 +194,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                             pt.AgencyCommission,
                             pt.TransactionsStatuse,
                         };
-                dgvList.DataSource=q.ToList();
-                PublicClass.SettingGridEX(dgvList,Name);
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList,Name);
             }
         }
 

@@ -93,7 +93,7 @@ namespace HM_ERP_System.Forms.User
                                 UserName = cu.Family +" "+ cu.Name,
                                 TypeUserName = rl.Name,
                             };
-                    dgvList.DataSource = q.ToList();
+                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                     dgvList.AutoSizeColumns();
                 }
             }

@@ -81,7 +81,7 @@ namespace HM_ERP_System.Forms.BlacList
                             bl.status,
                             bl.NoSaveData,
                         };
-                dgvList.DataSource = q.ToList();
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                 PublicClass.SettingGridEX(dgvList,Name);
                 //dgvList.AutoSizeColumns();
             }

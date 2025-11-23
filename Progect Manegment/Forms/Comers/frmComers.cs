@@ -1757,7 +1757,7 @@ namespace HM_ERP_System.Forms.Comers
                                 cmh.Description,
                                 cmh.CotajNumber,
                             };
-                    dx.DataSource = q.ToList();
+                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dx.DataSource = dt;
                     //dx.AutoSizeColumns();
                     PublicClass.SettingGridEX(dx, formname);
                     return dx;
@@ -1923,7 +1923,7 @@ namespace HM_ERP_System.Forms.Comers
                             cmb.Bn,
                         };
 
-                    Gx.DataSource = q.ToList();
+                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); Gx.DataSource = dt;
                     //gx.AutoSizeColumns();
                     PublicClass.SettingGridEX(Gx,formNmane);
                     

@@ -51,8 +51,8 @@ namespace HM_ERP_System.Forms.Product
         {
             using (var db = new DBcontextModel())
             {
-                var q = db.ProductGroups.ToList();
-                dgvList.DataSource = q;
+                var q = db.ProductGroups;
+                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 dgvList.AutoSizeColumns();
             }
         }

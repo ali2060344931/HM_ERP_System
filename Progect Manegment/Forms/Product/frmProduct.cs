@@ -58,7 +58,7 @@ namespace HM_ERP_System.Forms.Product
                             ProductGroupName= prg.Name,
                         };
                 
-                dgvList.DataSource = q.ToList();
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                 PublicClass.SettingGridEX(dgvList,Name);
             }
         }

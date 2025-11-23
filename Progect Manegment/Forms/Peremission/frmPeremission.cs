@@ -49,7 +49,7 @@ namespace HM_ERP_System.Forms.Peremission
                             PeremissionName = pr.Des,
                             Path = pr.Rot,
                         };
-                dgvList.DataSource = q.ToList();
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                 dgvList.AutoSizeColumns();
             }
         }

@@ -1122,13 +1122,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.82907in</Height>
+        <Height>0.89157in</Height>
         <Style />
       </Body>
       <Width>11.05763in</Width>
       <Page>
         <PageHeader>
-          <Height>3.64578cm</Height>
+          <Height>3.05311cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1356,7 +1356,6 @@
                       <Value>=Parameters!Description.Value &amp; vbCrLf &amp; "کد ملی:" &amp; First(Fields!CodMeli.Value, "DataSet1") &amp; " - " &amp; "تلفن: " &amp; First(Fields!Tel.Value, "DataSet1")</Value>
                       <Style>
                         <FontFamily>vazir FD</FontFamily>
-                        <FontSize>11pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1366,9 +1365,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>NameHesab</rd:DefaultName>
-              <Top>2.3314cm</Top>
+              <Top>2.40303cm</Top>
               <Left>6.37921cm</Left>
-              <Height>1.10271cm</Height>
+              <Height>0.65008cm</Height>
               <Width>15.32795cm</Width>
               <ZIndex>6</ZIndex>
               <Style>
@@ -1391,7 +1390,6 @@
                       <Value>="مانده حســاب: " &amp; FormatNumber( Abs(Sum(Fields!PaymentBed.Value, "DataSet1") - Sum(Fields!PaymentBes.Value, "DataSet1")), 0 )</Value>
                       <Style>
                         <FontFamily>vazir FD</FontFamily>
-                        <FontSize>11pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1399,10 +1397,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox24</rd:DefaultName>
-              <Top>2.78403cm</Top>
+              <Top>2.40303cm</Top>
               <Left>0.19123cm</Left>
               <Height>0.65007cm</Height>
-              <Width>7.20327cm</Width>
+              <Width>6.01159cm</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>

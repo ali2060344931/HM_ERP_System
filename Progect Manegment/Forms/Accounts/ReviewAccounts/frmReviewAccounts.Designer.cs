@@ -84,8 +84,11 @@
             this.lblCode = new System.Windows.Forms.Label();
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
             this.label4 = new System.Windows.Forms.Label();
+            this.pnlViewItemFoter = new System.Windows.Forms.Panel();
+            this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
+            this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
             this.ribbonStatusBar1 = new Janus.Windows.Ribbon.RibbonStatusBar();
-            this.btnRepirts = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommand1 = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommand2 = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommand3 = new Janus.Windows.Ribbon.ButtonCommand();
@@ -118,6 +121,7 @@
             this.uiTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListِDocs)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnlViewItemFoter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiCommandBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -445,6 +449,7 @@
             // uiPanel1Container
             // 
             this.uiPanel1Container.Controls.Add(this.uiTab1);
+            this.uiPanel1Container.Controls.Add(this.pnlViewItemFoter);
             this.uiPanel1Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel1Container.Name = "uiPanel1Container";
             this.uiPanel1Container.Size = new System.Drawing.Size(921, 298);
@@ -456,7 +461,7 @@
             this.uiTab1.FirstTabOffset = 10;
             this.uiTab1.Location = new System.Drawing.Point(0, 0);
             this.uiTab1.Name = "uiTab1";
-            this.uiTab1.Size = new System.Drawing.Size(921, 298);
+            this.uiTab1.Size = new System.Drawing.Size(921, 270);
             this.uiTab1.TabIndex = 0;
             this.uiTab1.TabPages.AddRange(new Janus.Windows.UI.Tab.UITabPage[] {
             this.uiTabPage1,
@@ -478,7 +483,7 @@
             this.uiTabPage1.Key = "G";
             this.uiTabPage1.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage1.Name = "uiTabPage1";
-            this.uiTabPage1.Size = new System.Drawing.Size(797, 296);
+            this.uiTabPage1.Size = new System.Drawing.Size(797, 268);
             this.uiTabPage1.TabStop = true;
             this.uiTabPage1.Text = "گروه";
             // 
@@ -502,7 +507,7 @@
             this.dgvListG.RecordNavigator = true;
             this.dgvListG.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListG.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListG.Size = new System.Drawing.Size(797, 296);
+            this.dgvListG.Size = new System.Drawing.Size(797, 268);
             this.dgvListG.Sortable = true;
             this.dgvListG.TabIndex = 87;
             this.dgvListG.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -851,12 +856,83 @@
             this.label4.TabIndex = 141;
             this.label4.Text = "شماره سند:";
             // 
+            // pnlViewItemFoter
+            // 
+            this.pnlViewItemFoter.Controls.Add(this.btnShowGridExHideColumns);
+            this.pnlViewItemFoter.Controls.Add(this.buttonX01);
+            this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
+            this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 270);
+            this.pnlViewItemFoter.Name = "pnlViewItemFoter";
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(921, 28);
+            this.pnlViewItemFoter.TabIndex = 2;
+            // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowGridExHideColumns.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(818, 0);
+            this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
+            this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlQ);
+            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 28);
+            this.btnShowGridExHideColumns.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowGridExHideColumns.Symbol = "59635";
+            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Black;
+            this.btnShowGridExHideColumns.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
+            this.btnShowGridExHideColumns.SymbolSize = 15F;
+            this.btnShowGridExHideColumns.TabIndex = 5;
+            this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            // 
+            // buttonX01
+            // 
+            this.buttonX01.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX01.BackColor = System.Drawing.Color.Transparent;
+            this.buttonX01.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX01.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonX01.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.buttonX01.Location = new System.Drawing.Point(853, 0);
+            this.buttonX01.Name = "buttonX01";
+            this.buttonX01.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.buttonX01.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
+            this.buttonX01.Size = new System.Drawing.Size(34, 28);
+            this.buttonX01.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX01.Symbol = "";
+            this.buttonX01.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.buttonX01.SymbolSize = 15F;
+            this.buttonX01.TabIndex = 4;
+            this.buttonX01.Tooltip = "چاپ جدول";
+            this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
+            // 
+            // btnExportToExcel
+            // 
+            this.btnExportToExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnExportToExcel.BackColor = System.Drawing.Color.Transparent;
+            this.btnExportToExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnExportToExcel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnExportToExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnExportToExcel.Location = new System.Drawing.Point(887, 0);
+            this.btnExportToExcel.Name = "btnExportToExcel";
+            this.btnExportToExcel.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnExportToExcel.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
+            this.btnExportToExcel.Size = new System.Drawing.Size(34, 28);
+            this.btnExportToExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnExportToExcel.Symbol = "";
+            this.btnExportToExcel.SymbolColor = System.Drawing.Color.Green;
+            this.btnExportToExcel.SymbolSize = 15F;
+            this.btnExportToExcel.TabIndex = 3;
+            this.btnExportToExcel.Tooltip = "خروجی لیست به اکسل F9";
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
+            // 
             // ribbonStatusBar1
             // 
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 451);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.btnRepirts,
             this.buttonCommand1,
             this.buttonCommand2,
             this.buttonCommand3,
@@ -870,17 +946,6 @@
             this.ribbonStatusBar1.TabIndex = 5;
             this.ribbonStatusBar1.Text = "ribbonStatusBar1";
             this.ribbonStatusBar1.CommandClick += new Janus.Windows.Ribbon.CommandEventHandler(this.ribbonStatusBar1_CommandClick);
-            // 
-            // btnRepirts
-            // 
-            this.btnRepirts.Icon = ((System.Drawing.Icon)(resources.GetObject("btnRepirts.Icon")));
-            this.btnRepirts.Key = "buttonCommand5";
-            this.btnRepirts.Name = "btnRepirts";
-            this.btnRepirts.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
-            this.btnRepirts.SupertipSettingsData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><SupertipSettings><HeaderText>گزارشــــات</" +
-    "HeaderText><Text>نمایش و چاپ گزارشات</Text></SupertipSettings>";
-            this.btnRepirts.Text = "";
-            this.btnRepirts.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnRepirts_Click);
             // 
             // buttonCommand1
             // 
@@ -916,7 +981,6 @@
             this.buttonCommand4.Name = "buttonCommand4";
             this.buttonCommand4.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand4.Text = "بستن";
-            this.buttonCommand4.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand4_Click);
             // 
             // uiCommandBar1
             // 
@@ -967,6 +1031,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListِDocs)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlViewItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uiCommandBar1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1022,6 +1087,9 @@
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand4;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
-        private Janus.Windows.Ribbon.ButtonCommand btnRepirts;
+        public System.Windows.Forms.Panel pnlViewItemFoter;
+        public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
+        public DevComponents.DotNetBar.ButtonX buttonX01;
+        public DevComponents.DotNetBar.ButtonX btnExportToExcel;
     }
 }

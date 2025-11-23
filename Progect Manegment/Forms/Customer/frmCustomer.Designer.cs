@@ -234,7 +234,6 @@
             // 
             // buttonX01
             // 
-            this.buttonX01.AutoExpandOnClick = true;
             this.buttonX01.Location = new System.Drawing.Point(611, 0);
             this.buttonX01.Size = new System.Drawing.Size(96, 28);
             this.buttonX01.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {

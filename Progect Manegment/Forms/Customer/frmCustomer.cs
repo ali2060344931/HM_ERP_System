@@ -206,57 +206,59 @@ namespace HM_ERP_System.Forms.Customer
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = from cu in db.Customers
+                    var q =
+                        from cu in db.Customers
 
-                            join tc in db.TypeCustomers
+                        join tc in db.TypeCustomers
                             on cu.id_TypeCustomer equals tc.Id
 
-                            join doc in db.DocumentBancks
-                            on cu.Id equals doc.ListInFoemId into docGroup
-
-                            join bb in db.BankBranches
-                            on cu.BanckId equals bb.Id into bbGroup
-                            from bb_ in bbGroup.DefaultIfEmpty()
-
-                            join ba in db.Bancks
-                            on bb_.BanckId equals ba.Id into baGroup
-                            from ba_ in baGroup.DefaultIfEmpty()
-
-                            join ct in db.Ciltys
+                        join ct in db.Ciltys
                             on cu.CityId equals ct.Id into ctGroup
-                            from ct_ in ctGroup.DefaultIfEmpty()
-
-                            join pr in db.Provinces
+                        from ct_ in ctGroup.DefaultIfEmpty()
+                        
+                        join pr in db.Provinces
                             on ct_.ProvincesId equals pr.Id into prGroup
-                            from pr_ in prGroup.DefaultIfEmpty()
+                        from pr_ in prGroup.DefaultIfEmpty()
 
-                            where cu.id_TypeCustomer <= 2
+                        join bb in db.BankBranches
+                            on cu.BanckId equals bb.Id into bbGroup
+                        from bb_ in bbGroup.DefaultIfEmpty()
 
-                            select new
-                            {
-                                cu.Id,
-                                Name = cu.Name,
-                                cu.Family,
-                                TypeCustomerName = tc.Name,
-                                cu.CodMeli,
-                                cu.Tel,
-                                cu.Tel2,
-                                cu.Adders,
-                                cu.Adders2,
-                                cu.PostalCode,
-                                BanckName = cu.BanckId == 0 || bb_ == null
-                                            ? "-"
-                                            : ba_.Name + "-" + bb_.Name,
-                                cu.SeryalShaba,
-                                cu.DabitCardNumber,
-                                cu.Description,
-                                CiltysName = ct_ != null ? ct_.Name : "-",
-                                ProvincesName = pr_ != null ? pr_.Name : "-",
-                                CountDoc = docGroup.Where(c => c.FormName == this.Name).Count(),//آمار تعداد مدارک پیوست
+                        join ba in db.Bancks
+                            on bb_.BanckId equals ba.Id into baGroup
+                        from ba_ in baGroup.DefaultIfEmpty()
 
-                            };
-                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
-                    PublicClass.SettingGridEX(dgvList,Name);
+                        where cu.id_TypeCustomer <= 2
+
+                        select new
+                        {
+                            cu.Id,
+                            cu.Name,
+                            cu.Family,
+                            cu.CodMeli,
+                            TypeCustomerName = tc.Name,
+                            cu.Tel,
+                            cu.Tel2,
+                            cu.Adders,
+                            cu.Adders2,
+                            cu.PostalCode,
+                            cu.Description,
+                            cu.SeryalShaba,
+                            cu.DabitCardNumber,
+                            cu.RecordDateTime,
+                            BanckName= bb_ != null && ba_ != null? ba_.Name + " - " + bb_.Name: "-",
+                            SecretCode = cu.SecretCode,
+                            CiltysName = ct_ != null ? ct_.Name : "-",
+                            ProvincesName= pr_ != null ? pr_.Name :"-",
+                            cu.id_TypeCustomer,
+                            cu.UserId,
+                            cu.BanckId,
+                            cu.CityId,
+                        };
+
+                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());
+                    dgvList.DataSource = dt;
+                    PublicClass.SettingGridEX(dgvList, Name);
                 }
             }
             catch (Exception er)
@@ -739,50 +741,20 @@ namespace HM_ERP_System.Forms.Customer
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            //frmReport f = new frmReport();
-            //f.Cod="1";
-            //f.grid=dgvList;
-            ////f.Condition="";
-            //f.DateReport="گزارش از تاریخ: "+"1404/01/01"+"  تا تاریخ: "+"1404/05/25";
-            //f.ShowDialog();
-
+            frmReport f = new frmReport();
+            f.grid = dgvList;
+            f.TitelString = ResourceCode.TRcustomer;
+            f.ReporFileName = "HM_ERP_System.ReportViewer.Report_Customer.rdlc";
+            f.ShowDialog();
         }
 
         private void btnRepC1_Click(object sender, EventArgs e)
         {
-            frmReport f = new frmReport();
-            //f.Cod="1";
-            f.grid=dgvList;
-            //f.Condition="";
-            //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
-            f.TitelString =ResourceCode.TRcustomer;
-            f.ReporFileName="HM_ERP_System.ReportViewer.Report_Customer.rdlc";
-            f.ShowDialog();
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)
         {
             PdfReportHelper.ExportJanusGridToPDF(dgvList, "گزارش لیست مشتریان");
-            //    SaveFileDialog sfd = new SaveFileDialog();
-            //    sfd.Filter = "PDF File|*.pdf";
-            //    sfd.FileName = "Report_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".pdf";
-
-            //    if (sfd.ShowDialog() == DialogResult.OK)
-            //    {
-            //        using (var db = new DBcontextModel())
-            //        {
-            //            var companyName = db.Settings.Where(c => c.Code==1).First().Subject;
-            //            byte[] logo = db.ImageCos.Where(c => c.Id==1).First().Image;
-
-            //            PdfReportHelper.ExportJanusGridToPDF(dgvList, sfd.FileName, "گزارش لیست مشتریان", companyName: companyName, logo,
-            //isLandscape: false,   // 👈 ایستاده
-            //leftMargin: 30f,
-            //rightMargin: 30f,
-            //topMargin: 15f,       // 👈 فاصله بالای کمتر
-            //bottomMargin: 45f
-            //                );
-            //        }
-            //    }
         }
 
         private void txtCodMeli_Leave(object sender, EventArgs e)

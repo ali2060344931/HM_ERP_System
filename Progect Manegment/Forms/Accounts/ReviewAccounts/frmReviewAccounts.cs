@@ -6,6 +6,8 @@ using HM_ERP_System.Forms.Reports;
 
 using Janus.Windows.GridEX;
 
+using K4os.Hash.xxHash;
+
 using Microsoft.Reporting.Map.WebForms.BingMaps;
 
 using MyClass;
@@ -461,14 +463,10 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
         }
 
-        private void buttonCommand4_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
-        {
-        }
-
-        private void btnRepirts_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        private void buttonX01_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
-            string DateReport= ResourceCode.T159+txtDateS.Text+ ResourceCode.T160+txtDateE.Text;
+            string DateReport = ResourceCode.T159+txtDateS.Text+ ResourceCode.T160+txtDateE.Text;
             switch (TabKey)
             {
                 case "G"://گروه
@@ -519,7 +517,56 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                     f.ShowDialog();
                     break;
             }
+        }
 
+        private void btnExportToExcel_Click(object sender, EventArgs e)
+        {
+            switch (TabKey)
+            {
+                case "G"://گروه
+                    PublicClass.SaveGridExToExcel(dgvListG);
+                    break;
+                case "T"://کل
+                    PublicClass.SaveGridExToExcel(dgvListT);
+                    break;
+                case "S"://معیین
+                    PublicClass.SaveGridExToExcel(dgvListS);
+                    break;
+                case "D"://تفصیلی
+                    PublicClass.SaveGridExToExcel(dgvListD);
+                    break;
+                case "AllAcconts"://تفصیلی
+                    PublicClass.SaveGridExToExcel(dgvListAllAcconts);
+                    break;
+                case "List"://لیست تراکنش ها
+                    PublicClass.SaveGridExToExcel(dgvList);
+                    break;
+            }
+        }
+
+        private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
+        {
+            switch (TabKey)
+            {
+                case "G"://گروه
+                    dgvListG.ShowFieldChooser(this, ResourceCode.T158);
+                    break;
+                case "T"://کل
+                    dgvListT.ShowFieldChooser(this, ResourceCode.T158);
+                    break;
+                case "S"://معیین
+                    dgvListS.ShowFieldChooser(this, ResourceCode.T158);
+                    break;
+                case "D"://تفصیلی
+                    dgvListD.ShowFieldChooser(this, ResourceCode.T158);
+                    break;
+                case "AllAcconts"://تفصیلی
+                    dgvListAllAcconts.ShowFieldChooser(this, ResourceCode.T158);
+                    break;
+                case "List"://لیست تراکنش ها
+                    dgvList.ShowFieldChooser(this, ResourceCode.T158);
+                    break;
+            }
         }
     }
 }

@@ -61,8 +61,8 @@
           <DataField>CodMeli</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="TypeCustomersName">
-          <DataField>TypeCustomersName</DataField>
+        <Field Name="TypeCustomerName">
+          <DataField>TypeCustomerName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Tel">
@@ -89,10 +89,6 @@
           <DataField>Description</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="BanckName">
-          <DataField>BanckName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="SeryalShaba">
           <DataField>SeryalShaba</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -105,12 +101,8 @@
           <DataField>RecordDateTime</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="BankBranchesName">
-          <DataField>BankBranchesName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="BancksName">
-          <DataField>BancksName</DataField>
+        <Field Name="BanckName">
+          <DataField>BanckName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="SecretCode">
@@ -119,6 +111,10 @@
         </Field>
         <Field Name="CiltysName">
           <DataField>CiltysName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProvincesName">
+          <DataField>ProvincesName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="id_TypeCustomer">
@@ -135,10 +131,6 @@
         </Field>
         <Field Name="CityId">
           <DataField>CityId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="TypeCustomer_Id">
-          <DataField>TypeCustomer_Id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
@@ -160,34 +152,37 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.9728cm</Width>
+                  <Width>0.94008cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.39755cm</Width>
+                  <Width>4.36483cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.31166cm</Width>
+                  <Width>1.88519cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.28258cm</Width>
+                  <Width>2.27894cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.31186cm</Width>
+                  <Width>2.24986cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.5424cm</Width>
+                  <Width>2.27914cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.05682cm</Width>
+                  <Width>3.74079cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.97172cm</Width>
+                  <Width>1.71127cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.50407cm</Width>
+                  <Width>2.78025cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.73519cm</Width>
+                  <Width>3.15385cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.70247cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -252,6 +247,42 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox11</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#7292cc</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>نوع شخص</Value>
+                                  <Style>
+                                    <FontFamily>vazir FD</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#7292cc</Color>
@@ -631,6 +662,41 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="TypeCustomerName">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!TypeCustomerName.Value</Value>
+                                  <Style>
+                                    <FontFamily>vazir FD</FontFamily>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>TypeCustomerName</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#e5e5e5</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="CodMeli">
                           <CanShrink>true</CanShrink>
                           <KeepTogether>true</KeepTogether>
@@ -711,7 +777,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CiltysName.Value</Value>
+                                  <Value>=Fields!CiltysName.Value &amp; " - " &amp; Fields!ProvincesName.Value</Value>
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>8pt</FontSize>
@@ -735,6 +801,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -809,14 +876,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="BancksName">
+                        <Textbox Name="BanckName">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!BancksName.Value</Value>
+                                  <Value>=Fields!BanckName.Value</Value>
                                   <Style>
                                     <FontFamily>vazir FD</FontFamily>
                                     <FontSize>7pt</FontSize>
@@ -828,7 +895,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>BancksName</rd:DefaultName>
+                          <rd:DefaultName>BanckName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#e5e5e5</Color>
@@ -928,6 +995,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -994,7 +1062,7 @@
         <Height>0.80118in</Height>
         <Style />
       </Body>
-      <Width>11.25793in</Width>
+      <Width>11.2573in</Width>
       <Page>
         <PageHeader>
           <Height>2.31403cm</Height>

@@ -1128,7 +1128,7 @@
       <Width>11.05763in</Width>
       <Page>
         <PageHeader>
-          <Height>3.05311cm</Height>
+          <Height>3.47644cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1365,9 +1365,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>NameHesab</rd:DefaultName>
-              <Top>2.40303cm</Top>
+              <Top>2.21253cm</Top>
               <Left>6.37921cm</Left>
-              <Height>0.65008cm</Height>
+              <Height>1.00286cm</Height>
               <Width>15.32795cm</Width>
               <ZIndex>6</ZIndex>
               <Style>
@@ -1397,9 +1397,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox24</rd:DefaultName>
-              <Top>2.40303cm</Top>
+              <Top>2.64998cm</Top>
               <Left>0.19123cm</Left>
-              <Height>0.65007cm</Height>
+              <Height>0.7559cm</Height>
               <Width>6.01159cm</Width>
               <ZIndex>7</ZIndex>
               <Style>

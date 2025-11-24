@@ -20,6 +20,7 @@ using HM_ERP_System.Entity.Accounts.GroupAccount;
 using MyClass;
 using HM_ERP_System.Entity.Accounts.TransactionType;
 using HM_ERP_System.Entity.Accounts.DetailedAccount;
+using HM_ERP_System.Entity.Spare;
 
 namespace HM_ERP_System.Entity.Basic_information
 {
@@ -344,6 +345,13 @@ namespace HM_ERP_System.Entity.Basic_information
                 {
                     db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name="جاری" });
                     db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name="پس انداز" });
+                    db.SaveChanges();
+                }
+                var q26 = db.RentalTypes.Count();
+                if (q26 == 0)
+                {
+                    db.RentalTypes.Add(new RentalType { Name="اجـاره داده" });
+                    db.RentalTypes.Add(new RentalType { Name="اجـاره شـده" });
                     db.SaveChanges();
                 }
 

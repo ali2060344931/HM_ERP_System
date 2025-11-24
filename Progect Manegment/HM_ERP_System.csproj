@@ -605,6 +605,7 @@
     <Compile Include="Entity\SetingProg\SetingProg.cs" />
     <Compile Include="Entity\Settings\Setting.cs" />
     <Compile Include="Entity\Ship\Ship.cs" />
+    <Compile Include="Entity\Spare\RentalType.cs" />
     <Compile Include="Entity\Spare\Spare.cs" />
     <Compile Include="Entity\TransactionFee\TransactionFee.cs" />
     <Compile Include="Entity\TruckUsageType\TruckUsageType.cs" />
@@ -1089,6 +1090,7 @@
     <EmbeddedResource Include="ReportViewer\Report_Commission.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_AppointmentScheduling.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_ComersH.rdlc" />
+    <EmbeddedResource Include="ReportViewer\ReviewAccountsTransaction.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsList.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsAllAcconts.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_DetailedAccount.rdlc" />

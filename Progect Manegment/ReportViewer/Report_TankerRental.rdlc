@@ -105,6 +105,10 @@
           <DataField>WarantyType</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="RentalType">
+          <DataField>RentalType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="TruckUsageTypeName">
           <DataField>TruckUsageTypeName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -155,13 +159,16 @@
                   <Width>2.37555cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.48287cm</Width>
+                  <Width>2.19183cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.18117cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.32962cm</Width>
+                  <Width>1.60042cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.23937cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -550,6 +557,42 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox24</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#7292cc</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>نوع اجاره</Value>
+                                  <Style>
+                                    <FontFamily>vazir FD</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#7292cc</Color>
@@ -1000,6 +1043,41 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="RentalType">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!RentalType.Value</Value>
+                                  <Style>
+                                    <FontFamily>vazir FD</FontFamily>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>RentalType</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>#e5e5e5</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Description">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -1051,6 +1129,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1071,7 +1150,7 @@
             <Top>0.635cm</Top>
             <Left>0.21912cm</Left>
             <Height>1.4cm</Height>
-            <Width>27.95876cm</Width>
+            <Width>28.17789cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

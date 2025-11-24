@@ -1,4 +1,5 @@
 ﻿using HM_ERP_System.Class_General;
+using HM_ERP_System.Entity.Spare;
 using HM_ERP_System.Entity.TruckUsageType;
 using HM_ERP_System.Entity.WarantyType;
 using HM_ERP_System.Forms.BillLadingRequest;
@@ -61,7 +62,18 @@ namespace HM_ERP_System.Forms.TankerRental
         {
             FillcmbCarplate();
             FillcmbWarantyType();
+            FillcmbRentalType();
             FilldgvList();
+        }
+
+        private void FillcmbRentalType()
+        {
+            using (var db = new DBcontextModel())
+            {
+                var q = db.RentalTypes.ToList();
+                cmbRentalType.DataSource = q;
+                cmbRentalType.SelectedIndex = 0;
+            }
         }
 
         private void FillcmbWarantyType()
@@ -94,6 +106,8 @@ namespace HM_ERP_System.Forms.TankerRental
                         join tut in db.TruckUsageTypes
                         on cr.TruckUsageTypeId equals tut.Id
 
+                        join rt in db.RentalTypes
+                        on sp.RentalTypeId equals rt.Id
                         select new
                         {
                             sp.Id,
@@ -112,6 +126,7 @@ namespace HM_ERP_System.Forms.TankerRental
                             sp.ContractStatus,
                             sp.Description,
                             WarantyType = wr.Name,
+                            RentalType=rt.Name,
                             TruckUsageTypeName = tut.Name,
                         };
 
@@ -263,12 +278,11 @@ namespace HM_ERP_System.Forms.TankerRental
                         return;
 
                     var spares = new Repository<Entity.Spare.Spare>(db);
-                    if (spares.SaveOrUpdate(new Entity.Spare.Spare { Id = ListId, ContactNo=txtContactNo.Text, TankerNo=txtTankerNo.Text, CarId=CarId_, DataStart=txtDateS.Text, DataEnd=txtDateE.Text, WarantyTypeId=WarantyTypeId_, SecurityDeposit=Convert.ToDouble(txtSecurityDeposit.TextSimple), RentAmount=Convert.ToDouble(txtRentAmount.TextSimple), ContractStatus=chkContractStatus.Checked, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
+                    if (spares.SaveOrUpdate(new Entity.Spare.Spare { Id = ListId, ContactNo=txtContactNo.Text, TankerNo=txtTankerNo.Text, CarId=CarId_, DataStart=txtDateS.Text, DataEnd=txtDateE.Text, WarantyTypeId=WarantyTypeId_,RentalTypeId=RentalTypeId, SecurityDeposit=Convert.ToDouble(txtSecurityDeposit.TextSimple), RentAmount=Convert.ToDouble(txtRentAmount.TextSimple), ContractStatus=chkContractStatus.Checked, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
                         if (_updatableForms!=null)
                             _updatableForms.UpdateData();
-                        FilldgvList();
                         CelearItems();
                     }
                     else
@@ -294,6 +308,7 @@ namespace HM_ERP_System.Forms.TankerRental
             cmbCarplate.SelectedIndex=-1;
             chkContractStatus.Checked=true;
             txtContactNo.Focus();
+            FilldgvList();
         }
 
         int WarantyTypeId_ = 0;
@@ -372,6 +387,7 @@ namespace HM_ERP_System.Forms.TankerRental
                         txtDateS.Text=q.DataStart;
                         txtDateE.Text=q.DataEnd;
                         cmbWarantyType.Value=q.WarantyTypeId;
+                        cmbRentalType.Value=q.RentalTypeId;
                         txtSecurityDeposit.Text=q.SecurityDeposit.ToString();
                         txtRentAmount.Text=q.RentAmount.ToString();
                         txtDes.Text = q.Description;
@@ -550,6 +566,22 @@ namespace HM_ERP_System.Forms.TankerRental
             f.TitelString =ResourceCode.TRtankerRental;
             f.ReporFileName ="HM_ERP_System.ReportViewer.Report_TankerRental.rdlc";
             f.ShowDialog();
+        }
+
+        int RentalTypeId = 0;
+        private void cmbRentalType_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbRentalType.SelectedIndex != -1)
+                {
+                    RentalTypeId = Convert.ToInt32(cmbRentalType.Value);
+                }
+            }
+            catch (Exception)
+            {
+            }
+
         }
     }
 }

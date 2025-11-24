@@ -58,7 +58,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             printColumns = new GridPrintColumnCollection(printDoc);
 
             // ۳. اتصال GridEX موجود در فرم
-            printColumns.DataGrid = dgvListِDocs;
+            printColumns.DataGrid = dgvListTransaction;
 
             // ۴. تنظیم اطلاعات سربرگ
             printColumns.CompanyName = "شرکت مثال برای چاپ";
@@ -100,7 +100,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             FilldgvListD();//تفصیلی
             FilldgvListAllAcconts();//تفصیلی
             dgvList.DataSource=null;
-            dgvListِDocs.DataSource=null;
+            dgvListTransaction.DataSource=null;
             PublicClass.WindowAlart("1", "بروز رسانی انجام شد.");
             /*
             switch (TabKey)
@@ -311,10 +311,10 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                     {
                         var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
 
-                        PublicClass.FilldgvListTransaction(dgvListِDocs, Date, Date, TransactionCode);
+                        PublicClass.FilldgvListTransaction(dgvListTransaction, Date, Date, TransactionCode);
                         lblCode.Text=TransactionCode.ToString();
                         lblDate.Text=Date;
-                        uiTab1.TabPages["Doc"].Selected=true;
+                        uiTab1.TabPages["Transaction"].Selected=true;
                     }
 
                 }
@@ -359,7 +359,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             // ۱. پاکسازی و پر کردن ستون‌های جدید
             // این کار ضروری است تا مطمئن شوید ستون‌ها بر اساس GridEX فعلی تنظیم شده‌اند.
             printColumns.Clear();
-            printColumns.AddRange(dgvListِDocs);
+            printColumns.AddRange(dgvListTransaction);
 
             // ۲. ایجاد و نمایش دیالوگ پیش‌نمایش چاپ
             try
@@ -508,7 +508,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                     f.ReporFileName="HM_ERP_System.ReportViewer.ReviewAccountsAllAcconts.rdlc";
                     f.ShowDialog();
                     break;
-                case "List"://لیست تراکنش ها
+                case "List"://لیست صورت حساب ها
                     f.grid=dgvList;
                     f.DateReport=DateReport;
                     f.Description="نام حســــاب(مشتری): "+dgvList.GetRow(0).Cells["ContraAccountName"].Value; ;
@@ -516,6 +516,15 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                     f.ReporFileName="HM_ERP_System.ReportViewer.ReviewAccountsList.rdlc";
                     f.ShowDialog();
                     break;
+                case "Transaction"://لیست تراکنش ها
+                    f.grid = dgvListTransaction;
+                    //f.DateReport = DateReport;
+                    f.Description = "تاریــخ - شمـــاره: " + lblDate.Text+ " - "+ lblCode.Text;
+                    f.TitelString = ResourceCode.TRreviewAccountsTransaction;
+                    f.ReporFileName = "HM_ERP_System.ReportViewer.ReviewAccountsTransaction.rdlc";
+                    f.ShowDialog();
+                    break;
+
             }
         }
 

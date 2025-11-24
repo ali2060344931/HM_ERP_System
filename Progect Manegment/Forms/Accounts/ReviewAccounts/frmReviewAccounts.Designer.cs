@@ -42,7 +42,7 @@
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListAllAcconts_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column2.ButtonImage");
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvList_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column2.ButtonImage");
-            Janus.Windows.GridEX.GridEXLayout dgvListِDocs_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout dgvListTransaction_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             this.dgvListT = new GridExEx.GridExEx();
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
@@ -77,7 +77,7 @@
             this.uiTabPage5 = new Janus.Windows.UI.Tab.UITabPage();
             this.dgvList = new GridExEx.GridExEx();
             this.uiTabPage7 = new Janus.Windows.UI.Tab.UITabPage();
-            this.dgvListِDocs = new GridExEx.GridExEx();
+            this.dgvListTransaction = new GridExEx.GridExEx();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
@@ -119,7 +119,7 @@
             this.uiTabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.uiTabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListِDocs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListTransaction)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiCommandBar1)).BeginInit();
@@ -167,7 +167,7 @@
             // 
             this.uiPanelManager1.BeginPanelInfo();
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("029bc363-69d3-42c5-a21b-404540aa2b66"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(923, 119), true);
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("fb77c602-4c2b-4e9d-aa28-b76c0fac58a8"), Janus.Windows.UI.Dock.PanelDockStyle.Fill, new System.Drawing.Size(923, 326), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("fb77c602-4c2b-4e9d-aa28-b76c0fac58a8"), Janus.Windows.UI.Dock.PanelDockStyle.Fill, new System.Drawing.Size(923, 387), true);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("029bc363-69d3-42c5-a21b-404540aa2b66"), new System.Drawing.Point(319, 307), new System.Drawing.Size(200, 200), false);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("fb77c602-4c2b-4e9d-aa28-b76c0fac58a8"), new System.Drawing.Point(295, 413), new System.Drawing.Size(200, 200), false);
             this.uiPanelManager1.EndPanelInfo();
@@ -441,7 +441,7 @@
             this.uiPanel1.InnerContainer = this.uiPanel1Container;
             this.uiPanel1.Location = new System.Drawing.Point(3, 122);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(923, 326);
+            this.uiPanel1.Size = new System.Drawing.Size(923, 387);
             this.uiPanel1.TabIndex = 4;
             this.uiPanel1.Text = "گزارش";
             this.uiPanel1.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Far;
@@ -452,7 +452,7 @@
             this.uiPanel1Container.Controls.Add(this.pnlViewItemFoter);
             this.uiPanel1Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel1Container.Name = "uiPanel1Container";
-            this.uiPanel1Container.Size = new System.Drawing.Size(921, 298);
+            this.uiPanel1Container.Size = new System.Drawing.Size(921, 359);
             this.uiPanel1Container.TabIndex = 0;
             // 
             // uiTab1
@@ -461,7 +461,7 @@
             this.uiTab1.FirstTabOffset = 10;
             this.uiTab1.Location = new System.Drawing.Point(0, 0);
             this.uiTab1.Name = "uiTab1";
-            this.uiTab1.Size = new System.Drawing.Size(921, 270);
+            this.uiTab1.Size = new System.Drawing.Size(921, 331);
             this.uiTab1.TabIndex = 0;
             this.uiTab1.TabPages.AddRange(new Janus.Windows.UI.Tab.UITabPage[] {
             this.uiTabPage1,
@@ -483,7 +483,7 @@
             this.uiTabPage1.Key = "G";
             this.uiTabPage1.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage1.Name = "uiTabPage1";
-            this.uiTabPage1.Size = new System.Drawing.Size(797, 268);
+            this.uiTabPage1.Size = new System.Drawing.Size(797, 329);
             this.uiTabPage1.TabStop = true;
             this.uiTabPage1.Text = "گروه";
             // 
@@ -507,7 +507,7 @@
             this.dgvListG.RecordNavigator = true;
             this.dgvListG.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListG.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListG.Size = new System.Drawing.Size(797, 268);
+            this.dgvListG.Size = new System.Drawing.Size(797, 329);
             this.dgvListG.Sortable = true;
             this.dgvListG.TabIndex = 87;
             this.dgvListG.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -679,7 +679,7 @@
             this.uiTabPage5.Key = "List";
             this.uiTabPage5.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage5.Name = "uiTabPage5";
-            this.uiTabPage5.Size = new System.Drawing.Size(797, 296);
+            this.uiTabPage5.Size = new System.Drawing.Size(797, 329);
             this.uiTabPage5.TabStop = true;
             this.uiTabPage5.Text = "گـــردش حســــاب";
             // 
@@ -712,7 +712,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.Size = new System.Drawing.Size(797, 296);
+            this.dgvList.Size = new System.Drawing.Size(797, 329);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -726,52 +726,52 @@
             // 
             // uiTabPage7
             // 
-            this.uiTabPage7.Controls.Add(this.dgvListِDocs);
+            this.uiTabPage7.Controls.Add(this.dgvListTransaction);
             this.uiTabPage7.Controls.Add(this.panel1);
             this.uiTabPage7.Image = ((System.Drawing.Image)(resources.GetObject("uiTabPage7.Image")));
-            this.uiTabPage7.Key = "Doc";
+            this.uiTabPage7.Key = "Transaction";
             this.uiTabPage7.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage7.Name = "uiTabPage7";
-            this.uiTabPage7.Size = new System.Drawing.Size(797, 296);
+            this.uiTabPage7.Size = new System.Drawing.Size(797, 329);
             this.uiTabPage7.TabStop = true;
             this.uiTabPage7.Text = "سنــــد";
             // 
-            // dgvListِDocs
+            // dgvListTransaction
             // 
-            this.dgvListِDocs.DefaultComment = null;
-            this.dgvListِDocs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvListِDocs.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
-            this.dgvListِDocs.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
-            this.dgvListِDocs.FindCondition = null;
-            this.dgvListِDocs.FrozenColumns = 3;
-            this.dgvListِDocs.GroupTotalRowFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
-            this.dgvListِDocs.GroupTotalRowFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.dgvListِDocs.GroupTotalRowFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.dgvListِDocs.GroupTotals = Janus.Windows.GridEX.GroupTotals.ExpandedGroup;
-            this.dgvListِDocs.HiddenColumnSortingEnabled = false;
-            this.dgvListِDocs.HideColumnsWhenGrouped = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListِDocs.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
-            dgvListِDocs_Layout_0.IsCurrentLayout = true;
-            dgvListِDocs_Layout_0.Key = "MyGrig";
-            dgvListِDocs_Layout_0.LayoutString = resources.GetString("dgvListِDocs_Layout_0.LayoutString");
-            this.dgvListِDocs.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
-            dgvListِDocs_Layout_0});
-            this.dgvListِDocs.Location = new System.Drawing.Point(0, 35);
-            this.dgvListِDocs.Name = "dgvListِDocs";
-            this.dgvListِDocs.RecordNavigator = true;
-            this.dgvListِDocs.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dgvListِDocs.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
-            this.dgvListِDocs.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListِDocs.Size = new System.Drawing.Size(797, 261);
-            this.dgvListِDocs.Sortable = true;
-            this.dgvListِDocs.TabIndex = 88;
-            this.dgvListِDocs.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvListِDocs.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
-            this.dgvListِDocs.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.dgvListِDocs.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListِDocs.TabStop = false;
-            this.dgvListِDocs.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListِDocs.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
+            this.dgvListTransaction.DefaultComment = null;
+            this.dgvListTransaction.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvListTransaction.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
+            this.dgvListTransaction.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
+            this.dgvListTransaction.FindCondition = null;
+            this.dgvListTransaction.FrozenColumns = 3;
+            this.dgvListTransaction.GroupTotalRowFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
+            this.dgvListTransaction.GroupTotalRowFormatStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.dgvListTransaction.GroupTotalRowFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.dgvListTransaction.GroupTotals = Janus.Windows.GridEX.GroupTotals.ExpandedGroup;
+            this.dgvListTransaction.HiddenColumnSortingEnabled = false;
+            this.dgvListTransaction.HideColumnsWhenGrouped = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListTransaction.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
+            dgvListTransaction_Layout_0.IsCurrentLayout = true;
+            dgvListTransaction_Layout_0.Key = "MyGrig";
+            dgvListTransaction_Layout_0.LayoutString = resources.GetString("dgvListTransaction_Layout_0.LayoutString");
+            this.dgvListTransaction.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
+            dgvListTransaction_Layout_0});
+            this.dgvListTransaction.Location = new System.Drawing.Point(0, 35);
+            this.dgvListTransaction.Name = "dgvListTransaction";
+            this.dgvListTransaction.RecordNavigator = true;
+            this.dgvListTransaction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dgvListTransaction.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
+            this.dgvListTransaction.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListTransaction.Size = new System.Drawing.Size(797, 294);
+            this.dgvListTransaction.Sortable = true;
+            this.dgvListTransaction.TabIndex = 88;
+            this.dgvListTransaction.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dgvListTransaction.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
+            this.dgvListTransaction.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.dgvListTransaction.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListTransaction.TabStop = false;
+            this.dgvListTransaction.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListTransaction.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
             // 
             // panel1
             // 
@@ -862,7 +862,7 @@
             this.pnlViewItemFoter.Controls.Add(this.buttonX01);
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 270);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 331);
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
             this.pnlViewItemFoter.Size = new System.Drawing.Size(921, 28);
             this.pnlViewItemFoter.TabIndex = 2;
@@ -930,7 +930,7 @@
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 451);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 512);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.buttonCommand1,
@@ -995,7 +995,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 474);
+            this.ClientSize = new System.Drawing.Size(929, 535);
             this.Controls.Add(this.uiPanel1);
             this.Controls.Add(this.uiPanel0);
             this.Controls.Add(this.ribbonStatusBar1);
@@ -1028,7 +1028,7 @@
             this.uiTabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.uiTabPage7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListِDocs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListTransaction)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlViewItemFoter.ResumeLayout(false);
@@ -1071,7 +1071,7 @@
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand3;
         public GridExEx.GridExEx dgvList;
         private Janus.Windows.UI.Tab.UITabPage uiTabPage7;
-        public GridExEx.GridExEx dgvListِDocs;
+        public GridExEx.GridExEx dgvListTransaction;
         public DevComponents.DotNetBar.ButtonX btnFinancialYear;
         public DevComponents.DotNetBar.ButtonX btnThisDay;
         private System.Windows.Forms.Panel panel1;

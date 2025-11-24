@@ -1,4 +1,6 @@
-﻿using System;
+﻿using K4os.Hash.xxHash;
+
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
@@ -37,6 +39,10 @@ namespace HM_ERP_System.Entity.Spare
         /// کد نوع ضمانت
         /// </summary>
         public int WarantyTypeId { get; set; }
+        /// <summary>
+        /// نوع اجـــاره
+        /// </summary>
+        public int RentalTypeId { get; set; }
         /// <summary>
         /// مبلغ ضمانت
         /// </summary>

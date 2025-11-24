@@ -644,13 +644,16 @@
     <value>لیست گــــروه حسابها</value>
   </data>
   <data name="TRreviewAccountsList" xml:space="preserve">
-    <value>گــزارش گــــردش حســـــاب</value>
+    <value>گــزارش صورتحســـــاب</value>
   </data>
   <data name="TRreviewAccountsS" xml:space="preserve">
     <value>لیســت حســـــاب های معیــــــن</value>
   </data>
   <data name="TRreviewAccountsT" xml:space="preserve">
     <value>لیست حســــــاب های کــــــل</value>
+  </data>
+  <data name="TRreviewAccountsTransaction" xml:space="preserve">
+    <value>سنـــــــــــد</value>
   </data>
   <data name="TRtankerRental" xml:space="preserve">
     <value>لیست اجـــاره تانکـــرها</value>

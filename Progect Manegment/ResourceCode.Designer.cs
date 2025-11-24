@@ -1636,7 +1636,7 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to گــزارش گــــردش حســـــاب.
+        ///   Looks up a localized string similar to گــزارش صورتحســـــاب.
         /// </summary>
         internal static string TRreviewAccountsList {
             get {
@@ -1659,6 +1659,15 @@ namespace HM_ERP_System {
         internal static string TRreviewAccountsT {
             get {
                 return ResourceManager.GetString("TRreviewAccountsT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سنـــــــــــد.
+        /// </summary>
+        internal static string TRreviewAccountsTransaction {
+            get {
+                return ResourceManager.GetString("TRreviewAccountsTransaction", resourceCulture);
             }
         }
         

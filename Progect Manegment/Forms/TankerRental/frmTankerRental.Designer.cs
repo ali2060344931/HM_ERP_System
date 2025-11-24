@@ -33,6 +33,7 @@
             Janus.Windows.GridEX.GridEXLayout cmbWarantyType_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTankerRental));
+            Janus.Windows.GridEX.GridEXLayout cmbRentalType_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.label1 = new System.Windows.Forms.Label();
             this.txtContactNo = new Janus.Windows.GridEX.EditControls.EditBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,6 +70,8 @@
             this.txtRentAmount = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
             this.txtTankerNo = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
             this.txtSecurityDeposit = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
+            this.cmbRentalType = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.label10 = new System.Windows.Forms.Label();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -79,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbCarplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbWarantyType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRentalType)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlViewItemBody
@@ -125,9 +129,11 @@
             this.pnlAddItemBodi.Controls.Add(this.label8);
             this.pnlAddItemBodi.Controls.Add(this.chkContractStatus);
             this.pnlAddItemBodi.Controls.Add(this.txtDes);
+            this.pnlAddItemBodi.Controls.Add(this.label10);
             this.pnlAddItemBodi.Controls.Add(this.label7);
             this.pnlAddItemBodi.Controls.Add(this.label6);
             this.pnlAddItemBodi.Controls.Add(this.label5);
+            this.pnlAddItemBodi.Controls.Add(this.cmbRentalType);
             this.pnlAddItemBodi.Controls.Add(this.cmbWarantyType);
             this.pnlAddItemBodi.Controls.Add(this.txtDateE);
             this.pnlAddItemBodi.Controls.Add(this.label3);
@@ -399,7 +405,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(293, 308);
+            this.label9.Location = new System.Drawing.Point(293, 339);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 18);
             this.label9.TabIndex = 124;
@@ -410,7 +416,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(293, 368);
+            this.label8.Location = new System.Drawing.Point(293, 399);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 18);
             this.label8.TabIndex = 125;
@@ -420,19 +426,19 @@
             // 
             this.chkContractStatus.Checked = true;
             this.chkContractStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkContractStatus.Location = new System.Drawing.Point(240, 365);
+            this.chkContractStatus.Location = new System.Drawing.Point(240, 396);
             this.chkContractStatus.Name = "chkContractStatus";
             this.chkContractStatus.Size = new System.Drawing.Size(49, 25);
-            this.chkContractStatus.TabIndex = 9;
+            this.chkContractStatus.TabIndex = 10;
             this.chkContractStatus.Text = "فعال";
             // 
             // txtDes
             // 
-            this.txtDes.Location = new System.Drawing.Point(23, 308);
+            this.txtDes.Location = new System.Drawing.Point(23, 339);
             this.txtDes.Multiline = true;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(266, 55);
-            this.txtDes.TabIndex = 8;
+            this.txtDes.TabIndex = 9;
             this.txtDes.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtDes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContactNo_KeyDown);
             // 
@@ -713,6 +719,35 @@
             this.txtSecurityDeposit.TextChanged += new System.EventHandler(this.txtSecurityDeposit_TextChanged);
             this.txtSecurityDeposit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContactNo_KeyDown);
             // 
+            // cmbRentalType
+            // 
+            this.cmbRentalType.ComboStyle = Janus.Windows.GridEX.ComboStyle.DropDownList;
+            this.cmbRentalType.DataMember = "id";
+            cmbRentalType_DesignTimeLayout.LayoutString = resources.GetString("cmbRentalType_DesignTimeLayout.LayoutString");
+            this.cmbRentalType.DesignTimeLayout = cmbRentalType_DesignTimeLayout;
+            this.cmbRentalType.DisplayMember = "Name";
+            this.cmbRentalType.Location = new System.Drawing.Point(144, 306);
+            this.cmbRentalType.Name = "cmbRentalType";
+            this.cmbRentalType.SelectedIndex = -1;
+            this.cmbRentalType.SelectedItem = null;
+            this.cmbRentalType.Size = new System.Drawing.Size(145, 28);
+            this.cmbRentalType.TabIndex = 8;
+            this.cmbRentalType.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.cmbRentalType.ValueMember = "id";
+            this.cmbRentalType.ValueChanged += new System.EventHandler(this.cmbRentalType_ValueChanged);
+            this.cmbRentalType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContactNo_KeyDown);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label10.Location = new System.Drawing.Point(293, 311);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 18);
+            this.label10.TabIndex = 121;
+            this.label10.Text = "نوع اجاره:";
+            // 
             // frmTankerRental
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -739,6 +774,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbWarantyType)).EndInit();
             ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbRentalType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -783,5 +819,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private Class_General.MyTextBoxJanus txtYear;
+        private System.Windows.Forms.Label label10;
+        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbRentalType;
     }
 }

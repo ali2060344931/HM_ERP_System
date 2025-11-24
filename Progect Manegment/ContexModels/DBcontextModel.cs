@@ -128,6 +128,7 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new ImageCoConfig());
             modelBuilder.Configurations.Add(new SettingConfig());
             modelBuilder.Configurations.Add(new TypeAccountConfig());
+            modelBuilder.Configurations.Add(new RentalTypeConfig());
 
             base.OnModelCreating(modelBuilder);
             #endregion
@@ -374,6 +375,10 @@ namespace Progect_Manegment
         /// نوع حساب های بانکی
         /// </summary>
         public virtual DbSet<TypeAccount> TypeAccounts { get; set; }
+        /// <summary>
+        /// نوع اجاره ها
+        /// </summary>
+        public virtual DbSet<RentalType> RentalTypes { get; set; }
 
         #endregion
 

@@ -121,7 +121,7 @@ namespace Progect_Manegment
 
                 Application.Run(new frmMainForm());
 
-                //Application.Run(new frmCiltys(null));
+                //Application.Run(new frmTankerRental(null));
             }
             catch (Exception er)
             {

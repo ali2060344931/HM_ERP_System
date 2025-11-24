@@ -28,6 +28,7 @@ namespace HM_ERP_System.Class_General
             V_ReviewAccountsD();
             V_ReviewAccountsAllAcconts();
             V_ReviewAccountsList();
+            V_ReviewAccountsTransaction();
         }
 
         /// <summary>
@@ -112,7 +113,7 @@ namespace HM_ERP_System.Class_General
         /// </summary>
         static void V_TankerRental()
         {
-            string txt = "SELECT\r\n    sp.Id,\r\n    sp.ContactNo,\r\n    sp.TankerNo,\r\n    cr.CarPlat,\r\n    cr.CarPlatSeryal,\r\n    cr.AxisCount,\r\n    cr.CarName,\r\n\r\n    -- نام طرف حساب کامیون\r\n    GoodsAccountName = cu.Family + ' ' + cu.Name,\r\n\r\n    sp.DataStart,\r\n    sp.DataEnd,\r\n    sp.RentAmount,\r\n    sp.SecurityDeposit,\r\n    sp.ContractStatus,\r\n    sp.Description,\r\n\r\n    WarantyType = wr.Name,\r\n    TruckUsageTypeName = tut.Name\r\nFROM Spares sp\r\n    INNER JOIN Cars cr \r\n        ON sp.CarId = cr.Id\r\n    INNER JOIN Customers cu \r\n        ON cr.GoodsAccountId = cu.Id\r\n    INNER JOIN WarantyTypes wr \r\n        ON sp.WarantyTypeId = wr.Id\r\n    INNER JOIN TruckUsageTypes tut\r\n        ON cr.TruckUsageTypeId = tut.Id";
+            string txt = "SELECT     sp.Id, sp.ContactNo, sp.TankerNo, cr.CarPlat, cr.CarPlatSeryal, cr.AxisCount, cr.CarName, cu.Family + ' ' + cu.Name AS GoodsAccountName, sp.DataStart, sp.DataEnd, sp.RentAmount, \r\n                      sp.SecurityDeposit, sp.ContractStatus, sp.Description, wr.Name AS WarantyType, rt.Name AS RentalType, tut.Name AS TruckUsageTypeName\r\nFROM         Spares AS sp INNER JOIN\r\n                      Cars AS cr ON sp.CarId = cr.Id INNER JOIN\r\n                      Customers AS cu ON cr.GoodsAccountId = cu.Id INNER JOIN\r\n                      WarantyTypes AS wr ON sp.WarantyTypeId = wr.Id INNER JOIN\r\n                      TruckUsageTypes AS tut ON cr.TruckUsageTypeId = tut.Id INNER JOIN\r\n                      RentalTypes AS rt ON sp.RentalTypeId = rt.Id";
             MyClass.SqlBankClass.AddColumnInTable("Drop view  V_TankerRental");
             MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_TankerRental] AS " + txt);
         }
@@ -188,13 +189,22 @@ namespace HM_ERP_System.Class_General
         /// <summary>
         /// مرور حساب ها- لیست تراکنش ها
         /// </summary>
-
         static void V_ReviewAccountsList()
         {
             string txt = "SELECT     tr.DetailedAccountId AS Id, tr.Series, tr.TransactionCode, tr.TransactionDate, tt.Name AS TransactionType, sp.Name AS SpecificAccountName, cu.Family + ' ' + cu.Name AS ContraAccountName, \r\n                      cu.CodMeli, cu.Tel, tr.Amount AS TotalAmount, tr.PaymentBed, tr.PaymentBes, tr.Description, da.CodeAccount AS AccountCode, tr.IsAutoRejDoc, ISNULL(coH.RemiaanceSeryal, 0) AS ComerSeryal, \r\n                      CuUser.Family + ' ' + CuUser.Name AS [User], ga.Name AS GroupAccountName, ta.Name AS TotalAccountName, sp.Cod AS SpecificAccountCode, da.CustomerId, da.SpecificAccountId, \r\n                      da.CodeAccount, tr.Status, tr.UserId, tr.ComerBId\r\nFROM         Transactions AS tr INNER JOIN\r\n                      SpecificAccounts AS sp ON tr.SpecificAccountId = sp.Id INNER JOIN\r\n                      DetailedAccounts AS da ON tr.DetailedAccountId = da.Id INNER JOIN\r\n                      TotalAccounts AS ta ON sp.Id_TotalAccount = ta.Id INNER JOIN\r\n                      GroupAccounts AS ga ON ta.Id_GroupAccount = ga.Id INNER JOIN\r\n                      Customers AS cu ON da.CustomerId = cu.Id INNER JOIN\r\n                      TransactionTypes AS tt ON tr.TransactionTypeId = tt.Id INNER JOIN\r\n                      CustomerRoles AS cr ON tr.UserId = cr.Id INNER JOIN\r\n                      Customers AS CuUser ON cr.Id = CuUser.Id LEFT OUTER JOIN\r\n                      ComersBs AS coB ON tr.ComerBId = coB.Id LEFT OUTER JOIN\r\n                      ComersHes AS coH ON coB.ComersHId = coH.Id\r\nWHERE     (tr.Status = 0)";
 
             MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ReviewAccountsList");
             MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ReviewAccountsList] AS " + txt);
+        }
+        /// <summary>
+        /// لیست اسناد
+        /// </summary>
+        static void V_ReviewAccountsTransaction()
+        {
+            string txt = "SELECT     tr.DetailedAccountId AS Id, tr.Series, tr.TransactionCode, tr.TransactionDate, tt.Name AS TransactionType, sp.Name AS SpecificAccountName, cu.Family + ' ' + cu.Name AS ContraAccountName, \r\n                      cu.CodMeli, cu.Tel, tr.Amount AS TotalAmount, tr.PaymentBed, tr.PaymentBes, tr.Description, da.CodeAccount AS AccountCode, tr.IsAutoRejDoc, ISNULL(coH.RemiaanceSeryal, 0) AS ComerSeryal, \r\n                      CuUser.Family + ' ' + CuUser.Name AS [User], ga.Name AS GroupAccountName, ta.Name AS TotalAccountName, sp.Cod AS SpecificAccountCode, da.CustomerId, da.SpecificAccountId, \r\n                      da.CodeAccount, tr.Status, tr.UserId, tr.ComerBId\r\nFROM         Transactions AS tr INNER JOIN\r\n                      SpecificAccounts AS sp ON tr.SpecificAccountId = sp.Id INNER JOIN\r\n                      DetailedAccounts AS da ON tr.DetailedAccountId = da.Id INNER JOIN\r\n                      TotalAccounts AS ta ON sp.Id_TotalAccount = ta.Id INNER JOIN\r\n                      GroupAccounts AS ga ON ta.Id_GroupAccount = ga.Id INNER JOIN\r\n                      Customers AS cu ON da.CustomerId = cu.Id INNER JOIN\r\n                      TransactionTypes AS tt ON tr.TransactionTypeId = tt.Id INNER JOIN\r\n                      CustomerRoles AS cr ON tr.UserId = cr.Id INNER JOIN\r\n                      Customers AS CuUser ON cr.Id = CuUser.Id LEFT OUTER JOIN\r\n                      ComersBs AS coB ON tr.ComerBId = coB.Id LEFT OUTER JOIN\r\n                      ComersHes AS coH ON coB.ComersHId = coH.Id\r\nWHERE     (tr.Status = 0)";
+
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ReviewAccountsTransaction");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ReviewAccountsTransaction] AS " + txt);
         }
     }
 }

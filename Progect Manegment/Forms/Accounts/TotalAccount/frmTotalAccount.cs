@@ -238,6 +238,7 @@ namespace HM_ERP_System.Forms.Accounts.TotalAccount
                 if (PublicClass.CloseForm())
                     this.Close();
             }
+                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void cmbGroupAccount_KeyDown(object sender, KeyEventArgs e)

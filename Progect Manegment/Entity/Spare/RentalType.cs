@@ -20,7 +20,7 @@ namespace HM_ERP_System.Entity.Spare
         public RentalTypeConfig()
         {
             HasKey(x => x.Id);
-            Property(d => d.Name).IsRequired().HasMaxLength(10);
+            Property(d => d.Name).IsRequired().HasMaxLength(50);
         }
     }
 

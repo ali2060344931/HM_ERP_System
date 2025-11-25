@@ -601,11 +601,20 @@
   <data name="T160" xml:space="preserve">
     <value>تـــا تاریـــخ: </value>
   </data>
+  <data name="T161" xml:space="preserve">
+    <value>عملیات بروز رسانی با موفقیت انجام شد</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>
+  <data name="TRbanck" xml:space="preserve">
+    <value>لیست بانک ها</value>
+  </data>
   <data name="TRcars" xml:space="preserve">
     <value>لیست کامیــــون ها</value>
+  </data>
+  <data name="TRcofer" xml:space="preserve">
+    <value>لیست صنـــدوق ها</value>
   </data>
   <data name="TRcomerB" xml:space="preserve">
     <value>لیست بارنامــــه ها</value>

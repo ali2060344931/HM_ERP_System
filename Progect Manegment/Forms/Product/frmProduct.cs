@@ -177,6 +177,7 @@ namespace HM_ERP_System.Forms.Product
                 if (PublicClass.CloseForm())
                     this.Close();
             }
+                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         int ProductGroupId = 0;

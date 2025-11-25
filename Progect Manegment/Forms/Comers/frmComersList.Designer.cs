@@ -34,7 +34,6 @@
             Janus.Windows.GridEX.GridEXLayout dgvListCommission_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             this.pnlViewItemHeder = new System.Windows.Forms.Panel();
             this.txtDateEnd = new Atf.UI.DateTimeSelector();
-            this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
             this.btnShowListItems = new DevComponents.DotNetBar.ButtonX();
             this.txtDateStart = new Atf.UI.DateTimeSelector();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -43,9 +42,11 @@
             this.dgvListB = new GridExEx.GridExEx();
             this.dgvListCommission = new GridExEx.GridExEx();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
             this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
+            this.TxtDescription = new Janus.Windows.GridEX.EditControls.EditBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.pnlViewItemHeder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).BeginInit();
@@ -59,7 +60,6 @@
             this.pnlViewItemHeder.AutoScrollMinSize = new System.Drawing.Size(400, 0);
             this.pnlViewItemHeder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlViewItemHeder.Controls.Add(this.txtDateEnd);
-            this.pnlViewItemHeder.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemHeder.Controls.Add(this.btnShowListItems);
             this.pnlViewItemHeder.Controls.Add(this.txtDateStart);
             this.pnlViewItemHeder.Controls.Add(this.labelX1);
@@ -67,40 +67,19 @@
             this.pnlViewItemHeder.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlViewItemHeder.Location = new System.Drawing.Point(0, 0);
             this.pnlViewItemHeder.Name = "pnlViewItemHeder";
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(788, 50);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(1027, 50);
             this.pnlViewItemHeder.TabIndex = 88;
             // 
             // txtDateEnd
             // 
             this.txtDateEnd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateEnd.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateEnd.Location = new System.Drawing.Point(220, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(339, 12);
             this.txtDateEnd.Name = "txtDateEnd";
             this.txtDateEnd.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDateEnd.Size = new System.Drawing.Size(124, 29);
             this.txtDateEnd.TabIndex = 0;
             this.txtDateEnd.UsePersianFormat = true;
-            // 
-            // btnExportToExcel
-            // 
-            this.btnExportToExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnExportToExcel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnExportToExcel.BackColor = System.Drawing.Color.Transparent;
-            this.btnExportToExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExportToExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnExportToExcel.Location = new System.Drawing.Point(11, 15);
-            this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnExportToExcel.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
-            this.btnExportToExcel.Size = new System.Drawing.Size(113, 23);
-            this.btnExportToExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnExportToExcel.Symbol = "";
-            this.btnExportToExcel.SymbolColor = System.Drawing.Color.Green;
-            this.btnExportToExcel.SymbolSize = 15F;
-            this.btnExportToExcel.TabIndex = 3;
-            this.btnExportToExcel.Text = "خروجی به اکسل";
-            this.btnExportToExcel.Tooltip = "خروجی لیست به اکسل F9";
-            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // btnShowListItems
             // 
@@ -108,7 +87,7 @@
             this.btnShowListItems.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnShowListItems.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnShowListItems.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowListItems.Location = new System.Drawing.Point(130, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(249, 15);
             this.btnShowListItems.Name = "btnShowListItems";
             this.btnShowListItems.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnShowListItems.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F8);
@@ -124,7 +103,7 @@
             // 
             this.txtDateStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateStart.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateStart.Location = new System.Drawing.Point(422, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(541, 12);
             this.txtDateStart.Name = "txtDateStart";
             this.txtDateStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDateStart.Size = new System.Drawing.Size(124, 29);
@@ -139,7 +118,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(552, 17);
+            this.labelX1.Location = new System.Drawing.Point(671, 17);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             this.labelX1.Symbol = "";
@@ -156,7 +135,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(350, 17);
+            this.labelX2.Location = new System.Drawing.Point(469, 17);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             this.labelX2.Symbol = "";
@@ -255,35 +234,16 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.TxtDescription);
+            this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.buttonX01);
             this.panel1.Controls.Add(this.buttonX1);
             this.panel1.Controls.Add(this.btnShowGridExHideColumns);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 403);
+            this.panel1.Location = new System.Drawing.Point(0, 398);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(788, 26);
+            this.panel1.Size = new System.Drawing.Size(1027, 31);
             this.panel1.TabIndex = 89;
-            // 
-            // btnShowGridExHideColumns
-            // 
-            this.btnShowGridExHideColumns.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnShowGridExHideColumns.BackColor = System.Drawing.Color.Transparent;
-            this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(753, 0);
-            this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
-            this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlQ);
-            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 26);
-            this.btnShowGridExHideColumns.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnShowGridExHideColumns.Symbol = "59635";
-            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Black;
-            this.btnShowGridExHideColumns.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
-            this.btnShowGridExHideColumns.SymbolSize = 15F;
-            this.btnShowGridExHideColumns.TabIndex = 6;
-            this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
-            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // buttonX01
             // 
@@ -292,11 +252,11 @@
             this.buttonX01.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX01.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonX01.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX01.Location = new System.Drawing.Point(685, 0);
+            this.buttonX01.Location = new System.Drawing.Point(924, 0);
             this.buttonX01.Name = "buttonX01";
             this.buttonX01.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX01.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
-            this.buttonX01.Size = new System.Drawing.Size(34, 26);
+            this.buttonX01.Size = new System.Drawing.Size(34, 31);
             this.buttonX01.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX01.Symbol = "";
             this.buttonX01.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -312,11 +272,11 @@
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX1.Location = new System.Drawing.Point(719, 0);
+            this.buttonX1.Location = new System.Drawing.Point(958, 0);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX1.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
-            this.buttonX1.Size = new System.Drawing.Size(34, 26);
+            this.buttonX1.Size = new System.Drawing.Size(34, 31);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.Symbol = "";
             this.buttonX1.SymbolColor = System.Drawing.Color.Green;
@@ -325,13 +285,59 @@
             this.buttonX1.Tooltip = "خروجی لیست به اکسل F9";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
+            // btnShowGridExHideColumns
+            // 
+            this.btnShowGridExHideColumns.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnShowGridExHideColumns.BackColor = System.Drawing.Color.Transparent;
+            this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(992, 0);
+            this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
+            this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlQ);
+            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 31);
+            this.btnShowGridExHideColumns.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnShowGridExHideColumns.Symbol = "59635";
+            this.btnShowGridExHideColumns.SymbolColor = System.Drawing.Color.Black;
+            this.btnShowGridExHideColumns.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
+            this.btnShowGridExHideColumns.SymbolSize = 15F;
+            this.btnShowGridExHideColumns.TabIndex = 6;
+            this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
+            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            // 
+            // TxtDescription
+            // 
+            this.TxtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtDescription.ButtonStyle = Janus.Windows.GridEX.EditControls.EditButtonStyle.TextButton;
+            this.TxtDescription.ButtonText = "کپی";
+            this.TxtDescription.Location = new System.Drawing.Point(12, 1);
+            this.TxtDescription.MaxLength = 36000000;
+            this.TxtDescription.Name = "TxtDescription";
+            this.TxtDescription.Size = new System.Drawing.Size(801, 28);
+            this.TxtDescription.TabIndex = 98;
+            this.TxtDescription.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            this.TxtDescription.ButtonClick += new System.EventHandler(this.TxtDescription_ButtonClick);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label12.Location = new System.Drawing.Point(813, 6);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 18);
+            this.label12.TabIndex = 99;
+            this.label12.Text = "توضحیات گزارش:";
+            // 
             // frmComersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(0, 250);
-            this.ClientSize = new System.Drawing.Size(788, 429);
+            this.ClientSize = new System.Drawing.Size(1027, 429);
             this.Controls.Add(this.dgvListCommission);
             this.Controls.Add(this.dgvListH);
             this.Controls.Add(this.dgvListB);
@@ -347,6 +353,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListCommission)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -361,11 +368,12 @@
         public Atf.UI.DateTimeSelector txtDateStart;
         public DevComponents.DotNetBar.LabelX labelX1;
         public DevComponents.DotNetBar.LabelX labelX2;
-        public DevComponents.DotNetBar.ButtonX btnExportToExcel;
         public GridExEx.GridExEx dgvListCommission;
         private System.Windows.Forms.Panel panel1;
         public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
         public DevComponents.DotNetBar.ButtonX buttonX01;
         public DevComponents.DotNetBar.ButtonX buttonX1;
+        private Janus.Windows.GridEX.EditControls.EditBox TxtDescription;
+        private System.Windows.Forms.Label label12;
     }
 }

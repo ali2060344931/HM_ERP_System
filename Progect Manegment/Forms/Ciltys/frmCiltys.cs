@@ -224,6 +224,7 @@ namespace HM_ERP_System.Forms.Ciltys
                 if (PublicClass.CloseForm())
                     this.Close();
             }
+                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void label14_Click(object sender, EventArgs e)

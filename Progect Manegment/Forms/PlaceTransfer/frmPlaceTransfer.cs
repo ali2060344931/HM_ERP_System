@@ -312,6 +312,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         private void frmPlaceTransfer_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) if (PublicClass.CloseForm()) this.Close();
+                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void txtPostalCode_Leave(object sender, EventArgs e)

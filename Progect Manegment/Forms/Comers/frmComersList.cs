@@ -149,27 +149,6 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (FormName=="ComersB")
-                {
-                    PublicClass.SaveGridExToExcel(dgvListB);
-                }
-
-                else if (FormName=="ComersH")
-                {
-                    PublicClass.SaveGridExToExcel(dgvListH);
-                }
-                else if (FormName=="Commission")
-                {
-                    PublicClass.SaveGridExToExcel(dgvListCommission);
-                }
-
-            }
-            catch (Exception er)
-            {
-                PublicClass.ShowErrorMessage(er);
-            }
 
         }
 
@@ -215,7 +194,7 @@ namespace HM_ERP_System.Forms.Comers
                     f.grid=dgvListB;
                     f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
                     f.TitelString =ResourceCode.TRcomerB;
-                    f.Description=" ";
+                    f.Description = TxtDescription.Text != "" ? TxtDescription.Text : " ";
                     f.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
                     f.ShowDialog();
 
@@ -227,7 +206,7 @@ namespace HM_ERP_System.Forms.Comers
                     f.grid=dgvListH;
                     f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
                     f.TitelString =ResourceCode.TRcomerH;
-                    f.Description=" ";
+                    f.Description = TxtDescription.Text != "" ? TxtDescription.Text : " ";
                     f.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersH.rdlc";
                     f.ShowDialog();
 
@@ -239,7 +218,7 @@ namespace HM_ERP_System.Forms.Comers
                     f.grid=dgvListCommission;
                     f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
                     f.TitelString =ResourceCode.TRCommission;
-                    f.Description=" ";
+                    f.Description = TxtDescription.Text!=""? TxtDescription.Text:" ";
                     f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Commission.rdlc";
                     f.ShowDialog();
 
@@ -254,21 +233,34 @@ namespace HM_ERP_System.Forms.Comers
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            if (FormName=="ComersB")
+            try
             {
+                if (FormName == "ComersB")
+                {
+                    PublicClass.SaveGridExToExcel(dgvListB);
+                }
+
+                else if (FormName == "ComersH")
+                {
+                    PublicClass.SaveGridExToExcel(dgvListH);
+                }
+                else if (FormName == "Commission")
+                {
+                    PublicClass.SaveGridExToExcel(dgvListCommission);
+                }
 
             }
-
-            else if (FormName=="ComersH")
+            catch (Exception er)
             {
-
+                PublicClass.ShowErrorMessage(er);
             }
 
-            else if (FormName=="Commission")
-            {
+        }
 
-            }
-
+        private void TxtDescription_ButtonClick(object sender, EventArgs e)
+        {
+            Clipboard.SetText(TxtDescription.Text);
+            PublicClass.WindowAlart("1", "کپی شد");
         }
     }
 }

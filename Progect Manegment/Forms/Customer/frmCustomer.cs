@@ -528,7 +528,7 @@ namespace HM_ERP_System.Forms.Customer
                 if (PublicClass.CloseForm())
                     this.Close();
             }
-
+                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void btnAddCustomerByExcelFil_Click(object sender, EventArgs e)
@@ -750,6 +750,7 @@ namespace HM_ERP_System.Forms.Customer
 
         private void btnRepC1_Click(object sender, EventArgs e)
         {
+
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)

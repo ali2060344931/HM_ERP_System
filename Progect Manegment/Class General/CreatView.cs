@@ -29,6 +29,7 @@ namespace HM_ERP_System.Class_General
             V_ReviewAccountsAllAcconts();
             V_ReviewAccountsList();
             V_ReviewAccountsTransaction();
+            V_BanckCofer();
         }
 
         /// <summary>
@@ -205,6 +206,13 @@ namespace HM_ERP_System.Class_General
 
             MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ReviewAccountsTransaction");
             MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ReviewAccountsTransaction] AS " + txt);
+        }
+        static void V_BanckCofer()
+        {
+            string txt = "SELECT        cu.Id, cu.Name, cu.Family, cu.CodMeli, tc.Name AS TypeCustomerName, cu.Tel, cu.Tel2, cu.Adders, cu.Adders2, cu.PostalCode, cu.Description, cu.SeryalShaba, cu.AccountNumber, cu.DabitCardNumber, cu.RecordDateTime, \r\n                         cu.id_TypeCustomer, cu.TypeAccountId, cu.UserId, cu.BanckId, cu.CityId, ISNULL(ct.Name, '-') AS CiltysName, ISNULL(pr.Name, '-') AS ProvincesName, CASE WHEN cu.BanckId IS NULL OR\r\n                         cu.BanckId = 0 OR\r\n                         bb.Id IS NULL OR\r\n                         ba.Id IS NULL THEN '' ELSE ba.Name + ' - ' + bb.Name END AS BanckName, ISNULL(tan.Name, '') AS TypeAccountNamu\r\nFROM            Customers AS cu LEFT OUTER JOIN\r\n                         TypeCustomers AS tc ON cu.id_TypeCustomer = tc.Id LEFT OUTER JOIN\r\n                         Ciltys AS ct ON cu.CityId = ct.Id LEFT OUTER JOIN\r\n                         Provinces AS pr ON ct.ProvincesId = pr.Id LEFT OUTER JOIN\r\n                         DetailedAccounts AS da ON cu.Id = da.CustomerId LEFT OUTER JOIN\r\n                         BankBranches AS bb ON da.BankBrancheId = bb.Id LEFT OUTER JOIN\r\n                         Bancks AS ba ON bb.BanckId = ba.Id LEFT OUTER JOIN\r\n                         TypeAccounts AS tan ON cu.TypeAccountId = tan.Id";//\r\nWHERE        (cu.id_TypeCustomer = 3)
+
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_BanckCofer");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_BanckCofer] AS " + txt);
         }
     }
 }

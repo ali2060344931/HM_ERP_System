@@ -181,6 +181,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                 if (PublicClass.CloseForm())
                     this.Close();
             }
+                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)

@@ -1510,6 +1510,15 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to عملیات بروز رسانی با موفقیت انجام شد.
+        /// </summary>
+        internal static string T161 {
+            get {
+                return ResourceManager.GetString("T161", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {
@@ -1519,11 +1528,29 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to لیست بانک ها.
+        /// </summary>
+        internal static string TRbanck {
+            get {
+                return ResourceManager.GetString("TRbanck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست کامیــــون ها.
         /// </summary>
         internal static string TRcars {
             get {
                 return ResourceManager.GetString("TRcars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست صنـــدوق ها.
+        /// </summary>
+        internal static string TRcofer {
+            get {
+                return ResourceManager.GetString("TRcofer", resourceCulture);
             }
         }
         

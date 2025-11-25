@@ -131,6 +131,7 @@ namespace HM_ERP_System.Forms.Settings
                 if (PublicClass.CloseForm())
                     this.Close();
             }
+                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void btnAddPic_Click(object sender, EventArgs e)

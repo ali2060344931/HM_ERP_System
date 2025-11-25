@@ -42,6 +42,9 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
 
         private void frmAppointmentScheduling_Load(object sender, EventArgs e)
         {
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
+            txtDateEnd.Value = DateTime.Now;
+
             UpdateData();
             if (isSelectCarPlat)
             {
@@ -454,6 +457,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                 if (PublicClass.CloseForm())
                     this.Close();
             }
+                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void btnShowListItems_Click(object sender, EventArgs e)

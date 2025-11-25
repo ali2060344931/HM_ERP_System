@@ -347,10 +347,11 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name="پس انداز" });
                     db.SaveChanges();
                 }
+
                 var q26 = db.RentalTypes.Count();
                 if (q26 == 0)
                 {
-                    db.RentalTypes.Add(new RentalType { Name="اجـاره داده" });
+                    db.RentalTypes.Add(new RentalType { Name="اجــاره داده" });
                     db.RentalTypes.Add(new RentalType { Name="اجـاره شـده" });
                     db.SaveChanges();
                 }

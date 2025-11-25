@@ -111,15 +111,17 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             using (var db = new DBcontextModel())
             {
                 var q = from bb in db.BankBranches
+                        
                         join ba in db.Bancks
                         on bb.BanckId equals ba.Id
+                        
                         select new
                         {
                             bb.Id,
                             bb.Name,
                             BanckName = ba.Name,
                         };
-                cmbBanck.DataSource = q.ToList();
+                cmbBankBranche.DataSource = q.ToList();
                 dt_Banck = new System.Data.DataTable();
                 dt_Banck = PublicClass.AddEntityTableToDataTable(q.ToList());
             }
@@ -281,7 +283,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                     return;
 
 
-                if (TypeAccountsId_ == 3 && cmbBanck.SelectedIndex == -1)
+                if (TypeAccountsId_ == 3 && cmbBankBranche.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T152); return;
                 }
@@ -365,7 +367,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                     if (TypeAccounts_Id != 0 && LisId == 0)
                     {
                         var userRepo1 = new Repository<Entity.Accounts.DetailedAccount.DetailedAccount>(db);
-                        userRepo1.SaveOrUpdate(new Entity.Accounts.DetailedAccount.DetailedAccount { Id = LisId, SpecificAccountId = SpecificAccountId_, CustomerId = id, CodeAccount = Convert.ToInt32(lblCodeAccount.Text), BankBrancheId = BanckId }, LisId);
+                        userRepo1.SaveOrUpdate(new Entity.Accounts.DetailedAccount.DetailedAccount { Id = LisId, SpecificAccountId = SpecificAccountId_, CustomerId = id, CodeAccount = Convert.ToInt32(lblCodeAccount.Text), BankBrancheId = BankBrancheId }, LisId);
                     }
                     {
                         PublicClass.WindowAlart("1");
@@ -406,7 +408,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                         var qb = db.DetailedAccounts.Where(c => c.SpecificAccountId == 2 && c.CustomerId == LisId).First().BankBrancheId;
 
                         //var BankBranche = db.BankBranches.Where(c => c.Id==qb).First().Id;
-                        cmbBanck.Value = qb;
+                        cmbBankBranche.Value = qb;
                         txtName.Text = q.Name;
                         cmbTypeAccounts.Value = q.id_TypeCustomer;
                         cmbType_Account.Value = q.TypeAccountId;
@@ -461,7 +463,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                 if (TypeAccountsId_ == 3)//بانک ها
                 {
                     label4.Visible = true;
-                    cmbBanck.Visible = true;
+                    cmbBankBranche.Visible = true;
                     btnAddBanck.Visible = true;
                     dgvList.RootTable.Columns["BanckName"].Visible = true;
                     label1.Text = "نام(عنوان) حساب:";
@@ -469,7 +471,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                 else//صندوق ها
                 {
                     label4.Visible = false;
-                    cmbBanck.Visible = false;
+                    cmbBankBranche.Visible = false;
                     btnAddBanck.Visible = false;
                     dgvList.RootTable.Columns["BanckName"].Visible = false;
                     label1.Text = "نام(عنوان) صندوق:";
@@ -517,17 +519,17 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
             FillcmbBanck();
         }
 
-        int BanckId = 0;
+        int BankBrancheId = 0;
         private void cmbBanck_ValueChanged(object sender, EventArgs e)
         {
             try
             {
-                if (cmbBanck.SelectedIndex != -1)
+                if (cmbBankBranche.SelectedIndex != -1)
                 {
-                    BanckId = Convert.ToInt32(cmbBanck.Value);
+                    BankBrancheId = Convert.ToInt32(cmbBankBranche.Value);
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.Bancks.Where(c => c.Id == db.BankBranches.Where(x => x.Id == BanckId).FirstOrDefault().Id).First().Name;
+                        var q = db.Bancks.Where(c => c.Id == db.BankBranches.Where(x => x.Id == BankBrancheId).FirstOrDefault().BanckId).First().Name;
 
                         lblBanckName.Text = "نام بانک: " + q;
                     }
@@ -536,7 +538,6 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                 {
                     lblBanckName.ResetText();
                 }
-
             }
             catch (Exception)
             {
@@ -564,7 +565,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbBanck, dt_Banck);
+                PublicClass.SearchCmbId(cmbBankBranche, dt_Banck);
             }
 
         }

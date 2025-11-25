@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmContraAccounts));
             Janus.Windows.GridEX.GridEXLayout cmbTypeAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbNatureAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout cmbBanck_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cmbBankBranche_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbType_Account_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.dgvList = new GridExEx.GridExEx();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
@@ -47,7 +47,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.btnAddBanck = new DevComponents.DotNetBar.ButtonX();
-            this.cmbBanck = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.cmbBankBranche = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbType_Account = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNatureAccounts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBankBranche)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbType_Account)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -96,7 +96,7 @@
             // 
             this.pnlAddItemBodi.Controls.Add(this.panel2);
             this.pnlAddItemBodi.Controls.Add(this.btnAddBanck);
-            this.pnlAddItemBodi.Controls.Add(this.cmbBanck);
+            this.pnlAddItemBodi.Controls.Add(this.cmbBankBranche);
             this.pnlAddItemBodi.Controls.Add(this.label4);
             this.pnlAddItemBodi.Controls.Add(this.panel1);
             this.pnlAddItemBodi.Controls.Add(this.lblBanckName);
@@ -220,7 +220,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(221, 28);
             this.txtName.TabIndex = 2;
-            this.txtName.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtName.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // cmbTypeAccounts
@@ -380,23 +380,23 @@
             this.btnAddBanck.Tooltip = "ثبت آیتم جدید";
             this.btnAddBanck.Click += new System.EventHandler(this.btnAddBanck_Click);
             // 
-            // cmbBanck
+            // cmbBankBranche
             // 
-            this.cmbBanck.DataMember = "id";
-            cmbBanck_DesignTimeLayout.LayoutString = resources.GetString("cmbBanck_DesignTimeLayout.LayoutString");
-            this.cmbBanck.DesignTimeLayout = cmbBanck_DesignTimeLayout;
-            this.cmbBanck.DisplayMember = "Name";
-            this.cmbBanck.Image = ((System.Drawing.Image)(resources.GetObject("cmbBanck.Image")));
-            this.cmbBanck.Location = new System.Drawing.Point(32, 50);
-            this.cmbBanck.Name = "cmbBanck";
-            this.cmbBanck.SelectedIndex = -1;
-            this.cmbBanck.SelectedItem = null;
-            this.cmbBanck.Size = new System.Drawing.Size(221, 30);
-            this.cmbBanck.TabIndex = 1;
-            this.cmbBanck.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            this.cmbBanck.ValueMember = "id";
-            this.cmbBanck.ValueChanged += new System.EventHandler(this.cmbBanck_ValueChanged);
-            this.cmbBanck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbBanck_KeyDown);
+            this.cmbBankBranche.DataMember = "id";
+            cmbBankBranche_DesignTimeLayout.LayoutString = resources.GetString("cmbBankBranche_DesignTimeLayout.LayoutString");
+            this.cmbBankBranche.DesignTimeLayout = cmbBankBranche_DesignTimeLayout;
+            this.cmbBankBranche.DisplayMember = "Name";
+            this.cmbBankBranche.Image = ((System.Drawing.Image)(resources.GetObject("cmbBankBranche.Image")));
+            this.cmbBankBranche.Location = new System.Drawing.Point(32, 50);
+            this.cmbBankBranche.Name = "cmbBankBranche";
+            this.cmbBankBranche.SelectedIndex = -1;
+            this.cmbBankBranche.SelectedItem = null;
+            this.cmbBankBranche.Size = new System.Drawing.Size(221, 30);
+            this.cmbBankBranche.TabIndex = 1;
+            this.cmbBankBranche.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            this.cmbBankBranche.ValueMember = "id";
+            this.cmbBankBranche.ValueChanged += new System.EventHandler(this.cmbBanck_ValueChanged);
+            this.cmbBankBranche.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbBanck_KeyDown);
             // 
             // label4
             // 
@@ -570,7 +570,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNatureAccounts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbBankBranche)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbType_Account)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -593,7 +593,7 @@
         private System.Windows.Forms.Label lblCodeAccount;
         private System.Windows.Forms.Label label3;
         public DevComponents.DotNetBar.ButtonX btnAddBanck;
-        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbBanck;
+        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbBankBranche;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         public Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbType_Account;

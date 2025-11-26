@@ -493,7 +493,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 pnlFrom.Text="دریافت از";
                 pnlTo.Text="پــرداخت به";
                 lblInOut.Symbol="";
-                lblInOut.SymbolColor=Color.Green;
+                lblInOut.SymbolColor=System.Drawing.Color.Green;
                 //lblFrom.ForeColor=Color.Green;
                 //lblTo.ForeColor=Color.Green;
                 txtAmount2.Enabled=false;
@@ -511,7 +511,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 pnlFrom.Text="پرداخت به";
                 pnlTo.Text="دریافت از";
                 lblInOut.Symbol="";
-                lblInOut.SymbolColor=Color.Red;
+                lblInOut.SymbolColor=System.Drawing.Color.Red;
                 //lblFrom.ForeColor=Color.Red;
                 //lblTo.ForeColor=Color.Red;
                 txtAmount2.Enabled=true;

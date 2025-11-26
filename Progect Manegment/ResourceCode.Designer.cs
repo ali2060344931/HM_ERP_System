@@ -1519,6 +1519,51 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نام سازنده را وارد نمائید..
+        /// </summary>
+        internal static string T162 {
+            get {
+                return ResourceManager.GetString("T162", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام وارد شده تکراری می باشد.
+        /// </summary>
+        internal static string T163 {
+            get {
+                return ResourceManager.GetString("T163", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام رنگ را وارد نمائید..
+        /// </summary>
+        internal static string T164 {
+            get {
+                return ResourceManager.GetString("T164", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سریال هوشمند را وارد نمائید..
+        /// </summary>
+        internal static string T165 {
+            get {
+                return ResourceManager.GetString("T165", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سریال وارد شده تکراری می باشد..
+        /// </summary>
+        internal static string T166 {
+            get {
+                return ResourceManager.GetString("T166", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

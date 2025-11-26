@@ -66,26 +66,76 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
 
         private void FillcmbContraAccountTo()
         {
-            using (var db = new DBcontextModel())
+            //using (var db = new DBcontextModel())
+            //{
+            //    var q = from cu in db.Customers
+
+            //            join tc in db.TypeCustomers
+            //            on cu.id_TypeCustomer equals tc.Id
+
+            //            where cu.id_TypeCustomer>=3
+            //            select new
+            //            {
+            //                cu.Id,
+            //                cu.Name,
+            //                TypeAccount = tc.Name,
+            //            };
+
+            //    cmbContraAccountTo.DataSource= q.ToList();
+
+            //    dt_ContraAccountTo = new DataTable();
+            //    dt_ContraAccountTo = PublicClass.AddEntityTableToDataTable(q.ToList());
+
+            //}
+            try
             {
-                var q = from cu in db.Customers
+                string FinancialYear = PublicClass.FinancialYear;
+                using (var db = new DBcontextModel())
+                {
+                    var spid1 = db.SpecificAccounts.Where(c => c.Cod == 10101).First().Id;
+                    var spid2 = db.SpecificAccounts.Where(c => c.Cod == 10102).First().Id;
+                    var q = from dt in db.DetailedAccounts
 
-                        join tc in db.TypeCustomers
-                        on cu.id_TypeCustomer equals tc.Id
+                            join cu in db.Customers
+                            on dt.CustomerId equals cu.Id
 
-                        where cu.id_TypeCustomer>=3
-                        select new
-                        {
-                            cu.Id,
-                            cu.Name,
-                            TypeAccount = tc.Name,
-                        };
+                            join brb in db.BankBranches
+                            on cu.BanckId equals brb.Id into brbGroup
+                            from brb_ in brbGroup.DefaultIfEmpty()
 
-                cmbContraAccountTo.DataSource= q.ToList();
+                            join ba in db.Bancks
+                            on brb_.BanckId equals ba.Id into baGroup
+                            from ba_ in baGroup.DefaultIfEmpty()
 
-                dt_ContraAccountTo = new DataTable();
-                dt_ContraAccountTo = PublicClass.AddEntityTableToDataTable(q.ToList());
+                            join tc in db.TypeCustomers
+                            on cu.id_TypeCustomer equals tc.Id
 
+                            join tr in db.Transactions
+                            on dt.Id equals tr.DetailedAccountId
+                            into trGroup
+
+                            where dt.SpecificAccountId == spid1 || dt.SpecificAccountId == spid2
+
+                            select new
+                            {
+                                dt.Id,
+                                name = (cu.Family + " " + cu.Name).Trim(),
+                                TypeAccount = tc.Name,
+                                AccountCode = dt.CodeAccount,
+                                AccountNumber = cu.AccountNumber,
+                                BanckName = brb_ != null ? brb_.Name + " - " + ba_.Name : "-",
+
+                                AccountBalance = Math.Abs((trGroup.Sum(t => (double?)t.PaymentBes) ?? 0) - (trGroup.Where(c => c.FinancialYear == FinancialYear).Sum(t => (double?)t.PaymentBed) ?? 0))
+                            };
+
+                    cmbContraAccountTo.DataSource = q.ToList();
+                    dt_ContraAccountTo = new System.Data.DataTable();
+                    dt_ContraAccountTo = PublicClass.AddEntityTableToDataTable(q.ToList());
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
 
         }
@@ -166,7 +216,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
                 FillcmbSpecificAccount(60);
                 cmbSpecificAccount.ResetText();
                 lblInOut.Symbol="";
-                lblInOut.SymbolColor=Color.Green;
+                lblInOut.SymbolColor=System.Drawing.Color.Green;
             }
             else
             {
@@ -179,7 +229,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
                 FillcmbSpecificAccount(80);
                 cmbSpecificAccount.ResetText();
                 lblInOut.Symbol="";
-                lblInOut.SymbolColor=Color.Red;
+                lblInOut.SymbolColor=System.Drawing.Color.Red;
 
             }
 

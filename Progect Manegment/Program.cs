@@ -14,6 +14,7 @@ using HM_ERP_System.Forms.AppointmentScheduling;
 using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Car;
 using HM_ERP_System.Forms.Ciltys;
+using HM_ERP_System.Forms.Color;
 using HM_ERP_System.Forms.Comers;
 using HM_ERP_System.Forms.Commission;
 using HM_ERP_System.Forms.Customer;
@@ -28,6 +29,7 @@ using HM_ERP_System.Forms.Persons;
 using HM_ERP_System.Forms.PurchaseTanker;
 using HM_ERP_System.Forms.Role;
 using HM_ERP_System.Forms.TankerRental;
+using HM_ERP_System.Forms.TruckManufacturer;
 using HM_ERP_System.Forms.User;
 
 using Manegmen_Machinery.ContexModels;
@@ -117,11 +119,11 @@ namespace Progect_Manegment
                 AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
 
-                Application.Run(new frmLoginProg());
+                //Application.Run(new frmLoginProg());
 
-                //Application.Run(new frmMainForm());
+                Application.Run(new frmMainForm());
 
-                //Application.Run(new frmTankerRental(null));
+                //Application.Run(new frmCar(null));
             }
             catch (Exception er)
             {

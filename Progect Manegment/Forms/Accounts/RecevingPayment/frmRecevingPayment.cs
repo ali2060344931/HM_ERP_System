@@ -10,7 +10,6 @@ using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Main_Form;
 using FontAwesome.Sharp;
 using Janus.Windows.UI.Tab;
-
 using Microsoft.Office.Interop.Excel;
 
 using MyClass;
@@ -246,9 +245,9 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 FillcmbSpecificAccountF(80);
                 FillcmbSpecificAccountT(60);
                 lblInOut.Symbol="";
-                lblInOut.SymbolColor=Color.Green;
-                lblFrom.ForeColor=Color.Green;
-                lblTo.ForeColor=Color.Green;
+                lblInOut.SymbolColor=System.Drawing.Color.Green;
+                lblFrom.ForeColor= System.Drawing.Color.Green;
+                lblTo.ForeColor= System.Drawing.Color.Green;
                 lblTotalAmount2.Visible=false;
                 txtTotalAmount2.Visible=false;
                 FillcmbTypeDocument(4);
@@ -261,9 +260,11 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 FillcmbSpecificAccountF(60);
                 FillcmbSpecificAccountT(80);
                 lblInOut.Symbol="";
-                lblInOut.SymbolColor=Color.Red;
-                lblFrom.ForeColor=Color.Red;
-                lblTo.ForeColor=Color.Red;
+                lblInOut.SymbolColor=System.Drawing.Color.Red;
+                lblInOut.SymbolColor=System.Drawing.Color.Red;
+                lblFrom.ForeColor= System.Drawing.Color.Red;
+                lblInOut.SymbolColor=System.Drawing.Color.Red;
+                lblTo.ForeColor= System.Drawing.Color.Red;
                 lblTotalAmount2.Visible=true;
                 txtTotalAmount2.Visible=true;
                 FillcmbTypeDocument(5);

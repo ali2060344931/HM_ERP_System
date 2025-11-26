@@ -604,6 +604,21 @@
   <data name="T161" xml:space="preserve">
     <value>عملیات بروز رسانی با موفقیت انجام شد</value>
   </data>
+  <data name="T162" xml:space="preserve">
+    <value>نام سازنده را وارد نمائید.</value>
+  </data>
+  <data name="T163" xml:space="preserve">
+    <value>نام وارد شده تکراری می باشد</value>
+  </data>
+  <data name="T164" xml:space="preserve">
+    <value>نام رنگ را وارد نمائید.</value>
+  </data>
+  <data name="T165" xml:space="preserve">
+    <value>سریال هوشمند را وارد نمائید.</value>
+  </data>
+  <data name="T166" xml:space="preserve">
+    <value>سریال وارد شده تکراری می باشد.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

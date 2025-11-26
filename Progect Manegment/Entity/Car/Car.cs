@@ -38,7 +38,7 @@ namespace HM_ERP_System.Entity.Car
         /// </summary>
         public int DraverId { get; set; }
         /// <summary>
-        /// تعداد محور
+        /// تعداد چرخ ها
         /// </summary>
         public int AxisCount { get; set; }
         /// <summary>
@@ -68,6 +68,16 @@ namespace HM_ERP_System.Entity.Car
         /// ظرفیت مجاز بارگیری
         /// </summary>
         public int LoadWeightCapacity { get; set; }
+        
+        /// <summary>
+        /// کارخانه سازنده
+        /// </summary>
+        public int? TruckManufacturerId { get; set; }
+        
+        /// <summary>
+        /// رنگ
+        /// </summary>
+        public int? ColorId { get; set; }
 
         /// <summary>
         /// وضعیت فعال/غیرفعال
@@ -98,6 +108,8 @@ namespace HM_ERP_System.Entity.Car
         public virtual Ownership.Ownership Ownerships { get; set; }
         public virtual Customer.Customer GoodsAccounts { get; set; }
         public virtual TruckUsageType.TruckUsageType TruckUsageTypes { get; set; }
+        public virtual TruckManufacturer.TruckManufacturer TruckManufacturer { get; set; }
+        public virtual Color.Color_ Color { get; set; }
 
     }
     public class CarConfig : EntityTypeConfiguration<Car>

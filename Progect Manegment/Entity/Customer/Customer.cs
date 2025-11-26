@@ -127,6 +127,8 @@ namespace HM_ERP_System.Entity.Customer
             Property(c => c.PostalCode).HasMaxLength(12);
             Property(c => c.BanckName).HasMaxLength(50);
             Property(c => c.AccountNumber).HasMaxLength(20);
+            Property(c => c.SeryalShaba).HasMaxLength(26);
+            Property(c => c.DabitCardNumber).HasMaxLength(16);
 
             Property(c => c.Description).HasMaxLength(int.MaxValue);
         }

@@ -1,9 +1,11 @@
 ﻿using HM_ERP_System.Class_General;
+using HM_ERP_System.Forms.Color;
 using HM_ERP_System.Forms.Customer;
 using HM_ERP_System.Forms.CustomerToGroup;
 using HM_ERP_System.Forms.Draver;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.Reports;
+using HM_ERP_System.Forms.TruckManufacturer;
 
 using MyClass;
 
@@ -33,7 +35,7 @@ namespace HM_ERP_System.Forms.Car
         public frmCar(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
         }
         private void frmCar_Load(object sender, EventArgs e)
         {
@@ -53,8 +55,43 @@ namespace HM_ERP_System.Forms.Car
             FillcmbGoodsAccount();
             FillTruckUsageType();
             FillcmbCompanys();
-            //TruckUsageType
-            //FillCmbProvinces();
+            FillcmbTruckManufacturer();
+            FillcmbColor();
+        }
+
+        private void FillcmbColor()
+        {
+            using (var db = new DBcontextModel())
+            {
+                var q = from cu in db.Color_s
+
+                            //where cu.id_TypeCustomer == 2
+                        select new
+                        {
+                            cu.Id,
+                            cu.Name,
+                        };
+
+                cmbColor.DataSource = q.ToList();
+            }
+        }
+
+        private void FillcmbTruckManufacturer()
+        {
+            using (var db = new DBcontextModel())
+            {
+                var q = from cu in db.TruckManufacturers
+
+                            //where cu.id_TypeCustomer == 2
+                        select new
+                        {
+                            cu.Id,
+                            cu.Name,
+                        };
+
+                cmbTruckManufacturer.DataSource = q.ToList();
+            }
+
         }
 
         private void FillcmbCompanys()
@@ -62,7 +99,7 @@ namespace HM_ERP_System.Forms.Car
             using (var db = new DBcontextModel())
             {
                 var q = from cu in db.Customers
-                        where cu.id_TypeCustomer==2
+                        where cu.id_TypeCustomer == 2
                         select new
                         {
                             cu.Id,
@@ -84,7 +121,7 @@ namespace HM_ERP_System.Forms.Car
                             tr.Name,
                         };
                 cmbTruckUsageType.DataSource = q.ToList();
-                cmbTruckUsageType.Value=1;
+                cmbTruckUsageType.Value = 1;
 
             }
 
@@ -100,7 +137,7 @@ namespace HM_ERP_System.Forms.Car
                         join ctg in db.CustomerToGroups
                         on pr.Id equals ctg.CustomerId
 
-                        where ctg.PersonGroupId==3
+                        where ctg.PersonGroupId == 3
 
                         select new
                         {
@@ -108,7 +145,7 @@ namespace HM_ERP_System.Forms.Car
                             Name = pr.Family + " " + pr.Name,
                             pr.CodMeli,
                         };
-               
+
                 cmbGoodsAccount.DataSource = q.ToList();
                 dt_GoodsAccount = new System.Data.DataTable();
                 dt_GoodsAccount = PublicClass.AddEntityTableToDataTable(q.ToList());
@@ -204,6 +241,13 @@ namespace HM_ERP_System.Forms.Car
                         on cr.OwnershipCompanyId equals owc.Id into bGroup
                         from OWCompany in bGroup.DefaultIfEmpty()
 
+                        join tm in db.TruckManufacturers
+                        on cr.TruckManufacturerId equals tm.Id into tmGroup
+                        from tm_ in tmGroup.DefaultIfEmpty()
+
+                        join cl in db.Color_s
+                        on cr.ColorId equals cl.Id into clGroup
+                        from cl_ in clGroup.DefaultIfEmpty()
 
 
                         select new
@@ -212,7 +256,7 @@ namespace HM_ERP_System.Forms.Car
                             cr.CarName,
                             DraverName = cu.Family + " " + cu.Name,
                             cr.OwnershipId,
-                            OwnershipCompanyName = OWCompany !=null ? OWCompany.Name : "-",
+                            OwnershipCompanyName = OWCompany != null ? OWCompany.Name : "-",
                             cr.CarPlat,
                             cr.CarPlatSeryal,
                             cr.Seryal,
@@ -226,23 +270,24 @@ namespace HM_ERP_System.Forms.Car
                             TruckUsageTypeName = tu.Name,
                             GoodsAccountName = cu2.Family + " " + cu2.Name,
                             CodMeli = cu.CodMeli,
-                            CityName = ct_ !=null ? ct_.Name : "-",
-                            ProvincesName = pr_ !=null ? pr_.Name : "-",
-
+                            CityName = ct_ != null ? ct_.Name : "-",
+                            ProvincesName = pr_ != null ? pr_.Name : "-",
+                            TruckManufacturer = tm_ != null ? tm_.Name : "-",
+                            Color = cl_ != null ? cl_.Name : "-",
                         };
-                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
-                PublicClass.SettingGridEX(dgvList,Name);
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
+                PublicClass.SettingGridEX(dgvList, Name);
             }
         }
 
         public void SearchCar_Driver()
         {
-            if (txtCarplate.Text.Length == 5 && txtCarplateSeryal.Text.Length == 2 && ListId==0)
+            if (txtCarplate.Text.Length == 5 && txtCarplateSeryal.Text.Length == 2 && ListId == 0)
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.Cars.Where(c => c.CarPlat == txtCarplate.Text && c.CarPlatSeryal==txtCarplateSeryal.Text);
-                    if (q.Count()!=0)
+                    var q = db.Cars.Where(c => c.CarPlat == txtCarplate.Text && c.CarPlatSeryal == txtCarplateSeryal.Text);
+                    if (q.Count() != 0)
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T018);
                         txtCarplate.Focus();
@@ -282,10 +327,10 @@ namespace HM_ERP_System.Forms.Car
             {
                 //string Carplate_ = this.txtCarplate1.Text + " " + ResourceCode.T016 + " " + this.txtCarplate2.Text;
 
-                if (PublicClass.FindEmptyControls(txtCarName, ResourceCode.T017, cmbDraverName, ResourceCode.T012, cmbOwnership, ResourceCode.T021, cmbGoodsAccount, ResourceCode.T042, cmbTruckUsageType, ResourceCode.T043))
+                if (PublicClass.FindEmptyControls(txtSeryal, ResourceCode.T165, txtCarName, ResourceCode.T017, cmbDraverName, ResourceCode.T012, cmbOwnership, ResourceCode.T021, cmbGoodsAccount, ResourceCode.T042, cmbTruckUsageType, ResourceCode.T043))
                     return;
 
-                if (cmbDraverName.SelectedIndex==-1|| cmbOwnership.SelectedIndex == -1 || cmbGoodsAccount.SelectedIndex == -1 || cmbTruckUsageType.SelectedIndex == -1)
+                if (cmbDraverName.SelectedIndex == -1 || cmbOwnership.SelectedIndex == -1 || cmbGoodsAccount.SelectedIndex == -1 || cmbTruckUsageType.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T045);
                     return;
@@ -297,10 +342,23 @@ namespace HM_ERP_System.Forms.Car
                     return;
                 }
 
-                if (OwnershipId_==3 && cmbCompanys.SelectedIndex == -1)
+                if (OwnershipId_ == 3 && cmbCompanys.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T114);
                     cmbCompanys.Focus();
+                    return;
+                }
+
+                if(cmbTruckManufacturer.Text!="" && cmbTruckManufacturer.SelectedIndex==-1)
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T165);
+                    cmbTruckManufacturer.Focus();
+                    return;
+                }
+                if(cmbColor.Text!="" && cmbColor.SelectedIndex==-1)
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T164);
+                    cmbColor.Focus();
                     return;
                 }
 
@@ -327,10 +385,10 @@ namespace HM_ERP_System.Forms.Car
                         return;
 
                     var car = new Repository<Entity.Car.Car>(db);
-                    if (car.SaveOrUpdate(new Entity.Car.Car { Id = ListId, CarName = txtCarName.Text, DraverId = DraverId_, GoodsAccountId=GoodsAccountId_, TruckUsageTypeId=TruckUsageType_, TruckCapacity=Convert.ToInt32(txtTruckCapacity.Text), LoadWeightCapacity=Convert.ToInt32(txtLoadWeightCapacity.Text), CarPlat = txtCarplate.Text, CarPlatSeryal = txtCarplateSeryal.Text, Seryal = txtSeryal.Text, AxisCount = txtAxisCount.Value, CreatModel = txtCreatModel.Value, OwnershipId = OwnershipId_, OwnershipCompanyId=OwnershipCompanyId_, Status = chkStatus.Checked, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
+                    if (car.SaveOrUpdate(new Entity.Car.Car { Id = ListId, CarName = txtCarName.Text, DraverId = DraverId_, GoodsAccountId = GoodsAccountId_, TruckUsageTypeId = TruckUsageType_, TruckCapacity = Convert.ToInt32(txtTruckCapacity.Text), LoadWeightCapacity = Convert.ToInt32(txtLoadWeightCapacity.Text), CarPlat = txtCarplate.Text, CarPlatSeryal = txtCarplateSeryal.Text, Seryal = txtSeryal.Text, AxisCount = txtAxisCount.Value, CreatModel = txtCreatModel.Value, OwnershipId = OwnershipId_, OwnershipCompanyId = OwnershipCompanyId_, TruckManufacturerId = TruckManufacturerId, ColorId = ColorId, Status = chkStatus.Checked, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
                         CelearItems();
                     }
@@ -359,6 +417,8 @@ namespace HM_ERP_System.Forms.Car
             txtSeryal.ResetText();
             txtDes.ResetText();
             cmbOwnership.SelectedIndex = -1;
+            cmbTruckManufacturer.SelectedIndex = -1;
+            cmbColor.SelectedIndex = -1;
             chkStatus.Checked = true;
             ListId = 0;
             txtCarName.Focus();
@@ -376,17 +436,17 @@ namespace HM_ERP_System.Forms.Car
 
                 {
                     //var per = db.Customers.Where(x => x.Id==db.Dravers.Where(c => c.Id==DraverId_).FirstOrDefault().Id).First();
-                    var per = db.Dravers.Where(x => x.Id==DraverId_).First();
+                    var per = db.Dravers.Where(x => x.Id == DraverId_).First();
 
                     //PublicClass.CheckBlacList(per.CustomerId);
                     bool bl1 = false;
                     bool bl2 = false;
                     string name = "";
-                    (bl1, bl2, name)=PublicClass.CheckBlacList(per.CustomerId);
+                    (bl1, bl2, name) = PublicClass.CheckBlacList(per.CustomerId);
                     if (bl1 && bl2)
                     {
-                        PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                        cmbDraverName.SelectedIndex=-1;
+                        PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                        cmbDraverName.SelectedIndex = -1;
                     }
 
 
@@ -409,19 +469,25 @@ namespace HM_ERP_System.Forms.Car
                         var q = db.Cars.Where(c => c.Id == ListId).First();
                         txtCarName.Text = q.CarName;
                         cmbDraverName.Value = q.DraverId;
-                        cmbGoodsAccount.Value=q.GoodsAccountId;
+                        cmbGoodsAccount.Value = q.GoodsAccountId;
                         cmbTruckUsageType.Value = q.TruckUsageTypeId;
-                        txtTruckCapacity.Text=q.TruckCapacity.ToString();
+                        txtTruckCapacity.Text = q.TruckCapacity.ToString();
                         txtLoadWeightCapacity.Text = q.LoadWeightCapacity.ToString();
                         txtCarplate.Text = q.CarPlat;
                         txtCarplateSeryal.Text = q.CarPlatSeryal.Substring(0, 2);
                         txtSeryal.Text = q.Seryal;
                         txtCreatModel.Value = q.CreatModel;
-                        txtAxisCount.Value = q.AxisCount;
+                        if (q.AxisCount < 12)
+                            txtAxisCount.Value = 12;
+                        else
+                            txtAxisCount.Value = q.AxisCount;
+
                         cmbOwnership.Value = q.OwnershipId;
                         txtDes.Text = q.Description;
+                        cmbTruckManufacturer.Value = q.TruckManufacturerId;
+                        cmbColor.Value = q.Color;
                         chkStatus.Checked = q.Status;
-                        if (q.OwnershipCompanyId!=0)
+                        if (q.OwnershipCompanyId != 0)
                         {
                             cmbCompanys.Value = q.OwnershipCompanyId;
                         }
@@ -488,24 +554,24 @@ namespace HM_ERP_System.Forms.Car
         {
             try
             {
-                if (cmbOwnership.SelectedIndex!=-1)
+                if (cmbOwnership.SelectedIndex != -1)
                 {
                     OwnershipId_ = Convert.ToInt32(cmbOwnership.Value);
                     if (OwnershipId_ == 3)
                     {
-                        cmbCompanys.Visible=true;
-                        btnAddCompanys.Visible=true;
+                        cmbCompanys.Visible = true;
+                        btnAddCompanys.Visible = true;
                     }
                     else
                     {
-                        cmbCompanys.Visible=false;
-                        btnAddCompanys.Visible=false;
+                        cmbCompanys.Visible = false;
+                        btnAddCompanys.Visible = false;
                     }
                 }
                 else
                 {
-                    cmbCompanys.Visible=false;
-                    btnAddCompanys.Visible=false;
+                    cmbCompanys.Visible = false;
+                    btnAddCompanys.Visible = false;
                 }
 
             }
@@ -536,7 +602,6 @@ namespace HM_ERP_System.Forms.Car
             {
                 e.Handled = true;
             }
-
         }
 
         int GoodsAccountId_ = 0;
@@ -549,11 +614,11 @@ namespace HM_ERP_System.Forms.Car
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
-                (bl1, bl2, name)=PublicClass.CheckBlacList(GoodsAccountId_);
+                (bl1, bl2, name) = PublicClass.CheckBlacList(GoodsAccountId_);
                 if (bl1 && bl2)
                 {
-                    PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                    cmbGoodsAccount.SelectedIndex=-1;
+                    PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                    cmbGoodsAccount.SelectedIndex = -1;
                 }
 
 
@@ -585,7 +650,7 @@ namespace HM_ERP_System.Forms.Car
         private void frmCar_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) if (PublicClass.CloseForm()) this.Close();
-            if (e.Control && e.KeyCode == Keys.F12){UpdateData();}
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); }
 
         }
 
@@ -599,12 +664,12 @@ namespace HM_ERP_System.Forms.Car
         {
             try
             {
-                if (cmbCompanys.SelectedIndex!=-1)
+                if (cmbCompanys.SelectedIndex != -1)
                 {
                     OwnershipCompanyId_ = Convert.ToInt32(cmbCompanys.Value);
                 }
                 else
-                    OwnershipCompanyId_=0;
+                    OwnershipCompanyId_ = 0;
             }
             catch (Exception)
             {
@@ -614,7 +679,7 @@ namespace HM_ERP_System.Forms.Car
         private void btnAddCompanys_Click(object sender, EventArgs e)
         {
             frmCustomer f = new frmCustomer(this);
-            f.RequestFromExternalForms="frmCar";
+            f.RequestFromExternalForms = "frmCar";
             f.ShowDialog();
             FillcmbCompanys();
         }
@@ -651,13 +716,78 @@ namespace HM_ERP_System.Forms.Car
         {
             frmReport f = new frmReport();
             //f.Cod="3";
-            f.grid=dgvList;
+            f.grid = dgvList;
             //f.Condition="";
             //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
-            f.TitelString =ResourceCode.TRcars;
-            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Cars.rdlc";
+            f.TitelString = ResourceCode.TRcars;
+            f.ReporFileName = "HM_ERP_System.ReportViewer.Report_Cars.rdlc";
             f.ShowDialog();
 
+        }
+
+        private void btnAddTruckManufacturer_Click(object sender, EventArgs e)
+        {
+            frmTruckManufacturer f = new frmTruckManufacturer(this);
+            f.ShowDialog();
+            FillcmbTruckManufacturer();
+        }
+
+        private void btnAddColor_Click(object sender, EventArgs e)
+        {
+            frmColor f = new frmColor(this);
+            f.ShowDialog();
+            FillcmbColor();
+
+        }
+
+        int TruckManufacturerId = 0;
+        private void cmbTruckManufacturer_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TruckManufacturerId = Convert.ToInt32(cmbTruckManufacturer.Value);
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+        int ColorId = 0;
+        private void cmbColor_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ColorId = Convert.ToInt32(cmbColor.Value);
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+
+        private void cmbTruckUsageType_ValueChanged(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+                SendKeys.Send("{TAB}");
+
+        }
+
+        private void txtSeryal_Leave(object sender, EventArgs e)
+        {
+            if (txtSeryal.Text != "")
+            {
+                using (var db = new DBcontextModel())
+                {
+                    var q=db.Cars.Where(c=>c.Seryal==txtSeryal.Text);
+                    if(q.Count()!=0)
+                    {
+                        PublicClass.StopMesseg(ResourceCode.T166);
+                        txtSeryal.ResetText();
+                        txtSeryal.Focus();
+                    }
+                }
+
+            }
         }
     }
 }

@@ -71,13 +71,13 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         bool isactive = false;
         private void frmReviewAccounts_Load(object sender, EventArgs e)
         {
-            WindowState= FormWindowState.Maximized;
-            txtDateS.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
+            WindowState = FormWindowState.Maximized;
+            txtDateS.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
             txtDateE.Value = DateTime.Now;
 
 
 
-            isactive=true;
+            isactive = true;
             UpdateData();
 
         }
@@ -99,8 +99,8 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             FilldgvListS();//معیین
             FilldgvListD();//تفصیلی
             FilldgvListAllAcconts();//تفصیلی
-            dgvList.DataSource=null;
-            dgvListTransaction.DataSource=null;
+            dgvList.DataSource = null;
+            dgvListTransaction.DataSource = null;
             PublicClass.WindowAlart("1", "بروز رسانی انجام شد.");
             /*
             switch (TabKey)
@@ -196,7 +196,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
                 if (ds != null)
                 {
-                    dgvListS.DataMember ="SpecificAccounts";
+                    dgvListS.DataMember = "SpecificAccounts";
                     dgvListS.RootTable.ChildTables[0].DataMember = ds.Relations[0].RelationName;
                     dgvListS.DataSource = ds;
                     dgvListS.AutoSizeColumns();
@@ -219,7 +219,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 DataSet ds = PublicClass.DetailedAccountTransactionsTree(txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value, chkShowZeroBalance.Checked, chkIsBeginningBalanceFilter.Checked);
                 if (ds != null)
                 {
-                    dgvListD.DataMember ="Customers";
+                    dgvListD.DataMember = "Customers";
                     dgvListD.RootTable.ChildTables[0].DataMember = ds.Relations[0].RelationName;
                     dgvListD.DataSource = ds;
                     dgvListD.AutoSizeColumns();
@@ -241,7 +241,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
         private void txtTransactionCodeS_ValueChanged(object sender, EventArgs e)
         {
-            txtTransactionCodeE.Value=txtTransactionCodeS.Value;
+            txtTransactionCodeE.Value = txtTransactionCodeS.Value;
         }
 
         private void buttonCommand1_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
@@ -256,13 +256,13 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
         private void buttonCommand3_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            dgvListAllAcconts.RootTable.GroupMode=GroupMode.Collapsed;
+            dgvListAllAcconts.RootTable.GroupMode = GroupMode.Collapsed;
             FillAllList();
         }
 
         private void buttonCommand2_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            dgvListAllAcconts.RootTable.GroupMode=GroupMode.Expanded;
+            dgvListAllAcconts.RootTable.GroupMode = GroupMode.Expanded;
             FillAllList();
         }
 
@@ -284,7 +284,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                         PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
 
                         //uiTab1.SelectedIndex=5;
-                        uiTab1.TabPages["List"].Selected=true;
+                        uiTab1.TabPages["List"].Selected = true;
 
                     }
 
@@ -312,9 +312,9 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                         var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
 
                         PublicClass.FilldgvListTransaction(dgvListTransaction, Date, Date, TransactionCode);
-                        lblCode.Text=TransactionCode.ToString();
-                        lblDate.Text=Date;
-                        uiTab1.TabPages["Transaction"].Selected=true;
+                        lblCode.Text = TransactionCode.ToString();
+                        lblDate.Text = Date;
+                        uiTab1.TabPages["Transaction"].Selected = true;
                     }
 
                 }
@@ -332,9 +332,9 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 int id = Convert.ToInt32(PublicClass.FinancialYear);
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.FinancialYears.Where(c => c.Id==id).First();
-                    txtDateS.Text=q.DateStart.ToString();
-                    txtDateE.Text=q.DateEnd.ToString();
+                    var q = db.FinancialYears.Where(c => c.Id == id).First();
+                    txtDateS.Text = q.DateStart.ToString();
+                    txtDateE.Text = q.DateEnd.ToString();
                 }
             }
             catch (Exception er)
@@ -345,8 +345,8 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
         private void btnThisDay_Click(object sender, EventArgs e)
         {
-            txtDateS.Value=DateTime.Now;
-            txtDateE.Value=DateTime.Now;
+            txtDateS.Value = DateTime.Now;
+            txtDateE.Value = DateTime.Now;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -398,7 +398,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                             //var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
                             List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
                             PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, 0, txtTransactionCodeS.Value, txtTransactionCodeE.Value, ListId);
-                            uiTab1.TabPages["List"].Selected=true;
+                            uiTab1.TabPages["List"].Selected = true;
 
                         }
                         catch (Exception er)
@@ -414,7 +414,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                         var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
                         List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
                         PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
-                        uiTab1.TabPages["List"].Selected=true;
+                        uiTab1.TabPages["List"].Selected = true;
 
                     }
 
@@ -436,11 +436,10 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 {
                     using (var db = new DBcontextModel())
                     {
-                        //var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
                         List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
                         PublicClass.FilldgvListTransactionDA(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
 
-                        uiTab1.TabPages["List"].Selected=true;
+                        uiTab1.TabPages["List"].Selected = true;
                     }
 
                 }
@@ -448,10 +447,9 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 {
                     using (var db = new DBcontextModel())
                     {
-                        //var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
                         List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
                         PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
-                        uiTab1.TabPages["List"].Selected=true;
+                        uiTab1.TabPages["List"].Selected = true;
                     }
                 }
 
@@ -466,60 +464,60 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         private void buttonX01_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
-            string DateReport = ResourceCode.T159+txtDateS.Text+ ResourceCode.T160+txtDateE.Text;
+            string DateReport = ResourceCode.T159 + txtDateS.Text + ResourceCode.T160 + txtDateE.Text;
             switch (TabKey)
             {
                 case "G"://گروه
-                    f.grid=dgvListG;
-                    f.DateReport=DateReport;
-                    f.TitelString =ResourceCode.TRreviewAccountsG;
-                    f.Description=" ";
-                    f.ReporFileName ="HM_ERP_System.ReportViewer.ReviewAccountsG.rdlc";
+                    f.grid = dgvListG;
+                    f.DateReport = DateReport;
+                    f.TitelString = ResourceCode.TRreviewAccountsG;
+                    f.Description = " ";
+                    f.ReporFileName = "HM_ERP_System.ReportViewer.ReviewAccountsG.rdlc";
                     f.ShowDialog();
                     break;
                 case "T"://کل
-                    f.grid=dgvListT;
-                    f.DateReport=DateReport;
-                    f.TitelString =ResourceCode.TRreviewAccountsT;
-                    f.Description=" ";
-                    f.ReporFileName ="HM_ERP_System.ReportViewer.ReviewAccountsT.rdlc";
+                    f.grid = dgvListT;
+                    f.DateReport = DateReport;
+                    f.TitelString = ResourceCode.TRreviewAccountsT;
+                    f.Description = " ";
+                    f.ReporFileName = "HM_ERP_System.ReportViewer.ReviewAccountsT.rdlc";
                     f.ShowDialog();
                     break;
                 case "S"://معیین
-                    f.grid=dgvListS;
-                    f.DateReport=DateReport;
-                    f.TitelString =ResourceCode.TRreviewAccountsS;
-                    f.Description=" ";
-                    f.ReporFileName ="HM_ERP_System.ReportViewer.ReviewAccountsS.rdlc";
+                    f.grid = dgvListS;
+                    f.DateReport = DateReport;
+                    f.TitelString = ResourceCode.TRreviewAccountsS;
+                    f.Description = " ";
+                    f.ReporFileName = "HM_ERP_System.ReportViewer.ReviewAccountsS.rdlc";
                     f.ShowDialog();
                     break;
                 case "D"://تفصیلی
-                    f.grid=dgvListD;
-                    f.DateReport=DateReport;
-                    f.TitelString =ResourceCode.TRreviewAccountsD;
-                    f.Description=" ";
-                    f.ReporFileName ="HM_ERP_System.ReportViewer.ReviewAccountsD.rdlc";
+                    f.grid = dgvListD;
+                    f.DateReport = DateReport;
+                    f.TitelString = ResourceCode.TRreviewAccountsD;
+                    f.Description = " ";
+                    f.ReporFileName = "HM_ERP_System.ReportViewer.ReviewAccountsD.rdlc";
                     f.ShowDialog();
                     break;
                 case "AllAcconts"://تفصیلی
-                    f.grid=dgvListAllAcconts;
-                    f.DateReport=DateReport;
-                    f.TitelString =ResourceCode.TRreviewAccountsAllAcconts;
-                    f.ReporFileName="HM_ERP_System.ReportViewer.ReviewAccountsAllAcconts.rdlc";
+                    f.grid = dgvListAllAcconts;
+                    f.DateReport = DateReport;
+                    f.TitelString = ResourceCode.TRreviewAccountsAllAcconts;
+                    f.ReporFileName = "HM_ERP_System.ReportViewer.ReviewAccountsAllAcconts.rdlc";
                     f.ShowDialog();
                     break;
                 case "List"://لیست صورت حساب ها
-                    f.grid=dgvList;
-                    f.DateReport=DateReport;
-                    f.Description="نام حســــاب(مشتری): "+dgvList.GetRow(0).Cells["ContraAccountName"].Value; ;
-                    f.TitelString =ResourceCode.TRreviewAccountsList;
-                    f.ReporFileName="HM_ERP_System.ReportViewer.ReviewAccountsList.rdlc";
+                    f.grid = dgvList;
+                    f.DateReport = DateReport;
+                    f.Description = "نام حســــاب(مشتری): " + dgvList.GetRow(0).Cells["ContraAccountName"].Value; ;
+                    f.TitelString = ResourceCode.TRreviewAccountsList;
+                    f.ReporFileName = "HM_ERP_System.ReportViewer.ReviewAccountsList.rdlc";
                     f.ShowDialog();
                     break;
                 case "Transaction"://لیست تراکنش ها
                     f.grid = dgvListTransaction;
                     //f.DateReport = DateReport;
-                    f.Description = "تاریــخ - شمـــاره: " + lblDate.Text+ " - "+ lblCode.Text;
+                    f.Description = "تاریــخ - شمـــاره: " + lblDate.Text + " - " + lblCode.Text;
                     f.TitelString = ResourceCode.TRreviewAccountsTransaction;
                     f.ReporFileName = "HM_ERP_System.ReportViewer.ReviewAccountsTransaction.rdlc";
                     f.ShowDialog();

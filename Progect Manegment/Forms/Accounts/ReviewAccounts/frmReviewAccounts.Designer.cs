@@ -583,7 +583,7 @@
             this.uiTabPage4.Key = "D";
             this.uiTabPage4.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage4.Name = "uiTabPage4";
-            this.uiTabPage4.Size = new System.Drawing.Size(797, 296);
+            this.uiTabPage4.Size = new System.Drawing.Size(797, 329);
             this.uiTabPage4.TabStop = true;
             this.uiTabPage4.Text = "تفصیلــــی";
             // 
@@ -615,7 +615,7 @@
             this.dgvListD.RecordNavigator = true;
             this.dgvListD.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListD.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListD.Size = new System.Drawing.Size(797, 296);
+            this.dgvListD.Size = new System.Drawing.Size(797, 329);
             this.dgvListD.Sortable = true;
             this.dgvListD.TabIndex = 90;
             this.dgvListD.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);

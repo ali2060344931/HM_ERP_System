@@ -79,7 +79,6 @@ namespace HM_ERP_System.Forms.Persons
                     if (userRepo.SaveOrUpdate(new Provinces { Id = ListId, Name = txtName.Text }, ListId))
                     {
                         PublicClass.WindowAlart("1");
-                        FilldgvList();
                         if (_updatableForms!=null)
                             _updatableForms.UpdateData();
 
@@ -98,6 +97,8 @@ namespace HM_ERP_System.Forms.Persons
             ListId = 0;
             txtName.ResetText();
             txtName.Focus();
+            FilldgvList();
+
         }
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)

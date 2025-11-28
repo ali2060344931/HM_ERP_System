@@ -16,6 +16,7 @@ using HM_ERP_System.Entity.BillLadingWriterPercent;
 using HM_ERP_System.Entity.BlacList;
 using HM_ERP_System.Entity.Car;
 using HM_ERP_System.Entity.Ciltys;
+using HM_ERP_System.Entity.Color;
 using HM_ERP_System.Entity.Comers;
 using HM_ERP_System.Entity.Commission;
 using HM_ERP_System.Entity.Customer;
@@ -42,6 +43,7 @@ using HM_ERP_System.Entity.Settings;
 using HM_ERP_System.Entity.Ship;
 using HM_ERP_System.Entity.Spare;
 using HM_ERP_System.Entity.TransactionFee;
+using HM_ERP_System.Entity.TruckManufacturer;
 using HM_ERP_System.Entity.TruckUsageType;
 using HM_ERP_System.Entity.TypeCalcMethod;
 using HM_ERP_System.Entity.TypeCustomer;
@@ -129,6 +131,8 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new SettingConfig());
             modelBuilder.Configurations.Add(new TypeAccountConfig());
             modelBuilder.Configurations.Add(new RentalTypeConfig());
+            modelBuilder.Configurations.Add(new TruckManufacturerConfig());
+            modelBuilder.Configurations.Add(new ColorConfig());
 
             base.OnModelCreating(modelBuilder);
             #endregion
@@ -379,6 +383,11 @@ namespace Progect_Manegment
         /// نوع اجاره ها
         /// </summary>
         public virtual DbSet<RentalType> RentalTypes { get; set; }
+        /// <summary>
+        /// کارخانه سازنده کامیون ها
+        /// </summary>
+        public virtual DbSet<TruckManufacturer> TruckManufacturers { get; set; }
+        public virtual DbSet<Color_> Color_s { get; set; }
 
         #endregion
 

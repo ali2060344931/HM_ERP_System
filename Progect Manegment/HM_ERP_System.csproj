@@ -579,6 +579,7 @@
     <Compile Include="Entity\BlacList\BlacList.cs" />
     <Compile Include="Entity\Car\Car.cs" />
     <Compile Include="Entity\Ciltys\Ciltys.cs" />
+    <Compile Include="Entity\Color\Color.cs" />
     <Compile Include="Entity\Comers\ComerBResult.cs" />
     <Compile Include="Entity\Comers\ComersB.cs" />
     <Compile Include="Entity\Comers\ComersH.cs" />
@@ -608,6 +609,7 @@
     <Compile Include="Entity\Spare\RentalType.cs" />
     <Compile Include="Entity\Spare\Spare.cs" />
     <Compile Include="Entity\TransactionFee\TransactionFee.cs" />
+    <Compile Include="Entity\TruckManufacturer\TruckManufacturer.cs" />
     <Compile Include="Entity\TruckUsageType\TruckUsageType.cs" />
     <Compile Include="Entity\TypeCalcMethod\TypeCalcMethod.cs" />
     <Compile Include="Entity\TypeCustomer\TypeCustomer.cs" />
@@ -753,6 +755,12 @@
     </Compile>
     <Compile Include="Forms\Ciltys\frmCiltys.Designer.cs">
       <DependentUpon>frmCiltys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Color\frmColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Color\frmColor.Designer.cs">
+      <DependentUpon>frmColor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Comers\frmComers.cs">
       <SubType>Form</SubType>
@@ -904,6 +912,12 @@
     <Compile Include="Forms\TankerRental\frmTankerRental.Designer.cs">
       <DependentUpon>frmTankerRental.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TruckManufacturer\frmTruckManufacturer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TruckManufacturer\frmTruckManufacturer.Designer.cs">
+      <DependentUpon>frmTruckManufacturer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User\frmUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -996,6 +1010,9 @@
     <EmbeddedResource Include="Forms\Ciltys\frmCiltys.resx">
       <DependentUpon>frmCiltys.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Color\frmColor.resx">
+      <DependentUpon>frmColor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Comers\frmComers.resx">
       <DependentUpon>frmComers.cs</DependentUpon>
     </EmbeddedResource>
@@ -1070,6 +1087,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TankerRental\frmTankerRental.resx">
       <DependentUpon>frmTankerRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TruckManufacturer\frmTruckManufacturer.resx">
+      <DependentUpon>frmTruckManufacturer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>

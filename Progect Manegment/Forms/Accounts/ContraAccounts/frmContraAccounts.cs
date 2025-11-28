@@ -309,7 +309,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                         return;
                     }
 
-                    if (txtSeryalShaba.Text != "" && txtSeryalShaba.Text.Length != 24)
+                    if (txtSeryalShaba.Text != "" && txtSeryalShaba.Text.Length != 26)
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T035);
                         return;
@@ -601,5 +601,58 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                 PublicClass.ShowErrorMessage(er);
             }
         }
+
+        private void dgvList_FormattingRow(object sender, Janus.Windows.GridEX.RowLoadEventArgs e)
+        {
+            if (e.Row.RowType == Janus.Windows.GridEX.RowType.Record)
+            {
+                string valueS = e.Row.Cells["SeryalShaba"].Text;
+                string valueD = e.Row.Cells["DabitCardNumber"].Text;
+
+                if (!string.IsNullOrEmpty(valueS) && valueS.Length == 26)
+                {
+                    e.Row.Cells["SeryalShaba"].Text = InsertDashesS(valueS);
+                }
+
+                //سریال کارت
+                if (!string.IsNullOrEmpty(valueD) && valueD.Length == 16)
+                {
+                    e.Row.Cells["DabitCardNumber"].Text = InsertDashesD(valueD);
+                }
+
+            }
+        }
+        /// <summary>
+        /// برای شماره های شبا
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private string InsertDashesS(string input)
+        {
+            List<string> parts = new List<string>();
+            int index = 0;
+
+            // 6 گروه 4 کاراکتری
+            for (int i = 0; i < 6; i++)
+            {
+                parts.Add(input.Substring(index, 4));
+                index += 4;
+            }
+
+            // گروه آخر 2 کاراکتری
+            parts.Add(input.Substring(index, 2));
+
+            return string.Join("-", parts);
+        }
+        /// <summary>
+        /// برای کارت های عابربانک
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private string InsertDashesD(string input)
+        {
+            return string.Join("-", Enumerable.Range(0, input.Length / 4)
+                                              .Select(i => input.Substring(i * 4, 4)));
+        }
     }
-}
+}     

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmContraAccounts));
             Janus.Windows.GridEX.GridEXLayout cmbTypeAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbNatureAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbBankBranche_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbType_Account_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmContraAccounts));
             this.dgvList = new GridExEx.GridExEx();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
             this.cmbTypeAccounts = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -55,7 +55,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtSeryalShaba = new Janus.Windows.GridEX.EditControls.EditBox();
             this.txtDabitCardNumber = new Janus.Windows.GridEX.EditControls.EditBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.txtAccountNumber = new Janus.Windows.GridEX.EditControls.EditBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -212,6 +211,7 @@
             this.dgvList.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
+            this.dgvList.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.dgvList_FormattingRow);
             this.dgvList.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvList_ColumnButtonClick);
             // 
             // txtName
@@ -463,12 +463,13 @@
             // 
             // txtSeryalShaba
             // 
-            this.txtSeryalShaba.Location = new System.Drawing.Point(30, 106);
-            this.txtSeryalShaba.MaxLength = 24;
+            this.txtSeryalShaba.Location = new System.Drawing.Point(3, 106);
+            this.txtSeryalShaba.MaxLength = 26;
             this.txtSeryalShaba.Name = "txtSeryalShaba";
-            this.txtSeryalShaba.Size = new System.Drawing.Size(209, 28);
+            this.txtSeryalShaba.Size = new System.Drawing.Size(236, 28);
             this.txtSeryalShaba.TabIndex = 3;
-            this.txtSeryalShaba.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtSeryalShaba.Text = "IR";
+            this.txtSeryalShaba.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far;
             this.txtSeryalShaba.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // txtDabitCardNumber
@@ -480,17 +481,6 @@
             this.txtDabitCardNumber.TabIndex = 2;
             this.txtDabitCardNumber.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtDabitCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(10, 109);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(23, 23);
-            this.label9.TabIndex = 163;
-            this.label9.Text = "IR";
             // 
             // txtAccountNumber
             // 
@@ -523,7 +513,6 @@
             this.panel2.Controls.Add(this.txtDabitCardNumber);
             this.panel2.Controls.Add(this.txtSeryalShaba);
             this.panel2.Controls.Add(this.txtAccountNumber);
-            this.panel2.Controls.Add(this.label9);
             this.panel2.Location = new System.Drawing.Point(14, 255);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(339, 142);
@@ -601,7 +590,6 @@
         private System.Windows.Forms.Label label6;
         private Janus.Windows.GridEX.EditControls.EditBox txtSeryalShaba;
         private Janus.Windows.GridEX.EditControls.EditBox txtDabitCardNumber;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label8;
         private Janus.Windows.GridEX.EditControls.EditBox txtAccountNumber;

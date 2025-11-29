@@ -18,6 +18,7 @@ namespace HM_ERP_System.Entity.Color
         public ColorConfig()
         {
             HasKey(x => x.Id);
+
             Property(d => d.Name).IsRequired().HasMaxLength(100);
         }
     }

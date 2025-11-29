@@ -1582,6 +1582,15 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to لیست سیــــاه.
+        /// </summary>
+        internal static string TRblacLists {
+            get {
+                return ResourceManager.GetString("TRblacLists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست کامیــــون ها.
         /// </summary>
         internal static string TRcars {

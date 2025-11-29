@@ -30,6 +30,7 @@ namespace HM_ERP_System.Class_General
             V_ReviewAccountsList();
             V_ReviewAccountsTransaction();
             V_BanckCofer();
+            V_BlacLists();
         }
 
         /// <summary>
@@ -213,6 +214,12 @@ namespace HM_ERP_System.Class_General
 
             MyClass.SqlBankClass.AddColumnInTable("Drop view  V_BanckCofer");
             MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_BanckCofer] AS " + txt);
+        }
+        static void V_BlacLists()
+        {
+            string txt = "SELECT  bl.Id, LTRIM(RTRIM(cu.Family + ' ' + cu.Name)) AS Name, bl.Description AS des, bl.status, bl.NoSaveData\r\nFROM BlacLists AS bl INNER JOIN\r\n Customers AS cu ON bl.CustomerId = cu.Id";
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_BlacLists");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_BlacLists] AS " + txt);
         }
     }
 }

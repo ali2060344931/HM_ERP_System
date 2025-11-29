@@ -103,6 +103,7 @@
             // 
             this.pnlAddItemBodi.AutoScroll = true;
             this.pnlAddItemBodi.AutoScrollMinSize = new System.Drawing.Size(0, 500);
+            this.pnlAddItemBodi.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlAddItemBodi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAddItemBodi.Location = new System.Drawing.Point(0, 0);
             this.pnlAddItemBodi.Name = "pnlAddItemBodi";
@@ -245,6 +246,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelX1.Location = new System.Drawing.Point(476, 17);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(105, 23);
@@ -253,6 +255,7 @@
             this.labelX1.TabIndex = 1;
             this.labelX1.Text = "نمایش از تاریخ:";
             this.labelX1.TextAlignment = System.Drawing.StringAlignment.Far;
+            this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
             // 
             // labelX2
             // 
@@ -262,6 +265,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelX2.Location = new System.Drawing.Point(274, 17);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(65, 23);
@@ -270,6 +274,7 @@
             this.labelX2.TabIndex = 1;
             this.labelX2.Text = "تا تاریخ:";
             this.labelX2.TextAlignment = System.Drawing.StringAlignment.Far;
+            this.labelX2.Click += new System.EventHandler(this.labelX2_Click);
             // 
             // pnlViewItemFoter
             // 

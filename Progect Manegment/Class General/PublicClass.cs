@@ -1836,6 +1836,7 @@ namespace MyClass
 
                         select new
                         {
+                            ga.IdMahiyat,
                             tr.Id,
                             tr.Series,
                             tr.TransactionCode,
@@ -1896,7 +1897,20 @@ namespace MyClass
 
                     foreach (var item in currentList)
                     {
-                        runningBalance += (item.PaymentBed - item.PaymentBes);
+                        // محاسبه مانده بر اساس ماهیت حساب
+                        if (item.IdMahiyat == 1) // بدهکاران
+                        {
+                            runningBalance += (item.PaymentBed - item.PaymentBes);
+                        }
+                        else if (item.IdMahiyat == 2) // بستانکاران
+                        {
+                            runningBalance += (item.PaymentBes + item.PaymentBed);
+                        }
+                        else
+                        {
+                            // اگر ماهیت تعریف نشده بود، حالت پیش‌فرض
+                            runningBalance += (item.PaymentBed - item.PaymentBes);
+                        }
 
                         finalResult.Add(new
                         {
@@ -1912,7 +1926,7 @@ namespace MyClass
                             item.TotalAmount,
                             item.PaymentBed,
                             item.PaymentBes,
-                            Balance = runningBalance,    // 👈 مانده این تراکنش
+                            Balance = runningBalance,    // 👈 مانده پس از اعمال قانون جدید
                             item.Description,
                             item.AccountCode,
                             item.IsAutoRejDoc,

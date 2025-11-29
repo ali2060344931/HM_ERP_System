@@ -1111,6 +1111,7 @@
     <EmbeddedResource Include="ReportViewer\Report_AppointmentScheduling.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_ComersH.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_BanckCofer.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_BlacLists.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsTransaction.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsList.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsAllAcconts.rdlc" />

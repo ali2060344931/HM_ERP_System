@@ -140,6 +140,7 @@
             // buttonX01
             // 
             this.buttonX01.Location = new System.Drawing.Point(317, 0);
+            this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnShowGridExHideColumns
             // 

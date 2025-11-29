@@ -466,7 +466,6 @@
             this.dgvList.RowHeaderFormatStyle.LineAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.dgvList.RowHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmTankerRental";
             this.dgvList.Size = new System.Drawing.Size(703, 471);
             this.dgvList.Sortable = true;
@@ -567,13 +566,13 @@
             this.btnRegGroupDoc.Location = new System.Drawing.Point(0, 0);
             this.btnRegGroupDoc.Name = "btnRegGroupDoc";
             this.btnRegGroupDoc.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnRegGroupDoc.Size = new System.Drawing.Size(168, 28);
+            this.btnRegGroupDoc.Size = new System.Drawing.Size(217, 28);
             this.btnRegGroupDoc.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRegGroupDoc.Symbol = "";
             this.btnRegGroupDoc.SymbolSize = 15F;
             this.btnRegGroupDoc.TabIndex = 118;
             this.btnRegGroupDoc.TabStop = false;
-            this.btnRegGroupDoc.Text = "ثبت گروهی دریافت اجاره";
+            this.btnRegGroupDoc.Text = "ثبت گروهی دریافت/پرداخت اجاره";
             this.btnRegGroupDoc.Click += new System.EventHandler(this.btnRegGroupDoc_Click);
             // 
             // cmbMont
@@ -594,7 +593,7 @@
             "دی",
             "بهمن",
             "اسفند"});
-            this.cmbMont.Location = new System.Drawing.Point(168, 0);
+            this.cmbMont.Location = new System.Drawing.Point(234, 0);
             this.cmbMont.Name = "cmbMont";
             this.cmbMont.Size = new System.Drawing.Size(107, 28);
             this.cmbMont.TabIndex = 129;
@@ -605,7 +604,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.Location = new System.Drawing.Point(371, 5);
+            this.label11.Location = new System.Drawing.Point(437, 5);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(32, 18);
             this.label11.TabIndex = 128;
@@ -617,7 +616,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(275, 5);
+            this.label12.Location = new System.Drawing.Point(341, 5);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(27, 18);
             this.label12.TabIndex = 128;
@@ -628,7 +627,7 @@
             this.txtYear.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtYear.CheackCodeMeli = false;
             this.txtYear.Day = 0;
-            this.txtYear.Location = new System.Drawing.Point(302, 0);
+            this.txtYear.Location = new System.Drawing.Point(368, 0);
             this.txtYear.Miladi = new System.DateTime(((long)(0)));
             this.txtYear.Month = 0;
             this.txtYear.Name = "txtYear";
@@ -772,7 +771,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCarplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbWarantyType)).EndInit();
-            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbRentalType)).EndInit();
             this.ResumeLayout(false);

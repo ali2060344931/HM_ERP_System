@@ -625,6 +625,9 @@
   <data name="TRbanck" xml:space="preserve">
     <value>لیست بانک ها</value>
   </data>
+  <data name="TRblacLists" xml:space="preserve">
+    <value>لیست سیــــاه</value>
+  </data>
   <data name="TRcars" xml:space="preserve">
     <value>لیست کامیــــون ها</value>
   </data>

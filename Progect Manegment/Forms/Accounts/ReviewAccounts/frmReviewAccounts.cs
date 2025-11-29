@@ -443,15 +443,15 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                     }
 
                 }
-                else if (e.Column.Key == "Transaction")
-                {
-                    using (var db = new DBcontextModel())
-                    {
-                        List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
-                        PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
-                        uiTab1.TabPages["List"].Selected = true;
-                    }
-                }
+                //else if (e.Column.Key == "Transaction")
+                //{
+                //    using (var db = new DBcontextModel())
+                //    {
+                //        List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
+                //        PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
+                //        uiTab1.TabPages["List"].Selected = true;
+                //    }
+                //}
 
             }
             catch (Exception er)

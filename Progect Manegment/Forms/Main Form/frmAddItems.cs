@@ -28,5 +28,15 @@ namespace HM_ERP_System.Forms.Main_Form
         {
 
         }
+
+        private void labelX1_Click(object sender, EventArgs e)
+        {
+            txtDateStart.Value = DateTime.Now;
+        }
+
+        private void labelX2_Click(object sender, EventArgs e)
+        {
+            txtDateEnd.Value = DateTime.Now;
+        }
     }
 }

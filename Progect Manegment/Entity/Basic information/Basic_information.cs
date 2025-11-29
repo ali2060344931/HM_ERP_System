@@ -190,6 +190,12 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.Customers.Add(new Customer.Customer { Name="هزینه پورسانت", CodMeli="1000000011", id_TypeCustomer=8, Tel="0", SecretCode=11 });
                     db.SaveChanges();
                 }
+                var q12_3 = db.Customers.Where(c=>c.SecretCode==12).Count();
+                if (q12_3 == 0)
+                {
+                    db.Customers.Add(new Customer.Customer { Name= "مرکز هزینه اجاره تانکرها", CodMeli="1000000012", id_TypeCustomer=8, Tel="0", SecretCode=12 });
+                    db.SaveChanges();
+                }
 
 
 

@@ -90,47 +90,55 @@ namespace HM_ERP_System.Forms.TankerRental
 
         private void FilldgvList()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = from sp in db.Spares
+                using (var db = new DBcontextModel())
+                {
+                    var q = from sp in db.Spares
 
-                        join cr in db.Cars
-                        on sp.CarId equals cr.Id
+                            join cr in db.Cars
+                            on sp.CarId equals cr.Id
 
-                        join cu in db.Customers
-                        on cr.GoodsAccountId equals cu.Id
+                            join cu in db.Customers
+                            on cr.GoodsAccountId equals cu.Id
 
-                        join wr in db.WarantyTypes
-                        on sp.WarantyTypeId equals wr.Id
+                            join wr in db.WarantyTypes
+                            on sp.WarantyTypeId equals wr.Id
 
-                        join tut in db.TruckUsageTypes
-                        on cr.TruckUsageTypeId equals tut.Id
+                            join tut in db.TruckUsageTypes
+                            on cr.TruckUsageTypeId equals tut.Id
 
-                        join rt in db.RentalTypes
-                        on sp.RentalTypeId equals rt.Id
-                        select new
-                        {
-                            sp.Id,
-                            sp.ContactNo,
-                            sp.TankerNo,
-                            cr.CarPlat,
-                            cr.CarPlatSeryal,
-                            cr.AxisCount,
-                            cr.CarName,
-                            //نام طرف حساب کامیون
-                            GoodsAccountName = cu.Family+ " "+ cu.Name,
-                            sp.DataStart,
-                            sp.DataEnd,
-                            sp.RentAmount,
-                            sp.SecurityDeposit,
-                            sp.ContractStatus,
-                            sp.Description,
-                            WarantyType = wr.Name,
-                            RentalType=rt.Name,
-                            TruckUsageTypeName = tut.Name,
-                        };
+                            join rt in db.RentalTypes
+                            on sp.RentalTypeId equals rt.Id
+                            select new
+                            {
+                                sp.Id,
+                                sp.ContactNo,
+                                sp.TankerNo,
+                                cr.CarPlat,
+                                cr.CarPlatSeryal,
+                                cr.AxisCount,
+                                cr.CarName,
+                                //نام طرف حساب کامیون
+                                GoodsAccountName = cu.Family + " " + cu.Name,
+                                sp.DataStart,
+                                sp.DataEnd,
+                                sp.RentAmount,
+                                sp.SecurityDeposit,
+                                sp.ContractStatus,
+                                sp.Description,
+                                WarantyType = wr.Name,
+                                RentalType = rt.Name,
+                                RentalTypeId = rt.Id,
+                                TruckUsageTypeName = tut.Name,
+                            };
 
-               System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList,Name);
+                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList, Name);
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -374,62 +382,69 @@ namespace HM_ERP_System.Forms.TankerRental
 
         private void cmsdgv_CommandClick(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            switch (e.Command.Key)
+            try
             {
-                case "Edit":
-                    using (var db = new DBcontextModel())
-                    {
-                        ListId=ListId_;
-                        var q = db.Spares.Where(c => c.Id == ListId).First();
-                        txtContactNo.Text=q.ContactNo;
-                        txtTankerNo.Text=q.TankerNo;
-                        cmbCarplate.Value=q.CarId;
-                        txtDateS.Text=q.DataStart;
-                        txtDateE.Text=q.DataEnd;
-                        cmbWarantyType.Value=q.WarantyTypeId;
-                        cmbRentalType.Value=q.RentalTypeId;
-                        txtSecurityDeposit.Text=q.SecurityDeposit.ToString();
-                        txtRentAmount.Text=q.RentAmount.ToString();
-                        txtDes.Text = q.Description;
-                        chkContractStatus.Checked=q.ContractStatus;
-                    }
-                    break;
-
-                case "Delete":
-                    using (var db = new DBcontextModel())
-                    {
-                        ListId=ListId_;
-
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                switch (e.Command.Key)
+                {
+                    case "Edit":
+                        using (var db = new DBcontextModel())
                         {
+                            ListId = ListId_;
                             var q = db.Spares.Where(c => c.Id == ListId).First();
-                            db.Spares.Remove(q);
-                            PublicClass.WindowAlart("2");
-                            db.SaveChanges();
-                            FilldgvList();
-                            CelearItems();
+                            txtContactNo.Text = q.ContactNo;
+                            txtTankerNo.Text = q.TankerNo;
+                            cmbCarplate.Value = q.CarId;
+                            txtDateS.Text = q.DataStart;
+                            txtDateE.Text = q.DataEnd;
+                            cmbWarantyType.Value = q.WarantyTypeId;
+                            cmbRentalType.Value = q.RentalTypeId;
+                            txtSecurityDeposit.Text = q.SecurityDeposit.ToString();
+                            txtRentAmount.Text = q.RentAmount.ToString();
+                            txtDes.Text = q.Description;
+                            chkContractStatus.Checked = q.ContractStatus;
                         }
-                        ListId=0;
-                    }
+                        break;
+
+                    case "Delete":
+                        using (var db = new DBcontextModel())
+                        {
+                            ListId = ListId_;
+
+                            if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                var q = db.Spares.Where(c => c.Id == ListId).First();
+                                db.Spares.Remove(q);
+                                PublicClass.WindowAlart("2");
+                                db.SaveChanges();
+                                FilldgvList();
+                                CelearItems();
+                            }
+                            ListId = 0;
+                        }
 
 
-                    break;
-                case "AddDocumentToBanck"://ثبت مدارک
-                    ListId=ListId_;
-                    string lblCaption = "شماره قرارداد:" + dgvList.GetRow().Cells["ContactNo"].Value.ToString() + " شماره تانکـــر: " + dgvList.GetRow().Cells["TankerNo"].Value.ToString();
+                        break;
+                    case "AddDocumentToBanck"://ثبت مدارک
+                        ListId = ListId_;
+                        string lblCaption = "شماره قرارداد:" + dgvList.GetRow().Cells["ContactNo"].Value.ToString() + " شماره تانکـــر: " + dgvList.GetRow().Cells["TankerNo"].Value.ToString();
 
-                    PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
-                    FilldgvList();
-                    ListId=0;
-                    break;
-                case "DocWaranty"://ثبت درخواست بارنامه
-                    ListId=ListId_;
-                    frmBillLadingRequest f = new frmBillLadingRequest(this);
-                    f.ComersHId=ListId;
-                    f.ShowDialog();
-                    ListId=0;
+                        PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
+                        FilldgvList();
+                        ListId = 0;
+                        break;
+                    case "DocWaranty"://ثبت درخواست بارنامه
+                        ListId = ListId_;
+                        frmBillLadingRequest f = new frmBillLadingRequest(this);
+                        f.ComersHId = ListId;
+                        f.ShowDialog();
+                        ListId = 0;
 
-                    break;
+                        break;
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
 
         }
@@ -438,106 +453,151 @@ namespace HM_ERP_System.Forms.TankerRental
 
         private void btnRegGroupDoc_Click(object sender, EventArgs e)
         {
-            if (dgvList.GetCheckedRows().Count()==0)
+            try
             {
-                PublicClass.ErrorMesseg(ResourceCode.T041); return;
-            }
-            //if (txtDesAghsat.Text=="")
-            //{
-            //    PublicClass.ErrorMesseg(ResourceCode.T117);
-            //    txtDesAghsat.Focus();
-            //    return;
-            //}
-            if (txtYear.Text=="" ||txtYear.Text.Length!=4)
-            {
-                PublicClass.ErrorMesseg(ResourceCode.T123);
-                txtYear.Focus();
-                return;
-
-            }
-
-
-            System.Data.DataTable dt = new System.Data.DataTable();
-            dt.Columns.Add("ListId", typeof(int));
-
-            int TransactionCode = Convert.ToInt32(PublicClass.CreatTransactionCode());
-            using (var db = new DBcontextModel())
-            {
-                var userRepo = new Repository<Entity.Accounts.Transaction.Transaction>(db);
-                int n = 0;
-
-                foreach (GridEXRow item in dgvList.GetCheckedRows())
+                if (dgvList.GetCheckedRows().Count() == 0)
                 {
-                    string txtDes = "قسط ماه:" + cmbMont.Text + " سال: " + txtYear.Text + " به شماره تانکر "+item.Cells["TankerNo"].Value.ToString() + "  با شماره قرارداد " + item.Cells["ContactNo"].Value.ToString() + " با شماره پلاک :"+ item.Cells["CarPlat"].Value.ToString() + "-" + item.Cells["CarPlatSeryal"].Value.ToString() + " طرحساب: " + item.Cells["GoodsAccountName"].Value.ToString();
-
-                    var seerch = db.Transactions.Where(c => c.Description.Contains(txtDes)).Count();
-
-                    if (seerch==0)
-                    {
-                        n++;
-                    }
-
+                    PublicClass.ErrorMesseg(ResourceCode.T041); return;
                 }
-                if (n==0)
+                if (txtYear.Text == "" || txtYear.Text.Length != 4)
                 {
-                    PublicClass.ErrorMesseg(ResourceCode.T124);
+                    PublicClass.ErrorMesseg(ResourceCode.T123);
                     txtYear.Focus();
                     return;
 
                 }
-                if (MessageBox.Show(ResourceCode.T015+'\n'+"تعداد: " + n, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
 
-                foreach (GridEXRow item in dgvList.GetCheckedRows())
+                System.Data.DataTable dt = new System.Data.DataTable();
+                dt.Columns.Add("ListId", typeof(int));
+
+                int TransactionCode = Convert.ToInt32(PublicClass.CreatTransactionCode());
+                using (var db = new DBcontextModel())
                 {
-                    string txtDes = "قسط ماه:" + cmbMont.Text + " سال: " + txtYear.Text + " به شماره تانکر "+item.Cells["TankerNo"].Value.ToString() + "  با شماره قرارداد " + item.Cells["ContactNo"].Value.ToString() + " با شماره پلاک :"+ item.Cells["CarPlat"].Value.ToString() + "-" + item.Cells["CarPlatSeryal"].Value.ToString() + " طرحساب: " + item.Cells["GoodsAccountName"].Value.ToString();
+                    var userRepo = new Repository<Entity.Accounts.Transaction.Transaction>(db);
+                    int n = 0;
 
-                    int Id = Convert.ToInt32(item.Cells["Id"].Value.ToString());
-                    double RentAmount = Convert.ToDouble(item.Cells["RentAmount"].Value.ToString());
-
-                    var seerch = db.Transactions.Where(c => c.Description.Contains(txtDes)).Count();
-
-
-                    if (seerch==0)
+                    foreach (GridEXRow item in dgvList.GetCheckedRows())
                     {
-                        var Spares = db.Spares.Where(c => c.Id==Id).First();
-                        var car = db.Cars.Where(c => c.Id==Spares.CarId).First();
-                        var draver = db.Dravers.Where(c => c.Id==car.DraverId).First();
-                        var customer = db.Customers.Where(c => c.Id==draver.CustomerId).First();
+                        string txtDes = BuildDescription(item, cmbMont.Text, txtYear.Text);
+
+                        int seerch = db.Transactions.Where(c => c.Description.Contains(txtDes)).Count();
+
+                        if (seerch == 0)
                         {
-                            Series++;
-                            int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==10301).First().Id;
-                            int DetailedAccountId = 0;
-                            //حساب تفصیلی
-                            int customertId = customer.Id;
-                            var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                            if (serch1.Count()==0)
-                                DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
-                            else
-                                DetailedAccountId=serch1.First().Id;
-                            PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, RentAmount, RentAmount, 0, 0, txtDes,"", Series, true);
-
-                            Series++;
-                            SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==60201).First().Id;
-                            DetailedAccountId = 0;
-
-                            //حساب تفصیلی
-                            customertId = db.Customers.Where(c => c.SecretCode==8).First().Id;
-
-                            var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                            if (serch2.Count()==0)
-                                DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
-                            else
-                                DetailedAccountId=serch2.First().Id;
-                            PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, RentAmount, 0, RentAmount, 0, txtDes,"", Series, true);
+                            n++;
                         }
                     }
-                    db.SaveChanges();
-                }
+                    if (n == 0)
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T124);
+                        txtYear.Focus();
+                        return;
 
-                PublicClass.WindowAlart("1");
-                dgvList.UnCheckAllRecords();
+                    }
+
+                    if (MessageBox.Show(ResourceCode.T015 + '\n' + "تعداد: " + n, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+
+
+                    foreach (GridEXRow item in dgvList.GetCheckedRows())
+                    {
+                        string txtDes = BuildDescription(item, cmbMont.Text, txtYear.Text);
+
+                        int Id = Convert.ToInt32(item.Cells["Id"].Value);
+                        double RentAmount = Convert.ToDouble(item.Cells["RentAmount"].Value);
+
+                        int seerch = db.Transactions.Where(c => c.Description.Contains(txtDes)).Count();
+
+                        if (seerch == 0)
+                        {
+                            var Spares = db.Spares.Where(c => c.Id == Id).First();
+                            var car = db.Cars.Where(c => c.Id == Spares.CarId).First();
+                            var draver = db.Dravers.Where(c => c.Id == car.DraverId).First();
+                            var customer = db.Customers.Where(c => c.Id == draver.CustomerId).First();
+                            {
+                                //اجـــاره داده=1
+                                if (Convert.ToInt32(item.Cells["RentalTypeId"].Value) == 1)
+                                {
+                                    Series++;
+                                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;
+                                    int DetailedAccountId = 0;
+                                    //حساب تفصیلی
+                                    int customertId = customer.Id;
+                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    if (serch1.Count() == 0)
+                                        DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    else
+                                        DetailedAccountId = serch1.First().Id;
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, RentAmount, RentAmount, 0, 0, "دریافت "+txtDes, "", Series, true);
+
+
+
+                                    Series++;
+                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 60201).First().Id;
+                                    DetailedAccountId = 0;
+
+                                    //حساب تفصیلی
+                                    customertId = db.Customers.Where(c => c.SecretCode == 8).First().Id;
+
+                                    var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    if (serch2.Count() == 0)
+                                        DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    else
+                                        DetailedAccountId = serch2.First().Id;
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, RentAmount, 0, RentAmount, 0, "دریافت " + txtDes, "", Series, true);
+                                }
+                                //اجـــاره شده=2
+                                else
+                                {
+                                    Series++;
+                                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id;
+                                    int DetailedAccountId = 0;
+                                    //حساب تفصیلی
+                                    int customertId = customer.Id;
+                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    if (serch1.Count() == 0)
+                                        DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    else
+                                        DetailedAccountId = serch1.First().Id;
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, RentAmount, 0, RentAmount, 0, "پرداخت " + txtDes, "", Series, true);
+
+
+
+                                    Series++;
+                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 80802).First().Id;
+                                    DetailedAccountId = 0;
+
+                                    //حساب تفصیلی
+                                    customertId = db.Customers.Where(c => c.SecretCode == 12).First().Id;
+
+                                    var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    if (serch2.Count() == 0)
+                                        DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    else
+                                        DetailedAccountId = serch2.First().Id;
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, RentAmount, RentAmount, 0, 0, "پرداخت " + txtDes, "", Series, true);
+
+                                }
+                            }
+                        }
+                        db.SaveChanges();
+                    }
+
+                    PublicClass.WindowAlart("1");
+                    dgvList.UnCheckAllRecords();
+                }
             }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+        }
+
+        private string BuildDescription(GridEXRow item, string month, string year)
+        {
+            return $"قسط ماه:{month} سال: {year} به شماره تانکر {item.Cells["TankerNo"].Value}  " +
+                   $"با شماره قرارداد {item.Cells["ContactNo"].Value} با شماره پلاک :{item.Cells["CarPlat"].Value}-" +
+                   $"{item.Cells["CarPlatSeryal"].Value} طرحساب: {item.Cells["GoodsAccountName"].Value}";
         }
 
         private void editBox1_ButtonClick(object sender, EventArgs e)

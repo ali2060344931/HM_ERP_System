@@ -109,7 +109,7 @@ namespace HM_ERP_System.Forms.Comers
         public frmComers(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
         }
 
         private void frmComers_Load(object sender, EventArgs e)
@@ -119,15 +119,15 @@ namespace HM_ERP_System.Forms.Comers
             txtDateH.Value = DateTime.Now;
 
 
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
             txtDateEnd.Value = DateTime.Now;
 
             chkDocumentBanck.Checked = Properties.Settings.Default.SetDocumentBan;
-            cmbListSimilarComerB.Size=new Size(126, 30);
-            btnEditCB.Visible=true;
-            btnDeleteCB.Visible=true;
-            
-            
+            cmbListSimilarComerB.Size = new Size(126, 30);
+            btnEditCB.Visible = true;
+            btnDeleteCB.Visible = true;
+
+
             string layoutPathComersB = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutComersB.xml");
 
             using (var fs = new FileStream(layoutPathComersB, FileMode.Create, FileAccess.Write))
@@ -140,7 +140,7 @@ namespace HM_ERP_System.Forms.Comers
             {
                 dgvListH.SaveLayoutFile(fs);
             }
-            FormLoded=true;
+            FormLoded = true;
 
             CallUpdateTataH();
         }
@@ -173,8 +173,8 @@ namespace HM_ERP_System.Forms.Comers
         /// </summary>
         private void CallUpdateTataH()
         {
-            dgvListH.SaveSettings=true;
-            dgvListH.SettingsKey=this.Name;
+            dgvListH.SaveSettings = true;
+            dgvListH.SettingsKey = this.Name;
             //uiPanel0.Height=325;
 
             uiPanel0.Text = "بخش ثبت اطلاعات حواله";
@@ -183,8 +183,8 @@ namespace HM_ERP_System.Forms.Comers
             dgvListH.Dock = DockStyle.Fill;
             btnChangStatusGoods.Visible = false;
             txtWeightDeliveredGoods.Visible = false;
-            panelDeleteEdit.Visible=false;
-            txtSearch.Visible=false;
+            panelDeleteEdit.Visible = false;
+            txtSearch.Visible = false;
             CreatRemiaanceSeryal();
             FillcmbTypeDocument();
             FillcmbCity1();
@@ -224,7 +224,7 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code==6//گیرنده
+                            where pg.Code == 6//گیرنده
                             select new
                             {
                                 pr.Id,
@@ -258,7 +258,7 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code==5//گیرنده
+                            where pg.Code == 5//گیرنده
 
                             select new
                             {
@@ -295,7 +295,7 @@ namespace HM_ERP_System.Forms.Comers
                             on pr.Id equals ctg.CustomerId
 
                             //where pr.id_TypeCustomer<=2
-                            where ctg.PersonGroupId==3
+                            where ctg.PersonGroupId == 3
                             select new
                             {
                                 pr.Id,
@@ -331,7 +331,7 @@ namespace HM_ERP_System.Forms.Comers
                             on pr.Id equals ctg.CustomerId
 
                             //where pr.id_TypeCustomer<=2
-                            where ctg.PersonGroupId==4
+                            where ctg.PersonGroupId == 4
                             select new
                             {
                                 pr.Id,
@@ -355,8 +355,8 @@ namespace HM_ERP_System.Forms.Comers
         /// </summary>
         private void CallUpdateTataB()
         {
-            dgvListB.SaveSettings=true;
-            dgvListB.SettingsKey=this.Name;
+            dgvListB.SaveSettings = true;
+            dgvListB.SettingsKey = this.Name;
             //uiPanel0.Height=405;
 
             dgvListB.BringToFront();
@@ -366,8 +366,8 @@ namespace HM_ERP_System.Forms.Comers
             btnChangStatusGoods.Visible = true;
             txtWeightDeliveredGoods.Visible = true;
             txtWeightDeliveredGoods.BringToFront();
-            panelDeleteEdit.Visible=true;
-            txtSearch.Visible=true;
+            panelDeleteEdit.Visible = true;
+            txtSearch.Visible = true;
 
             FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);//لیست اسناد
             FillcmbCarPlatB();
@@ -403,11 +403,11 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 cu.Id,
-                                Name = (cu.Family +" "+cu.Name).Trim(),
+                                Name = (cu.Family + " " + cu.Name).Trim(),
                                 Type = tc.Name,
                             };
                     cmbPaymentToOthers.DataSource = q.ToList();
-                    cmbPaymentToOthers.SelectedIndex=-1;
+                    cmbPaymentToOthers.SelectedIndex = -1;
 
                     dt_PaymentToOthers = new System.Data.DataTable();
                     dt_PaymentToOthers = PublicClass.AddEntityTableToDataTable(q.ToList());
@@ -427,7 +427,7 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     var q = db.FareCalcMethods;
                     cmbFareCalcMethods.DataSource = q.ToList();
-                    cmbFareCalcMethods.Value=2;
+                    cmbFareCalcMethods.Value = 2;
                 }
             }
             catch (Exception er)
@@ -540,7 +540,7 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     var q = db.PaymentMethods;
                     cmbBillLadingCast.DataSource = q.ToList();
-                    cmbBillLadingCast.Value=1;
+                    cmbBillLadingCast.Value = 1;
                 }
 
             }
@@ -556,9 +556,9 @@ namespace HM_ERP_System.Forms.Comers
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.TypeCalcMethods.Where(c => c.Id>1 && c.Id<4);
+                    var q = db.TypeCalcMethods.Where(c => c.Id > 1 && c.Id < 4);
                     cmbBillLadingMethod.DataSource = q.ToList();
-                    cmbBillLadingMethod.SelectedIndex=0;
+                    cmbBillLadingMethod.SelectedIndex = 0;
                 }
 
             }
@@ -594,9 +594,9 @@ namespace HM_ERP_System.Forms.Comers
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.TypeCalcMethods.Where(c => c.Id<=2);
+                    var q = db.TypeCalcMethods.Where(c => c.Id <= 2);
                     cmbMethodCalFare.DataSource = q.ToList();
-                    cmbMethodCalFare.Value=1;
+                    cmbMethodCalFare.Value = 1;
                 }
 
             }
@@ -639,7 +639,7 @@ namespace HM_ERP_System.Forms.Comers
                             join pt2 in db.PlaceTransfers
                             on cmh.UnLoadingLocationId equals pt2.Id
 
-                            where !db.ComersBs.Any(c => c.SeryalH == cmh.RemiaanceSeryal && ListId==0)
+                            where !db.ComersBs.Any(c => c.SeryalH == cmh.RemiaanceSeryal && ListId == 0)
 
                             select new
                             {
@@ -820,7 +820,7 @@ namespace HM_ERP_System.Forms.Comers
                             join ctg in db.CustomerToGroups
                             on cu.Id equals ctg.CustomerId
 
-                            where dr.Status && ctg.PersonGroupId==1
+                            where dr.Status && ctg.PersonGroupId == 1
 
                             select new
                             {
@@ -887,7 +887,7 @@ namespace HM_ERP_System.Forms.Comers
                             join ctg in db.CustomerToGroups
                             on cu.Id equals ctg.CustomerId
 
-                            where dr.Status && ctg.PersonGroupId==1
+                            where dr.Status && ctg.PersonGroupId == 1
 
                             select new
                             {
@@ -922,7 +922,7 @@ namespace HM_ERP_System.Forms.Comers
                             join ctg in db.CustomerToGroups
                              on pr.Id equals ctg.CustomerId
 
-                            where ctg.PersonGroupId==2//بارنامه نویس
+                            where ctg.PersonGroupId == 2//بارنامه نویس
                             select new
                             {
                                 pr.Id,
@@ -963,7 +963,7 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code==6//گیرنده
+                            where pg.Code == 6//گیرنده
 
                             select new
                             {
@@ -997,7 +997,7 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code==6//گیرنده
+                            where pg.Code == 6//گیرنده
 
                             select new
                             {
@@ -1030,7 +1030,7 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code==6//گیرنده
+                            where pg.Code == 6//گیرنده
                             select new
                             {
                                 pr.Id,
@@ -1064,7 +1064,7 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code==5//فرستنده
+                            where pg.Code == 5//فرستنده
 
 
                             select new
@@ -1099,7 +1099,7 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code==5//فرستنده
+                            where pg.Code == 5//فرستنده
 
                             select new
                             {
@@ -1132,7 +1132,7 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code==5//فرستنده
+                            where pg.Code == 5//فرستنده
 
                             select new
                             {
@@ -1168,7 +1168,7 @@ namespace HM_ERP_System.Forms.Comers
                             on pr.Id equals ctg.CustomerId
 
                             //where pr.id_TypeCustomer<=2
-                            where ctg.PersonGroupId==4
+                            where ctg.PersonGroupId == 4
                             select new
                             {
                                 pr.Id,
@@ -1203,7 +1203,7 @@ namespace HM_ERP_System.Forms.Comers
                             join ctg in db.CustomerToGroups
                             on pr.Id equals ctg.CustomerId
 
-                            where ctg.PersonGroupId==3
+                            where ctg.PersonGroupId == 3
                             select new
                             {
                                 pr.Id,
@@ -1230,8 +1230,8 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     var q = from pr in db.PlaceTransfers
 
-                            //join ed in db.EvacuationDeployments
-                            //on pr.EvacuationDeploymentId equals ed.Id
+                                //join ed in db.EvacuationDeployments
+                                //on pr.EvacuationDeploymentId equals ed.Id
 
                             where pr.CiltyId == cityId || pr.publicStatus
 
@@ -1267,8 +1267,8 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     var q = from pr in db.PlaceTransfers
 
-                            //join ed in db.EvacuationDeployments
-                            //on pr.EvacuationDeploymentId equals ed.Id
+                                //join ed in db.EvacuationDeployments
+                                //on pr.EvacuationDeploymentId equals ed.Id
 
                             where pr.CiltyId == CitiId || pr.publicStatus
 
@@ -1298,7 +1298,7 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     var q = db.TypeDocuments.ToList();
                     cmbTypeDocument.DataSource = q.ToList();
-                    cmbTypeDocument.Value=1;
+                    cmbTypeDocument.Value = 1;
                 }
 
             }
@@ -1380,14 +1380,14 @@ namespace HM_ERP_System.Forms.Comers
                 using (var db = new DBcontextModel())
                 {
                     var q = db.Cars.Where(c => c.Id == CarIdH_);
-                    var cuId = db.Customers.Where(c => c.Id ==q.FirstOrDefault().DraverId).First().Id;
-                    var q1 = db.Customers.Where(c => c.Id ==q.FirstOrDefault().DraverId);
+                    var cuId = db.Customers.Where(c => c.Id == q.FirstOrDefault().DraverId).First().Id;
+                    var q1 = db.Customers.Where(c => c.Id == q.FirstOrDefault().DraverId);
                     if (q.Count() != 0)
                     {
                         CarIdH_ = q.First().Id;
                         var drv = db.Customers.Where(c => c.Id == cuId).First();
-                        
-                        
+
+
                         cmbDraversH1.Value = drv.Id;
                         var per = db.Customers.Where(c => c.Id == cuId).First();
                         lblTelDraver1.Text = per.Tel;
@@ -1405,12 +1405,12 @@ namespace HM_ERP_System.Forms.Comers
 
                         lblProvinces.Text = db.Provinces.Where(c => c.Id == db.Ciltys.Where(x => x.Id == drv.CityId).FirstOrDefault().ProvincesId).First().Name;
                         lblCity.Text = db.Ciltys.Where(c => c.Id == drv.CityId).First().Name;
-                        txtTruckCapacity.Value= q.First().LoadWeightCapacity;
+                        txtTruckCapacity.Value = q.First().LoadWeightCapacity;
 
-                        if (StatusCar(CarIdH_) && ListId==0)
+                        if (StatusCar(CarIdH_) && ListId == 0)
                         {
-                            string ertext = ResourceCode.T039+'\n'+ResourceCode.T084;
-                            if (PublicClass.ErrorMessegYesNo(ertext)==DialogResult.No)
+                            string ertext = ResourceCode.T039 + '\n' + ResourceCode.T084;
+                            if (PublicClass.ErrorMessegYesNo(ertext) == DialogResult.No)
                             {
                                 StatusDeliveryGoods = true;
                                 cmbCarplateH.ResetText();
@@ -1454,18 +1454,18 @@ namespace HM_ERP_System.Forms.Comers
                     lblDateB.Text = q.date;
                     lblSeryalH.Text = q.RemiaanceSeryal.ToString();
 
-                    if (q.ShiperId== 0)
-                        lblShiperName.Text="";
+                    if (q.ShiperId == 0)
+                        lblShiperName.Text = "";
                     else
                     {
-                        var sn = db.Customers.Where(c => c.Id==q.ShiperId).First();
-                        lblShiperName.Text=sn.Name +" "+ sn.Family;
+                        var sn = db.Customers.Where(c => c.Id == q.ShiperId).First();
+                        lblShiperName.Text = sn.Name + " " + sn.Family;
                     }
 
-                    lblProdectName.Text = pn.Name+" - "+ pnG.Name;
-                    lblLoadingOrinig.Text = qlo.Name+" - "+qll.Name;
+                    lblProdectName.Text = pn.Name + " - " + pnG.Name;
+                    lblLoadingOrinig.Text = qlo.Name + " - " + qll.Name;
                     lblUnLoadingOrinig.Text = qulo.Name + " - " + qull.Name;
-                    if (ListId==0)
+                    if (ListId == 0)
                     {
                         cmbDraversB1.Value = q.DaraverId1;
                         cmbDraversB2.Value = q.DaraverId2;
@@ -1476,8 +1476,8 @@ namespace HM_ERP_System.Forms.Comers
                         cmbSenderB2.Value = q.Sender2Id;
                         cmbResiverB2.Value = q.Resiver2Id;
 
-                        cmbCostAccountB.Value= q.CostAccountId;
-                        cmbGoodsAccountB.Value=q.GoodsAccountId;
+                        cmbCostAccountB.Value = q.CostAccountId;
+                        cmbGoodsAccountB.Value = q.GoodsAccountId;
                         SelectEndBillLading(ComersHId_);
 
                     }
@@ -1532,10 +1532,10 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
-                txtLoadWeight.Value=(int)q.First().LoadWeight;
-                txtWeightDeliveredGoodsMain.Value=(int)q.First().WeightDeliveredGoods;
-                cmbFareCalcMethods.Value=q.First().TypeCalFareId;
-                cmbMethodCalFare.Value=q.First().MethodCalFareId;
+                txtLoadWeight.Value = (int)q.First().LoadWeight;
+                txtWeightDeliveredGoodsMain.Value = (int)q.First().WeightDeliveredGoods;
+                cmbFareCalcMethods.Value = q.First().TypeCalFareId;
+                cmbMethodCalFare.Value = q.First().MethodCalFareId;
                 txtFreightRate.Value = q.First().FreightRate;
                 txtCargoInsurance.Value = q.First().CargoInsurance;
                 txtLoadinCast.Value = q.First().LoadinCast;
@@ -1566,24 +1566,24 @@ namespace HM_ERP_System.Forms.Comers
                 cmbSenderB2.Value = q.First().SenderId2;
                 cmbResiverB1.Value = q.First().ResiverId;
                 cmbResiverB2.Value = q.First().ResiverId2;
-                cmbGoodsAccountB.Value=q.First().GoodsAccountId;
-                cmbCostAccountB.Value=q.First().CostAccountId;
-                if (q.First().PaymentToOthers1!=0)
+                cmbGoodsAccountB.Value = q.First().GoodsAccountId;
+                cmbCostAccountB.Value = q.First().CostAccountId;
+                if (q.First().PaymentToOthers1 != 0)
                 {
-                    chkPaymentToOthers.Checked=true;
-                    txtPaymentToOthers1.Value=q.First().PaymentToOthers1;
-                    PaymentToOthersId_=q.First().PaymentToOthersId;
+                    chkPaymentToOthers.Checked = true;
+                    txtPaymentToOthers1.Value = q.First().PaymentToOthers1;
+                    PaymentToOthersId_ = q.First().PaymentToOthersId;
                     using (var db = new DBcontextModel())
                     {
-                        var q0 = db.DetailedAccounts.Where(c => c.Id==PaymentToOthersId_).First();
-                        lblPaymentToOthers.Text=db.Customers.Where(c => c.Id==q0.CustomerId).First().Name+ " "+db.Customers.Where(c => c.Id==q0.CustomerId).First().Family;
-                        lblPaymentToOthers.Tag=PaymentToOthersId_;
+                        var q0 = db.DetailedAccounts.Where(c => c.Id == PaymentToOthersId_).First();
+                        lblPaymentToOthers.Text = db.Customers.Where(c => c.Id == q0.CustomerId).First().Name + " " + db.Customers.Where(c => c.Id == q0.CustomerId).First().Family;
+                        lblPaymentToOthers.Tag = PaymentToOthersId_;
                     }
                 }
-                if (q.First().PaymentToOthers2!=0)
+                if (q.First().PaymentToOthers2 != 0)
                 {
-                    txtPaymentToOthers2.Value=q.First().PaymentToOthers2;
-                    txtDesToOthers.Text=q.First().DesToOthers;
+                    txtPaymentToOthers2.Value = q.First().PaymentToOthers2;
+                    txtDesToOthers.Text = q.First().DesToOthers;
 
                 }
 
@@ -1591,11 +1591,11 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     using (var db = new DBcontextModel())
                     {
-                        var shid = db.ComersHs.Where(c => c.Id==q.First().ComersHId).First().ShiperId;
-                        if (shid!=0)
+                        var shid = db.ComersHs.Where(c => c.Id == q.First().ComersHId).First().ShiperId;
+                        if (shid != 0)
                         {
-                            var bwp = db.BillLadingWriterPercents.Where(c => c.CustomerId==shid).First().Percent;
-                            txtBillLadingWriterPercent.Value=bwp;
+                            var bwp = db.BillLadingWriterPercents.Where(c => c.CustomerId == shid).First().Percent;
+                            txtBillLadingWriterPercent.Value = bwp;
                         }
                     }
                 }
@@ -1650,7 +1650,7 @@ namespace HM_ERP_System.Forms.Comers
             }
         }
 
-        public static GridEX FilldgvListH(GridExEx.GridExEx dx, string dateS, string dateE, int? Id = null,string formname=null)
+        public static GridEX FilldgvListH(GridExEx.GridExEx dx, string dateS, string dateE, int? Id = null, string formname = null)
         {
             try
             {
@@ -1728,9 +1728,9 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 //نام بارنامه نویس
-                                ShiperName = shLeft!=null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
+                                ShiperName = shLeft != null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
                                 //آمار تعداد مدارک پیوست
-                                CountDoc = docGroup.Where(c => c.FormName=="frmComersH").Count(),
+                                CountDoc = docGroup.Where(c => c.FormName == "frmComersH").Count(),
                                 cmh.Id,
                                 cmh.date,
                                 TypeDocumentName = td.Name,
@@ -1744,11 +1744,11 @@ namespace HM_ERP_System.Forms.Comers
                                 SenderName = (sr1.Family + " " + sr1.Name).Trim(),
                                 ResiverName = (rs1.Family + " " + rs1.Name).Trim(),
 
-                                SenderName2 = sender2 !=null ? (sender2.Family + " " + sender2.Name).Trim() : "-",
-                                ResiverName2 = reciver2 !=null ? (reciver2.Family + " " + reciver2.Name).Trim() : "-",
+                                SenderName2 = sender2 != null ? (sender2.Family + " " + sender2.Name).Trim() : "-",
+                                ResiverName2 = reciver2 != null ? (reciver2.Family + " " + reciver2.Name).Trim() : "-",
 
                                 DaraverName1 = (cu1.Family + " " + cu1.Name).Trim(),
-                                DaraverName2 = cu2_!=null ? (cu2_.Family + " " + cu2_.Name).Trim() : "-",
+                                DaraverName2 = cu2_ != null ? (cu2_.Family + " " + cu2_.Name).Trim() : "-",
 
                                 ProductsName = pr.Name,
                                 CarPlat = cr.CarPlat + "-" + cr.CarPlatSeryal,
@@ -1777,8 +1777,8 @@ namespace HM_ERP_System.Forms.Comers
             int? Id = null,
             string serch = null,
             bool hideIfInCommission = false, // 🔸 شرط پویا برای حذف بارنامه‌های دارای پورسانت
-            string formNmane=null
-       
+            string formNmane = null
+
         )
         {
             try
@@ -1847,7 +1847,7 @@ namespace HM_ERP_System.Forms.Comers
                                    || (ca.Family + " " + ca.Name).Contains(serch)
                                    || (ga.Family + " " + ga.Name).Contains(serch)))
 
- && (hideIfInCommission ? (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id && c.CommissionTypeId == Id.Value)): (Id == null || cmh.Id == Id.Value)
+ && (hideIfInCommission ? (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id && c.CommissionTypeId == Id.Value)) : (Id == null || cmh.Id == Id.Value)
 )
 
                         orderby cmb.Id descending
@@ -1925,8 +1925,8 @@ namespace HM_ERP_System.Forms.Comers
 
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); Gx.DataSource = dt;
                     //gx.AutoSizeColumns();
-                    PublicClass.SettingGridEX(Gx,formNmane);
-                    
+                    PublicClass.SettingGridEX(Gx, formNmane);
+
                     return Gx;
                 }
             }
@@ -2114,32 +2114,32 @@ namespace HM_ERP_System.Forms.Comers
                     return;
                 using (var db = new DBcontextModel())
                 {
-                    if (txtSeryalB.Text=="")
-                        txtSeryalB.Text="0";
+                    if (txtSeryalB.Text == "")
+                        txtSeryalB.Text = "0";
                     if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                         return;
 
 
                     int PaymentToOthersId_ = 0;
-                    if (lblPaymentToOthers.Tag!=null && chkPaymentToOthers.Checked)
-                        PaymentToOthersId_=Convert.ToInt32(lblPaymentToOthers.Tag);
+                    if (lblPaymentToOthers.Tag != null && chkPaymentToOthers.Checked)
+                        PaymentToOthersId_ = Convert.ToInt32(lblPaymentToOthers.Tag);
 
 
                     int BillLadingMethodId = BillLadingMethodId_;
-                    if (cmbBillLadingMethod.SelectedIndex==-1)
-                        BillLadingMethodId=4;
+                    if (cmbBillLadingMethod.SelectedIndex == -1)
+                        BillLadingMethodId = 4;
 
 
                     var SeryalH = db.ComersHs.Where(c => c.Id == ComersHId_).First();
                     CalcComerFilds_();
 
                     var com = new Repository<ComersB>(db);
-                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1=txtPaymentToOthers1.Value, PaymentToOthersId=PaymentToOthersId_, PaymentToOthers2=txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2=SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB=txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId=MethodCalFareBId_, TypeCalFareId= FareCalcMethod_, DesToOthers=txtDesToOthers.Text, OtherBillLadingCosts=0, Ac=AC, AE=AE, BK=BK, AV=AV, AX=AX, AY=AY, AZ=AZ, Bn= BN, BO=BO, BS=BS, BT=BT, BV=BV, BP=BP }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP }, ListId);
                     PublicClass.WindowAlart("1");
                     //TypeCalcMethodsBId_
 
-                    var q = db.ComersHs.Where(c => c.Id==ComersHId_).First();
-                    q.LoadWeightCapacity=txtLoadWeightCapacity.Value;
+                    var q = db.ComersHs.Where(c => c.Id == ComersHId_).First();
+                    q.LoadWeightCapacity = txtLoadWeightCapacity.Value;
                     db.SaveChanges();
 
                     //ثبت مدارک پیوست
@@ -2149,7 +2149,7 @@ namespace HM_ERP_System.Forms.Comers
 
                         PublicClass.AddDocumentToBanck(this.Name + "B", newId, lblCaption);
                     }
-                    if (_updatableForms!=null)
+                    if (_updatableForms != null)
                         _updatableForms.UpdateData();
                     FillcmbCarPlatB();
 
@@ -2174,15 +2174,15 @@ namespace HM_ERP_System.Forms.Comers
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.ComersHs.Where(c => c.Id==ComersHId_).First();
-                    var bwp = db.BillLadingWriterPercents.Where(c => c.CustomerId==q.ShiperId);
+                    var q = db.ComersHs.Where(c => c.Id == ComersHId_).First();
+                    var bwp = db.BillLadingWriterPercents.Where(c => c.CustomerId == q.ShiperId);
                     int ListId = 0;
-                    if (bwp.Count()!=0)
+                    if (bwp.Count() != 0)
                     {
-                        ListId=bwp.First().Id;
+                        ListId = bwp.First().Id;
                     }
                     var ADR = new Repository<BillLadingWriterPercent>(db);
-                    ADR.SaveOrUpdate(new BillLadingWriterPercent { Id = ListId, CustomerId=q.ShiperId, Percent=txtBillLadingWriterPercent.Value }, ListId);
+                    ADR.SaveOrUpdate(new BillLadingWriterPercent { Id = ListId, CustomerId = q.ShiperId, Percent = txtBillLadingWriterPercent.Value }, ListId);
                 }
             }
         }
@@ -2221,18 +2221,18 @@ namespace HM_ERP_System.Forms.Comers
                 using (var db = new DBcontextModel())
                 {
                     var SeryalH = db.ComersHs.Where(c => c.Id == ComersHId_);
-                    if (SeryalH.Count()!=0)
+                    if (SeryalH.Count() != 0)
 
                     {
                         //var TruckCapacity = db.Cars.Where(c => c.Id==SeryalH.FirstOrDefault().CarId).First().TruckCapacity;
                         //ظــرفیت مجاز بارگیری
                         int LoadWeightCapacity = txtLoadWeightCapacity.Value;
 
-                        if (ListId!=0)
-                            StatusDeliveryGoods_=db.ComersBs.Where(c => c.Id==ListId).First().StatusDeliveryGoods;
+                        if (ListId != 0)
+                            StatusDeliveryGoods_ = db.ComersBs.Where(c => c.Id == ListId).First().StatusDeliveryGoods;
                         //txtLoadWeightCapacity
                         CalculatComerB ccb = new CalculatComerB();
-                        (AV, AC, AZ, BO, AE, AX, BK, BS, BT, AY, BV, BN, BP)= ccb.CalcComerFilds(ComersHId_, TypeCalFareId_: FareCalcMethod_, MethodCalFareId_: MethodCalFareBId_, LoadWeight_: txtLoadWeight.Value, WeightDeliveredGoods_: 0, TruckCapacity_: LoadWeightCapacity, FreightRate_: txtFreightRate.Value, CargoInsurance_: txtCargoInsurance.Value, LoadinCast_: txtLoadinCast.Value, Incentive_: txtIncentive.Value, StopCharge_: txtStopCharge.Value, Deduction_: txtDeduction.Value, BalanceAccount_: txtBalanceAccount.Value, TypeCalcMethodsBId_: MethodCalFareBId_, PaidFreightRate_: txtPaidFreightRate.Value, InsurancCost_: txtInsurancCost.Value, PaidIncentive_: txtPaidIncentive.Value, PaidStopCharge_: txtPaidStopCharge.Value, DriverDeduction_: txtDriverDeduction.Value, BillLadingMethodId_: BillLadingMethodId_, BillLadingCastId_: BillLadingCastId_, BaseFreight_: txtBaseFreight.Value, BillLadingAmount_: txtBillLadingAmount.Value, InsuranceAmount_: txtInsuranceAmount.Value, BillLadingWriterPercent_: txtBillLadingWriterPercent.Value, AmountPaidTruckDriver_: txtAmountPaidTruckDriver.Value, BalanceAccountDraver_: txtBalanceAccountِDraver.Value, OtherBillLadingCosts_: 0, BalanceBillLadingAmount_: _=txtBalanceBillLadingAmount.Value);
+                        (AV, AC, AZ, BO, AE, AX, BK, BS, BT, AY, BV, BN, BP) = ccb.CalcComerFilds(ComersHId_, TypeCalFareId_: FareCalcMethod_, MethodCalFareId_: MethodCalFareBId_, LoadWeight_: txtLoadWeight.Value, WeightDeliveredGoods_: 0, TruckCapacity_: LoadWeightCapacity, FreightRate_: txtFreightRate.Value, CargoInsurance_: txtCargoInsurance.Value, LoadinCast_: txtLoadinCast.Value, Incentive_: txtIncentive.Value, StopCharge_: txtStopCharge.Value, Deduction_: txtDeduction.Value, BalanceAccount_: txtBalanceAccount.Value, TypeCalcMethodsBId_: MethodCalFareBId_, PaidFreightRate_: txtPaidFreightRate.Value, InsurancCost_: txtInsurancCost.Value, PaidIncentive_: txtPaidIncentive.Value, PaidStopCharge_: txtPaidStopCharge.Value, DriverDeduction_: txtDriverDeduction.Value, BillLadingMethodId_: BillLadingMethodId_, BillLadingCastId_: BillLadingCastId_, BaseFreight_: txtBaseFreight.Value, BillLadingAmount_: txtBillLadingAmount.Value, InsuranceAmount_: txtInsuranceAmount.Value, BillLadingWriterPercent_: txtBillLadingWriterPercent.Value, AmountPaidTruckDriver_: txtAmountPaidTruckDriver.Value, BalanceAccountDraver_: txtBalanceAccountِDraver.Value, OtherBillLadingCosts_: 0, BalanceBillLadingAmount_: _ = txtBalanceBillLadingAmount.Value);
                     }
                 }
             }
@@ -2259,8 +2259,8 @@ namespace HM_ERP_System.Forms.Comers
 
                         if (cont > 0)
                         {
-                            string txteror = ResourceCode.T039+'\n'+ResourceCode.T084;
-                            if (PublicClass.ErrorMessegYesNo(txteror)==DialogResult.No) return;
+                            string txteror = ResourceCode.T039 + '\n' + ResourceCode.T084;
+                            if (PublicClass.ErrorMessegYesNo(txteror) == DialogResult.No) return;
                         }
                     }
                     else
@@ -2275,11 +2275,11 @@ namespace HM_ERP_System.Forms.Comers
                     if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                         return;
                     if (chkStatusLading.Checked)
-                        ShiperId_=0;
+                        ShiperId_ = 0;
 
                     var com = new Repository<ComersH>(db);
 
-                    int newId = com.SaveOrUpdateRefId(new ComersH { Id = ListId, date = txtDateH.Text, TypeDocumentId = TypeDocumentId_, LoadingOrinigId = LoadingOrinigId_, LoadingLocationId = LoadingLocationId_, UnLoadingOrinigId = UnLoadingOrinigId_, UnLoadingLocationId = UnLoadingLocationId_, CostAccountId = CostAccountIdH_, GoodsAccountId = GoodsAccountIdH_, SenderId = Sender1Id_, Sender2Id = Sender2Id_, ResiverId = Resiver1Id_, Resiver2Id = Resiver2Id_, ShiperId = ShiperId_, CarId = CarIdH_, DaraverId1 = DaraverIdH1_, DaraverId2 = DaraverIdH2_, RemiaanceSeryal = Convert.ToInt32(txtNumberTranferForm.Text), ProductsId = ProductsId_, LoadWeightCapacity = txtTruckCapacity.Value, Description = txtDescriptionH.Text, CotajNumber = txtCotajNumber.Text, StatusLading=chkStatusLading.Checked }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersH { Id = ListId, date = txtDateH.Text, TypeDocumentId = TypeDocumentId_, LoadingOrinigId = LoadingOrinigId_, LoadingLocationId = LoadingLocationId_, UnLoadingOrinigId = UnLoadingOrinigId_, UnLoadingLocationId = UnLoadingLocationId_, CostAccountId = CostAccountIdH_, GoodsAccountId = GoodsAccountIdH_, SenderId = Sender1Id_, Sender2Id = Sender2Id_, ResiverId = Resiver1Id_, Resiver2Id = Resiver2Id_, ShiperId = ShiperId_, CarId = CarIdH_, DaraverId1 = DaraverIdH1_, DaraverId2 = DaraverIdH2_, RemiaanceSeryal = Convert.ToInt32(txtNumberTranferForm.Text), ProductsId = ProductsId_, LoadWeightCapacity = txtTruckCapacity.Value, Description = txtDescriptionH.Text, CotajNumber = txtCotajNumber.Text, StatusLading = chkStatusLading.Checked }, ListId);
 
                     PublicClass.WindowAlart("1");
 
@@ -2293,7 +2293,7 @@ namespace HM_ERP_System.Forms.Comers
                     PublicClass.CheangStatusCarToComers(CarIdH_, true);
                     DeleteAppointmentSchedulingsToList();// حذف کامیون از لیست نوبت
 
-                    if (_updatableForms!=null)
+                    if (_updatableForms != null)
                         _updatableForms.UpdateData();
                     CelearItemsH();
                     FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
@@ -2314,11 +2314,11 @@ namespace HM_ERP_System.Forms.Comers
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.AppointmentSchedulings.Where(c => c.CarId==CarIdH_ && c.IsSelected);
-                    if (q.Count()!=0)
+                    var q = db.AppointmentSchedulings.Where(c => c.CarId == CarIdH_ && c.IsSelected);
+                    if (q.Count() != 0)
                     {
                         //db.AppointmentSchedulings.Remove(q.First());
-                        q.First().Status=true;
+                        q.First().Status = true;
                         db.SaveChanges();
                     }
                 }
@@ -2337,7 +2337,7 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
-                if (TypeDocumentId_ == 0 || LoadingOrinigId_ == 0 || LoadingLocationId_ == 0 || UnLoadingOrinigId_ == 0 || UnLoadingLocationId_ == 0 || CostAccountIdH_ == 0 || GoodsAccountIdH_ == 0 /*|| SenderId_ == 0*/ || Resiver1Id_ == 0  || ProductsId_ == 0 || DaraverIdH1_ == 0 || CarIdH_ == 0)
+                if (TypeDocumentId_ == 0 || LoadingOrinigId_ == 0 || LoadingLocationId_ == 0 || UnLoadingOrinigId_ == 0 || UnLoadingLocationId_ == 0 || CostAccountIdH_ == 0 || GoodsAccountIdH_ == 0 /*|| SenderId_ == 0*/ || Resiver1Id_ == 0 || ProductsId_ == 0 || DaraverIdH1_ == 0 || CarIdH_ == 0)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T029);
                     return true;
@@ -2365,7 +2365,7 @@ namespace HM_ERP_System.Forms.Comers
                     PublicClass.ErrorMesseg(ResourceCode.T032);
                     return true;
                 }
-                if (cmbLoadingLocation.Value== cmbUnLoadingLocation.Value)
+                if (cmbLoadingLocation.Value == cmbUnLoadingLocation.Value)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T098);
                     return true;
@@ -2393,7 +2393,7 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
-                if (cmbCarplateB.SelectedIndex == -1 /*|| cmbTypeCalcMethodsB.SelectedIndex == -1 || cmbPaymentMethod.SelectedIndex == -1 */|| cmbBillLadingCast.SelectedIndex == -1 || cmbDraversB1.SelectedIndex == -1 || cmbDraversB2.SelectedIndex == -1 || cmbSenderB1.SelectedIndex == -1|| cmbCostAccountB.SelectedIndex == -1 || cmbResiverB1.SelectedIndex == -1|| cmbGoodsAccountB.SelectedIndex == -1||cmbMethodCalFare.SelectedIndex == -1||cmbFareCalcMethods.SelectedIndex == -1)
+                if (cmbCarplateB.SelectedIndex == -1 /*|| cmbTypeCalcMethodsB.SelectedIndex == -1 || cmbPaymentMethod.SelectedIndex == -1 */|| cmbBillLadingCast.SelectedIndex == -1 || cmbDraversB1.SelectedIndex == -1 || cmbDraversB2.SelectedIndex == -1 || cmbSenderB1.SelectedIndex == -1 || cmbCostAccountB.SelectedIndex == -1 || cmbResiverB1.SelectedIndex == -1 || cmbGoodsAccountB.SelectedIndex == -1 || cmbMethodCalFare.SelectedIndex == -1 || cmbFareCalcMethods.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T029);
                     return true;
@@ -2426,7 +2426,7 @@ namespace HM_ERP_System.Forms.Comers
                     PublicClass.ErrorMesseg(ResourceCode.T083);
                     return true;
                 }
-                if (chkPaymentToOthers.Checked && (txtPaymentToOthers1.Text=="" || lblPaymentToOthers.Text==""))
+                if (chkPaymentToOthers.Checked && (txtPaymentToOthers1.Text == "" || lblPaymentToOthers.Text == ""))
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T102);
                     txtPaymentToOthers1.Focus();
@@ -2472,8 +2472,8 @@ namespace HM_ERP_System.Forms.Comers
             txtSeryalB.ResetText();
             StatusDeliveryGoods = false;
             cmbCarplateB.ResetText();
-            cmbCarplateB.Enabled=true;
-            btnListSimilarComerB.Enabled=true;
+            cmbCarplateB.Enabled = true;
+            btnListSimilarComerB.Enabled = true;
         }
 
         private void CelearLableItemslH()
@@ -2540,8 +2540,8 @@ namespace HM_ERP_System.Forms.Comers
             cmbShiper.SelectedIndex = -1;
             cmbProducts.SelectedIndex = -1;
             cmbTypeDocument.Focus();
-            ShiperId_=0;
-            chkStatusLading.Checked=false;
+            ShiperId_ = 0;
+            chkStatusLading.Checked = false;
         }
 
         private void CelearItemsAllB()
@@ -2559,12 +2559,12 @@ namespace HM_ERP_System.Forms.Comers
             txtPaidIncentive.ResetText();
             txtPaidStopCharge.ResetText();
             txtDriverDeduction.ResetText();
-            cmbBillLadingMethod.Value=3;
+            cmbBillLadingMethod.Value = 3;
             txtBaseFreight.ResetText();
             txtBillLadingAmount.ResetText();
             txtInsuranceAmount.ResetText();
-            cmbMethodCalFare.Value=1;
-            cmbFareCalcMethods.Value=2;
+            cmbMethodCalFare.Value = 1;
+            cmbFareCalcMethods.Value = 2;
             txtBillLadingWriterPercent.ResetText();
             txtAmountPaidTruckDriver.ResetText();
             txtBalanceAccountِDraver.ResetText();
@@ -2575,7 +2575,7 @@ namespace HM_ERP_System.Forms.Comers
             txtLoadWeightCapacity.ResetText();
             txtPaymentToOthers2.ResetText();
             txtDesToOthers.ResetText();
-            chkPaymentToOthers.Checked=false;
+            chkPaymentToOthers.Checked = false;
             txtPaymentToOthers1.ResetText();
             cmbPaymentToOthers.SelectedIndex = -1;
             cmbCostAccountB.SelectedIndex = -1;
@@ -2584,13 +2584,13 @@ namespace HM_ERP_System.Forms.Comers
             txtAV.ResetText();
             txtAY.ResetText();
             lblShiperName.ResetText();
-            SenderB2Id_=0;
-            ResiverB2Id_=0;
-            PaymentToOthersId_=0;
-            panelLanding.Enabled=true;
-            txtSeryalB.Enabled=true;
-            cmbBillLadingCast.Enabled=true;
-            cmbBillLadingCast.SelectedIndex=1;
+            SenderB2Id_ = 0;
+            ResiverB2Id_ = 0;
+            PaymentToOthersId_ = 0;
+            panelLanding.Enabled = true;
+            txtSeryalB.Enabled = true;
+            cmbBillLadingCast.Enabled = true;
+            cmbBillLadingCast.SelectedIndex = 1;
         }
 
         private void cmbTypeDocument_ValueChanged(object sender, EventArgs e)
@@ -2659,11 +2659,11 @@ namespace HM_ERP_System.Forms.Comers
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
-                (bl1, bl2, name)=PublicClass.CheckBlacList(CostAccountIdH_);
+                (bl1, bl2, name) = PublicClass.CheckBlacList(CostAccountIdH_);
                 if (bl1 && bl2)
                 {
-                    PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                    cmbCostAccountH.SelectedIndex=-1;
+                    PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                    cmbCostAccountH.SelectedIndex = -1;
                 }
             }
             catch (Exception)
@@ -2680,11 +2680,11 @@ namespace HM_ERP_System.Forms.Comers
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
-                (bl1, bl2, name)=PublicClass.CheckBlacList(GoodsAccountIdH_);
+                (bl1, bl2, name) = PublicClass.CheckBlacList(GoodsAccountIdH_);
                 if (bl1 && bl2)
                 {
-                    PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                    cmbGoodsAccountH.SelectedIndex=-1;
+                    PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                    cmbGoodsAccountH.SelectedIndex = -1;
                 }
 
 
@@ -2703,11 +2703,11 @@ namespace HM_ERP_System.Forms.Comers
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
-                (bl1, bl2, name)=PublicClass.CheckBlacList(Sender1Id_);
+                (bl1, bl2, name) = PublicClass.CheckBlacList(Sender1Id_);
                 if (bl1 && bl2)
                 {
-                    PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                    cmbSender1.SelectedIndex=-1;
+                    PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                    cmbSender1.SelectedIndex = -1;
                 }
             }
             catch (Exception)
@@ -2724,11 +2724,11 @@ namespace HM_ERP_System.Forms.Comers
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
-                (bl1, bl2, name)=PublicClass.CheckBlacList(Resiver1Id_);
+                (bl1, bl2, name) = PublicClass.CheckBlacList(Resiver1Id_);
                 if (bl1 && bl2)
                 {
-                    PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                    cmbResiver1.SelectedIndex=-1;
+                    PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                    cmbResiver1.SelectedIndex = -1;
                 }
 
 
@@ -2747,11 +2747,11 @@ namespace HM_ERP_System.Forms.Comers
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
-                (bl1, bl2, name)=PublicClass.CheckBlacList(ShiperId_);
+                (bl1, bl2, name) = PublicClass.CheckBlacList(ShiperId_);
                 if (bl1 && bl2)
                 {
-                    PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                    cmbShiper.SelectedIndex=-1;
+                    PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                    cmbShiper.SelectedIndex = -1;
                 }
 
 
@@ -2778,11 +2778,11 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(per.Id);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(per.Id);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbDraversH1.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbDraversH1.SelectedIndex = -1;
                         }
 
 
@@ -3077,42 +3077,42 @@ namespace HM_ERP_System.Forms.Comers
             try
 
             {
-                if (cmbBillLadingMethod.SelectedIndex==-1) return;
+                if (cmbBillLadingMethod.SelectedIndex == -1) return;
                 BillLadingMethodId_ = Convert.ToInt32(cmbBillLadingMethod.Value);
 
-                if (BillLadingMethodId_==2)
+                if (BillLadingMethodId_ == 2)
                 {
-                    txtBillLadingWriterPercent.Enabled=false;
+                    txtBillLadingWriterPercent.Enabled = false;
                     txtBillLadingWriterPercent.ResetText();
-                    txtBillLadingAmount.Enabled=true;
+                    txtBillLadingAmount.Enabled = true;
 
-                    txtBaseFreight.Enabled=true;
-                    txtInsuranceAmount.Enabled=true;
-                    txtAmountPaidTruckDriver.Enabled=true;
+                    txtBaseFreight.Enabled = true;
+                    txtInsuranceAmount.Enabled = true;
+                    txtAmountPaidTruckDriver.Enabled = true;
                     //txtOtherBillLadingCosts.Enabled=true;
-                    txtBalanceBillLadingAmount.Enabled=true;
+                    txtBalanceBillLadingAmount.Enabled = true;
                 }
-                else if (BillLadingMethodId_==3)
+                else if (BillLadingMethodId_ == 3)
                 {
-                    txtBillLadingWriterPercent.Enabled=true;
-                    txtBillLadingAmount.Enabled=false;
+                    txtBillLadingWriterPercent.Enabled = true;
+                    txtBillLadingAmount.Enabled = false;
                     txtBillLadingAmount.ResetText();
 
-                    txtBaseFreight.Enabled=true;
-                    txtInsuranceAmount.Enabled=true;
-                    txtAmountPaidTruckDriver.Enabled=true;
+                    txtBaseFreight.Enabled = true;
+                    txtInsuranceAmount.Enabled = true;
+                    txtAmountPaidTruckDriver.Enabled = true;
                     //txtOtherBillLadingCosts.Enabled=true;
-                    txtBalanceBillLadingAmount.Enabled=true;
+                    txtBalanceBillLadingAmount.Enabled = true;
                 }
-                else if (BillLadingMethodId_==4)
+                else if (BillLadingMethodId_ == 4)
                 {
-                    txtBillLadingWriterPercent.Enabled=false;
-                    txtBillLadingAmount.Enabled=false;
-                    txtBaseFreight.Enabled=false;
-                    txtInsuranceAmount.Enabled=false;
-                    txtAmountPaidTruckDriver.Enabled=false;
+                    txtBillLadingWriterPercent.Enabled = false;
+                    txtBillLadingAmount.Enabled = false;
+                    txtBaseFreight.Enabled = false;
+                    txtInsuranceAmount.Enabled = false;
+                    txtAmountPaidTruckDriver.Enabled = false;
                     //txtOtherBillLadingCosts.Enabled=false;
-                    txtBalanceBillLadingAmount.Enabled=false;
+                    txtBalanceBillLadingAmount.Enabled = false;
                     txtBillLadingWriterPercent.ResetText();
                     txtBillLadingAmount.ResetText();
                     txtBaseFreight.ResetText();
@@ -3149,16 +3149,16 @@ namespace HM_ERP_System.Forms.Comers
             using (var db = new DBcontextModel())
             {
                 var q = db.ComersBs.Where(c => c.Id == listid);
-                var q2 = db.ComersHs.Where(c => c.Id==q.FirstOrDefault().ComersHId);
+                var q2 = db.ComersHs.Where(c => c.Id == q.FirstOrDefault().ComersHId);
 
-                cmbCarplateB.Enabled=false;
-                btnListSimilarComerB.Enabled=false;
+                cmbCarplateB.Enabled = false;
+                btnListSimilarComerB.Enabled = false;
 
                 FillcmbCarPlatB();
                 SeryalHId_ = q.First().ComersHId;
                 txtDateB.Text = q.First().DateB;
                 txtSeryalB.Text = q.First().SeryalB.ToString();
-                cmbCarplateB.Value=q2.First().Id;
+                cmbCarplateB.Value = q2.First().Id;
                 AddDataToItems(q);
                 SearchCar_DriverB();
             }
@@ -3366,7 +3366,7 @@ namespace HM_ERP_System.Forms.Comers
                         if (!Convert.ToBoolean(item.Cells["StatusDeliveryGoods"].Value))
                         {
                             var q = db.ComersBs.Where(c => c.Id == id).First();
-                            var cmh = db.ComersHs.Where(c => c.Id==q.ComersHId).First();
+                            var cmh = db.ComersHs.Where(c => c.Id == q.ComersHId).First();
 
                             PublicClass.CheangStatusCarToComers(cmh.CarId, false);
 
@@ -3410,7 +3410,7 @@ namespace HM_ERP_System.Forms.Comers
                         {
                             var q = db.ComersBs.Where(c => c.Id == id).First();
 
-                            var cmh = db.ComersHs.Where(c => c.Id==q.ComersHId).First();
+                            var cmh = db.ComersHs.Where(c => c.Id == q.ComersHId).First();
 
                             PublicClass.CheangStatusCarToComers(cmh.CarId, true);
 
@@ -3538,20 +3538,20 @@ namespace HM_ERP_System.Forms.Comers
                         var CarId = db.ComersHs.Where(x => x.Id == ComersHId_).First().CarId;
                         var Car = db.Cars.Where(c => c.Id == CarId).First();
 
-                        var Ownerships = db.Ownerships.Where(c => c.Id==Car.OwnershipId).First();
+                        var Ownerships = db.Ownerships.Where(c => c.Id == Car.OwnershipId).First();
 
                         CarIdB_ = Car.Id;
                         Carplate_ = Car.CarPlatSeryal + " " + ResourceCode.T016 + " " + Car.CarPlat.ToString().Substring(2, 3) + "ع" + Car.CarPlat.ToString().Substring(0, 2);
                         lblCarPlatB.Text = Carplate_;
 
                         string OwnershipCompany = "";
-                        if (Car.OwnershipId==3)
+                        if (Car.OwnershipId == 3)
                         {
-                            OwnershipCompany=" - "+ db.Customers.Where(c => c.Id==Car.OwnershipCompanyId).First().Name;
+                            OwnershipCompany = " - " + db.Customers.Where(c => c.Id == Car.OwnershipCompanyId).First().Name;
                         }
 
 
-                        lblCarOwnerShip.Text=("نوع مالکیت: "+Ownerships.Name+OwnershipCompany).Trim();
+                        lblCarOwnerShip.Text = ("نوع مالکیت: " + Ownerships.Name + OwnershipCompany).Trim();
                     }
                 }
                 else
@@ -3596,11 +3596,11 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(per.Id);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(per.Id);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbDraversB1.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbDraversB1.SelectedIndex = -1;
                         }
 
 
@@ -3650,11 +3650,11 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(per.Id);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(per.Id);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbDraversB2.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbDraversB2.SelectedIndex = -1;
                         }
 
 
@@ -3687,11 +3687,11 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(per.Id);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(per.Id);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbSenderB1.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbSenderB1.SelectedIndex = -1;
                         }
 
 
@@ -3725,11 +3725,11 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(per.Id);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(per.Id);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbResiverB1.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbResiverB1.SelectedIndex = -1;
                         }
                     }
                 }
@@ -3807,17 +3807,17 @@ namespace HM_ERP_System.Forms.Comers
         private void txtWeightDeliveredGoods_Enter(object sender, EventArgs e)
         {
             var q = dgvListB.GetCheckedRows();
-            if (q.Count()==1)
+            if (q.Count() == 1)
             {
                 foreach (GridEXRow item in q)
                 {
                     int LoadWeight = Convert.ToInt32(item.Cells["LoadWeight"].Value.ToString());
-                    txtWeightDeliveredGoods.Value=LoadWeight;
+                    txtWeightDeliveredGoods.Value = LoadWeight;
                 }
             }
             else
             {
-                txtWeightDeliveredGoods.Value=0;
+                txtWeightDeliveredGoods.Value = 0;
             }
         }
 
@@ -3868,11 +3868,11 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(per.Id);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(per.Id);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbSenderB2.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbSenderB2.SelectedIndex = -1;
                         }
 
 
@@ -3907,11 +3907,11 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(per.Id);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(per.Id);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbResiverB2.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbResiverB2.SelectedIndex = -1;
                         }
 
 
@@ -3932,8 +3932,8 @@ namespace HM_ERP_System.Forms.Comers
         private void buttonX7_Click(object sender, EventArgs e)
         {
             CalcComerFilds_();
-            txtAY.Value=AV;
-            txtBalanceAccountِDraver.Value=AV;
+            txtAY.Value = AV;
+            txtBalanceAccountِDraver.Value = AV;
         }
 
         private void label86_Click(object sender, EventArgs e)
@@ -3947,10 +3947,10 @@ namespace HM_ERP_System.Forms.Comers
             {
                 PublicClass.ErrorMesseg(ResourceCode.T076); return;
             }
-            ListId=Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
+            ListId = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
 
             int SeryalB = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["SeryalH"].Value);
-            if (txtSeryalH_DE.Value==0 || SeryalB!=txtSeryalH_DE.Value)
+            if (txtSeryalH_DE.Value == 0 || SeryalB != txtSeryalH_DE.Value)
             {
                 PublicClass.ErrorMesseg(ResourceCode.T077); return;
             }
@@ -3964,11 +3964,11 @@ namespace HM_ERP_System.Forms.Comers
             {
                 PublicClass.ErrorMesseg(ResourceCode.T076); return;
             }
-            ListId=Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
+            ListId = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
 
             using (var db = new DBcontextModel())
             {
-                var q = db.Transactions.Where(c => c.ComerBId==ListId);
+                var q = db.Transactions.Where(c => c.ComerBId == ListId);
                 if (q.Count() != 0)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T115);
@@ -3977,7 +3977,7 @@ namespace HM_ERP_System.Forms.Comers
             }
 
             int SeryalB = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["SeryalH"].Value);
-            if (txtSeryalH_DE.Value==0 || SeryalB!=txtSeryalH_DE.Value)
+            if (txtSeryalH_DE.Value == 0 || SeryalB != txtSeryalH_DE.Value)
             {
                 PublicClass.ErrorMesseg(ResourceCode.T077); return;
             }
@@ -3994,11 +3994,11 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
-                if (txtBalanceAccount.Text==null || txtBalanceAccount.Value==0)
+                if (txtBalanceAccount.Text == null || txtBalanceAccount.Value == 0)
                 {
                     CalcComerFilds_();
-                    txtAC.Value=AC;
-                    txtBalanceAccount.Value=0;
+                    txtAC.Value = AC;
+                    txtBalanceAccount.Value = 0;
                 }
             }
             catch (Exception)
@@ -4008,46 +4008,46 @@ namespace HM_ERP_System.Forms.Comers
 
         private void txtBalanceAccountِDraver_Enter(object sender, EventArgs e)
         {
-            if (txtBalanceAccountِDraver.Text==null || txtBalanceAccountِDraver.Value==0)
+            if (txtBalanceAccountِDraver.Text == null || txtBalanceAccountِDraver.Value == 0)
             {
                 CalcComerFilds_();
-                if (AV!=0)
-                    txtAV.Value=AV;
+                if (AV != 0)
+                    txtAV.Value = AV;
                 else
-                    txtAV.Value=AX;
+                    txtAV.Value = AX;
 
-                txtBalanceAccountِDraver.Value=0;
+                txtBalanceAccountِDraver.Value = 0;
             }
         }
 
         private void txtBalanceAccount_Leave(object sender, EventArgs e)
         {
             CalcComerFilds_();
-            txtAC.Value=AC;
+            txtAC.Value = AC;
             //txtBalanceAccount.Value=AC;
         }
 
         private void txtBalanceAccountِDraver_Leave(object sender, EventArgs e)
         {
             CalcComerFilds_();
-            txtAV.Value=AV;
+            txtAV.Value = AV;
             //txtBalanceAccountِDraver.Value=AV;
         }
 
         private void txtBalanceBillLadingAmount_Enter(object sender, EventArgs e)
         {
-            if (txtBalanceBillLadingAmount.Text==null || txtBalanceBillLadingAmount.Value==0)
+            if (txtBalanceBillLadingAmount.Text == null || txtBalanceBillLadingAmount.Value == 0)
             {
                 CalcComerFilds_();
-                txtAY.Value=AY;
-                txtBalanceBillLadingAmount.Value=0;
+                txtAY.Value = AY;
+                txtBalanceBillLadingAmount.Value = 0;
             }
         }
 
         private void txtBalanceBillLadingAmount_Leave(object sender, EventArgs e)
         {
             CalcComerFilds_();
-            txtAY.Value=AY;
+            txtAY.Value = AY;
         }
 
         private void frmComers_Activated(object sender, EventArgs e)
@@ -4089,20 +4089,20 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(per.Id);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(per.Id);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbDraversH2.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbDraversH2.SelectedIndex = -1;
                         }
 
 
 
                     }
-                    if (DaraverIdH1_==DaraverIdH2_)
+                    if (DaraverIdH1_ == DaraverIdH2_)
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T094);
-                        cmbDraversH2.SelectedIndex=-1;
+                        cmbDraversH2.SelectedIndex = -1;
                         return;
                     }
                 }
@@ -4132,7 +4132,7 @@ namespace HM_ERP_System.Forms.Comers
         private void btnSelectAppointmentScheduling_Click(object sender, EventArgs e)
         {
             frmAppointmentScheduling f = new frmAppointmentScheduling(this);
-            f.isSelectCarPlat=true;
+            f.isSelectCarPlat = true;
             f.ShowDialog();
         }
 
@@ -4143,7 +4143,7 @@ namespace HM_ERP_System.Forms.Comers
                 if (PublicClass.CloseForm())
                     this.Close();
             }
-                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void uiGroupBox2_Click(object sender, EventArgs e)
@@ -4153,7 +4153,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void cmsDgvH_CommandClick(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            ListId=ListId_;
+            ListId = ListId_;
             switch (e.Command.Key)
             {
 
@@ -4181,7 +4181,7 @@ namespace HM_ERP_System.Forms.Comers
                         cmbResiver1.Value = q.ResiverId;
                         cmbSender2.Value = q.Sender2Id;
                         cmbResiver2.Value = q.Resiver2Id;
-                        if (q.ShiperId==0)
+                        if (q.ShiperId == 0)
                             chkStatusLading.Checked = true;
                         cmbShiper.Value = q.ShiperId;
 
@@ -4193,9 +4193,9 @@ namespace HM_ERP_System.Forms.Comers
                         }
 
                         cmbDraversH1.Value = q.DaraverId1;
-                        DaraverIdH1_=q.DaraverId1;
-                        cmbDraversH2.Value=q.DaraverId2;
-                        DaraverIdH2_=q.DaraverId2;
+                        DaraverIdH1_ = q.DaraverId1;
+                        cmbDraversH2.Value = q.DaraverId2;
+                        DaraverIdH2_ = q.DaraverId2;
 
                         txtNumberTranferForm.Text = q.RemiaanceSeryal.ToString();
 
@@ -4249,25 +4249,25 @@ namespace HM_ERP_System.Forms.Comers
 
                     PublicClass.AddDocumentToBanck(this.Name + "H", ListId, lblCaption);
                     FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
-                    ListId=0;
+                    ListId = 0;
 
 
                     break;
                 case "BillLadingRequests"://ثبت درخواست بارنامه
                     frmBillLadingRequest f = new frmBillLadingRequest(this);
-                    f.ComersHId=ListId;
+                    f.ComersHId = ListId;
                     f.ShowDialog();
-                    ListId=0;
+                    ListId = 0;
 
 
                     break;
                 case "CeatComerB"://ثبت بارنامه
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.Cars.Where(c => c.Id==db.ComersHs.Where(x => x.Id==ListId).FirstOrDefault().CarId).First();
-                        ListId=0;
-                        uiTab1.TabPages["ComersB"].Selected=true;
-                        cmbCarplateB.Text=q.CarPlat+q.CarPlatSeryal;
+                        var q = db.Cars.Where(c => c.Id == db.ComersHs.Where(x => x.Id == ListId).FirstOrDefault().CarId).First();
+                        ListId = 0;
+                        uiTab1.TabPages["ComersB"].Selected = true;
+                        cmbCarplateB.Text = q.CarPlat + q.CarPlatSeryal;
                         cmbSeryalH_Leave(null, null);
                         txtSeryalB.Focus();
                     }
@@ -4278,17 +4278,17 @@ namespace HM_ERP_System.Forms.Comers
 
         private void cms_cmsDgvB_CommandClick(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            ListId=ListId_;
+            ListId = ListId_;
             switch (e.Command.Key)
             {
                 case "AccountingDocumentRegistration"://سند حسابداری
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.Transactions.Where(c => c.ComerBId==ListId);
-                        if (q.Count()==0)
+                        var q = db.Transactions.Where(c => c.ComerBId == ListId);
+                        if (q.Count() == 0)
                         {
                             AccountingDocumentRegistration(ListId);
-                            
+
                             FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                         }
                         else
@@ -4308,7 +4308,7 @@ namespace HM_ERP_System.Forms.Comers
                     FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                     break;
             }
-            ListId=0;
+            ListId = 0;
         }
 
         /// <summary>
@@ -4320,13 +4320,13 @@ namespace HM_ERP_System.Forms.Comers
             if (statuslading)
             {
 
-                panelLanding.Enabled=false;
-                txtSeryalB.Enabled=false;
+                panelLanding.Enabled = false;
+                txtSeryalB.Enabled = false;
                 txtSeryalB.ResetText();
-                cmbBillLadingCast.Enabled=false;
-                cmbBillLadingCast.Value=3;
+                cmbBillLadingCast.Enabled = false;
+                cmbBillLadingCast.Value = 3;
                 //cmbBillLadingMethod.Value=4;
-                cmbBillLadingMethod.SelectedIndex=-1;
+                cmbBillLadingMethod.SelectedIndex = -1;
                 txtBaseFreight.ResetText();
                 txtBillLadingAmount.ResetText();
                 txtInsuranceAmount.ResetText();
@@ -4339,11 +4339,11 @@ namespace HM_ERP_System.Forms.Comers
             else
 
             {
-                panelLanding.Enabled=true;
-                txtSeryalB.Enabled=true;
-                cmbBillLadingCast.Enabled=true;
-                cmbBillLadingCast.Value=1;
-                cmbBillLadingMethod.Value=3;
+                panelLanding.Enabled = true;
+                txtSeryalB.Enabled = true;
+                cmbBillLadingCast.Enabled = true;
+                cmbBillLadingCast.Value = 1;
+                cmbBillLadingMethod.Value = 3;
                 //cmbBillLadingCast.ResetText();
                 //cmbBillLadingMethod.ResetText();
             }
@@ -4354,12 +4354,12 @@ namespace HM_ERP_System.Forms.Comers
         {
             if (chkStatusLading.Checked)
             {
-                cmbShiper.SelectedIndex=-1;
-                cmbShiper.Enabled=false;
+                cmbShiper.SelectedIndex = -1;
+                cmbShiper.Enabled = false;
             }
             else
             {
-                cmbShiper.Enabled=true;
+                cmbShiper.Enabled = true;
             }
         }
 
@@ -4367,19 +4367,19 @@ namespace HM_ERP_System.Forms.Comers
         {
             if (chkPaymentToOthers.Checked)
             {
-                txtPaymentToOthers1.Enabled=true;
+                txtPaymentToOthers1.Enabled = true;
                 //cmbPaymentToOthers.Enabled=true;
-                btnPaymentToOthers.Enabled=true;
+                btnPaymentToOthers.Enabled = true;
             }
             else
             {
-                txtPaymentToOthers1.Enabled=false;
-                btnPaymentToOthers.Enabled=false;
+                txtPaymentToOthers1.Enabled = false;
+                btnPaymentToOthers.Enabled = false;
                 //cmbPaymentToOthers.Enabled=false;
                 txtPaymentToOthers1.ResetText();
             }
             lblPaymentToOthers.ResetText();
-            cmbPaymentToOthers.SelectedIndex=-1;
+            cmbPaymentToOthers.SelectedIndex = -1;
         }
 
         int PaymentToOthersId_ = 0;
@@ -4393,11 +4393,11 @@ namespace HM_ERP_System.Forms.Comers
                     bool bl1 = false;
                     bool bl2 = false;
                     string name = "";
-                    (bl1, bl2, name)=PublicClass.CheckBlacList(PaymentToOthersId_);
+                    (bl1, bl2, name) = PublicClass.CheckBlacList(PaymentToOthersId_);
                     if (bl1 && bl2)
                     {
-                        PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                        cmbPaymentToOthers.SelectedIndex=-1;
+                        PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                        cmbPaymentToOthers.SelectedIndex = -1;
                     }
                 }
             }
@@ -4420,17 +4420,17 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(CostAccountIdB_);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(CostAccountIdB_);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbCostAccountB.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbCostAccountB.SelectedIndex = -1;
                         }
                     }
                 }
                 else
                 {
-                    CostAccountIdB_=0;
+                    CostAccountIdB_ = 0;
                     //lblCostAccountB.ResetText();
                 }
             }
@@ -4453,17 +4453,17 @@ namespace HM_ERP_System.Forms.Comers
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(GoodsAccountIdB_);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(GoodsAccountIdB_);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbGoodsAccountB.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbGoodsAccountB.SelectedIndex = -1;
                         }
                     }
                 }
                 else
                 {
-                    GoodsAccountIdB_=0;
+                    GoodsAccountIdB_ = 0;
                     //lblGoodsAccountB.ResetText();
 
                 }
@@ -4492,11 +4492,11 @@ namespace HM_ERP_System.Forms.Comers
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
-                (bl1, bl2, name)=PublicClass.CheckBlacList(Sender2Id_);
+                (bl1, bl2, name) = PublicClass.CheckBlacList(Sender2Id_);
                 if (bl1 && bl2)
                 {
-                    PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                    cmbSender2.SelectedIndex=-1;
+                    PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                    cmbSender2.SelectedIndex = -1;
                 }
             }
             catch (Exception)
@@ -4512,11 +4512,11 @@ namespace HM_ERP_System.Forms.Comers
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
-                (bl1, bl2, name)=PublicClass.CheckBlacList(Resiver2Id_);
+                (bl1, bl2, name) = PublicClass.CheckBlacList(Resiver2Id_);
                 if (bl1 && bl2)
                 {
-                    PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                    cmbResiver2.SelectedIndex=-1;
+                    PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                    cmbResiver2.SelectedIndex = -1;
                 }
             }
             catch (Exception)
@@ -4527,7 +4527,7 @@ namespace HM_ERP_System.Forms.Comers
         private void btnPaymentToOthers_Click(object sender, EventArgs e)
         {
             frmDetailedAccount f = new frmDetailedAccount(this);
-            f.IsRequest=true;
+            f.IsRequest = true;
             f.ShowDialog();
         }
 
@@ -4540,7 +4540,7 @@ namespace HM_ERP_System.Forms.Comers
             {
                 CalcComerFilds_();
                 //txtAC.Value=AC;
-                txtBalanceAccount.Value=AC;
+                txtBalanceAccount.Value = AC;
             }
         }
 
@@ -4553,7 +4553,7 @@ namespace HM_ERP_System.Forms.Comers
             {
                 CalcComerFilds_();
                 //txtAY.Value=AY;
-                txtBalanceBillLadingAmount.Value=AY;
+                txtBalanceBillLadingAmount.Value = AY;
             }
         }
 
@@ -4566,7 +4566,7 @@ namespace HM_ERP_System.Forms.Comers
             {
                 CalcComerFilds_();
                 //txtAV.Value=AV;
-                txtBalanceAccountِDraver.Value=AV;
+                txtBalanceAccountِDraver.Value = AV;
             }
         }
 
@@ -4658,7 +4658,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void txtCargoInsurance_ValueChanged(object sender, EventArgs e)
         {
-            txtInsuranceAmount.Value=txtCargoInsurance.Value;
+            txtInsuranceAmount.Value = txtCargoInsurance.Value;
         }
 
         private void cmbProducts_KeyDown(object sender, KeyEventArgs e)
@@ -4785,8 +4785,8 @@ namespace HM_ERP_System.Forms.Comers
         {
             //if (chkIncomeDocument.Checked)
             {
-                rdbCostAccount.Enabled=chkIncomeDocument.Checked;
-                rdbShiper.Enabled=chkIncomeDocument.Checked;
+                rdbCostAccount.Enabled = chkIncomeDocument.Checked;
+                rdbShiper.Enabled = chkIncomeDocument.Checked;
             }
         }
 
@@ -4795,10 +4795,10 @@ namespace HM_ERP_System.Forms.Comers
             switch (ComerTabKey)
             {
                 case "ComersH":
-                    dgvListH.ShowFieldChooser(this,  ResourceCode.T158);
+                    dgvListH.ShowFieldChooser(this, ResourceCode.T158);
                     break;
                 case "ComersB":
-                    dgvListB.ShowFieldChooser(this,  ResourceCode.T158);
+                    dgvListB.ShowFieldChooser(this, ResourceCode.T158);
                     break;
             }
 
@@ -4810,21 +4810,21 @@ namespace HM_ERP_System.Forms.Comers
             {
                 case "ComersH":
                     frmReport f = new frmReport();
-                    f.grid=dgvListH;
-                    f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
-                    f.TitelString =ResourceCode.TRcomerH;
-                    f.Description=" ";
-                    f.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersH.rdlc";
+                    f.grid = dgvListH;
+                    f.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
+                    f.TitelString = ResourceCode.TRcomerH;
+                    f.Description = " ";
+                    f.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersH.rdlc";
                     f.ShowDialog();
 
                     break;
                 case "ComersB":
                     frmReport f1 = new frmReport();
-                    f1.grid=dgvListB;
-                    f1.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
-                    f1.TitelString =ResourceCode.TRcomerB;
-                    f1.Description=" ";
-                    f1.ReporFileName ="HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
+                    f1.grid = dgvListB;
+                    f1.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
+                    f1.TitelString = ResourceCode.TRcomerB;
+                    f1.Description = " ";
+                    f1.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
                     f1.ShowDialog();
                     break;
             }

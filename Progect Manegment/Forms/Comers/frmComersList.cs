@@ -88,8 +88,6 @@ namespace HM_ERP_System.Forms.Comers
                     this.Text="لیست بـــارنامه ها";
                     dgvListB.RootTable.Columns["Details"].Visible=false;
                     dgvListB.RootTable.Columns["select"].Visible=false;
-                    //PublicClass.SettingGridEX(dgvListB);
-
                 }
 
                 else if (FormName=="ComersH")
@@ -100,8 +98,6 @@ namespace HM_ERP_System.Forms.Comers
                     dgvListCommission.Visible=false;
                     this.Text="لیست حـــواله ها";
                     dgvListH.RootTable.Columns["Details"].Visible=false;
-                    //PublicClass.SettingGridEX(dgvListH);
-
                 }
 
                 else if (FormName=="Commission")
@@ -113,7 +109,6 @@ namespace HM_ERP_System.Forms.Comers
                     this.Text="لیست پورسانت ها";
                     dgvListCommission.RootTable.Columns["Details"].Visible=false;
                     dgvListCommission.RootTable.Columns["Details2"].Visible=true;
-                    //PublicClass.SettingGridEX(dgvListCommission);
                 }
             }
             catch (Exception er)

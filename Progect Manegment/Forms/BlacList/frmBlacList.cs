@@ -1,6 +1,7 @@
 ﻿using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.Provinces;
 using HM_ERP_System.Forms.Main_Form;
+using HM_ERP_System.Forms.Reports;
 
 using MyClass;
 
@@ -237,6 +238,15 @@ namespace HM_ERP_System.Forms.BlacList
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void buttonX01_Click(object sender, EventArgs e)
+        {
+            frmReport f = new frmReport();
+            f.grid = dgvList;
+            f.TitelString = ResourceCode.TRblacLists;
+            f.ReporFileName = "HM_ERP_System.ReportViewer.Report_BlacLists.rdlc";
+            f.ShowDialog();
         }
     }
 }

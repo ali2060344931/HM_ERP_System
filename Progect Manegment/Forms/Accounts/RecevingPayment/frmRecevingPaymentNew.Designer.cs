@@ -69,6 +69,8 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.pnlTo = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel20Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
             this.uiTab1 = new Janus.Windows.UI.Tab.UITab();
@@ -217,9 +219,9 @@
             // Design Time Panel Info:
             // 
             this.uiPanelManager1.BeginPanelInfo();
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("b7d9cbdd-dfbf-4d6a-94a0-b81ab0c0ebe7"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1337, 168), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("b7d9cbdd-dfbf-4d6a-94a0-b81ab0c0ebe7"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1337, 178), true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("0b438063-86f6-414c-bef5-5baf18e89615"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1337, 239), true);
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1337, 336), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1337, 326), true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("dc368c76-0c76-4827-ac96-b7ce6c5815cd"), new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), 951, true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("65b84ce1-93bf-4bc4-87d3-d85b8093962d"), new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), 152, true);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("dc368c76-0c76-4827-ac96-b7ce6c5815cd"), new System.Drawing.Point(435, 444), new System.Drawing.Size(200, 200), false);
@@ -237,7 +239,7 @@
             this.pnlFrom.InnerContainer = this.uiPanel0Container;
             this.pnlFrom.Location = new System.Drawing.Point(3, 3);
             this.pnlFrom.Name = "pnlFrom";
-            this.pnlFrom.Size = new System.Drawing.Size(1337, 168);
+            this.pnlFrom.Size = new System.Drawing.Size(1337, 178);
             this.pnlFrom.TabIndex = 4;
             this.pnlFrom.Text = "دریافت/پرداخت از";
             this.pnlFrom.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
@@ -267,9 +269,11 @@
             this.uiPanel0Container.Controls.Add(this.label50);
             this.uiPanel0Container.Controls.Add(this.label25);
             this.uiPanel0Container.Controls.Add(this.pictureBox1);
+            this.uiPanel0Container.Controls.Add(this.label21);
+            this.uiPanel0Container.Controls.Add(this.label20);
             this.uiPanel0Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel0Container.Name = "uiPanel0Container";
-            this.uiPanel0Container.Size = new System.Drawing.Size(1335, 136);
+            this.uiPanel0Container.Size = new System.Drawing.Size(1335, 146);
             this.uiPanel0Container.TabIndex = 0;
             // 
             // rdbExpense
@@ -295,7 +299,7 @@
             this.btnShowDocList.BackColor = System.Drawing.Color.Transparent;
             this.btnShowDocList.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnShowDocList.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowDocList.Location = new System.Drawing.Point(645, 76);
+            this.btnShowDocList.Location = new System.Drawing.Point(645, 83);
             this.btnShowDocList.Name = "btnShowDocList";
             this.btnShowDocList.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnShowDocList.Size = new System.Drawing.Size(34, 28);
@@ -328,7 +332,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1213, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(55, 136);
+            this.panel4.Size = new System.Drawing.Size(55, 146);
             this.panel4.TabIndex = 104;
             // 
             // labelX3
@@ -376,7 +380,7 @@
             // 
             this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.ButtonText = "..";
-            this.txtDescription.Location = new System.Drawing.Point(475, 109);
+            this.txtDescription.Location = new System.Drawing.Point(475, 116);
             this.txtDescription.MaxLength = 32768;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(654, 28);
@@ -391,7 +395,7 @@
             this.buttonX3.BackColor = System.Drawing.Color.Transparent;
             this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX3.Location = new System.Drawing.Point(1129, 41);
+            this.buttonX3.Location = new System.Drawing.Point(1129, 37);
             this.buttonX3.Name = "buttonX3";
             this.buttonX3.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX3.Size = new System.Drawing.Size(18, 28);
@@ -408,9 +412,9 @@
             this.lblAccountBalancF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAccountBalancF.BackColor = System.Drawing.Color.LightGray;
             this.lblAccountBalancF.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblAccountBalancF.Location = new System.Drawing.Point(475, 78);
+            this.lblAccountBalancF.Location = new System.Drawing.Point(475, 83);
             this.lblAccountBalancF.Name = "lblAccountBalancF";
-            this.lblAccountBalancF.Size = new System.Drawing.Size(170, 25);
+            this.lblAccountBalancF.Size = new System.Drawing.Size(170, 30);
             this.lblAccountBalancF.TabIndex = 158;
             this.lblAccountBalancF.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolTip1.SetToolTip(this.lblAccountBalancF, "مانده حســـــاب");
@@ -423,7 +427,7 @@
             this.cmbDetailedAccountsFrom.DesignTimeLayout = cmbDetailedAccountsFrom_DesignTimeLayout;
             this.cmbDetailedAccountsFrom.DisplayMember = "Name";
             this.cmbDetailedAccountsFrom.Image = ((System.Drawing.Image)(resources.GetObject("cmbDetailedAccountsFrom.Image")));
-            this.cmbDetailedAccountsFrom.Location = new System.Drawing.Point(803, 75);
+            this.cmbDetailedAccountsFrom.Location = new System.Drawing.Point(803, 83);
             this.cmbDetailedAccountsFrom.MaxLength = 8;
             this.cmbDetailedAccountsFrom.Name = "cmbDetailedAccountsFrom";
             this.cmbDetailedAccountsFrom.SelectedIndex = -1;
@@ -443,7 +447,7 @@
             this.cmbTypeDocument.DesignTimeLayout = cmbTypeDocument_DesignTimeLayout;
             this.cmbTypeDocument.DisplayMember = "Name";
             this.cmbTypeDocument.Image = ((System.Drawing.Image)(resources.GetObject("cmbTypeDocument.Image")));
-            this.cmbTypeDocument.Location = new System.Drawing.Point(803, 40);
+            this.cmbTypeDocument.Location = new System.Drawing.Point(803, 36);
             this.cmbTypeDocument.Name = "cmbTypeDocument";
             this.cmbTypeDocument.SelectedIndex = -1;
             this.cmbTypeDocument.SelectedItem = null;
@@ -460,7 +464,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(1129, 113);
+            this.label4.Location = new System.Drawing.Point(1129, 120);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 160;
@@ -472,7 +476,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(1147, 81);
+            this.label5.Location = new System.Drawing.Point(1147, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 18);
             this.label5.TabIndex = 160;
@@ -484,7 +488,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(738, 46);
+            this.label3.Location = new System.Drawing.Point(738, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 18);
             this.label3.TabIndex = 161;
@@ -497,7 +501,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(1147, 46);
+            this.label9.Location = new System.Drawing.Point(1147, 42);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 18);
             this.label9.TabIndex = 152;
@@ -510,7 +514,7 @@
             this.btnAddNewCity1.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewCity1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewCity1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddNewCity1.Location = new System.Drawing.Point(1129, 76);
+            this.btnAddNewCity1.Location = new System.Drawing.Point(1129, 83);
             this.btnAddNewCity1.Name = "btnAddNewCity1";
             this.btnAddNewCity1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddNewCity1.Size = new System.Drawing.Size(18, 28);
@@ -551,7 +555,7 @@
             this.cmbListDoc.DesignTimeLayout = cmbListDoc_DesignTimeLayout;
             this.cmbListDoc.DisplayMember = "RemiaanceSeryal";
             this.cmbListDoc.Image = ((System.Drawing.Image)(resources.GetObject("cmbListDoc.Image")));
-            this.cmbListDoc.Location = new System.Drawing.Point(679, 75);
+            this.cmbListDoc.Location = new System.Drawing.Point(679, 83);
             this.cmbListDoc.MaxLength = 8;
             this.cmbListDoc.Name = "cmbListDoc";
             this.cmbListDoc.SelectedIndex = -1;
@@ -571,7 +575,7 @@
             this.cmbSpecificAccountFrom.DesignTimeLayout = cmbSpecificAccountFrom_DesignTimeLayout;
             this.cmbSpecificAccountFrom.DisplayMember = "Name";
             this.cmbSpecificAccountFrom.Image = ((System.Drawing.Image)(resources.GetObject("cmbSpecificAccountFrom.Image")));
-            this.cmbSpecificAccountFrom.Location = new System.Drawing.Point(475, 40);
+            this.cmbSpecificAccountFrom.Location = new System.Drawing.Point(475, 36);
             this.cmbSpecificAccountFrom.MaxLength = 8;
             this.cmbSpecificAccountFrom.Name = "cmbSpecificAccountFrom";
             this.cmbSpecificAccountFrom.SelectedIndex = -1;
@@ -592,7 +596,7 @@
             this.buttonX2.BackColor = System.Drawing.Color.Transparent;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX2.Location = new System.Drawing.Point(720, 41);
+            this.buttonX2.Location = new System.Drawing.Point(720, 37);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX2.Size = new System.Drawing.Size(18, 28);
@@ -632,17 +636,41 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(1268, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 136);
+            this.pictureBox1.Size = new System.Drawing.Size(67, 146);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 172;
             this.pictureBox1.TabStop = false;
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Transparent;
+            this.label21.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label21.Location = new System.Drawing.Point(537, 66);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(76, 18);
+            this.label21.TabIndex = 161;
+            this.label21.Text = "مانده حســــاب";
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label20.Location = new System.Drawing.Point(728, 66);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(44, 18);
+            this.label20.TabIndex = 161;
+            this.label20.Text = "حـــــواله";
             // 
             // pnlTo
             // 
             this.pnlTo.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
             this.pnlTo.FloatingLocation = new System.Drawing.Point(482, 64);
             this.pnlTo.InnerContainer = this.uiPanel20Container;
-            this.pnlTo.Location = new System.Drawing.Point(3, 171);
+            this.pnlTo.Location = new System.Drawing.Point(3, 181);
             this.pnlTo.Name = "pnlTo";
             this.pnlTo.Size = new System.Drawing.Size(1337, 239);
             this.pnlTo.TabIndex = 4;
@@ -1664,9 +1692,9 @@
             // uiPanelGroup1
             // 
             this.uiPanelGroup1.GroupStyle = Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles;
-            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 410);
+            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 420);
             this.uiPanelGroup1.Name = "uiPanelGroup1";
-            this.uiPanelGroup1.Size = new System.Drawing.Size(1337, 336);
+            this.uiPanelGroup1.Size = new System.Drawing.Size(1337, 326);
             this.uiPanelGroup1.TabIndex = 5;
             // 
             // uiPanel1
@@ -1676,7 +1704,7 @@
             this.uiPanel1.InnerContainer = this.uiPanel1Container;
             this.uiPanel1.Location = new System.Drawing.Point(0, 0);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(1150, 336);
+            this.uiPanel1.Size = new System.Drawing.Size(1150, 326);
             this.uiPanel1.TabIndex = 4;
             this.uiPanel1.TabStop = false;
             this.uiPanel1.Text = "لیست اسناد";
@@ -1688,7 +1716,7 @@
             this.uiPanel1Container.Controls.Add(this.pnlViewItemFoter);
             this.uiPanel1Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel1Container.Name = "uiPanel1Container";
-            this.uiPanel1Container.Size = new System.Drawing.Size(1148, 308);
+            this.uiPanel1Container.Size = new System.Drawing.Size(1148, 298);
             this.uiPanel1Container.TabIndex = 0;
             // 
             // dgvList
@@ -1717,7 +1745,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.Size = new System.Drawing.Size(1148, 280);
+            this.dgvList.Size = new System.Drawing.Size(1148, 270);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 86;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -1734,7 +1762,7 @@
             this.pnlViewItemFoter.Controls.Add(this.buttonX1);
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 280);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 270);
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
             this.pnlViewItemFoter.Size = new System.Drawing.Size(1148, 28);
             this.pnlViewItemFoter.TabIndex = 90;
@@ -1782,7 +1810,7 @@
             this.uiPanel3.InnerContainer = this.uiPanel3Container;
             this.uiPanel3.Location = new System.Drawing.Point(1154, 0);
             this.uiPanel3.Name = "uiPanel3";
-            this.uiPanel3.Size = new System.Drawing.Size(183, 336);
+            this.uiPanel3.Size = new System.Drawing.Size(183, 326);
             this.uiPanel3.TabIndex = 4;
             this.uiPanel3.TabStop = false;
             this.uiPanel3.Text = "نمایش اسناد";
@@ -1799,7 +1827,7 @@
             this.uiPanel3Container.Controls.Add(this.label47);
             this.uiPanel3Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel3Container.Name = "uiPanel3Container";
-            this.uiPanel3Container.Size = new System.Drawing.Size(181, 308);
+            this.uiPanel3Container.Size = new System.Drawing.Size(181, 298);
             this.uiPanel3Container.TabIndex = 0;
             this.uiPanel3Container.TabStop = false;
             // 
@@ -2121,5 +2149,7 @@
         public System.Windows.Forms.Panel pnlViewItemFoter;
         public DevComponents.DotNetBar.ButtonX buttonX1;
         public DevComponents.DotNetBar.ButtonX btnExportToExcel;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
     }
 }

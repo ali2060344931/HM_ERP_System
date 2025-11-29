@@ -78,16 +78,16 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(796, 372);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(794, 424);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(796, 50);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(794, 50);
             // 
             // pnlViewItemFoter
             // 
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 422);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(796, 28);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 474);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(794, 28);
             // 
             // pnlAddItemBodi
             // 
@@ -116,11 +116,11 @@
             this.pnlAddItemBodi.Controls.Add(this.label50);
             this.pnlAddItemBodi.Controls.Add(this.label25);
             this.pnlAddItemBodi.Controls.Add(this.lblInOut);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(432, 422);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(432, 474);
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 422);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 474);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(432, 28);
             // 
             // btnSave
@@ -134,17 +134,17 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(557, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(556, 12);
             this.txtDateStart.Value = new System.DateTime(2025, 7, 12, 14, 13, 26, 322);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(355, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(354, 12);
             this.txtDateEnd.Value = new System.DateTime(2025, 7, 12, 14, 13, 26, 322);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(265, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(264, 15);
             this.btnShowListItems.Click += new System.EventHandler(this.btnShowListItems_Click);
             // 
             // labelX2
@@ -153,7 +153,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(485, 17);
+            this.labelX2.Location = new System.Drawing.Point(484, 17);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
@@ -162,29 +162,30 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(687, 17);
+            this.labelX1.Location = new System.Drawing.Point(686, 17);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Size = new System.Drawing.Size(798, 478);
+            this.pnlViewItems.Size = new System.Drawing.Size(796, 530);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(801, 3);
-            this.pnlAddItems.Size = new System.Drawing.Size(438, 478);
+            this.pnlAddItems.Location = new System.Drawing.Point(799, 3);
+            this.pnlAddItems.Size = new System.Drawing.Size(438, 530);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(762, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(760, 0);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(728, 0);
+            this.buttonX01.Enabled = false;
+            this.buttonX01.Location = new System.Drawing.Point(726, 0);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(693, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(691, 0);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // cmbContraAccountFrom
@@ -233,7 +234,7 @@
             this.lblContraAccountFrom.AutoSize = true;
             this.lblContraAccountFrom.BackColor = System.Drawing.Color.Transparent;
             this.lblContraAccountFrom.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblContraAccountFrom.Location = new System.Drawing.Point(358, 190);
+            this.lblContraAccountFrom.Location = new System.Drawing.Point(359, 190);
             this.lblContraAccountFrom.Name = "lblContraAccountFrom";
             this.lblContraAccountFrom.Size = new System.Drawing.Size(57, 18);
             this.lblContraAccountFrom.TabIndex = 107;
@@ -244,7 +245,7 @@
             this.label50.AutoSize = true;
             this.label50.BackColor = System.Drawing.Color.Transparent;
             this.label50.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label50.Location = new System.Drawing.Point(358, 126);
+            this.label50.Location = new System.Drawing.Point(359, 126);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(62, 18);
             this.label50.TabIndex = 108;
@@ -255,7 +256,7 @@
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label25.Location = new System.Drawing.Point(358, 94);
+            this.label25.Location = new System.Drawing.Point(359, 94);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(62, 18);
             this.label25.TabIndex = 109;
@@ -308,7 +309,7 @@
             this.lblContraAccountTo.AutoSize = true;
             this.lblContraAccountTo.BackColor = System.Drawing.Color.Transparent;
             this.lblContraAccountTo.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblContraAccountTo.Location = new System.Drawing.Point(358, 225);
+            this.lblContraAccountTo.Location = new System.Drawing.Point(359, 225);
             this.lblContraAccountTo.Name = "lblContraAccountTo";
             this.lblContraAccountTo.Size = new System.Drawing.Size(47, 18);
             this.lblContraAccountTo.TabIndex = 107;
@@ -356,7 +357,7 @@
             this.lblTotalAmount.AutoSize = true;
             this.lblTotalAmount.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalAmount.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(358, 261);
+            this.lblTotalAmount.Location = new System.Drawing.Point(359, 261);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(72, 18);
             this.lblTotalAmount.TabIndex = 107;
@@ -367,7 +368,7 @@
             this.lblIEAmount.AutoSize = true;
             this.lblIEAmount.BackColor = System.Drawing.Color.Transparent;
             this.lblIEAmount.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblIEAmount.Location = new System.Drawing.Point(358, 295);
+            this.lblIEAmount.Location = new System.Drawing.Point(359, 295);
             this.lblIEAmount.Name = "lblIEAmount";
             this.lblIEAmount.Size = new System.Drawing.Size(72, 18);
             this.lblIEAmount.TabIndex = 107;
@@ -430,7 +431,7 @@
             this.lblSpecificAccount.AutoSize = true;
             this.lblSpecificAccount.BackColor = System.Drawing.Color.Transparent;
             this.lblSpecificAccount.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblSpecificAccount.Location = new System.Drawing.Point(358, 156);
+            this.lblSpecificAccount.Location = new System.Drawing.Point(359, 156);
             this.lblSpecificAccount.Name = "lblSpecificAccount";
             this.lblSpecificAccount.Size = new System.Drawing.Size(63, 18);
             this.lblSpecificAccount.TabIndex = 107;
@@ -519,7 +520,7 @@
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmTransaction";
-            this.dgvList.Size = new System.Drawing.Size(796, 372);
+            this.dgvList.Size = new System.Drawing.Size(794, 424);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -570,7 +571,7 @@
             this.buttonX4.BackColor = System.Drawing.Color.Transparent;
             this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX4.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX4.Location = new System.Drawing.Point(356, 357);
+            this.buttonX4.Location = new System.Drawing.Point(359, 357);
             this.buttonX4.Name = "buttonX4";
             this.buttonX4.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX4.Size = new System.Drawing.Size(72, 28);
@@ -600,7 +601,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1242, 484);
+            this.ClientSize = new System.Drawing.Size(1240, 536);
             this.KeyPreview = true;
             this.Name = "frmTransaction";
             this.Text = "فـــرم ثبت اسناد درآمــــد(فروش) - هــــربنه(خرید)";

@@ -37,7 +37,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecevingPaymentNew));
             Janus.Windows.GridEX.GridEXLayout cmbDetailedAccountsTo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListCheque1_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout cmbBanck_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cmbAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListCheque2_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbListCheque_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
@@ -101,7 +101,7 @@
             this.btnAddBanck = new DevComponents.DotNetBar.ButtonX();
             this.label31 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.cmbBanck = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.cmbAccount = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtChequeNumber = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
             this.txtDueDate = new Atf.UI.DateTimeSelector();
             this.label17 = new System.Windows.Forms.Label();
@@ -182,7 +182,7 @@
             this.uiTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListCheque1)).BeginInit();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAccount)).BeginInit();
             this.uiTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListCheque2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -1064,7 +1064,7 @@
             this.panel7.Controls.Add(this.btnAddBanck);
             this.panel7.Controls.Add(this.label31);
             this.panel7.Controls.Add(this.label19);
-            this.panel7.Controls.Add(this.cmbBanck);
+            this.panel7.Controls.Add(this.cmbAccount);
             this.panel7.Controls.Add(this.txtChequeNumber);
             this.panel7.Controls.Add(this.txtDueDate);
             this.panel7.Controls.Add(this.label17);
@@ -1081,7 +1081,7 @@
             // 
             this.txtAmount3.CheackCodeMeli = false;
             this.txtAmount3.Day = 0;
-            this.txtAmount3.Location = new System.Drawing.Point(156, 43);
+            this.txtAmount3.Location = new System.Drawing.Point(136, 43);
             this.txtAmount3.Miladi = new System.DateTime(((long)(0)));
             this.txtAmount3.Month = 0;
             this.txtAmount3.Name = "txtAmount3";
@@ -1104,7 +1104,7 @@
             // 
             this.txtDescriptionCh.CheackCodeMeli = false;
             this.txtDescriptionCh.Day = 0;
-            this.txtDescriptionCh.Location = new System.Drawing.Point(6, 134);
+            this.txtDescriptionCh.Location = new System.Drawing.Point(20, 134);
             this.txtDescriptionCh.Miladi = new System.DateTime(((long)(0)));
             this.txtDescriptionCh.Month = 0;
             this.txtDescriptionCh.Name = "txtDescriptionCh";
@@ -1112,7 +1112,7 @@
             this.txtDescriptionCh.Number = null;
             this.txtDescriptionCh.SelectedDate = null;
             this.txtDescriptionCh.Shamsi = null;
-            this.txtDescriptionCh.Size = new System.Drawing.Size(316, 28);
+            this.txtDescriptionCh.Size = new System.Drawing.Size(282, 28);
             this.txtDescriptionCh.TabIndex = 5;
             this.txtDescriptionCh.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
             this.txtDescriptionCh.TextSimple = "";
@@ -1127,7 +1127,7 @@
             this.label32.AutoSize = true;
             this.label32.BackColor = System.Drawing.Color.Transparent;
             this.label32.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label32.Location = new System.Drawing.Point(324, 139);
+            this.label32.Location = new System.Drawing.Point(304, 139);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(57, 18);
             this.label32.TabIndex = 164;
@@ -1140,10 +1140,10 @@
             this.btnAddBanck.BackColor = System.Drawing.Color.Transparent;
             this.btnAddBanck.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddBanck.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddBanck.Location = new System.Drawing.Point(6, 72);
+            this.btnAddBanck.Location = new System.Drawing.Point(2, 75);
             this.btnAddBanck.Name = "btnAddBanck";
             this.btnAddBanck.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddBanck.Size = new System.Drawing.Size(18, 28);
+            this.btnAddBanck.Size = new System.Drawing.Size(18, 27);
             this.btnAddBanck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddBanck.Symbol = "";
             this.btnAddBanck.SymbolSize = 15F;
@@ -1157,7 +1157,7 @@
             this.label31.AutoSize = true;
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label31.Location = new System.Drawing.Point(152, 17);
+            this.label31.Location = new System.Drawing.Point(151, 17);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(36, 18);
             this.label31.TabIndex = 161;
@@ -1168,30 +1168,30 @@
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label19.Location = new System.Drawing.Point(324, 48);
+            this.label19.Location = new System.Drawing.Point(304, 48);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(33, 18);
             this.label19.TabIndex = 161;
             this.label19.Text = "مبلغ:";
             // 
-            // cmbBanck
+            // cmbAccount
             // 
-            this.cmbBanck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbBanck.DataMember = "id";
-            cmbBanck_DesignTimeLayout.LayoutString = resources.GetString("cmbBanck_DesignTimeLayout.LayoutString");
-            this.cmbBanck.DesignTimeLayout = cmbBanck_DesignTimeLayout;
-            this.cmbBanck.DisplayMember = "Name";
-            this.cmbBanck.Image = ((System.Drawing.Image)(resources.GetObject("cmbBanck.Image")));
-            this.cmbBanck.Location = new System.Drawing.Point(23, 72);
-            this.cmbBanck.Name = "cmbBanck";
-            this.cmbBanck.SelectedIndex = -1;
-            this.cmbBanck.SelectedItem = null;
-            this.cmbBanck.Size = new System.Drawing.Size(299, 30);
-            this.cmbBanck.TabIndex = 3;
-            this.cmbBanck.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            this.cmbBanck.ValueMember = "id";
-            this.cmbBanck.ValueChanged += new System.EventHandler(this.cmbBanck_ValueChanged);
-            this.cmbBanck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChequeNumber_KeyDown);
+            this.cmbAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbAccount.DataMember = "id";
+            cmbAccount_DesignTimeLayout.LayoutString = resources.GetString("cmbAccount_DesignTimeLayout.LayoutString");
+            this.cmbAccount.DesignTimeLayout = cmbAccount_DesignTimeLayout;
+            this.cmbAccount.DisplayMember = "AccountName";
+            this.cmbAccount.Image = ((System.Drawing.Image)(resources.GetObject("cmbAccount.Image")));
+            this.cmbAccount.Location = new System.Drawing.Point(20, 72);
+            this.cmbAccount.Name = "cmbAccount";
+            this.cmbAccount.SelectedIndex = -1;
+            this.cmbAccount.SelectedItem = null;
+            this.cmbAccount.Size = new System.Drawing.Size(282, 30);
+            this.cmbAccount.TabIndex = 3;
+            this.cmbAccount.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            this.cmbAccount.ValueMember = "id";
+            this.cmbAccount.ValueChanged += new System.EventHandler(this.cmbBanck_ValueChanged);
+            this.cmbAccount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChequeNumber_KeyDown);
             // 
             // txtChequeNumber
             // 
@@ -1199,7 +1199,7 @@
             this.txtChequeNumber.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtChequeNumber.CheackCodeMeli = false;
             this.txtChequeNumber.Day = 0;
-            this.txtChequeNumber.Location = new System.Drawing.Point(232, 12);
+            this.txtChequeNumber.Location = new System.Drawing.Point(212, 12);
             this.txtChequeNumber.Miladi = new System.DateTime(((long)(0)));
             this.txtChequeNumber.Month = 0;
             this.txtChequeNumber.Name = "txtChequeNumber";
@@ -1220,7 +1220,7 @@
             // txtDueDate
             // 
             this.txtDueDate.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDueDate.Location = new System.Drawing.Point(23, 12);
+            this.txtDueDate.Location = new System.Drawing.Point(20, 12);
             this.txtDueDate.Name = "txtDueDate";
             this.txtDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDueDate.Size = new System.Drawing.Size(126, 29);
@@ -1232,18 +1232,18 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label17.Location = new System.Drawing.Point(324, 78);
+            this.label17.Location = new System.Drawing.Point(304, 78);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(51, 18);
+            this.label17.Size = new System.Drawing.Size(86, 18);
             this.label17.TabIndex = 161;
-            this.label17.Text = "نام بانک:";
+            this.label17.Text = "نام حساب بانک:";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label18.Location = new System.Drawing.Point(324, 108);
+            this.label18.Location = new System.Drawing.Point(304, 108);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(66, 18);
             this.label18.TabIndex = 161;
@@ -1254,7 +1254,7 @@
             this.label30.AutoSize = true;
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label30.Location = new System.Drawing.Point(324, 17);
+            this.label30.Location = new System.Drawing.Point(304, 17);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(41, 18);
             this.label30.TabIndex = 161;
@@ -1266,7 +1266,7 @@
             this.txtChequeOwner.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtChequeOwner.CheackCodeMeli = false;
             this.txtChequeOwner.Day = 0;
-            this.txtChequeOwner.Location = new System.Drawing.Point(156, 103);
+            this.txtChequeOwner.Location = new System.Drawing.Point(136, 103);
             this.txtChequeOwner.Miladi = new System.DateTime(((long)(0)));
             this.txtChequeOwner.Month = 0;
             this.txtChequeOwner.Name = "txtChequeOwner";
@@ -1504,7 +1504,7 @@
             this.btnAddToList.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.btnAddToList.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddToList.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlF5);
-            this.btnAddToList.Size = new System.Drawing.Size(301, 33);
+            this.btnAddToList.Size = new System.Drawing.Size(282, 33);
             this.btnAddToList.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013;
             this.btnAddToList.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnCelerItems});
@@ -2005,7 +2005,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListCheque1)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAccount)).EndInit();
             this.uiTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListCheque2)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -2129,7 +2129,7 @@
         private DevComponents.DotNetBar.ButtonItem btnAddNewBanck1;
         private DevComponents.DotNetBar.ButtonItem btnAddNewCofer1;
         public DevComponents.DotNetBar.ButtonX btnAddBanck;
-        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbBanck;
+        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbAccount;
         private System.Windows.Forms.Panel panelT;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblAmontCheckDoc;

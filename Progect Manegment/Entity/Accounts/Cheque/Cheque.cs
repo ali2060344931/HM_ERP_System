@@ -34,10 +34,9 @@ namespace HM_ERP_System.Entity.Accounts.Cheque
         /// </summary>
         public string IssueDate { get; set; }
         /// <summary>
-        /// نام بانک
+        /// نام حساب بانکی
         /// </summary>
-        //public string BankName { get; set; }
-        public int BankId { get; set; }
+        public int AccountId { get; set; }
 
         /// <summary>
         /// کد تفصیلی طرف حساب (مشتری یا تأمین کننده) که چک را به او داده‌ایم یا از او گرفته‌ایم

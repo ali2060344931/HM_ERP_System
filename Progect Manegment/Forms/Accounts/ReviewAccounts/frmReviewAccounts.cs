@@ -309,14 +309,13 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 {
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
+                        //var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
 
                         PublicClass.FilldgvListTransaction(dgvListTransaction, Date, Date, TransactionCode);
                         lblCode.Text = TransactionCode.ToString();
                         lblDate.Text = Date;
                         uiTab1.TabPages["Transaction"].Selected = true;
                     }
-
                 }
             }
             catch (Exception er)

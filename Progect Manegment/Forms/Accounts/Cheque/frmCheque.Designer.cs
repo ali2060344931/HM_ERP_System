@@ -34,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCheque));
             Janus.Windows.GridEX.GridEXLayout cmbPayer_Payee_Acc_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListChequeStatus_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout cmbBanck_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cmbAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.cmbChequeType = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtDueDate = new Atf.UI.DateTimeSelector();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             this.dgvListChequeStatus = new GridExEx.GridExEx();
             this.btnSelectCheque = new DevComponents.DotNetBar.ButtonX();
             this.btnAddBanck = new DevComponents.DotNetBar.ButtonX();
-            this.cmbBanck = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.cmbAccount = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -78,24 +78,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlListChequeStatus)).BeginInit();
             this.pnlListChequeStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListChequeStatus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAccount)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Controls.Add(this.pnlListChequeStatus);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(606, 440);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(932, 440);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(606, 50);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(932, 50);
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnSelectCheque);
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 490);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(606, 28);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(932, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
@@ -103,8 +103,8 @@
             // 
             // pnlAddItemBodi
             // 
+            this.pnlAddItemBodi.Controls.Add(this.cmbAccount);
             this.pnlAddItemBodi.Controls.Add(this.btnAddBanck);
-            this.pnlAddItemBodi.Controls.Add(this.cmbBanck);
             this.pnlAddItemBodi.Controls.Add(this.txtDescription);
             this.pnlAddItemBodi.Controls.Add(this.txtChequeOwner);
             this.pnlAddItemBodi.Controls.Add(this.txtChequeNumber);
@@ -142,17 +142,17 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(349, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(512, 12);
             this.txtDateStart.Value = new System.DateTime(2025, 10, 3, 15, 30, 8, 995);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(147, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(310, 12);
             this.txtDateEnd.Value = new System.DateTime(2025, 10, 3, 15, 30, 8, 996);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(57, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(220, 15);
             // 
             // labelX2
             // 
@@ -160,7 +160,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(277, 16);
+            this.labelX2.Location = new System.Drawing.Point(440, 16);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
@@ -170,32 +170,32 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(480, 16);
+            this.labelX1.Location = new System.Drawing.Point(643, 16);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
             this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlViewItems.Size = new System.Drawing.Size(608, 546);
+            this.pnlViewItems.Size = new System.Drawing.Size(934, 546);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(611, 3);
+            this.pnlAddItems.Location = new System.Drawing.Point(937, 3);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlAddItems.Size = new System.Drawing.Size(441, 546);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(503, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(829, 0);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(537, 0);
+            this.buttonX01.Location = new System.Drawing.Point(863, 0);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(571, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(897, 0);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // cmbChequeType
@@ -287,9 +287,9 @@
             this.label7.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label7.Location = new System.Drawing.Point(295, 193);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 18);
+            this.label7.Size = new System.Drawing.Size(92, 18);
             this.label7.TabIndex = 114;
-            this.label7.Text = "نام بانک:";
+            this.label7.Text = "نام حســـاب بانک:";
             // 
             // label8
             // 
@@ -353,9 +353,8 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmCheque";
-            this.dgvList.Size = new System.Drawing.Size(606, 288);
+            this.dgvList.Size = new System.Drawing.Size(932, 288);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -364,7 +363,6 @@
             this.dgvList.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
-            this.dgvList.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.dgvList_FormattingRow);
             this.dgvList.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvList_ColumnButtonClick);
             // 
             // cmbPayer_Payee_Acc
@@ -379,7 +377,7 @@
             this.cmbPayer_Payee_Acc.SelectedIndex = -1;
             this.cmbPayer_Payee_Acc.SelectedItem = null;
             this.cmbPayer_Payee_Acc.Size = new System.Drawing.Size(199, 30);
-            this.cmbPayer_Payee_Acc.TabIndex = 5;
+            this.cmbPayer_Payee_Acc.TabIndex = 6;
             this.cmbPayer_Payee_Acc.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbPayer_Payee_Acc.ValueMember = "id";
             this.cmbPayer_Payee_Acc.ValueChanged += new System.EventHandler(this.cmbPayer_Payee_Acc_ValueChanged);
@@ -520,7 +518,7 @@
             this.pnlListChequeStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlListChequeStatus.Location = new System.Drawing.Point(0, 288);
             this.pnlListChequeStatus.Name = "pnlListChequeStatus";
-            this.pnlListChequeStatus.Size = new System.Drawing.Size(606, 152);
+            this.pnlListChequeStatus.Size = new System.Drawing.Size(932, 152);
             this.pnlListChequeStatus.TabIndex = 85;
             this.pnlListChequeStatus.Text = "لیست وضعیت های چک ";
             this.pnlListChequeStatus.Visible = false;
@@ -562,7 +560,7 @@
             this.dgvListChequeStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListChequeStatus.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvListChequeStatus.SettingsKey = "GridExEx";
-            this.dgvListChequeStatus.Size = new System.Drawing.Size(600, 125);
+            this.dgvListChequeStatus.Size = new System.Drawing.Size(926, 125);
             this.dgvListChequeStatus.Sortable = true;
             this.dgvListChequeStatus.TabIndex = 85;
             this.dgvListChequeStatus.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -579,7 +577,7 @@
             this.btnSelectCheque.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSelectCheque.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSelectCheque.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSelectCheque.Location = new System.Drawing.Point(221, 0);
+            this.btnSelectCheque.Location = new System.Drawing.Point(547, 0);
             this.btnSelectCheque.Name = "btnSelectCheque";
             this.btnSelectCheque.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnSelectCheque.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlF5);
@@ -598,7 +596,7 @@
             this.btnAddBanck.BackColor = System.Drawing.Color.Transparent;
             this.btnAddBanck.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddBanck.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddBanck.Location = new System.Drawing.Point(77, 188);
+            this.btnAddBanck.Location = new System.Drawing.Point(12, 188);
             this.btnAddBanck.Name = "btnAddBanck";
             this.btnAddBanck.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddBanck.Size = new System.Drawing.Size(18, 28);
@@ -610,29 +608,28 @@
             this.btnAddBanck.Tooltip = "ثبت آیتم جدید";
             this.btnAddBanck.Click += new System.EventHandler(this.btnAddBanck_Click);
             // 
-            // cmbBanck
+            // cmbAccount
             // 
-            this.cmbBanck.DataMember = "id";
-            cmbBanck_DesignTimeLayout.LayoutString = resources.GetString("cmbBanck_DesignTimeLayout.LayoutString");
-            this.cmbBanck.DesignTimeLayout = cmbBanck_DesignTimeLayout;
-            this.cmbBanck.DisplayMember = "Name";
-            this.cmbBanck.Image = ((System.Drawing.Image)(resources.GetObject("cmbBanck.Image")));
-            this.cmbBanck.Location = new System.Drawing.Point(95, 187);
-            this.cmbBanck.Name = "cmbBanck";
-            this.cmbBanck.SelectedIndex = -1;
-            this.cmbBanck.SelectedItem = null;
-            this.cmbBanck.Size = new System.Drawing.Size(199, 30);
-            this.cmbBanck.TabIndex = 154;
-            this.cmbBanck.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            this.cmbBanck.ValueMember = "id";
-            this.cmbBanck.ValueChanged += new System.EventHandler(this.cmbBanck_ValueChanged);
-            this.cmbBanck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbBanck_KeyDown);
+            this.cmbAccount.DataMember = "id";
+            cmbAccount_DesignTimeLayout.LayoutString = resources.GetString("cmbAccount_DesignTimeLayout.LayoutString");
+            this.cmbAccount.DesignTimeLayout = cmbAccount_DesignTimeLayout;
+            this.cmbAccount.DisplayMember = "AccountName";
+            this.cmbAccount.Image = ((System.Drawing.Image)(resources.GetObject("cmbAccount.Image")));
+            this.cmbAccount.Location = new System.Drawing.Point(30, 187);
+            this.cmbAccount.Name = "cmbAccount";
+            this.cmbAccount.SelectedIndex = -1;
+            this.cmbAccount.SelectedItem = null;
+            this.cmbAccount.Size = new System.Drawing.Size(264, 30);
+            this.cmbAccount.TabIndex = 5;
+            this.cmbAccount.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            this.cmbAccount.ValueMember = "id";
+            this.cmbAccount.ValueChanged += new System.EventHandler(this.cmbAccount_ValueChanged);
             // 
             // frmCheque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 552);
+            this.ClientSize = new System.Drawing.Size(1381, 552);
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "frmCheque";
             this.Text = "ثبت چک ها";
@@ -649,13 +646,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbChequeType)).EndInit();
-            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPayer_Payee_Acc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlListChequeStatus)).EndInit();
             this.pnlListChequeStatus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListChequeStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbBanck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbAccount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -690,6 +686,6 @@
         public DevComponents.DotNetBar.ButtonX btnSelectCheque;
         public Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbChequeType;
         public DevComponents.DotNetBar.ButtonX btnAddBanck;
-        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbBanck;
+        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbAccount;
     }
 }

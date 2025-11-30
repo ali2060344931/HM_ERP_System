@@ -46,25 +46,25 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         public frmRecevingPaymentNew(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
         }
 
         private void frmRecevingPaymentNew_Load(object sender, EventArgs e)
         {
             int width = 400;
             //uiPanel3.Width=panel1.Width;
-            panel2.Width=width;
-            panel5.Width=width;
-            panel7.Width=width;
+            panel2.Width = width;
+            panel5.Width = width;
+            panel7.Width = width;
             txtTransactionDate.Value = DateTime.Now;
             txtDueDate.Value = DateTime.Now;
-            txtTransactionCode.Text=PublicClass.CreatTransactionCode();
+            txtTransactionCode.Text = PublicClass.CreatTransactionCode();
 
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
             txtDateEnd.Value = DateTime.Now;
             WindowState = FormWindowState.Maximized;
 
-            rdbIncomr.Checked=true;
+            rdbIncomr.Checked = true;
             AddColumnsToDataTable();// افزودن ستون به جدول ها
             UpdateData();
         }
@@ -85,37 +85,32 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         System.Data.DataTable dt_Banck;
         private void FillcmbBanck()
         {
-
             using (var db = new DBcontextModel())
             {
-                var q = from bb in db.BankBranches
+
+
+                var q = from da in db.DetailedAccounts
+
+                        join cu in db.Customers
+                        on da.CustomerId equals cu.Id
+
+                        join bb in db.BankBranches
+                        on da.BankBrancheId equals bb.Id
                         join ba in db.Bancks
                         on bb.BanckId equals ba.Id
                         select new
                         {
-                            bb.Id,
-                            bb.Name,
+                            da.Id,
+                            AccountName = cu.Name,
+                            BanckBranchName = bb.Name,
                             BanckName = ba.Name,
+                            AccountNumber = cu.AccountNumber,
                         };
-                cmbBanck.DataSource=q.ToList();
-                dt_Banck=new System.Data.DataTable();
-                dt_Banck=PublicClass.AddEntityTableToDataTable(q.ToList());
+
+                cmbAccount.DataSource = q.ToList();
+                dt_Banck = new System.Data.DataTable();
+                dt_Banck = PublicClass.AddEntityTableToDataTable(q.ToList());
             }
-
-            //using (var db = new DBcontextModel())
-            //{
-            //    var q = from ba in db.Bancks
-            //            select new
-            //            {
-            //                ba.Id,
-            //                name = ba.Name/*+"-"+ba.BranchName*/,
-            //                //ba.BranchName,
-
-            //            };
-            //    cmbBanck.DataSource=q.ToList();
-            //    dt_Banck=new System.Data.DataTable();
-            //    dt_Banck=PublicClass.AddEntityTableToDataTable(q.ToList());
-            //}
         }
 
         void FilltxtBankName()
@@ -141,14 +136,14 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             using (var db = new DBcontextModel())
             {
                 txtChequeOwner.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                txtChequeOwner.AutoCompleteSource=AutoCompleteSource.CustomSource;
+                txtChequeOwner.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 AutoCompleteStringCollection a = new AutoCompleteStringCollection();
                 var q = db.Cheques.ToList();
                 foreach (var i in q)
                 {
                     a.Add(i.ChequeOwner);
                 }
-                txtChequeOwner.AutoCompleteCustomSource=a;
+                txtChequeOwner.AutoCompleteCustomSource = a;
             }
         }
         void FilltxtDescription()
@@ -156,14 +151,14 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             using (var db = new DBcontextModel())
             {
                 txtDescriptionCa.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                txtDescriptionCa.AutoCompleteSource=AutoCompleteSource.CustomSource;
+                txtDescriptionCa.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 AutoCompleteStringCollection a = new AutoCompleteStringCollection();
                 var q = db.Cheques.ToList();
                 foreach (var i in q)
                 {
                     a.Add(i.Description);
                 }
-                txtDescriptionCa.AutoCompleteCustomSource=a;
+                txtDescriptionCa.AutoCompleteCustomSource = a;
             }
         }
         System.Data.DataTable dt_ListCheque;
@@ -181,7 +176,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                         join cha in db.ChequeStatuses
                         on ch.CurrentStatusID equals cha.Id
-                        where ch.ChequeTypeId==1  && cha.StatusCodeId==2
+                        where ch.ChequeTypeId == 1 && cha.StatusCodeId == 2
 
                         select new
                         {
@@ -192,9 +187,9 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                             ch.ChequeOwner,
                             ch.Description,
                             ch.Amount,
-                            Payer_Payee_Acc_Name = (cu.Family.Trim() + " "+ cu.Name.Trim()).Trim(),
+                            Payer_Payee_Acc_Name = (cu.Family.Trim() + " " + cu.Name.Trim()).Trim(),
                         };
-                cmbListCheque.DataSource=q.ToList();
+                cmbListCheque.DataSource = q.ToList();
                 //cmbListCheque.DropDownList.AutoSizeColumns();
                 dt_ListCheque = new System.Data.DataTable();
                 dt_ListCheque = PublicClass.AddEntityTableToDataTable(q.ToList());
@@ -220,7 +215,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                         on spag.SpecificAccountIdF equals spf.Id
                         //join spt in db.SpecificAccounts
                         //on spag.SpecificAccountIdT equals spt.Id
-                        where spag.TransactionTypeId==Id
+                        where spag.TransactionTypeId == Id
                         orderby spag.Name
                         select new
                         {
@@ -230,7 +225,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                             //SpecificAccountT = spt.Name,
 
                         };
-                cmbTypeDocument.DataSource=q.ToList();
+                cmbTypeDocument.DataSource = q.ToList();
                 dt_TypeDocument = new System.Data.DataTable();
                 dt_TypeDocument = PublicClass.AddEntityTableToDataTable(q.ToList());
             }
@@ -248,7 +243,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                         join ta in db.TotalAccounts
                         on sp.Id_TotalAccount equals ta.Id
 
-                        where (int)sp.Cod/1000!=Code && sp.Status
+                        where (int)sp.Cod / 1000 != Code && sp.Status
                         select new
                         {
                             sp.Id,
@@ -278,16 +273,16 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                         join tc in db.TypeCustomers
                         on cu.id_TypeCustomer equals tc.Id
 
-                        where dt.SpecificAccountId==SpecificAccountId_
+                        where dt.SpecificAccountId == SpecificAccountId_
                         select new
                         {
                             dt.Id,
-                            name = (cu.Family+" "+cu.Name).Trim(),
+                            name = (cu.Family + " " + cu.Name).Trim(),
                             TypeAccount = tc.Name,
                             AccountCode = dt.CodeAccount,
-                            CodeMeli=cu.CodMeli,
+                            CodeMeli = cu.CodMeli,
                         };
-                cmbDetailedAccountsFrom.DataSource= q.ToList();
+                cmbDetailedAccountsFrom.DataSource = q.ToList();
 
                 dt_DetailedAccountsFrom = new System.Data.DataTable();
                 dt_DetailedAccountsFrom = PublicClass.AddEntityTableToDataTable(q.ToList());
@@ -297,15 +292,15 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         void FilldgvListMulti()
         {
-            dgvListMulti.DataSource= dt_MultipleAccount;
+            dgvListMulti.DataSource = dt_MultipleAccount;
         }
         void FilldgvListCheque1()
         {
-            dgvListCheque1.DataSource= dt_Cheque1;
+            dgvListCheque1.DataSource = dt_Cheque1;
         }
         void FilldgvListCheque2()
         {
-            dgvListCheque2.DataSource= dt_Cheque2;
+            dgvListCheque2.DataSource = dt_Cheque2;
         }
 
         System.Data.DataTable dt_SpecificAccountTo;
@@ -319,7 +314,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         /// </summary>
         void AddColumnsToDataTable()
         {
-            dt_MultipleAccount=new System.Data.DataTable();
+            dt_MultipleAccount = new System.Data.DataTable();
             dt_MultipleAccount.Columns.Add("SpecificAccountId", typeof(int));
             dt_MultipleAccount.Columns.Add("DetailedAccountId", typeof(int));
             dt_MultipleAccount.Columns.Add("SpecificAccount", typeof(string));
@@ -329,10 +324,10 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             dt_MultipleAccount.Columns.Add("SeryalNumber", typeof(string));
             dt_MultipleAccount.Columns.Add("Des", typeof(string));
 
-            dt_Cheque1=new System.Data.DataTable();
+            dt_Cheque1 = new System.Data.DataTable();
             dt_Cheque1.Columns.Add("ChequeNumber", typeof(string));
-            dt_Cheque1.Columns.Add("BankId", typeof(int));
-            dt_Cheque1.Columns.Add("BankName", typeof(string));
+            dt_Cheque1.Columns.Add("AccountId", typeof(int));
+            dt_Cheque1.Columns.Add("AccountName", typeof(string));
             dt_Cheque1.Columns.Add("ChequeOwner", typeof(string));
             dt_Cheque1.Columns.Add("DueDate", typeof(string));
             dt_Cheque1.Columns.Add("Amount", typeof(long));
@@ -341,7 +336,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             dt_Cheque1.PrimaryKey = new DataColumn[] { productColumn1 };
 
 
-            dt_Cheque2=new System.Data.DataTable();
+            dt_Cheque2 = new System.Data.DataTable();
             dt_Cheque2.Columns.Add("Id", typeof(int));
             dt_Cheque2.Columns.Add("ChequeNumber", typeof(string));
             dt_Cheque2.Columns.Add("Payer_Payee_Acc_Id", typeof(int));
@@ -477,52 +472,52 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         string CheangRDB_ = "";
         private void rdbIncomr_CheckedChanged(object sender, EventArgs e)
         {
-            CheangRDB_="rdbIncomr";
+            CheangRDB_ = "rdbIncomr";
             if (rdbIncomr.Checked) CheangRDB(CheangRDB_);
         }
 
         void CheangRDB(string Code)
         {
-            if (Code=="rdbIncomr")//دریافت
+            if (Code == "rdbIncomr")//دریافت
             {
                 //FillcmbSpecificAccountT(60);
                 FillcmbTypeDocument(4);
                 FillcmbSpecificAccountF(80);
 
-                TransactionsCode=4;
-                pnlFrom.Text="دریافت از";
-                pnlTo.Text="پــرداخت به";
-                lblInOut.Symbol="";
-                lblInOut.SymbolColor=System.Drawing.Color.Green;
+                TransactionsCode = 4;
+                pnlFrom.Text = "دریافت از";
+                pnlTo.Text = "پــرداخت(واریز) به";
+                lblInOut.Symbol = "";
+                lblInOut.SymbolColor = System.Drawing.Color.Green;
                 //lblFrom.ForeColor=Color.Green;
                 //lblTo.ForeColor=Color.Green;
-                txtAmount2.Enabled=false;
+                txtAmount2.Enabled = false;
                 txtAmount2.ResetText();
-                txtChequeOwner.Enabled=true;
-                uiTab1.TabPages["Documents"].TabVisible=false;
+                txtChequeOwner.Enabled = true;
+                uiTab1.TabPages["Documents"].TabVisible = false;
             }
-            else if (Code=="rdbExpense")//پرداخت
+            else if (Code == "rdbExpense")//پرداخت
             {
                 //FillcmbSpecificAccountT(80);
                 FillcmbTypeDocument(5);
                 FillcmbSpecificAccountF(60);
 
-                TransactionsCode=5;
-                pnlFrom.Text="پرداخت به";
-                pnlTo.Text="دریافت از";
-                lblInOut.Symbol="";
-                lblInOut.SymbolColor=System.Drawing.Color.Red;
+                TransactionsCode = 5;
+                pnlFrom.Text = "پرداخت به";
+                pnlTo.Text = "دریافت(برداشت) از";
+                lblInOut.Symbol = "";
+                lblInOut.SymbolColor = System.Drawing.Color.Red;
                 //lblFrom.ForeColor=Color.Red;
                 //lblTo.ForeColor=Color.Red;
-                txtAmount2.Enabled=true;
-                uiTab1.TabPages["Documents"].TabVisible=true;
-                txtChequeOwner.Enabled=false;
+                txtAmount2.Enabled = true;
+                uiTab1.TabPages["Documents"].TabVisible = true;
+                txtChequeOwner.Enabled = false;
             }
-            else if (Code=="rdbTransferToCustomers")
+            else if (Code == "rdbTransferToCustomers")
             {
                 MessageBox.Show("TestC");
             }
-            else if (Code=="rdbTransferToBanck")
+            else if (Code == "rdbTransferToBanck")
             {
                 MessageBox.Show("TestB");
 
@@ -581,7 +576,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                         // 5. محاسبه مانده نهایی (با فرض ماهیت بدهکار بودن (Nature = 1) صندوق/بانک)
                         // مانده نهایی = مانده اول دوره + بدهکار - بستانکار
-                        let AccountBalance =  DebitTurnover - CreditTurnover
+                        let AccountBalance = DebitTurnover - CreditTurnover
 
                         select new
                         {
@@ -702,13 +697,13 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             try
             {
-                if (cmbTypeDocument.SelectedIndex!=-1)
+                if (cmbTypeDocument.SelectedIndex != -1)
                 {
                     TypeDocumentId = Convert.ToInt32(cmbTypeDocument.Value);
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.SpecificAccountsGroups.Where(c => c.Id==TypeDocumentId).First();
-                        cmbSpecificAccountFrom.Value=q.SpecificAccountIdF;
+                        var q = db.SpecificAccountsGroups.Where(c => c.Id == TypeDocumentId).First();
+                        cmbSpecificAccountFrom.Value = q.SpecificAccountIdF;
                         //cmbSpecificAccountTo.Value=q.SpecificAccountIdT;
                         cmbDetailedAccountsFrom.Focus();
                     }
@@ -728,14 +723,14 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             try
             {
-                txtTransactionCode.Text=PublicClass.CreatTransactionCode();
+                txtTransactionCode.Text = PublicClass.CreatTransactionCode();
                 cmbSpecificAccountFrom.ResetText();
                 cmbDetailedAccountsFrom.ResetText();
                 cmbDetailedAccountsTo.ResetText();
                 txtDescription.ResetText();
                 lblAccountBalancF.ResetText();
-                dgvListMulti.DataSource=dt_MultipleAccount;
-                ListId=0;
+                dgvListMulti.DataSource = dt_MultipleAccount;
+                ListId = 0;
                 cmbTypeDocument.ResetText();
                 cmbTypeDocument.Focus();
                 AddColumnsToDataTable();
@@ -772,21 +767,21 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             try
             {
-                if (cmbDetailedAccountsFrom.SelectedIndex==-1)
+                if (cmbDetailedAccountsFrom.SelectedIndex == -1)
                 {
                     lblAccountBalancF.ResetText();
                     return;
                 }
                 DetailedAccountsFromId_ = Convert.ToInt32(cmbDetailedAccountsFrom.Value);
 
-                AccountBalancF=PublicClass.DetailedAccountsBalance(SpecificAccountIdF, DetailedAccountsFromId_);
+                AccountBalancF = PublicClass.DetailedAccountsBalance(SpecificAccountIdF, DetailedAccountsFromId_);
 
-                lblAccountBalancF.Text=AccountBalancF.ToString("#,##0;(#,##0)");
+                lblAccountBalancF.Text = AccountBalancF.ToString("#,##0;(#,##0)");
 
 
                 using (var db = new DBcontextModel())
                 {
-                    var cuId = db.DetailedAccounts.Where(c => c.Id==DetailedAccountsFromId_).First().CustomerId;
+                    var cuId = db.DetailedAccounts.Where(c => c.Id == DetailedAccountsFromId_).First().CustomerId;
                     FillcmbListDoc(cuId);
                 }
 
@@ -835,7 +830,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 // بسته به نحوه کارکرد Data Table در سمت UI، ممکن است لازم باشد آن را به یک لیست تبدیل کنید.
                 // return query.ToList(); 
 
-                cmbListDoc.DataSource= query.ToList();
+                cmbListDoc.DataSource = query.ToList();
                 dt_ListDoc = new System.Data.DataTable();
                 dt_ListDoc = PublicClass.AddEntityTableToDataTable(query.ToList());
 
@@ -848,7 +843,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             try
             {
-                if (cmbSpecificAccountFrom.SelectedIndex==-1)
+                if (cmbSpecificAccountFrom.SelectedIndex == -1)
                 {
                     cmbDetailedAccountsFrom.ResetText();
                     //lblSpecificAccountsBalanceF.ResetText();
@@ -946,7 +941,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
 
 
-            return (TotalAmountCash1+TotalAmountCash2+TotalAmountCheque1+TotalAmountCheque2, TotalAmountCash1C+TotalAmountChequeC1+TotalAmountChequeC2);
+            return (TotalAmountCash1 + TotalAmountCash2 + TotalAmountCheque1 + TotalAmountCheque2, TotalAmountCash1C + TotalAmountChequeC1 + TotalAmountChequeC2);
         }
 
         /// <summary>
@@ -957,16 +952,16 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             CelearItemslblAmounts();
             double S = 0;
             double C = 0;
-            (S, C)=CalcTotalAmount();
+            (S, C) = CalcTotalAmount();
 
-            lblTotalCash.Text=(TotalAmountCash1+TotalAmountCash2).ToString("#,##0");
-            lblTotlCheuqe.Text=(TotalAmountCheque1+TotalAmountCheque2).ToString("#,##0");
+            lblTotalCash.Text = (TotalAmountCash1 + TotalAmountCash2).ToString("#,##0");
+            lblTotlCheuqe.Text = (TotalAmountCheque1 + TotalAmountCheque2).ToString("#,##0");
 
-            lblTotalCashC.Text=(TotalAmountCash1C).ToString();
-            lblTotlCheuqeC.Text=(TotalAmountChequeC1+TotalAmountChequeC2).ToString();
+            lblTotalCashC.Text = (TotalAmountCash1C).ToString();
+            lblTotlCheuqeC.Text = (TotalAmountChequeC1 + TotalAmountChequeC2).ToString();
 
-            lblTotlSum.Text=S.ToString("#,##0");
-            lblTotlSumC.Text=C.ToString();
+            lblTotlSum.Text = S.ToString("#,##0");
+            lblTotlSumC.Text = C.ToString();
 
         }
 
@@ -976,7 +971,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
 
             if (ControlFildes()) return;
-            txtTransactionCode.Text=PublicClass.CreatTransactionCode();
+            txtTransactionCode.Text = PublicClass.CreatTransactionCode();
             int Series = 0;
             if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
@@ -993,13 +988,13 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                         {
 
 
-                            (Amount, cuont)=CalcTotalAmount();
+                            (Amount, cuont) = CalcTotalAmount();
 
                             Series++;
-                            PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountIdF, DetailedAccountsFromId_, Amount, TransactionsCode==4 ? 0 : Amount, TransactionsCode==4 ? Amount : 0, 0, txtDescription.Text, "", Series, false);
+                            PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountIdF, DetailedAccountsFromId_, Amount, TransactionsCode == 4 ? 0 : Amount, TransactionsCode == 4 ? Amount : 0, 0, txtDescription.Text, "", Series, false);
 
                             //ثبت مبالغ نقدی
-                            if (dt_MultipleAccount!=null)
+                            if (dt_MultipleAccount != null)
                             {
                                 foreach (DataRow r in dt_MultipleAccount.Rows)
                                 {
@@ -1010,126 +1005,117 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                                     Amount = Convert.ToDouble(r["Amount1"]);
 
-                                    PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId_, DetailedAccountId_, Amount, TransactionsCode==4 ? Amount : 0, TransactionsCode==4 ? 0 : Amount, 0, r["Des"].ToString(), r["SeryalNumber"].ToString(), Series, false);
+                                    PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId_, DetailedAccountId_, Amount, TransactionsCode == 4 ? Amount : 0, TransactionsCode == 4 ? 0 : Amount, 0, r["Des"].ToString(), r["SeryalNumber"].ToString(), Series, false);
 
                                     //ثبت کارمزد
                                     double Amount2 = 0;
-                                    if (r["Amount2"]!=null || r["Amount2"].ToString()!="")
+                                    if (r["Amount2"] != null || r["Amount2"].ToString() != "")
                                         Amount2 = Convert.ToDouble(r["Amount2"]);
 
-                                    if (Amount2!=0)
+                                    if (Amount2 != 0)
                                     {
                                         Series++;
-                                        int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80802).First().Id;
+                                        int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 80802).First().Id;
                                         int DetailedAccountId = 0;
-                                        int customertId = db.Customers.Where(c => c.SecretCode==7).First().Id;
+                                        int customertId = db.Customers.Where(c => c.SecretCode == 7).First().Id;
 
-                                        var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                        if (serch1.Count()==0)
-                                            DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                        var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                        if (serch1.Count() == 0)
+                                            DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
                                         else
-                                            DetailedAccountId=serch1.First().Id;
+                                            DetailedAccountId = serch1.First().Id;
 
                                         PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountId, Amount2, TransactionsCode == 4 ? 0 : Amount2, TransactionsCode == 4 ? Amount2 : 0, 0, DesKarmozd + r["Des"].ToString(), r["SeryalNumber"].ToString(), Series, false);
 
 
                                         Series++;
-                                        PublicClass.AccountingDocumentRegistration(db, ListId, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId_, DetailedAccountId_, Amount2, TransactionsCode==4 ? Amount2 : 0, TransactionsCode==4 ? 0 : Amount2, 0, DesKarmozd + r["Des"].ToString(), r["SeryalNumber"].ToString(), Series, false);
+                                        PublicClass.AccountingDocumentRegistration(db, ListId, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId_, DetailedAccountId_, Amount2, TransactionsCode == 4 ? Amount2 : 0, TransactionsCode == 4 ? 0 : Amount2, 0, DesKarmozd + r["Des"].ToString(), r["SeryalNumber"].ToString(), Series, false);
                                     }
                                 }
                             }
-
-                            {//برای ثبت چک
+                            //برای ثبت چک
+                            {
                                 if (rdbIncomr.Checked)
                                 {//چک های دریافتنی
-                                    if (dt_Cheque1!=null)
+                                    if (dt_Cheque1 != null)
                                     {
                                         foreach (DataRow r in dt_Cheque1.Rows)
                                         {
                                             Series++;
                                             //اسناد دریافتنی در جریان وصول
-                                            int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==10302).First().Id;
+                                            int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10302).First().Id;
                                             int DetailedAccountId = 0;
-                                            var customertId = db.DetailedAccounts.Where(c => c.Id==DetailedAccountsFromId_).First().CustomerId;
-                                            var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                            if (serch1.Count()==0)
-                                                DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                            var customertId = db.DetailedAccounts.Where(c => c.Id == DetailedAccountsFromId_).First().CustomerId;
+                                            var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                            if (serch1.Count() == 0)
+                                                DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
                                             else
-                                                DetailedAccountId=serch1.First().Id;
-
-
-
+                                                DetailedAccountId = serch1.First().Id;
                                             //==================
-
-
-
-
 
                                             Amount = Convert.ToDouble(r["Amount"]);
                                             //-------ثبت در دیتابیس--------
-                                            int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountId, Amount, TransactionsCode==4 ? Amount : 0, TransactionsCode==4 ? 0 : Amount, 0, r["Description"].ToString(), Series, false);
+                                            int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountId, Amount, TransactionsCode == 4 ? Amount : 0, TransactionsCode == 4 ? 0 : Amount, 0, r["Description"].ToString(), Series, false);
 
                                             int ChequeTypeId_ = 0;
-                                            if (TransactionsCode==4)
-                                                ChequeTypeId_=1;
+                                            if (TransactionsCode == 4)
+                                                ChequeTypeId_ = 1;
                                             else
-                                                ChequeTypeId_=2;
+                                                ChequeTypeId_ = 2;
                                             //-------ثبت در دیتابیس--------
 
                                             var ChequeSave = new Repository<Entity.Accounts.Cheque.Cheque>(db);
-                                            int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId=ChequeTypeId_, ChequeNumber=r["ChequeNumber"].ToString(), Amount=Amount, DueDate=r["DueDate"].ToString(), IssueDate=PersianDate.NowPersianDate, BankId=Convert.ToInt32(r["BankId"]), Payer_Payee_AccId=DetailedAccountId, ChequeOwner=r["ChequeOwner"].ToString(), Description=r["Description"].ToString(), CurrentStatusID= 0 }, ListId);
+                                            int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId = ChequeTypeId_, ChequeNumber = r["ChequeNumber"].ToString(), Amount = Amount, DueDate = r["DueDate"].ToString(), IssueDate = PersianDate.NowPersianDate, AccountId = Convert.ToInt32(r["AccountId"]), Payer_Payee_AccId = DetailedAccountId, ChequeOwner = r["ChequeOwner"].ToString(), Description = r["Description"].ToString(), CurrentStatusID = 0 }, ListId);
 
 
                                             //-------ثبت در دیتابیس--------
                                             var ADR = new Repository<ChequeStatus>(db);
-                                            int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId=ChequeId, StatusDate=TransactionDate, StatusCodeId=2, TransactionId=TransactionId }, 0);
+                                            int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId = ChequeId, StatusDate = TransactionDate, StatusCodeId = 2, TransactionId = TransactionId }, 0);
 
                                             //-------ثبت در دیتابیس--------
-                                            var ch = db.Cheques.Where(c => c.Id==ChequeId).First();
-                                            ch.CurrentStatusID=CurrentStatusID;
+                                            var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
+                                            ch.CurrentStatusID = CurrentStatusID;
 
                                         }
                                     }
                                 }
                                 else
                                 {//چک های پرداختنی
-                                    if (dt_Cheque1!=null)
+                                    if (dt_Cheque1 != null)
                                     {
                                         foreach (DataRow r in dt_Cheque1.Rows)
                                         {
                                             Series++;
                                             //حساب ها و اسناد پرداختنی بلند مدت
-                                            int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==40101).First().Id;
+                                            int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 40101).First().Id;
 
                                             int DetailedAccountId = 0;
-                                            var customertId = db.DetailedAccounts.Where(c => c.Id==DetailedAccountsFromId_).First().CustomerId;
-                                            var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                            if (serch1.Count()==0)
-                                                DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                            var customertId = db.DetailedAccounts.Where(c => c.Id == DetailedAccountsFromId_).First().CustomerId;
+                                            var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                            if (serch1.Count() == 0)
+                                                DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
                                             else
-                                                DetailedAccountId=serch1.First().Id;
+                                                DetailedAccountId = serch1.First().Id;
 
                                             Amount = Convert.ToDouble(r["Amount"]);
 
-                                            int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountId, Amount, TransactionsCode==4 ? Amount : 0, TransactionsCode==4 ? 0 : Amount, 0, r["Description"].ToString(), Series, false);
+                                            int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountId, Amount, TransactionsCode == 4 ? Amount : 0, TransactionsCode == 4 ? 0 : Amount, 0, r["Description"].ToString(), Series, false);
 
                                             int ChequeTypeId_ = 0;
-                                            if (TransactionsCode==4)
-                                                ChequeTypeId_=1;
+                                            if (TransactionsCode == 4)
+                                                ChequeTypeId_ = 1;
                                             else
-                                                ChequeTypeId_=2;
+                                                ChequeTypeId_ = 2;
 
                                             var ChequeSave = new Repository<Entity.Accounts.Cheque.Cheque>(db);
-                                            int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId=ChequeTypeId_, ChequeNumber=r["ChequeNumber"].ToString(), Amount=Amount, DueDate=r["DueDate"].ToString(), IssueDate=PersianDate.NowPersianDate, BankId=Convert.ToInt32(r["BankId"]), Payer_Payee_AccId=DetailedAccountId, ChequeOwner=r["ChequeOwner"].ToString(), Description=r["Description"].ToString(), CurrentStatusID= 0 }, ListId);
+                                            int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId = ChequeTypeId_, ChequeNumber = r["ChequeNumber"].ToString(), Amount = Amount, DueDate = r["DueDate"].ToString(), IssueDate = PersianDate.NowPersianDate, AccountId = Convert.ToInt32(r["AccountId"]), Payer_Payee_AccId = DetailedAccountId, ChequeOwner = r["ChequeOwner"].ToString(), Description = r["Description"].ToString(), CurrentStatusID = 0 }, ListId);
 
 
-                                            //var ADR = new Repository<Entity.Accounts.Cheque.ChequeStatus>(db);
-                                            //int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.ChequeStatus { Id = 0, ChequeId=ChequeId, StatusDate=TransactionDate, StatusCodeId=1, TransactionId=TransactionId }, 0);
                                             var ADR = new Repository<ChequeStatus>(db);
-                                            int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId=ChequeId, StatusDate=TransactionDate, StatusCodeId=1, TransactionId=TransactionId }, 0);
+                                            int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId = ChequeId, StatusDate = TransactionDate, StatusCodeId = 1, TransactionId = TransactionId }, 0);
 
-                                            var ch = db.Cheques.Where(c => c.Id==ChequeId).First();
-                                            ch.CurrentStatusID=CurrentStatusID;
+                                            var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
+                                            ch.CurrentStatusID = CurrentStatusID;
 
                                         }
                                     }
@@ -1139,20 +1125,20 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                             {
                                 if (rdbExpense.Checked)
                                 {
-                                    if (dt_Cheque2!=null)
+                                    if (dt_Cheque2 != null)
                                     {
                                         foreach (DataRow r in dt_Cheque2.Rows)
                                         {
                                             Series++;
                                             //اسناد دریافتنی در جریان وصول
-                                            int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==10302).First().Id;
+                                            int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10302).First().Id;
 
                                             int DetailedAccountId = Convert.ToInt32(r["Payer_Payee_Acc_Id"]);
                                             int ChequeId = Convert.ToInt32(r["Id"]);
 
                                             Amount = Convert.ToDouble(r["Amount"]);
 
-                                            int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountId, Amount, TransactionsCode==4 ? Amount : 0, TransactionsCode==4 ? 0 : Amount, 0, r["Description"].ToString(), Series, false);
+                                            int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountId, Amount, TransactionsCode == 4 ? Amount : 0, TransactionsCode == 4 ? 0 : Amount, 0, r["Description"].ToString(), Series, false);
 
                                             /*
                                             int ChequeTypeId_ = 0;
@@ -1167,10 +1153,10 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
 
                                             var ADR = new Repository<ChequeStatus>(db);
-                                            int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId=ChequeId, StatusDate=TransactionDate, StatusCodeId=5, TransactionId=TransactionId }, 0);
+                                            int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId = ChequeId, StatusDate = TransactionDate, StatusCodeId = 5, TransactionId = TransactionId }, 0);
 
-                                            var ch = db.Cheques.Where(c => c.Id==ChequeId).First();
-                                            ch.CurrentStatusID=CurrentStatusID;
+                                            var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
+                                            ch.CurrentStatusID = CurrentStatusID;
 
                                         }
 
@@ -1183,10 +1169,10 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                             transaction.Commit();
 
                             PublicClass.WindowAlart("1");
-                            if (_updatableForms!=null)
+                            if (_updatableForms != null)
                                 _updatableForms.UpdateData();
                             CelearItems();
-                            
+
                             //FilldgvListMulti();
                             //FilldgvListCheque1();
                             //FilldgvListCheque2();
@@ -1213,13 +1199,13 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             {
                 foreach (DataRow r in dt_MultipleAccount.Rows)
                 {
-                    if (r["Amount2"]==DBNull.Value)
-                        r["Amount2"]=0;
-                    if (r["SeryalNumber"]==DBNull.Value)
-                        r["SeryalNumber"]="-";
+                    if (r["Amount2"] == DBNull.Value)
+                        r["Amount2"] = 0;
+                    if (r["SeryalNumber"] == DBNull.Value)
+                        r["SeryalNumber"] = "-";
                 }
 
-                if (txtTransactionDate.Text.Length!=10)
+                if (txtTransactionDate.Text.Length != 10)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T020);
                     return true;
@@ -1231,19 +1217,19 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     return true;
                 }
 
-                if (cmbTypeDocument.SelectedIndex==-1)
+                if (cmbTypeDocument.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T135);
                     cmbTypeDocument.Focus();
                     return true;
                 }
-                if (cmbDetailedAccountsFrom.SelectedIndex==-1)
+                if (cmbDetailedAccountsFrom.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T078);
                     cmbDetailedAccountsFrom.Focus();
                     return true;
                 }
-                if (txtDescription.Text =="")
+                if (txtDescription.Text == "")
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T143);
                     txtDescription.Focus();
@@ -1252,15 +1238,15 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                 double Amount = 0;
                 int count = 0;
-                (Amount, count)= CalcTotalAmount();
+                (Amount, count) = CalcTotalAmount();
 
-                if (Amount==0)
+                if (Amount == 0)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T134);
                     return true;
                 }
 
-                if (dgvListMulti.RowCount==0 && dgvListCheque1.RowCount==0&& dgvListCheque2.RowCount==0)
+                if (dgvListMulti.RowCount == 0 && dgvListCheque1.RowCount == 0 && dgvListCheque2.RowCount == 0)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T121);
                     return true;
@@ -1281,10 +1267,10 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void btnAddNewCity1_Click(object sender, EventArgs e)
         {
-            if (cmbSpecificAccountFrom.SelectedIndex!=-1)
+            if (cmbSpecificAccountFrom.SelectedIndex != -1)
             {
                 frmDetailedAccount f = new frmDetailedAccount(this);
-                f.cmbSpecificAccountValue=SpecificAccountIdF;
+                f.cmbSpecificAccountValue = SpecificAccountIdF;
                 f.ShowDialog();
                 FillcmbContraAccountF(SpecificAccountIdF);
             }
@@ -1316,7 +1302,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void dgvListCheque_InitCustomEdit(object sender, InitCustomEditEventArgs e)
         {
-            if (e.Column.Key=="BankName")
+            if (e.Column.Key == "BankName")
             {
                 //    if (e.Value==null)
                 //    {
@@ -1328,54 +1314,54 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 //    }
                 //    e.EditControl=txtBankName;
             }
-            else if (e.Column.Key=="ChequeOwner")
+            else if (e.Column.Key == "ChequeOwner")
             {
-                if (e.Value==null)
+                if (e.Value == null)
                 {
                     txtChequeOwner.ResetText();
                 }
                 else
                 {
-                    txtChequeOwner.Text=e.Value.ToString();
+                    txtChequeOwner.Text = e.Value.ToString();
                 }
-                e.EditControl=txtChequeOwner;
+                e.EditControl = txtChequeOwner;
             }
-            else if (e.Column.Key=="DueDate")
+            else if (e.Column.Key == "DueDate")
             {
-                if (e.Value==null)
+                if (e.Value == null)
                 {
-                    txtDueDate.Text=PersianDate.NowPersianDate;
+                    txtDueDate.Text = PersianDate.NowPersianDate;
                 }
                 else
                 {
-                    txtDueDate.Text=e.Value.ToString();
+                    txtDueDate.Text = e.Value.ToString();
                 }
                 //txtDueDate.Text=e.Value.ToString();
-                e.EditControl=txtDueDate;
+                e.EditControl = txtDueDate;
             }
-            else if (e.Column.Key=="Amount")
+            else if (e.Column.Key == "Amount")
             {
-                if (e.Value==null)
+                if (e.Value == null)
                 {
                     txtAmount1.ResetText();
                 }
                 else
                 {
-                    txtAmount1.Text=e.Value.ToString();
+                    txtAmount1.Text = e.Value.ToString();
                 }
-                e.EditControl=txtAmount1;
+                e.EditControl = txtAmount1;
             }
-            else if (e.Column.Key=="Description")
+            else if (e.Column.Key == "Description")
             {
-                if (e.Value==null)
+                if (e.Value == null)
                 {
                     txtDescriptionCa.ResetText();
                 }
                 else
                 {
-                    txtDescriptionCa.Text=e.Value.ToString();
+                    txtDescriptionCa.Text = e.Value.ToString();
                 }
-                e.EditControl=txtDescriptionCa;
+                e.EditControl = txtDescriptionCa;
             }
         }
 
@@ -1383,7 +1369,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             try
             {
-                if (e.Column.Key=="BankName")
+                if (e.Column.Key == "BankName")
                 {
                     //e.Value=txtBankName.Text;
 
@@ -1398,23 +1384,23 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     //    dgvListMulti.GetRow().Cells["SpecificAccount"].Value=null;
                     //}
                 }
-                else if (e.Column.Key=="ChequeOwner")
+                else if (e.Column.Key == "ChequeOwner")
                 {
-                    e.Value=txtChequeOwner.Text;
+                    e.Value = txtChequeOwner.Text;
                 }
-                else if (e.Column.Key=="DueDate")
+                else if (e.Column.Key == "DueDate")
                 {
-                    e.Value=txtDueDate.Text;
+                    e.Value = txtDueDate.Text;
                 }
-                else if (e.Column.Key=="Amount")
+                else if (e.Column.Key == "Amount")
                 {
-                    e.Value=txtAmount1.TextSimple;
+                    e.Value = txtAmount1.TextSimple;
                     //CalcTotalAmountAddToItems();
 
                 }
-                else if (e.Column.Key=="Description")
+                else if (e.Column.Key == "Description")
                 {
-                    e.Value=txtDescriptionCa.Text;
+                    e.Value = txtDescriptionCa.Text;
                 }
             }
             catch (Exception er)
@@ -1429,19 +1415,19 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             try
             {
                 int i = 0;
-                if (dgvListCheque1.GetRow().Cells["ChequeNumber"].Value==DBNull.Value)
+                if (dgvListCheque1.GetRow().Cells["ChequeNumber"].Value == DBNull.Value)
                     i++;
-                if (dgvListCheque1.GetRow().Cells["BankName"].Value==DBNull.Value)
+                if (dgvListCheque1.GetRow().Cells["BankName"].Value == DBNull.Value)
                     i++;
                 if (dgvListCheque1.GetRow().Cells["ChequeOwner"].Value == DBNull.Value)
                     i++;
                 if (dgvListCheque1.GetRow().Cells["DueDate"].Value == DBNull.Value)
                     i++;
-                if (dgvListCheque1.GetRow().Cells["Amount"].Value==DBNull.Value)
+                if (dgvListCheque1.GetRow().Cells["Amount"].Value == DBNull.Value)
                     i++;
                 if (dgvListCheque1.GetRow().Cells["Description"].Value == DBNull.Value)
                     i++;
-                if (i!=0)
+                if (i != 0)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T029);
                     e.Cancel = true;
@@ -1471,7 +1457,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void rdbExpense_CheckedChanged(object sender, EventArgs e)
         {
-            CheangRDB_="rdbExpense";
+            CheangRDB_ = "rdbExpense";
             if (rdbExpense.Checked) CheangRDB(CheangRDB_);
         }
 
@@ -1511,8 +1497,8 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     return;
 
 
-                if (txtAmount2.Text=="")
-                    txtAmount2.Text="0";
+                if (txtAmount2.Text == "")
+                    txtAmount2.Text = "0";
                 if (rdbExpense.Checked)
 
                 {
@@ -1525,8 +1511,8 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     //TotalAmounDT2 = dt_MultipleAccount.AsEnumerable().Where(row => row.Field<int>("DetailedAccountId") ==DetailedAccountsToId).Sum(row => row.Field<long>("Amount2"));
 
 
-                    double TotalAmount = Convert.ToDouble(txtAmount1.TextSimple)+Convert.ToDouble(txtAmount2.TextSimple);
-                    if (TotalAmount>AccountBalancT || TotalAmount==0)
+                    double TotalAmount = Convert.ToDouble(txtAmount1.TextSimple) + Convert.ToDouble(txtAmount2.TextSimple);
+                    if (TotalAmount > AccountBalancT || TotalAmount == 0)
                     {
                         PublicClass.StopMesseg(ResourceCode.T116);
                         txtAmount1.Focus();
@@ -1539,21 +1525,21 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 DataRow newrow = dt_MultipleAccount.NewRow();
                 using (var db = new DBcontextModel())
                 {
-                    var spId = db.DetailedAccounts.Where(c => c.Id==DetailedAccountsToId).First().SpecificAccountId;
-                    var spName = db.SpecificAccounts.Where(c => c.Id==spId).First().Name;
-                    newrow["SpecificAccountId"]=spId;
-                    newrow["DetailedAccountId"]=DetailedAccountsToId;
-                    newrow["SpecificAccount"]=spName;
-                    newrow["DetailedAccount"]=cmbDetailedAccountsTo.Text;
-                    newrow["Amount1"]=txtAmount1.TextSimple;
+                    var spId = db.DetailedAccounts.Where(c => c.Id == DetailedAccountsToId).First().SpecificAccountId;
+                    var spName = db.SpecificAccounts.Where(c => c.Id == spId).First().Name;
+                    newrow["SpecificAccountId"] = spId;
+                    newrow["DetailedAccountId"] = DetailedAccountsToId;
+                    newrow["SpecificAccount"] = spName;
+                    newrow["DetailedAccount"] = cmbDetailedAccountsTo.Text;
+                    newrow["Amount1"] = txtAmount1.TextSimple;
                     //if (txtAmount2.Text!="")
-                    newrow["Amount2"]=txtAmount2.TextSimple;
+                    newrow["Amount2"] = txtAmount2.TextSimple;
                     //else
                     //    newrow["Amount2"]=0;
-                    newrow["SeryalNumber"]=txtSeryalNumber.Text;
-                    newrow["Des"]=txtDescriptionCa.Text;
+                    newrow["SeryalNumber"] = txtSeryalNumber.Text;
+                    newrow["Des"] = txtDescriptionCa.Text;
                     dt_MultipleAccount.Rows.Add(newrow);
-                    dgvListMulti.DataSource=dt_MultipleAccount;
+                    dgvListMulti.DataSource = dt_MultipleAccount;
                     dgvListMulti.AutoSizeColumns();
                     CalcTotalAmountAddToItems();
                     celerCashItems();
@@ -1582,27 +1568,19 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
             try
             {
-                if (PublicClass.FindEmptyControls(txtChequeNumber, ResourceCode.T138, cmbBanck, ResourceCode.T139, txtAmount3, ResourceCode.T081, txtDescriptionCh, ResourceCode.T136))
+                if (PublicClass.FindEmptyControls(txtChequeNumber, ResourceCode.T138, cmbAccount, ResourceCode.T139, txtAmount3, ResourceCode.T081, txtDescriptionCh, ResourceCode.T136))
                     return;
 
-                if (txtDueDate.Text.Length!=10)
+                if (txtDueDate.Text.Length != 10)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T020);
                     txtDueDate.Focus();
                     return;
                 }
-                //if(rdbIncomr.Checked && txtChequeOwner.Text=="")
-                //{
-                //    PublicClass.ErrorMesseg(ResourceCode.T137);
-                //    txtChequeOwner.Focus();
-                //    return;
-                //}
-                if (txtChequeOwner.Text=="")
+                if (txtChequeOwner.Text == "")
                 {
-                    txtChequeOwner.Text="-";
+                    txtChequeOwner.Text = "-";
                 }
-
-
                 //Todo DataTable کنترل ثبت رکوردهای تکراری در
                 DataRow existingRow = dt_Cheque1.Rows.Find(txtChequeNumber.Text);
                 if (existingRow == null)
@@ -1611,16 +1589,16 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     using (var db = new DBcontextModel())
                     {
                         DataRow newrow = dt_Cheque1.NewRow();
-                        var q = db.Bancks.Where(c => c.Id==BanckId).First();
-                        newrow["ChequeNumber"]=txtChequeNumber.Text;
-                        newrow["BankId"]=BanckId;
-                        newrow["BankName"]=q.Name/*+"-"+q.BranchName*/;
-                        newrow["ChequeOwner"]=txtChequeOwner.Text;
-                        newrow["DueDate"]=txtDueDate.Text;
-                        newrow["Amount"]=txtAmount3.TextSimple;
-                        newrow["Description"]=txtDescriptionCh.Text;
+                        var q = db.Customers.Where(c => c.Id == db.DetailedAccounts.Where(x => x.Id == AccountId).FirstOrDefault().CustomerId).First();
+                        newrow["ChequeNumber"] = txtChequeNumber.Text;
+                        newrow["AccountId"] = AccountId;
+                        newrow["AccountName"] = q.Name/*+"-"+q.BranchName*/;
+                        newrow["ChequeOwner"] = txtChequeOwner.Text;
+                        newrow["DueDate"] = txtDueDate.Text;
+                        newrow["Amount"] = txtAmount3.TextSimple;
+                        newrow["Description"] = txtDescriptionCh.Text;
                         dt_Cheque1.Rows.Add(newrow);
-                        dgvListCheque1.DataSource=dt_Cheque1;
+                        dgvListCheque1.DataSource = dt_Cheque1;
                         dgvListCheque1.AutoSizeColumns();
                         CalcTotalAmountAddToItems();
                         celerChequeItems();
@@ -1648,7 +1626,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 if (PublicClass.FindEmptyControls(cmbListCheque, ResourceCode.T140, txtDescriptionDoc, ResourceCode.T143))
                     return;
 
-                if (cmbListCheque.SelectedIndex==-1)
+                if (cmbListCheque.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T140);
                     txtDueDate.Focus();
@@ -1658,25 +1636,25 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.Cheques.Where(c => c.Id==ListChequeId).First();
-                    var da = db.DetailedAccounts.Where(c => c.Id==q.Payer_Payee_AccId).First();
-                    var cu = db.Customers.Where(c => c.Id==da.CustomerId).First();
+                    var q = db.Cheques.Where(c => c.Id == ListChequeId).First();
+                    var da = db.DetailedAccounts.Where(c => c.Id == q.Payer_Payee_AccId).First();
+                    var cu = db.Customers.Where(c => c.Id == da.CustomerId).First();
 
                     DataRow existingRow = dt_Cheque2.Rows.Find(ListChequeId);
                     if (existingRow == null)
 
                     {
-                        var qb = db.Bancks.Where(c => c.Id==q.BankId).First();
+                        var qb = db.Bancks.Where(c => c.Id == q.AccountId).First();
                         DataRow newrow = dt_Cheque2.NewRow();
-                        newrow["Id"]=ListChequeId;
-                        newrow["ChequeNumber"]=cmbListCheque.Text;
-                        newrow["Payer_Payee_Acc_Id"]=q.Payer_Payee_AccId;
-                        newrow["Payer_Payee_Acc_Name"]=cu.Family+" "+cu.Name;
-                        newrow["BankName"]=qb.Name/*+"-"+qb.BranchName*/;
-                        newrow["ChequeOwner"]=q.ChequeOwner;
-                        newrow["DueDate"]=q.DueDate;
-                        newrow["Amount"]=q.Amount;
-                        newrow["Description"]=txtDescriptionDoc.Text;
+                        newrow["Id"] = ListChequeId;
+                        newrow["ChequeNumber"] = cmbListCheque.Text;
+                        newrow["Payer_Payee_Acc_Id"] = q.Payer_Payee_AccId;
+                        newrow["Payer_Payee_Acc_Name"] = cu.Family + " " + cu.Name;
+                        newrow["BankName"] = qb.Name/*+"-"+qb.BranchName*/;
+                        newrow["ChequeOwner"] = q.ChequeOwner;
+                        newrow["DueDate"] = q.DueDate;
+                        newrow["Amount"] = q.Amount;
+                        newrow["Description"] = txtDescriptionDoc.Text;
                         dt_Cheque2.Rows.Add(newrow);
                     }
                     else
@@ -1685,7 +1663,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                         return;
                     }
                 }
-                dgvListCheque2.DataSource=dt_Cheque2;
+                dgvListCheque2.DataSource = dt_Cheque2;
                 dgvListCheque2.AutoSizeColumns();
                 CalcTotalAmountAddToItems();
                 celerChequeItemsDoc();
@@ -1711,9 +1689,9 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             try
             {
                 txtChequeNumber.ResetText();
-                cmbBanck.ResetText();
+                cmbAccount.ResetText();
                 txtChequeOwner.ResetText();
-                txtDueDate.Text=PersianDate.NowPersianDate;
+                txtDueDate.Text = PersianDate.NowPersianDate;
                 txtAmount3.ResetText();
                 txtDescriptionCh.ResetText();
                 txtDescriptionDoc.ResetText();
@@ -1738,39 +1716,39 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             try
             {
-                if (cmbDetailedAccountsTo.SelectedIndex!=-1)
+                if (cmbDetailedAccountsTo.SelectedIndex != -1)
                 {
                     DetailedAccountsToId = Convert.ToInt32(cmbDetailedAccountsTo.Value);
 
 
                     using (var db = new DBcontextModel())
                     {
-                        TotalAmounDT1=0;
-                        TotalAmounDT2=0;
+                        TotalAmounDT1 = 0;
+                        TotalAmounDT2 = 0;
 
-                        TotalAmounDT1 = dt_MultipleAccount.AsEnumerable().Where(row => row.Field<int>("DetailedAccountId") ==DetailedAccountsToId).Sum(row => row.Field<long>("Amount1"));
+                        TotalAmounDT1 = dt_MultipleAccount.AsEnumerable().Where(row => row.Field<int>("DetailedAccountId") == DetailedAccountsToId).Sum(row => row.Field<long>("Amount1"));
                         //مبلغ کارمزد
-                        TotalAmounDT2 = dt_MultipleAccount.AsEnumerable().Where(row => row.Field<int>("DetailedAccountId") ==DetailedAccountsToId).Sum(row => row.Field<long>("Amount2"));
+                        TotalAmounDT2 = dt_MultipleAccount.AsEnumerable().Where(row => row.Field<int>("DetailedAccountId") == DetailedAccountsToId).Sum(row => row.Field<long>("Amount2"));
 
 
 
-                        var spid = db.DetailedAccounts.Where(c => c.Id==DetailedAccountsToId).First().SpecificAccountId;
+                        var spid = db.DetailedAccounts.Where(c => c.Id == DetailedAccountsToId).First().SpecificAccountId;
 
                         if (rdbExpense.Checked)
                         {
-                            AccountBalancT=PublicClass.DetailedAccountsBalance(spid, DetailedAccountsToId)-TotalAmounDT1-TotalAmounDT2;
+                            AccountBalancT = PublicClass.DetailedAccountsBalance(spid, DetailedAccountsToId) - TotalAmounDT1 - TotalAmounDT2;
                         }
                         else
                         {
-                            AccountBalancT=PublicClass.DetailedAccountsBalance(spid, DetailedAccountsToId)+TotalAmounDT1+TotalAmounDT2;
+                            AccountBalancT = PublicClass.DetailedAccountsBalance(spid, DetailedAccountsToId) + TotalAmounDT1 + TotalAmounDT2;
 
                         }
-                        lblAccountBalancT.Text=AccountBalancT.ToString("#,##0;(#,##0)");
+                        lblAccountBalancT.Text = AccountBalancT.ToString("#,##0;(#,##0)");
                     }
 
                 }
                 else
-                    lblAccountBalancT.Text="0";
+                    lblAccountBalancT.Text = "0";
             }
             catch (Exception)
             {
@@ -1847,16 +1825,16 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             try
             {
-                if (cmbListCheque.SelectedIndex!=-1)
+                if (cmbListCheque.SelectedIndex != -1)
                 {
                     ListChequeId = Convert.ToInt32(cmbListCheque.Value);
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.Cheques.Where(c => c.Id==ListChequeId).First();
-                        lblAmontCheckDoc.Text=q.Amount.ToString("#,##0");
-                        var m = db.DetailedAccounts.Where(c => c.Id==q.Payer_Payee_AccId).First();
-                        var n = db.Customers.Where(c => c.Id==m.CustomerId).First();
-                        lblCeackDocName.Text=n.Name+" "+n.Family;
+                        var q = db.Cheques.Where(c => c.Id == ListChequeId).First();
+                        lblAmontCheckDoc.Text = q.Amount.ToString("#,##0");
+                        var m = db.DetailedAccounts.Where(c => c.Id == q.Payer_Payee_AccId).First();
+                        var n = db.Customers.Where(c => c.Id == m.CustomerId).First();
+                        lblCeackDocName.Text = n.Name + " " + n.Family;
                     }
                 }
                 else
@@ -1889,7 +1867,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void txtDescription_Enter(object sender, EventArgs e)
         {
-            if (txtDescription.Text=="")
+            if (txtDescription.Text == "")
             {
                 string txtF = "";
                 string txtT = "";
@@ -1902,7 +1880,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 {
                     txtF = "پرداخت بابت ";
                 }
-                txtDescription.Text= txtF/*+ txtTotalAmount.Text +" ریال در تاریخ "+txtTransactionDate.Text+" به شماره سند "+txtTransactionCode.Text + " بابت "*/;
+                txtDescription.Text = txtF/*+ txtTotalAmount.Text +" ریال در تاریخ "+txtTransactionDate.Text+" به شماره سند "+txtTransactionCode.Text + " بابت "*/;
             }
 
         }
@@ -1913,8 +1891,8 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             {
                 frmContraAccounts f = new frmContraAccounts(this);
                 f.cmbTypeAccounts.Enabled = false;
-                f.TypeAccounts_Id=3;
-                f.SpecificAccountCode=10102;//بانک
+                f.TypeAccounts_Id = 3;
+                f.SpecificAccountCode = 10102;//بانک
                 f.ShowList(3);
                 f.ShowDialog();
                 FillcmbDetailedAccountsTo();
@@ -1933,8 +1911,8 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             {
                 frmContraAccounts f = new frmContraAccounts(this);
                 f.cmbTypeAccounts.Enabled = false;
-                f.TypeAccounts_Id=4;
-                f.SpecificAccountCode=10101;//صندوق
+                f.TypeAccounts_Id = 4;
+                f.SpecificAccountCode = 10101;//صندوق
                 f.ShowList(4);
                 f.ShowDialog();
                 FillcmbDetailedAccountsTo();
@@ -1950,14 +1928,14 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
 
         }
-        int BanckId = 0;
+        int AccountId = 0;
         private void cmbBanck_ValueChanged(object sender, EventArgs e)
         {
             try
             {
-                if (cmbBanck.SelectedIndex!=-1)
+                if (cmbAccount.SelectedIndex != -1)
                 {
-                    BanckId=Convert.ToInt32(cmbBanck.Value);
+                    AccountId = Convert.ToInt32(cmbAccount.Value);
                 }
 
             }
@@ -1981,28 +1959,28 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbBanck, dt_Banck);
+                PublicClass.SearchCmbId(cmbAccount, dt_Banck);
             }
 
         }
 
         private void txtDescriptionDoc_Enter(object sender, EventArgs e)
         {
-            if (txtDescriptionDoc.Text=="")
-                txtDescriptionDoc.Text="بابت ";
+            if (txtDescriptionDoc.Text == "")
+                txtDescriptionDoc.Text = "بابت ";
         }
 
         private void txtDescriptionCh_Enter(object sender, EventArgs e)
         {
-            if (txtDescriptionCh.Text=="")
-                txtDescriptionCh.Text="بابت ";
+            if (txtDescriptionCh.Text == "")
+                txtDescriptionCh.Text = "بابت ";
 
         }
 
         private void txtDescriptionCa_Enter(object sender, EventArgs e)
         {
-            if (txtDescriptionCa.Text=="")
-                txtDescriptionCa.Text="بابت ";
+            if (txtDescriptionCa.Text == "")
+                txtDescriptionCa.Text = "بابت ";
         }
 
         private void cmbListDoc_KeyDown(object sender, KeyEventArgs e)
@@ -2022,7 +2000,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             //ToDo Contex Menu Strip
             try
             {
-                ListId=ListId_;
+                ListId = ListId_;
                 switch (e.Command.Key)
                 {
                     case "Edit":
@@ -2036,19 +2014,19 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                         using (var db = new DBcontextModel())
                         {
-                            if (db.DocumentBancks.Where(c => c.FormName ==this.Name && c.ListInFoemId==ListId).Count() != 0)
+                            if (db.DocumentBancks.Where(c => c.FormName == this.Name && c.ListInFoemId == ListId).Count() != 0)
                             {
                                 PublicClass.ErrorMesseg(ResourceCode.T149);
                                 return;
                             }
 
-                            var q = db.Transactions.Where(c => c.Id==ListId).First().TransactionCode;
-                            var list = db.Transactions.Where(c => c.TransactionCode==q).ToList();
+                            var q = db.Transactions.Where(c => c.Id == ListId).First().TransactionCode;
+                            var list = db.Transactions.Where(c => c.TransactionCode == q).ToList();
                             if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 foreach (var item in list)
                                 {
-                                    item.Status=true;
+                                    item.Status = true;
                                 }
                                 //db.Transactions.RemoveRange(list);
                                 PublicClass.WindowAlart("2");
@@ -2065,7 +2043,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                         string lblCaption = "شماره سند: " + dgvList.GetRow().Cells["TransactionCode"].Value.ToString();
 
                         PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
-                        ListId=0;
+                        ListId = 0;
                         break;
                     case "DocViow":
                         using (var db = new DBcontextModel())
@@ -2101,7 +2079,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void btnShowDocList_Click(object sender, EventArgs e)
         {
-            if(cmbListDoc.SelectedIndex==-1)
+            if (cmbListDoc.SelectedIndex == -1)
             {
                 PublicClass.StopMesseg(ResourceCode.T041);
                 cmbListDoc.Focus();
@@ -2110,13 +2088,13 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
             frmRecevingPaymentDoc f = new frmRecevingPaymentDoc();
             //f.DocName="H";
-            f.IdH=Convert.ToInt32(cmbListDoc.Value);
+            f.IdH = Convert.ToInt32(cmbListDoc.Value);
             f.ShowDialog();
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            PdfReportHelper.ExportJanusGridToPDF(dgvList, "لیست صورتحساب");
+            //PdfReportHelper.ExportJanusGridToPDF(dgvList, "لیست صورتحساب");
         }
     }
 }

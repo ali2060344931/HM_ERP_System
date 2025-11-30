@@ -48,6 +48,8 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
 
         private void frmCheque_Load(object sender, EventArgs e)
         {
+
+
             txtDueDate.Value= DateTime.Now;
             txtIssueDate.Value= DateTime.Now;
             PublicClass.SettingGridEX(dgvList,Name);
@@ -71,7 +73,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         }
         public void UpdateData()
         {
-            FillcmbBanck();
+            FillcmbAccount();
             fillcmbChequeType();
             FilltxtBankName();
             FilltxtChequeOwner();
@@ -81,20 +83,31 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
 
         }
         DataTable dt_Banck;
-        private void FillcmbBanck()
+        private void FillcmbAccount()
         {
             using (var db = new DBcontextModel())
             {
-                var q = from bb in db.BankBranches
+                var q = from da in db.DetailedAccounts
+
+                        join cu in db.Customers
+                        on da.CustomerId equals cu.Id
+
+                        join bb in db.BankBranches
+                        on da.BankBrancheId equals bb.Id
+                        
                         join ba in db.Bancks
                         on bb.BanckId equals ba.Id
+                       
                         select new
                         {
-                            bb.Id,
-                            bb.Name,
+                            da.Id,
+                            AccountName = cu.Name,
+                            BanckBranchName = bb.Name,
                             BanckName = ba.Name,
+                            AccountNumber = cu.AccountNumber,
                         };
-                cmbBanck.DataSource=q.ToList();
+
+                cmbAccount.DataSource = q.ToList();
                 dt_Banck = new System.Data.DataTable();
                 dt_Banck = PublicClass.AddEntityTableToDataTable(q.ToList());
 
@@ -108,7 +121,9 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             {
                 //var q=db.Customers.Where(c=>c.id_TypeCustomer==1 ||  c.id_TypeCustomer==2).OrderBy(c=>c.Family).ToList();
                 var q = from cu in db.Customers
+                        
                         where cu.id_TypeCustomer==1 ||  cu.id_TypeCustomer==2
+                        
                         orderby cu.Name, cu.Family
                         select new
                         {
@@ -213,7 +228,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         {
             try
             {
-                if (PublicClass.FindEmptyControls(cmbChequeType, "نوع چک زا وارد نمائید", txtChequeNumber, "سریال چک را وارد نمائید", txtAmount, "مبلغ زا وارد نمائید", cmbBanck, "نام بانک را وارد نمائید", cmbPayer_Payee_Acc, "طرف حساب را انتخاب نمائید", txtChequeOwner, "نام صاحب چک زا وارد نمائید", txtDescription, "توضیحات را وارد نمائید"))
+                if (PublicClass.FindEmptyControls(cmbChequeType, "نوع چک زا وارد نمائید", txtChequeNumber, "سریال چک را وارد نمائید", txtAmount, "مبلغ زا وارد نمائید", cmbAccount, "نام بانک را وارد نمائید", cmbPayer_Payee_Acc, "طرف حساب را انتخاب نمائید", txtChequeOwner, "نام صاحب چک زا وارد نمائید", txtDescription, "توضیحات را وارد نمائید"))
                     return;
 
 
@@ -247,7 +262,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                     }
 
                     var userRepo = new Repository<Entity.Accounts.Cheque.Cheque>(db);
-                    int ChequeId = userRepo.SaveOrUpdateRefId(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId=ChequeTypeId, ChequeNumber=txtChequeNumber.Text, Amount=Convert.ToDouble(txtAmount.TextSimple), DueDate=txtDueDate.Text, IssueDate=txtIssueDate.Text, BankId=BanckId, Payer_Payee_AccId=Payer_Payee_AccId, ChequeOwner=txtChequeOwner.Text, Description=txtDescription.Text, CurrentStatusID=ListId==0 ? 0 : CurrentStatusID_ }, ListId);
+                    int ChequeId = userRepo.SaveOrUpdateRefId(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId=ChequeTypeId, ChequeNumber=txtChequeNumber.Text, Amount=Convert.ToDouble(txtAmount.TextSimple), DueDate=txtDueDate.Text, IssueDate=txtIssueDate.Text, AccountId = BanckId, Payer_Payee_AccId=Payer_Payee_AccId, ChequeOwner=txtChequeOwner.Text, Description=txtDescription.Text, CurrentStatusID=ListId==0 ? 0 : CurrentStatusID_ }, ListId);
                     {
                         if (ListId == 0)
                         {
@@ -281,7 +296,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             txtAmount.ResetText();
             txtDueDate.ResetText();
             txtIssueDate.ResetText();
-            cmbBanck.ResetText();
+            cmbAccount.ResetText();
             txtChequeOwner.ResetText();
             txtDescription.ResetText(); cmbPayer_Payee_Acc.SelectedIndex=-1;
             ListId=0;
@@ -303,14 +318,20 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                         join cty in db.ChequeTypes
                         on ch.ChequeTypeId equals cty.Id
 
-                        join dta in db.DetailedAccounts
-                        on ch.Payer_Payee_AccId equals dta.Id
+                        join dta_ppa in db.DetailedAccounts
+                        on ch.Payer_Payee_AccId equals dta_ppa.Id
+                        
+                        join dta_a in db.DetailedAccounts
+                        on ch.AccountId equals dta_a.Id
 
-                        join cu in db.Customers
-                        on dta.CustomerId equals cu.Id
+                        join cu_ppa in db.Customers
+                        on dta_ppa.CustomerId equals cu_ppa.Id
+
+                        join cu_a in db.Customers
+                        on dta_a.CustomerId equals cu_a.Id
 
                         join bb in db.BankBranches
-                        on ch.BankId equals bb.Id
+                        on dta_a.BankBrancheId equals bb.Id
 
                         join ba in db.Bancks
                         on bb.BanckId equals ba.Id
@@ -333,10 +354,10 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                             ch.Amount,
                             ch.DueDate,
                             ch.IssueDate,
-                            banckName = ba.Name +" - "+ bb.Name,
+                            AccountName = cu_a.Name+" - "+bb.Name+" - "+ba.Name,
                             ch.ChequeOwner,
                             ch.Description,
-                            Payer_Payee_Acc = cu.Family +" "+cu.Name,
+                            Payer_Payee_Acc = cu_ppa.Family +" "+cu_ppa.Name,
                             ChequeStatusTypes = chst.Name,
                         };
                 DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
@@ -351,11 +372,8 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
 
         private void cmsdgv_CommandClick(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            //ListId=ListId_;
-
             switch (e.Command.Key)
             {
-
                 case "Edit":
                     using (var db = new DBcontextModel())
                     {
@@ -366,10 +384,10 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                         txtAmount.Text=q.Amount.ToString();
                         txtDueDate.Text=q.DueDate;
                         txtIssueDate.Text=q.IssueDate;
-                        //txtBankName.Text=q.BankName;
-                        txtChequeOwner.Text=q.ChequeOwner;
                         txtDescription.Text=q.Description;
-                        cmbPayer_Payee_Acc.Value=q.Payer_Payee_AccId;
+                        cmbAccount.Value = q.AccountId;// db.DetailedAccounts.Where(c => c.Id == q.AccountId).First().CustomerId;
+                        cmbPayer_Payee_Acc.Value=db.DetailedAccounts.Where(c=>c.Id== q.Payer_Payee_AccId).First().CustomerId;
+                        txtChequeOwner.Text=q.ChequeOwner;
                     }
                     break;
 
@@ -377,13 +395,6 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                     using (var db = new DBcontextModel())
                     {
                         ListId=ListId_;
-
-                        //if (db.ComersHs.Where(c => c.CarId == ListId).Count() != 0)
-                        //{
-                        //    PublicClass.ErrorMesseg(ResourceCode.T004);
-                        //    return;
-                        //}
-
                         if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             var q = db.Cheques.Where(c => c.Id == ListId).First();
@@ -442,13 +453,9 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                                             NewLocationAcc = cuLeft!=null ? (cuLeft.Family + " " + cuLeft.Name).Trim() : "-",
                                             TransactionCode = trLeft!=null ? trLeft.TransactionCode : 0,
                                             chs.Description,
-
                                         }).ToList();
                             dgvListChequeStatus.DataSource=List;
                             dgvListChequeStatus.AutoSizeColumns();
-
-
-
                         }
                         else
                         {
@@ -457,8 +464,6 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                         ListId=0;
                     }
                     break;
-
-
             }
 
         }
@@ -470,14 +475,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             {
                 cmsdgv.Show(Cursor.Position);
             }
-
         }
-
-        private void dgvList_FormattingRow(object sender, Janus.Windows.GridEX.RowLoadEventArgs e)
-        {
-
-        }
-
         private void btnClosePael_Click(object sender, EventArgs e)
         {
             pnlListChequeStatus.Visible=false;
@@ -532,19 +530,18 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         {
             try
             {
-                BanckId = Convert.ToInt32(cmbBanck.Value);
+                BanckId = Convert.ToInt32(cmbAccount.Value);
             }
             catch (Exception)
             {
             }
-
         }
 
         private void btnAddBanck_Click(object sender, EventArgs e)
         {
             frmBankBranch frmBankBranch = new frmBankBranch(this);
             frmBankBranch.ShowDialog();
-            FillcmbBanck();
+            FillcmbAccount();
         }
 
         private void cmbBanck_KeyDown(object sender, KeyEventArgs e)
@@ -554,7 +551,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbBanck, dt_Banck);
+                PublicClass.SearchCmbId(cmbAccount, dt_Banck);
             }
 
         }
@@ -574,6 +571,18 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void cmbAccount_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                AccountId = Convert.ToInt32(cmbAccount.Value);
+            }
+            catch (Exception)
+            {
+            }
+
         }
     }
 

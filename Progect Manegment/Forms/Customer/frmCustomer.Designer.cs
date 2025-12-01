@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvList_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column23.ButtonImage");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             Janus.Windows.GridEX.GridEXLayout cmbTypeCustomer_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbCity_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference cmbCity_DesignTimeLayout_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.WatermarkImage.Image");
             Janus.Windows.GridEX.GridEXLayout cmbGroup_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbBanck_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             this.dgvList = new GridExEx.GridExEx();
             this.cmbTypeCustomer = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
@@ -270,7 +270,6 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmCustomer";
             this.dgvList.Size = new System.Drawing.Size(742, 533);
             this.dgvList.Sortable = true;
@@ -911,7 +910,6 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
-            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTypeCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCity)).EndInit();

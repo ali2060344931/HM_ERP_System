@@ -122,6 +122,7 @@
             this.pnlAddItemBodi.Controls.Add(this.label4);
             this.pnlAddItemBodi.Controls.Add(this.label3);
             this.pnlAddItemBodi.Controls.Add(this.label2);
+            this.pnlAddItemBodi.Cursor = System.Windows.Forms.Cursors.Default;
             this.pnlAddItemBodi.Size = new System.Drawing.Size(435, 490);
             this.pnlAddItemBodi.TabIndex = 0;
             // 
@@ -153,6 +154,7 @@
             // btnShowListItems
             // 
             this.btnShowListItems.Location = new System.Drawing.Point(220, 15);
+            this.btnShowListItems.Click += new System.EventHandler(this.btnShowListItems_Click);
             // 
             // labelX2
             // 
@@ -160,7 +162,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(440, 16);
+            this.labelX2.Location = new System.Drawing.Point(440, 15);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
@@ -170,7 +172,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(643, 16);
+            this.labelX1.Location = new System.Drawing.Point(643, 15);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
@@ -184,6 +186,7 @@
             this.pnlAddItems.Location = new System.Drawing.Point(937, 3);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlAddItems.Size = new System.Drawing.Size(441, 546);
+            this.pnlAddItems.Text = "ویرایش اطلاعات";
             // 
             // btnExportToExcel
             // 

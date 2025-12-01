@@ -1564,6 +1564,15 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to در این بخش امکان ثبت چک جدید وجود ندارد..
+        /// </summary>
+        internal static string T167 {
+            get {
+                return ResourceManager.GetString("T167", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

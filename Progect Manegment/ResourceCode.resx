@@ -619,6 +619,9 @@
   <data name="T166" xml:space="preserve">
     <value>سریال وارد شده تکراری می باشد.</value>
   </data>
+  <data name="T167" xml:space="preserve">
+    <value>در این بخش امکان ثبت چک جدید وجود ندارد.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

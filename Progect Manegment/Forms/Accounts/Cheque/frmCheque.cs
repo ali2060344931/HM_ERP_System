@@ -43,30 +43,30 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         public frmCheque(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
         }
 
         private void frmCheque_Load(object sender, EventArgs e)
         {
 
 
-            txtDueDate.Value= DateTime.Now;
-            txtIssueDate.Value= DateTime.Now;
-            PublicClass.SettingGridEX(dgvList,Name);
+            txtDueDate.Value = DateTime.Now;
+            txtIssueDate.Value = DateTime.Now;
+            PublicClass.SettingGridEX(dgvList, Name);
             PublicClass.SettingGridEX(dgvListChequeStatus);
 
-            if (IsReqoestExitForm=="frmRecevingPayment")
+            if (IsReqoestExitForm == "frmRecevingPayment")
             {
-                btnSelectCheque.Visible=true;
-                dgvList.RootTable.Columns["SelectItems"].Visible=true;
-                cmbChequeType.Enabled=false;
-                FilterByChequeType=true;
+                btnSelectCheque.Visible = true;
+                dgvList.RootTable.Columns["SelectItems"].Visible = true;
+                cmbChequeType.Enabled = false;
+                FilterByChequeType = true;
             }
             else
             {
-                btnSelectCheque.Visible=false;
-                dgvList.RootTable.Columns["SelectItems"].Visible=false;
-                cmbChequeType.Enabled=true;
+                btnSelectCheque.Visible = false;
+                dgvList.RootTable.Columns["SelectItems"].Visible = false;
+                cmbChequeType.Enabled = true;
             }
             UpdateData();
 
@@ -82,6 +82,62 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             FilldgvList();
 
         }
+
+        private void FilldgvList()
+        {
+            using (var db = new DBcontextModel())
+            {
+                var q = from ch in db.Cheques
+
+                        join cty in db.ChequeTypes
+                        on ch.ChequeTypeId equals cty.Id
+
+                        join dta_ppa in db.DetailedAccounts
+                        on ch.Payer_Payee_AccId equals dta_ppa.Id
+
+                        join cu_ppa in db.Customers
+                        on dta_ppa.CustomerId equals cu_ppa.Id
+
+                        join dta_a in db.DetailedAccounts
+                        on ch.AccountId equals dta_a.Id
+
+                        join cu_a in db.Customers
+                        on dta_a.CustomerId equals cu_a.Id
+
+                        join bb in db.BankBranches
+                        on dta_a.BankBrancheId equals bb.Id
+
+                        join ba in db.Bancks
+                        on bb.BanckId equals ba.Id
+
+                        join chs in db.ChequeStatuses
+                        on ch.CurrentStatusID equals chs.Id into chsGroup
+                        from chsLeft in chsGroup.DefaultIfEmpty()
+
+                        join chst in db.ChequeStatusTypes
+                        on chsLeft.StatusCodeId equals chst.Id /*into chstGroup*/
+
+                        where (!FilterByChequeType || (ch.ChequeTypeId == ChequeTypeId && chsLeft.StatusCodeId == 6)) && string.Compare(ch.DueDate, txtDateStart.Text) >= 0 && string.Compare(ch.DueDate, txtDateEnd.Text) <= 0
+
+                        select new
+                        {
+                            ch.Id,
+                            ChequeType = cty.Name,
+                            ch.ChequeNumber,
+                            ch.Amount,
+                            ch.DueDate,
+                            ch.IssueDate,
+                            AccountName = cu_a.Name + " - " + bb.Name + " - " + ba.Name,
+                            ch.ChequeOwner,
+                            ch.Description,
+                            Payer_Payee_Acc = cu_ppa.Family + " " + cu_ppa.Name,
+                            ChequeStatusTypes = chst.Name,
+                        };
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
+                dgvList.AutoSizeColumns();
+            }
+        }
+
         DataTable dt_Banck;
         private void FillcmbAccount()
         {
@@ -94,10 +150,10 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
 
                         join bb in db.BankBranches
                         on da.BankBrancheId equals bb.Id
-                        
+
                         join ba in db.Bancks
                         on bb.BanckId equals ba.Id
-                       
+
                         select new
                         {
                             da.Id,
@@ -121,22 +177,20 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             {
                 //var q=db.Customers.Where(c=>c.id_TypeCustomer==1 ||  c.id_TypeCustomer==2).OrderBy(c=>c.Family).ToList();
                 var q = from cu in db.Customers
-                        
-                        where cu.id_TypeCustomer==1 ||  cu.id_TypeCustomer==2
-                        
+
+                        where cu.id_TypeCustomer == 1 || cu.id_TypeCustomer == 2
+
                         orderby cu.Name, cu.Family
                         select new
                         {
                             cu.Id,
-                            Name = cu.Family +" "+cu.Name,
+                            Name = cu.Family + " " + cu.Name,
                             cu.Tel,
                         };
 
-
-                cmbPayer_Payee_Acc.DataSource=q.ToList();
+                cmbPayer_Payee_Acc.DataSource = q.ToList();
                 dt_Payer_Payee_Acc = new System.Data.DataTable();
                 dt_Payer_Payee_Acc = PublicClass.AddEntityTableToDataTable(q.ToList());
-
             }
         }
 
@@ -164,14 +218,14 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             using (var db = new DBcontextModel())
             {
                 txtChequeOwner.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                txtChequeOwner.AutoCompleteSource=AutoCompleteSource.CustomSource;
+                txtChequeOwner.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 AutoCompleteStringCollection a = new AutoCompleteStringCollection();
                 var q = db.Cheques.ToList();
                 foreach (var i in q)
                 {
                     a.Add(i.ChequeOwner);
                 }
-                txtChequeOwner.AutoCompleteCustomSource=a;
+                txtChequeOwner.AutoCompleteCustomSource = a;
             }
         }
         void FilltxtDescription()
@@ -180,14 +234,14 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             using (var db = new DBcontextModel())
             {
                 txtDescription.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                txtDescription.AutoCompleteSource=AutoCompleteSource.CustomSource;
+                txtDescription.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 AutoCompleteStringCollection a = new AutoCompleteStringCollection();
                 var q = db.Cheques.ToList();
                 foreach (var i in q)
                 {
                     a.Add(i.Description);
                 }
-                txtDescription.AutoCompleteCustomSource=a;
+                txtDescription.AutoCompleteCustomSource = a;
             }
         }
 
@@ -196,7 +250,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             using (var db = new DBcontextModel())
             {
                 var q = db.ChequeTypes.ToList();
-                cmbChequeType.DataSource=q;
+                cmbChequeType.DataSource = q;
             }
         }
         int ChequeTypeId = 0;
@@ -221,14 +275,19 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             catch (Exception)
             {
             }
-            txtChequeOwner.Text=cmbPayer_Payee_Acc.Text;
+            txtChequeOwner.Text = cmbPayer_Payee_Acc.Text;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                if (PublicClass.FindEmptyControls(cmbChequeType, "نوع چک زا وارد نمائید", txtChequeNumber, "سریال چک را وارد نمائید", txtAmount, "مبلغ زا وارد نمائید", cmbAccount, "نام بانک را وارد نمائید", cmbPayer_Payee_Acc, "طرف حساب را انتخاب نمائید", txtChequeOwner, "نام صاحب چک زا وارد نمائید", txtDescription, "توضیحات را وارد نمائید"))
+                if (ListId == 0)
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T167); return;
+                }
+
+                    if (PublicClass.FindEmptyControls(cmbChequeType, "نوع چک زا وارد نمائید", txtChequeNumber, "سریال چک را وارد نمائید", txtAmount, "مبلغ زا وارد نمائید", cmbAccount, "نام بانک را وارد نمائید", cmbPayer_Payee_Acc, "طرف حساب را انتخاب نمائید", txtChequeOwner, "نام صاحب چک زا وارد نمائید", txtDescription, "توضیحات را وارد نمائید"))
                     return;
 
 
@@ -256,29 +315,47 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                     if (MessageBox.Show(ResourceCode.T111, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                         return;
                     int CurrentStatusID_ = 0;
-                    if (ListId!=0)
+                    if (ListId != 0)
                     {
-                        CurrentStatusID_=db.Cheques.Where(c => c.Id== ListId).First().CurrentStatusID;
+                        CurrentStatusID_ = db.Cheques.Where(c => c.Id == ListId).First().CurrentStatusID;
                     }
 
+                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10302).First().Id;
+                    int DetailedAccountOwnerId = 0;
+                    
+                    //var customertId = db.DetailedAccounts.Where(c => c.Id == Payer_Payee_AccId).First().CustomerId;
+                    
+                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == Payer_Payee_AccId);
+                    if (serch1.Count() == 0)
+                        DetailedAccountOwnerId = PublicClass.AddToDetailedAccounts(SpecificAccountId, Payer_Payee_AccId);
+                    else
+                        DetailedAccountOwnerId = serch1.First().Id;
+
                     var userRepo = new Repository<Entity.Accounts.Cheque.Cheque>(db);
-                    int ChequeId = userRepo.SaveOrUpdateRefId(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId=ChequeTypeId, ChequeNumber=txtChequeNumber.Text, Amount=Convert.ToDouble(txtAmount.TextSimple), DueDate=txtDueDate.Text, IssueDate=txtIssueDate.Text, AccountId = BanckId, Payer_Payee_AccId=Payer_Payee_AccId, ChequeOwner=txtChequeOwner.Text, Description=txtDescription.Text, CurrentStatusID=ListId==0 ? 0 : CurrentStatusID_ }, ListId);
+                    int ChequeId = userRepo.SaveOrUpdateRefId(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId = ChequeTypeId, ChequeNumber = txtChequeNumber.Text, Amount = Convert.ToDouble(txtAmount.TextSimple), DueDate = txtDueDate.Text, IssueDate = txtIssueDate.Text, AccountId = AccountId, Payer_Payee_AccId = DetailedAccountOwnerId, ChequeOwner = txtChequeOwner.Text, Description = txtDescription.Text, CurrentStatusID = ListId == 0 ? 0 : CurrentStatusID_ }, ListId);
                     {
                         if (ListId == 0)
                         {
                             var cs = new Repository<ChequeStatus>(db);
-                            int ChequeStatusId = cs.SaveOrUpdateRefId(new ChequeStatus { Id = ListId, ChequeId=ChequeId, StatusCodeId=6, Description=txtDescription.Text, StatusDate=PersianDate.NowPersianDate, DateTime=DateTime.Now, UserId=PublicClass.UserId }, ListId);
-                            var CurrentStatusID = db.Cheques.Where(c => c.Id==ChequeId).First();
-                            CurrentStatusID.CurrentStatusID=ChequeStatusId;
-                            db.SaveChanges();
+                            int ChequeStatusId = cs.SaveOrUpdateRefId(new ChequeStatus { Id = ListId, ChequeId = ChequeId, StatusCodeId = 6, Description = txtDescription.Text, StatusDate = PersianDate.NowPersianDate, DateTime = DateTime.Now, UserId = PublicClass.UserId }, ListId);
+                            var CurrentStatusID = db.Cheques.Where(c => c.Id == ChequeId).First();
+                            CurrentStatusID.CurrentStatusID = ChequeStatusId;
                         }
+                        else
+                        {
+                            var q=db.Cheques.Where(c=>c.Id == ListId).First();
+                            var ChequeStatus = db.ChequeStatuses.Where(c=>c.Id==q.CurrentStatusID).First();
+                            var Transactions = db.Transactions.Where(c => c.Id == ChequeStatus.TransactionId).First();
+                            //Transactions.SpecificAccountId = 0;
+                            Transactions.DetailedAccountId = AccountId;
+                        }
+                        db.SaveChanges();
 
-                        PublicClass.WindowAlart("1");
+                            PublicClass.WindowAlart("1");
 
                         FilldgvList();
 
-
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
                         CelearItems();
                     }
@@ -298,71 +375,13 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             txtIssueDate.ResetText();
             cmbAccount.ResetText();
             txtChequeOwner.ResetText();
-            txtDescription.ResetText(); cmbPayer_Payee_Acc.SelectedIndex=-1;
-            ListId=0;
+            txtDescription.ResetText(); cmbPayer_Payee_Acc.SelectedIndex = -1;
+            ListId = 0;
             cmbChequeType.Focus();
             FilltxtBankName();
             FilltxtChequeOwner();
             FilltxtDescription();
             FilldgvList();
-        }
-
-        private void FilldgvList()
-        {
-
-
-            using (var db = new DBcontextModel())
-            {
-                var q = from ch in db.Cheques
-
-                        join cty in db.ChequeTypes
-                        on ch.ChequeTypeId equals cty.Id
-
-                        join dta_ppa in db.DetailedAccounts
-                        on ch.Payer_Payee_AccId equals dta_ppa.Id
-                        
-                        join dta_a in db.DetailedAccounts
-                        on ch.AccountId equals dta_a.Id
-
-                        join cu_ppa in db.Customers
-                        on dta_ppa.CustomerId equals cu_ppa.Id
-
-                        join cu_a in db.Customers
-                        on dta_a.CustomerId equals cu_a.Id
-
-                        join bb in db.BankBranches
-                        on dta_a.BankBrancheId equals bb.Id
-
-                        join ba in db.Bancks
-                        on bb.BanckId equals ba.Id
-
-                        join chs in db.ChequeStatuses
-                        on ch.CurrentStatusID equals chs.Id into chsGroup
-                        from chsLeft in chsGroup.DefaultIfEmpty()
-
-                        join chst in db.ChequeStatusTypes
-                        on chsLeft.StatusCodeId equals chst.Id /*into chstGroup*/
-                        //from chstLeft in chsGroup.DefaultIfEmpty()
-
-                        where !FilterByChequeType || (ch.ChequeTypeId == ChequeTypeId && chsLeft.StatusCodeId==6)
-
-                        select new
-                        {
-                            ch.Id,
-                            ChequeType = cty.Name,
-                            ch.ChequeNumber,
-                            ch.Amount,
-                            ch.DueDate,
-                            ch.IssueDate,
-                            AccountName = cu_a.Name+" - "+bb.Name+" - "+ba.Name,
-                            ch.ChequeOwner,
-                            ch.Description,
-                            Payer_Payee_Acc = cu_ppa.Family +" "+cu_ppa.Name,
-                            ChequeStatusTypes = chst.Name,
-                        };
-                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
-                dgvList.AutoSizeColumns();
-            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -377,24 +396,26 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                 case "Edit":
                     using (var db = new DBcontextModel())
                     {
-                        ListId=ListId_;
+                        int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10302).First().Id;
+
+                        ListId = ListId_;
                         var q = db.Cheques.Where(c => c.Id == ListId).First();
-                        cmbChequeType.Value=q.ChequeTypeId;
-                        txtChequeNumber.Text=q.ChequeNumber;
-                        txtAmount.Text=q.Amount.ToString();
-                        txtDueDate.Text=q.DueDate;
-                        txtIssueDate.Text=q.IssueDate;
-                        txtDescription.Text=q.Description;
-                        cmbAccount.Value = q.AccountId;// db.DetailedAccounts.Where(c => c.Id == q.AccountId).First().CustomerId;
-                        cmbPayer_Payee_Acc.Value=db.DetailedAccounts.Where(c=>c.Id== q.Payer_Payee_AccId).First().CustomerId;
-                        txtChequeOwner.Text=q.ChequeOwner;
+                        cmbChequeType.Value = q.ChequeTypeId;
+                        txtChequeNumber.Text = q.ChequeNumber;
+                        txtAmount.Text = q.Amount.ToString();
+                        txtDueDate.Text = q.DueDate;
+                        txtIssueDate.Text = q.IssueDate;
+                        txtDescription.Text = q.Description;
+                        cmbAccount.Value = q.AccountId;
+                        cmbPayer_Payee_Acc.Value = db.DetailedAccounts.Where(c => c.Id == q.Payer_Payee_AccId && c.SpecificAccountId == SpecificAccountId).First().CustomerId;
+                        txtChequeOwner.Text = q.ChequeOwner;
                     }
                     break;
 
                 case "Delete":
                     using (var db = new DBcontextModel())
                     {
-                        ListId=ListId_;
+                        ListId = ListId_;
                         if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             var q = db.Cheques.Where(c => c.Id == ListId).First();
@@ -404,26 +425,26 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
 
                             CelearItems();
                         }
-                        ListId=0;
+                        ListId = 0;
                     }
                     break;
                 case "AddDocumentToBanck"://ثبت مدارک
-                    ListId=ListId_;
+                    ListId = ListId_;
                     string lblCaption = "شماره چک:" + dgvList.GetRow().Cells["ChequeNumber"].Value.ToString();
 
                     PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
                     FilldgvList();
-                    ListId=0;
+                    ListId = 0;
                     break;
 
                 case "ListChequeStatus"://لیست وضعیت چک ها
                     using (var db = new DBcontextModel())
                     {
-                        var ql = db.ChequeStatuses.Where(c => c.ChequeId==ListId);
-                        if (ql.Count()!=0)
+                        var ql = db.ChequeStatuses.Where(c => c.ChequeId == ListId);
+                        if (ql.Count() != 0)
                         {
-                            pnlListChequeStatus.Visible=true;
-                            dgvListChequeStatus.RootTable.Caption= "شماره سریال چک:" + dgvList.GetRow().Cells["ChequeNumber"].Value.ToString();
+                            pnlListChequeStatus.Visible = true;
+                            dgvListChequeStatus.RootTable.Caption = "شماره سریال چک:" + dgvList.GetRow().Cells["ChequeNumber"].Value.ToString();
 
                             var List = (from chs in db.ChequeStatuses
 
@@ -438,34 +459,32 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                                         on daLeft.CustomerId equals cu.Id into Cugroup
                                         from cuLeft in Cugroup.DefaultIfEmpty()
 
-
                                         join tr in db.Transactions
                                         on chs.TransactionId equals tr.Id into trGroup
                                         from trLeft in trGroup.DefaultIfEmpty()
 
-                                        where chs.ChequeId==ListId
+                                        where chs.ChequeId == ListId
 
                                         select new
                                         {
                                             chs.Id,
                                             chs.StatusDate,
                                             ChequeStatusTypes = ChST.Name,
-                                            NewLocationAcc = cuLeft!=null ? (cuLeft.Family + " " + cuLeft.Name).Trim() : "-",
-                                            TransactionCode = trLeft!=null ? trLeft.TransactionCode : 0,
+                                            NewLocationAcc = cuLeft != null ? (cuLeft.Family + " " + cuLeft.Name).Trim() : "-",
+                                            TransactionCode = trLeft != null ? trLeft.TransactionCode : 0,
                                             chs.Description,
                                         }).ToList();
-                            dgvListChequeStatus.DataSource=List;
+                            dgvListChequeStatus.DataSource = List;
                             dgvListChequeStatus.AutoSizeColumns();
                         }
                         else
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T120); return;
                         }
-                        ListId=0;
+                        ListId = 0;
                     }
                     break;
             }
-
         }
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
@@ -478,7 +497,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         }
         private void btnClosePael_Click(object sender, EventArgs e)
         {
-            pnlListChequeStatus.Visible=false;
+            pnlListChequeStatus.Visible = false;
         }
         public DataTable dt_Cheque;
 
@@ -486,12 +505,12 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         {
             try
             {
-                if (dgvList.GetCheckedRows().Count()==0)
+                if (dgvList.GetCheckedRows().Count() == 0)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T041); return;
                 }
 
-                dt_Cheque=new DataTable();
+                dt_Cheque = new DataTable();
                 //dt_Cheque.Columns.Add("id", typeof(int));
                 //dt_Cheque.Columns.Add("Code", typeof(int));
                 //dt_Cheque.Columns.Add("Name", typeof(string));
@@ -509,15 +528,15 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                     //newrow["id"]=AccountId;
                     //newrow["Code"]=AccountCode;
                     //newrow["Name"]=AccountName;
-                    newrow["Cheaueid"]=item.Cells["Id"].Value;
-                    newrow["ChequeNumber"]=item.Cells["ChequeNumber"].Value;
-                    newrow["DueDate"]=item.Cells["DueDate"].Value;
-                    newrow["Amount"]=item.Cells["Amount"].Value;
-                    newrow["Description"]=item.Cells["Description"].Value;
+                    newrow["Cheaueid"] = item.Cells["Id"].Value;
+                    newrow["ChequeNumber"] = item.Cells["ChequeNumber"].Value;
+                    newrow["DueDate"] = item.Cells["DueDate"].Value;
+                    newrow["Amount"] = item.Cells["Amount"].Value;
+                    newrow["Description"] = item.Cells["Description"].Value;
                     dt_Cheque.Rows.Add(newrow);
                 }
                 frmRecevingPayment f = Application.OpenForms["frmRecevingPayment"] as frmRecevingPayment;
-                f.dt_Cheque=dt_Cheque;
+                f.dt_Cheque = dt_Cheque;
                 this.Close();
             }
             catch (Exception er)
@@ -558,7 +577,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
 
         private void cmbPayer_Payee_Acc_KeyDown(object sender, KeyEventArgs e)
         {
-                        if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
 
             if (e.KeyCode == Keys.F2)
@@ -572,17 +591,33 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
         }
-
+        
+        int DetailedAccountBanckId = 0;
         private void cmbAccount_ValueChanged(object sender, EventArgs e)
         {
             try
             {
                 AccountId = Convert.ToInt32(cmbAccount.Value);
+                using (var db = new DBcontextModel())
+                {
+                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10102).First().Id;
+                    //int DetailedAccountId = 0;
+                    var customertId = db.DetailedAccounts.Where(c => c.Id == AccountId).First().CustomerId;
+                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                    if (serch1.Count() == 0)
+                        DetailedAccountBanckId = PublicClass.AddToDetailedAccounts(SpecificAccountId, AccountId);
+                    else
+                        DetailedAccountBanckId = serch1.First().Id;
+                }
             }
             catch (Exception)
             {
             }
+        }
 
+        private void btnShowListItems_Click(object sender, EventArgs e)
+        {
+            FilldgvList();
         }
     }
 

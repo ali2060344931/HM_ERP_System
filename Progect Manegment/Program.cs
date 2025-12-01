@@ -121,9 +121,9 @@ namespace Progect_Manegment
 
                 //Application.Run(new frmLoginProg());
 
-                //Application.Run(new frmMainForm());
+                Application.Run(new frmMainForm());
 
-                Application.Run(new frmCheque(null));
+                //Application.Run(new frmCheque(null));
             }
             catch (Exception er)
             {

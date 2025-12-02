@@ -179,7 +179,10 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                         join ga in db.GroupAccounts
                         on ta.Id_GroupAccount equals ga.Id
 
-                        where Code != 0 ? sa.Id == 1 || sa.Id == 2 : sa.Id > 0
+                        where (Code != 0 ? sa.Id == 1 || sa.Id == 2 : sa.Id > 0) &&
+                (
+                    chkShowAllAccounts.Checked || (sa.Cod == 10302 || sa.Cod == 40101 || sa.Cod == 10301 || sa.Cod == 30101)
+                )
 
                         select new
                         {
@@ -935,6 +938,11 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
 
             }
 
+        }
+
+        private void chkShowAllAccounts_CheckedChanged(object sender, EventArgs e)
+        {
+            FillcmbSpecificAccount();
         }
     }
 }

@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetailedAccount));
             Janus.Windows.GridEX.GridEXLayout cmbNatureAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSpecificAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbCustomers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetailedAccount));
             Janus.Windows.GridEX.GridEXLayout cmbAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.dgvList = new GridExEx.GridExEx();
             this.txtAmount = new DevComponents.Editors.DoubleInput();
@@ -67,6 +67,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.txtChequeOwner = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
             this.label4 = new System.Windows.Forms.Label();
+            this.chkShowAllAccounts = new System.Windows.Forms.CheckBox();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -115,6 +116,7 @@
             this.pnlAddItemBodi.Controls.Add(this.btnAddNewSpecificAccount);
             this.pnlAddItemBodi.Controls.Add(this.rdbCheque);
             this.pnlAddItemBodi.Controls.Add(this.rdbCash);
+            this.pnlAddItemBodi.Controls.Add(this.chkShowAllAccounts);
             this.pnlAddItemBodi.Size = new System.Drawing.Size(461, 557);
             this.pnlAddItemBodi.TabIndex = 0;
             // 
@@ -238,7 +240,7 @@
             this.txtAmount.DisplayFormat = "#,##0";
             this.txtAmount.Increment = 1D;
             this.txtAmount.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtAmount.Location = new System.Drawing.Point(185, 167);
+            this.txtAmount.Location = new System.Drawing.Point(185, 181);
             this.txtAmount.MaxValue = 1797693134862.3157D;
             this.txtAmount.MinValue = 0D;
             this.txtAmount.Name = "txtAmount";
@@ -253,7 +255,7 @@
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label19.Location = new System.Drawing.Point(320, 116);
+            this.label19.Location = new System.Drawing.Point(320, 130);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(44, 18);
             this.label19.TabIndex = 102;
@@ -264,7 +266,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label18.Location = new System.Drawing.Point(321, 172);
+            this.label18.Location = new System.Drawing.Point(321, 186);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(117, 18);
             this.label18.TabIndex = 103;
@@ -277,7 +279,7 @@
             cmbNatureAccounts_DesignTimeLayout.LayoutString = resources.GetString("cmbNatureAccounts_DesignTimeLayout.LayoutString");
             this.cmbNatureAccounts.DesignTimeLayout = cmbNatureAccounts_DesignTimeLayout;
             this.cmbNatureAccounts.DisplayMember = "Name";
-            this.cmbNatureAccounts.Location = new System.Drawing.Point(184, 111);
+            this.cmbNatureAccounts.Location = new System.Drawing.Point(184, 125);
             this.cmbNatureAccounts.Name = "cmbNatureAccounts";
             this.cmbNatureAccounts.SelectedIndex = -1;
             this.cmbNatureAccounts.SelectedItem = null;
@@ -293,7 +295,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(320, 22);
+            this.label1.Location = new System.Drawing.Point(320, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 18);
             this.label1.TabIndex = 103;
@@ -304,7 +306,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(320, 56);
+            this.label2.Location = new System.Drawing.Point(320, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 18);
             this.label2.TabIndex = 102;
@@ -317,7 +319,7 @@
             this.cmbSpecificAccount.DesignTimeLayout = cmbSpecificAccount_DesignTimeLayout;
             this.cmbSpecificAccount.DisplayMember = "Name";
             this.cmbSpecificAccount.Image = ((System.Drawing.Image)(resources.GetObject("cmbSpecificAccount.Image")));
-            this.cmbSpecificAccount.Location = new System.Drawing.Point(53, 16);
+            this.cmbSpecificAccount.Location = new System.Drawing.Point(53, 30);
             this.cmbSpecificAccount.Name = "cmbSpecificAccount";
             this.cmbSpecificAccount.SelectedIndex = -1;
             this.cmbSpecificAccount.SelectedItem = null;
@@ -335,7 +337,7 @@
             this.cmbCustomers.DesignTimeLayout = cmbCustomers_DesignTimeLayout;
             this.cmbCustomers.DisplayMember = "Name";
             this.cmbCustomers.Image = ((System.Drawing.Image)(resources.GetObject("cmbCustomers.Image")));
-            this.cmbCustomers.Location = new System.Drawing.Point(53, 50);
+            this.cmbCustomers.Location = new System.Drawing.Point(53, 64);
             this.cmbCustomers.Name = "cmbCustomers";
             this.cmbCustomers.SelectedIndex = -1;
             this.cmbCustomers.SelectedItem = null;
@@ -353,7 +355,7 @@
             this.btnAddNewSpecificAccount.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewSpecificAccount.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewSpecificAccount.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddNewSpecificAccount.Location = new System.Drawing.Point(32, 17);
+            this.btnAddNewSpecificAccount.Location = new System.Drawing.Point(32, 31);
             this.btnAddNewSpecificAccount.Name = "btnAddNewSpecificAccount";
             this.btnAddNewSpecificAccount.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddNewSpecificAccount.Size = new System.Drawing.Size(19, 28);
@@ -372,7 +374,7 @@
             this.btnAddNewCustomers.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewCustomers.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewCustomers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
-            this.btnAddNewCustomers.Location = new System.Drawing.Point(13, 51);
+            this.btnAddNewCustomers.Location = new System.Drawing.Point(13, 65);
             this.btnAddNewCustomers.Name = "btnAddNewCustomers";
             this.btnAddNewCustomers.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddNewCustomers.Size = new System.Drawing.Size(38, 28);
@@ -422,7 +424,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(320, 85);
+            this.label3.Location = new System.Drawing.Point(320, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 18);
             this.label3.TabIndex = 103;
@@ -433,7 +435,7 @@
             this.lblCodeAccount.BackColor = System.Drawing.Color.Transparent;
             this.lblCodeAccount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCodeAccount.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCodeAccount.Location = new System.Drawing.Point(186, 83);
+            this.lblCodeAccount.Location = new System.Drawing.Point(186, 97);
             this.lblCodeAccount.Name = "lblCodeAccount";
             this.lblCodeAccount.Size = new System.Drawing.Size(130, 23);
             this.lblCodeAccount.TabIndex = 103;
@@ -443,7 +445,7 @@
             // 
             this.rdbCash.AutoSize = true;
             this.rdbCash.Checked = true;
-            this.rdbCash.Location = new System.Drawing.Point(267, 143);
+            this.rdbCash.Location = new System.Drawing.Point(267, 157);
             this.rdbCash.Name = "rdbCash";
             this.rdbCash.Size = new System.Drawing.Size(50, 26);
             this.rdbCash.TabIndex = 106;
@@ -455,7 +457,7 @@
             // rdbCheque
             // 
             this.rdbCheque.AutoSize = true;
-            this.rdbCheque.Location = new System.Drawing.Point(185, 143);
+            this.rdbCheque.Location = new System.Drawing.Point(185, 157);
             this.rdbCheque.Name = "rdbCheque";
             this.rdbCheque.Size = new System.Drawing.Size(58, 26);
             this.rdbCheque.TabIndex = 106;
@@ -480,7 +482,7 @@
             this.pnlChequue.Controls.Add(this.label30);
             this.pnlChequue.Controls.Add(this.txtChequeOwner);
             this.pnlChequue.Controls.Add(this.label4);
-            this.pnlChequue.Location = new System.Drawing.Point(14, 201);
+            this.pnlChequue.Location = new System.Drawing.Point(14, 215);
             this.pnlChequue.Name = "pnlChequue";
             this.pnlChequue.Size = new System.Drawing.Size(408, 199);
             this.pnlChequue.TabIndex = 107;
@@ -664,6 +666,18 @@
             this.label4.TabIndex = 161;
             this.label4.Text = "مشخصــــات چــــک";
             // 
+            // chkShowAllAccounts
+            // 
+            this.chkShowAllAccounts.AutoSize = true;
+            this.chkShowAllAccounts.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.chkShowAllAccounts.Location = new System.Drawing.Point(154, 10);
+            this.chkShowAllAccounts.Name = "chkShowAllAccounts";
+            this.chkShowAllAccounts.Size = new System.Drawing.Size(161, 21);
+            this.chkShowAllAccounts.TabIndex = 108;
+            this.chkShowAllAccounts.Text = "نمایش همه حساب های معین";
+            this.chkShowAllAccounts.UseVisualStyleBackColor = true;
+            this.chkShowAllAccounts.CheckedChanged += new System.EventHandler(this.chkShowAllAccounts_CheckedChanged);
+            // 
             // frmDetailedAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -733,5 +747,6 @@
         private System.Windows.Forms.Label label30;
         private Class_General.MyTextBoxJanus txtChequeOwner;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox chkShowAllAccounts;
     }
 }

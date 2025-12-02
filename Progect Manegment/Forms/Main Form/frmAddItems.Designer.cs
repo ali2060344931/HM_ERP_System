@@ -50,6 +50,7 @@
             this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
             this.btnExportToExcel = new DevComponents.DotNetBar.ButtonX();
             this.gridEXExporter1 = new Janus.Windows.GridEX.Export.GridEXExporter(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).BeginInit();
             this.pnlAddItems.SuspendLayout();
@@ -103,7 +104,7 @@
             // 
             this.pnlAddItemBodi.AutoScroll = true;
             this.pnlAddItemBodi.AutoScrollMinSize = new System.Drawing.Size(0, 500);
-            this.pnlAddItemBodi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlAddItemBodi.Cursor = System.Windows.Forms.Cursors.Default;
             this.pnlAddItemBodi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAddItemBodi.Location = new System.Drawing.Point(0, 0);
             this.pnlAddItemBodi.Name = "pnlAddItemBodi";
@@ -255,6 +256,7 @@
             this.labelX1.TabIndex = 1;
             this.labelX1.Text = "نمایش از تاریخ:";
             this.labelX1.TextAlignment = System.Drawing.StringAlignment.Far;
+            this.toolTip1.SetToolTip(this.labelX1, "تـــاریخ جاری");
             this.labelX1.Click += new System.EventHandler(this.labelX1_Click);
             // 
             // labelX2
@@ -274,6 +276,7 @@
             this.labelX2.TabIndex = 1;
             this.labelX2.Text = "تا تاریخ:";
             this.labelX2.TextAlignment = System.Drawing.StringAlignment.Far;
+            this.toolTip1.SetToolTip(this.labelX2, "تـــاریخ جاری");
             this.labelX2.Click += new System.EventHandler(this.labelX2_Click);
             // 
             // pnlViewItemFoter
@@ -395,5 +398,6 @@
         private Janus.Windows.GridEX.Export.GridEXExporter gridEXExporter1;
         public DevComponents.DotNetBar.ButtonX buttonX01;
         public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

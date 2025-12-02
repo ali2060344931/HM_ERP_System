@@ -4055,11 +4055,11 @@ namespace MyClass
         /// <param name="DateTime">تاریخ سیستم</param>
         /// <param name="FinalRegistry">وضعیت ثبت نهایی</param>
         /// <param name="Status">وضعیت ابطال سند</param>
-        public static void AccountingDocumentRegistration(DBcontextModel db, int Id, int TransactionCode, string TransactionDate, int TransactionTypeId, int SpecificAccountId, int DetailedAccountId, double Amount, double PaymentBed, double PaymentBes, int ComerBId, string Description, string SeryalNumber, int Series, bool IsAutoRejDoc)
+        public static void AccountingDocumentRegistration(DBcontextModel db, int Id, int TransactionCode, string TransactionDate, int TransactionTypeId, int SpecificAccountId, int DetailedAccountId, double Amount, double PaymentBed, double PaymentBes, int ComerBId, string Description, string SeryalNumber, int Series, bool IsAutoRejDoc,bool IsBeginningBalance=false)
         {
             {
                 var ADR = new Repository<Transaction>(db);
-                ADR.SaveOrUpdateByCommit(new Transaction { Id = Id, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountId, DetailedAccountId=DetailedAccountId, Amount=Amount, PaymentBed=PaymentBed, PaymentBes=PaymentBes, ComerBId=ComerBId, Description=Description, SeryalNumber=SeryalNumber, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=IsAutoRejDoc }, Id);
+                ADR.SaveOrUpdateByCommit(new Transaction { Id = Id, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountId, DetailedAccountId=DetailedAccountId, Amount=Amount, PaymentBed=PaymentBed, PaymentBes=PaymentBes, ComerBId=ComerBId, Description=Description, SeryalNumber=SeryalNumber, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=IsAutoRejDoc,IsBeginningBalance= IsBeginningBalance }, Id);
             }
         }
 
@@ -4084,11 +4084,11 @@ namespace MyClass
         /// <param name="DateTime">تاریخ سیستم</param>
         /// <param name="FinalRegistry">وضعیت ثبت نهایی</param>
         /// <param name="Status">وضعیت ابطال سند</param>
-        public static int AccountingDocumentRegistrationById(DBcontextModel db, int Id, int TransactionCode, string TransactionDate, int TransactionTypeId, int SpecificAccountId, int DetailedAccountId, double Amount, double PaymentBed, double PaymentBes, int ComerBId, string Description, int Series, bool IsAutoRejDoc)
+        public static int AccountingDocumentRegistrationById(DBcontextModel db, int Id, int TransactionCode, string TransactionDate, int TransactionTypeId, int SpecificAccountId, int DetailedAccountId, double Amount, double PaymentBed, double PaymentBes, int ComerBId, string Description, int Series, bool IsAutoRejDoc, bool IsBeginningBalance = false)
         {
             {
                 var ADR = new Repository<Transaction>(db);
-                return ADR.SaveOrUpdateRefIdByCommit(new Transaction { Id = Id, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountId, DetailedAccountId=DetailedAccountId, Amount=Amount, PaymentBed=PaymentBed, PaymentBes=PaymentBes, ComerBId=ComerBId, Description=Description, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=IsAutoRejDoc }, Id);
+                return ADR.SaveOrUpdateRefIdByCommit(new Transaction { Id = Id, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountId, DetailedAccountId=DetailedAccountId, Amount=Amount, PaymentBed=PaymentBed, PaymentBes=PaymentBes, ComerBId=ComerBId, Description=Description, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=IsAutoRejDoc,IsBeginningBalance= IsBeginningBalance }, Id);
             }
         }
 

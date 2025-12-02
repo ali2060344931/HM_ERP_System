@@ -50,8 +50,12 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         {
 
 
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
+            txtDateEnd.Value = DateTime.Now;
+
             txtDueDate.Value = DateTime.Now;
             txtIssueDate.Value = DateTime.Now;
+           
             PublicClass.SettingGridEX(dgvList, Name);
             PublicClass.SettingGridEX(dgvListChequeStatus);
 
@@ -117,7 +121,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                         join chst in db.ChequeStatusTypes
                         on chsLeft.StatusCodeId equals chst.Id /*into chstGroup*/
 
-                        where (!FilterByChequeType || (ch.ChequeTypeId == ChequeTypeId && chsLeft.StatusCodeId == 6)) && string.Compare(ch.DueDate, txtDateStart.Text) >= 0 && string.Compare(ch.DueDate, txtDateEnd.Text) <= 0
+                        where (!FilterByChequeType || (ch.ChequeTypeId == ChequeTypeId && chsLeft.StatusCodeId == 6)) && string.Compare(ch.IssueDate, txtDateStart.Text) >= 0 && string.Compare(ch.IssueDate, txtDateEnd.Text) <= 0
 
                         select new
                         {

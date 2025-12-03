@@ -370,7 +370,6 @@
             // btnAddNewCustomers
             // 
             this.btnAddNewCustomers.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddNewCustomers.AutoExpandOnClick = true;
             this.btnAddNewCustomers.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewCustomers.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewCustomers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Bottom;
@@ -390,9 +389,11 @@
             this.btnAddNewCustomers.TabIndex = 105;
             this.btnAddNewCustomers.TabStop = false;
             this.btnAddNewCustomers.Tooltip = "ثبت آیتم جدید";
+            this.btnAddNewCustomers.Click += new System.EventHandler(this.btnAddNewCustomers_Click);
             // 
             // btnAddCustomers
             // 
+            this.btnAddCustomers.Enabled = false;
             this.btnAddCustomers.GlobalItem = false;
             this.btnAddCustomers.Name = "btnAddCustomers";
             this.btnAddCustomers.Text = "اشخاص حقیقی/حقوقی";
@@ -400,6 +401,7 @@
             // 
             // btnContraAccountsB
             // 
+            this.btnContraAccountsB.Enabled = false;
             this.btnContraAccountsB.GlobalItem = false;
             this.btnContraAccountsB.Name = "btnContraAccountsB";
             this.btnContraAccountsB.Text = "بانک";
@@ -407,6 +409,7 @@
             // 
             // btnContraAccountsC
             // 
+            this.btnContraAccountsC.Enabled = false;
             this.btnContraAccountsC.GlobalItem = false;
             this.btnContraAccountsC.Name = "btnContraAccountsC";
             this.btnContraAccountsC.Text = "صندوق";
@@ -414,6 +417,7 @@
             // 
             // btnOtherAccounts
             // 
+            this.btnOtherAccounts.Enabled = false;
             this.btnOtherAccounts.GlobalItem = false;
             this.btnOtherAccounts.Name = "btnOtherAccounts";
             this.btnOtherAccounts.Text = "ســــــایر";
@@ -445,6 +449,7 @@
             // 
             this.rdbCash.AutoSize = true;
             this.rdbCash.Checked = true;
+            this.rdbCash.Enabled = false;
             this.rdbCash.Location = new System.Drawing.Point(267, 157);
             this.rdbCash.Name = "rdbCash";
             this.rdbCash.Size = new System.Drawing.Size(50, 26);
@@ -457,6 +462,7 @@
             // rdbCheque
             // 
             this.rdbCheque.AutoSize = true;
+            this.rdbCheque.Enabled = false;
             this.rdbCheque.Location = new System.Drawing.Point(185, 157);
             this.rdbCheque.Name = "rdbCheque";
             this.rdbCheque.Size = new System.Drawing.Size(58, 26);

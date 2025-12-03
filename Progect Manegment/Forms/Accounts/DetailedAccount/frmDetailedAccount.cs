@@ -102,15 +102,12 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                 dgvList.RootTable.Columns["SelectAccount"].Visible = true;
             else
                 dgvList.RootTable.Columns["SelectAccount"].Visible = false;
-
         }
         System.Data.DataTable dt_Banck;
         private void FillcmbBanck()
         {
             using (var db = new DBcontextModel())
             {
-
-
                 var q = from da in db.DetailedAccounts
 
                         join cu in db.Customers
@@ -147,6 +144,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                             join tc in db.TypeCustomers
                             on cu.id_TypeCustomer equals tc.Id
 
+                            where cu.id_TypeCustomer==1 || cu.id_TypeCustomer == 2
                             select new
                             {
                                 cu.Id,
@@ -158,7 +156,6 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
 
                     dt_Customers = new System.Data.DataTable();
                     dt_Customers = PublicClass.AddEntityTableToDataTable(q.ToList());
-
                 }
             }
             catch (Exception er)
@@ -166,6 +163,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                 PublicClass.ShowErrorMessage(er);
             }
         }
+
         System.Data.DataTable dt_SpecificAccount;
         private void FillcmbSpecificAccount()
         {
@@ -180,10 +178,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                         on ta.Id_GroupAccount equals ga.Id
 
                         where (Code != 0 ? sa.Id == 1 || sa.Id == 2 : sa.Id > 0) &&
-                (
-                    chkShowAllAccounts.Checked || (sa.Cod == 10302 || sa.Cod == 40101 || sa.Cod == 10301 || sa.Cod == 30101)
-                )
-
+                (chkShowAllAccounts.Checked || (sa.Cod == 10302 || sa.Cod == 40101 || sa.Cod == 10301 || sa.Cod == 30101))
                         select new
                         {
                             sa.Id,
@@ -195,7 +190,6 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                 cmbSpecificAccount.DataSource = q.ToList();
                 dt_SpecificAccount = new System.Data.DataTable();
                 dt_SpecificAccount = PublicClass.AddEntityTableToDataTable(q.ToList());
-
             }
         }
 
@@ -307,6 +301,25 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                 SpecificAccountId = Convert.ToInt32(cmbSpecificAccount.Value);
                 lblCodeAccount.Text = PublicClass.CeratDetailedAccountCode(SpecificAccountId).ToString();
                 FilldgvList();
+                using (var db = new DBcontextModel())
+                {
+                    var q=db.SpecificAccounts.Where(c=>c.Id== SpecificAccountId).First();
+                    
+                    if (!chkShowAllAccounts.Checked)
+                    {
+                        if (q.Cod == 10301 || q.Cod == 30101)
+                            rdbCash.Checked = true;
+                        else if (q.Cod == 10302 || q.Cod == 40101)
+                        {
+                            rdbCheque.Checked = true;
+                        }
+                    }
+
+
+                }
+
+
+
             }
             catch (Exception)
             {
@@ -344,11 +357,11 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                 //بررسی اطلاعات چک
                 if (rdbCheque.Checked)
                 {
-                    if (txtAmount.Text=="")
+                    if (txtAmount.Text == "")
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T081); return;
                     }
-                    if (txtChequeNumber.Text=="")
+                    if (txtChequeNumber.Text == "")
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T138); return;
                     }
@@ -356,15 +369,15 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T020); return;
                     }
-                    if (cmbAccount.SelectedIndex==-1)
+                    if (cmbAccount.SelectedIndex == -1)
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T156); return;
                     }
-                    if (txtChequeOwner.Text=="")
+                    if (txtChequeOwner.Text == "")
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T137); return;
                     }
-                    if (txtDescriptionCh.Text=="")
+                    if (txtDescriptionCh.Text == "")
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T143); return;
                     }
@@ -419,70 +432,56 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                                             if (Convert.ToInt32(cmbNatureAccounts.Value) == 1)
                                             {//چک های دریافتنی
 
-                                                    //Series++;
-                                                    //اسناد دریافتنی در جریان وصول
-                                                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10302).First().Id;
-                                                    int DetailedAccountid = 0;
-                                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == CustomersId);
-                                                    if (serch1.Count() == 0)
+                                                //Series++;
+                                                //اسناد دریافتنی در جریان وصول
+                                                int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10302).First().Id;
+                                                int DetailedAccountid = 0;
+                                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == CustomersId);
+                                                if (serch1.Count() == 0)
                                                     DetailedAccountid = PublicClass.AddToDetailedAccounts(SpecificAccountId, CustomersId);
-                                                    else
+                                                else
                                                     DetailedAccountid = serch1.First().Id;
-                                                    //==================
+                                                //==================
 
-                                                    Amount = txtAmount.Value;
-                                                    //-------ثبت سند حسابداری در دیتابیس--------
-                                                    int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountid, Amount, TransactionsCode == 2 ? 0 : Amount, TransactionsCode == 2 ? Amount : 0, 0, txtDescriptionCh.Text, Series, false,true);
+                                                Amount = txtAmount.Value;
+                                                //-------ثبت سند حسابداری در دیتابیس--------
+                                                int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountid, Amount, TransactionsCode == 2 ? 0 : Amount, TransactionsCode == 2 ? Amount : 0, 0, txtDescriptionCh.Text, Series, false, true);
 
-                                                    int ChequeTypeId_ = 0;
-                                                    if (TransactionsCode == 4)
-                                                        ChequeTypeId_ = 1;
-                                                    else
-                                                        ChequeTypeId_ = 2;
-                                                    //-------ثبت چک در دیتابیس--------
-                                                    var ChequeSave = new Repository<Entity.Accounts.Cheque.Cheque>(db);
-                                                    int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = 0, ChequeTypeId = ChequeTypeId_, ChequeNumber = txtChequeNumber.Text, Amount = Amount, DueDate = txtDueDate.Text, IssueDate = PersianDate.NowPersianDate, AccountId = AccountId, Payer_Payee_AccId = DetailedAccountid, ChequeOwner = txtChequeOwner.Text, Description = txtDescriptionCh.Text, CurrentStatusID = 0 }, 0);
-
-                                                    //-------ثبت چک در دیتابیس--------
-                                                    var ADR = new Repository<ChequeStatus>(db);
-                                                    int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId = ChequeId, StatusDate = TransactionDate, StatusCodeId = 2, TransactionId = TransactionId }, 0);
-
-                                                    //-------ثبت چک در دیتابیس--------
-                                                    var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
-                                                    ch.CurrentStatusID = CurrentStatusID;
+                                                int ChequeTypeId_ = 0;
+                                                if (TransactionsCode == 4)
+                                                    ChequeTypeId_ = 1;
+                                                else
+                                                    ChequeTypeId_ = 2;
+                                                //ثبت چک
+                                                PublicClass.AddCheuqeToDatabase(db, 0, ChequeTypeId_, txtChequeNumber.Text, Amount, txtDueDate.Text, AccountId, DetailedAccountid, txtChequeOwner.Text, txtDescriptionCh.Text, TransactionId);
 
                                             }
                                             else
                                             {//چک های پرداختنی
-                                                    //Series++;
-                                                    //حساب ها و اسناد پرداختنی بلند مدت
-                                                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 40101).First().Id;
+                                             //Series++;
+                                             //حساب ها و اسناد پرداختنی بلند مدت
+                                                int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 40101).First().Id;
 
-                                                    int DetailedAccountid = 0;
-                                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == CustomersId);
-                                                    if (serch1.Count() == 0)
+                                                int DetailedAccountid = 0;
+                                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == CustomersId);
+                                                if (serch1.Count() == 0)
                                                     DetailedAccountid = PublicClass.AddToDetailedAccounts(SpecificAccountId, CustomersId);
-                                                    else
-                                                        DetailedAccountid = serch1.First().Id;
+                                                else
+                                                    DetailedAccountid = serch1.First().Id;
 
-                                                    Amount = txtAmount.Value;
+                                                Amount = txtAmount.Value;
 
-                                                    int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountid, Amount, TransactionsCode == 2 ? 0 : Amount, TransactionsCode == 2 ? Amount : 0, 0, txtDescriptionCh.Text, Series, false,true);
+                                                int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountid, Amount, TransactionsCode == 2 ? 0 : Amount, TransactionsCode == 2 ? Amount : 0, 0, txtDescriptionCh.Text, Series, false, true);
 
-                                                    int ChequeTypeId_ = 0;
-                                                    if (TransactionsCode == 4)
-                                                        ChequeTypeId_ = 1;
-                                                    else
-                                                        ChequeTypeId_ = 2;
+                                                int ChequeTypeId_ = 0;
+                                                if (TransactionsCode == 4)
+                                                    ChequeTypeId_ = 1;
+                                                else
+                                                    ChequeTypeId_ = 2;
 
-                                                    var ChequeSave = new Repository<Entity.Accounts.Cheque.Cheque>(db);
-                                                    int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = 0, ChequeTypeId = ChequeTypeId_, ChequeNumber = txtChequeNumber.Text, Amount = Amount, DueDate = txtDueDate.Text, IssueDate = PersianDate.NowPersianDate, AccountId = AccountId, Payer_Payee_AccId = DetailedAccountid, ChequeOwner = txtChequeOwner.Text, Description = txtDescriptionCh.Text, CurrentStatusID = 0 }, 0);
+                                                //ثبت چک
+                                                PublicClass.AddCheuqeToDatabase(db, 0, ChequeTypeId_, txtChequeNumber.Text, Amount, txtDueDate.Text, AccountId, DetailedAccountid, txtChequeOwner.Text, txtDescriptionCh.Text, TransactionId);
 
-                                                    var ADR = new Repository<ChequeStatus>(db);
-                                                    int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId = ChequeId, StatusDate = TransactionDate, StatusCodeId = 1, TransactionId = TransactionId }, 0);
-
-                                                    var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
-                                                    ch.CurrentStatusID = CurrentStatusID;
                                             }
                                         }
 
@@ -556,18 +555,8 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                                                             ChequeTypeId_ = 1;
                                                         else
                                                             ChequeTypeId_ = 2;
-                                                        //-------ثبت چک در دیتابیس--------
-                                                        var ChequeSave = new Repository<Entity.Accounts.Cheque.Cheque>(db);
-                                                        int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = 0, ChequeTypeId = ChequeTypeId_, ChequeNumber = txtChequeNumber.Text, Amount = Amount, DueDate = txtDueDate.Text, IssueDate = PersianDate.NowPersianDate, AccountId = AccountId, Payer_Payee_AccId = DetailedAccountid, ChequeOwner = txtChequeOwner.Text, Description = txtDescriptionCh.Text, CurrentStatusID = 0 }, 0);
-
-                                                        //-------ثبت چک در دیتابیس--------
-                                                        var ADR = new Repository<ChequeStatus>(db);
-                                                        int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId = ChequeId, StatusDate = TransactionDate, StatusCodeId = 2, TransactionId = TransactionId }, 0);
-
-                                                        //-------ثبت چک در دیتابیس--------
-                                                        var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
-                                                        ch.CurrentStatusID = CurrentStatusID;
-
+                                                        //ثبت چک
+                                                        PublicClass.AddCheuqeToDatabase(db, 0, ChequeTypeId_, txtChequeNumber.Text, Amount, txtDueDate.Text, AccountId, DetailedAccountid, txtChequeOwner.Text, txtDescriptionCh.Text, TransactionId);
                                                     }
                                                     else
                                                     {//چک های پرداختنی
@@ -591,15 +580,8 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                                                             ChequeTypeId_ = 1;
                                                         else
                                                             ChequeTypeId_ = 2;
+                                                        PublicClass.AddCheuqeToDatabase(db, 0, ChequeTypeId_, txtChequeNumber.Text, Amount, txtDueDate.Text, AccountId, DetailedAccountid, txtChequeOwner.Text, txtDescriptionCh.Text, TransactionId);
 
-                                                        var ChequeSave = new Repository<Entity.Accounts.Cheque.Cheque>(db);
-                                                        int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = 0, ChequeTypeId = ChequeTypeId_, ChequeNumber = txtChequeNumber.Text, Amount = Amount, DueDate = txtDueDate.Text, IssueDate = PersianDate.NowPersianDate, AccountId = AccountId, Payer_Payee_AccId = DetailedAccountid, ChequeOwner = txtChequeOwner.Text, Description = txtDescriptionCh.Text, CurrentStatusID = 0 }, 0);
-
-                                                        var ADR = new Repository<ChequeStatus>(db);
-                                                        int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId = ChequeId, StatusDate = TransactionDate, StatusCodeId = 1, TransactionId = TransactionId }, 0);
-
-                                                        var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
-                                                        ch.CurrentStatusID = CurrentStatusID;
                                                     }
                                                 }
 
@@ -943,6 +925,15 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
         private void chkShowAllAccounts_CheckedChanged(object sender, EventArgs e)
         {
             FillcmbSpecificAccount();
+            rdbCash.Enabled= chkShowAllAccounts.Checked;
+            rdbCheque.Enabled= chkShowAllAccounts.Checked;
+        }
+
+        private void btnAddNewCustomers_Click(object sender, EventArgs e)
+        {
+            frmCustomer f = new frmCustomer(this);
+            f.ShowDialog();
+            FillcmbCustomers();
         }
     }
 }

@@ -1079,8 +1079,9 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                                         }
                                     }
                                 }
+                                //چک های پرداختنی
                                 else
-                                {//چک های پرداختنی
+                                {
                                     if (dt_Cheque1 != null)
                                     {
                                         foreach (DataRow r in dt_Cheque1.Rows)
@@ -1106,7 +1107,9 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                                                 ChequeTypeId_ = 1;
                                             else
                                                 ChequeTypeId_ = 2;
+                                            PublicClass.AddCheuqeToDatabase(db, ListId, ChequeTypeId_, r["ChequeNumber"].ToString(), Amount, r["DueDate"].ToString(), Convert.ToInt32(r["AccountId"]), DetailedAccountId, r["ChequeOwner"].ToString(), r["Description"].ToString(), TransactionId);
 
+                                            /*
                                             var ChequeSave = new Repository<Entity.Accounts.Cheque.Cheque>(db);
                                             int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId = ChequeTypeId_, ChequeNumber = r["ChequeNumber"].ToString(), Amount = Amount, DueDate = r["DueDate"].ToString(), IssueDate = PersianDate.NowPersianDate, AccountId = Convert.ToInt32(r["AccountId"]), Payer_Payee_AccId = DetailedAccountId, ChequeOwner = r["ChequeOwner"].ToString(), Description = r["Description"].ToString(), CurrentStatusID = 0 }, ListId);
 
@@ -1116,6 +1119,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                                             var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
                                             ch.CurrentStatusID = CurrentStatusID;
+                                            */
 
                                         }
                                     }

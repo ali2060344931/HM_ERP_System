@@ -12,6 +12,7 @@ using GridExEx;
 
 using HM_ERP_System;
 using HM_ERP_System.Class_General;
+using HM_ERP_System.Entity.Accounts.Cheque;
 using HM_ERP_System.Entity.Accounts.DetailedAccount;
 using HM_ERP_System.Entity.Accounts.SpecificAccount;
 using HM_ERP_System.Entity.Accounts.Transaction;
@@ -29,6 +30,7 @@ using Janus.Windows.GridEX.Export;
 using Microsoft.Office.Interop.Excel;
 
 using NPOI.HSSF.UserModel;
+using NPOI.SS.Formula.Functions;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 
@@ -84,12 +86,12 @@ namespace MyClass
 
         public static void SetUserId()
         {
-            UserId =HM_ERP_System.Properties.Settings.Default.UsersId;
+            UserId = HM_ERP_System.Properties.Settings.Default.UsersId;
         }
 
         public static void SetFinancialYear()
         {
-            FinancialYear =HM_ERP_System.Properties.Settings.Default.FinancialYear;
+            FinancialYear = HM_ERP_System.Properties.Settings.Default.FinancialYear;
             //FinancialYear =db_.CustomerRoles.Where(c => c.Id==UserId).First().FinancialYearId.ToString();
         }
         //-------------------------------------------------------
@@ -210,7 +212,7 @@ namespace MyClass
 
         public static DialogResult ErrorMessegYesNo(string textError)
         {
-            if (MessageBoxFarsi.Show(textError, ResourceCode.ProgName, MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Warning, MessageBoxFarsiDefaultButton.Button2)==DialogResult.Yes)
+            if (MessageBoxFarsi.Show(textError, ResourceCode.ProgName, MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Warning, MessageBoxFarsiDefaultButton.Button2) == DialogResult.Yes)
                 return DialogResult.Yes;
             else
                 return DialogResult.No;
@@ -407,12 +409,12 @@ namespace MyClass
         {
             if (Cod == "1")//جهت ثبت
             {
-                DesktopAlert.Show(MassegText=="" ? "اطلاعات مورد نظر با موفقیت ثبت گردید" : MassegText, "10003", eSymbolSet.Awesome, Color.Empty, eDesktopAlertColor.Green, eAlertPosition.BottomRight, 3, 0, null);
+                DesktopAlert.Show(MassegText == "" ? "اطلاعات مورد نظر با موفقیت ثبت گردید" : MassegText, "10003", eSymbolSet.Awesome, Color.Empty, eDesktopAlertColor.Green, eAlertPosition.BottomRight, 3, 0, null);
             }
             else if (Cod == "2")//جهت ثبت
             {
 
-                DesktopAlert.Show(MassegText=="" ? "اطلاعات مورد نظر با موفقیت حذف گردید" : MassegText, "10008", eSymbolSet.Awesome, Color.Empty, eDesktopAlertColor.Red, eAlertPosition.BottomRight, 3, 0, null);
+                DesktopAlert.Show(MassegText == "" ? "اطلاعات مورد نظر با موفقیت حذف گردید" : MassegText, "10008", eSymbolSet.Awesome, Color.Empty, eDesktopAlertColor.Red, eAlertPosition.BottomRight, 3, 0, null);
 
                 //DesktopAlert.Show("اطلاعات مورد نظر با موفقیت حذف گردید", "10008", eSymbolSet.Awesome, Color.Empty, eDesktopAlertColor.Red, eAlertPosition.BottomRight, 3, 0, null);
             }
@@ -455,7 +457,7 @@ namespace MyClass
                     case 1:
                         //frmBlacList f = new frmBlacList(null);
                         //f.ShowDialog();
-                        Id=(int)id;
+                        Id = (int)id;
 
                         break;
                 }
@@ -504,8 +506,8 @@ namespace MyClass
         {
             using (var db = new DBcontextModel())
             {
-                var cr = db.Cars.Where(c => c.Id==CarId).First();
-                cr.StatusCarToComers=Satatus;
+                var cr = db.Cars.Where(c => c.Id == CarId).First();
+                cr.StatusCarToComers = Satatus;
                 db.SaveChanges();
             }
         }
@@ -521,8 +523,8 @@ namespace MyClass
             {
                 Filter = "Excel File (*.xls)|*.xls"
                 ,
-                Title="ذخیر لیست به اکسل",
-                FileName="Comers List_" + DateTime.Now.ToString("yyyyMMdd_HHmm")
+                Title = "ذخیر لیست به اکسل",
+                FileName = "Comers List_" + DateTime.Now.ToString("yyyyMMdd_HHmm")
             };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -745,7 +747,7 @@ namespace MyClass
                              $" Form Name: {className} \n " +
                              $" Method Name: {methodName} \n " +
                              $" Error Line Number: {lineNumber} \n " +
-                             $" Error Text: {errorText} \n"+
+                             $" Error Text: {errorText} \n" +
                              " ______________________________________________________ \n\n";
             // 3. نمایش و کپی کردن
             Clipboard.SetText(ErrText);
@@ -811,7 +813,7 @@ namespace MyClass
                              $" Form Name: {className} \n " +
                              $" Method Name: {methodName} \n " +
                              $" Error Line Number: {lineNumber} \n " +
-                             $" Error Text: {errorText} \n"+
+                             $" Error Text: {errorText} \n" +
                              " ______________________________________________________ \n\n";
             // 3. نمایش و کپی کردن
             Clipboard.SetText(ErrText);
@@ -831,7 +833,7 @@ namespace MyClass
         {
             try
             {
-                if (dataTable!=null)
+                if (dataTable != null)
                 {
                     int id = SearchToCmb(multiColumnCombo, dataTable);
                     if (id != 0)
@@ -912,20 +914,20 @@ namespace MyClass
             {
                 using (var db = new DBcontextModel())
                 {
-                    if (db.Peremissions.Count()==0) return false;
+                    if (db.Peremissions.Count() == 0) return false;
 
-                    var rlId = db.CustomerRoles.Where(c => c.Id==UserId).First().RoleId;
+                    var rlId = db.CustomerRoles.Where(c => c.Id == UserId).First().RoleId;
 
-                    var perId = db.Peremissions.Where(c => c.NodeName==ControlName).First().Id;
+                    var perId = db.Peremissions.Where(c => c.NodeName == ControlName).First().Id;
 
-                    var q = db.RolePermissiones.Where(c => c.RoleId==rlId && c.PermissionId==perId).First();
+                    var q = db.RolePermissiones.Where(c => c.RoleId == rlId && c.PermissionId == perId).First();
 
 
                     if (q.status)
                         return q.status;
                     else
                     {
-                        if (mode==0)
+                        if (mode == 0)
                             return q.status;
                         else
                         {
@@ -967,113 +969,113 @@ namespace MyClass
                 double Bed = 0;
                 double Bes = 0;
 
-                if (TransactionTypeId==1)//درآمد
-                    SpecificAccountId_=db.SpecificAccounts.Where(c => c.Cod==10301).First().Id;//بدهکاران تجاری، خریداران
+                if (TransactionTypeId == 1)//درآمد
+                    SpecificAccountId_ = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;//بدهکاران تجاری، خریداران
                 else//فروش
-                    SpecificAccountId_=db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجارى ،فروشندگان
+                    SpecificAccountId_ = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id;//بستانکاران تجارى ،فروشندگان
 
                 int DetailedAccountFromId_ = 0;
                 {//بدهکاران/بستانکاران تجاری
 
 
-                    if (TransactionTypeId==1)
+                    if (TransactionTypeId == 1)
                     {
-                        Bed=TotlAmount +TaxAmount;
-                        Bes=0;
+                        Bed = TotlAmount + TaxAmount;
+                        Bes = 0;
                     }
                     else
                     {
-                        Bed=0;
-                        Bes=TotlAmount +TaxAmount;
+                        Bed = 0;
+                        Bes = TotlAmount + TaxAmount;
                     }
 
 
                     //حساب تفصیلی
-                    var da = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId_ && c.CustomerId==DetailedAccountFromId);
+                    var da = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId_ && c.CustomerId == DetailedAccountFromId);
 
-                    if (da.Count()!=0)
-                        DetailedAccountFromId_=da.First().Id;
+                    if (da.Count() != 0)
+                        DetailedAccountFromId_ = da.First().Id;
                     else
                     {
                         int CodeAccount_ = CeratDetailedAccountCode(SpecificAccountId_);
 
                         var insert = new Repository<DetailedAccount>(db);
 
-                        DetailedAccountFromId_= insert.SaveOrUpdateRefId(new DetailedAccount { Id = 0, SpecificAccountId=SpecificAccountId_, CustomerId=DetailedAccountFromId, CodeAccount=CodeAccount_ }, 0);
+                        DetailedAccountFromId_ = insert.SaveOrUpdateRefId(new DetailedAccount { Id = 0, SpecificAccountId = SpecificAccountId_, CustomerId = DetailedAccountFromId, CodeAccount = CodeAccount_ }, 0);
                     }
 
                     var userRepo = new Repository<Transaction>(db);
-                    userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountId_, DetailedAccountId=DetailedAccountFromId_, Amount=TotlAmount, PaymentBed=TransactionTypeId==1 ? TotlAmount +TaxAmount : 0, PaymentBes=TransactionTypeId==1 ? 0 : TotlAmount +TaxAmount, ComerBId=ComerBId, Description=Description, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=true }, ListId);
+                    userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear = FinancialYear, TransactionCode = TransactionCode, TransactionDate = TransactionDate, TransactionTypeId = TransactionTypeId, SpecificAccountId = SpecificAccountId_, DetailedAccountId = DetailedAccountFromId_, Amount = TotlAmount, PaymentBed = TransactionTypeId == 1 ? TotlAmount + TaxAmount : 0, PaymentBes = TransactionTypeId == 1 ? 0 : TotlAmount + TaxAmount, ComerBId = ComerBId, Description = Description, UserId = UserId, Series = Series, DateTime = DateTime.Now, FinalRegistry = false, Status = false, IsAutoRejDoc = true }, ListId);
                 }
 
                 //مالیات
-                if (TaxAmount!=0)
+                if (TaxAmount != 0)
                 {
                     Series++;
                     int cuId_ = 0;
                     int SpecificAccountTaxId = 0;
-                    if (TransactionTypeId==1)//درآمد
+                    if (TransactionTypeId == 1)//درآمد
                     {
-                        SpecificAccountTaxId=db.SpecificAccounts.Where(c => c.Cod==10406).First().Id;
-                        cuId_=db.Customers.Where(c => c.SecretCode==1).First().Id;
+                        SpecificAccountTaxId = db.SpecificAccounts.Where(c => c.Cod == 10406).First().Id;
+                        cuId_ = db.Customers.Where(c => c.SecretCode == 1).First().Id;
                     }
                     else//هزینه
                     {
-                        SpecificAccountTaxId=db.SpecificAccounts.Where(c => c.Cod==30602).First().Id;
-                        cuId_=db.Customers.Where(c => c.SecretCode==2).First().Id;
+                        SpecificAccountTaxId = db.SpecificAccounts.Where(c => c.Cod == 30602).First().Id;
+                        cuId_ = db.Customers.Where(c => c.SecretCode == 2).First().Id;
                     }
 
-                    DetailedAccountFromId_ = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountTaxId && c.CustomerId==cuId_).First().Id;
+                    DetailedAccountFromId_ = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountTaxId && c.CustomerId == cuId_).First().Id;
 
                     var userRepo = new Repository<Transaction>(db);
-                    userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountTaxId, DetailedAccountId=DetailedAccountFromId_, Amount=TotlAmount, PaymentBed=TransactionTypeId==1 ? 0 : TaxAmount, PaymentBes=TransactionTypeId==1 ? TaxAmount : 0, ComerBId=ComerBId, Description=Description, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=true }, ListId);
+                    userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear = FinancialYear, TransactionCode = TransactionCode, TransactionDate = TransactionDate, TransactionTypeId = TransactionTypeId, SpecificAccountId = SpecificAccountTaxId, DetailedAccountId = DetailedAccountFromId_, Amount = TotlAmount, PaymentBed = TransactionTypeId == 1 ? 0 : TaxAmount, PaymentBes = TransactionTypeId == 1 ? TaxAmount : 0, ComerBId = ComerBId, Description = Description, UserId = UserId, Series = Series, DateTime = DateTime.Now, FinalRegistry = false, Status = false, IsAutoRejDoc = true }, ListId);
                 }
 
 
                 {//   درآمد/هزینه
                     Series++;
 
-                    var da = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==DetailedAccountFromId);
+                    var da = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == DetailedAccountFromId);
 
-                    if (da.Count()!=0)
-                        DetailedAccountFromId_=da.First().Id;
+                    if (da.Count() != 0)
+                        DetailedAccountFromId_ = da.First().Id;
                     else
                     {
                         int CodeAccount_ = CeratDetailedAccountCode(SpecificAccountId);
 
                         var insert = new Repository<DetailedAccount>(db);
 
-                        DetailedAccountFromId_= insert.SaveOrUpdateRefId(new DetailedAccount { Id = 0, SpecificAccountId=SpecificAccountId, CustomerId=DetailedAccountFromId, CodeAccount=CodeAccount_ }, 0);
+                        DetailedAccountFromId_ = insert.SaveOrUpdateRefId(new DetailedAccount { Id = 0, SpecificAccountId = SpecificAccountId, CustomerId = DetailedAccountFromId, CodeAccount = CodeAccount_ }, 0);
                     }
 
 
 
                     var userRepo = new Repository<Transaction>(db);
-                    userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountId, DetailedAccountId=DetailedAccountFromId_, Amount=TotlAmount, PaymentBed=TransactionTypeId==1 ? 0 : TotlAmount, PaymentBes=TransactionTypeId==1 ? TotlAmount : 0, ComerBId=ComerBId, Description=Description, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=true }, ListId);
+                    userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear = FinancialYear, TransactionCode = TransactionCode, TransactionDate = TransactionDate, TransactionTypeId = TransactionTypeId, SpecificAccountId = SpecificAccountId, DetailedAccountId = DetailedAccountFromId_, Amount = TotlAmount, PaymentBed = TransactionTypeId == 1 ? 0 : TotlAmount, PaymentBes = TransactionTypeId == 1 ? TotlAmount : 0, ComerBId = ComerBId, Description = Description, UserId = UserId, Series = Series, DateTime = DateTime.Now, FinalRegistry = false, Status = false, IsAutoRejDoc = true }, ListId);
                 }
 
-                if (PayAmount!=0)
+                if (PayAmount != 0)
                 {
                     {//بانک
                         Series++;
                         int DetailedAccountToId_ = 0;
-                        int SpecificAccountBanckId_ = db.SpecificAccounts.Where(c => c.Cod==10102).First().Id;
+                        int SpecificAccountBanckId_ = db.SpecificAccounts.Where(c => c.Cod == 10102).First().Id;
 
-                        var da = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountBanckId_ && c.CustomerId==DetailedAccountToId);
+                        var da = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountBanckId_ && c.CustomerId == DetailedAccountToId);
 
-                        if (da.Count()!=0)
-                            DetailedAccountToId_=da.First().Id;
+                        if (da.Count() != 0)
+                            DetailedAccountToId_ = da.First().Id;
                         else
                         {
                             int CodeAccount_ = CeratDetailedAccountCode(SpecificAccountBanckId_);
 
                             var insert = new Repository<DetailedAccount>(db);
 
-                            DetailedAccountToId_= insert.SaveOrUpdateRefId(new DetailedAccount { Id = 0, SpecificAccountId=SpecificAccountBanckId_, CustomerId=DetailedAccountToId, CodeAccount=CodeAccount_ }, 0);
+                            DetailedAccountToId_ = insert.SaveOrUpdateRefId(new DetailedAccount { Id = 0, SpecificAccountId = SpecificAccountBanckId_, CustomerId = DetailedAccountToId, CodeAccount = CodeAccount_ }, 0);
                         }
 
                         var userRepo = new Repository<Transaction>(db);
-                        userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountBanckId_, DetailedAccountId=DetailedAccountToId_, Amount=TotlAmount, PaymentBed=TransactionTypeId==1 ? PayAmount : 0, PaymentBes=TransactionTypeId==1 ? 0 : PayAmount, ComerBId=ComerBId, Description=Description, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=true }, ListId);
+                        userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear = FinancialYear, TransactionCode = TransactionCode, TransactionDate = TransactionDate, TransactionTypeId = TransactionTypeId, SpecificAccountId = SpecificAccountBanckId_, DetailedAccountId = DetailedAccountToId_, Amount = TotlAmount, PaymentBed = TransactionTypeId == 1 ? PayAmount : 0, PaymentBes = TransactionTypeId == 1 ? 0 : PayAmount, ComerBId = ComerBId, Description = Description, UserId = UserId, Series = Series, DateTime = DateTime.Now, FinalRegistry = false, Status = false, IsAutoRejDoc = true }, ListId);
                     }
 
                     {//بدهکاران/بستانکاران تجاری
@@ -1082,7 +1084,7 @@ namespace MyClass
 
 
                         var userRepo = new Repository<Transaction>(db);
-                        userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountId_, DetailedAccountId=DetailedAccountFromId_, Amount=TotlAmount, PaymentBed=TransactionTypeId==1 ? 0 : PayAmount, PaymentBes=TransactionTypeId==1 ? PayAmount : 0, ComerBId=ComerBId, Description=Description, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=true }, ListId);
+                        userRepo.SaveOrUpdate(new Transaction { Id = ListId, FinancialYear = FinancialYear, TransactionCode = TransactionCode, TransactionDate = TransactionDate, TransactionTypeId = TransactionTypeId, SpecificAccountId = SpecificAccountId_, DetailedAccountId = DetailedAccountFromId_, Amount = TotlAmount, PaymentBed = TransactionTypeId == 1 ? 0 : PayAmount, PaymentBes = TransactionTypeId == 1 ? PayAmount : 0, ComerBId = ComerBId, Description = Description, UserId = UserId, Series = Series, DateTime = DateTime.Now, FinalRegistry = false, Status = false, IsAutoRejDoc = true }, ListId);
                     }
                 }
                 WindowAlart("1");
@@ -1098,16 +1100,16 @@ namespace MyClass
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.SpecificAccounts.Where(c => c.Id==SpecificAccountId_).First();
+                    var q = db.SpecificAccounts.Where(c => c.Id == SpecificAccountId_).First();
 
-                    var cd = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId_);
-                    if (cd.Count()==0)
+                    var cd = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId_);
+                    if (cd.Count() == 0)
                     {
-                        return q.Cod*10000+1;
+                        return q.Cod * 10000 + 1;
                     }
                     else
                     {
-                        return cd.Max(c => c.CodeAccount)+1;
+                        return cd.Max(c => c.CodeAccount) + 1;
                     }
                 }
             }
@@ -1130,7 +1132,7 @@ namespace MyClass
                 {
                     var q = db.Transactions;
                     string yare = PersianDate.NowPersianDate.Substring(0, 4);
-                    if (Code==0)
+                    if (Code == 0)
                     {
                         if (q.Count() == 0)
                         {
@@ -1187,7 +1189,7 @@ namespace MyClass
                         join tt in db.TransactionTypes
                         on tr.TransactionTypeId equals tt.Id
 
-                        where !tr.Status && (tr.TransactionTypeId==3 || tr.TransactionTypeId==4 || tr.TransactionTypeId==5) && string.Compare(tr.TransactionDate, DateStart) >= 0 && string.Compare(tr.TransactionDate, DateEnd) <= 0
+                        where !tr.Status && (tr.TransactionTypeId == 3 || tr.TransactionTypeId == 4 || tr.TransactionTypeId == 5) && string.Compare(tr.TransactionDate, DateStart) >= 0 && string.Compare(tr.TransactionDate, DateEnd) <= 0
 
                         orderby tr.Id
 
@@ -1199,7 +1201,7 @@ namespace MyClass
                             tr.TransactionDate,
                             TransactionType = tt.Name,
                             SpecificAccountName = sp.Name,
-                            ContraAccountName = (cu.Family+" "+cu.Name).Trim(),
+                            ContraAccountName = (cu.Family + " " + cu.Name).Trim(),
                             TotalAmount = tr.Amount,
                             tr.PaymentBed,
                             tr.PaymentBes,
@@ -2002,7 +2004,7 @@ namespace MyClass
                                 SpecificAccountName = sp.Name,
                                 ContraAccountName = (cu.Family + " " + cu.Name).Trim(),
                                 TotalAmount = tr.Amount,
-                                User = CuUser.Family + " "+ CuUser.Name,
+                                User = CuUser.Family + " " + CuUser.Name,
                                 tr.PaymentBed,
                                 tr.PaymentBes,
                                 tr.Description,
@@ -2034,11 +2036,11 @@ namespace MyClass
         {
             try
             {
-                GX.AllowRemoveColumns=InheritableBoolean.True;
-                GX.RowHeaders=InheritableBoolean.True;
-                GX.RowHeaderContent=RowHeaderContent.RowIndex;
+                GX.AllowRemoveColumns = InheritableBoolean.True;
+                GX.RowHeaders = InheritableBoolean.True;
+                GX.RowHeaderContent = RowHeaderContent.RowIndex;
                 GX.RootTable.RowHeaderWidth = 60;
-                GX.RootTable.RowHeaderFormatStyle.TextAlignment =TextAlignment.Center;
+                GX.RootTable.RowHeaderFormatStyle.TextAlignment = TextAlignment.Center;
 
                 GX.RootTable.Columns["Id"].Selectable = false;
                 GX.RootTable.Columns["Id"].ShowInFieldChooser = false;
@@ -2047,21 +2049,21 @@ namespace MyClass
                 {
                     GX.RootTable.Columns["Select"].Selectable = false;
                     GX.RootTable.Columns["Select"].ShowInFieldChooser = false;
-                    GX.RootTable.Columns["Select"].AllowRemove =InheritableBoolean.False;
+                    GX.RootTable.Columns["Select"].AllowRemove = InheritableBoolean.False;
                 }
 
                 if (GX.RootTable.Columns.Contains("Edit"))
                 {
                     GX.RootTable.Columns["Edit"].Selectable = false;
                     GX.RootTable.Columns["Edit"].ShowInFieldChooser = false;
-                    GX.RootTable.Columns["Edit"].AllowRemove =InheritableBoolean.False;
+                    GX.RootTable.Columns["Edit"].AllowRemove = InheritableBoolean.False;
                 }
 
                 if (GX.RootTable.Columns.Contains("Delete"))
                 {
                     GX.RootTable.Columns["Delete"].Selectable = false;
                     GX.RootTable.Columns["Delete"].ShowInFieldChooser = false;
-                    GX.RootTable.Columns["Delete"].AllowRemove =InheritableBoolean.False;
+                    GX.RootTable.Columns["Delete"].AllowRemove = InheritableBoolean.False;
                 }
 
                 if (GX.RootTable.Columns.Contains("Details"))
@@ -2071,16 +2073,16 @@ namespace MyClass
                     GX.RootTable.Columns["Details"].AllowRemove = InheritableBoolean.False;
                 }
 
-                GX.SaveSettings=true;
-                GX.SettingsKey=formName;
+                GX.SaveSettings = true;
+                GX.SettingsKey = formName;
 
                 foreach (GridEXColumn column in GX.RootTable.Columns)
                 {
-                    column.HeaderStyle.TextAlignment=TextAlignment.Center;
-                    if (column.Tag==null)
-                        column.CellStyle.TextAlignment=TextAlignment.Center;
+                    column.HeaderStyle.TextAlignment = TextAlignment.Center;
+                    if (column.Tag == null)
+                        column.CellStyle.TextAlignment = TextAlignment.Center;
                     else
-                        column.CellStyle.TextAlignment=TextAlignment.Near;
+                        column.CellStyle.TextAlignment = TextAlignment.Near;
 
                     //if (column.Tag==null)
                     //    column.CellStyle.TextAlignment=TextAlignment.Center;
@@ -2110,19 +2112,19 @@ namespace MyClass
                 {
                     double bed = 0;
                     double bes = 0;
-                    var q = db.Transactions.Where(c => c.SpecificAccountId==SpecificAccountId && !c.Status);
+                    var q = db.Transactions.Where(c => c.SpecificAccountId == SpecificAccountId && !c.Status);
 
-                    var NatureAccount_Id = db.GroupAccounts.Where(c => c.Id==db.TotalAccounts.Where(x => x.Id==db.SpecificAccounts.Where(z => z.Id==SpecificAccountId).FirstOrDefault().Id_TotalAccount).FirstOrDefault().Id_GroupAccount).First().IdMahiyat;
+                    var NatureAccount_Id = db.GroupAccounts.Where(c => c.Id == db.TotalAccounts.Where(x => x.Id == db.SpecificAccounts.Where(z => z.Id == SpecificAccountId).FirstOrDefault().Id_TotalAccount).FirstOrDefault().Id_GroupAccount).First().IdMahiyat;
 
-                    if (q.Count()!=0)
+                    if (q.Count() != 0)
                     {
-                        bed=q.Sum(c => c.PaymentBed);
+                        bed = q.Sum(c => c.PaymentBed);
                         bes = q.Sum(c => c.PaymentBes);
                     }
-                    if (NatureAccount_Id==2)
-                        return (bes-bed);
+                    if (NatureAccount_Id == 2)
+                        return (bes - bed);
                     else
-                        return (bed-bes);
+                        return (bed - bes);
                 }
             }
             catch (Exception er)
@@ -2146,28 +2148,28 @@ namespace MyClass
                     double bed = 0;
                     double bes = 0;
 
-                    var q = db.Transactions.Where(c => c.SpecificAccountId==SpecificAccountId && c.DetailedAccountId==DetailedAccountId && c.FinancialYear==FinancialYear && !c.Status);
+                    var q = db.Transactions.Where(c => c.SpecificAccountId == SpecificAccountId && c.DetailedAccountId == DetailedAccountId && c.FinancialYear == FinancialYear && !c.Status);
 
-                    var NatureAccount_Id = db.GroupAccounts.Where(c => c.Id==db.TotalAccounts.Where(x => x.Id==db.SpecificAccounts.Where(z => z.Id==SpecificAccountId).FirstOrDefault().Id_TotalAccount).FirstOrDefault().Id_GroupAccount).First().IdMahiyat;
+                    var NatureAccount_Id = db.GroupAccounts.Where(c => c.Id == db.TotalAccounts.Where(x => x.Id == db.SpecificAccounts.Where(z => z.Id == SpecificAccountId).FirstOrDefault().Id_TotalAccount).FirstOrDefault().Id_GroupAccount).First().IdMahiyat;
 
                     //مانده ابتدای دوره
-                    var BeginningBanace = db.DetailedAccounts.Where(c => c.Id==DetailedAccountId).First();
+                    var BeginningBanace = db.DetailedAccounts.Where(c => c.Id == DetailedAccountId).First();
 
                     //if (BeginningBanace.NatureAccountsId==2)
                     //    bes=BeginningBanace.BeginningBanace;
                     //else
                     //    bed=BeginningBanace.BeginningBanace;
 
-                    if (q.Count()!=0)
+                    if (q.Count() != 0)
                     {
                         bed += q.Sum(c => c.PaymentBed);
                         bes += q.Sum(c => c.PaymentBes);
                     }
 
-                    if (NatureAccount_Id==2)
-                        return (bes-bed);
+                    if (NatureAccount_Id == 2)
+                        return (bes - bed);
                     else
-                        return (bed-bes);
+                        return (bed - bes);
                 }
 
             }
@@ -2231,7 +2233,7 @@ namespace MyClass
                             let EndingBalance = DebitTurnover - CreditTurnover
 
                             // 5. فیلتر کردن تفصیلی‌های با مانده/گردش صفر
-                            where Math.Abs(EndingBalance) != 0 || Math.Abs(DebitTurnover) !=0  || Math.Abs(CreditTurnover) != 0
+                            where Math.Abs(EndingBalance) != 0 || Math.Abs(DebitTurnover) != 0 || Math.Abs(CreditTurnover) != 0
 
                             select new
                             {
@@ -2301,7 +2303,7 @@ namespace MyClass
                     }
 
                     var filteredTransactions = transactionsQuery;
-                    if (filteredTransactions.Count()==0)
+                    if (filteredTransactions.Count() == 0)
                     {
                         return null;
                     }
@@ -2367,7 +2369,7 @@ namespace MyClass
                                         Id = g.Key.Id,
                                         CustomerName = g.Key.Name,
                                         Code = g.Key.CodeAccount,
-                                        Name = g.Key.Family +" "+ g.Key.Name,
+                                        Name = g.Key.Family + " " + g.Key.Name,
                                         DebitTurnover = DebitTurnoverSumD,
                                         CreditTurnover = CreditTurnoverSumD,
                                         DebitBalance = EndingBalanceD > 0 ? EndingBalanceD : 0.0,
@@ -2439,7 +2441,7 @@ namespace MyClass
                     }
 
                     var filteredTransactions = transactionsQuery;
-                    if (filteredTransactions.Count()==0)
+                    if (filteredTransactions.Count() == 0)
                     {
                         return null;
                     }
@@ -2512,7 +2514,7 @@ namespace MyClass
                                         Id = g.Key.Id,
                                         CustomerName = g.Key.Name,
                                         Code = g.Key.CodeAccount,
-                                        Name = g.Key.Family +" "+ g.Key.Name,
+                                        Name = g.Key.Family + " " + g.Key.Name,
                                         DebitTurnover = DebitTurnoverSumD,
                                         CreditTurnover = CreditTurnoverSumD,
                                         DebitBalance = EndingBalanceD > 0 ? EndingBalanceD : 0.0,
@@ -2618,7 +2620,7 @@ namespace MyClass
                             let CreditTurnoverSum = g.SelectMany(x => x.trGroup)
                                                      .Sum(t => (double?)t.PaymentBes) ?? 0.0
                             let EndingBalance = DebitTurnoverSum - CreditTurnoverSum
-                            where Math.Abs(EndingBalance) !=0  || Math.Abs(DebitTurnoverSum) !=0 || Math.Abs(CreditTurnoverSum) !=0
+                            where Math.Abs(EndingBalance) != 0 || Math.Abs(DebitTurnoverSum) != 0 || Math.Abs(CreditTurnoverSum) != 0
 
                             select new
                             {
@@ -2668,7 +2670,7 @@ namespace MyClass
                 {
                     transactionsQuery = transactionsQuery.Where(t => t.TransactionCode <= TransactionCodeE.Value);
                 }
-                if (transactionsQuery.Count()==0) return null;
+                if (transactionsQuery.Count() == 0) return null;
                 var filteredTransactions = transactionsQuery;
 
                 var qCustomers = from da in db.DetailedAccounts
@@ -2681,7 +2683,7 @@ namespace MyClass
                                  join tr in filteredTransactions
                                  on da.Id equals tr.DetailedAccountId
                                  into trGroup
-                                 where ga.Id==1 ||  ga.Id==2 ||  ga.Id==3 ||  ga.Id==4 ||  ga.Id==5
+                                 where ga.Id == 1 || ga.Id == 2 || ga.Id == 3 || ga.Id == 4 || ga.Id == 5
 
                                  group new { da, trGroup, sa, ta, ga, na, cu } by cu.Id into g
 
@@ -3145,7 +3147,7 @@ namespace MyClass
 
                         let EndingBalance = DebitTurnover - CreditTurnover
 
-                        where Math.Abs(EndingBalance) !=0
+                        where Math.Abs(EndingBalance) != 0
 
                         select new
                         {
@@ -3153,7 +3155,7 @@ namespace MyClass
                             TName = ta.Name,
                             sName = sa.Name,
                             Id = da.Id,
-                            DName = cu.Family +" "+ cu.Name,
+                            DName = cu.Family + " " + cu.Name,
                             Code = da.CodeAccount,
                             DebitTurnover = DebitTurnover,
                             CreditTurnover = CreditTurnover,
@@ -3224,7 +3226,7 @@ namespace MyClass
                         let EndingBalance = BeginningBanaceAdjusted + DebitTurnoverSum - CreditTurnoverSum
 
                         // 8. شرط فیلتر نهایی (برای حذف مانده‌های صفر)
-                        where Math.Abs(EndingBalance) !=0 // استفاده از حد آستانه برای ایمنی
+                        where Math.Abs(EndingBalance) != 0 // استفاده از حد آستانه برای ایمنی
 
                         select new
                         {
@@ -3665,14 +3667,14 @@ namespace MyClass
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.BlacLists.Where(c => c.CustomerId==CustomerId && (c.status/*||c.NoSaveData*/));
-                    if (q.Count()!=0)
+                    var q = db.BlacLists.Where(c => c.CustomerId == CustomerId && (c.status/*||c.NoSaveData*/));
+                    if (q.Count() != 0)
                     {
-                        var cu = db.Customers.Where(c => c.Id==CustomerId).First();
+                        var cu = db.Customers.Where(c => c.Id == CustomerId).First();
 
-                        WindowAlartByText(eDesktopAlertColor.Red, cu.Name+" "+cu.Family +'\n'+ q.First().Description, "", 10, 1);
+                        WindowAlartByText(eDesktopAlertColor.Red, cu.Name + " " + cu.Family + '\n' + q.First().Description, "", 10, 1);
 
-                        return (q.First().status, q.First().NoSaveData, cu.Name+" "+cu.Family);
+                        return (q.First().status, q.First().NoSaveData, cu.Name + " " + cu.Family);
                     }
                     else
                         return (false, false, "");
@@ -3693,7 +3695,7 @@ namespace MyClass
             try
             {
                 DialogResult result = MessageBox.Show(ResourceCode.T100, "هشدار", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
-                if (result== DialogResult.Yes)
+                if (result == DialogResult.Yes)
                     return true;
                 else
                     return false;
@@ -3735,29 +3737,29 @@ namespace MyClass
                         int SpecificAccountId = 0;
                         int DetailedAccountId = 0;
                         int customertId = 0;
-                        var qcom = db.ComersBs.Where(c => c.Id==ComerBId).First();
+                        var qcom = db.ComersBs.Where(c => c.Id == ComerBId).First();
                         //var ADR = new Repository<Transaction>(db);
 
                         //AE سند طرف حساب کالا
                         //دریافت از صاحب کالا بابت حمل کالا.جزء درآمد می باشد
                         {
-                            if (qcom.AE!=0)
+                            if (qcom.AE != 0)
                             {
                                 //سند بد
                                 Series++;
                                 //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==10301).First().Id;//بدهکاران تجاری، خریداران
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;//بدهکاران تجاری، خریداران
 
                                 //حساب تفصیلی
-                                customertId = db.Customers.Where(c => c.Id==db.ComersBs.Where(x => x.Id==ComerBId).FirstOrDefault().GoodsAccountId).FirstOrDefault().Id;
+                                customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().GoodsAccountId).FirstOrDefault().Id;
 
-                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
 
-                                if (serch1.Count()==0)
+                                if (serch1.Count() == 0)
                                     //ایجاد حساب تفصیلی
-                                    DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                 else
-                                    DetailedAccountId=serch1.First().Id;
+                                    DetailedAccountId = serch1.First().Id;
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcom.AE, qcom.AE, 0, ComerBId, "بایت دریافتی از صاحب کالا", "", Series, true);
 
@@ -3766,18 +3768,18 @@ namespace MyClass
                                 //سند بس
                                 Series++;
                                 //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==60201).First().Id;//درآمد ارائه از خدمات داخلی
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 60201).First().Id;//درآمد ارائه از خدمات داخلی
 
                                 //حساب تفصیلی
-                                customertId = db.Customers.Where(c => c.SecretCode==3).First().Id;
+                                customertId = db.Customers.Where(c => c.SecretCode == 3).First().Id;
 
-                                var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                if (serch2.Count()==0)
+                                var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                if (serch2.Count() == 0)
                                     //ایجاد حساب تفصیلی
 
-                                    DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                 else
-                                    DetailedAccountId=serch2.First().Id;
+                                    DetailedAccountId = serch2.First().Id;
 
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcom.AE, 0, qcom.AE, ComerBId, "بایت دریافتی از صاحب کالا", "", Series, true);
@@ -3787,21 +3789,21 @@ namespace MyClass
                         //AV سند کرایه راننده
                         {
                             double qcomBV = Math.Abs(qcom.BV);
-                            if (qcom.BV<0)//AXسند هرینه
+                            if (qcom.BV < 0)//AXسند هرینه
                             {
                                 Series++;
 
                                 //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80801).First().Id;//هزینه حمل کالا
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 80801).First().Id;//هزینه حمل کالا
 
                                 //حساب تفصیلی
-                                customertId = db.Customers.Where(c => c.SecretCode==4).First().Id;
+                                customertId = db.Customers.Where(c => c.SecretCode == 4).First().Id;
 
-                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                if (serch1.Count()==0)
-                                    DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                if (serch1.Count() == 0)
+                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                 else
-                                    DetailedAccountId=serch1.First().Id;
+                                    DetailedAccountId = serch1.First().Id;
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, "بابت هزینه کرایه حمل", "", Series, true);
 
@@ -3809,37 +3811,37 @@ namespace MyClass
                                 //*****************
                                 Series++;
                                 //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجاری فروشندگان
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id;//بستانکاران تجاری فروشندگان
 
                                 //طرف حساب هزینه کامیون
-                                customertId = db.Customers.Where(c => c.Id==db.ComersBs.Where(x => x.Id==ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
+                                customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
 
-                                var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                if (serch2.Count()==0)
-                                    DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                if (serch2.Count() == 0)
+                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                 else
-                                    DetailedAccountId=serch2.First().Id;
+                                    DetailedAccountId = serch2.First().Id;
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, 0, qcomBV, ComerBId, "بابت هزینه کرایه حمل", "", Series, true);
 
                             }
-                            else if (qcom.BV>0)//AV سند درآمد
+                            else if (qcom.BV > 0)//AV سند درآمد
                             {
                                 Series++;
 
                                 //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==10301).First().Id;//بدهکاران تجاری، خریداران
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;//بدهکاران تجاری، خریداران
 
                                 //حساب تفصیلی
-                                customertId = db.Customers.Where(c => c.Id==db.ComersBs.Where(x => x.Id==ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
+                                customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
 
-                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
 
-                                if (serch1.Count()==0)
+                                if (serch1.Count() == 0)
                                     //ایجاد حساب تفصیلی
-                                    DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                 else
-                                    DetailedAccountId=serch1.First().Id;
+                                    DetailedAccountId = serch1.First().Id;
 
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, "بابت درآمد کرایه حمل", "", Series, true);
@@ -3849,17 +3851,17 @@ namespace MyClass
                                 Series++;
 
                                 //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==60201).First().Id;//درآمد ارائه از خدمات داخلی
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 60201).First().Id;//درآمد ارائه از خدمات داخلی
 
-                                customertId = db.Customers.Where(c => c.SecretCode==3).First().Id;
+                                customertId = db.Customers.Where(c => c.SecretCode == 3).First().Id;
 
-                                var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                if (serch2.Count()==0)
+                                var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                if (serch2.Count() == 0)
                                     //ایجاد حساب تفصیلی
 
-                                    DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                 else
-                                    DetailedAccountId=serch2.First().Id;
+                                    DetailedAccountId = serch2.First().Id;
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomBV, 0, qcomBV, ComerBId, "بابت درآمد کرایه حمل", "", Series, true);
 
@@ -3869,24 +3871,24 @@ namespace MyClass
                         {
                             double qcomAZ = Math.Abs(qcom.AZ);
                             //وضعیت بارنامه:دارای بارنامه/فاقد بارنامه
-                            var StatusLading = db.ComersHs.Where(c => c.Id==qcom.ComersHId).First().StatusLading;
+                            var StatusLading = db.ComersHs.Where(c => c.Id == qcom.ComersHId).First().StatusLading;
 
                             if (!StatusLading)
                             {
-                                if (qcom.AZ<0)//(پرداخت شود(سند هزینه
+                                if (qcom.AZ < 0)//(پرداخت شود(سند هزینه
                                 {
                                     Series++;
                                     //حساب معین
-                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80801).First().Id;//هزینه حمل کالا
+                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 80801).First().Id;//هزینه حمل کالا
 
                                     //حساب تفصیلی
-                                    customertId = db.Customers.Where(c => c.SecretCode==9).First().Id;
+                                    customertId = db.Customers.Where(c => c.SecretCode == 9).First().Id;
 
-                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                    if (serch1.Count()==0)
-                                        DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    if (serch1.Count() == 0)
+                                        DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                     else
-                                        DetailedAccountId=serch1.First().Id;
+                                        DetailedAccountId = serch1.First().Id;
 
                                     PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomAZ, qcomAZ, 0, ComerBId, "بابت هزینه بارنامه نویسی", "", Series, true);
 
@@ -3896,53 +3898,53 @@ namespace MyClass
 
                                     Series++;
                                     //حساب معین
-                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجاری فروشندگان
+                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id;//بستانکاران تجاری فروشندگان
 
                                     //طرف حساب بارنامه نویس
-                                    customertId = db.ComersHs.Where(c => c.Id==qcom.ComersHId).First().ShiperId;
+                                    customertId = db.ComersHs.Where(c => c.Id == qcom.ComersHId).First().ShiperId;
 
-                                    var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                    if (serch2.Count()==0)
-                                        DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    if (serch2.Count() == 0)
+                                        DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                     else
-                                        DetailedAccountId=serch2.First().Id;
+                                        DetailedAccountId = serch2.First().Id;
 
                                     PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomAZ, 0, qcomAZ, ComerBId, "بابت هزینه بارنامه نویسی", "", Series, true);
 
                                 }
-                                else if (qcom.AZ>0)//(دریافت شود(سند درآمد
+                                else if (qcom.AZ > 0)//(دریافت شود(سند درآمد
                                 {
                                     Series++;
                                     //حساب معین
-                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==10301).First().Id;//بدهکاران تجاری، خریداران
+                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;//بدهکاران تجاری، خریداران
 
                                     //حساب تفصیلی
-                                    customertId = db.ComersHs.Where(c => c.Id==qcom.ComersHId).First().ShiperId;
+                                    customertId = db.ComersHs.Where(c => c.Id == qcom.ComersHId).First().ShiperId;
 
-                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
 
-                                    if (serch1.Count()==0)
+                                    if (serch1.Count() == 0)
                                         //ایجاد حساب تفصیلی
-                                        DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                        DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                     else
-                                        DetailedAccountId=serch1.First().Id;
+                                        DetailedAccountId = serch1.First().Id;
 
                                     PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomAZ, qcomAZ, 0, ComerBId, "بابت دریافتی از بارنامه نویسی", "", Series, true);
                                     //*****************
 
                                     Series++;
                                     //حساب معین
-                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==60201).First().Id;//درآمد ارائه از خدمات داخلی
-                                                                                                                //حساب تفصیلی
-                                    customertId = db.Customers.Where(c => c.SecretCode==3).First().Id;
+                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 60201).First().Id;//درآمد ارائه از خدمات داخلی
+                                                                                                                  //حساب تفصیلی
+                                    customertId = db.Customers.Where(c => c.SecretCode == 3).First().Id;
 
-                                    var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                    if (serch2.Count()==0)
+                                    var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    if (serch2.Count() == 0)
                                         //ایجاد حساب تفصیلی
 
-                                        DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                        DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                     else
-                                        DetailedAccountId=serch2.First().Id;
+                                        DetailedAccountId = serch2.First().Id;
 
                                     PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomAZ, 0, qcomAZ, ComerBId, "بابت دریافتی از بارنامه نویسی", "", Series, true);
 
@@ -3951,14 +3953,14 @@ namespace MyClass
                         }
                         //سند پرداختی سایر
                         {
-                            var PaymentToOthers = db.ComersBs.Where(c => c.Id==ComerBId).First();
+                            var PaymentToOthers = db.ComersBs.Where(c => c.Id == ComerBId).First();
 
-                            if (PaymentToOthers.PaymentToOthersId!=0)
+                            if (PaymentToOthers.PaymentToOthersId != 0)
                             {
 
                                 Series++;
-                                SpecificAccountId =db.DetailedAccounts.Where(c => c.Id==PaymentToOthers.PaymentToOthersId).First().SpecificAccountId;
-                                DetailedAccountId=PaymentToOthers.PaymentToOthersId;
+                                SpecificAccountId = db.DetailedAccounts.Where(c => c.Id == PaymentToOthers.PaymentToOthersId).First().SpecificAccountId;
+                                DetailedAccountId = PaymentToOthers.PaymentToOthersId;
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers1, PaymentToOthers.PaymentToOthers1, 0, ComerBId, "پرداختی سایر", "", Series, true);
 
@@ -3967,15 +3969,15 @@ namespace MyClass
 
                                 Series++;
                                 //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id; //هزینه حمل کالا
-                                                                                                             //حساب تفصیلی
-                                customertId = db.Customers.Where(c => c.Id==db.ComersBs.Where(x => x.Id==ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id; //هزینه حمل کالا
+                                                                                                               //حساب تفصیلی
+                                customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
 
-                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                if (serch1.Count()==0)
-                                    DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                if (serch1.Count() == 0)
+                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                 else
-                                    DetailedAccountId=serch1.First().Id;
+                                    DetailedAccountId = serch1.First().Id;
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers1, 0, PaymentToOthers.PaymentToOthers1, ComerBId, "پرداختی سایر", "", Series, true);
 
@@ -3983,22 +3985,22 @@ namespace MyClass
                         }
                         //سایر هزینه ها
                         {
-                            var PaymentToOthers = db.ComersBs.Where(c => c.Id==ComerBId).First();
+                            var PaymentToOthers = db.ComersBs.Where(c => c.Id == ComerBId).First();
 
-                            if (PaymentToOthers.PaymentToOthers2!=0)
+                            if (PaymentToOthers.PaymentToOthers2 != 0)
                             {
                                 Series++;
 
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80802).First().Id;//هزینه های متفرقه
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 80802).First().Id;//هزینه های متفرقه
 
-                                customertId = db.Customers.Where(c => c.SecretCode==4).First().Id;
+                                customertId = db.Customers.Where(c => c.SecretCode == 4).First().Id;
 
-                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
 
-                                if (serch1.Count()==0)
-                                    DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                if (serch1.Count() == 0)
+                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                 else
-                                    DetailedAccountId=serch1.First().Id;
+                                    DetailedAccountId = serch1.First().Id;
 
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers2, PaymentToOthers.PaymentToOthers2, 0, ComerBId, qcom.DesToOthers, "", Series, true);
@@ -4007,16 +4009,16 @@ namespace MyClass
                                 Series++;
 
                                 //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;//بستانکاران تجاری فروشندگان
+                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id;//بستانکاران تجاری فروشندگان
 
-                                customertId = db.Customers.Where(c => c.SecretCode==6).First().Id;
+                                customertId = db.Customers.Where(c => c.SecretCode == 6).First().Id;
 
-                                serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
+                                serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
 
-                                if (serch1.Count()==0)
-                                    DetailedAccountId= AddToDetailedAccounts(SpecificAccountId, customertId);
+                                if (serch1.Count() == 0)
+                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                 else
-                                    DetailedAccountId=serch1.First().Id;
+                                    DetailedAccountId = serch1.First().Id;
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers2, 0, PaymentToOthers.PaymentToOthers2, ComerBId, qcom.DesToOthers, "", Series, true);
                             }
@@ -4055,11 +4057,11 @@ namespace MyClass
         /// <param name="DateTime">تاریخ سیستم</param>
         /// <param name="FinalRegistry">وضعیت ثبت نهایی</param>
         /// <param name="Status">وضعیت ابطال سند</param>
-        public static void AccountingDocumentRegistration(DBcontextModel db, int Id, int TransactionCode, string TransactionDate, int TransactionTypeId, int SpecificAccountId, int DetailedAccountId, double Amount, double PaymentBed, double PaymentBes, int ComerBId, string Description, string SeryalNumber, int Series, bool IsAutoRejDoc,bool IsBeginningBalance=false)
+        public static void AccountingDocumentRegistration(DBcontextModel db, int Id, int TransactionCode, string TransactionDate, int TransactionTypeId, int SpecificAccountId, int DetailedAccountId, double Amount, double PaymentBed, double PaymentBes, int ComerBId, string Description, string SeryalNumber, int Series, bool IsAutoRejDoc, bool IsBeginningBalance = false)
         {
             {
                 var ADR = new Repository<Transaction>(db);
-                ADR.SaveOrUpdateByCommit(new Transaction { Id = Id, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountId, DetailedAccountId=DetailedAccountId, Amount=Amount, PaymentBed=PaymentBed, PaymentBes=PaymentBes, ComerBId=ComerBId, Description=Description, SeryalNumber=SeryalNumber, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=IsAutoRejDoc,IsBeginningBalance= IsBeginningBalance }, Id);
+                ADR.SaveOrUpdateByCommit(new Transaction { Id = Id, FinancialYear = FinancialYear, TransactionCode = TransactionCode, TransactionDate = TransactionDate, TransactionTypeId = TransactionTypeId, SpecificAccountId = SpecificAccountId, DetailedAccountId = DetailedAccountId, Amount = Amount, PaymentBed = PaymentBed, PaymentBes = PaymentBes, ComerBId = ComerBId, Description = Description, SeryalNumber = SeryalNumber, UserId = UserId, Series = Series, DateTime = DateTime.Now, FinalRegistry = false, Status = false, IsAutoRejDoc = IsAutoRejDoc, IsBeginningBalance = IsBeginningBalance }, Id);
             }
         }
 
@@ -4088,9 +4090,44 @@ namespace MyClass
         {
             {
                 var ADR = new Repository<Transaction>(db);
-                return ADR.SaveOrUpdateRefIdByCommit(new Transaction { Id = Id, FinancialYear=FinancialYear, TransactionCode=TransactionCode, TransactionDate=TransactionDate, TransactionTypeId =TransactionTypeId, SpecificAccountId=SpecificAccountId, DetailedAccountId=DetailedAccountId, Amount=Amount, PaymentBed=PaymentBed, PaymentBes=PaymentBes, ComerBId=ComerBId, Description=Description, UserId=UserId, Series=Series, DateTime=DateTime.Now, FinalRegistry=false, Status=false, IsAutoRejDoc=IsAutoRejDoc,IsBeginningBalance= IsBeginningBalance }, Id);
+                return ADR.SaveOrUpdateRefIdByCommit(new Transaction { Id = Id, FinancialYear = FinancialYear, TransactionCode = TransactionCode, TransactionDate = TransactionDate, TransactionTypeId = TransactionTypeId, SpecificAccountId = SpecificAccountId, DetailedAccountId = DetailedAccountId, Amount = Amount, PaymentBed = PaymentBed, PaymentBes = PaymentBes, ComerBId = ComerBId, Description = Description, UserId = UserId, Series = Series, DateTime = DateTime.Now, FinalRegistry = false, Status = false, IsAutoRejDoc = IsAutoRejDoc, IsBeginningBalance = IsBeginningBalance }, Id);
             }
         }
+        /// <summary>
+        /// ثبت چک ها
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="listId"></param>
+        /// <param name="ChequeTypeId">نوع چک</param>
+        /// <param name="ChequeNumber">سریال چک</param>
+        /// <param name="Amount">مبلغ</param>
+        /// <param name="DueDate">تاریخ سررسید</param>
+        /// <param name="AccountId">کد حساب بانکی</param>
+        /// <param name="DetailedAccountid">کد حساب طرف حساب چک</param>
+        /// <param name="ChequeOwner">نام صاحب چک</param>
+        /// <param name="DescriptionCh">توضیحات</param>
+        /// <param name="TransactionId"></param>
+        public static bool AddCheuqeToDatabase(DBcontextModel db,int listId, int ChequeTypeId,string ChequeNumber,double Amount,string DueDate,int AccountId,int DetailedAccountid,string ChequeOwner,string DescriptionCh, int TransactionId)
+        {
+            try
+            {
+                var ChequeSave = new Repository<Cheque>(db);
+                int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Cheque { Id = listId, ChequeTypeId = ChequeTypeId, ChequeNumber = ChequeNumber, Amount = Amount, DueDate = DueDate, IssueDate = PersianDate.NowPersianDate, AccountId = AccountId, Payer_Payee_AccId = DetailedAccountid, ChequeOwner = ChequeOwner, Description = DescriptionCh, CurrentStatusID = 0 }, listId);
+
+                var ADR = new Repository<ChequeStatus>(db);
+                int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId = ChequeId, StatusDate = PersianDate.NowPersianDate, StatusCodeId = 2, TransactionId = TransactionId }, 0);
+
+                var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
+                ch.CurrentStatusID = CurrentStatusID;
+                return true;
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return false;
+            }
+        }
+
 
         public static int AddToDetailedAccounts(int SpecificAccountId, int CustomerId)
         {
@@ -4098,7 +4135,7 @@ namespace MyClass
             {
                 int ListId = 0;
                 var code = new Repository<DetailedAccount>(db);
-                return code.SaveOrUpdateRefId(new DetailedAccount { Id = ListId, SpecificAccountId=SpecificAccountId, CustomerId=CustomerId, CodeAccount=Convert.ToInt32(PublicClass.CeratDetailedAccountCode(SpecificAccountId).ToString()) }, ListId);
+                return code.SaveOrUpdateRefId(new DetailedAccount { Id = ListId, SpecificAccountId = SpecificAccountId, CustomerId = CustomerId, CodeAccount = Convert.ToInt32(PublicClass.CeratDetailedAccountCode(SpecificAccountId).ToString()) }, ListId);
             }
         }
 
@@ -4112,9 +4149,9 @@ namespace MyClass
             using (var db = new DBcontextModel())
             {
                 int FinancialYearId = Convert.ToInt32(FinancialYear);
-                var D = db.FinancialYears.Where(c => c.Id==FinancialYearId).First();
+                var D = db.FinancialYears.Where(c => c.Id == FinancialYearId).First();
 
-                if (string.Compare(Date, D.DateStart)>=0 && string.Compare(Date, D.DateEnd)<=0)
+                if (string.Compare(Date, D.DateStart) >= 0 && string.Compare(Date, D.DateEnd) <= 0)
                     return true;
                 else
                     return false;

@@ -50,6 +50,7 @@ using HM_ERP_System.Entity.TypeCustomer;
 using HM_ERP_System.Entity.TypeDocument;
 using HM_ERP_System.Entity.Unit;
 using HM_ERP_System.Entity.WarantyType;
+using HM_ERP_System.Entity.Warehouse;
 
 using System.Data.Entity;
 using System.Transactions;
@@ -133,6 +134,8 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new RentalTypeConfig());
             modelBuilder.Configurations.Add(new TruckManufacturerConfig());
             modelBuilder.Configurations.Add(new ColorConfig());
+            modelBuilder.Configurations.Add(new WarehouseConfig());
+            modelBuilder.Configurations.Add(new WarehouseTypeConfig());
 
             base.OnModelCreating(modelBuilder);
             #endregion
@@ -388,6 +391,14 @@ namespace Progect_Manegment
         /// </summary>
         public virtual DbSet<TruckManufacturer> TruckManufacturers { get; set; }
         public virtual DbSet<Color_> Color_s { get; set; }
+        /// <summary>
+        /// انیارها
+        /// </summary>
+        public virtual DbSet<Warehouse> Warehouses { get; set; }
+        /// <summary>
+        /// نوع انبارها
+        /// </summary>
+        public virtual DbSet<WarehouseType> WarehouseTypes { get; set; }
 
         #endregion
 

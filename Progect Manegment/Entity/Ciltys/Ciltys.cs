@@ -1,4 +1,7 @@
-﻿using HM_ERP_System.Entity.Unit;
+﻿using HM_ERP_System.Entity.Accounts.TotalAccount;
+using HM_ERP_System.Entity.Unit;
+
+using Microsoft.EntityFrameworkCore;
 
 using System;
 using System.Collections.Generic;
@@ -25,6 +28,11 @@ namespace HM_ERP_System.Entity.Ciltys
         {
             HasKey(x => x.Id);
             Property(d => d.Name).IsRequired().HasMaxLength(100);
+
+            HasRequired(c => c.Provinces)
+            .WithMany(p => p.Ciltys)
+            .HasForeignKey(c => c.ProvincesId)
+            .WillCascadeOnDelete(false);
         }
     }
 

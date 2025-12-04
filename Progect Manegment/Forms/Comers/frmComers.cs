@@ -1854,6 +1854,7 @@ namespace HM_ERP_System.Forms.Comers
 
                         select new
                         {
+                            
                             cmb.Id,
                             cmb.DateB,
                             cmb.SeryalB,

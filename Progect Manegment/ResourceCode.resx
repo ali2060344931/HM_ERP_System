@@ -622,6 +622,9 @@
   <data name="T167" xml:space="preserve">
     <value>در این بخش امکان ثبت چک جدید وجود ندارد.</value>
   </data>
+  <data name="T168" xml:space="preserve">
+    <value>نام کارخانه سازنده را انتخاب(وارد)نمائید.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

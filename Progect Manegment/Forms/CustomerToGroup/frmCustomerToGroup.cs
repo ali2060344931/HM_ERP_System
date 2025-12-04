@@ -51,13 +51,16 @@ namespace HM_ERP_System.Forms.CustomerToGroup
             FillcmbGroup();
         }
 
+        DataTable dt_Group;
+
         private void FillcmbGroup()
         {
             using (var db = new DBcontextModel())
             {
-                var q = db.PersonGroups.ToList();
-                cmbGroup.DropDownDataSource= q;
-                //cmbGroup.DropDownList.AutoSizeColumns();
+                var q = db.PersonGroups;
+                cmbGroup.DropDownDataSource = q.ToList();
+                dt_Group = new DataTable();
+                dt_Group = PublicClass.AddEntityTableToDataTable(q.ToList());
             }
         }
 
@@ -93,12 +96,14 @@ namespace HM_ERP_System.Forms.CustomerToGroup
 
                         join ct in db.TypeCustomers
                         on cu.id_TypeCustomer equals ct.Id
+                        
                         where cu.id_TypeCustomer<=2
                         select new
                         {
                             cu.Id,
                             name = cu.Family +" "+ cu.Name,
                             CustomerType = ct.Name,
+                            cu.CodMeli,
                         };
                 cmbPerson.DropDownDataSource=q.ToList();
                 dt_Person = new DataTable();
@@ -107,10 +112,6 @@ namespace HM_ERP_System.Forms.CustomerToGroup
             }
         }
 
-        private void cmbGroup_CheckedValuesChanged(object sender, EventArgs e)
-        {
-
-        }
         int PersonId = 0;
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -234,5 +235,30 @@ namespace HM_ERP_System.Forms.CustomerToGroup
         {
             dgvList.ShowFieldChooser(owner: this, caption: "لیست ستون ها");
         }
+
+        private void cmbPerson_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
+
+            if (e.KeyCode == Keys.F2)
+            {
+                PublicClass.SearchCmbId(cmbPerson, dt_Person);
+            }
+
+        }
+
+        private void cmbGroup_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
+
+            if (e.KeyCode == Keys.F2)
+            {
+                PublicClass.SearchCmbId(cmbGroup, dt_Group);
+            }
+
+        }
+
     }
 }

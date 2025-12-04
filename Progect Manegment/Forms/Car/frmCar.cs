@@ -351,10 +351,11 @@ namespace HM_ERP_System.Forms.Car
 
                 if(cmbTruckManufacturer.Text!="" && cmbTruckManufacturer.SelectedIndex==-1)
                 {
-                    PublicClass.ErrorMesseg(ResourceCode.T165);
+                    PublicClass.ErrorMesseg(ResourceCode.T168);
                     cmbTruckManufacturer.Focus();
                     return;
                 }
+
                 if(cmbColor.Text!="" && cmbColor.SelectedIndex==-1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T164);

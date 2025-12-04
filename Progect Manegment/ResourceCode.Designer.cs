@@ -1573,6 +1573,15 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نام کارخانه سازنده را انتخاب(وارد)نمائید..
+        /// </summary>
+        internal static string T168 {
+            get {
+                return ResourceManager.GetString("T168", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

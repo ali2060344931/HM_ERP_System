@@ -618,6 +618,8 @@
     <Compile Include="Entity\Role\Role.cs" />
     <Compile Include="Entity\CustomerRole\CustomerRole.cs" />
     <Compile Include="Entity\WarantyType\WarantyType.cs" />
+    <Compile Include="Entity\Warehouse\Warehouse.cs" />
+    <Compile Include="Entity\Warehouse\WarehouseType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -73,6 +73,7 @@ namespace MyClass
 
         public static string UserName = "";
         public static int Id_ = 0;
+        public static string  text_ = "";
         /// <summary>
         /// کد کاربر
         /// </summary>
@@ -595,7 +596,7 @@ namespace MyClass
         /// </summary>
         /// <param name="cmb"></param>
         /// <param name="dt"></param>
-        public static int SearchToCmb(MultiColumnCombo cmb, System.Data.DataTable dt)
+        public static int SearchToCmb_(MultiColumnCombo cmb, System.Data.DataTable dt)
         {
             try
             {
@@ -628,6 +629,96 @@ namespace MyClass
                 return 0;
             }
         }
+
+
+        public static object SearchToCmb(object comboControl,System.Data.DataTable dt)
+        {
+            try
+            {
+                // اگر کنترل MultiColumnCombo باشد
+                if (comboControl is MultiColumnCombo mcc)
+                {
+                    // اگر دیتاتیبل داده دارد، فرم جستجو را باز کن
+                    if (dt.Rows.Count > 0)
+                    {
+                        frmSearchAllCombo f = new frmSearchAllCombo();
+                        f.dt = dt;
+
+                        // ساخت اطلاعات ستون‌ها
+                        string txt = "";
+                        int cn = mcc.DropDownList.Columns.Count;
+                        for (int i = 0; i < cn; i++)
+                        {
+                            txt += mcc.DropDownList.Columns[i].Key + ",";
+                            txt += mcc.DropDownList.Columns[i].Caption + ",";
+                            txt += mcc.DropDownList.Columns[i].DataMember + ",";
+                            txt += mcc.DropDownList.Columns[i].Visible + ",";
+                            txt += mcc.DropDownList.Columns[i].Width + ",";
+                        }
+
+                        f.ColItems = txt;
+                        f.ColumnsCount = cn;
+                        f.TypeControl = "mcc";
+                        f.ShowDialog();
+                    }
+
+                    // در MultiColumnCombo مقدار از Value گرفته می‌شود
+                    return Id_;// Convert.ToInt32(mcc.Value);
+                }
+
+                // اگر کنترل CheckedComboBox باشد
+                else if (comboControl is CheckedComboBox ccb)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        //frmSearchAllCombo f = new frmSearchAllCombo();
+                        //f.dt = dt;
+                        //f.ColItems = "";   // این کنترل ستون‌ها ندارد
+                        //f.ColumnsCount = 0;
+                        //f.ShowDialog();
+
+
+                        frmSearchAllCombo f = new frmSearchAllCombo();
+                        f.dt = dt;
+
+                        // ساخت اطلاعات ستون‌ها
+                        string txt = "";
+                        int cn = ccb.DropDownList.Columns.Count;
+                        for (int i = 0; i < cn; i++)
+                        {
+                            txt += ccb.DropDownList.Columns[i].Key + ",";
+                            txt += ccb.DropDownList.Columns[i].Caption + ",";
+                            txt += ccb.DropDownList.Columns[i].DataMember + ",";
+                            txt += ccb.DropDownList.Columns[i].Visible + ",";
+                            txt += ccb.DropDownList.Columns[i].Width + ",";
+                        }
+
+                        f.ColItems = txt;
+                        f.ColumnsCount = cn;
+                        f.TypeControl = "ccb";
+
+
+                        f.ShowDialog();
+                    }
+
+                    // در CheckedComboBox مقدار از Text گرفته می‌شود
+                    //if (int.TryParse(ccb.Text, out int val))
+                        return text_;
+
+                    //return "";
+                }
+
+                // اگر هیچکدام نبود
+                return 0;
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return 0;
+            }
+        }
+
+
 
         /// <summary>
         /// افزودن مقادیر در دیتاتیبل
@@ -829,13 +920,13 @@ namespace MyClass
         /// <param name="multiColumnCombo"></param>
         /// <param name="dataTable"></param>
         /// <returns></returns>
-        public static object SearchCmbId(MultiColumnCombo multiColumnCombo, System.Data.DataTable dataTable)
+        public static object SearchCmbId_(MultiColumnCombo multiColumnCombo, System.Data.DataTable dataTable)
         {
             try
             {
                 if (dataTable != null)
                 {
-                    int id = SearchToCmb(multiColumnCombo, dataTable);
+                    int id =(int) SearchToCmb(multiColumnCombo, dataTable);
                     if (id != 0)
                         return multiColumnCombo.Value = id;
                     else
@@ -852,6 +943,125 @@ namespace MyClass
                 return multiColumnCombo.Text = "";
             }
         }
+
+        //""""""""""""""""""""""""""""""""""""""
+        public static object SearchCmbId_0(object comboControl,System.Data.DataTable dataTable)
+        {
+            try
+            {
+                if (dataTable == null)
+                {
+                    WindowAlartByText(eDesktopAlertColor.Red, "مقادیری در لیست نمی باشد", "No", 2, 150);
+                    SetComboText(comboControl, "");
+                    return "";
+                }
+
+                int id =(int) SearchToCmb(comboControl, dataTable);
+
+                if (id != 0)
+                {
+                    SetComboValue(comboControl, id);
+                    return id;
+                }
+                else
+                {
+                    SetComboText(comboControl, "");
+                    return "";
+                }
+            }
+            catch
+            {
+                SetComboText(comboControl, "");
+                return "";
+            }
+        }
+
+        public static object SearchCmbId(object comboControl, System.Data.DataTable dataTable)
+        {
+            try
+            {
+                if (dataTable == null)
+                {
+                    WindowAlartByText(eDesktopAlertColor.Red, "مقادیری در لیست نمی باشد", "No", 2, 150);
+                    SetComboText(comboControl, "");
+                    return "";
+                }
+
+                // خروجی SearchToCmb به نوع کنترل بستگی دارد
+                object result = SearchToCmb(comboControl, dataTable);
+
+                if (comboControl is MultiColumnCombo)
+                {
+                    int id = Convert.ToInt32(result);
+
+                    if (id != 0)
+                    {
+                        SetComboValue(comboControl, id);
+                        return id;
+                    }
+                    else
+                    {
+                        SetComboText(comboControl, "");
+                        return "";
+                    }
+                }
+                else if (comboControl is CheckedComboBox)
+                {
+                    string text = result?.ToString() ?? "";
+
+                    if (text != "")
+                    {
+                        SetComboValue(comboControl, text);
+                        return text;
+                    }
+                    else
+                    {
+                        SetComboText(comboControl, "");
+                        return "";
+                    }
+                }
+
+                return "";
+            }
+            catch
+            {
+                SetComboText(comboControl, "");
+                return "";
+            }
+        }
+
+
+        private static void SetComboText(object combo, string text)
+        {
+            if (combo is MultiColumnCombo mcc)
+                mcc.Text = text;
+
+            else if (combo is CheckedComboBox ccb)
+                ccb.Text = text;
+        }
+
+        private static void SetComboValue(object combo, object value)
+        {
+            if (combo is MultiColumnCombo mcc)
+            {
+                // مقدار همیشه Id است
+                mcc.Value = value;
+            }
+            else if (combo is CheckedComboBox ccb)
+            {
+                // مقدار همیشه Text است
+                ccb.Text = value?.ToString();
+            }
+        }
+
+
+        //""""""""""""""""""""""""""""""""""""""
+
+
+
+
+
+
 
         /// <summary>
         /// افزدون مدارک پیوستی
@@ -2094,7 +2304,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
-                //PublicClass.ShowErrorMessage(er);
+                PublicClass.ShowErrorMessage(er);
                 return null;
             }
         }

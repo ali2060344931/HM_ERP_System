@@ -21,6 +21,7 @@ namespace HM_ERP_System.Forms.SearchCombos
         public DataTable dt;
         public string ColItems = "";
         public int ColumnsCount = 0;
+        public string TypeControl = "";
         string Key_ = "";
 
         public frmSearchAllCombo()
@@ -73,8 +74,7 @@ namespace HM_ERP_System.Forms.SearchCombos
                 }
             }
             grList.DataSource = dt;
-            //grList.AutoSizeColumns();
-            PublicClass.SettingGridEX(grList);
+            //PublicClass.SettingGridEX(grList);
             cmbSub.DataSource = dtSub;
             cmbSub.DisplayMember = "Name";
             cmbSub.ValueMember = "Key";
@@ -115,13 +115,24 @@ namespace HM_ERP_System.Forms.SearchCombos
         }
 
         int id = 0;
+        string  text = "";
         private void grList_ColumnButtonClick(object sender, ColumnActionEventArgs e)
         {
+
             if (e.Column.Key == "Select")
             {
-                id = Convert.ToInt32(grList.GetRow().Cells["Id"].Value);
-                PublicClass.Id_=id;
-                this.Close();
+                if (TypeControl == "mcc")
+                {
+                    id = Convert.ToInt32(grList.GetRow().Cells["Id"].Value);
+                    PublicClass.Id_ = id;
+                }
+                else if (TypeControl == "ccb")
+                {
+                    text = grList.GetRow().Cells["Name"].Value.ToString();
+
+                    PublicClass.text_ = text;
+                }
+                    this.Close();
             }
         }
 

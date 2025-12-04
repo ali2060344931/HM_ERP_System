@@ -440,5 +440,10 @@ namespace HM_ERP_System.Forms.Main_Form
         {
             FormManager.ShowMdiChildForm<frmCheque>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
+
+        private void buttonCommand19_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            FormManager.ShowMdiChildForm<frmProduct>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
+        }
     }
 }

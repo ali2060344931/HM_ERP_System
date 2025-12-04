@@ -252,7 +252,7 @@
             this.cmbGroup.Size = new System.Drawing.Size(295, 28);
             this.cmbGroup.TabIndex = 112;
             this.cmbGroup.ValuesDataMember = null;
-            this.cmbGroup.CheckedValuesChanged += new System.EventHandler(this.cmbGroup_CheckedValuesChanged);
+            this.cmbGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGroup_KeyDown);
             // 
             // cmbPerson
             // 
@@ -270,7 +270,8 @@
             this.cmbPerson.TabIndex = 112;
             this.cmbPerson.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.cmbPerson.ValuesDataMember = null;
-            this.cmbPerson.CheckedValuesChanged += new System.EventHandler(this.cmbGroup_CheckedValuesChanged);
+            //this.cmbPerson.CheckedValuesChanged += new System.EventHandler(this.cmbPerson_CheckedValuesChanged);
+            this.cmbPerson.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPerson_KeyDown);
             // 
             // frmCustomerToGroup
             // 

@@ -233,6 +233,7 @@ namespace HM_ERP_System.Forms.Commission
                                 SenderName2 = sd2Left != null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
                                 ResiverName2 = rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
                                 cmb.Bn,
+                                cmb.BaseFreight,
 
                             };
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());

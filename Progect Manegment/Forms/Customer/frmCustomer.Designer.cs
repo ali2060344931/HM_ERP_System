@@ -686,7 +686,7 @@
             this.cmbGroup.Size = new System.Drawing.Size(209, 28);
             this.cmbGroup.TabIndex = 1;
             this.cmbGroup.ValuesDataMember = null;
-            this.cmbGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
+            this.cmbGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGroup_KeyDown);
             // 
             // label20
             // 

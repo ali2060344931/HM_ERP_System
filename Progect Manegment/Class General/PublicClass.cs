@@ -1012,6 +1012,7 @@ namespace MyClass
                     if (text != "")
                     {
                         SetComboValue(comboControl, text);
+
                         return text;
                     }
                     else

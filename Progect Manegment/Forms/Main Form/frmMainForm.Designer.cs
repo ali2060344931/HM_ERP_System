@@ -98,6 +98,9 @@
             this.btnTankerRental = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnTenkerPurchase = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTab2 = new Janus.Windows.Ribbon.RibbonTab();
+            this.ribbonGroup11 = new Janus.Windows.Ribbon.RibbonGroup();
+            this.buttonCommand10 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.buttonCommand19 = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTab3 = new Janus.Windows.Ribbon.RibbonTab();
             this.ribbonGroup3 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnDeledeTables = new Janus.Windows.Ribbon.ButtonCommand();
@@ -113,9 +116,6 @@
             this.lblUserName = new Janus.Windows.Ribbon.LabelCommand();
             this.lblDate = new Janus.Windows.Ribbon.LabelCommand();
             this.lblVersion = new Janus.Windows.Ribbon.LabelCommand();
-            this.ribbonGroup11 = new Janus.Windows.Ribbon.RibbonGroup();
-            this.buttonCommand10 = new Janus.Windows.Ribbon.ButtonCommand();
-            this.buttonCommand19 = new Janus.Windows.Ribbon.ButtonCommand();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,7 +192,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1394, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1377, 27);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -226,7 +226,7 @@
             this.ribbon1.QuickAccessCustomizeList.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.btnReviewAccounts});
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1394, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1377, 185);
             // 
             // 
             // 
@@ -744,6 +744,31 @@
             this.ribbonTab2.Name = "ribbonTab2";
             this.ribbonTab2.Text = "انبار داری";
             // 
+            // ribbonGroup11
+            // 
+            this.ribbonGroup11.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.buttonCommand10,
+            this.buttonCommand19});
+            this.ribbonGroup11.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup11;
+            this.ribbonGroup11.Key = "ribbonGroup11";
+            this.ribbonGroup11.Name = "ribbonGroup11";
+            this.ribbonGroup11.Text = "تعـــــاریف";
+            // 
+            // buttonCommand10
+            // 
+            this.buttonCommand10.Key = "buttonCommand10";
+            this.buttonCommand10.Name = "buttonCommand10";
+            this.buttonCommand10.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
+            this.buttonCommand10.Text = "انبـــار ها";
+            // 
+            // buttonCommand19
+            // 
+            this.buttonCommand19.Key = "buttonCommand19";
+            this.buttonCommand19.Name = "buttonCommand19";
+            this.buttonCommand19.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
+            this.buttonCommand19.Text = "کـــــالا ها";
+            this.buttonCommand19.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand19_Click);
+            // 
             // ribbonTab3
             // 
             this.ribbonTab3.Groups.AddRange(new Janus.Windows.Ribbon.RibbonGroup[] {
@@ -822,13 +847,13 @@
             this.lblVersion_,
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 872);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 735);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1394, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1377, 23);
             // 
             // 
             // 
@@ -893,36 +918,11 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Text = "labelCommand2";
             // 
-            // ribbonGroup11
-            // 
-            this.ribbonGroup11.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.buttonCommand10,
-            this.buttonCommand19});
-            this.ribbonGroup11.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup11;
-            this.ribbonGroup11.Key = "ribbonGroup11";
-            this.ribbonGroup11.Name = "ribbonGroup11";
-            this.ribbonGroup11.Text = "تعـــــاریف";
-            // 
-            // buttonCommand10
-            // 
-            this.buttonCommand10.Key = "buttonCommand10";
-            this.buttonCommand10.Name = "buttonCommand10";
-            this.buttonCommand10.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
-            this.buttonCommand10.Text = "انبـــار ها";
-            // 
-            // buttonCommand19
-            // 
-            this.buttonCommand19.Key = "buttonCommand19";
-            this.buttonCommand19.Name = "buttonCommand19";
-            this.buttonCommand19.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
-            this.buttonCommand19.Text = "کـــــالا ها";
-            this.buttonCommand19.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand19_Click);
-            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1394, 895);
+            this.ClientSize = new System.Drawing.Size(1377, 758);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);

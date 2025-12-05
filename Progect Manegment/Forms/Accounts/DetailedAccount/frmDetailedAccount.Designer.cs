@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetailedAccount));
             Janus.Windows.GridEX.GridEXLayout cmbNatureAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSpecificAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbCustomers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetailedAccount));
             Janus.Windows.GridEX.GridEXLayout cmbAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.dgvList = new GridExEx.GridExEx();
             this.txtAmount = new DevComponents.Editors.DoubleInput();
@@ -87,17 +87,17 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(907, 507);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(895, 507);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(907, 50);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(895, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 557);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(907, 28);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(895, 28);
             // 
             // pnlAddItemBodi
             // 
@@ -137,17 +137,17 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(591, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(585, 12);
             this.txtDateStart.Value = new System.DateTime(2025, 7, 19, 12, 24, 31, 607);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(389, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(383, 12);
             this.txtDateEnd.Value = new System.DateTime(2025, 7, 19, 12, 24, 31, 607);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(299, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(293, 15);
             // 
             // labelX2
             // 
@@ -155,7 +155,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(519, 17);
+            this.labelX2.Location = new System.Drawing.Point(513, 17);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
@@ -164,31 +164,31 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(721, 17);
+            this.labelX1.Location = new System.Drawing.Point(715, 17);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Size = new System.Drawing.Size(909, 613);
+            this.pnlViewItems.Size = new System.Drawing.Size(897, 613);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(912, 3);
+            this.pnlAddItems.Location = new System.Drawing.Point(900, 3);
             this.pnlAddItems.Size = new System.Drawing.Size(467, 613);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(873, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(861, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(839, 0);
+            this.buttonX01.Location = new System.Drawing.Point(827, 0);
             this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(804, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(792, 0);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
@@ -216,7 +216,7 @@
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmDetailedAccount";
-            this.dgvList.Size = new System.Drawing.Size(907, 507);
+            this.dgvList.Size = new System.Drawing.Size(895, 507);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -688,7 +688,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1382, 619);
+            this.ClientSize = new System.Drawing.Size(1370, 619);
             this.KeyPreview = true;
             this.Name = "frmDetailedAccount";
             this.Text = "فرم ثبت حساب های تفصیلی";

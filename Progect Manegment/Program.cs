@@ -31,6 +31,7 @@ using HM_ERP_System.Forms.Role;
 using HM_ERP_System.Forms.TankerRental;
 using HM_ERP_System.Forms.TruckManufacturer;
 using HM_ERP_System.Forms.User;
+using HM_ERP_System.Forms.Warehouse;
 
 using Manegmen_Machinery.ContexModels;
 
@@ -121,9 +122,9 @@ namespace Progect_Manegment
 
                 //Application.Run(new frmLoginProg());
 
-                Application.Run(new frmMainForm());
+                //Application.Run(new frmMainForm());
 
-                //Application.Run(new frmCheque(null));
+                Application.Run(new frmWarehouseType(null));
             }
             catch (Exception er)
             {

@@ -625,6 +625,12 @@
   <data name="T168" xml:space="preserve">
     <value>نام کارخانه سازنده را انتخاب(وارد)نمائید.</value>
   </data>
+  <data name="T169" xml:space="preserve">
+    <value>نوع انبار را وارد نمائید.</value>
+  </data>
+  <data name="T170" xml:space="preserve">
+    <value>نوع انبار وارد شده تکراری می باشد.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

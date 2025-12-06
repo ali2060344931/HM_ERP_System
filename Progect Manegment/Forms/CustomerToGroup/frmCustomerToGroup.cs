@@ -31,7 +31,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
         public frmCustomerToGroup(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
         }
 
         private void frmCustomerToGroup_Load(object sender, EventArgs e)
@@ -66,49 +66,65 @@ namespace HM_ERP_System.Forms.CustomerToGroup
 
         private void FilldgvList()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = from cg in db.CustomerToGroups
+                using (var db = new DBcontextModel())
+                {
+                    var q = from cg in db.CustomerToGroups
 
-                        join cu in db.Customers
-                        on cg.CustomerId equals cu.Id
+                            join cu in db.Customers
+                            on cg.CustomerId equals cu.Id
 
-                        join pg in db.PersonGroups
-                        on cg.PersonGroupId equals pg.Id
+                            join pg in db.PersonGroups
+                            on cg.PersonGroupId equals pg.Id
 
-                        select new
-                        {
-                            cg.Id,
-                            personName = cu.Family +" "+ cu.Name,
-                            groupName = pg.Name,
-                            cu.CodMeli,
-                        };
-                System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList,Name);
+                            select new
+                            {
+                                cg.Id,
+                                personName = (cu.Family + " " + cu.Name).Trim(),
+                                groupName = pg.Name,
+                                cu.CodMeli,
+                            };
+                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList, Name);
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
         DataTable dt_Person;
         private void FillcmbPerson()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = from cu in db.Customers
+                using (var db = new DBcontextModel())
+                {
+                    var q = from cu in db.Customers
 
-                        join ct in db.TypeCustomers
-                        on cu.id_TypeCustomer equals ct.Id
-                        
-                        where cu.id_TypeCustomer<=2
-                        select new
-                        {
-                            cu.Id,
-                            name = cu.Family +" "+ cu.Name,
-                            CustomerType = ct.Name,
-                            cu.CodMeli,
-                        };
-                cmbPerson.DropDownDataSource=q.ToList();
-                dt_Person = new DataTable();
-                dt_Person = PublicClass.AddEntityTableToDataTable(q.ToList());
+                            join ct in db.TypeCustomers
+                            on cu.id_TypeCustomer equals ct.Id
 
+                            where cu.id_TypeCustomer <= 2
+                            select new
+                            {
+                                cu.Id,
+                                name = (cu.Family + " " + cu.Name).Trim(),
+                                CustomerType = ct.Name,
+                                cu.CodMeli,
+                            };
+                    cmbPerson.DropDownDataSource = q.ToList();
+                    dt_Person = new DataTable();
+                    dt_Person = PublicClass.AddEntityTableToDataTable(q.ToList());
+
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -116,42 +132,49 @@ namespace HM_ERP_System.Forms.CustomerToGroup
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (cmbPerson.Text=="")
+            try
             {
-                PublicClass.ErrorMesseg(ResourceCode.T007); return;
-            }
-            if (cmbGroup.Text=="")
-            {
-                PublicClass.ErrorMesseg(ResourceCode.T097); return;
-            }
-
-            if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                return;
-
-
-            using (var db = new DBcontextModel())
-            {
-                foreach (var CustomerId in cmbPerson.CheckedValues)
+                if (cmbPerson.Text == "")
                 {
-                    foreach (var GroupId in cmbGroup.CheckedValues)
-                    {
-                        int cuId = Convert.ToInt32(CustomerId);
-                        int grId = Convert.ToInt32(GroupId);
+                    PublicClass.ErrorMesseg(ResourceCode.T007); return;
+                }
+                if (cmbGroup.Text == "")
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T097); return;
+                }
 
-                        var q = db.CustomerToGroups.Where(c => c.CustomerId==cuId && c.PersonGroupId==grId);
-                        if (q.Count()==0)
+                if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
+
+
+                using (var db = new DBcontextModel())
+                {
+                    foreach (var CustomerId in cmbPerson.CheckedValues)
+                    {
+                        foreach (var GroupId in cmbGroup.CheckedValues)
                         {
-                            var userRepo = new Repository<Entity.CustomerToGroup.CustomerToGroup>(db);
-                            userRepo.SaveOrUpdate(new Entity.CustomerToGroup.CustomerToGroup { Id = ListId, CustomerId=cuId, PersonGroupId= grId }, ListId);
+                            int cuId = Convert.ToInt32(CustomerId);
+                            int grId = Convert.ToInt32(GroupId);
+
+                            var q = db.CustomerToGroups.Where(c => c.CustomerId == cuId && c.PersonGroupId == grId);
+                            if (q.Count() == 0)
+                            {
+                                var userRepo = new Repository<Entity.CustomerToGroup.CustomerToGroup>(db);
+                                userRepo.SaveOrUpdate(new Entity.CustomerToGroup.CustomerToGroup { Id = ListId, CustomerId = cuId, PersonGroupId = grId }, ListId);
+                            }
                         }
                     }
-                }
-                PublicClass.WindowAlart("1");
-                FilldgvList();
-                if (_updatableForms!=null)
-                    _updatableForms.UpdateData();
+                    PublicClass.WindowAlart("1");
+                    FilldgvList();
+                    if (_updatableForms != null)
+                        _updatableForms.UpdateData();
 
-                CelearItems();
+                    CelearItems();
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -182,7 +205,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                 if (PublicClass.CloseForm())
                     this.Close();
             }
-                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
@@ -204,12 +227,6 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                 {
                     using (var db = new DBcontextModel())
                     {
-
-                        //if (db.Ciltys.Where(c => c.ProvincesId == LisId).Count() != 0)
-                        //{
-                        //    PublicClass.ErrorMesseg(ResourceCode.T004);
-                        //    return;
-                        //}
 
                         if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
@@ -243,7 +260,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbPerson, dt_Person);
+                PublicClass.SearchCmbId(cmbPerson, dt_Person, cmbPerson.Text);
             }
 
         }
@@ -255,7 +272,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbGroup, dt_Group);
+                PublicClass.SearchCmbId(cmbGroup, dt_Group, cmbGroup.Text);
             }
 
         }

@@ -432,7 +432,7 @@
             this.lblCcodeMeli.AutoSize = true;
             this.lblCcodeMeli.BackColor = System.Drawing.Color.Transparent;
             this.lblCcodeMeli.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCcodeMeli.Location = new System.Drawing.Point(253, 78);
+            this.lblCcodeMeli.Location = new System.Drawing.Point(252, 78);
             this.lblCcodeMeli.Name = "lblCcodeMeli";
             this.lblCcodeMeli.Size = new System.Drawing.Size(46, 18);
             this.lblCcodeMeli.TabIndex = 98;
@@ -487,7 +487,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(255, 476);
+            this.label8.Location = new System.Drawing.Point(252, 476);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 18);
             this.label8.TabIndex = 98;
@@ -551,7 +551,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(252, 381);
+            this.label12.Location = new System.Drawing.Point(252, 380);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 18);
             this.label12.TabIndex = 98;
@@ -679,11 +679,12 @@
             this.cmbGroup.DesignTimeLayout = cmbGroup_DesignTimeLayout;
             this.cmbGroup.DropDownDisplayMember = "Name";
             this.cmbGroup.DropDownValueMember = "id";
+            this.cmbGroup.Image = ((System.Drawing.Image)(resources.GetObject("cmbGroup.Image")));
             this.cmbGroup.Location = new System.Drawing.Point(38, 37);
             this.cmbGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGroup.Name = "cmbGroup";
             this.cmbGroup.SaveSettings = false;
-            this.cmbGroup.Size = new System.Drawing.Size(209, 28);
+            this.cmbGroup.Size = new System.Drawing.Size(209, 30);
             this.cmbGroup.TabIndex = 1;
             this.cmbGroup.ValuesDataMember = null;
             this.cmbGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGroup_KeyDown);
@@ -693,7 +694,7 @@
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label20.Location = new System.Drawing.Point(252, 42);
+            this.label20.Location = new System.Drawing.Point(252, 43);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(48, 18);
             this.label20.TabIndex = 114;
@@ -704,7 +705,7 @@
             this.btnAddGroup.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddGroup.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddGroup.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddGroup.Location = new System.Drawing.Point(17, 37);
+            this.btnAddGroup.Location = new System.Drawing.Point(17, 38);
             this.btnAddGroup.Name = "btnAddGroup";
             this.btnAddGroup.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddGroup.Size = new System.Drawing.Size(20, 28);
@@ -721,7 +722,7 @@
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label21.ForeColor = System.Drawing.Color.Red;
-            this.label21.Location = new System.Drawing.Point(5, 42);
+            this.label21.Location = new System.Drawing.Point(5, 43);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(15, 18);
             this.label21.TabIndex = 98;
@@ -786,7 +787,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(249, 245);
+            this.label1.Location = new System.Drawing.Point(252, 245);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 18);
             this.label1.TabIndex = 98;
@@ -846,7 +847,7 @@
             this.cmbBanck.DesignTimeLayout = cmbBanck_DesignTimeLayout;
             this.cmbBanck.DisplayMember = "Name";
             this.cmbBanck.Image = ((System.Drawing.Image)(resources.GetObject("cmbBanck.Image")));
-            this.cmbBanck.Location = new System.Drawing.Point(38, 375);
+            this.cmbBanck.Location = new System.Drawing.Point(38, 374);
             this.cmbBanck.Name = "cmbBanck";
             this.cmbBanck.SelectedIndex = -1;
             this.cmbBanck.SelectedItem = null;
@@ -880,7 +881,6 @@
             this.btnRepC1.GlobalItem = false;
             this.btnRepC1.Name = "btnRepC1";
             this.btnRepC1.Text = "گزارش از لیست اشخاص";
-            this.btnRepC1.Click += new System.EventHandler(this.btnRepC1_Click);
             // 
             // buttonItem1
             // 

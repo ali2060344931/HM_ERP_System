@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HM_ERP_System.Entity.Accounts.GroupAccount;
+
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
@@ -17,8 +19,9 @@ namespace HM_ERP_System.Entity.Warehouse
         public int WarehouseTypeId { get; set; }
         public int? Capacity { get; set; }
         public string Addres { get; set; }
-
+        public WarehouseType WarehouseType { get; set; }
     }
+
     public class WarehouseConfig : EntityTypeConfiguration<Warehouse>
     {
         public WarehouseConfig()
@@ -27,6 +30,10 @@ namespace HM_ERP_System.Entity.Warehouse
             Property(d => d.Name).IsRequired().HasMaxLength(100);
             Property(d => d.Addres).HasMaxLength(500);
 
+            HasRequired(w => w.WarehouseType)
+    .WithMany(t => t.Warehouses)
+    .HasForeignKey(w => w.WarehouseTypeId)
+    .WillCascadeOnDelete(false);
 
         }
     }

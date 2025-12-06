@@ -245,11 +245,12 @@
             this.cmbGroup.DesignTimeLayout = cmbGroup_DesignTimeLayout;
             this.cmbGroup.DropDownDisplayMember = "Name";
             this.cmbGroup.DropDownValueMember = "id";
+            this.cmbGroup.Image = ((System.Drawing.Image)(resources.GetObject("cmbGroup.Image")));
             this.cmbGroup.Location = new System.Drawing.Point(38, 50);
             this.cmbGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGroup.Name = "cmbGroup";
             this.cmbGroup.SaveSettings = false;
-            this.cmbGroup.Size = new System.Drawing.Size(295, 28);
+            this.cmbGroup.Size = new System.Drawing.Size(295, 30);
             this.cmbGroup.TabIndex = 112;
             this.cmbGroup.ValuesDataMember = null;
             this.cmbGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGroup_KeyDown);
@@ -262,15 +263,15 @@
             this.cmbPerson.DesignTimeLayout = cmbPerson_DesignTimeLayout;
             this.cmbPerson.DropDownDisplayMember = "Name";
             this.cmbPerson.DropDownValueMember = "id";
+            this.cmbPerson.Image = ((System.Drawing.Image)(resources.GetObject("cmbPerson.Image")));
             this.cmbPerson.Location = new System.Drawing.Point(38, 17);
             this.cmbPerson.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPerson.Name = "cmbPerson";
             this.cmbPerson.SaveSettings = false;
-            this.cmbPerson.Size = new System.Drawing.Size(295, 28);
+            this.cmbPerson.Size = new System.Drawing.Size(295, 30);
             this.cmbPerson.TabIndex = 112;
             this.cmbPerson.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.cmbPerson.ValuesDataMember = null;
-            //this.cmbPerson.CheckedValuesChanged += new System.EventHandler(this.cmbPerson_CheckedValuesChanged);
             this.cmbPerson.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPerson_KeyDown);
             // 
             // frmCustomerToGroup

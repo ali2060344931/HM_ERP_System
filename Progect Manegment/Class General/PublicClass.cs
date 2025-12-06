@@ -73,7 +73,7 @@ namespace MyClass
 
         public static string UserName = "";
         public static int Id_ = 0;
-        public static string  text_ = "";
+        public static string text_ = "";
         /// <summary>
         /// کد کاربر
         /// </summary>
@@ -631,7 +631,7 @@ namespace MyClass
         }
 
 
-        public static object SearchToCmb(object comboControl,System.Data.DataTable dt)
+        public static object SearchToCmb(object comboControl, System.Data.DataTable dt)
         {
             try
             {
@@ -671,17 +671,9 @@ namespace MyClass
                 {
                     if (dt.Rows.Count > 0)
                     {
-                        //frmSearchAllCombo f = new frmSearchAllCombo();
-                        //f.dt = dt;
-                        //f.ColItems = "";   // این کنترل ستون‌ها ندارد
-                        //f.ColumnsCount = 0;
-                        //f.ShowDialog();
-
-
                         frmSearchAllCombo f = new frmSearchAllCombo();
                         f.dt = dt;
 
-                        // ساخت اطلاعات ستون‌ها
                         string txt = "";
                         int cn = ccb.DropDownList.Columns.Count;
                         for (int i = 0; i < cn; i++)
@@ -700,15 +692,8 @@ namespace MyClass
 
                         f.ShowDialog();
                     }
-
-                    // در CheckedComboBox مقدار از Text گرفته می‌شود
-                    //if (int.TryParse(ccb.Text, out int val))
-                        return text_;
-
-                    //return "";
+                    return text_;
                 }
-
-                // اگر هیچکدام نبود
                 return 0;
             }
             catch (Exception er)
@@ -914,69 +899,16 @@ namespace MyClass
                             MessageBoxIcon.Error);
         }
 
+        //""""""""""""""""""""""""""""""""""""""
+
         /// <summary>
         /// جستجوی در کمبوباکس ها
         /// </summary>
-        /// <param name="multiColumnCombo"></param>
+        /// <param name="comboControl"></param>
         /// <param name="dataTable"></param>
+        /// <param name="textValue">CheckedComboBox مقدار اولیه در داخل</param>
         /// <returns></returns>
-        public static object SearchCmbId_(MultiColumnCombo multiColumnCombo, System.Data.DataTable dataTable)
-        {
-            try
-            {
-                if (dataTable != null)
-                {
-                    int id =(int) SearchToCmb(multiColumnCombo, dataTable);
-                    if (id != 0)
-                        return multiColumnCombo.Value = id;
-                    else
-                        return multiColumnCombo.Text = "";
-                }
-                else
-                {
-                    WindowAlartByText(eDesktopAlertColor.Red, "مقادیری در لیست نمی باشد", "No", 2, 150);
-                    return multiColumnCombo.Text = "";
-                }
-            }
-            catch (Exception)
-            {
-                return multiColumnCombo.Text = "";
-            }
-        }
-
-        //""""""""""""""""""""""""""""""""""""""
-        public static object SearchCmbId_0(object comboControl,System.Data.DataTable dataTable)
-        {
-            try
-            {
-                if (dataTable == null)
-                {
-                    WindowAlartByText(eDesktopAlertColor.Red, "مقادیری در لیست نمی باشد", "No", 2, 150);
-                    SetComboText(comboControl, "");
-                    return "";
-                }
-
-                int id =(int) SearchToCmb(comboControl, dataTable);
-
-                if (id != 0)
-                {
-                    SetComboValue(comboControl, id);
-                    return id;
-                }
-                else
-                {
-                    SetComboText(comboControl, "");
-                    return "";
-                }
-            }
-            catch
-            {
-                SetComboText(comboControl, "");
-                return "";
-            }
-        }
-
-        public static object SearchCmbId(object comboControl, System.Data.DataTable dataTable)
+        public static object SearchCmbId(object comboControl, System.Data.DataTable dataTable, string textValue = "")
         {
             try
             {
@@ -1011,9 +943,9 @@ namespace MyClass
 
                     if (text != "")
                     {
-                        SetComboValue(comboControl, text);
-
+                        SetComboValue(comboControl, text, textValue);
                         return text;
+
                     }
                     else
                     {
@@ -1024,38 +956,53 @@ namespace MyClass
 
                 return "";
             }
-            catch
+            catch (Exception er)
             {
+                PublicClass.ShowErrorMessage(er);
                 SetComboText(comboControl, "");
                 return "";
             }
         }
 
-
         private static void SetComboText(object combo, string text)
         {
-            if (combo is MultiColumnCombo mcc)
-                mcc.Text = text;
+            try
+            {
+                if (combo is MultiColumnCombo mcc)
+                    mcc.Text = text;
 
-            else if (combo is CheckedComboBox ccb)
-                ccb.Text = text;
+                else if (combo is CheckedComboBox ccb)
+                    ccb.Text = text;
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
-        private static void SetComboValue(object combo, object value)
+        private static void SetComboValue(object combo, object value, string textValue = "")
         {
-            if (combo is MultiColumnCombo mcc)
+            try
             {
-                // مقدار همیشه Id است
-                mcc.Value = value;
+                if (combo is MultiColumnCombo mcc)
+                {
+                    // مقدار همیشه Id است
+                    mcc.Value = value;
+                }
+                else if (combo is CheckedComboBox ccb)
+                {
+                    // مقدار همیشه Text است
+                    if (textValue == "")
+                        ccb.Text = value?.ToString();
+                    else
+                        ccb.Text = textValue + ", " + value?.ToString();
+                }
             }
-            else if (combo is CheckedComboBox ccb)
+            catch (Exception er)
             {
-                // مقدار همیشه Text است
-                ccb.Text = value?.ToString();
+                PublicClass.ShowErrorMessage(er);
             }
         }
-
-
         //""""""""""""""""""""""""""""""""""""""
 
 
@@ -2305,7 +2252,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage(er);
+                //PublicClass.ShowErrorMessage(er);
                 return null;
             }
         }
@@ -4318,7 +4265,7 @@ namespace MyClass
         /// <param name="ChequeOwner">نام صاحب چک</param>
         /// <param name="DescriptionCh">توضیحات</param>
         /// <param name="TransactionId"></param>
-        public static bool AddCheuqeToDatabase(DBcontextModel db,int listId, int ChequeTypeId,string ChequeNumber,double Amount,string DueDate,int AccountId,int DetailedAccountid,string ChequeOwner,string DescriptionCh, int TransactionId)
+        public static bool AddCheuqeToDatabase(DBcontextModel db, int listId, int ChequeTypeId, string ChequeNumber, double Amount, string DueDate, int AccountId, int DetailedAccountid, string ChequeOwner, string DescriptionCh, int TransactionId)
         {
             try
             {

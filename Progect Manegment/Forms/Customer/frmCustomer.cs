@@ -752,11 +752,6 @@ namespace HM_ERP_System.Forms.Customer
             f.ShowDialog();
         }
 
-        private void btnRepC1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonItem1_Click(object sender, EventArgs e)
         {
             PdfReportHelper.ExportJanusGridToPDF(dgvList, "گزارش لیست مشتریان");
@@ -791,9 +786,8 @@ namespace HM_ERP_System.Forms.Customer
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbGroup, dt_Group);
+                PublicClass.SearchCmbId(cmbGroup, dt_Group, cmbGroup.Text);
             }
-
         }
     }
 }

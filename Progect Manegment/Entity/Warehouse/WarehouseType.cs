@@ -1,4 +1,8 @@
-﻿using System;
+﻿using HM_ERP_System.Entity.Accounts.TotalAccount;
+
+using Microsoft.EntityFrameworkCore;
+
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
@@ -14,9 +18,9 @@ namespace HM_ERP_System.Entity.Warehouse
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public ICollection<Warehouse> Warehouses { get; set; }
     }
-            public class WarehouseTypeConfig : EntityTypeConfiguration<WarehouseType>
+    public class WarehouseTypeConfig : EntityTypeConfiguration<WarehouseType>
     {
         public WarehouseTypeConfig()
         {

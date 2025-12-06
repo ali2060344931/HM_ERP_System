@@ -51,84 +51,78 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
         public void UpdateData()
         {
             CallUpdateTata();
-            //FilldgvList();
-            //FillcmbSpecificAccount();
-            //FillcmbCustomers();
-            //FillcmbNatureAccounts();
         }
         private void frmDetailedAccount_Load(object sender, EventArgs e)
         {
             UpdateData();
-            //CallUpdateTata();
-            //if (cmbSpecificAccountValue != 0)
-            //{
-            //    if (Code==0)
-            //    {
-            //        cmbSpecificAccount.Value= cmbSpecificAccountValue;
-            //        cmbSpecificAccount.Enabled=false;
-            //    }
-            //    else
-            //    {
-            //        FillcmbSpecificAccount();
-            //    }
-            //}
-
-            //if (IsRequest)
-            //    dgvList.RootTable.Columns["SelectAccount"].Visible=true;
-            //else
-            //    dgvList.RootTable.Columns["SelectAccount"].Visible=false;
         }
         private void CallUpdateTata()
         {
-            FilldgvList();
-            FillcmbSpecificAccount();
-            FillcmbCustomers();
-            FillcmbNatureAccounts();
-            FillcmbBanck();
-            if (cmbSpecificAccountValue != 0)
+            try
             {
-                if (Code == 0)
+                FilldgvList();
+                FillcmbSpecificAccount();
+                FillcmbCustomers();
+                FillcmbNatureAccounts();
+                FillcmbBanck();
+                if (cmbSpecificAccountValue != 0)
                 {
-                    cmbSpecificAccount.Value = cmbSpecificAccountValue;
-                    cmbSpecificAccount.Enabled = false;
+                    if (Code == 0)
+                    {
+                        cmbSpecificAccount.Value = cmbSpecificAccountValue;
+                        cmbSpecificAccount.Enabled = false;
+                    }
+                    else
+                    {
+                        FillcmbSpecificAccount();
+                    }
                 }
-                else
-                {
-                    FillcmbSpecificAccount();
-                }
-            }
 
-            if (IsRequest)
-                dgvList.RootTable.Columns["SelectAccount"].Visible = true;
-            else
-                dgvList.RootTable.Columns["SelectAccount"].Visible = false;
+                if (IsRequest)
+                    dgvList.RootTable.Columns["SelectAccount"].Visible = true;
+                else
+                    dgvList.RootTable.Columns["SelectAccount"].Visible = false;
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
         System.Data.DataTable dt_Banck;
         private void FillcmbBanck()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = from da in db.DetailedAccounts
+                using (var db = new DBcontextModel())
+                {
+                    var q = from da in db.DetailedAccounts
 
-                        join cu in db.Customers
-                        on da.CustomerId equals cu.Id
+                            join cu in db.Customers
+                            on da.CustomerId equals cu.Id
 
-                        join bb in db.BankBranches
-                        on da.BankBrancheId equals bb.Id
-                        join ba in db.Bancks
-                        on bb.BanckId equals ba.Id
-                        select new
-                        {
-                            da.Id,
-                            AccountName = cu.Name,
-                            BanckBranchName = bb.Name,
-                            BanckName = ba.Name,
-                            AccountNumber = cu.AccountNumber,
-                        };
+                            join bb in db.BankBranches
+                            on da.BankBrancheId equals bb.Id
+                            join ba in db.Bancks
+                            on bb.BanckId equals ba.Id
+                            select new
+                            {
+                                da.Id,
+                                AccountName = cu.Name,
+                                BanckBranchName = bb.Name,
+                                BanckName = ba.Name,
+                                AccountNumber = cu.AccountNumber,
+                            };
 
-                cmbAccount.DataSource = q.ToList();
-                dt_Banck = new System.Data.DataTable();
-                dt_Banck = PublicClass.AddEntityTableToDataTable(q.ToList());
+                    cmbAccount.DataSource = q.ToList();
+                    dt_Banck = new System.Data.DataTable();
+                    dt_Banck = PublicClass.AddEntityTableToDataTable(q.ToList());
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -144,7 +138,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                             join tc in db.TypeCustomers
                             on cu.id_TypeCustomer equals tc.Id
 
-                            where cu.id_TypeCustomer==1 || cu.id_TypeCustomer == 2
+                            where cu.id_TypeCustomer == 1 || cu.id_TypeCustomer == 2
                             select new
                             {
                                 cu.Id,
@@ -167,39 +161,55 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
         System.Data.DataTable dt_SpecificAccount;
         private void FillcmbSpecificAccount()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = from sa in db.SpecificAccounts
+                using (var db = new DBcontextModel())
+                {
+                    var q = from sa in db.SpecificAccounts
 
-                        join ta in db.TotalAccounts
-                        on sa.Id_TotalAccount equals ta.Id
+                            join ta in db.TotalAccounts
+                            on sa.Id_TotalAccount equals ta.Id
 
-                        join ga in db.GroupAccounts
-                        on ta.Id_GroupAccount equals ga.Id
+                            join ga in db.GroupAccounts
+                            on ta.Id_GroupAccount equals ga.Id
 
-                        where (Code != 0 ? sa.Id == 1 || sa.Id == 2 : sa.Id > 0) &&
-                (chkShowAllAccounts.Checked || (sa.Cod == 10302 || sa.Cod == 40101 || sa.Cod == 10301 || sa.Cod == 30101))
-                        select new
-                        {
-                            sa.Id,
-                            Code = sa.Cod,
-                            Name = sa.Name,
-                            groupAccount = ga.Name,
-                            TotalAccount = ta.Name,
-                        };
-                cmbSpecificAccount.DataSource = q.ToList();
-                dt_SpecificAccount = new System.Data.DataTable();
-                dt_SpecificAccount = PublicClass.AddEntityTableToDataTable(q.ToList());
+                            where (Code != 0 ? sa.Id == 1 || sa.Id == 2 : sa.Id > 0) &&
+                    (chkShowAllAccounts.Checked || (sa.Cod == 10302 || sa.Cod == 40101 || sa.Cod == 10301 || sa.Cod == 30101))
+                            select new
+                            {
+                                sa.Id,
+                                Code = sa.Cod,
+                                Name = sa.Name,
+                                groupAccount = ga.Name,
+                                TotalAccount = ta.Name,
+                            };
+                    cmbSpecificAccount.DataSource = q.ToList();
+                    dt_SpecificAccount = new System.Data.DataTable();
+                    dt_SpecificAccount = PublicClass.AddEntityTableToDataTable(q.ToList());
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
         private void FillcmbNatureAccounts()
         {
-            using (var db = new DBcontextModel())
+            try
             {
-                var q = db.NatureAccounts.Where(c => c.Id <= 2).ToList();
-                cmbNatureAccounts.DataSource = q;
-                cmbNatureAccounts.SelectedIndex = 0;
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.NatureAccounts.Where(c => c.Id <= 2).ToList();
+                    cmbNatureAccounts.DataSource = q;
+                    cmbNatureAccounts.SelectedIndex = 0;
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -240,7 +250,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                                 TotalAccountName = ta.Name,
                                 SpecificAccountName = sa.Name,
                                 Name = (cu.Family + " " + cu.Name).Trim(),
-
+                                cu.CodMeli,
                                 NatureAccounts = na.Name,
                                 DetailedAccountCode = da.CodeAccount,
 
@@ -303,8 +313,8 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                 FilldgvList();
                 using (var db = new DBcontextModel())
                 {
-                    var q=db.SpecificAccounts.Where(c=>c.Id== SpecificAccountId).First();
-                    
+                    var q = db.SpecificAccounts.Where(c => c.Id == SpecificAccountId).First();
+
                     if (!chkShowAllAccounts.Checked)
                     {
                         if (q.Cod == 10301 || q.Cod == 30101)
@@ -325,8 +335,6 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
             {
             }
         }
-
-
 
         int CustomersId = 0;
         private void cmbCustomers_ValueChanged(object sender, EventArgs e)
@@ -716,22 +724,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                             else
                                 cmbNatureAccounts.Value = 2;
                         }
-
-
-                        //var s = db.Transactions.Where(c => c.SpecificAccountId == spId1).Count();
-                        //if (s == 0)
-                        //{
-                        //    txtAmount.Enabled = false;
-                        //    cmbNatureAccounts.Enabled = false;
-                        //}
-                        //else
-                        //{
-                        //    txtAmount.Enabled = true;
-                        //    cmbNatureAccounts.Enabled = true;
-                        //}
-
                     }
-
                 }
 
                 else if (e.Column.Key == "Delete")
@@ -755,7 +748,6 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                             CelearItems();
                         }
                     }
-
                 }
                 else if (e.Column.Key == "SelectAccount")
                 {
@@ -768,7 +760,6 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                         f.lblPaymentToOthers.Tag = q.Id;
                         this.Close();
                     }
-
                 }
             }
             catch (Exception er)
@@ -810,11 +801,6 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
             FillcmbCustomers();
         }
 
-        private void frmDetailedAccount_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
         private void btnNew_Click(object sender, EventArgs e)
         {
             CelearItems();
@@ -852,11 +838,6 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                     this.Close();
             }
             if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
-        }
-
-        private void dgvList_FormattingRow(object sender, Janus.Windows.GridEX.RowLoadEventArgs e)
-        {
-
         }
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
@@ -925,8 +906,8 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
         private void chkShowAllAccounts_CheckedChanged(object sender, EventArgs e)
         {
             FillcmbSpecificAccount();
-            rdbCash.Enabled= chkShowAllAccounts.Checked;
-            rdbCheque.Enabled= chkShowAllAccounts.Checked;
+            rdbCash.Enabled = chkShowAllAccounts.Checked;
+            rdbCheque.Enabled = chkShowAllAccounts.Checked;
         }
 
         private void btnAddNewCustomers_Click(object sender, EventArgs e)

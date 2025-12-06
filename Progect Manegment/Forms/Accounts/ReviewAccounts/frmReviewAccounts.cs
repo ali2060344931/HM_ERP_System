@@ -72,10 +72,11 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         private void frmReviewAccounts_Load(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
-            txtDateS.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
-            txtDateE.Value = DateTime.Now;
 
+            //txtDateS.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
+            //txtDateE.Value = DateTime.Now;
 
+            btnFinancialYear_Click(null, null);
 
             isactive = true;
             UpdateData();

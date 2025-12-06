@@ -256,6 +256,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
 
                                 Bed = trGroup.Where(c => c.FinancialYear == FinancialYear && !c.Status).Sum(t => (double?)t.PaymentBed) ?? 0,
 
+
                                 Bes = trGroup.Where(c => c.FinancialYear == FinancialYear && !c.Status).Sum(t => (double?)t.PaymentBes) ?? 0,
 
                                 Balance = Math.Abs((trGroup.Sum(t => (double?)t.PaymentBes) ?? 0) - (trGroup.Where(c => c.FinancialYear == FinancialYear && !c.Status).Sum(t => (double?)t.PaymentBed) ?? 0))

@@ -214,7 +214,6 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmDetailedAccount";
             this.dgvList.Size = new System.Drawing.Size(895, 507);
             this.dgvList.Sortable = true;
@@ -225,7 +224,6 @@
             this.dgvList.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
-            //this.dgvList.FormattingRow += new Janus.Windows.GridEX.RowLoadEventHandler(this.dgvList_FormattingRow);
             this.dgvList.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvList_ColumnButtonClick);
             // 
             // txtAmount
@@ -694,7 +692,6 @@
             this.Text = "فرم ثبت حساب های تفصیلی";
             this.Load += new System.EventHandler(this.frmDetailedAccount_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDetailedAccount_KeyDown);
-            //this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.frmDetailedAccount_PreviewKeyDown);
             this.Controls.SetChildIndex(this.pnlAddItems, 0);
             this.Controls.SetChildIndex(this.pnlViewItems, 0);
             this.pnlViewItemBody.ResumeLayout(false);
@@ -706,7 +703,6 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
-            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbNatureAccounts)).EndInit();

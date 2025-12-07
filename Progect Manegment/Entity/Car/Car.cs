@@ -52,7 +52,7 @@ namespace HM_ERP_System.Entity.Car
         public int OwnershipCompanyId { get; set; }
 
         /// <summary>
-        /// کد طرف حساب
+        /// کد طرف حساب کامیون
         /// </summary>
         public int GoodsAccountId { get; set; }
         /// <summary>

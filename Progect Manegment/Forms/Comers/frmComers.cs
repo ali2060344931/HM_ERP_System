@@ -1380,7 +1380,9 @@ namespace HM_ERP_System.Forms.Comers
                 using (var db = new DBcontextModel())
                 {
                     var q = db.Cars.Where(c => c.Id == CarIdH_);
+                    
                     var cuId = db.Customers.Where(c => c.Id == q.FirstOrDefault().DraverId).First().Id;
+                    var cuId0 = db.Customers.Where(c => c.Id == q.FirstOrDefault().GoodsAccountId).First().Id;
                     var q1 = db.Customers.Where(c => c.Id == q.FirstOrDefault().DraverId);
                     if (q.Count() != 0)
                     {
@@ -1389,12 +1391,16 @@ namespace HM_ERP_System.Forms.Comers
 
 
                         cmbDraversH1.Value = drv.Id;
+                        
                         var per = db.Customers.Where(c => c.Id == cuId).First();
+                        var per0 = db.Customers.Where(c => c.Id == cuId0).First();
+                        
                         lblTelDraver1.Text = per.Tel;
 
                         lblCarName.Text = q.First().CarName;
                         lblCarSeryal.Text = q.First().Seryal;
-                        lblDraverCarName.Text = per.Name + " " + per.Family;
+                        //نام مالک کامیون
+                        lblDraverCarName.Text = per0.Name + " " + per0.Family;
                         lblOwnershipName.Text = db.Ownerships.Where(c => c.Id == q.FirstOrDefault().OwnershipId).First().Name;
                         cmbCostAccountH.Value = q.First().GoodsAccountId;
                         lblTruckUsageType.Text = db.TruckUsageTypes.Where(c => c.Id == q.FirstOrDefault().TruckUsageTypeId).First().Name;

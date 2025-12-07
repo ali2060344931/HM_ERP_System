@@ -56,25 +56,25 @@ namespace HM_ERP_System.Entity.GoodsTransfer
             HasKey(x => x.Id);
             Property(d => d.Seryal).IsRequired().HasMaxLength(20);
 
-            HasRequired(c => c.Warehouse)
-                .WithMany(p => p.GoodsIns)
-                .HasForeignKey(c => c.WarehouseId)
-                .WillCascadeOnDelete(false);
+            //HasRequired(c => c.Warehouse)
+            //    .WithMany(p => p.GoodsIns)
+            //    .HasForeignKey(c => c.WarehouseId)
+            //    .WillCascadeOnDelete(false);
 
-            HasRequired(c => c.Product)
-                .WithMany(p => p.GoodsIns)
-                .HasForeignKey(child => child.GoodId)
-                .WillCascadeOnDelete(false);
+            //HasRequired(c => c.Product)
+            //    .WithMany(p => p.GoodsIns)
+            //    .HasForeignKey(child => child.GoodId)
+            //    .WillCascadeOnDelete(false);
 
-            HasRequired(c => c.CustomerO)
-                .WithMany(p => p.GoodsIns)
-                .HasForeignKey(c => c.OwnerGoodsId)
-                .WillCascadeOnDelete(false);
+            //HasRequired(c => c.CustomerO)
+            //    .WithMany(p => p.GoodsIns)
+            //    .HasForeignKey(c => c.OwnerGoodsId)
+            //    .WillCascadeOnDelete(false);
 
-            HasRequired(c => c.CustomerS)
-                .WithMany(p => p.GoodsIns)
-                .HasForeignKey(c => c.SenderId)
-                .WillCascadeOnDelete(false);
+            //HasRequired(c => c.CustomerS)
+            //    .WithMany(p => p.GoodsIns)
+            //    .HasForeignKey(c => c.SenderId)
+            //    .WillCascadeOnDelete(false);
         }
     }
 }

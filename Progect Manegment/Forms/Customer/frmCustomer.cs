@@ -67,6 +67,10 @@ namespace HM_ERP_System.Forms.Customer
             chkControlCodeMeli.Checked = true;
             UpdateData();
         }
+        public void UpdateData()
+        {
+            CallUpdateTata();
+        }
 
         public void SaveLayout(GridEX grid, string userId, string gridName)
         {
@@ -98,11 +102,6 @@ namespace HM_ERP_System.Forms.Customer
                 cmbTypeCustomer.Enabled = false;
             }
         }
-        public void UpdateData()
-        {
-            CallUpdateTata();
-
-        }
 
         DataTable dt_Banck;
 
@@ -112,6 +111,15 @@ namespace HM_ERP_System.Forms.Customer
             {
                 using (var db = new DBcontextModel())
                 {
+                    //var q = from bb in db.BankBranches
+                    //        join ba in db.Bancks
+                    //        on bb.BanckId equals ba.Id
+                    //        select new
+                    //        {
+                    //            bb.Id,
+                    //            bb.Name,
+                    //            BanckName = ba.Name,
+                    //        };
                     var q = from bb in db.BankBranches
                             join ba in db.Bancks
                             on bb.BanckId equals ba.Id
@@ -121,6 +129,7 @@ namespace HM_ERP_System.Forms.Customer
                                 bb.Name,
                                 BanckName = ba.Name,
                             };
+                    
                     cmbBanck.DataSource = q.ToList();
                     dt_Banck = new System.Data.DataTable();
                     dt_Banck = PublicClass.AddEntityTableToDataTable(q.ToList());

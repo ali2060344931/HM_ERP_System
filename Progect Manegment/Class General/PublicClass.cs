@@ -2231,8 +2231,8 @@ namespace MyClass
                     GX.RootTable.Columns["Details"].AllowRemove = InheritableBoolean.False;
                 }
 
-                GX.SaveSettings = true;
-                GX.SettingsKey = formName;
+                GX.SaveSettings = false;
+                //GX.SettingsKey = formName;
 
                 foreach (GridEXColumn column in GX.RootTable.Columns)
                 {

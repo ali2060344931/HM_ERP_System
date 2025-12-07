@@ -349,14 +349,14 @@ namespace HM_ERP_System.Forms.Car
                     return;
                 }
 
-                if(cmbTruckManufacturer.Text!="" && cmbTruckManufacturer.SelectedIndex==-1)
+                if (cmbTruckManufacturer.Text != "" && cmbTruckManufacturer.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T168);
                     cmbTruckManufacturer.Focus();
                     return;
                 }
 
-                if(cmbColor.Text!="" && cmbColor.SelectedIndex==-1)
+                if (cmbColor.Text != "" && cmbColor.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T164);
                     cmbColor.Focus();
@@ -422,6 +422,7 @@ namespace HM_ERP_System.Forms.Car
             cmbColor.SelectedIndex = -1;
             chkStatus.Checked = true;
             ListId = 0;
+            OwnershipCompanyId_ = 0;
             txtCarName.Focus();
             FillCarName();
             FilldgvList();
@@ -539,7 +540,8 @@ namespace HM_ERP_System.Forms.Car
 
         private void btnAddDravers_Click(object sender, EventArgs e)
         {
-            frmCustomerToGroup f = new frmCustomerToGroup(this);
+            //frmCustomerToGroup f = new frmCustomerToGroup(this);
+            frmDraver f = new frmDraver(this);
             f.ShowDialog();
             FillcmbDraverName();
         }
@@ -558,6 +560,8 @@ namespace HM_ERP_System.Forms.Car
                 if (cmbOwnership.SelectedIndex != -1)
                 {
                     OwnershipId_ = Convert.ToInt32(cmbOwnership.Value);
+                    OwnershipCompanyId_ = 0;
+
                     if (OwnershipId_ == 3)
                     {
                         cmbCompanys.Visible = true;
@@ -779,8 +783,8 @@ namespace HM_ERP_System.Forms.Car
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q=db.Cars.Where(c=>c.Seryal==txtSeryal.Text);
-                    if(q.Count()!=0)
+                    var q = db.Cars.Where(c => c.Seryal == txtSeryal.Text);
+                    if (q.Count() != 0)
                     {
                         PublicClass.StopMesseg(ResourceCode.T166);
                         txtSeryal.ResetText();

@@ -137,7 +137,7 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new ColorConfig());
             modelBuilder.Configurations.Add(new WarehouseConfig());
             modelBuilder.Configurations.Add(new WarehouseTypeConfig());
-            modelBuilder.Configurations.Add(new GoodsInConfig());
+            //modelBuilder.Configurations.Add(new GoodsInConfig());
 
 
             base.OnModelCreating(modelBuilder);
@@ -405,11 +405,11 @@ namespace Progect_Manegment
         /// <summary>
         /// جدول رسید کالا
         /// </summary>
-        public virtual DbSet<GoodsIn> GoodsIns { get; set; }
-        /// <summary>
-        /// جدول حواله کالاها
-        /// </summary>
-        public virtual DbSet<GoodsOut> GoodsOuts { get; set; }
+        //public virtual DbSet<GoodsIn> GoodsIns { get; set; }
+        ///// <summary>
+        ///// جدول حواله کالاها
+        ///// </summary>
+        //public virtual DbSet<GoodsOut> GoodsOuts { get; set; }
 
         #endregion
 

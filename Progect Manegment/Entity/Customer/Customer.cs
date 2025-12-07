@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HM_ERP_System.Entity.GoodsTransfer;
+
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
@@ -111,6 +113,7 @@ namespace HM_ERP_System.Entity.Customer
         public virtual TypeCustomer.TypeCustomer TypeCustomer { get; set; }
         public virtual ICollection<Draver.Draver> Dravers { get; set; }
         public virtual ICollection <Car.Car > Car { get; set; }
+        public virtual ICollection <GoodsIn> GoodsIns { get; set; }
     }
     public class CustomerConfig : EntityTypeConfiguration<Customer>
     {

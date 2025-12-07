@@ -1,4 +1,5 @@
 ﻿using HM_ERP_System.Entity.Accounts.GroupAccount;
+using HM_ERP_System.Entity.GoodsTransfer;
 
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,24 @@ namespace HM_ERP_System.Entity.Warehouse
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        /// <summary>
+        /// نوع انبار
+        /// </summary>
         public int WarehouseTypeId { get; set; }
+        /// <summary>
+        ///  ظرفیت
+        /// </summary>
         public int? Capacity { get; set; }
+        /// <summary>
+        /// کد پستی
+        /// </summary>
+        public string PostalCode { get; set; }
+        /// <summary>
+        /// آدرس
+        /// </summary>
         public string Addres { get; set; }
         public WarehouseType WarehouseType { get; set; }
+        public virtual ICollection<GoodsIn> GoodsIns { get; set; }
     }
 
     public class WarehouseConfig : EntityTypeConfiguration<Warehouse>
@@ -28,6 +43,7 @@ namespace HM_ERP_System.Entity.Warehouse
         {
             HasKey(x => x.Id);
             Property(d => d.Name).IsRequired().HasMaxLength(100);
+            Property(d => d.PostalCode).IsRequired().HasMaxLength(10);
             Property(d => d.Addres).HasMaxLength(500);
 
             HasRequired(w => w.WarehouseType)

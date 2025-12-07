@@ -115,18 +115,18 @@
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(296, 0);
-            this.btnExportToExcel.Size = new System.Drawing.Size(178, 34);
+            this.btnExportToExcel.Location = new System.Drawing.Point(430, 0);
+            this.btnExportToExcel.Size = new System.Drawing.Size(44, 34);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(262, 0);
+            this.buttonX01.Location = new System.Drawing.Point(396, 0);
             this.buttonX01.Size = new System.Drawing.Size(34, 34);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(227, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(361, 0);
             this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 34);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 

@@ -101,6 +101,9 @@
             this.ribbonGroup11 = new Janus.Windows.Ribbon.RibbonGroup();
             this.buttonCommand10 = new Janus.Windows.Ribbon.ButtonCommand();
             this.buttonCommand19 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.ribbonGroup14 = new Janus.Windows.Ribbon.RibbonGroup();
+            this.btnGoodsIn = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnGoodsOut = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTab3 = new Janus.Windows.Ribbon.RibbonTab();
             this.ribbonGroup3 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnDeledeTables = new Janus.Windows.Ribbon.ButtonCommand();
@@ -192,7 +195,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1401, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1433, 27);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -226,7 +229,7 @@
             this.ribbon1.QuickAccessCustomizeList.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.btnReviewAccounts});
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1401, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1433, 185);
             // 
             // 
             // 
@@ -738,7 +741,8 @@
             // ribbonTab2
             // 
             this.ribbonTab2.Groups.AddRange(new Janus.Windows.Ribbon.RibbonGroup[] {
-            this.ribbonGroup11});
+            this.ribbonGroup11,
+            this.ribbonGroup14});
             this.ribbonTab2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonTab2.Image")));
             this.ribbonTab2.Key = "ribbonTab2";
             this.ribbonTab2.Name = "ribbonTab2";
@@ -756,18 +760,45 @@
             // 
             // buttonCommand10
             // 
+            this.buttonCommand10.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand10.Image")));
             this.buttonCommand10.Key = "buttonCommand10";
             this.buttonCommand10.Name = "buttonCommand10";
             this.buttonCommand10.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand10.Text = "انبـــار ها";
+            this.buttonCommand10.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand10_Click_1);
             // 
             // buttonCommand19
             // 
+            this.buttonCommand19.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand19.Image")));
             this.buttonCommand19.Key = "buttonCommand19";
             this.buttonCommand19.Name = "buttonCommand19";
             this.buttonCommand19.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand19.Text = "کـــــالا ها";
             this.buttonCommand19.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.buttonCommand19_Click);
+            // 
+            // ribbonGroup14
+            // 
+            this.ribbonGroup14.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
+            this.btnGoodsIn,
+            this.btnGoodsOut});
+            this.ribbonGroup14.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup14;
+            this.ribbonGroup14.Key = "ribbonGroup14";
+            this.ribbonGroup14.Name = "ribbonGroup14";
+            this.ribbonGroup14.Text = "ثبت";
+            // 
+            // btnGoodsIn
+            // 
+            this.btnGoodsIn.Image = ((System.Drawing.Image)(resources.GetObject("btnGoodsIn.Image")));
+            this.btnGoodsIn.Key = "buttonCommand20";
+            this.btnGoodsIn.Name = "btnGoodsIn";
+            this.btnGoodsIn.Text = "رسیــــــد";
+            // 
+            // btnGoodsOut
+            // 
+            this.btnGoodsOut.Image = ((System.Drawing.Image)(resources.GetObject("btnGoodsOut.Image")));
+            this.btnGoodsOut.Key = "buttonCommand21";
+            this.btnGoodsOut.Name = "btnGoodsOut";
+            this.btnGoodsOut.Text = "حــــــواله";
             // 
             // ribbonTab3
             // 
@@ -847,13 +878,13 @@
             this.lblVersion_,
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 762);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 798);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1401, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1433, 23);
             // 
             // 
             // 
@@ -922,7 +953,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1401, 785);
+            this.ClientSize = new System.Drawing.Size(1433, 821);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);
@@ -1023,5 +1054,8 @@
         private Janus.Windows.Ribbon.RibbonGroup ribbonGroup11;
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand10;
         private Janus.Windows.Ribbon.ButtonCommand buttonCommand19;
+        private Janus.Windows.Ribbon.RibbonGroup ribbonGroup14;
+        private Janus.Windows.Ribbon.ButtonCommand btnGoodsIn;
+        private Janus.Windows.Ribbon.ButtonCommand btnGoodsOut;
     }
 }

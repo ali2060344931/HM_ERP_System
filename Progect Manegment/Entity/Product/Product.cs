@@ -1,4 +1,8 @@
-﻿using System;
+﻿using HM_ERP_System.Entity.GoodsTransfer;
+
+using NPOI.POIFS.Properties;
+
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
@@ -27,6 +31,8 @@ namespace HM_ERP_System.Entity.Product
         /// کد کاربر
         /// </summary>
         public int UserId { get; set; }
+
+        public virtual ICollection<GoodsIn> GoodsIns { get; set; }
     }
     public class ProducttConfig : EntityTypeConfiguration<Product>
     {

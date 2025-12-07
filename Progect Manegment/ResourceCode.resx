@@ -631,6 +631,18 @@
   <data name="T170" xml:space="preserve">
     <value>نوع انبار وارد شده تکراری می باشد.</value>
   </data>
+  <data name="T171" xml:space="preserve">
+    <value>نام انبار را وارد نمائید.</value>
+  </data>
+  <data name="T172" xml:space="preserve">
+    <value>نام انبار وارد شده تکراری می باشد.</value>
+  </data>
+  <data name="T173" xml:space="preserve">
+    <value>ظرفیت را وارد نمائید.</value>
+  </data>
+  <data name="T174" xml:space="preserve">
+    <value>کد پستی را وارد نمائید.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

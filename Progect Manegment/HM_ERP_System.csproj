@@ -592,6 +592,8 @@
     <Compile Include="Entity\FareCalcMethod\FareCalcMethod.cs" />
     <Compile Include="Entity\FinancialYear\FinancialYear.cs" />
     <Compile Include="Entity\Gender\Gender.cs" />
+    <Compile Include="Entity\GoodsTransfer\GoodsIn.cs" />
+    <Compile Include="Entity\GoodsTransfer\GoodsOut.cs" />
     <Compile Include="Entity\ImageCo\ImageCo.cs" />
     <Compile Include="Entity\Ownership\Ownership.cs" />
     <Compile Include="Entity\PaymentMethod\PaymentMethod.cs" />
@@ -926,6 +928,12 @@
     <Compile Include="Forms\User\frmUser.Designer.cs">
       <DependentUpon>frmUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Warehouse\frmWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Warehouse\frmWarehouse.Designer.cs">
+      <DependentUpon>frmWarehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Warehouse\frmWarehouseType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1102,6 +1110,9 @@
     <EmbeddedResource Include="Forms\User\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Warehouse\frmWarehouse.resx">
+      <DependentUpon>frmWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Warehouse\frmWarehouseType.resx">
       <DependentUpon>frmWarehouseType.cs</DependentUpon>
     </EmbeddedResource>
@@ -1210,6 +1221,7 @@
     <Content Include="Trnsfer Trac.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Forms\GoodsTransfer\" />
     <Folder Include="Forms\Persons\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

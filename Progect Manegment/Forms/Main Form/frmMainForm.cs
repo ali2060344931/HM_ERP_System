@@ -32,6 +32,7 @@ using HM_ERP_System.Forms.Reports;
 using HM_ERP_System.Forms.Settings;
 using HM_ERP_System.Forms.TankerRental;
 using HM_ERP_System.Forms.User;
+using HM_ERP_System.Forms.Warehouse;
 
 using MyClass;
 
@@ -444,6 +445,11 @@ namespace HM_ERP_System.Forms.Main_Form
         private void buttonCommand19_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             FormManager.ShowMdiChildForm<frmProduct>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
+        }
+
+        private void buttonCommand10_Click_1(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            FormManager.ShowMdiChildForm<frmWarehouse>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
     }
 }

@@ -28,6 +28,7 @@ using HM_ERP_System.Entity.EvacuationDeployment;
 using HM_ERP_System.Entity.FareCalcMethod;
 using HM_ERP_System.Entity.FinancialYear;
 using HM_ERP_System.Entity.Gender;
+using HM_ERP_System.Entity.GoodsTransfer;
 using HM_ERP_System.Entity.ImageCo;
 using HM_ERP_System.Entity.Ownership;
 using HM_ERP_System.Entity.PaymentMethod;
@@ -136,6 +137,8 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new ColorConfig());
             modelBuilder.Configurations.Add(new WarehouseConfig());
             modelBuilder.Configurations.Add(new WarehouseTypeConfig());
+            modelBuilder.Configurations.Add(new GoodsInConfig());
+
 
             base.OnModelCreating(modelBuilder);
             #endregion
@@ -399,6 +402,14 @@ namespace Progect_Manegment
         /// نوع انبارها
         /// </summary>
         public virtual DbSet<WarehouseType> WarehouseTypes { get; set; }
+        /// <summary>
+        /// جدول رسید کالا
+        /// </summary>
+        public virtual DbSet<GoodsIn> GoodsIns { get; set; }
+        /// <summary>
+        /// جدول حواله کالاها
+        /// </summary>
+        public virtual DbSet<GoodsOut> GoodsOuts { get; set; }
 
         #endregion
 

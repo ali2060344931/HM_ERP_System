@@ -704,7 +704,6 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmPurchase_Tanker";
             this.dgvList.Size = new System.Drawing.Size(806, 402);
             this.dgvList.Sortable = true;
@@ -759,7 +758,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbTypeTrailer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBuyer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSeller)).EndInit();
-            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);
 

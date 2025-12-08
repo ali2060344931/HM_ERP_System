@@ -42,11 +42,11 @@
             this.dgvListB = new GridExEx.GridExEx();
             this.dgvListCommission = new GridExEx.GridExEx();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TxtDescription = new Janus.Windows.GridEX.EditControls.EditBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.buttonX01 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
-            this.TxtDescription = new Janus.Windows.GridEX.EditControls.EditBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.pnlViewItemHeder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).BeginInit();
@@ -245,6 +245,31 @@
             this.panel1.Size = new System.Drawing.Size(1027, 31);
             this.panel1.TabIndex = 89;
             // 
+            // TxtDescription
+            // 
+            this.TxtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtDescription.ButtonStyle = Janus.Windows.GridEX.EditControls.EditButtonStyle.TextButton;
+            this.TxtDescription.ButtonText = "کپی";
+            this.TxtDescription.Location = new System.Drawing.Point(12, 1);
+            this.TxtDescription.MaxLength = 36000000;
+            this.TxtDescription.Name = "TxtDescription";
+            this.TxtDescription.Size = new System.Drawing.Size(801, 28);
+            this.TxtDescription.TabIndex = 98;
+            this.TxtDescription.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            this.TxtDescription.ButtonClick += new System.EventHandler(this.TxtDescription_ButtonClick);
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label12.Location = new System.Drawing.Point(813, 6);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 18);
+            this.label12.TabIndex = 99;
+            this.label12.Text = "توضحیات گزارش:";
+            // 
             // buttonX01
             // 
             this.buttonX01.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -305,31 +330,6 @@
             this.btnShowGridExHideColumns.TabIndex = 6;
             this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
-            // 
-            // TxtDescription
-            // 
-            this.TxtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtDescription.ButtonStyle = Janus.Windows.GridEX.EditControls.EditButtonStyle.TextButton;
-            this.TxtDescription.ButtonText = "کپی";
-            this.TxtDescription.Location = new System.Drawing.Point(12, 1);
-            this.TxtDescription.MaxLength = 36000000;
-            this.TxtDescription.Name = "TxtDescription";
-            this.TxtDescription.Size = new System.Drawing.Size(801, 28);
-            this.TxtDescription.TabIndex = 98;
-            this.TxtDescription.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
-            this.TxtDescription.ButtonClick += new System.EventHandler(this.TxtDescription_ButtonClick);
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(813, 6);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 18);
-            this.label12.TabIndex = 99;
-            this.label12.Text = "توضحیات گزارش:";
             // 
             // frmComersList
             // 

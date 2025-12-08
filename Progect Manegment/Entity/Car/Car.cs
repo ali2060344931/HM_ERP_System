@@ -44,7 +44,6 @@ namespace HM_ERP_System.Entity.Car
         /// <summary>
         /// وضعیت مالکیت
         /// </summary>
-
         public int OwnershipId { get; set; }
         /// <summary>
         /// شرکت مالک

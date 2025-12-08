@@ -120,16 +120,18 @@ namespace HM_ERP_System.Forms.Customer
                     //            bb.Name,
                     //            BanckName = ba.Name,
                     //        };
-                    var q = from bb in db.BankBranches
-                            join ba in db.Bancks
-                            on bb.BanckId equals ba.Id
-                            select new
-                            {
-                                bb.Id,
-                                bb.Name,
-                                BanckName = ba.Name,
-                            };
-                    
+
+                    //var q = from bb in db.BankBranches
+                    //        join ba in db.Bancks
+                    //        on bb.BanckId equals ba.Id
+                    //        select new
+                    //        {
+                    //            bb.Id,
+                    //            bb.Name,
+                    //            BanckName = ba.Name,
+                    //        };
+
+                    var q = db.Bancks;
                     cmbBanck.DataSource = q.ToList();
                     dt_Banck = new System.Data.DataTable();
                     dt_Banck = PublicClass.AddEntityTableToDataTable(q.ToList());
@@ -233,12 +235,12 @@ namespace HM_ERP_System.Forms.Customer
                             on ct_.ProvincesId equals pr.Id into prGroup
                         from pr_ in prGroup.DefaultIfEmpty()
 
-                        join bb in db.BankBranches
-                            on cu.BanckId equals bb.Id into bbGroup
-                        from bb_ in bbGroup.DefaultIfEmpty()
+                            //join bb in db.BankBranches
+                            //    on cu.BanckId equals bb.Id into bbGroup
+                            //from bb_ in bbGroup.DefaultIfEmpty()
 
                         join ba in db.Bancks
-                            on bb_.BanckId equals ba.Id into baGroup
+                            on cu.BanckId equals ba.Id into baGroup
                         from ba_ in baGroup.DefaultIfEmpty()
 
                         where cu.id_TypeCustomer <= 2
@@ -259,7 +261,7 @@ namespace HM_ERP_System.Forms.Customer
                             cu.SeryalShaba,
                             cu.DabitCardNumber,
                             cu.RecordDateTime,
-                            BanckName = bb_ != null && ba_ != null ? ba_.Name + " - " + bb_.Name : "-",
+                            BanckName = ba_ != null ? ba_.Name : "-",
                             SecretCode = cu.SecretCode,
                             CiltysName = ct_ != null ? ct_.Name : "-",
                             ProvincesName = pr_ != null ? pr_.Name : "-",
@@ -616,7 +618,10 @@ namespace HM_ERP_System.Forms.Customer
                             txtTel2.Text = q.Tel2;
                             txtAdders2.Text = q.Adders2;
                             txtPostalCode.Text = q.PostalCode;
-                            cmbBanck.Value = q.BanckId;
+                            if (q.BanckId != null)
+                                cmbBanck.Value = q.BanckId;
+                            else
+                                cmbBanck.Text = "";
                             txtSeryalShaba.Text = q.SeryalShaba;
                             txtDabitCardNumber.Text = q.DabitCardNumber;
                             txtDes.Text = q.Description;
@@ -630,10 +635,12 @@ namespace HM_ERP_System.Forms.Customer
                                 if (s.Count() != 0)
                                     txt += s.First().Name + ",";
                             }
-
-                            cmbGroup.Text = txt.Remove(txt.Length - 1);
+                            if (txt.Length > 0)
+                                cmbGroup.Text = txt.Remove(txt.Length - 1);
                             cmbGroup.Enabled = false;
                             btnAddGroup.Enabled = false;
+
+
                             //txtAmount.Value=q.BeginningBanace;
                             //cmbNatureAccounts.SelectedIndex =(int)q.NatureAccountsId;
                         }

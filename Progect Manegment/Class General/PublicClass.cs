@@ -1258,17 +1258,21 @@ namespace MyClass
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.SpecificAccounts.Where(c => c.Id == SpecificAccountId_).First();
+                    var q = db.SpecificAccounts.Where(c => c.Id == SpecificAccountId_);
+                    if (q.Count() != 0)
+                    {
+                        var cd = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId_);
+                        if (cd.Count() == 0)
+                        {
+                            return q.First().Cod * 10000 + 1;
+                        }
+                        else
+                        {
+                            return cd.Max(c => c.CodeAccount) + 1;
+                        }
+                    }
+                    return 0;
 
-                    var cd = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId_);
-                    if (cd.Count() == 0)
-                    {
-                        return q.Cod * 10000 + 1;
-                    }
-                    else
-                    {
-                        return cd.Max(c => c.CodeAccount) + 1;
-                    }
                 }
             }
             catch (Exception er)

@@ -15,7 +15,48 @@ namespace HM_ERP_System.Forms.Main_Form
         public frmAddItems()
         {
             InitializeComponent();
+            //this.KeyPreview = true;
         }
+
+        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        //{
+        //    // جلوگیری از ارسال کلید به فرم قبلی
+        //    if (!this.Focused && !this.ContainsFocus)
+        //        return false;
+
+        //    switch (keyData)
+        //    {
+        //        case Keys.F5:
+        //            OnF5Pressed();
+        //            return true;
+
+        //        case Keys.F2:
+        //            OnF2Pressed();
+        //            return true;
+
+        //        case Keys.F7:
+        //            OnF7Pressed();
+        //            return true;
+
+        //        case Keys.F8:
+        //            OnF8Pressed();
+        //            return true;
+
+        //        case Keys.Escape:
+        //            OnEscPressed();
+        //            return true;
+        //    }
+
+        //    return base.ProcessCmdKey(ref msg, keyData);
+        //}
+
+        //// رویدادهای قابل Override برای فرم‌های فرزند
+        //protected virtual void OnF5Pressed() { MessageBox.Show("Test");}
+        //protected virtual void OnF2Pressed() { }
+        //protected virtual void OnF7Pressed() { }
+        //protected virtual void OnF8Pressed() { }
+        //protected virtual void OnEscPressed() { this.Close(); }
+
 
         private void frmAddItems_Load(object sender, EventArgs e)
         {

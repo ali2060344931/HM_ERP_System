@@ -77,8 +77,8 @@ namespace HM_ERP_System.Forms.Product
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (PublicClass.FindEmptyControls(txtName, ResourceCode.
-                        T025))
+
+            if (PublicClass.FindEmptyControls(cmbProductGroup, ResourceCode.T112, txtName, ResourceCode.T025))
                 return;
             using (var db = new DBcontextModel())
             {
@@ -195,7 +195,8 @@ namespace HM_ERP_System.Forms.Product
 
         private void btnAddNewItem_Click(object sender, EventArgs e)
         {
-            frmProductGroup f=new frmProductGroup(this);
+            //FormManager.ShowMdiChildForm<frmProductGroup>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
+            frmProductGroup f = new frmProductGroup(this);
             f.ShowDialog();
             FillcmbProductGroup();
         }

@@ -1371,7 +1371,7 @@ namespace HM_ERP_System.Forms.Comers
         bool StatusDeliveryGoods = false;
 
         /// <summary>
-        /// 
+        /// مشخصات پلاک منتخب
         /// </summary>
         public void SearchCar_DriverH()
         {
@@ -1379,39 +1379,58 @@ namespace HM_ERP_System.Forms.Comers
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.Cars.Where(c => c.Id == CarIdH_);
-                    
-                    var cuId = db.Customers.Where(c => c.Id == q.FirstOrDefault().DraverId).First().Id;
-                    var cuId0 = db.Customers.Where(c => c.Id == q.FirstOrDefault().GoodsAccountId).First().Id;
-                    var q1 = db.Customers.Where(c => c.Id == q.FirstOrDefault().DraverId);
-                    if (q.Count() != 0)
+                    var cars = db.Cars.Where(c => c.Id == CarIdH_);
+                    //var q1 = db.Customers.Where(c => c.Id == cars.FirstOrDefault().DraverId);
+                    if (cars.Count() != 0)
                     {
-                        CarIdH_ = q.First().Id;
+
+                        var dr = db.Dravers.Where(c => c.Id == cars.FirstOrDefault().DraverId).First();
+                        var cuId = db.Customers.Where(c => c.Id == dr.CustomerId).First().Id;
+
                         var drv = db.Customers.Where(c => c.Id == cuId).First();
 
 
-                        cmbDraversH1.Value = drv.Id;
-                        
                         var per = db.Customers.Where(c => c.Id == cuId).First();
-                        var per0 = db.Customers.Where(c => c.Id == cuId0).First();
-                        
-                        lblTelDraver1.Text = per.Tel;
 
-                        lblCarName.Text = q.First().CarName;
-                        lblCarSeryal.Text = q.First().Seryal;
-                        //نام مالک کامیون
-                        lblDraverCarName.Text = per0.Name + " " + per0.Family;
-                        lblOwnershipName.Text = db.Ownerships.Where(c => c.Id == q.FirstOrDefault().OwnershipId).First().Name;
-                        cmbCostAccountH.Value = q.First().GoodsAccountId;
-                        lblTruckUsageType.Text = db.TruckUsageTypes.Where(c => c.Id == q.FirstOrDefault().TruckUsageTypeId).First().Name;
-                        lblTruckCapacity.Text = q.First().TruckCapacity.ToString();
-                        lblLoadWeightCapacity.Text = q.First().LoadWeightCapacity.ToString();
+                        CarIdH_ = cars.First().Id;
+
+                        cmbDraversH1.Value = dr.Id;
+
+                        //lblTelDraver1.Text = per.Tel;
+                        //نام کامیون
+                        lblCarName.Text = cars.First().CarName;
+                        //سریال هوشمند
+                        lblCarSeryal.Text = cars.First().Seryal;
+
+                        //نام مالک کامیون های شخصی
+                        if (cars.FirstOrDefault().OwnershipId != 3)
+                        {
+                            var cuId0 = db.Customers.Where(c => c.Id == cars.FirstOrDefault().GoodsAccountId).First().Id;
+                            var per0 = db.Customers.Where(c => c.Id == cuId0).First();
+                            lblDraverCarName.Text = per0.Name + " " + per0.Family;
+                        }
+                        else//نام مالک کامیون های شرکتی
+                        {
+                            var cuId1 = db.Customers.Where(c => c.Id == cars.FirstOrDefault().OwnershipCompanyId).First().Id;
+                            var per1 = db.Customers.Where(c => c.Id == cuId1).First();
+                            lblDraverCarName.Text = per1.Name + " " + per1.Family;
+                        }
+
+                        //نوع مالکیت
+                        lblOwnershipName.Text = db.Ownerships.Where(c => c.Id == cars.FirstOrDefault().OwnershipId).First().Name;
+
+                        cmbCostAccountH.Value = cars.First().GoodsAccountId;
+                        lblTruckUsageType.Text = db.TruckUsageTypes.Where(c => c.Id == cars.FirstOrDefault().TruckUsageTypeId).First().Name;
+                        lblTruckCapacity.Text = cars.First().TruckCapacity.ToString();
+                        lblLoadWeightCapacity.Text = cars.First().LoadWeightCapacity.ToString();
                         lblCountComerH.Text = db.ComersHs.Where(c => c.CarId == CarIdH_).Count().ToString();
-                        lblEndDateComerH.Text = db.ComersHs.Where(c => c.CarId == CarIdH_).Max(c => c.date);
 
+                        lblEndDateComerH.Text = db.ComersHs.Where(c => c.CarId == CarIdH_).Max(c => c.date);
+                        //استان
                         lblProvinces.Text = db.Provinces.Where(c => c.Id == db.Ciltys.Where(x => x.Id == drv.CityId).FirstOrDefault().ProvincesId).First().Name;
+                        //شهر
                         lblCity.Text = db.Ciltys.Where(c => c.Id == drv.CityId).First().Name;
-                        txtTruckCapacity.Value = q.First().LoadWeightCapacity;
+                        txtTruckCapacity.Value = cars.First().LoadWeightCapacity;
 
                         if (StatusCar(CarIdH_) && ListId == 0)
                         {
@@ -1860,7 +1879,7 @@ namespace HM_ERP_System.Forms.Comers
 
                         select new
                         {
-                            
+
                             cmb.Id,
                             cmb.DateB,
                             cmb.SeryalB,
@@ -3311,8 +3330,6 @@ namespace HM_ERP_System.Forms.Comers
                 PublicClass.SearchCmbId(cmbCarplateH, dt_Carplate);
 
             }
-
-
         }
 
         private void cmbCarplate_ValueChanged(object sender, EventArgs e)
@@ -3330,7 +3347,7 @@ namespace HM_ERP_System.Forms.Comers
 
                         lblCarPlatH.Text = Carplate_;
                     }
-                    //SearchCar_Driver();
+                    SearchCar_DriverH();
                 }
                 else
                 {
@@ -3441,7 +3458,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void cmbCarplate_Leave(object sender, EventArgs e)
         {
-            SearchCar_DriverH();
+            //SearchCar_DriverH();
         }
 
         private void btnListSimilarComerB_Click(object sender, EventArgs e)

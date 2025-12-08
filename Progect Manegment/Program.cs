@@ -121,9 +121,7 @@ namespace Progect_Manegment
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
 
                 Application.Run(new frmLoginProg());
-
                 //Application.Run(new frmMainForm());
-
                 //Application.Run(new frmWarehouse(null));
             }
             catch (Exception er)

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmContraAccounts));
             Janus.Windows.GridEX.GridEXLayout cmbTypeAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbNatureAccounts_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbBankBranche_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbType_Account_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmContraAccounts));
             this.dgvList = new GridExEx.GridExEx();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
             this.cmbTypeAccounts = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -200,7 +200,6 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmContraAccounts";
             this.dgvList.Size = new System.Drawing.Size(655, 550);
             this.dgvList.Sortable = true;
@@ -552,7 +551,6 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
-            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTypeAccounts)).EndInit();
             this.panel1.ResumeLayout(false);

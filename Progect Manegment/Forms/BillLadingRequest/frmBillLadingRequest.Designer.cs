@@ -222,7 +222,6 @@
             this.dgvListH.RecordNavigator = true;
             this.dgvListH.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListH.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListH.SaveSettings = true;
             this.dgvListH.SettingsKey = "frmBillLadingRequest";
             this.dgvListH.Size = new System.Drawing.Size(642, 426);
             this.dgvListH.Sortable = true;
@@ -614,7 +613,6 @@
             this.pnlAddItemFoter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
-            ((System.Configuration.IPersistComponentSettings)(this.dgvListH)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbShiper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PanelH)).EndInit();

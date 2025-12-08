@@ -122,7 +122,6 @@
             this.pnlAddItemBodi.Controls.Add(this.label4);
             this.pnlAddItemBodi.Controls.Add(this.label3);
             this.pnlAddItemBodi.Controls.Add(this.label2);
-            this.pnlAddItemBodi.Cursor = System.Windows.Forms.Cursors.Default;
             this.pnlAddItemBodi.Size = new System.Drawing.Size(435, 490);
             this.pnlAddItemBodi.TabIndex = 0;
             // 

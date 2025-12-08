@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout cmbResiver2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout cmbResiver1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSender2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSender1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -62,7 +63,6 @@
             Janus.Windows.GridEX.GridEXLayout cmbCostAccountB_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbPaymentToOthers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
@@ -922,9 +922,9 @@
             this.label52.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label52.Location = new System.Drawing.Point(139, 37);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(105, 18);
+            this.label52.Size = new System.Drawing.Size(102, 18);
             this.label52.TabIndex = 97;
-            this.label52.Text = "ظرفیت مجاز کامیون:";
+            this.label52.Text = "ظرفیت مجاز ناوگان:";
             // 
             // label74
             // 
@@ -958,9 +958,9 @@
             this.label55.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label55.Location = new System.Drawing.Point(621, 53);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(36, 18);
+            this.label55.Size = new System.Drawing.Size(69, 18);
             this.label55.TabIndex = 97;
-            this.label55.Text = "مالک:";
+            this.label55.Text = "مالک ناوگان:";
             // 
             // label54
             // 
@@ -982,9 +982,9 @@
             this.label53.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label53.Location = new System.Drawing.Point(621, 17);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(62, 18);
+            this.label53.Size = new System.Drawing.Size(59, 18);
             this.label53.TabIndex = 97;
-            this.label53.Text = "نام کامیون:";
+            this.label53.Text = "نام ناوگان:";
             // 
             // lblEndDateComerH
             // 
@@ -1076,9 +1076,9 @@
             this.lblDraverCarName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblDraverCarName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblDraverCarName.ForeColor = System.Drawing.Color.Maroon;
-            this.lblDraverCarName.Location = new System.Drawing.Point(492, 53);
+            this.lblDraverCarName.Location = new System.Drawing.Point(436, 53);
             this.lblDraverCarName.Name = "lblDraverCarName";
-            this.lblDraverCarName.Size = new System.Drawing.Size(132, 18);
+            this.lblDraverCarName.Size = new System.Drawing.Size(188, 18);
             this.lblDraverCarName.TabIndex = 97;
             this.lblDraverCarName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1088,9 +1088,9 @@
             this.lblCarSeryal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblCarSeryal.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarSeryal.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCarSeryal.Location = new System.Drawing.Point(492, 35);
+            this.lblCarSeryal.Location = new System.Drawing.Point(474, 35);
             this.lblCarSeryal.Name = "lblCarSeryal";
-            this.lblCarSeryal.Size = new System.Drawing.Size(132, 18);
+            this.lblCarSeryal.Size = new System.Drawing.Size(150, 18);
             this.lblCarSeryal.TabIndex = 97;
             this.lblCarSeryal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1112,9 +1112,9 @@
             this.lblCarName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblCarName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarName.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCarName.Location = new System.Drawing.Point(492, 17);
+            this.lblCarName.Location = new System.Drawing.Point(474, 17);
             this.lblCarName.Name = "lblCarName";
-            this.lblCarName.Size = new System.Drawing.Size(132, 18);
+            this.lblCarName.Size = new System.Drawing.Size(150, 18);
             this.lblCarName.TabIndex = 97;
             this.lblCarName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1295,7 +1295,7 @@
             // 
             this.lblCarPlatH.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCarPlatH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblCarPlatH.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblCarPlatH.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarPlatH.Location = new System.Drawing.Point(1166, 148);
             this.lblCarPlatH.Name = "lblCarPlatH";
             this.lblCarPlatH.Size = new System.Drawing.Size(145, 20);
@@ -1655,7 +1655,7 @@
             this.btnSelectAppointmentScheduling.SymbolSize = 15F;
             this.btnSelectAppointmentScheduling.TabIndex = 70;
             this.btnSelectAppointmentScheduling.TabStop = false;
-            this.btnSelectAppointmentScheduling.Text = "لیست نوبت کامیون ها";
+            this.btnSelectAppointmentScheduling.Text = "لیست نوبت ناوگان ها";
             this.btnSelectAppointmentScheduling.Tooltip = "لیست نوبت کامیون ها";
             this.btnSelectAppointmentScheduling.Click += new System.EventHandler(this.btnSelectAppointmentScheduling_Click);
             // 
@@ -4871,7 +4871,6 @@
             this.dgvListH.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListH.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListH.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListH.SaveSettings = true;
             this.dgvListH.SettingsKey = "frmComersH";
             this.dgvListH.Size = new System.Drawing.Size(572, 195);
             this.dgvListH.Sortable = true;
@@ -4904,7 +4903,6 @@
             this.dgvListB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListB.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListB.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListB.SaveSettings = true;
             this.dgvListB.SettingsKey = "frmComersB";
             this.dgvListB.Size = new System.Drawing.Size(821, 195);
             this.dgvListB.Sortable = true;
@@ -5323,9 +5321,7 @@
             this.uiPanel1.ResumeLayout(false);
             this.uiPanel1Container.ResumeLayout(false);
             this.pnlViewItemBody.ResumeLayout(false);
-            ((System.Configuration.IPersistComponentSettings)(this.dgvListH)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).EndInit();
-            ((System.Configuration.IPersistComponentSettings)(this.dgvListB)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).EndInit();
             this.pnlViewItemFoter.ResumeLayout(false);
             this.panelDeleteEdit.ResumeLayout(false);

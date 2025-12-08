@@ -506,7 +506,6 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.SaveSettings = true;
             this.dgvList.SettingsKey = "frmRecevingPayment";
             this.dgvList.Size = new System.Drawing.Size(509, 566);
             this.dgvList.Sortable = true;
@@ -1284,7 +1283,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalAmount1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSpecificAccountFrom)).EndInit();
-            ((System.Configuration.IPersistComponentSettings)(this.dgvList)).LoadComponentSettings();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSpecificAccountTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDetailedAccountsFrom)).EndInit();

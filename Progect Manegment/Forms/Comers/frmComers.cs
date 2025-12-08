@@ -2181,7 +2181,7 @@ namespace HM_ERP_System.Forms.Comers
 
                     AddBillLadingWriterPercents();//ثبت درصد بارنامه نویس در دیتابیس
                     AccountingDocumentRegistration(newId);//ثبت سند حسابداری
-                    FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
+                    //FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                     CelearItemsB();
                 }
             }
@@ -2322,7 +2322,7 @@ namespace HM_ERP_System.Forms.Comers
                     if (_updatableForms != null)
                         _updatableForms.UpdateData();
                     CelearItemsH();
-                    FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
+                    //FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
                     FillcmbCarplate();
                 }
             }
@@ -2473,6 +2473,7 @@ namespace HM_ERP_System.Forms.Comers
         private void CelearItemsH()
         {
             FillcmbCarplate();
+            FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
             cmbDraversH1.ResetText();
             cmbCarplateH.ResetText();
             txtNumberTranferForm.ResetText();
@@ -2491,9 +2492,8 @@ namespace HM_ERP_System.Forms.Comers
         {
             ListId = 0;
             FillcmbCarPlatB();
-
+            FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
             CelearLableItemslB();
-
             SeryalHId_ = 0;
             txtSeryalB.ResetText();
             StatusDeliveryGoods = false;
@@ -4230,7 +4230,8 @@ namespace HM_ERP_System.Forms.Comers
                     }
                     break;
                 case "Delete":
-                    if (!PublicClass.SetPeremission("d1", 1)) return;
+                    
+                    //if (!PublicClass.SetPeremission("d1", 1)) return;
 
                     using (var db = new DBcontextModel())
                     {

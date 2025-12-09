@@ -53,9 +53,9 @@ namespace HM_ERP_System.Entity.PlaceTransfer
         public PlaceTransferConfig()
         {
             HasKey(x => x.Id);
-            Property(d => d.Name).IsRequired().HasMaxLength(60);
+            Property(d => d.Name).IsRequired().HasMaxLength(150);
             Property(d => d.PostalCode).HasMaxLength(10);
-            Property(d => d.Addres).HasMaxLength(300);
+            Property(d => d.Addres).HasMaxLength(500);
         }
     }
 

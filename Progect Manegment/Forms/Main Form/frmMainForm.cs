@@ -273,6 +273,7 @@ namespace HM_ERP_System.Forms.Main_Form
                             ribbon1.Tabs["Spare"].Groups["Definitions"].Commands["TenkerPurchase"].Visible = PublicClass.SetPeremission("Node4_1_2");
                         }
                     }
+                    
 
                     //تنظیمات
                     ribbon1.Tabs["Setings"].Visible = PublicClass.SetPeremission("Node5");
@@ -281,9 +282,9 @@ namespace HM_ERP_System.Forms.Main_Form
                         ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Visible = PublicClass.SetPeremission("Node5_1");
                         {
                             //ثبت کاربران سیستم
-                            ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Commands["RegisteringSystemUsers"].Visible = PublicClass.SetPeremission("Node5_1_1");
+                            //ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Commands["RegisteringSystemUsers"].Visible = PublicClass.SetPeremission("Node5_1_1");
                             //مدیریت سطوح دسترسی
-                            ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Commands["AccessLevelManagement"].Visible = PublicClass.SetPeremission("Node5_1_2");
+                            //ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Commands["AccessLevelManagement"].Visible = PublicClass.SetPeremission("Node5_1_2");
                         }
                         //تنظیمات نرم افزار
                         ribbon1.Tabs["Setings"].Groups["SoftwareSettings"].Visible = PublicClass.SetPeremission("Node5_2");
@@ -294,7 +295,7 @@ namespace HM_ERP_System.Forms.Main_Form
                             ribbon1.Tabs["Setings"].Groups["SoftwareSettings"].Commands["DefinitionFiscalYear"].Visible = PublicClass.SetPeremission("Node5_2_2");
                         }
                     }
-
+                    
                 }
 
             }

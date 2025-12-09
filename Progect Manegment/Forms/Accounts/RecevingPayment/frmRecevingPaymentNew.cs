@@ -969,7 +969,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            if (!PublicClass.SetPeremission("Node3_2_1_1", 1)) return;
             if (ControlFildes()) return;
             txtTransactionCode.Text = PublicClass.CreatTransactionCode();
             int Series = 0;
@@ -2008,6 +2008,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 switch (e.Command.Key)
                 {
                     case "Edit":
+                        if (!PublicClass.SetPeremission("Node3_2_1_2", 1)) return;
                         using (var db = new DBcontextModel())
                         {
 
@@ -2015,7 +2016,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                         }
                         break;
                     case "Delete":
-
+                        if (!PublicClass.SetPeremission("Node3_2_1_3", 1)) return;
                         using (var db = new DBcontextModel())
                         {
                             if (db.DocumentBancks.Where(c => c.FormName == this.Name && c.ListInFoemId == ListId).Count() != 0)
@@ -2043,7 +2044,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                         break;
                     case "AddDocumentToBanck"://ثبت مدارک
-
+                        if (!PublicClass.SetPeremission("Node3_2_1_4", 1)) return;
                         string lblCaption = "شماره سند: " + dgvList.GetRow().Cells["TransactionCode"].Value.ToString();
 
                         PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);

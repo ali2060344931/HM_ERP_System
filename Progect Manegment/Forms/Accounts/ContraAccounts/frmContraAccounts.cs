@@ -279,6 +279,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node2_1_2_1", 1)) return;
                 if (PublicClass.FindEmptyControls(cmbTypeAccounts, ResourceCode.T075, txtName, ResourceCode.T073))
                     return;
 
@@ -402,6 +403,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
                 LisId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node2_1_2_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.Customers.Where(c => c.Id == LisId).First();
@@ -420,6 +422,7 @@ namespace HM_ERP_System.Forms.Accounts.ContraAccounts
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node2_1_2_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

@@ -316,6 +316,7 @@ namespace HM_ERP_System.Forms.Customer
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_1_1_1", 1)) return;
                 if (PublicClass.FindEmptyControls(cmbTypeCustomer, ResourceCode.T002, txtName, ResourceCode.T005, txtTel1, ResourceCode.T010))
                     return;
 
@@ -606,6 +607,7 @@ namespace HM_ERP_System.Forms.Customer
                 switch (e.Command.Key)
                 {
                     case "Edit":
+                        if (!PublicClass.SetPeremission("Node1_1_1_2", 1)) return;
                         using (var db = new DBcontextModel())
                         {
                             var q = db.Customers.Where(c => c.Id == ListId).First();
@@ -639,14 +641,10 @@ namespace HM_ERP_System.Forms.Customer
                                 cmbGroup.Text = txt.Remove(txt.Length - 1);
                             cmbGroup.Enabled = false;
                             btnAddGroup.Enabled = false;
-
-
-                            //txtAmount.Value=q.BeginningBanace;
-                            //cmbNatureAccounts.SelectedIndex =(int)q.NatureAccountsId;
                         }
                         break;
                     case "Delete":
-                        //if (!PublicClass.SetPeremission("d1", 1)) return;
+                        if (!PublicClass.SetPeremission("Node1_1_1_3", 1)) return;
 
                         using (var db = new DBcontextModel())
                         {
@@ -675,12 +673,13 @@ namespace HM_ERP_System.Forms.Customer
                                 FilldgvList();
                                 CelearItems();
                             }
-
                         }
-
 
                         break;
                     case "AddDocumentToBanck"://ثبت مدارک
+                        
+                        if (!PublicClass.SetPeremission("Node1_1_1_4", 1)) return;
+                        
                         string lblCaption = "نام و نام خانوادگی: " + dgvList.GetRow().Cells["Name"].Value.ToString() + " " + dgvList.GetRow().Cells["Family"].Value.ToString() + " کد ملی: " + dgvList.GetRow().Cells["CodMeli"].Value.ToString();
 
                         PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);

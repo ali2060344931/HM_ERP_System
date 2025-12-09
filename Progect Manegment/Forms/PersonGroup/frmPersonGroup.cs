@@ -58,6 +58,8 @@ namespace HM_ERP_System.Forms.PersonGroup
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_1_7_1", 1)) return;
+
                 if (PublicClass.FindEmptyControls(txtName, ResourceCode.T095))
                     return;
                 using (var db = new DBcontextModel())
@@ -110,6 +112,7 @@ namespace HM_ERP_System.Forms.PersonGroup
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_1_7_2", 1)) return;
                 LisId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
@@ -123,6 +126,7 @@ namespace HM_ERP_System.Forms.PersonGroup
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_7_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

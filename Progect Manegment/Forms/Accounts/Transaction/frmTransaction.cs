@@ -323,7 +323,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
                 //                T002, txtName, ResourceCode.
                 //                T005))
                 //    return;
-
+                if (!PublicClass.SetPeremission("Node2_2_1_1", 1)) return;
                 PublicClass.Transaction(TransactionCode: Convert.ToInt32(txtTransactionCode.Text), TransactionDate: txtTransactionDate.Text, TransactionTypeId: TransactionsCode, SpecificAccountId, ContraAccountFromId, ContraAccountToId, TotlAmount: txtTotalAmount.Value, txtIEAmount.Value, TaxAmount: txtTaxAmount.Value, ComerBId: 0, Description: txtDescription.Text);
                 FilldgvList();
                 if (_updatableForms!=null)

@@ -55,7 +55,7 @@ namespace HM_ERP_System.Forms.Main_Form
         public frmMainForm()
         {
             InitializeComponent();
-            this.KeyPreview=true;
+            this.KeyPreview = true;
         }
         public void UpdateData()
         {
@@ -78,8 +78,8 @@ namespace HM_ERP_System.Forms.Main_Form
 
             try
             {
-                this.Text=ResourceCode.ProgName;
-                WindowState= FormWindowState.Maximized;
+                this.Text = ResourceCode.ProgName;
+                WindowState = FormWindowState.Maximized;
                 IsMdiContainer = true;
                 {
                     tabStrip1.AutoSelectAttachedControl = true;
@@ -115,54 +115,192 @@ namespace HM_ERP_System.Forms.Main_Form
             using (var db = new DBcontextModel())
             {
                 int UserId = PublicClass.UserId;
-                var q = db.CustomerRoles.Where(c => c.Id==UserId).First();
-                var UserName = db.Customers.Where(c => c.Id==q.CustomerId).First();
-                var RoleName = db.Roles.Where(c => c.Id==q.RoleId).First();
-                lblUserName.Text="نام کاربر: "+UserName.Name+ ""+UserName.Family;
-                lblUserRole.Text="نوع کاربری: "+RoleName.Name;
-                lblDate.Text="تاریخ: "+ PersianDate.NowPersianDate;
+                var q = db.CustomerRoles.Where(c => c.Id == UserId).First();
+                var UserName = db.Customers.Where(c => c.Id == q.CustomerId).First();
+                var RoleName = db.Roles.Where(c => c.Id == q.RoleId).First();
+                lblUserName.Text = "نام کاربر: " + UserName.Name + "" + UserName.Family;
+                lblUserRole.Text = "نوع کاربری: " + RoleName.Name;
+                lblDate.Text = "تاریخ: " + PersianDate.NowPersianDate;
                 var version = Assembly.GetExecutingAssembly().GetName().Version;
-                lblVersion_.Text="نسخه برنامه: "+version.ToString();
+                lblVersion_.Text = "نسخه برنامه: " + version.ToString();
             }
         }
 
         /// <summary>
-        /// تنظیمات سطوح دسترسی ها
+        /// تنظیمات سطوح دسترسی های کاربران
         /// </summary>
         public void setPeremissions()
         {
+            try
             {
-                using (var db = new DBcontextModel())
                 {
-                    if (db.Peremissions.Count()==0) return;
+                    using (var db = new DBcontextModel())
+                    {
+                        if (db.Peremissions.Count() == 0) return;
+                    }
+
+                    //حمل و نقل
+                    ribbon1.Tabs["Transportation"].Visible = PublicClass.SetPeremission("Node1");
+                    {
+                        ribbon1.Tabs["Transportation"].Groups["Definitions"].Visible = PublicClass.SetPeremission("Node1_1");
+                        //تعاریف
+                        {
+                            //گروه اشخاص
+                            ribbon1.Tabs["Transportation"].Groups["Definitions"].Commands["PersonGroup"].Visible = PublicClass.SetPeremission("Node1_1_7");
+                            //گروه بندی اشخاص
+                            ribbon1.Tabs["Transportation"].Groups["Definitions"].Commands["CustomToGroup"].Visible = PublicClass.SetPeremission("Node1_1_8");
+                            //اشخاص
+                            ribbon1.Tabs["Transportation"].Groups["Definitions"].Commands["Customers"].Visible = PublicClass.SetPeremission("Node1_1_1");
+                            //راننده ها
+                            ribbon1.Tabs["Transportation"].Groups["Definitions"].Commands["Dravers"].Visible = PublicClass.SetPeremission("Node1_1_2");
+                            //ناوگان ها
+                            ribbon1.Tabs["Transportation"].Groups["Definitions"].Commands["Cars"].Visible = PublicClass.SetPeremission("Node1_1_3");
+                            //محل های بارگیری، تخلیه
+                            ribbon1.Tabs["Transportation"].Groups["Definitions"].Commands["PlaceTransfers"].Visible = PublicClass.SetPeremission("Node1_1_4");
+                            //کـــالاهـــا
+                            ribbon1.Tabs["Transportation"].Groups["Definitions"].Commands["Products"].Visible = PublicClass.SetPeremission("Node1_1_5");
+                            //شهرها
+                            ribbon1.Tabs["Transportation"].Groups["Definitions"].Commands["Ciltys"].Visible = PublicClass.SetPeremission("Node1_1_6");
+                        }
+
+                        //ثبت اسناد
+                        ribbon1.Tabs["Transportation"].Groups["OperationRegistration"].Visible = PublicClass.SetPeremission("Node1_2");
+                        {
+                            //ثبت حواله و بارنامه
+                            ribbon1.Tabs["Transportation"].Groups["OperationRegistration"].Commands["Comers"].Visible = PublicClass.SetPeremission("Node1_2_1");
+                            //پورســـانت
+                            ribbon1.Tabs["Transportation"].Groups["OperationRegistration"].Commands["Commission"].Visible = PublicClass.SetPeremission("Node1_2_2");
+                            //نوبت دهی کامیون ها
+                            ribbon1.Tabs["Transportation"].Groups["OperationRegistration"].Commands["AppointmentScheduling"].Visible = PublicClass.SetPeremission("Node1_2_3");
+                            //لیست سیاه
+                            ribbon1.Tabs["Transportation"].Groups["OperationRegistration"].Commands["BlacList"].Visible = PublicClass.SetPeremission("Node1_2_4");
+                        }
+
+                        ////گزارشات
+                        ribbon1.Tabs["Transportation"].Groups["Reports"].Visible = PublicClass.SetPeremission("Node1_3");
+                        {
+                            //لیست حـــواله ها
+                            ribbon1.Tabs["Transportation"].Groups["Reports"].Commands["ShowListComersH"].Visible = PublicClass.SetPeremission("Node1_3_1");
+                            //لیست بــارنامه ها
+                            ribbon1.Tabs["Transportation"].Groups["Reports"].Commands["ShowListComersB"].Visible = PublicClass.SetPeremission("Node1_3_2");
+                            //لیست پورسانت ها
+                            ribbon1.Tabs["Transportation"].Groups["Reports"].Commands["ShowListCommission"].Visible = PublicClass.SetPeremission("Node1_3_3");
+                        }
+                    }
+
+                    //حسابداری
+                    ribbon1.Tabs["Accounting"].Visible = PublicClass.SetPeremission("Node2");
+                    {
+                        //تعاریف
+                        ribbon1.Tabs["Accounting"].Groups["Definitions"].Visible = PublicClass.SetPeremission("Node2_1");
+                        {
+                            //گروه اشخاص
+                            ribbon1.Tabs["Accounting"].Groups["Definitions"].Commands["AddCustomAc"].Visible = PublicClass.SetPeremission("Node2_1_1");
+                            //حساب های بانکی
+                            ribbon1.Tabs["Accounting"].Groups["Definitions"].Commands["AddBancksAc"].Visible = PublicClass.SetPeremission("Node2_1_2");
+                            //صنــــــــــــــــدوق ها
+                            ribbon1.Tabs["Accounting"].Groups["Definitions"].Commands["AddCofersAc"].Visible = PublicClass.SetPeremission("Node2_1_3");
+                            //حساب های کـــــــــــــــــــل
+                            ribbon1.Tabs["Accounting"].Groups["Definitions"].Commands["TotalAccounts"].Visible = PublicClass.SetPeremission("Node2_1_4");
+                            //حساب های معیـــــــــــن
+                            ribbon1.Tabs["Accounting"].Groups["Definitions"].Commands["SpecficAccounts"].Visible = PublicClass.SetPeremission("Node2_1_5");
+                            //حساب های تفصیلی
+                            ribbon1.Tabs["Accounting"].Groups["Definitions"].Commands["DetailedAccount"].Visible = PublicClass.SetPeremission("Node2_1_6");
+                        }
+
+                        //ثبت عملیات
+                        ribbon1.Tabs["Accounting"].Groups["OperationRegistration"].Visible = PublicClass.SetPeremission("Node2_2");
+                        {
+                            //درآمـــد(فروش) هــــزینه(خرید)
+                            ribbon1.Tabs["Accounting"].Groups["OperationRegistration"].Commands["TransactionIE"].Visible = PublicClass.SetPeremission("Node2_2_1");
+                        }
+
+                        //گزارشــــــات
+                        ribbon1.Tabs["Accounting"].Groups["Reports"].Visible = PublicClass.SetPeremission("Node2_3");
+                        {
+                            //مـــــرور حسابها
+                            ribbon1.Tabs["Accounting"].Groups["Reports"].Commands["ReviewAccounts"].Visible = PublicClass.SetPeremission("Node2_3_1");
+                        }
+
+                    }
+
+                    ////خزانه
+                    ribbon1.Tabs["Treasury"].Visible = PublicClass.SetPeremission("Node3");
+                    {
+                        //تعاریف
+                        ribbon1.Tabs["Treasury"].Groups["Definitions"].Visible = PublicClass.SetPeremission("Node3_1");
+                        {
+                            //اشخاص
+                            ribbon1.Tabs["Treasury"].Groups["Definitions"].Commands["Customers"].Visible = PublicClass.SetPeremission("Node3_1_1");
+                            //بانک ها
+                            ribbon1.Tabs["Treasury"].Groups["Definitions"].Commands["Bancks"].Visible = PublicClass.SetPeremission("Node3_1_2");
+                            //حساب های بانکی
+                            ribbon1.Tabs["Treasury"].Groups["Definitions"].Commands["AccountBancks"].Visible = PublicClass.SetPeremission("Node3_1_3");
+                            //صندوق ها
+                            ribbon1.Tabs["Treasury"].Groups["Definitions"].Commands["Cofers"].Visible = PublicClass.SetPeremission("Node3_1_4");
+                        }
+
+                        //ثبت اسناد
+                        ribbon1.Tabs["Treasury"].Groups["OperationRegistration"].Visible = PublicClass.SetPeremission("Node3_2");
+                        {
+                            //دریافت  پرداخت
+                            ribbon1.Tabs["Treasury"].Groups["OperationRegistration"].Commands["Receving_Payment"].Visible = PublicClass.SetPeremission("Node3_2_1");
+                            //جابجایی بین اشخــــــــاص
+                            ribbon1.Tabs["Treasury"].Groups["OperationRegistration"].Commands["TransferBetweenPersons"].Visible = PublicClass.SetPeremission("Node3_2_2");
+                            //جابجایی بین بانــــــــــــک ها
+                            ribbon1.Tabs["Treasury"].Groups["OperationRegistration"].Commands["TransferBetweenBanks"].Visible = PublicClass.SetPeremission("Node3_2_3");
+                        }
+
+                        //امکانات
+                        ribbon1.Tabs["Treasury"].Groups["Facilities"].Visible = PublicClass.SetPeremission("Node3_3");
+                        {
+                            //مـــرور حســـاب ها
+                            ribbon1.Tabs["Treasury"].Groups["Facilities"].Commands["ReviewAccounts2"].Visible = PublicClass.SetPeremission("Node3_3_1");
+                            //مدیریت چک ها
+                            ribbon1.Tabs["Treasury"].Groups["Facilities"].Commands["RegCheques"].Visible = PublicClass.SetPeremission("Node3_3_2");
+                        }
+                    }
+
+                    ////یدک
+                    ribbon1.Tabs["Spare"].Visible = PublicClass.SetPeremission("Node4");
+                    {
+                        //تعاریف
+                        ribbon1.Tabs["Spare"].Groups["Definitions"].Visible = PublicClass.SetPeremission("Node4_1");
+                        {
+                            //اجاره تانکرها
+                            ribbon1.Tabs["Spare"].Groups["Definitions"].Commands["TankerRental"].Visible = PublicClass.SetPeremission("Node4_1_1");
+                            //خرید تانکرها
+                            ribbon1.Tabs["Spare"].Groups["Definitions"].Commands["TenkerPurchase"].Visible = PublicClass.SetPeremission("Node4_1_2");
+                        }
+                    }
+
+                    //تنظیمات
+                    ribbon1.Tabs["Setings"].Visible = PublicClass.SetPeremission("Node5");
+                    {
+                        //بخش امنیتی نـــرم افـــزار
+                        ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Visible = PublicClass.SetPeremission("Node5_1");
+                        {
+                            //ثبت کاربران سیستم
+                            ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Commands["RegisteringSystemUsers"].Visible = PublicClass.SetPeremission("Node5_1_1");
+                            //مدیریت سطوح دسترسی
+                            ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Commands["AccessLevelManagement"].Visible = PublicClass.SetPeremission("Node5_1_2");
+                        }
+                        //تنظیمات نرم افزار
+                        ribbon1.Tabs["Setings"].Groups["SoftwareSettings"].Visible = PublicClass.SetPeremission("Node5_2");
+                        {
+                            //تنظیمات نرم افزار
+                            ribbon1.Tabs["Setings"].Groups["SoftwareSettings"].Commands["SoftwareSettings"].Visible = PublicClass.SetPeremission("Node5_2_1");
+                            //تعریف سال مالی
+                            ribbon1.Tabs["Setings"].Groups["SoftwareSettings"].Commands["DefinitionFiscalYear"].Visible = PublicClass.SetPeremission("Node5_2_2");
+                        }
+                    }
+
                 }
-                //حمل و نقل
-                ribbon1.Tabs["Transportation"].Visible =PublicClass.SetPeremission("Node1");
-                {
-                    //حمل و نقل-تعاریف
-                    ribbon1.Tabs["Transportation"].Groups["Definitions"].Visible=PublicClass.SetPeremission("Node1_1");
-                }
 
-
-                //حسابداری
-                ribbon1.Tabs["Accounting"].Visible =PublicClass.SetPeremission("Node2");
-                {
-
-                }
-                ////خزانه
-                //ribbon1.Tabs["Treasury"].Visible =PublicClass.SetPeremission("Node5");
-                //{
-                //}
-                ////یدک
-                //ribbon1.Tabs["Spare"].Visible =PublicClass.SetPeremission("Node6");
-                //{
-                //}
-
-                //تنظیمات
-                ribbon1.Tabs["Setings"].Visible =PublicClass.SetPeremission("Node4");
-                {
-                }
-
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -284,7 +422,7 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void frmMainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Modifiers==Keys.Control && e.KeyCode==Keys.E)
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.E)
             {
                 buttonCommand16_Click(null, null);
             }
@@ -337,8 +475,8 @@ namespace HM_ERP_System.Forms.Main_Form
         {
             frmContraAccounts f = new frmContraAccounts(this);
             f.cmbTypeAccounts.Enabled = false;
-            f.TypeAccounts_Id=3;
-            f.SpecificAccountCode=10102;//بانک
+            f.TypeAccounts_Id = 3;
+            f.SpecificAccountCode = 10102;//بانک
             f.ShowList(3);
             f.ShowDialog();
         }
@@ -347,8 +485,8 @@ namespace HM_ERP_System.Forms.Main_Form
         {
             frmContraAccounts f = new frmContraAccounts(this);
             f.cmbTypeAccounts.Enabled = false;
-            f.TypeAccounts_Id=4;
-            f.SpecificAccountCode=10101;//صندوق
+            f.TypeAccounts_Id = 4;
+            f.SpecificAccountCode = 10101;//صندوق
             f.ShowList(4);
             f.ShowDialog();
         }
@@ -402,23 +540,23 @@ namespace HM_ERP_System.Forms.Main_Form
         private void btnRepCustomer1_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             frmReport f = new frmReport();
-            f.Cod="0";
+            f.Cod = "0";
             //f.Condition="";
-            f.DateReport="گزارش از تاریخ: "+"1404/01/01"+"  تا تاریخ: "+"1404/05/25";
+            f.DateReport = "گزارش از تاریخ: " + "1404/01/01" + "  تا تاریخ: " + "1404/05/25";
             f.ShowDialog();
         }
 
         private void btnShowListComersH_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             frmComersList frmComersList = new frmComersList();
-            frmComersList.FormName="ComersH";
+            frmComersList.FormName = "ComersH";
             frmComersList.ShowDialog();
         }
 
         private void btnShowListComersB_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             frmComersList frmComersList = new frmComersList();
-            frmComersList.FormName="ComersB";
+            frmComersList.FormName = "ComersB";
             frmComersList.ShowDialog();
 
         }
@@ -426,7 +564,7 @@ namespace HM_ERP_System.Forms.Main_Form
         private void btnShowListCommission_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             frmComersList frmComersList = new frmComersList();
-            frmComersList.FormName="Commission";
+            frmComersList.FormName = "Commission";
             frmComersList.ShowDialog();
 
         }

@@ -351,6 +351,7 @@ namespace HM_ERP_System.Forms.Commission
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_2_1_3_1", 1)) return;
                 using (var db = new DBcontextModel())
                 {
 
@@ -722,6 +723,7 @@ namespace HM_ERP_System.Forms.Commission
                     case "Edit":
                         using (var db = new DBcontextModel())
                         {
+                            if (!PublicClass.SetPeremission("Node1_2_1_3_2", 1)) return;
                             ListId=ListId_;
                             var q0 = db.Commissions.Where(c => c.Id==ListId).First();
                             if (q0.TransactionId==0)
@@ -746,6 +748,7 @@ namespace HM_ERP_System.Forms.Commission
                     case "Delete":
                         using (var db = new DBcontextModel())
                         {
+                            if (!PublicClass.SetPeremission("Node1_2_1_3_3", 1)) return;
                             ListId=ListId_;
                             var q0 = db.Commissions.Where(c => c.Id==ListId).First();
                             if (q0.TransactionId==0)
@@ -769,6 +772,7 @@ namespace HM_ERP_System.Forms.Commission
 
                         break;
                     case "AddDocumentToBanck"://ثبت مدارک
+                        if (!PublicClass.SetPeremission("Node1_2_2_4", 1)) return;
                         ListId=ListId_;
                         string lblCaption = "شماره حواله:" + dgvList.GetRow().Cells["ComersB"].Value.ToString();
 
@@ -778,6 +782,7 @@ namespace HM_ERP_System.Forms.Commission
                         break;
                     case "AddTransectionDocument"://ثبت سند حسابداری
                         ListId=ListId_;
+                        if (!PublicClass.SetPeremission("Node1_2_2_5", 1)) return;
                         using (var db = new DBcontextModel())
                         {
                             var q = db.Commissions.Where(c => c.Id==ListId).First();

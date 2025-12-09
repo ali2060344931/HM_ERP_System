@@ -85,7 +85,7 @@
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Controls.Add(this.pnlListChequeStatus);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(932, 440);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(932, 418);
             // 
             // pnlViewItemHeder
             // 
@@ -94,7 +94,7 @@
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnSelectCheque);
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 490);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 468);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(932, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
@@ -122,12 +122,12 @@
             this.pnlAddItemBodi.Controls.Add(this.label4);
             this.pnlAddItemBodi.Controls.Add(this.label3);
             this.pnlAddItemBodi.Controls.Add(this.label2);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(435, 490);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(435, 468);
             this.pnlAddItemBodi.TabIndex = 0;
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 490);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 468);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(435, 28);
             this.pnlAddItemFoter.TabIndex = 1;
             // 
@@ -177,14 +177,15 @@
             // 
             // pnlViewItems
             // 
+            this.pnlViewItems.Location = new System.Drawing.Point(3, 25);
             this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlViewItems.Size = new System.Drawing.Size(934, 546);
+            this.pnlViewItems.Size = new System.Drawing.Size(934, 524);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(937, 3);
+            this.pnlAddItems.Location = new System.Drawing.Point(937, 25);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlAddItems.Size = new System.Drawing.Size(441, 546);
+            this.pnlAddItems.Size = new System.Drawing.Size(441, 524);
             this.pnlAddItems.Text = "ویرایش اطلاعات";
             // 
             // btnExportToExcel
@@ -356,7 +357,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCheque";
-            this.dgvList.Size = new System.Drawing.Size(932, 288);
+            this.dgvList.Size = new System.Drawing.Size(932, 266);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -518,7 +519,7 @@
             this.pnlListChequeStatus.Controls.Add(this.btnClosePael);
             this.pnlListChequeStatus.Controls.Add(this.dgvListChequeStatus);
             this.pnlListChequeStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlListChequeStatus.Location = new System.Drawing.Point(0, 288);
+            this.pnlListChequeStatus.Location = new System.Drawing.Point(0, 266);
             this.pnlListChequeStatus.Name = "pnlListChequeStatus";
             this.pnlListChequeStatus.Size = new System.Drawing.Size(932, 152);
             this.pnlListChequeStatus.TabIndex = 85;

@@ -77,6 +77,7 @@ namespace HM_ERP_System.Forms.Accounts.Banck
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node3_1_2_1", 1)) return;
                 if (PublicClass.FindEmptyControls(txtBranchName, ResourceCode.T147))
                     return;
                 if (cmbBanck.SelectedIndex== -1)
@@ -147,6 +148,7 @@ namespace HM_ERP_System.Forms.Accounts.Banck
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node3_1_2_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.BankBranches.Where(c => c.Id == ListId).First();
@@ -159,6 +161,7 @@ namespace HM_ERP_System.Forms.Accounts.Banck
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node3_1_2_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

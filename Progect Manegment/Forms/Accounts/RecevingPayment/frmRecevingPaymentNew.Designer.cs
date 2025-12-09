@@ -221,7 +221,7 @@
             this.uiPanelManager1.BeginPanelInfo();
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("b7d9cbdd-dfbf-4d6a-94a0-b81ab0c0ebe7"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1337, 178), true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("0b438063-86f6-414c-bef5-5baf18e89615"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1337, 239), true);
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1337, 326), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1337, 304), true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("dc368c76-0c76-4827-ac96-b7ce6c5815cd"), new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), 951, true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("65b84ce1-93bf-4bc4-87d3-d85b8093962d"), new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), 152, true);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("dc368c76-0c76-4827-ac96-b7ce6c5815cd"), new System.Drawing.Point(435, 444), new System.Drawing.Size(200, 200), false);
@@ -237,7 +237,7 @@
             this.pnlFrom.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
             this.pnlFrom.FloatingLocation = new System.Drawing.Point(426, 174);
             this.pnlFrom.InnerContainer = this.uiPanel0Container;
-            this.pnlFrom.Location = new System.Drawing.Point(3, 3);
+            this.pnlFrom.Location = new System.Drawing.Point(3, 25);
             this.pnlFrom.Name = "pnlFrom";
             this.pnlFrom.Size = new System.Drawing.Size(1337, 178);
             this.pnlFrom.TabIndex = 4;
@@ -670,7 +670,7 @@
             this.pnlTo.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
             this.pnlTo.FloatingLocation = new System.Drawing.Point(482, 64);
             this.pnlTo.InnerContainer = this.uiPanel20Container;
-            this.pnlTo.Location = new System.Drawing.Point(3, 181);
+            this.pnlTo.Location = new System.Drawing.Point(3, 203);
             this.pnlTo.Name = "pnlTo";
             this.pnlTo.Size = new System.Drawing.Size(1337, 239);
             this.pnlTo.TabIndex = 4;
@@ -1692,9 +1692,9 @@
             // uiPanelGroup1
             // 
             this.uiPanelGroup1.GroupStyle = Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles;
-            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 420);
+            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 442);
             this.uiPanelGroup1.Name = "uiPanelGroup1";
-            this.uiPanelGroup1.Size = new System.Drawing.Size(1337, 326);
+            this.uiPanelGroup1.Size = new System.Drawing.Size(1337, 304);
             this.uiPanelGroup1.TabIndex = 5;
             // 
             // uiPanel1
@@ -1704,7 +1704,7 @@
             this.uiPanel1.InnerContainer = this.uiPanel1Container;
             this.uiPanel1.Location = new System.Drawing.Point(0, 0);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(1150, 326);
+            this.uiPanel1.Size = new System.Drawing.Size(1150, 304);
             this.uiPanel1.TabIndex = 4;
             this.uiPanel1.TabStop = false;
             this.uiPanel1.Text = "لیست اسناد";
@@ -1716,7 +1716,7 @@
             this.uiPanel1Container.Controls.Add(this.pnlViewItemFoter);
             this.uiPanel1Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel1Container.Name = "uiPanel1Container";
-            this.uiPanel1Container.Size = new System.Drawing.Size(1148, 298);
+            this.uiPanel1Container.Size = new System.Drawing.Size(1148, 276);
             this.uiPanel1Container.TabIndex = 0;
             // 
             // dgvList
@@ -1745,7 +1745,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.Size = new System.Drawing.Size(1148, 270);
+            this.dgvList.Size = new System.Drawing.Size(1148, 248);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 86;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -1762,7 +1762,7 @@
             this.pnlViewItemFoter.Controls.Add(this.buttonX1);
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 270);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 248);
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
             this.pnlViewItemFoter.Size = new System.Drawing.Size(1148, 28);
             this.pnlViewItemFoter.TabIndex = 90;
@@ -1810,7 +1810,7 @@
             this.uiPanel3.InnerContainer = this.uiPanel3Container;
             this.uiPanel3.Location = new System.Drawing.Point(1154, 0);
             this.uiPanel3.Name = "uiPanel3";
-            this.uiPanel3.Size = new System.Drawing.Size(183, 326);
+            this.uiPanel3.Size = new System.Drawing.Size(183, 304);
             this.uiPanel3.TabIndex = 4;
             this.uiPanel3.TabStop = false;
             this.uiPanel3.Text = "نمایش اسناد";
@@ -1827,7 +1827,7 @@
             this.uiPanel3Container.Controls.Add(this.label47);
             this.uiPanel3Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel3Container.Name = "uiPanel3Container";
-            this.uiPanel3Container.Size = new System.Drawing.Size(181, 298);
+            this.uiPanel3Container.Size = new System.Drawing.Size(181, 276);
             this.uiPanel3Container.TabIndex = 0;
             this.uiPanel3Container.TabStop = false;
             // 

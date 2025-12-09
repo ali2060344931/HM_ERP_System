@@ -325,6 +325,7 @@ namespace HM_ERP_System.Forms.Car
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_1_3_1", 1)) return;
                 //string Carplate_ = this.txtCarplate1.Text + " " + ResourceCode.T016 + " " + this.txtCarplate2.Text;
 
                 if (PublicClass.FindEmptyControls(txtSeryal, ResourceCode.T165, txtCarName, ResourceCode.T017, cmbDraverName, ResourceCode.T012, cmbOwnership, ResourceCode.T021, cmbGoodsAccount, ResourceCode.T042, cmbTruckUsageType, ResourceCode.T043))
@@ -466,6 +467,7 @@ namespace HM_ERP_System.Forms.Car
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_3_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.Cars.Where(c => c.Id == ListId).First();
@@ -499,6 +501,7 @@ namespace HM_ERP_System.Forms.Car
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_3_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

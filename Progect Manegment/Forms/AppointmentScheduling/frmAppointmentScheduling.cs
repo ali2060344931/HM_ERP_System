@@ -289,6 +289,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_2_1_4_1", 1)) return;
                 if (cmbCarplate.SelectedIndex==-1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T052);
@@ -374,6 +375,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node1_2_1_4_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.AppointmentSchedulings.Where(c => c.Id == ListId).First();
@@ -388,6 +390,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node1_2_1_4_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

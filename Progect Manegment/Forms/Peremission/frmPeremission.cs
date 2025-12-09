@@ -112,7 +112,7 @@ namespace HM_ERP_System.Forms.Peremission
                 {
                     foreach (TreeNode thisNode in Node.Nodes)
                     {
-                        var PeremissionsId = db.Peremissions.Where(x => x.NodeName==thisNode.Name).FirstOrDefault().Id;
+                        var PeremissionsId = db.Peremissions.Where(x => x.NodeName==thisNode.Name).First().Id;
 
                         var TF = db.RolePermissiones.Where(c => c.RoleId==RoleId_ && c.PermissionId==PeremissionsId).First();
                         //if(RoleId_==1 && PeremissionsId==2)
@@ -151,13 +151,13 @@ namespace HM_ERP_System.Forms.Peremission
                             var q0 = db.Peremissions.Where(c => c.NodeName==node.Name);
                             if (q0.Count() == 0)
                             {//جدید
-                                //txt+=node.Text+","+node.Name+","+node.Tag+'\n';
                                 db.Peremissions.Add(new Entity.Peremission.Peremission { Des = node.Text, NodeName=node.Name, Rot=node.FullPath });
-                                db.SaveChanges();
+                                //db.SaveChanges();
                                 n++;
                             }
                             else
                             {//ویرایش
+                                q0.First().Des= node.Text;
                                 q0.First().NodeName= node.Name;
                                 q0.First().Rot=node.FullPath;
                             }

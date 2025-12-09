@@ -134,6 +134,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_1_8_1", 1)) return;
                 if (cmbPerson.Text == "")
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T007); return;
@@ -213,8 +214,9 @@ namespace HM_ERP_System.Forms.CustomerToGroup
             try
             {
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
-                if (e.Column.Key == "Edit")
+                if (e.Column.Key == "Node1_1_8_2")
                 {
+                    if (!PublicClass.SetPeremission("xxx", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.Ciltys.Where(c => c.Id == ListId).First();
@@ -225,6 +227,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_8_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

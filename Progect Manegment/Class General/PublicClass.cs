@@ -1090,7 +1090,6 @@ namespace MyClass
                         else
                         {
                             WindowAlartByText(eDesktopAlertColor.Red, ResourceCode.T065, "10007", 5, 150);
-
                             return false;
                         }
                     }
@@ -1099,7 +1098,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage(er);
+                //PublicClass.ShowErrorMessage(er);
                 return false;
             }
         }

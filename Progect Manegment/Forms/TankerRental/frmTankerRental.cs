@@ -239,7 +239,7 @@ namespace HM_ERP_System.Forms.TankerRental
             try
             {
                 //string Carplate_ = this.txtCarplate1.Text + " " + ResourceCode.T016 + " " + this.txtCarplate2.Text;
-
+                if (!PublicClass.SetPeremission("Node4_1_1_1", 1)) return;
                 if (PublicClass.FindEmptyControls(txtContactNo, ResourceCode.T103, txtTankerNo, ResourceCode.T104, txtSecurityDeposit, ResourceCode.T105, txtRentAmount, ResourceCode.T106))
                     return;
 
@@ -387,6 +387,7 @@ namespace HM_ERP_System.Forms.TankerRental
                 switch (e.Command.Key)
                 {
                     case "Edit":
+                        if (!PublicClass.SetPeremission("Node4_1_1_2", 1)) return;
                         using (var db = new DBcontextModel())
                         {
                             ListId = ListId_;
@@ -406,6 +407,7 @@ namespace HM_ERP_System.Forms.TankerRental
                         break;
 
                     case "Delete":
+                        if (!PublicClass.SetPeremission("Node4_1_1_3", 1)) return;
                         using (var db = new DBcontextModel())
                         {
                             ListId = ListId_;
@@ -425,6 +427,7 @@ namespace HM_ERP_System.Forms.TankerRental
 
                         break;
                     case "AddDocumentToBanck"://ثبت مدارک
+                        if (!PublicClass.SetPeremission("Node4_1_1_4", 1)) return;
                         ListId = ListId_;
                         string lblCaption = "شماره قرارداد:" + dgvList.GetRow().Cells["ContactNo"].Value.ToString() + " شماره تانکـــر: " + dgvList.GetRow().Cells["TankerNo"].Value.ToString();
 
@@ -433,6 +436,7 @@ namespace HM_ERP_System.Forms.TankerRental
                         ListId = 0;
                         break;
                     case "DocWaranty"://ثبت درخواست بارنامه
+                        if (!PublicClass.SetPeremission("Node4_1_1_5", 1)) return;
                         ListId = ListId_;
                         frmBillLadingRequest f = new frmBillLadingRequest(this);
                         f.ComersHId = ListId;

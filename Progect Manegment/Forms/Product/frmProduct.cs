@@ -78,39 +78,47 @@ namespace HM_ERP_System.Forms.Product
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            if (PublicClass.FindEmptyControls(cmbProductGroup, ResourceCode.T112, txtName, ResourceCode.T025))
-                return;
-            using (var db = new DBcontextModel())
+            try
             {
-
-                if (LisId == 0)
+                if (!PublicClass.SetPeremission("Node1_1_5_1", 1)) return;
+                if (PublicClass.FindEmptyControls(cmbProductGroup, ResourceCode.T112, txtName, ResourceCode.T025))
+                    return;
+                using (var db = new DBcontextModel())
                 {
-                    int cont = db.Products.Count(c => c.Name == txtName.Text);
-                    if (cont > 0)
-                    {
-                        PublicClass.ErrorMesseg(ResourceCode.
 
-                            T026); return;
+                    if (LisId == 0)
+                    {
+                        int cont = db.Products.Count(c => c.Name == txtName.Text);
+                        if (cont > 0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.
+
+                                T026); return;
+                        }
+                    }
+                    else
+                    {
+                        int cont = db.Products.Count(c => c.Name == txtName.Text & c.Id != LisId);
+                        if (cont > 0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.
+                                T026); return;
+                        }
+                    }
+
+                    var userRepo = new Repository<Entity.Product.Product>(db);
+                    if (userRepo.SaveOrUpdate(new Entity.Product.Product { Id = LisId, Name = txtName.Text, ProductGroupId = ProductGroupId, UserId = UserId_, RecordDateTime = DateTime.Now }, LisId))
+                    {
+                        PublicClass.WindowAlart("1");
+                        if (_updatableForms != null)
+                            _updatableForms.UpdateData();
+                        CelearItems();
                     }
                 }
-                else
-                {
-                    int cont = db.Products.Count(c => c.Name == txtName.Text & c.Id != LisId);
-                    if (cont > 0)
-                    {
-                        PublicClass.ErrorMesseg(ResourceCode.
-                            T026); return;
-                    }
-                }
-
-                var userRepo = new Repository<Entity.Product.Product>(db);
-                if (userRepo.SaveOrUpdate(new Entity.Product.Product { Id = LisId, Name = txtName.Text,ProductGroupId=ProductGroupId, UserId = UserId_, RecordDateTime = DateTime.Now }, LisId))
-                {
-                    PublicClass.WindowAlart("1");
-                    if (_updatableForms!=null)
-                        _updatableForms.UpdateData();
-                    CelearItems();
-                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
             }
         }
         private void CelearItems()
@@ -126,6 +134,7 @@ namespace HM_ERP_System.Forms.Product
             LisId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
             if (e.Column.Key == "Edit")
             {
+                if (!PublicClass.SetPeremission("Node1_1_5_2", 1)) return;
                 using (var db = new DBcontextModel())
                 {
                     var q = db.Products.Where(c => c.Id == LisId).First();
@@ -137,6 +146,7 @@ namespace HM_ERP_System.Forms.Product
 
             else if (e.Column.Key == "Delete")
             {
+                if (!PublicClass.SetPeremission("Node1_1_5_3", 1)) return;
                 using (var db = new DBcontextModel())
                 {
 

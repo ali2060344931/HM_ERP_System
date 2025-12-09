@@ -139,6 +139,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_1_4_1", 1)) return;
                 if (PublicClass.FindEmptyControls(/*cmbEvacuationDeployment, ResourceCode.T022,*/ cmbCity, ResourceCode.T014, txtPlaceTransferName, ResourceCode.T023))
                     return;
                 using (var db = new DBcontextModel())
@@ -208,9 +209,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
             try
             {
+
                 LisId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_4_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.PlaceTransfers.Where(c => c.Id == LisId).First();
@@ -227,6 +230,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_4_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

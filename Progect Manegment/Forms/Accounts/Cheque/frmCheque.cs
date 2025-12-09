@@ -286,6 +286,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node3_3_2_1", 1)) return;
                 if (ListId == 0)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T167); return;
@@ -398,6 +399,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
             switch (e.Command.Key)
             {
                 case "Edit":
+                    if (!PublicClass.SetPeremission("Node3_3_2_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10302).First().Id;
@@ -417,6 +419,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                     break;
 
                 case "Delete":
+                    if (!PublicClass.SetPeremission("Node3_3_2_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         ListId = ListId_;
@@ -433,6 +436,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                     }
                     break;
                 case "AddDocumentToBanck"://ثبت مدارک
+                    if (!PublicClass.SetPeremission("Node3_3_2_4", 1)) return;
                     ListId = ListId_;
                     string lblCaption = "شماره چک:" + dgvList.GetRow().Cells["ChequeNumber"].Value.ToString();
 
@@ -442,6 +446,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                     break;
 
                 case "ListChequeStatus"://لیست وضعیت چک ها
+                    if (!PublicClass.SetPeremission("Node3_3_2_5", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var ql = db.ChequeStatuses.Where(c => c.ChequeId == ListId);

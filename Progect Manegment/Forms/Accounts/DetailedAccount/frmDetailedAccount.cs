@@ -355,6 +355,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node2_1_6_1", 1)) return;
                 if (cmbSpecificAccount.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T071); return;
@@ -705,6 +706,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node2_1_6_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
@@ -730,6 +732,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node2_1_6_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

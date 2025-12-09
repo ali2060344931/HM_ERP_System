@@ -183,6 +183,7 @@ namespace HM_ERP_System.Forms.Draver
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_1_2_1", 1)) return;
                 if (PublicClass.FindEmptyControls(cmbPerson, ResourceCode.T012, cmbGender, ResourceCode.T013, txtSeryalGovahiname, ResourceCode.T131, txtSmartCard, ResourceCode.T132))
                     return;
 
@@ -259,6 +260,7 @@ namespace HM_ERP_System.Forms.Draver
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_2_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.Dravers.Where(c => c.Id == ListId).First();
@@ -275,6 +277,7 @@ namespace HM_ERP_System.Forms.Draver
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_2_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

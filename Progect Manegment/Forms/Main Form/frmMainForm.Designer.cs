@@ -195,7 +195,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1497, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1521, 27);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -229,7 +229,7 @@
             this.ribbon1.QuickAccessCustomizeList.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.btnReviewAccounts});
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1497, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1521, 185);
             // 
             // 
             // 
@@ -251,7 +251,7 @@
             // btnComers
             // 
             this.btnComers.Image = ((System.Drawing.Image)(resources.GetObject("btnComers.Image")));
-            this.btnComers.Key = "btnComers";
+            this.btnComers.Key = "Comers";
             this.btnComers.Name = "btnComers";
             this.btnComers.SupertipSettingsData = resources.GetString("btnComers.SupertipSettingsData");
             this.btnComers.Text = "ثبت حواله و بارنامه";
@@ -260,7 +260,7 @@
             // buttonCommand17
             // 
             this.buttonCommand17.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand17.Image")));
-            this.buttonCommand17.Key = "buttonCommand17";
+            this.buttonCommand17.Key = "Commission";
             this.buttonCommand17.Name = "buttonCommand17";
             this.buttonCommand17.SupertipSettingsData = resources.GetString("buttonCommand17.SupertipSettingsData");
             this.buttonCommand17.Text = "پورســـانت";
@@ -269,7 +269,7 @@
             // btnReviewAccounts
             // 
             this.btnReviewAccounts.Image = ((System.Drawing.Image)(resources.GetObject("btnReviewAccounts.Image")));
-            this.btnReviewAccounts.Key = "buttonCommand16";
+            this.btnReviewAccounts.Key = "ReviewAccounts";
             this.btnReviewAccounts.Name = "btnReviewAccounts";
             this.btnReviewAccounts.Text = "مـــــرور حسابها";
             this.btnReviewAccounts.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnReviewAccounts_Click);
@@ -277,7 +277,7 @@
             // btnSettingProg
             // 
             this.btnSettingProg.Image = ((System.Drawing.Image)(resources.GetObject("btnSettingProg.Image")));
-            this.btnSettingProg.Key = "buttonCommand9";
+            this.btnSettingProg.Key = "SoftwareSettings";
             this.btnSettingProg.Name = "btnSettingProg";
             this.btnSettingProg.SupertipSettingsData = resources.GetString("btnSettingProg.SupertipSettingsData");
             this.btnSettingProg.Text = "تنظیمات نرم افزار";
@@ -316,7 +316,7 @@
             // btnPersonGroup
             // 
             this.btnPersonGroup.Icon = ((System.Drawing.Icon)(resources.GetObject("btnPersonGroup.Icon")));
-            this.btnPersonGroup.Key = "buttonCommand8";
+            this.btnPersonGroup.Key = "PersonGroup";
             this.btnPersonGroup.Name = "btnPersonGroup";
             this.btnPersonGroup.Text = "گروه اشخاص";
             this.btnPersonGroup.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnPersonGroup_Click);
@@ -324,7 +324,7 @@
             // btnCustomToGroup
             // 
             this.btnCustomToGroup.Icon = ((System.Drawing.Icon)(resources.GetObject("btnCustomToGroup.Icon")));
-            this.btnCustomToGroup.Key = "buttonCommand8";
+            this.btnCustomToGroup.Key = "CustomToGroup";
             this.btnCustomToGroup.Name = "btnCustomToGroup";
             this.btnCustomToGroup.Text = "گروه بندی اشخاص";
             this.btnCustomToGroup.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnCustomToGroup_Click);
@@ -337,7 +337,7 @@
             // buttonCommand1
             // 
             this.buttonCommand1.Icon = ((System.Drawing.Icon)(resources.GetObject("buttonCommand1.Icon")));
-            this.buttonCommand1.Key = "btnCustomers";
+            this.buttonCommand1.Key = "Customers";
             this.buttonCommand1.Name = "buttonCommand1";
             this.buttonCommand1.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand1.Text = "اشخاص";
@@ -346,7 +346,7 @@
             // buttonCommand2
             // 
             this.buttonCommand2.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand2.Image")));
-            this.buttonCommand2.Key = "btnDravers";
+            this.buttonCommand2.Key = "Dravers";
             this.buttonCommand2.Name = "buttonCommand2";
             this.buttonCommand2.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand2.Text = "راننده ها";
@@ -355,7 +355,7 @@
             // buttonCommand3
             // 
             this.buttonCommand3.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand3.Image")));
-            this.buttonCommand3.Key = "btnCars";
+            this.buttonCommand3.Key = "Cars";
             this.buttonCommand3.Name = "buttonCommand3";
             this.buttonCommand3.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand3.Text = "ناوگان ها";
@@ -369,7 +369,7 @@
             // buttonCommand6
             // 
             this.buttonCommand6.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand6.Image")));
-            this.buttonCommand6.Key = "btnPlaceTransfers";
+            this.buttonCommand6.Key = "PlaceTransfers";
             this.buttonCommand6.Name = "buttonCommand6";
             this.buttonCommand6.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand6.Text = "محل های بارگیری، تخلیه";
@@ -378,7 +378,7 @@
             // buttonCommand4
             // 
             this.buttonCommand4.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand4.Image")));
-            this.buttonCommand4.Key = "btnProducts";
+            this.buttonCommand4.Key = "Products";
             this.buttonCommand4.Name = "buttonCommand4";
             this.buttonCommand4.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand4.Text = "کـــالاهـــا";
@@ -387,7 +387,7 @@
             // buttonCommand5
             // 
             this.buttonCommand5.Image = ((System.Drawing.Image)(resources.GetObject("buttonCommand5.Image")));
-            this.buttonCommand5.Key = "btnCiltys";
+            this.buttonCommand5.Key = "Ciltys";
             this.buttonCommand5.Name = "buttonCommand5";
             this.buttonCommand5.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand5.Text = "شهرها";
@@ -409,7 +409,7 @@
             // btnAppointmentScheduling
             // 
             this.btnAppointmentScheduling.Image = ((System.Drawing.Image)(resources.GetObject("btnAppointmentScheduling.Image")));
-            this.btnAppointmentScheduling.Key = "buttonCommand8";
+            this.btnAppointmentScheduling.Key = "AppointmentScheduling";
             this.btnAppointmentScheduling.Name = "btnAppointmentScheduling";
             this.btnAppointmentScheduling.Text = "نوبت دهی کامیون ها";
             this.btnAppointmentScheduling.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnAppointmentScheduling_Click);
@@ -417,7 +417,7 @@
             // btnBlacList
             // 
             this.btnBlacList.Image = ((System.Drawing.Image)(resources.GetObject("btnBlacList.Image")));
-            this.btnBlacList.Key = "buttonCommand8";
+            this.btnBlacList.Key = "BlacList";
             this.btnBlacList.Name = "btnBlacList";
             this.btnBlacList.Shortcut = System.Windows.Forms.Shortcut.CtrlB;
             this.btnBlacList.Text = "لیست سیاه";
@@ -431,13 +431,13 @@
             this.btnShowListCommission});
             this.ribbonGroup13.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup13;
             this.ribbonGroup13.ImageKey = "";
-            this.ribbonGroup13.Key = "ribbonGroup13";
+            this.ribbonGroup13.Key = "Reports";
             this.ribbonGroup13.Name = "ribbonGroup13";
             this.ribbonGroup13.Text = "گــزارشات";
             // 
             // btnShowListComersH
             // 
-            this.btnShowListComersH.Key = "buttonCommand18";
+            this.btnShowListComersH.Key = "ShowListComersH";
             this.btnShowListComersH.Name = "btnShowListComersH";
             this.btnShowListComersH.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnShowListComersH.Text = "لیست حـــواله ها";
@@ -445,7 +445,7 @@
             // 
             // btnShowListComersB
             // 
-            this.btnShowListComersB.Key = "buttonCommand19";
+            this.btnShowListComersB.Key = "ShowListComersB";
             this.btnShowListComersB.Name = "btnShowListComersB";
             this.btnShowListComersB.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnShowListComersB.Text = "لیست بــارنامه ها";
@@ -453,7 +453,7 @@
             // 
             // btnShowListCommission
             // 
-            this.btnShowListCommission.Key = "buttonCommand18";
+            this.btnShowListCommission.Key = "ShowListCommission";
             this.btnShowListCommission.Name = "btnShowListCommission";
             this.btnShowListCommission.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnShowListCommission.Text = "لیست پورسانت ها";
@@ -517,7 +517,7 @@
             // 
             // btnTotalAccount
             // 
-            this.btnTotalAccount.Key = "btnTotalAccounts";
+            this.btnTotalAccount.Key = "TotalAccounts";
             this.btnTotalAccount.Name = "btnTotalAccount";
             this.btnTotalAccount.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnTotalAccount.Text = "حساب های کـــــــــــــــــــل";
@@ -525,7 +525,7 @@
             // 
             // btnSpecficAccount
             // 
-            this.btnSpecficAccount.Key = "btnSpecficAccounts";
+            this.btnSpecficAccount.Key = "SpecficAccounts";
             this.btnSpecficAccount.Name = "btnSpecficAccount";
             this.btnSpecficAccount.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnSpecficAccount.Text = "حساب های معیـــــــــــن";
@@ -533,7 +533,7 @@
             // 
             // btnDetailedAccount
             // 
-            this.btnDetailedAccount.Key = "buttonCommand8";
+            this.btnDetailedAccount.Key = "DetailedAccount";
             this.btnDetailedAccount.Name = "btnDetailedAccount";
             this.btnDetailedAccount.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnDetailedAccount.Text = "حساب های تفصیلی";
@@ -552,7 +552,7 @@
             // 
             // btnTransactionIE
             // 
-            this.btnTransactionIE.Key = "btnTransactionIE";
+            this.btnTransactionIE.Key = "TransactionIE";
             this.btnTransactionIE.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnTransactionIE.LargeImage")));
             this.btnTransactionIE.Name = "btnTransactionIE";
             this.btnTransactionIE.Text = "درآمـــد(فروش) هــــزینه(خرید)";
@@ -573,7 +573,7 @@
             this.btnReviewAccounts});
             this.ribbonGroup10.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup10;
             this.ribbonGroup10.ImageKey = "";
-            this.ribbonGroup10.Key = "ribbonGroup10";
+            this.ribbonGroup10.Key = "Reports";
             this.ribbonGroup10.Name = "ribbonGroup10";
             this.ribbonGroup10.Text = "گزارشــــــات";
             // 
@@ -598,13 +598,13 @@
             this.buttonCommand15});
             this.ribbonGroup8.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup8;
             this.ribbonGroup8.ImageKey = "";
-            this.ribbonGroup8.Key = "ribbonGroup8";
+            this.ribbonGroup8.Key = "Definitions";
             this.ribbonGroup8.Name = "ribbonGroup8";
             this.ribbonGroup8.Text = "تعاریف";
             // 
             // buttonCommand9
             // 
-            this.buttonCommand9.Key = "buttonCommand9";
+            this.buttonCommand9.Key = "Customers";
             this.buttonCommand9.Name = "buttonCommand9";
             this.buttonCommand9.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand9.Text = "اشخاص";
@@ -612,7 +612,7 @@
             // 
             // btnBancks
             // 
-            this.btnBancks.Key = "btnBancks";
+            this.btnBancks.Key = "Bancks";
             this.btnBancks.Name = "btnBancks";
             this.btnBancks.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnBancks.Text = "بانک ها";
@@ -625,7 +625,7 @@
             // 
             // buttonCommand14
             // 
-            this.buttonCommand14.Key = "buttonCommand14";
+            this.buttonCommand14.Key = "AccountBancks";
             this.buttonCommand14.Name = "buttonCommand14";
             this.buttonCommand14.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand14.Text = "حساب های بانکی";
@@ -633,7 +633,7 @@
             // 
             // buttonCommand15
             // 
-            this.buttonCommand15.Key = "buttonCommand15";
+            this.buttonCommand15.Key = "Cofers";
             this.buttonCommand15.Name = "buttonCommand15";
             this.buttonCommand15.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand15.Text = "صندوق ها";
@@ -647,14 +647,14 @@
             this.btnTransferBetweenBanks});
             this.ribbonGroup9.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup9;
             this.ribbonGroup9.ImageKey = "";
-            this.ribbonGroup9.Key = "ribbonGroup9";
+            this.ribbonGroup9.Key = "OperationRegistration";
             this.ribbonGroup9.Name = "ribbonGroup9";
             this.ribbonGroup9.Text = "ثبت اسناد";
             // 
             // btnReceving_Payment
             // 
             this.btnReceving_Payment.Image = ((System.Drawing.Image)(resources.GetObject("btnReceving_Payment.Image")));
-            this.btnReceving_Payment.Key = "buttonCommand10";
+            this.btnReceving_Payment.Key = "Receving_Payment";
             this.btnReceving_Payment.Name = "btnReceving_Payment";
             this.btnReceving_Payment.Text = "دریافت  پرداخت";
             this.btnReceving_Payment.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnReceving_Payment_Click);
@@ -662,7 +662,7 @@
             // btnTransferBetweenPersons
             // 
             this.btnTransferBetweenPersons.Image = ((System.Drawing.Image)(resources.GetObject("btnTransferBetweenPersons.Image")));
-            this.btnTransferBetweenPersons.Key = "buttonCommand9";
+            this.btnTransferBetweenPersons.Key = "TransferBetweenPersons";
             this.btnTransferBetweenPersons.Name = "btnTransferBetweenPersons";
             this.btnTransferBetweenPersons.Text = "جابجایی بین اشخــــــــاص";
             this.btnTransferBetweenPersons.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnTransferBetweenPersons_Click);
@@ -670,7 +670,7 @@
             // btnTransferBetweenBanks
             // 
             this.btnTransferBetweenBanks.Image = ((System.Drawing.Image)(resources.GetObject("btnTransferBetweenBanks.Image")));
-            this.btnTransferBetweenBanks.Key = "buttonCommand11";
+            this.btnTransferBetweenBanks.Key = "TransferBetweenBanks";
             this.btnTransferBetweenBanks.Name = "btnTransferBetweenBanks";
             this.btnTransferBetweenBanks.Text = "جابجایی بین بانــــــــــــک ها";
             this.btnTransferBetweenBanks.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnTransferBetweenBanks_Click);
@@ -682,14 +682,14 @@
             this.btnRegCheques_});
             this.ribbonGroup12.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup12;
             this.ribbonGroup12.ImageKey = "";
-            this.ribbonGroup12.Key = "ribbonGroup12";
+            this.ribbonGroup12.Key = "Facilities";
             this.ribbonGroup12.Name = "ribbonGroup12";
             this.ribbonGroup12.Text = "امکانات";
             // 
             // btnReviewAccounts2
             // 
             this.btnReviewAccounts2.Image = ((System.Drawing.Image)(resources.GetObject("btnReviewAccounts2.Image")));
-            this.btnReviewAccounts2.Key = "buttonCommand16";
+            this.btnReviewAccounts2.Key = "ReviewAccounts2";
             this.btnReviewAccounts2.Name = "btnReviewAccounts2";
             this.btnReviewAccounts2.Text = "مـــرور حســـاب ها";
             this.btnReviewAccounts2.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnReviewAccounts2_Click);
@@ -697,7 +697,7 @@
             // btnRegCheques_
             // 
             this.btnRegCheques_.Image = ((System.Drawing.Image)(resources.GetObject("btnRegCheques_.Image")));
-            this.btnRegCheques_.Key = "buttonCommand19";
+            this.btnRegCheques_.Key = "RegCheques";
             this.btnRegCheques_.Name = "btnRegCheques_";
             this.btnRegCheques_.Text = "مدیریت چک ها";
             this.btnRegCheques_.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnRegCheques__Click);
@@ -718,14 +718,14 @@
             this.btnTenkerPurchase});
             this.ribbonGroup7.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup7;
             this.ribbonGroup7.ImageKey = "";
-            this.ribbonGroup7.Key = "ribbonGroup7";
+            this.ribbonGroup7.Key = "Definitions";
             this.ribbonGroup7.Name = "ribbonGroup7";
             this.ribbonGroup7.Text = "تعاریف";
             // 
             // btnTankerRental
             // 
             this.btnTankerRental.Image = ((System.Drawing.Image)(resources.GetObject("btnTankerRental.Image")));
-            this.btnTankerRental.Key = "buttonCommand8";
+            this.btnTankerRental.Key = "TankerRental";
             this.btnTankerRental.Name = "btnTankerRental";
             this.btnTankerRental.Text = "اجاره تانکرها";
             this.btnTankerRental.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnTankerRental_Click);
@@ -733,7 +733,7 @@
             // btnTenkerPurchase
             // 
             this.btnTenkerPurchase.Image = ((System.Drawing.Image)(resources.GetObject("btnTenkerPurchase.Image")));
-            this.btnTenkerPurchase.Key = "buttonCommand10";
+            this.btnTenkerPurchase.Key = "TenkerPurchase";
             this.btnTenkerPurchase.Name = "btnTenkerPurchase";
             this.btnTenkerPurchase.Text = "خرید تانکرها";
             this.btnTenkerPurchase.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnTenkerPurchase_Click);
@@ -755,6 +755,7 @@
             this.buttonCommand10,
             this.buttonCommand19});
             this.ribbonGroup11.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup11;
+            this.ribbonGroup11.ImageKey = "";
             this.ribbonGroup11.Key = "ribbonGroup11";
             this.ribbonGroup11.Name = "ribbonGroup11";
             this.ribbonGroup11.Text = "تعـــــاریف";
@@ -783,6 +784,7 @@
             this.btnGoodsIn,
             this.btnGoodsOut});
             this.ribbonGroup14.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup14;
+            this.ribbonGroup14.ImageKey = "";
             this.ribbonGroup14.Key = "ribbonGroup14";
             this.ribbonGroup14.Name = "ribbonGroup14";
             this.ribbonGroup14.Text = "ثبت";
@@ -819,7 +821,7 @@
             this.btnPeremission});
             this.ribbonGroup3.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup3;
             this.ribbonGroup3.ImageKey = "";
-            this.ribbonGroup3.Key = "ribbonGroup3";
+            this.ribbonGroup3.Key = "SoftwareSecuritySection";
             this.ribbonGroup3.Name = "ribbonGroup3";
             this.ribbonGroup3.Text = "بخش امنیتی نـــرم افـــزار";
             // 
@@ -835,7 +837,7 @@
             // buttonCommand7
             // 
             this.buttonCommand7.Icon = ((System.Drawing.Icon)(resources.GetObject("buttonCommand7.Icon")));
-            this.buttonCommand7.Key = "buttonCommand7";
+            this.buttonCommand7.Key = "RegisteringSystemUsers";
             this.buttonCommand7.Name = "buttonCommand7";
             this.buttonCommand7.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.buttonCommand7.Text = "ثبت کاربران سیستم";
@@ -843,9 +845,8 @@
             // 
             // btnPeremission
             // 
-            this.btnPeremission.Enabled = false;
             this.btnPeremission.Icon = ((System.Drawing.Icon)(resources.GetObject("btnPeremission.Icon")));
-            this.btnPeremission.Key = "buttonCommand8";
+            this.btnPeremission.Key = "AccessLevelManagement";
             this.btnPeremission.Name = "btnPeremission";
             this.btnPeremission.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnPeremission.Text = "مدیریت سطوح دسترسی";
@@ -858,14 +859,14 @@
             this.btnFinancialYears});
             this.ribbonGroup6.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup6;
             this.ribbonGroup6.ImageKey = "";
-            this.ribbonGroup6.Key = "ribbonGroup6";
+            this.ribbonGroup6.Key = "SoftwareSettings";
             this.ribbonGroup6.Name = "ribbonGroup6";
             this.ribbonGroup6.Text = "تنظیمات نرم افزار";
             // 
             // btnFinancialYears
             // 
             this.btnFinancialYears.Image = ((System.Drawing.Image)(resources.GetObject("btnFinancialYears.Image")));
-            this.btnFinancialYears.Key = "buttonCommand9";
+            this.btnFinancialYears.Key = "DefinitionFiscalYear";
             this.btnFinancialYears.Name = "btnFinancialYears";
             this.btnFinancialYears.SupertipSettingsData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><SupertipSettings><HeaderText>تنظیمات بــرن" +
     "امه</HeaderText><Text>در این بخش تنظمات برنامه انجام می شود.</Text></SupertipSet" +
@@ -879,13 +880,13 @@
             this.lblVersion_,
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 870);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 897);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1497, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1521, 23);
             // 
             // 
             // 
@@ -954,7 +955,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1497, 893);
+            this.ClientSize = new System.Drawing.Size(1521, 920);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);

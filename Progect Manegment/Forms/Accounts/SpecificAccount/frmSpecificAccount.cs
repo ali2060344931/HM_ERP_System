@@ -104,6 +104,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node2_1_5_1", 1)) return;
                 if (PublicClass.FindEmptyControls(cmbTotalAccount, ResourceCode.T069, txtName, ResourceCode.T071))
                     return;
                 using (var db = new DBcontextModel())
@@ -201,6 +202,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node2_1_5_2", 1)) return; 
                     using (var db = new DBcontextModel())
                     {
                         var q = db.SpecificAccounts.Where(c => c.Id == ListId).First();
@@ -214,6 +216,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node2_1_5_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         //if (db.SpecificAccounts.Where(c => c.Id_TotalAccount == LisId).Count() != 0)

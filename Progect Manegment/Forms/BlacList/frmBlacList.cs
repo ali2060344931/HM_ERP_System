@@ -105,6 +105,7 @@ namespace HM_ERP_System.Forms.BlacList
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_2_1_5_1", 1)) return;
                 if (PublicClass.FindEmptyControls(cmbPerson, ResourceCode.T007))
                     return;
                 using (var db = new DBcontextModel())
@@ -173,6 +174,7 @@ namespace HM_ERP_System.Forms.BlacList
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node1_2_1_5_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.BlacLists.Where(c => c.Id == ListId).First();
@@ -186,6 +188,7 @@ namespace HM_ERP_System.Forms.BlacList
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node1_2_1_5_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 

@@ -86,6 +86,7 @@ namespace HM_ERP_System.Forms.Ciltys
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_1_6_1", 1)) return;
                 if (PublicClass.FindEmptyControls(cmbProvinces, ResourceCode.T002, txtName, ResourceCode.T005))
                     return;
                 using (var db = new DBcontextModel())
@@ -155,6 +156,7 @@ namespace HM_ERP_System.Forms.Ciltys
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_6_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q = db.Ciltys.Where(c => c.Id == ListId).First();
@@ -167,6 +169,7 @@ namespace HM_ERP_System.Forms.Ciltys
 
                 else if (e.Column.Key == "Delete")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_6_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         var q1=db.Customers.Where(c=>c.CityId == ListId).Count();

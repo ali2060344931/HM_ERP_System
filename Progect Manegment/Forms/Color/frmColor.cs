@@ -88,7 +88,6 @@ namespace HM_ERP_System.Forms.Color
                         PublicClass.WindowAlart("1");
                         if (_updatableForms != null)
                             _updatableForms.UpdateData();
-
                         CelearItems();
                     }
                 }
@@ -137,7 +136,7 @@ namespace HM_ERP_System.Forms.Color
                             var q = db.Color_s.Where(c => c.Id == ListId).First();
                             db.Color_s.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

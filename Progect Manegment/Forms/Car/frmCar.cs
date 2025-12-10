@@ -249,7 +249,13 @@ namespace HM_ERP_System.Forms.Car
                         on cr.ColorId equals cl.Id into clGroup
                         from cl_ in clGroup.DefaultIfEmpty()
 
+                        join cuR in db.CustomerRoles
+                        on cr.UserId equals cuR.Id into cuRGroup
+                        from cuR_ in cuRGroup.DefaultIfEmpty()
 
+                        join CuUser in db.Customers
+                        on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                        from CuUser_ in CuUserGroup.DefaultIfEmpty()
                         select new
                         {
                             cr.Id,
@@ -274,6 +280,7 @@ namespace HM_ERP_System.Forms.Car
                             ProvincesName = pr_ != null ? pr_.Name : "-",
                             TruckManufacturer = tm_ != null ? tm_.Name : "-",
                             Color = cl_ != null ? cl_.Name : "-",
+                            User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
                 DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 PublicClass.SettingGridEX(dgvList, Name);
@@ -516,7 +523,7 @@ namespace HM_ERP_System.Forms.Car
                             var q = db.Cars.Where(c => c.Id == ListId).First();
                             db.Cars.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }
@@ -543,7 +550,7 @@ namespace HM_ERP_System.Forms.Car
 
         private void btnAddDravers_Click(object sender, EventArgs e)
         {
-            //frmCustomerToGroup f = new frmCustomerToGroup(this);
+            if (!PublicClass.SetPeremission("Node1_1_2", 1)) return;
             frmDraver f = new frmDraver(this);
             f.ShowDialog();
             FillcmbDraverName();
@@ -638,6 +645,7 @@ namespace HM_ERP_System.Forms.Car
 
         private void buttonX1_Click_1(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_8", 1)) return;
             frmCustomerToGroup f = new frmCustomerToGroup(this);
             f.ShowDialog();
             FillcmbGoodsAccount();
@@ -686,6 +694,8 @@ namespace HM_ERP_System.Forms.Car
 
         private void btnAddCompanys_Click(object sender, EventArgs e)
         {
+
+            if (!PublicClass.SetPeremission("Node1_1_1", 1)) return;
             frmCustomer f = new frmCustomer(this);
             f.RequestFromExternalForms = "frmCar";
             f.ShowDialog();

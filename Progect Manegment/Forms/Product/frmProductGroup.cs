@@ -138,7 +138,7 @@ namespace HM_ERP_System.Forms.Product
                             var q = db.ProductGroups.Where(c => c.Id == ListId).First();
                             db.ProductGroups.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

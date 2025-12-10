@@ -131,7 +131,7 @@ namespace HM_ERP_System.Forms.Persons
                             var q = db.Provinces.Where(c => c.Id == ListId).First();
                             db.Provinces.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

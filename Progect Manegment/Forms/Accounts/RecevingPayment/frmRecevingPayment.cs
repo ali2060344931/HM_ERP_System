@@ -644,7 +644,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                                 }
                             }
 
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             transaction.Commit();
 
                             PublicClass.WindowAlart("1");
@@ -1134,7 +1134,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                             //var q = db.Cars.Where(c => c.Id == ListId).First();
                             db.Transactions.RemoveRange(list);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

@@ -90,7 +90,7 @@
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Location = new System.Drawing.Point(0, 54);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(874, 215);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(874, 446);
             // 
             // pnlViewItemHeder
             // 
@@ -98,7 +98,7 @@
             // 
             // pnlViewItemFoter
             // 
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 269);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 500);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(874, 28);
             // 
             // pnlAddItemBodi
@@ -110,13 +110,13 @@
             this.pnlAddItemBodi.Controls.Add(this.panel2);
             this.pnlAddItemBodi.Controls.Add(this.panel3);
             this.pnlAddItemBodi.Controls.Add(this.panel1);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(521, 269);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(521, 500);
             this.pnlAddItemBodi.TabIndex = 0;
             // 
             // pnlAddItemFoter
             // 
             this.pnlAddItemFoter.Controls.Add(this.chkRegAccount);
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 269);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 500);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(521, 28);
             this.pnlAddItemFoter.TabIndex = 1;
             this.pnlAddItemFoter.Controls.SetChildIndex(this.btnSave, 0);
@@ -169,14 +169,13 @@
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Location = new System.Drawing.Point(3, 25);
-            this.pnlViewItems.Size = new System.Drawing.Size(876, 325);
+            this.pnlViewItems.Size = new System.Drawing.Size(876, 556);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(879, 25);
+            this.pnlAddItems.Location = new System.Drawing.Point(879, 3);
             this.pnlAddItems.MinimumSize = new System.Drawing.Size(400, -1);
-            this.pnlAddItems.Size = new System.Drawing.Size(527, 325);
+            this.pnlAddItems.Size = new System.Drawing.Size(527, 556);
             // 
             // btnExportToExcel
             // 
@@ -214,7 +213,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCommission";
-            this.dgvList.Size = new System.Drawing.Size(874, 215);
+            this.dgvList.Size = new System.Drawing.Size(874, 446);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -470,7 +469,7 @@
             this.dgvList1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList1.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList1.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList1.Size = new System.Drawing.Size(521, 68);
+            this.dgvList1.Size = new System.Drawing.Size(521, 299);
             this.dgvList1.Sortable = true;
             this.dgvList1.TabIndex = 106;
             this.dgvList1.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -585,7 +584,7 @@
             this.panel4.Controls.Add(this.txtDes);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 235);
+            this.panel4.Location = new System.Drawing.Point(0, 466);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(521, 34);
             this.panel4.TabIndex = 109;
@@ -641,7 +640,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1409, 353);
+            this.ClientSize = new System.Drawing.Size(1409, 562);
             this.Name = "frmCommission";
             this.Text = "پـــورســـانت ها";
             this.Load += new System.EventHandler(this.frmCommission_Load);

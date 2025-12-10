@@ -121,6 +121,15 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                         join chst in db.ChequeStatusTypes
                         on chsLeft.StatusCodeId equals chst.Id /*into chstGroup*/
 
+                        join cuR in db.CustomerRoles
+                        on ch.UserId equals cuR.Id into cuRGroup
+                        from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                        join CuUser in db.Customers
+                        on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                        from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
+
                         where (!FilterByChequeType || (ch.ChequeTypeId == ChequeTypeId && chsLeft.StatusCodeId == 6)) && string.Compare(ch.IssueDate, txtDateStart.Text) >= 0 && string.Compare(ch.IssueDate, txtDateEnd.Text) <= 0
 
                         select new
@@ -136,6 +145,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                             ch.Description,
                             Payer_Payee_Acc = cu_ppa.Family + " " + cu_ppa.Name,
                             ChequeStatusTypes = chst.Name,
+                            User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
                 DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 dgvList.AutoSizeColumns();
@@ -354,7 +364,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                             //Transactions.SpecificAccountId = 0;
                             Transactions.DetailedAccountId = AccountId;
                         }
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
 
                             PublicClass.WindowAlart("1");
 
@@ -428,7 +438,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
                             var q = db.Cheques.Where(c => c.Id == ListId).First();
                             db.Cheques.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
 
                             CelearItems();
                         }
@@ -567,6 +577,7 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
 
         private void btnAddBanck_Click(object sender, EventArgs e)
         {
+
             frmBankBranch frmBankBranch = new frmBankBranch(this);
             frmBankBranch.ShowDialog();
             FillcmbAccount();

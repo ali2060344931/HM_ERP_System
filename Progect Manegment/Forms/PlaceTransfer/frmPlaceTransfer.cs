@@ -41,9 +41,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         }
         private void CallUpdateTata()
         {
-
             FilldgvList();
-            //FillcmbEvacuationDeployment();
             fillcmbCity();
         }
 
@@ -113,6 +111,15 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
                             join pr in db.Provinces
                             on ct.ProvincesId equals pr.Id
+                            
+                            join cuR in db.CustomerRoles
+                            on pt.UserId equals cuR.Id into cuRGroup
+                            from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                            join CuUser in db.Customers
+                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
 
                             select new
                             {
@@ -123,6 +130,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                 pt.publicStatus,
                                 pt.PostalCode,
                                 pt.Addres,
+                                User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                             };
                     DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                     PublicClass.SettingGridEX(dgvList,Name);
@@ -245,7 +253,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                             var q = db.PlaceTransfers.Where(c => c.Id == LisId).First();
                             db.PlaceTransfers.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

@@ -145,7 +145,7 @@ namespace HM_ERP_System.Forms.DocumentBanck
                     DB.LengthFile = nLength;
                     DB.Data = file_binary;
                     db.DocumentBancks.Add(DB);
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 else
                 {//ویرایش
@@ -161,7 +161,7 @@ namespace HM_ERP_System.Forms.DocumentBanck
 
                     q.MoZoFile = txtMoZoFile.Text;
                     q.File_Title = cmbOnovanFile.Text;
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
 
                 }
 
@@ -310,7 +310,7 @@ namespace HM_ERP_System.Forms.DocumentBanck
 
                         var q = db.DocumentBancks.Where(c => c.Id == ListId).First();
                         db.DocumentBancks.Remove(q);
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                         PublicClass.WindowAlart("2");
                         ShowInfoToDGV(dtDocumentBancks);
 

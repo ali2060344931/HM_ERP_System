@@ -30,6 +30,15 @@ namespace HM_ERP_System.Entity.BlacList
         /// </summary>
         public bool NoSaveData { get; set; }
 
+        /// <summary>
+        /// تاریخ ثبت
+        /// </summary>
+        public DateTime RecordDateTime { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// کد کاربر
+        /// </summary>
+        public int UserId { get; set; }
 
     }
         public class BlacListConfig : EntityTypeConfiguration<BlacList>

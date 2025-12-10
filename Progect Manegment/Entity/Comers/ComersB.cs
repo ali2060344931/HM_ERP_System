@@ -274,6 +274,18 @@ namespace HM_ERP_System.Entity.Comers
         /// </summary>
         public double BP { get; set; }
 
+        /// <summary>
+        /// تاریخ ثبت
+        /// </summary>
+        public DateTime RecordDateTime { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// کد کاربر
+        /// </summary>
+        public int UserId { get; set; }
+
+
+
         public virtual TypeCalcMethod.TypeCalcMethod TypeCalcMethods { get; set; }
     }
     public class ComersBConfig : EntityTypeConfiguration<ComersB>

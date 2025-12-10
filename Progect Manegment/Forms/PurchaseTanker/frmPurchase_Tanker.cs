@@ -172,7 +172,16 @@ namespace HM_ERP_System.Forms.PurchaseTanker
 
                         join tut in db.TruckUsageTypes
                         on pt.TypeTrailerId equals tut.Id
-                        
+
+                        join cuR in db.CustomerRoles
+                        on pt.UserId equals cuR.Id into cuRGroup
+                        from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                        join CuUser in db.Customers
+                        on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                        from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
+
                         where string.Compare(pt.Date, txtDateStart.Text) >= 0 && string.Compare(pt.Date, txtDateEnd.Text) <= 0
 
                         select new
@@ -193,6 +202,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                             pt.BlockedAmountDocument,
                             pt.AgencyCommission,
                             pt.TransactionsStatuse,
+                            User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
                 DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList,Name);
             }
@@ -264,7 +274,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                     }
 
                     var save = new Repository<Entity.PurchaseTanker.PurchaseTanker>(db);
-                    if (save.SaveOrUpdate(new Entity.PurchaseTanker.PurchaseTanker { Id = ListId, TankerNo=Convert.ToInt32(txtTankerNo.Text), Date=txtDate.Text, SellerId=SellerId, BuyerId=BuyerId, NumberAxles=Convert.ToInt32(txtNumberAxles.Text), TypeTrailerId=TypeTrailerId, TypeChassisCapsule=txtTypeChassisCapsule.Text, Manufacturer=txtManufacturer.Text, DocumentStatus=txtDocumentStatus.Text, PreviousPlateNumber= Convert.ToInt32(txtPreviousPlateNumber.Text), NewPlateNumber=Convert.ToInt32(txtNewPlateNumber.Text), PurchaseAmount=Convert.ToInt64(txtPurchaseAmount.TextSimple), BlockedAmountDocument=Convert.ToInt64(txtBlockedAmountDocument.TextSimple), AgencyCommission=Convert.ToInt64(txtAgencyCommission.TextSimple) }, ListId))
+                    if (save.SaveOrUpdate(new Entity.PurchaseTanker.PurchaseTanker { Id = ListId, TankerNo=Convert.ToInt32(txtTankerNo.Text), Date=txtDate.Text, SellerId=SellerId, BuyerId=BuyerId, NumberAxles=Convert.ToInt32(txtNumberAxles.Text), TypeTrailerId=TypeTrailerId, TypeChassisCapsule=txtTypeChassisCapsule.Text, Manufacturer=txtManufacturer.Text, DocumentStatus=txtDocumentStatus.Text, PreviousPlateNumber= Convert.ToInt32(txtPreviousPlateNumber.Text), NewPlateNumber=Convert.ToInt32(txtNewPlateNumber.Text), PurchaseAmount=Convert.ToInt64(txtPurchaseAmount.TextSimple), BlockedAmountDocument=Convert.ToInt64(txtBlockedAmountDocument.TextSimple), AgencyCommission=Convert.ToInt64(txtAgencyCommission.TextSimple),UserId=PublicClass.UserId,RecordDateTime=DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
                         FilldgvList();
@@ -354,7 +364,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                             var q = db.PurchaseTankers.Where(c => c.Id == ListId).First();
                             db.PurchaseTankers.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }
@@ -376,6 +386,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
 
         private void btnAddNewItem_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_1", 1)) return;
             Customer.frmCustomer frmCustomer = new Customer.frmCustomer(this);
             frmCustomer.ShowDialog();
             FillcmbSeller();
@@ -383,6 +394,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_1", 1)) return;
             Customer.frmCustomer frmCustomer = new Customer.frmCustomer(this);
             frmCustomer.ShowDialog();
             FillcmbBuyer();

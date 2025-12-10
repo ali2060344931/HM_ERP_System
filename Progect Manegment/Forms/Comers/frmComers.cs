@@ -1682,6 +1682,14 @@ namespace HM_ERP_System.Forms.Comers
                 using (var db = new DBcontextModel())
                 {
                     var q = from cmh in db.ComersHs
+                            join cuR in db.CustomerRoles
+                            on cmh.UserId equals cuR.Id into cuRGroup
+                            from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                            join CuUser in db.Customers
+                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
 
                             join td in db.TypeDocuments
                             on cmh.TypeDocumentId equals td.Id
@@ -1781,6 +1789,7 @@ namespace HM_ERP_System.Forms.Comers
                                 cmh.LoadWeightCapacity,
                                 cmh.Description,
                                 cmh.CotajNumber,
+                                User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                             };
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dx.DataSource = dt;
                     //dx.AutoSizeColumns();
@@ -1810,144 +1819,152 @@ namespace HM_ERP_System.Forms.Comers
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q =
-                        from cmb in db.ComersBs
+                    var q = from cmb in db.ComersBs
+                            
+                            join cuR in db.CustomerRoles
+                            on cmb.UserId equals cuR.Id into cuRGroup
+                            from cuR_ in cuRGroup.DefaultIfEmpty()
 
-                        join cmh in db.ComersHs on cmb.ComersHId equals cmh.Id
-                        join ct1 in db.Ciltys on cmh.LoadingOrinigId equals ct1.Id
-                        join pt1 in db.PlaceTransfers on cmh.LoadingLocationId equals pt1.Id
-                        join ct2 in db.Ciltys on cmh.UnLoadingOrinigId equals ct2.Id
-                        join pt2 in db.PlaceTransfers on cmh.UnLoadingLocationId equals pt2.Id
-                        join pr in db.Products on cmh.ProductsId equals pr.Id
-                        join dr1 in db.Dravers on cmb.DaraverId1_ equals dr1.Id
-                        join cu1 in db.Customers on dr1.CustomerId equals cu1.Id
-                        join dr2 in db.Dravers on cmb.DaraverId2_ equals dr2.Id
-                        join cu2 in db.Customers on dr2.CustomerId equals cu2.Id
-                        join ca in db.Customers on cmb.CostAccountId equals ca.Id
-                        join ga in db.Customers on cmb.GoodsAccountId equals ga.Id
-                        join sd1 in db.Customers on cmb.SenderId equals sd1.Id
-                        join rs1 in db.Customers on cmb.ResiverId equals rs1.Id
+                            join CuUser in db.Customers
+                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
-                        join rs2 in db.Customers on cmb.ResiverId2 equals rs2.Id into rs2Group
-                        from rs2Left in rs2Group.DefaultIfEmpty()
+                            join cmh in db.ComersHs on cmb.ComersHId equals cmh.Id
+                            join ct1 in db.Ciltys on cmh.LoadingOrinigId equals ct1.Id
+                            join pt1 in db.PlaceTransfers on cmh.LoadingLocationId equals pt1.Id
+                            join ct2 in db.Ciltys on cmh.UnLoadingOrinigId equals ct2.Id
+                            join pt2 in db.PlaceTransfers on cmh.UnLoadingLocationId equals pt2.Id
+                            join pr in db.Products on cmh.ProductsId equals pr.Id
+                            join dr1 in db.Dravers on cmb.DaraverId1_ equals dr1.Id
+                            join cu1 in db.Customers on dr1.CustomerId equals cu1.Id
+                            join dr2 in db.Dravers on cmb.DaraverId2_ equals dr2.Id
+                            join cu2 in db.Customers on dr2.CustomerId equals cu2.Id
+                            join ca in db.Customers on cmb.CostAccountId equals ca.Id
+                            join ga in db.Customers on cmb.GoodsAccountId equals ga.Id
+                            join sd1 in db.Customers on cmb.SenderId equals sd1.Id
+                            join rs1 in db.Customers on cmb.ResiverId equals rs1.Id
 
-                        join sd2 in db.Customers on cmb.SenderId2 equals sd2.Id into sd2Group
-                        from sd2Left in sd2Group.DefaultIfEmpty()
+                            join rs2 in db.Customers on cmb.ResiverId2 equals rs2.Id into rs2Group
+                            from rs2Left in rs2Group.DefaultIfEmpty()
 
-                        join tcf in db.FareCalcMethods on cmb.TypeCalFareId equals tcf.Id
-                        join mcf in db.TypeCalcMethods on cmb.MethodCalFareId equals mcf.Id
-                        join pm2 in db.PaymentMethods on cmb.BillLadingCastId equals pm2.Id
-                        join tcm2 in db.TypeCalcMethods on cmb.BillLadingMethodId equals tcm2.Id
+                            join sd2 in db.Customers on cmb.SenderId2 equals sd2.Id into sd2Group
+                            from sd2Left in sd2Group.DefaultIfEmpty()
 
-                        join sh in db.Customers on cmh.ShiperId equals sh.Id into shGroup
-                        from shLeft in shGroup.DefaultIfEmpty()
+                            join tcf in db.FareCalcMethods on cmb.TypeCalFareId equals tcf.Id
+                            join mcf in db.TypeCalcMethods on cmb.MethodCalFareId equals mcf.Id
+                            join pm2 in db.PaymentMethods on cmb.BillLadingCastId equals pm2.Id
+                            join tcm2 in db.TypeCalcMethods on cmb.BillLadingMethodId equals tcm2.Id
 
-                            // 🔸 اصلاح کامل بخش PaymentToOthers
-                        join ptonDA in db.DetailedAccounts
-                        on cmb.PaymentToOthersId equals ptonDA.Id into ptonDAGroup
-                        from ptonDA_Left in ptonDAGroup.DefaultIfEmpty()
+                            join sh in db.Customers on cmh.ShiperId equals sh.Id into shGroup
+                            from shLeft in shGroup.DefaultIfEmpty()
 
-                        join ptonC in db.Customers
-                        on ptonDA_Left.CustomerId equals ptonC.Id into ptonCGroup
-                        from ptonC_Left in ptonCGroup.DefaultIfEmpty()
+                                // 🔸 اصلاح کامل بخش PaymentToOthers
+                            join ptonDA in db.DetailedAccounts
+                            on cmb.PaymentToOthersId equals ptonDA.Id into ptonDAGroup
+                            from ptonDA_Left in ptonDAGroup.DefaultIfEmpty()
 
-                        join cr in db.Cars on cmh.CarId equals cr.Id
-                        join tf in db.TransactionFees on cmb.BT equals tf.Id
+                            join ptonC in db.Customers
+                            on ptonDA_Left.CustomerId equals ptonC.Id into ptonCGroup
+                            from ptonC_Left in ptonCGroup.DefaultIfEmpty()
 
-                        join doc in db.DocumentBancks on cmb.Id equals doc.ListInFoemId into docGroup
-                        join tr in db.Transactions on cmb.Id equals tr.ComerBId into TrGroup
+                            join cr in db.Cars on cmh.CarId equals cr.Id
+                            join tf in db.TransactionFees on cmb.BT equals tf.Id
 
-                        where string.Compare(cmb.DateB, dateS) >= 0
-                           && string.Compare(cmb.DateB, dateE) <= 0
-                           && (string.IsNullOrEmpty(serch)
-                               || ((sd1.Family + " " + sd1.Name).Contains(serch)
-                                   || (sd2Left.Family + " " + sd2Left.Name).Contains(serch)
-                                   || (rs1.Family + " " + rs1.Name).Contains(serch)
-                                   || (rs2Left.Family + " " + rs2Left.Name).Contains(serch)
-                                   || (shLeft.Family + " " + shLeft.Name).Contains(serch)
-                                   || (ct1.Name).Contains(serch)
-                                   || (pt1.Name).Contains(serch)
-                                   || (ct2.Name).Contains(serch)
-                                   || (pt2.Name).Contains(serch)
-                                   || (ca.Family + " " + ca.Name).Contains(serch)
-                                   || (ga.Family + " " + ga.Name).Contains(serch)))
+                            join doc in db.DocumentBancks on cmb.Id equals doc.ListInFoemId into docGroup
+                            join tr in db.Transactions on cmb.Id equals tr.ComerBId into TrGroup
 
- && (hideIfInCommission ? (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id && c.CommissionTypeId == Id.Value)) : (Id == null || cmh.Id == Id.Value)
-)
+                            where string.Compare(cmb.DateB, dateS) >= 0
+                               && string.Compare(cmb.DateB, dateE) <= 0
+                               && (string.IsNullOrEmpty(serch)
+                                   || ((sd1.Family + " " + sd1.Name).Contains(serch)
+                                       || (sd2Left.Family + " " + sd2Left.Name).Contains(serch)
+                                       || (rs1.Family + " " + rs1.Name).Contains(serch)
+                                       || (rs2Left.Family + " " + rs2Left.Name).Contains(serch)
+                                       || (shLeft.Family + " " + shLeft.Name).Contains(serch)
+                                       || (ct1.Name).Contains(serch)
+                                       || (pt1.Name).Contains(serch)
+                                       || (ct2.Name).Contains(serch)
+                                       || (pt2.Name).Contains(serch)
+                                       || (ca.Family + " " + ca.Name).Contains(serch)
+                                       || (ga.Family + " " + ga.Name).Contains(serch)))
 
-                        orderby cmb.Id descending
+     && (hideIfInCommission ? (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id && c.CommissionTypeId == Id.Value)) : (Id == null || cmh.Id == Id.Value)
+    )
 
-                        select new
-                        {
+                            orderby cmb.Id descending
 
-                            cmb.Id,
-                            cmb.DateB,
-                            cmb.SeryalB,
-                            cmb.SeryalH,
-                            Transaction = TrGroup.Any(),
-                            LoadingOrinigName = ct1.Name,
-                            LoadingLocationName = pt1.Name,
-                            UnLoadingOrinigName = ct2.Name,
-                            UnLoadingLocationName = pt2.Name,
-                            CostAccountName = (ca.Family + " " + ca.Name).Trim(),
-                            GoodsAccountName = (ga.Family + " " + ga.Name).Trim(),
-                            ShiperName = shLeft != null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
-                            CarPlat = cr.CarPlatSeryal + " " + cr.CarPlat,
-                            DaraverName = cu1.Family + " " + cu1.Name,
-                            DaraverTel = cu1.Tel,
-                            DaraverName2 = cu2.Family + " " + cu2.Name,
-                            DaraverTel2 = cu2.Tel,
-                            SenderName = sd1.Family + " " + sd1.Name,
-                            ResiverName = rs1.Family + " " + rs1.Name,
-                            SenderName2 = sd2Left != null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
-                            ResiverName2 = rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
-                            ProductsName = pr.Name,
-                            FareCalcMethodName = tcf.Name,
-                            MethodCalFareName = mcf.Name,
-                            CountDoc = docGroup.Count(c => c.FormName == "frmComersB"),
-                            cmb.LoadWeight,
-                            cmb.WeightDeliveredGoods,
-                            cmb.FreightRate,
-                            cmb.CargoInsurance,
-                            cmb.LoadinCast,
-                            cmb.Incentive,
-                            cmb.StopCharge,
-                            cmb.Deduction,
-                            cmb.BalanceAccount,
-                            cmb.PaidFreightRate,
-                            cmb.InsurancCost,
-                            cmb.PaidIncentive,
-                            cmb.PaidStopCharge,
-                            cmb.DriverDeduction,
-                            cmb.BaseFreight,
-                            cmb.BillLadingAmount,
-                            cmb.InsuranceAmount,
-                            cmb.BillLadingWriterPercent,
-                            cmb.OtherBillLadingCosts,
-                            cmb.AmountPaidTruckDriver,
-                            cmb.BalanceAccountDraver,
-                            cmb.StatusDeliveryGoods,
-                            cmb.Description,
-                            cmb.PaymentToOthers1,
-                            cmb.PaymentToOthers2,
-                            PaymentToOthersName = ptonC_Left != null ? (ptonC_Left.Family + " " + ptonC_Left.Name).Trim() : "-",
-                            DesToOthers = cmb.DesToOthers,
-                            BillLadingCast = pm2.Name,
-                            BillLadingMethod = tcm2.Name,
-                            cmb.BO,
-                            cmb.AE,
-                            cmb.AV,
-                            cmb.AX,
-                            cmb.AZ,
-                            cmb.BP,
-                            cmb.BK,
-                            cmb.BS,
-                            BT = tf.Name,
-                            cmb.AY,
-                            cmb.BV,
-                            cmb.Ac,
-                            cmb.Bn,
-                        };
+                            select new
+                            {
+
+                                cmb.Id,
+                                cmb.DateB,
+                                cmb.SeryalB,
+                                cmb.SeryalH,
+                                Transaction = TrGroup.Any(),
+                                LoadingOrinigName = ct1.Name,
+                                LoadingLocationName = pt1.Name,
+                                UnLoadingOrinigName = ct2.Name,
+                                UnLoadingLocationName = pt2.Name,
+                                CostAccountName = (ca.Family + " " + ca.Name).Trim(),
+                                GoodsAccountName = (ga.Family + " " + ga.Name).Trim(),
+                                ShiperName = shLeft != null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
+                                CarPlat = cr.CarPlatSeryal + " " + cr.CarPlat,
+                                DaraverName = cu1.Family + " " + cu1.Name,
+                                DaraverTel = cu1.Tel,
+                                DaraverName2 = cu2.Family + " " + cu2.Name,
+                                DaraverTel2 = cu2.Tel,
+                                SenderName = sd1.Family + " " + sd1.Name,
+                                ResiverName = rs1.Family + " " + rs1.Name,
+                                SenderName2 = sd2Left != null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
+                                ResiverName2 = rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
+                                ProductsName = pr.Name,
+                                FareCalcMethodName = tcf.Name,
+                                MethodCalFareName = mcf.Name,
+                                CountDoc = docGroup.Count(c => c.FormName == "frmComersB"),
+                                cmb.LoadWeight,
+                                cmb.WeightDeliveredGoods,
+                                cmb.FreightRate,
+                                cmb.CargoInsurance,
+                                cmb.LoadinCast,
+                                cmb.Incentive,
+                                cmb.StopCharge,
+                                cmb.Deduction,
+                                cmb.BalanceAccount,
+                                cmb.PaidFreightRate,
+                                cmb.InsurancCost,
+                                cmb.PaidIncentive,
+                                cmb.PaidStopCharge,
+                                cmb.DriverDeduction,
+                                cmb.BaseFreight,
+                                cmb.BillLadingAmount,
+                                cmb.InsuranceAmount,
+                                cmb.BillLadingWriterPercent,
+                                cmb.OtherBillLadingCosts,
+                                cmb.AmountPaidTruckDriver,
+                                cmb.BalanceAccountDraver,
+                                cmb.StatusDeliveryGoods,
+                                cmb.Description,
+                                cmb.PaymentToOthers1,
+                                cmb.PaymentToOthers2,
+                                PaymentToOthersName = ptonC_Left != null ? (ptonC_Left.Family + " " + ptonC_Left.Name).Trim() : "-",
+                                DesToOthers = cmb.DesToOthers,
+                                BillLadingCast = pm2.Name,
+                                BillLadingMethod = tcm2.Name,
+                                cmb.BO,
+                                cmb.AE,
+                                cmb.AV,
+                                cmb.AX,
+                                cmb.AZ,
+                                cmb.BP,
+                                cmb.BK,
+                                cmb.BS,
+                                BT = tf.Name,
+                                cmb.AY,
+                                cmb.BV,
+                                cmb.Ac,
+                                cmb.Bn,
+                                User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
+                            };
 
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); Gx.DataSource = dt;
                     //gx.AutoSizeColumns();
@@ -2160,13 +2177,13 @@ namespace HM_ERP_System.Forms.Comers
                     CalcComerFilds_();
 
                     var com = new Repository<ComersB>(db);
-                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP,UserId=PublicClass.UserId,RecordDateTime=DateTime.Now }, ListId);
                     PublicClass.WindowAlart("1");
                     //TypeCalcMethodsBId_
 
                     var q = db.ComersHs.Where(c => c.Id == ComersHId_).First();
                     q.LoadWeightCapacity = txtLoadWeightCapacity.Value;
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
 
                     //ثبت مدارک پیوست
                     if (newId != ListId && chkDocumentBanck.Checked)
@@ -2345,7 +2362,7 @@ namespace HM_ERP_System.Forms.Comers
                     {
                         //db.AppointmentSchedulings.Remove(q.First());
                         q.First().Status = true;
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                     }
                 }
             }
@@ -2922,7 +2939,7 @@ namespace HM_ERP_System.Forms.Comers
                             PublicClass.CheangStatusCarToComers(q.CarId, false);
 
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvListH();
                             CelearItemsH();
 
@@ -3204,7 +3221,7 @@ namespace HM_ERP_System.Forms.Comers
                     db.DocumentBancks.RemoveRange(dc);
                     db.ComersBs.Remove(q);
                     PublicClass.WindowAlart("2");
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                     FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
                 }
             }
@@ -3403,7 +3420,7 @@ namespace HM_ERP_System.Forms.Comers
                     }
                     PublicClass.WindowAlart("1", "تعداد آیتم های ثبت شده: " + n.ToString());
 
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                     FillcmbCarplate();
                     FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                 }
@@ -3443,7 +3460,7 @@ namespace HM_ERP_System.Forms.Comers
                         }
                     }
                     PublicClass.WindowAlart("1", "تعداد آیتم های ثبت شده: " + n.ToString());
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                     FillcmbCarplate();
                     FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
 
@@ -4230,7 +4247,7 @@ namespace HM_ERP_System.Forms.Comers
                     }
                     break;
                 case "Delete":
-                    
+
                     //if (!PublicClass.SetPeremission("d1", 1)) return;
 
                     using (var db = new DBcontextModel())
@@ -4259,7 +4276,7 @@ namespace HM_ERP_System.Forms.Comers
                             PublicClass.CheangStatusCarToComers(q.CarId, false);
 
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
                             CelearItemsH();
 

@@ -35,7 +35,7 @@ namespace HM_ERP_System.Forms.Draver
         public frmDraver(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
 
         }
 
@@ -77,7 +77,7 @@ namespace HM_ERP_System.Forms.Draver
                         join ctg in db.CustomerToGroups
                         on c.Id equals ctg.CustomerId
 
-                        where ctg.PersonGroupId==1
+                        where ctg.PersonGroupId == 1
                         select new
                         {
                             c.Id,
@@ -97,42 +97,51 @@ namespace HM_ERP_System.Forms.Draver
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q =
-                        from dr in db.Dravers
-                        join cu in db.Customers
-                            on dr.CustomerId equals cu.Id
+                    var q = from dr in db.Dravers
 
-                        join gn in db.Genders
-                            on dr.GenderId equals gn.Id
+                            join cu in db.Customers
+                             on dr.CustomerId equals cu.Id
 
-                        // ---- Left Join برای City ----
-                        join ct in db.Ciltys
-                            on cu.CityId equals ct.Id into cityGroup
-                        from ct in cityGroup.DefaultIfEmpty()
+                            join gn in db.Genders
+                                on dr.GenderId equals gn.Id
 
-                            // ---- Left Join برای Province ----
-                        join pr in db.Provinces
-                            on ct.ProvincesId equals pr.Id into provGroup
-                        from pr in provGroup.DefaultIfEmpty()
+                            // ---- Left Join برای City ----
+                            join ct in db.Ciltys
+                                on cu.CityId equals ct.Id into cityGroup
+                            from ct in cityGroup.DefaultIfEmpty()
 
-                        select new
-                        {
-                            dr.Id,
-                            Name = cu.Family + " " + cu.Name,
-                            cu.CodMeli,
-                            cu.Tel,
-                            cu.Adders,
-                            dr.Description,
-                            dr.BirDate,
-                            Gender = gn.Name,
-                            Provinces = pr != null ? pr.Name : "",   // اگر استان خالی بود
-                            City = ct != null ? ct.Name : "",        // اگر شهر خالی بود
-                            dr.Status,
-                            dr.SmartCard,
-                            dr.SeryalGovahiname,
-                        };
+                                // ---- Left Join برای Province ----
+                            join pr in db.Provinces
+                                on ct.ProvincesId equals pr.Id into provGroup
+                            from pr in provGroup.DefaultIfEmpty()
 
-                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
+                            join cuR in db.CustomerRoles
+                            on dr.UserId equals cuR.Id into cuRGroup
+                            from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                            join CuUser in db.Customers
+                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
+                            select new
+                            {
+                                dr.Id,
+                                Name = cu.Family + " " + cu.Name,
+                                cu.CodMeli,
+                                cu.Tel,
+                                cu.Adders,
+                                dr.Description,
+                                dr.BirDate,
+                                Gender = gn.Name,
+                                Provinces = pr != null ? pr.Name : "",   // اگر استان خالی بود
+                                City = ct != null ? ct.Name : "",        // اگر شهر خالی بود
+                                dr.Status,
+                                dr.SmartCard,
+                                dr.SeryalGovahiname,
+                                User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
+                            };
+
+                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                     PublicClass.SettingGridEX(dgvList, Name);
                 }
             }
@@ -151,11 +160,11 @@ namespace HM_ERP_System.Forms.Draver
                 bool bl1 = false;
                 bool bl2 = false;
                 string name = "";
-                (bl1, bl2, name)=PublicClass.CheckBlacList(PersonId);
+                (bl1, bl2, name) = PublicClass.CheckBlacList(PersonId);
                 if (bl1 && bl2)
                 {
-                    PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                    cmbPerson.SelectedIndex=-1;
+                    PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                    cmbPerson.SelectedIndex = -1;
                 }
             }
             catch (Exception)
@@ -221,7 +230,7 @@ namespace HM_ERP_System.Forms.Draver
                     if (userRepo.SaveOrUpdate(new Entity.Draver.Draver { Id = ListId, CustomerId = PersonId, BirDate = txtBirDate.Text, GenderId = GenderId, SeryalGovahiname = txtSeryalGovahiname.Text, SmartCard = txtSmartCard.Text, Status = chkStatus.Checked, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
                         CelearItems();
                     }
@@ -292,7 +301,7 @@ namespace HM_ERP_System.Forms.Draver
                             var q = db.Dravers.Where(c => c.Id == ListId).First();
                             db.Dravers.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }
@@ -308,6 +317,7 @@ namespace HM_ERP_System.Forms.Draver
         //private IUpdatableForms _updatableForms;
         private void btnAddNewItem_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_1", 1)) return;
             frmCustomer f = new frmCustomer(this);
             f.ShowDialog();
             FillcmbPerson();
@@ -331,13 +341,13 @@ namespace HM_ERP_System.Forms.Draver
         {
             using (var db = new DBcontextModel())
             {
-                if (ListId == 0 )
+                if (ListId == 0)
                 {
                     int cont = db.Dravers.Count(c => c.CustomerId == PersonId);
                     if (cont > 0)
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T011);
-                        cmbPerson.SelectedIndex=-1;
+                        cmbPerson.SelectedIndex = -1;
                         cmbPerson.Focus();
                     }
                 }
@@ -365,11 +375,11 @@ namespace HM_ERP_System.Forms.Draver
         {
             frmReport f = new frmReport();
             //f.Cod="2";
-            f.grid=dgvList;
+            f.grid = dgvList;
             //f.Condition="";
             //f.DateReport="گزارش تاریخ: "+PersianDate.NowPersianDate;
-            f.TitelString =ResourceCode.TRdraver;
-            f.ReporFileName="HM_ERP_System.ReportViewer.Report_Dravers.rdlc";
+            f.TitelString = ResourceCode.TRdraver;
+            f.ReporFileName = "HM_ERP_System.ReportViewer.Report_Dravers.rdlc";
             f.ShowDialog();
         }
     }

@@ -261,7 +261,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                         var q = db.SpecificAccountsGroups.Where(c => c.Id == ListId).First();
                         db.SpecificAccountsGroups.Remove(q);
                         
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                         FilldgvList();
                         CelearItems();
                         PublicClass.WindowAlart("2");

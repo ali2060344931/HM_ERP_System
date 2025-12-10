@@ -1,5 +1,6 @@
 ﻿using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.Provinces;
+using HM_ERP_System.Forms.Customer;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.Reports;
 
@@ -71,6 +72,14 @@ namespace HM_ERP_System.Forms.BlacList
             {
                 var q = from bl in db.BlacLists
 
+                        join cuR in db.CustomerRoles
+                        on bl.UserId equals cuR.Id into cuRGroup
+                        from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                        join CuUser in db.Customers
+                        on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                        from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
                         join cu in db.Customers
                         on bl.CustomerId equals cu.Id
 
@@ -81,6 +90,7 @@ namespace HM_ERP_System.Forms.BlacList
                             des = bl.Description,
                             bl.status,
                             bl.NoSaveData,
+                            User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
                 DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
                 PublicClass.SettingGridEX(dgvList,Name);
@@ -129,7 +139,7 @@ namespace HM_ERP_System.Forms.BlacList
                     }
 
                     var userRepo = new Repository<Entity.BlacList.BlacList>(db);
-                    if (userRepo.SaveOrUpdate(new Entity.BlacList.BlacList { Id = ListId, CustomerId =PersonId, Description = txtDes.Text, status=chkStatus.Checked, NoSaveData=chkNoSaveData.Checked }, ListId))
+                    if (userRepo.SaveOrUpdate(new Entity.BlacList.BlacList { Id = ListId, CustomerId =PersonId, Description = txtDes.Text, status=chkStatus.Checked, NoSaveData=chkNoSaveData.Checked,UserId=PublicClass.UserId,RecordDateTime=DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
                         if (_updatableForms!=null)
@@ -203,7 +213,7 @@ namespace HM_ERP_System.Forms.BlacList
                             var q = db.BlacLists.Where(c => c.Id == ListId).First();
                             db.BlacLists.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }
@@ -250,6 +260,14 @@ namespace HM_ERP_System.Forms.BlacList
             f.TitelString = ResourceCode.TRblacLists;
             f.ReporFileName = "HM_ERP_System.ReportViewer.Report_BlacLists.rdlc";
             f.ShowDialog();
+        }
+
+        private void btnAddNewItem_Click(object sender, EventArgs e)
+        {
+            if (!PublicClass.SetPeremission("Node1_1_1", 1)) return;
+            frmCustomer frmCustomer = new frmCustomer(this);
+            frmCustomer.ShowDialog();
+            FillcmbPerson();
         }
     }
 }

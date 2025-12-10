@@ -903,6 +903,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void buttonX3_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node2_1_5", 1)) return;
             frmSpecificAccountsGroup f = new frmSpecificAccountsGroup(this);
             f.ShowDialog();
             CheangRDB(CheangRDB_);
@@ -1169,7 +1170,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                             }
 
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             transaction.Commit();
 
                             PublicClass.WindowAlart("1");
@@ -1273,6 +1274,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             if (cmbSpecificAccountFrom.SelectedIndex != -1)
             {
+                if (!PublicClass.SetPeremission("Node2_1_6", 1)) return;
                 frmDetailedAccount f = new frmDetailedAccount(this);
                 f.cmbSpecificAccountValue = SpecificAccountIdF;
                 f.ShowDialog();
@@ -1893,6 +1895,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node3_1_3", 1)) return;
                 frmContraAccounts f = new frmContraAccounts(this);
                 f.cmbTypeAccounts.Enabled = false;
                 f.TypeAccounts_Id = 3;
@@ -1951,6 +1954,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void btnAddBanck_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node3_1_2", 1)) return;
             frmBanck f = new frmBanck(this);
             f.ShowDialog();
             FillcmbBanck();
@@ -2035,7 +2039,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                                 }
                                 //db.Transactions.RemoveRange(list);
                                 PublicClass.WindowAlart("2");
-                                db.SaveChanges();
+                                db.SaveChangesSafe();
                                 FilldgvList();
                                 CelearItems();
                             }
@@ -2100,6 +2104,11 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         private void buttonX1_Click(object sender, EventArgs e)
         {
             //PdfReportHelper.ExportJanusGridToPDF(dgvList, "لیست صورتحساب");
+        }
+
+        private void btnAddNewCustomer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

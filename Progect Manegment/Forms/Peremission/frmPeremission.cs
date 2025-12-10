@@ -89,7 +89,7 @@ namespace HM_ERP_System.Forms.Peremission
                             }
                         }
                     }
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
             }
             catch (Exception er)
@@ -125,7 +125,7 @@ namespace HM_ERP_System.Forms.Peremission
                         else
                         {
                             TF.status=thisNode.Checked;
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                         }
                         AddChildren(Nodes, thisNode, Mode);
                     }
@@ -152,7 +152,7 @@ namespace HM_ERP_System.Forms.Peremission
                             if (q0.Count() == 0)
                             {//جدید
                                 db.Peremissions.Add(new Entity.Peremission.Peremission { Des = node.Text, NodeName=node.Name, Rot=node.FullPath });
-                                //db.SaveChanges();
+                                //db.SaveChangesSafe();
                                 n++;
                             }
                             else
@@ -161,7 +161,7 @@ namespace HM_ERP_System.Forms.Peremission
                                 q0.First().NodeName= node.Name;
                                 q0.First().Rot=node.FullPath;
                             }
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             foreach (TreeNode child in node.Nodes)
                             {
                                 SaveNode(child);

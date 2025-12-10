@@ -137,7 +137,7 @@ namespace HM_ERP_System.Forms.TruckManufacturer
                             var q = db.TruckManufacturers.Where(c => c.Id == ListId).First();
                             db.TruckManufacturers.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

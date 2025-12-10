@@ -1636,6 +1636,24 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to برنامه در حال حاضر در حال اجرا می باشد..
+        /// </summary>
+        internal static string T175 {
+            get {
+                return ResourceManager.GetString("T175", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ارتباط با دیتابیس قطع می باشد..
+        /// </summary>
+        internal static string T176 {
+            get {
+                return ResourceManager.GetString("T176", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

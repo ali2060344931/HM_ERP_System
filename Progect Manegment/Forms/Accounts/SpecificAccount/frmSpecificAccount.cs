@@ -230,7 +230,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                             var q = db.SpecificAccounts.Where(c => c.Id == ListId).First();
                             db.SpecificAccounts.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

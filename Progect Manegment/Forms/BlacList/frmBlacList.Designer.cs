@@ -173,6 +173,7 @@
             this.btnAddNewItem.TabIndex = 108;
             this.btnAddNewItem.TabStop = false;
             this.btnAddNewItem.Tooltip = "ثبت آیتم جدید";
+            this.btnAddNewItem.Click += new System.EventHandler(this.btnAddNewItem_Click);
             // 
             // cmbPerson
             // 

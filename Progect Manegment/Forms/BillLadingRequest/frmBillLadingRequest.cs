@@ -437,7 +437,7 @@ namespace HM_ERP_System.Forms.BillLadingRequest
                 q.DH_PriceGoods= Convert.ToDouble(txtDH_PriceGoods.TextSimple);
                 q.ShiperId=ShiperId_;
                 q.DH_StatusRejistered=chkDH_StatusRejistered.Checked;
-                db.SaveChanges();
+                db.SaveChangesSafe();
                 PublicClass.WindowAlart("1");
                 FilldgvListH();
                 
@@ -478,7 +478,7 @@ namespace HM_ERP_System.Forms.BillLadingRequest
             {
                 var q = db.ComersHs.Where(c => c.Id==ListId).First();
                 q.DH_StatusRejistered=true;
-                db.SaveChanges();
+                db.SaveChangesSafe();
                 FilldgvListH();
                 PublicClass.WindowAlart("1");
             }

@@ -100,7 +100,7 @@ namespace HM_ERP_System.Forms.Login
                 {
                     var q = db.CustomerRoles.Where(c => c.Id==UsersId).First();
                     q.FinancialYearId=FinancialYearsId;
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 f.UsersId = UsersId;
                 Properties.Settings.Default.UsersId = UsersId;

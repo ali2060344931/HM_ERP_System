@@ -89,7 +89,7 @@
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Location = new System.Drawing.Point(0, 33);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(703, 449);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(703, 471);
             // 
             // pnlViewItemHeder
             // 
@@ -109,7 +109,6 @@
             this.pnlViewItemFoter.Controls.Add(this.label12);
             this.pnlViewItemFoter.Controls.Add(this.label11);
             this.pnlViewItemFoter.Controls.Add(this.btnRegGroupDoc);
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 482);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(703, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
@@ -146,12 +145,11 @@
             this.pnlAddItemBodi.Controls.Add(this.label4);
             this.pnlAddItemBodi.Controls.Add(this.label1);
             this.pnlAddItemBodi.Controls.Add(this.txtContactNo);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(409, 482);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(409, 504);
             this.pnlAddItemBodi.TabIndex = 0;
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 482);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(409, 28);
             this.pnlAddItemFoter.TabIndex = 1;
             // 
@@ -203,13 +201,12 @@
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Location = new System.Drawing.Point(3, 25);
-            this.pnlViewItems.Size = new System.Drawing.Size(705, 538);
+            this.pnlViewItems.Size = new System.Drawing.Size(705, 560);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(708, 25);
-            this.pnlAddItems.Size = new System.Drawing.Size(415, 538);
+            this.pnlAddItems.Location = new System.Drawing.Point(708, 3);
+            this.pnlAddItems.Size = new System.Drawing.Size(415, 560);
             // 
             // btnExportToExcel
             // 
@@ -470,7 +467,7 @@
             this.dgvList.RowHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.SettingsKey = "frmTankerRental";
-            this.dgvList.Size = new System.Drawing.Size(703, 449);
+            this.dgvList.Size = new System.Drawing.Size(703, 471);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);

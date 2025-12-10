@@ -40,6 +40,7 @@
             this.buttonCommand13 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnExitForProg = new Janus.Windows.Ribbon.ButtonCommand();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblVersion = new Janus.Windows.Ribbon.LabelCommand();
             this.tabStrip1 = new DevComponents.DotNetBar.TabStrip();
             this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
             this.ribbon1 = new Janus.Windows.Ribbon.Ribbon();
@@ -118,7 +119,6 @@
             this.lblUserRole = new Janus.Windows.Ribbon.LabelCommand();
             this.lblUserName = new Janus.Windows.Ribbon.LabelCommand();
             this.lblDate = new Janus.Windows.Ribbon.LabelCommand();
-            this.lblVersion = new Janus.Windows.Ribbon.LabelCommand();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,6 +185,12 @@
             this.btnExitForProg.SizeStyle = Janus.Windows.Ribbon.CommandSizeStyle.Small;
             this.btnExitForProg.Text = "خــروج";
             // 
+            // lblVersion
+            // 
+            this.lblVersion.Key = "labelCommand2";
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Text = "labelCommand2";
+            // 
             // tabStrip1
             // 
             this.tabStrip1.AutoSelectAttachedControl = true;
@@ -195,7 +201,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1529, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1601, 27);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -229,7 +235,7 @@
             this.ribbon1.QuickAccessCustomizeList.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.btnReviewAccounts});
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1529, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1601, 185);
             // 
             // 
             // 
@@ -880,13 +886,13 @@
             this.lblVersion_,
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 906);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 987);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1529, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1601, 23);
             // 
             // 
             // 
@@ -944,18 +950,13 @@
             this.lblDate.SupertipSettingsData = "<?xml version=\"1.0\" encoding=\"utf-8\"?><SupertipSettings><HeaderText>تاریخ شمسی</H" +
     "eaderText><Text>جهت نمایش تاریخ جاری سیستم</Text></SupertipSettings>";
             this.lblDate.Text = "تاریخ سیستم";
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.Key = "labelCommand2";
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Text = "labelCommand2";
+            this.lblDate.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.lblDate_Click);
             // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1529, 929);
+            this.ClientSize = new System.Drawing.Size(1601, 1010);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);

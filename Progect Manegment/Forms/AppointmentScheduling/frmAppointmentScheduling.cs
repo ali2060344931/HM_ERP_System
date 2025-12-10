@@ -54,7 +54,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                     if (q.Count()!=0)
                     {
                         q.First().IsSelected=false;
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                     }
                     dgvList.RootTable.Columns["SelectItem"].Visible=true;
                 }
@@ -89,6 +89,15 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                             join GA in db.Customers
                             on cr.GoodsAccountId equals GA.Id
 
+                            join cuR in db.CustomerRoles
+                            on carList.UserId equals cuR.Id into cuRGroup
+                            from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                            join CuUser in db.Customers
+                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
+
                             where carList.Status== chkSelected.Checked && string.Compare(carList.Date, txtDateStart.Text) >= 0 && string.Compare(carList.Date, txtDateEnd.Text) <= 0
 
                             select new
@@ -102,6 +111,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                                 Tel = pr.Tel,
                                 carList.Status,
                                 GoodsAccount = GA.Family +" "+GA.Name,
+                                User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                             };
 
                     DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
@@ -405,7 +415,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                             var q = db.AppointmentSchedulings.Where(c => c.Id == ListId).First();
                             db.AppointmentSchedulings.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }
@@ -418,7 +428,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                     {
                         var q = db.AppointmentSchedulings.Where(c => c.Id == ListId).First();
                         q.IsSelected= true;
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
 
                         frmComers f = Application.OpenForms["frmComers"] as frmComers;
                         f.cmbCarplateH.Text=dgvList.CurrentRow.Cells["CarPlat"].Value.ToString();
@@ -443,6 +453,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
 
         private void btnAddCare_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_3", 1)) return;
             frmCar f = new frmCar(this);
             f.ShowDialog();
             FillcmbCarplate();

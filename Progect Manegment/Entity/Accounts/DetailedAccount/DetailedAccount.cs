@@ -30,6 +30,17 @@ namespace HM_ERP_System.Entity.Accounts.DetailedAccount
         /// کد شعبه بانک ها
         /// </summary>
         public int? BankBrancheId { get; set; } = 0;
+
+        /// <summary>
+        /// تاریخ ثبت
+        /// </summary>
+        public DateTime RecordDateTime { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// کد کاربر
+        /// </summary>
+        public int UserId { get; set; }
+
     }
     public class DetailedAccountConfig : EntityTypeConfiguration<DetailedAccount>
     {

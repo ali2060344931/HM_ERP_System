@@ -648,7 +648,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                                     }
                                 }
                             }
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             transaction.Commit();
                         }
                         catch (Exception)
@@ -747,7 +747,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                             var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
                             db.DetailedAccounts.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

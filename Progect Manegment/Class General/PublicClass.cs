@@ -493,7 +493,7 @@ namespace MyClass
 
                 db.ComersHs.RemoveRange(q3);
 
-                db.SaveChanges();
+                db.SaveChangesSafe();
                 WindowAlart("2");
             }
         }
@@ -509,7 +509,7 @@ namespace MyClass
             {
                 var cr = db.Cars.Where(c => c.Id == CarId).First();
                 cr.StatusCarToComers = Satatus;
-                db.SaveChanges();
+                db.SaveChangesSafe();
             }
         }
 
@@ -1408,6 +1408,15 @@ namespace MyClass
                         on coB_.ComersHId equals coH.Id into coHGroup
                         from coH_ in coHGroup.DefaultIfEmpty()
 
+                        join cuR in db.CustomerRoles
+                        on tr.UserId equals cuR.Id into cuRGroup
+                        from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                        join CuUser in db.Customers
+                        on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                        from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
+
                         where !tr.Status && transactionTypeIds.Contains(tr.TransactionTypeId)
                         && string.Compare(tr.TransactionDate, DateStart) >= 0
                         && string.Compare(tr.TransactionDate, DateEnd) <= 0
@@ -1430,7 +1439,8 @@ namespace MyClass
                             tr.Description,
                             AccountCode = da.CodeAccount,
                             tr.IsAutoRejDoc,
-                            ComerSeryal = tr.ComerBId == 0 ? 0 : (coH_ != null ? coH_.RemiaanceSeryal : 0)
+                            ComerSeryal = tr.ComerBId == 0 ? 0 : (coH_ != null ? coH_.RemiaanceSeryal : 0),
+                            User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
 
                 gx.DataSource = q.ToList();
@@ -1675,48 +1685,55 @@ namespace MyClass
                     // ----------------------------------------------------------------
                     // 3. دریافت تراکنش‌های داخل دوره
                     // ----------------------------------------------------------------
-                    var qCurrent =
-                        from tr in accountFilter
-                        join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
-                        join da in db.DetailedAccounts on tr.DetailedAccountId equals da.Id
-                        join cu in db.Customers on da.CustomerId equals cu.Id
-                        join tt in db.TransactionTypes on tr.TransactionTypeId equals tt.Id
-                        join User in db.CustomerRoles on tr.UserId equals User.Id
-                        join CuUser in db.Customers on User.Id equals CuUser.Id
+                    var qCurrent = from tr in accountFilter
+                                   join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
+                                   join da in db.DetailedAccounts on tr.DetailedAccountId equals da.Id
+                                   join cu in db.Customers on da.CustomerId equals cu.Id
+                                   join tt in db.TransactionTypes on tr.TransactionTypeId equals tt.Id
+                                   join User in db.CustomerRoles on tr.UserId equals User.Id
 
-                        where string.Compare(tr.TransactionDate, DateStart) >= 0
-                           && string.Compare(tr.TransactionDate, DateEnd) <= 0
-                           && (TransactionCodeS == 0 || tr.TransactionCode >= TransactionCodeS)
-                           && (TransactionCodeE == 0 || tr.TransactionCode <= TransactionCodeE)
+                                   where string.Compare(tr.TransactionDate, DateStart) >= 0
+                                      && string.Compare(tr.TransactionDate, DateEnd) <= 0
+                                      && (TransactionCodeS == 0 || tr.TransactionCode >= TransactionCodeS)
+                                      && (TransactionCodeE == 0 || tr.TransactionCode <= TransactionCodeE)
 
-                        join coB in db.ComersBs on tr.ComerBId equals coB.Id into coBGroup
-                        from coB_ in coBGroup.DefaultIfEmpty()
+                                   join coB in db.ComersBs on tr.ComerBId equals coB.Id into coBGroup
+                                   from coB_ in coBGroup.DefaultIfEmpty()
 
-                        join coH in db.ComersHs on coB_.ComersHId equals coH.Id into coHGroup
-                        from coH_ in coHGroup.DefaultIfEmpty()
+                                   join coH in db.ComersHs on coB_.ComersHId equals coH.Id into coHGroup
+                                   from coH_ in coHGroup.DefaultIfEmpty()
+                                   
+                                   join cuR in db.CustomerRoles
+                                   on tr.UserId equals cuR.Id into cuRGroup
+                                   from cuR_ in cuRGroup.DefaultIfEmpty()
 
-                        orderby tr.Id
+                                   join CuUser in db.Customers
+                                   on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                                   from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
-                        select new
-                        {
-                            tr.Id,
-                            tr.Series,
-                            tr.TransactionCode,
-                            tr.TransactionDate,
-                            TransactionType = tt.Name,
-                            SpecificAccountName = sp.Name,
-                            ContraAccountName = (cu.Family + " " + cu.Name).Trim(),
-                            cu.CodMeli,
-                            cu.Tel,
-                            TotalAmount = tr.Amount,
-                            tr.PaymentBed,
-                            tr.PaymentBes,
-                            tr.Description,
-                            AccountCode = da.CodeAccount,
-                            tr.IsAutoRejDoc,
-                            ComerSeryal = tr.ComerBId == 0 ? 0 : (coH_ != null ? coH_.RemiaanceSeryal : 0),
-                            User = CuUser.Family + " " + CuUser.Name,
-                        };
+
+                                   orderby tr.Id
+
+                                   select new
+                                   {
+                                       tr.Id,
+                                       tr.Series,
+                                       tr.TransactionCode,
+                                       tr.TransactionDate,
+                                       TransactionType = tt.Name,
+                                       SpecificAccountName = sp.Name,
+                                       ContraAccountName = (cu.Family + " " + cu.Name).Trim(),
+                                       cu.CodMeli,
+                                       cu.Tel,
+                                       TotalAmount = tr.Amount,
+                                       tr.PaymentBed,
+                                       tr.PaymentBes,
+                                       tr.Description,
+                                       AccountCode = da.CodeAccount,
+                                       tr.IsAutoRejDoc,
+                                       ComerSeryal = tr.ComerBId == 0 ? 0 : (coH_ != null ? coH_.RemiaanceSeryal : 0),
+                                       User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
+                                   };
 
                     // ----------------------------------------------------------------
                     // 4. ادغام مانده اول دوره + تراکنش‌ها
@@ -2234,7 +2251,7 @@ namespace MyClass
                     GX.RootTable.Columns["Details"].AllowRemove = InheritableBoolean.False;
                 }
 
-                GX.SaveSettings = false;
+                //GX.SaveSettings =true;
                 //GX.SettingsKey = formName;
 
                 foreach (GridEXColumn column in GX.RootTable.Columns)
@@ -3185,87 +3202,6 @@ namespace MyClass
         /// <returns></returns>
         public static GridExEx.GridExEx AllAccountTransactions(GridExEx.GridExEx GX, string DateS, string DateE, int? TransactionCodeS = 0, int? TransactionCodeE = 0)
         {
-            /*
-            using (var db = new DBcontextModel())
-            {
-                string FinancialYear = PublicClass.FinancialYear;
-
-                // 1. فیلترینگ تراکنش‌ها
-                var transactionsQuery = db.Transactions
-                                         .Where(t => t.FinancialYear == FinancialYear && !t.Status);
-
-                transactionsQuery = transactionsQuery.Where(t => t.TransactionDate.CompareTo(DateS) >= 0 && t.TransactionDate.CompareTo(DateE) <= 0);
-
-                if (TransactionCodeS != null && TransactionCodeS.Value != 0)
-                {
-                    transactionsQuery = transactionsQuery.Where(t => t.TransactionCode >= TransactionCodeS.Value);
-                }
-
-                if (TransactionCodeE != null && TransactionCodeE.Value != 0)
-                {
-                    transactionsQuery = transactionsQuery.Where(t => t.TransactionCode <= TransactionCodeE.Value);
-                }
-
-                var filteredTransactions = transactionsQuery;
-
-                // 2. کوئری اصلی: شروع از DetailedAccounts و سپس GROUP BY بر اساس CustomerId
-                var q = from da in db.DetailedAccounts
-
-                            // Join اولیه برای دسترسی به مشخصات مشتری (Customer) و حساب‌های بالادستی
-                        join cu in db.Customers on da.CustomerId equals cu.Id
-                        join sa in db.SpecificAccounts on da.SpecificAccountId equals sa.Id
-                        join ta in db.TotalAccounts on sa.Id_TotalAccount equals ta.Id
-                        join ga in db.GroupAccounts on ta.Id_GroupAccount equals ga.Id
-                        join na in db.NatureAccounts on ga.IdMahiyat equals na.Id
-
-                        // Left Join برای تراکنش‌ها
-                        join tr in filteredTransactions
-                        on da.Id equals tr.DetailedAccountId
-                        into trGroup
-
-                        // 3. گروه‌بندی بر اساس شناسه مشتری (cu.Id)
-                        group new { da, trGroup, sa, ta, ga, na, cu } by cu.Id into g
-
-                        // 4. استخراج اطلاعات مشتری
-                        let CustomerData = g.FirstOrDefault() // فقط برای استخراج نام، کد و آیدی مشتری از اولین رکورد
-                        let CustomerName = (CustomerData.cu.Family + " " + CustomerData.cu.Name).Trim()
-                        let CustomerCode = CustomerData.cu.Id // فرض می‌کنیم مشتری نیز کد دارد.
-
-                        // 5. تجمیع مانده اول دوره: جمع مانده تمام تفصیلی‌های زیرمجموعه این مشتری
-                        //let BeginningBanaceSum = g.Sum(x => (double?)x.da.BeginningBanace) ?? 0.0
-
-                        // 6. تجمیع گردش‌ها: جمع گردش‌های تمام تفصیلی‌های زیرمجموعه این مشتری
-                        let DebitTurnoverSum = g.SelectMany(x => x.trGroup)
-                                                .Sum(t => (double?)t.PaymentBed) ?? 0.0
-
-                        let CreditTurnoverSum = g.SelectMany(x => x.trGroup)
-                                                 .Sum(t => (double?)t.PaymentBes) ?? 0.0
-
-                        // 7. تعیین ماهیت حساب: برای محاسبه مانده نهایی، باید ماهیت غالب حساب‌های مشتری در نظر گرفته شود.
-                        // اما چون یک مشتری ممکن است در حساب‌های با ماهیت مختلف (بدهکار/بستانکار) باشد، ما مانده خالص را محاسبه می‌کنیم.
-                        let EndingBalance = DebitTurnoverSum - CreditTurnoverSum
-
-                        // 8. فیلتر نهایی (برای نمایش رکوردهایی که گردش یا مانده اول دوره دارند)
-                        where Math.Abs(EndingBalance) !=0  || Math.Abs(DebitTurnoverSum) !=0 || Math.Abs(CreditTurnoverSum) !=0
-
-                        select new
-                        {
-                            GName = CustomerData.ga.Name,
-                            TName = CustomerData.ta.Name,
-                            sName = CustomerData.sa.Name,
-                            Id = CustomerData.cu.Id,
-                            DName = CustomerName,
-                            Code = CustomerData.da.CodeAccount,
-                            DebitTurnover = DebitTurnoverSum,
-                            CreditTurnover = CreditTurnoverSum,
-                            DebitBalance = EndingBalance > 0 ? EndingBalance : 0.0,
-                            CreditBalance = EndingBalance < 0 ? Math.Abs(EndingBalance) : 0.0,
-                        };
-
-                GX.DataSource = q.ToList();
-                return GX;
-            }
-            */
 
             using (var db = new DBcontextModel())
             {
@@ -3288,6 +3224,14 @@ namespace MyClass
                 var filteredTransactions = transactionsQuery;
 
                 var q = from da in db.DetailedAccounts
+
+                        join cuR in db.CustomerRoles
+                        on da.UserId equals cuR.Id into cuRGroup
+                        from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                        join CuUser in db.Customers
+                        on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                        from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
                         join sa in db.SpecificAccounts on da.SpecificAccountId equals sa.Id
                         join ta in db.TotalAccounts on sa.Id_TotalAccount equals ta.Id
@@ -3322,6 +3266,7 @@ namespace MyClass
                             CreditTurnover = CreditTurnover,
                             DebitBalance = EndingBalance > 0 ? EndingBalance : 0.0,
                             CreditBalance = EndingBalance < 0 ? Math.Abs(EndingBalance) : 0.0,
+                            User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
                 GX.DataSource = q.ToList();
                 return GX;
@@ -4185,7 +4130,7 @@ namespace MyClass
                             }
                         }
                         WindowAlart("1");
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                         transaction.Commit();
                     }
                     catch (Exception er)
@@ -4536,5 +4481,7 @@ namespace MyClass
 
             return (0, 0);
         }
+
+
     }
 }

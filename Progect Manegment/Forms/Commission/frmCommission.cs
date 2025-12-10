@@ -200,6 +200,13 @@ namespace HM_ERP_System.Forms.Commission
                             join tf in db.TransactionFees on cmb.BT equals tf.Id
                             //---------------
 
+                            join cuR in db.CustomerRoles
+                            on co.UserId equals cuR.Id into cuRGroup
+                            from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                            join CuUser in db.Customers
+                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
                             where string.Compare(co.Date, dateS) >= 0 && string.Compare(co.Date, dateE) <= 0
 
@@ -234,7 +241,7 @@ namespace HM_ERP_System.Forms.Commission
                                 ResiverName2 = rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
                                 cmb.Bn,
                                 cmb.BaseFreight,
-
+                                User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                             };
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());
                     DG.DataSource = dt;
@@ -504,7 +511,7 @@ namespace HM_ERP_System.Forms.Commission
                     else
                         DetailedAccountId=serch1.First().Id;
                     PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, Amount, 0, 0, "بابت پورسانت", "", Series, true);
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                     return TransactionId;
                 }
             }
@@ -758,7 +765,7 @@ namespace HM_ERP_System.Forms.Commission
                                     var q = db.Commissions.Where(c => c.Id == ListId).First();
                                     db.Commissions.Remove(q);
                                     PublicClass.WindowAlart("2");
-                                    db.SaveChanges();
+                                    db.SaveChangesSafe();
                                     FilldgvList(dgvList, txtDateStart.Text, txtDateEnd.Text);
                                     CelearItems();
                                 }
@@ -830,7 +837,7 @@ namespace HM_ERP_System.Forms.Commission
                                     PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 2, SpecificAccountId, DetailedAccountId, Amount, Amount, 0, 0, "بابت پورسانت", "", Series, true);
                                     */
                                     q.TransactionId=TransactionId;
-                                    db.SaveChanges();
+                                    db.SaveChangesSafe();
 
                                 }
 

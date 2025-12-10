@@ -529,6 +529,7 @@
     <Compile Include="Class General\PersianDate.cs" />
     <Compile Include="Class General\PublicClass.cs" />
     <Compile Include="Class General\ReportHelper.cs" />
+    <Compile Include="Class General\SaveChangesSafeClase.cs" />
     <Compile Include="Class General\Save_File_InSql.cs" />
     <Compile Include="Class General\SqlServerBankClass.cs" />
     <Compile Include="Class General\StaticClass.cs" />
@@ -747,6 +748,12 @@
     </Compile>
     <Compile Include="Forms\BlacList\frmBlacList.Designer.cs">
       <DependentUpon>frmBlacList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Calendar\frmCalendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Calendar\frmCalendar.Designer.cs">
+      <DependentUpon>frmCalendar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Car\frmCar.cs">
       <SubType>Form</SubType>
@@ -1019,6 +1026,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BlacList\frmBlacList.resx">
       <DependentUpon>frmBlacList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Calendar\frmCalendar.resx">
+      <DependentUpon>frmCalendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Car\frmCar.resx">
       <DependentUpon>frmCar.cs</DependentUpon>

@@ -140,7 +140,7 @@ namespace HM_ERP_System.Forms.Accounts.Banck
                             var q = db.Bancks.Where(c => c.Id == ListId).First();
                             db.Bancks.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             CelearItems();
                         }
                     }

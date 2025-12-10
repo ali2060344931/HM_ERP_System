@@ -53,7 +53,7 @@ namespace HM_ERP_System.Forms.Settings
                     {
                         string txt = "نام شرکت";
                         db.Settings.Add(new Entity.Settings.Setting { Code=1, Subject=txt });
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                         txtName.Text=txt;
                     }
                     else
@@ -100,7 +100,7 @@ namespace HM_ERP_System.Forms.Settings
                 var q_seting = db.Settings.Where(c => c.Code==1).First();
                 q_seting.Subject=txtName.Text;
 
-                db.SaveChanges();
+                db.SaveChangesSafe();
 
                 var q = db.ImageCos.Count();
                 if (q==0)

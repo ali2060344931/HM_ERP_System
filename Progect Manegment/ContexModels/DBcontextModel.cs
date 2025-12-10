@@ -53,7 +53,9 @@ using HM_ERP_System.Entity.Unit;
 using HM_ERP_System.Entity.WarantyType;
 using HM_ERP_System.Entity.Warehouse;
 
+using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Transactions;
 
 namespace Progect_Manegment
@@ -69,7 +71,7 @@ namespace Progect_Manegment
 
 
         }
-
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // اعمال ایندکس بر روی فیلد نام
@@ -144,6 +146,11 @@ namespace Progect_Manegment
             #endregion
 
         }
+
+        //internal void SaveChangesSafe()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
 
 

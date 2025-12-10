@@ -110,6 +110,16 @@ namespace HM_ERP_System.Forms.TankerRental
 
                             join rt in db.RentalTypes
                             on sp.RentalTypeId equals rt.Id
+
+                            join cuR in db.CustomerRoles
+                            on sp.UserId equals cuR.Id into cuRGroup
+                            from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                            join CuUser in db.Customers
+                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
+
                             select new
                             {
                                 sp.Id,
@@ -131,6 +141,7 @@ namespace HM_ERP_System.Forms.TankerRental
                                 RentalType = rt.Name,
                                 RentalTypeId = rt.Id,
                                 TruckUsageTypeName = tut.Name,
+                                User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                             };
 
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList, Name);
@@ -343,6 +354,7 @@ namespace HM_ERP_System.Forms.TankerRental
 
         private void btnAddCare_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_3", 1)) return;
             Car.frmCar frmCar = new Car.frmCar(this);
             frmCar.ShowDialog();
             FillcmbCarplate();
@@ -417,7 +429,7 @@ namespace HM_ERP_System.Forms.TankerRental
                                 var q = db.Spares.Where(c => c.Id == ListId).First();
                                 db.Spares.Remove(q);
                                 PublicClass.WindowAlart("2");
-                                db.SaveChanges();
+                                db.SaveChangesSafe();
                                 FilldgvList();
                                 CelearItems();
                             }
@@ -584,7 +596,7 @@ namespace HM_ERP_System.Forms.TankerRental
                                 }
                             }
                         }
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                     }
 
                     PublicClass.WindowAlart("1");

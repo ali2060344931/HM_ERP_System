@@ -236,7 +236,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                             var q = db.CustomerToGroups.Where(c => c.Id == ListId).First();
                             db.CustomerToGroups.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

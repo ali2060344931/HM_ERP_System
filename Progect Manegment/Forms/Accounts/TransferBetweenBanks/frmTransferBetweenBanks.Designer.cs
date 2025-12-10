@@ -117,7 +117,7 @@
             // 
             this.uiPanelManager1.BeginPanelInfo();
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("84b0915b-8a0f-4285-8d30-20f62a2fddae"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1354, 126), true);
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("dd164192-8471-4147-967e-d7796a3852be"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1354, 296), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("dd164192-8471-4147-967e-d7796a3852be"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1354, 318), true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("90d3c177-c66d-4a08-a198-6f7ffedfbb00"), new System.Guid("dd164192-8471-4147-967e-d7796a3852be"), 841, true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("ab2d85f5-78a3-4661-bbcd-ee587af56007"), new System.Guid("dd164192-8471-4147-967e-d7796a3852be"), 157, true);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("ab2d85f5-78a3-4661-bbcd-ee587af56007"), new System.Drawing.Point(367, 463), new System.Drawing.Size(200, 200), false);
@@ -130,7 +130,7 @@
             this.uiPanel0.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
             this.uiPanel0.FloatingLocation = new System.Drawing.Point(412, 327);
             this.uiPanel0.InnerContainer = this.uiPanel0Container;
-            this.uiPanel0.Location = new System.Drawing.Point(3, 25);
+            this.uiPanel0.Location = new System.Drawing.Point(3, 3);
             this.uiPanel0.Name = "uiPanel0";
             this.uiPanel0.Size = new System.Drawing.Size(1354, 126);
             this.uiPanel0.TabIndex = 4;
@@ -560,9 +560,9 @@
             // uiPanelGroup1
             // 
             this.uiPanelGroup1.GroupStyle = Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles;
-            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 151);
+            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 129);
             this.uiPanelGroup1.Name = "uiPanelGroup1";
-            this.uiPanelGroup1.Size = new System.Drawing.Size(1354, 296);
+            this.uiPanelGroup1.Size = new System.Drawing.Size(1354, 318);
             this.uiPanelGroup1.TabIndex = 5;
             // 
             // uiPanel1
@@ -572,7 +572,7 @@
             this.uiPanel1.InnerContainer = this.uiPanel1Container;
             this.uiPanel1.Location = new System.Drawing.Point(0, 0);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(1138, 296);
+            this.uiPanel1.Size = new System.Drawing.Size(1138, 318);
             this.uiPanel1.TabIndex = 4;
             this.uiPanel1.Text = "لیست اسناد";
             this.uiPanel1.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
@@ -583,7 +583,7 @@
             this.uiPanel1Container.Controls.Add(this.pnlViewItemFoter);
             this.uiPanel1Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel1Container.Name = "uiPanel1Container";
-            this.uiPanel1Container.Size = new System.Drawing.Size(1136, 268);
+            this.uiPanel1Container.Size = new System.Drawing.Size(1136, 290);
             this.uiPanel1Container.TabIndex = 0;
             // 
             // dgvList
@@ -612,7 +612,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.Size = new System.Drawing.Size(1136, 240);
+            this.dgvList.Size = new System.Drawing.Size(1136, 262);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 88;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -628,7 +628,7 @@
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 240);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 262);
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
             this.pnlViewItemFoter.Size = new System.Drawing.Size(1136, 28);
             this.pnlViewItemFoter.TabIndex = 89;
@@ -659,7 +659,7 @@
             this.uiPanel2.InnerContainer = this.uiPanel2Container;
             this.uiPanel2.Location = new System.Drawing.Point(1142, 0);
             this.uiPanel2.Name = "uiPanel2";
-            this.uiPanel2.Size = new System.Drawing.Size(212, 296);
+            this.uiPanel2.Size = new System.Drawing.Size(212, 318);
             this.uiPanel2.TabIndex = 4;
             this.uiPanel2.Text = "نمایش اسناد";
             this.uiPanel2.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
@@ -673,7 +673,7 @@
             this.uiPanel2Container.Controls.Add(this.label47);
             this.uiPanel2Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel2Container.Name = "uiPanel2Container";
-            this.uiPanel2Container.Size = new System.Drawing.Size(210, 268);
+            this.uiPanel2Container.Size = new System.Drawing.Size(210, 290);
             this.uiPanel2Container.TabIndex = 0;
             // 
             // txtDateEnd

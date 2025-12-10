@@ -211,7 +211,7 @@ namespace HM_ERP_System.Forms.Accounts.TotalAccount
                             var q = db.TotalAccounts.Where(c => c.Id == ListId).First();
                             db.TotalAccounts.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

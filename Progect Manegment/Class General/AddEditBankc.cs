@@ -26,7 +26,7 @@ namespace MyClass
             //{
             //    var productsToDelete = db.DocumentRevExps.Where(p => p.CodDocument>253).ToList();
             //    db.DocumentRevExps.RemoveRange(productsToDelete);
-            //    db.SaveChanges();
+            //    db.SaveChangesSafe();
             //}
             //catch (System.Exception)
             //{
@@ -39,7 +39,7 @@ namespace MyClass
             {
                 item.Id_Specifice=q;
             }
-            db.SaveChanges();
+            db.SaveChangesSafe();
 
 
             Accounts_Fund_Bank_Currency co;
@@ -78,7 +78,7 @@ namespace MyClass
                     db.Accounts_Fund_Banks.Add(co);
                 }
 
-                db.SaveChanges();
+                db.SaveChangesSafe();
             }
             */
 
@@ -100,7 +100,7 @@ namespace MyClass
                 }
                 try
                 {
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 catch (Exception err)
                 {
@@ -128,7 +128,7 @@ namespace MyClass
                         int id_ = Convert.ToInt32(txt[0]);
                         var q = db.SpecificAccounts.Where(c => c.Cod==id_).First();
                         q.NameEn=txt[3];
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                     }
                     catch (Exception)
                     {
@@ -154,7 +154,7 @@ namespace MyClass
                     var q = db.GroupAccounts.Where(c => c.Id==i).First();
                     q.NameEn=txt[i-1];
                 }
-                db.SaveChanges();
+                db.SaveChangesSafe();
 
             }
 
@@ -172,7 +172,7 @@ namespace MyClass
                     var q = db.TypeDocuments.Where(c => c.Id==i).First();
                     q.NameEn=txt[i-1];
                 }
-                db.SaveChanges();
+                db.SaveChangesSafe();
 
             }
             #endregion
@@ -187,7 +187,7 @@ namespace MyClass
                     var q = db.TypeAccounts.Where(c => c.Id==i).First();
                     q.NameEn=txt[i-1];
                 }
-                db.SaveChanges();
+                db.SaveChangesSafe();
 
             }
             #endregion
@@ -202,7 +202,7 @@ namespace MyClass
                     var q = db.Person_Companies.Where(c => c.Id==i).First();
                     q.NameEn=txt[i-1];
                 }
-                db.SaveChanges();
+                db.SaveChangesSafe();
             }
             #endregion
             #region حقیقی/حقوقی
@@ -218,7 +218,7 @@ namespace MyClass
                 }
                 //try
                 //{
-                db.SaveChanges();
+                db.SaveChangesSafe();
 
             }
             #endregion
@@ -233,7 +233,7 @@ namespace MyClass
                     var q = db.MahiyatHesabs.Where(c => c.Id==i).First();
                     q.NameEn=txt[i-1];
                 }
-                db.SaveChanges();
+                db.SaveChangesSafe();
 
             }
             #endregion
@@ -248,7 +248,7 @@ namespace MyClass
                     var q = db.TypeCustomers.Where(c => c.Id==i).First();
                     q.NameEn=txt[i-1];
                 }
-                db.SaveChanges();
+                db.SaveChangesSafe();
             }
 
             #endregion
@@ -264,18 +264,18 @@ namespace MyClass
             //    var qq = new Accounting_Warehousing.Entity.Definitions.Bank_Wallet.Bank.Card();
             //    qq.Name="Other";
             //    db.Cards.Add(qq);
-            //    db.SaveChanges();
+            //    db.SaveChangesSafe();
             //}
             //var ST = db.Settings.Where(c => c.Id_Company==IdCompany && c.Cod==11).Count();
             //if (ST==0)
             //{
-            //    db.Settings.Add(new Setting { Id_Company=1, Cod=11, Name = "کد حساب بانک جهت ثبت در تلگرام" }); db.SaveChanges();
+            //    db.Settings.Add(new Setting { Id_Company=1, Cod=11, Name = "کد حساب بانک جهت ثبت در تلگرام" }); db.SaveChangesSafe();
             //}
 
             //var ST0 = db.Settings.Where(c => c.Id_Company==IdCompany && c.Cod==12).Count();
             //if (ST0==0)
             //{
-            //    db.Settings.Add(new Setting { Id_Company=1, Cod=12, Name = "توکن تلگرام", Txt="5760606334:AAEr43EeeAglaZtN9a3U8ywWDMiRRZ8SqSs" }); db.SaveChanges();
+            //    db.Settings.Add(new Setting { Id_Company=1, Cod=12, Name = "توکن تلگرام", Txt="5760606334:AAEr43EeeAglaZtN9a3U8ywWDMiRRZ8SqSs" }); db.SaveChangesSafe();
             //}
 
 
@@ -284,7 +284,7 @@ namespace MyClass
             //{
             //    db.SpecificAccounts.Add(new SpecificAccount { Cod=10410, Name = "مالیات فدرال", Id_MahiyatHesab=1 ,Id_TotalAccount=4});
             //    db.SpecificAccounts.Add(new SpecificAccount { Cod=10411, Name = "مالیات ایالتی", Id_MahiyatHesab=1, Id_TotalAccount=4 });
-            //    db.SaveChanges();
+            //    db.SaveChangesSafe();
 
             //}
 

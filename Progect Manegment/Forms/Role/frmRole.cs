@@ -134,7 +134,7 @@ namespace HM_ERP_System.Forms.Role
                             var q = db.Roles.Where(c => c.Id == LisId).First();
                             db.Roles.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

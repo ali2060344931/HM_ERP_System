@@ -1,4 +1,5 @@
 ﻿using HM_ERP_System.Class_General;
+
 using HM_ERP_System.Entity.Accounts.Banck;
 using HM_ERP_System.Entity.Accounts.NatureAccount;
 using HM_ERP_System.Entity.Gender;
@@ -63,10 +64,10 @@ namespace HM_ERP_System.Forms.Customer
                 }
             }
             catch { }
-
             chkControlCodeMeli.Checked = true;
             UpdateData();
         }
+
         public void UpdateData()
         {
             CallUpdateTata();
@@ -90,7 +91,8 @@ namespace HM_ERP_System.Forms.Customer
 
         private void CallUpdateTata()
         {
-
+            //dgvList.SaveSettings = true;
+            //dgvList.SettingsKey = Name;
             FilldgvList();
             FillcmbTypeCustomer();
             FillcmbBanck();
@@ -243,6 +245,15 @@ namespace HM_ERP_System.Forms.Customer
                             on cu.BanckId equals ba.Id into baGroup
                         from ba_ in baGroup.DefaultIfEmpty()
 
+                        join cuR in db.CustomerRoles
+                        on cu.UserId equals cuR.Id into cuRGroup
+                        from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                        join CuUser in db.Customers
+                        on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                        from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
+
                         where cu.id_TypeCustomer <= 2
 
                         select new
@@ -269,6 +280,7 @@ namespace HM_ERP_System.Forms.Customer
                             cu.UserId,
                             cu.BanckId,
                             cu.CityId,
+                            User = CuUser_!=null ? CuUser_.Family + " " + CuUser_.Name:"-",
                         };
 
                     DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());
@@ -421,14 +433,13 @@ namespace HM_ERP_System.Forms.Customer
                                 {
                                     var delet = db.CustomerToGroups.Where(c => c.Id == q.FirstOrDefault().Id).First();
                                     db.CustomerToGroups.Remove(delet);
-                                    db.SaveChanges();
+                                    db.SaveChangesSafe();
                                 }
                             }
                         }
                     }
 
                     PublicClass.WindowAlart("1");
-                    FilldgvList();
                     if (_updatableForms != null)
                         _updatableForms.UpdateData();
                     CelearItems();
@@ -467,6 +478,8 @@ namespace HM_ERP_System.Forms.Customer
             ListId_ = 0;
             BanckId = 0;
             txtName.Focus();
+            FilldgvList();
+
         }
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
@@ -532,6 +545,7 @@ namespace HM_ERP_System.Forms.Customer
 
         private void btnAddGroup_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_7", 1)) return;
             frmPersonGroup f = new frmPersonGroup(this);
             f.ShowDialog();
             FillcmbGroup();
@@ -669,7 +683,7 @@ namespace HM_ERP_System.Forms.Customer
                                 db.DocumentBancks.RemoveRange(doc);
 
                                 PublicClass.WindowAlart("2");
-                                db.SaveChanges();
+                                db.SaveChangesSafe();
                                 FilldgvList();
                                 CelearItems();
                             }
@@ -746,6 +760,7 @@ namespace HM_ERP_System.Forms.Customer
 
         private void btnAddBanck_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node3_1_2", 1)) return;
             frmBankBranch frmBankBranch = new frmBankBranch(this);
             frmBankBranch.ShowDialog();
             FillcmbBanck();
@@ -804,5 +819,6 @@ namespace HM_ERP_System.Forms.Customer
                 PublicClass.SearchCmbId(cmbGroup, dt_Group, cmbGroup.Text);
             }
         }
+
     }
 }

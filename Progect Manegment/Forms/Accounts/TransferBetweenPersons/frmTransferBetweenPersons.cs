@@ -268,6 +268,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
 
         private void btnAddNewCustomer_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_1", 1)) return;
             frmCustomer f = new frmCustomer(this);
             f.ShowDialog();
             FillcmbDetailedAccountsFrom();
@@ -527,7 +528,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                                 PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 3, SpecificAccountId_, DetailedAccountId, Amount, 0, Amount, 0, r["Des"].ToString(), r["SeryalNumber"].ToString(), Series, false);
                             }
                         }
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                         transaction.Commit();
 
                         PublicClass.WindowAlart("1");
@@ -688,7 +689,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                                 }
                                 //db.Transactions.RemoveRange(list);
                                 PublicClass.WindowAlart("2");
-                                db.SaveChanges();
+                                db.SaveChangesSafe();
                                 FilldgvList();
                                 CelearItems();
                             }

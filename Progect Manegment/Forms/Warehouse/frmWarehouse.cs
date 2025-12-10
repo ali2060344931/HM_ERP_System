@@ -211,7 +211,7 @@ namespace HM_ERP_System.Forms.Warehouse
                             var q = db.Warehouses.Where(c => c.Id == ListId).First();
                             db.Warehouses.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

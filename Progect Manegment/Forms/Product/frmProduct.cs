@@ -51,11 +51,21 @@ namespace HM_ERP_System.Forms.Product
                 var q = from pr in db.Products
                         join prg in db.ProductGroups
                         on pr.ProductGroupId equals prg.Id
+
+                        join cuR in db.CustomerRoles
+                        on pr.UserId equals cuR.Id into cuRGroup
+                        from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                        join CuUser in db.Customers
+                        on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                        from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
                         select new
                         {
                             pr.Id,
                             pr.Name,
                             ProductGroupName= prg.Name,
+                            User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
                 
                 DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
@@ -161,7 +171,7 @@ namespace HM_ERP_System.Forms.Product
                         var q = db.Products.Where(c => c.Id == LisId).First();
                         db.Products.Remove(q);
                         PublicClass.WindowAlart("2");
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                         FilldgvList();
                         CelearItems();
                     }

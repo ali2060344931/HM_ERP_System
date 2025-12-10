@@ -157,7 +157,7 @@ namespace HM_ERP_System.Forms.FinancialYears
                             var q = db.FinancialYears.Where(c => c.Id == ListId).First();
                             db.FinancialYears.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

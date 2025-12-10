@@ -46,7 +46,7 @@ namespace HM_ERP_System.Entity.Basic_information
                 {
                     db.Genders.Add(new Gender.Gender { Name = "مرد" });
                     db.Genders.Add(new Gender.Gender { Name = "زن" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 ////نوع مشتری
@@ -64,7 +64,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.TypeCustomers.Add(new TypeCustomer.TypeCustomer { Name = "اموال" });
                     db.TypeCustomers.Add(new TypeCustomer.TypeCustomer { Name = "موجودی کالا" });
                     db.TypeCustomers.Add(new TypeCustomer.TypeCustomer { Name = "جاری شرکا" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q3 = db.Ownerships.Count();
@@ -74,7 +74,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.Ownerships.Add(new Ownership.Ownership { Name = "استیجاری" });
                     db.Ownerships.Add(new Ownership.Ownership { Name = "شرکتی" });
                     db.Ownerships.Add(new Ownership.Ownership { Name = "خودمالک" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 //نوع سند
@@ -83,7 +83,7 @@ namespace HM_ERP_System.Entity.Basic_information
                 {
                     db.TypeDocuments.Add(new TypeDocument.TypeDocument { Name = "حمل" });
                     db.TypeDocuments.Add(new TypeDocument.TypeDocument { Name = "تخلیه کشتی" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 //بارگیری، تخلیه
                 var q5 = db.EvacuationDeployments.Count();
@@ -91,14 +91,14 @@ namespace HM_ERP_System.Entity.Basic_information
                 {
                     db.EvacuationDeployments.Add(new EvacuationDeployment.EvacuationDeployment { Name = "بارگیری" });
                     db.EvacuationDeployments.Add(new EvacuationDeployment.EvacuationDeployment { Name = "تخلیه" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 var q6 = db.FareCalcMethods.Count();
                 if (q6 == 0)
                 {
                     db.FareCalcMethods.Add(new FareCalcMethod.FareCalcMethod { Name = "لیست" });//کرایه حمل
                     db.FareCalcMethods.Add(new FareCalcMethod.FareCalcMethod { Name = "مقصد" });//کمیسیون
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 var q7 = db.PaymentMethods.Count();
                 if (q7 == 0)
@@ -106,7 +106,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.PaymentMethods.Add(new PaymentMethod.PaymentMethod { Name = "پیمانکار" });
                     db.PaymentMethods.Add(new PaymentMethod.PaymentMethod { Name = "راننده" });
                     db.PaymentMethods.Add(new PaymentMethod.PaymentMethod { Name = "ندارد" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q8 = db.TypeCalcMethods.Count();
@@ -116,7 +116,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.TypeCalcMethods.Add(new TypeCalcMethod.TypeCalcMethod { Name = "سرویسی" });
                     db.TypeCalcMethods.Add(new TypeCalcMethod.TypeCalcMethod { Name = "درصدی" });
                     db.TypeCalcMethods.Add(new TypeCalcMethod.TypeCalcMethod { Name = "ندارد" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q9 = db.TruckUsageTypes.Count();
@@ -131,7 +131,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.TruckUsageTypes.Add(new TruckUsageType.TruckUsageType { Name = "کمرشکن" });
                     db.TruckUsageTypes.Add(new TruckUsageType.TruckUsageType { Name = "بوژی" });
 
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 var q10 = db.TransactionFees.Count();
                 if (q10 == 0)
@@ -139,7 +139,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.TransactionFees.Add(new TransactionFee.TransactionFee { Name = "نقدی" });
                     db.TransactionFees.Add(new TransactionFee.TransactionFee { Name = "غیر نقدی" });
 
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q11 = db.Roles.Count();
@@ -148,7 +148,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.Roles.Add(new Role.Role { Name = "مدیر سیستم" });
                     db.Roles.Add(new Role.Role { Name = "کاربر سطح 1" });
                     db.Roles.Add(new Role.Role { Name = "کاربر سطح 2" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 var q12_0 = db.Customers.Count();
                 if (q12_0 == 0)
@@ -172,7 +172,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     
                     db.Customers.Add(new Customer.Customer { Name="هزینه صدور بارنامه", CodMeli="1000000009", id_TypeCustomer=8, Tel="0", SecretCode=9 });
 
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
 
                 }
 
@@ -180,7 +180,7 @@ namespace HM_ERP_System.Entity.Basic_information
                 if (q12_1 == 0)
                 {
                     db.Customers.Add(new Customer.Customer { Name="سند رزور افتتاحیه", CodMeli="1000000010", id_TypeCustomer=5, Tel="0", SecretCode=10 });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
 
@@ -188,13 +188,13 @@ namespace HM_ERP_System.Entity.Basic_information
                 if (q12_2 == 0)
                 {
                     db.Customers.Add(new Customer.Customer { Name="هزینه پورسانت", CodMeli="1000000011", id_TypeCustomer=8, Tel="0", SecretCode=11 });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 var q12_3 = db.Customers.Where(c=>c.SecretCode==12).Count();
                 if (q12_3 == 0)
                 {
                     db.Customers.Add(new Customer.Customer { Name= "مرکز هزینه اجاره تانکرها", CodMeli="1000000012", id_TypeCustomer=8, Tel="0", SecretCode=12 });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
 
@@ -203,7 +203,7 @@ namespace HM_ERP_System.Entity.Basic_information
                 if (q13 == 0)
                 {
                     db.CustomerRoles.Add(new CustomerRole.CustomerRole { CustomerId=1, RoleId=1,Password=PublicClass.GenerateHash("1") });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q14 = db.NatureAccounts.Count();
@@ -212,7 +212,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.NatureAccounts.Add(new Entity.Accounts.NatureAccount.NatureAccount { Name = "بدهکار" });
                     db.NatureAccounts.Add(new Entity.Accounts.NatureAccount.NatureAccount { Name = "بستانکار" });
                     db.NatureAccounts.Add(new Entity.Accounts.NatureAccount.NatureAccount { Name = "خنثی" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 //گروه حساب ها
                 var q15 = db.GroupAccounts.Count();
@@ -227,7 +227,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.GroupAccounts.Add(new GroupAccount { Name = "بهای تمام شده کالای فروش رفته", IdMahiyat = 1 });
                     db.GroupAccounts.Add(new GroupAccount { Name = "هزینه ها", IdMahiyat = 1 });
                     db.GroupAccounts.Add(new GroupAccount { Name = "سایر حسابها", IdMahiyat = 3 });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 //حساب کل
@@ -242,7 +242,7 @@ namespace HM_ERP_System.Entity.Basic_information
                         db.TotalAccounts.Add(new TotalAccount { Cod = int.Parse(txt[0]), Name = txt[1], Id_GroupAccount = int.Parse(txt[0].Substring(0, 1)) });
                     }
 
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q17 = db.SpecificAccounts.Count();
@@ -259,7 +259,7 @@ namespace HM_ERP_System.Entity.Basic_information
                         //افزودن مقادیر در جدول معین
                         db.SpecificAccounts.Add(new SpecificAccount { Cod = int.Parse(txt[0]), Name = txt[1]/*, Id_MahiyatHesab = int.Parse(txt[2])*/, Id_TotalAccount = IdHKol });
                     }
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q18 = db.TransactionTypes.Count();
@@ -270,7 +270,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name="جابجایی" });
                     db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name="دریافت" });
                     db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name="پرداخت" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q19=db.DetailedAccounts.Count();
@@ -303,7 +303,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="کارکنان" });
                     db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="سایر" });
                    
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 
 
@@ -313,7 +313,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.WarantyTypes.Add(new Entity.WarantyType.WarantyType { Name="چک" });
                     db.WarantyTypes.Add(new Entity.WarantyType.WarantyType { Name="سفته" });
                     db.WarantyTypes.Add(new Entity.WarantyType.WarantyType { Name="ندارد" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q22 = db.ChequeTypes.Count();
@@ -321,7 +321,7 @@ namespace HM_ERP_System.Entity.Basic_information
                 {
                     db.ChequeTypes.Add(new Entity.Accounts.Cheque.ChequeType { Name="دریافتنی" });
                     db.ChequeTypes.Add(new Entity.Accounts.Cheque.ChequeType { Name="پرداختنی" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 
                 var q23 = db.ChequeStatusTypes.Count();
@@ -333,7 +333,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name="برگشت خورد" });
                     db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name="خرج شد" });
                     db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name="ثبت شده" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q24 = db.PersonGroups.Where(c => c.IsCommission).Count();
@@ -344,14 +344,14 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت بارنامه نویسی", IsCommission = true });
                     db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت مخازن", IsCommission = true });
                     db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت ترخیصکار", IsCommission = true });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
                 var q25 = db.TypeAccounts.Count();
                 if (q25 == 0)
                 {
                     db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name="جاری" });
                     db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name="پس انداز" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
                 var q26 = db.RentalTypes.Count();
@@ -359,7 +359,7 @@ namespace HM_ERP_System.Entity.Basic_information
                 {
                     db.RentalTypes.Add(new RentalType { Name="اجــاره داده" });
                     db.RentalTypes.Add(new RentalType { Name="اجـاره شـده" });
-                    db.SaveChanges();
+                    db.SaveChangesSafe();
                 }
 
             }
@@ -393,7 +393,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     {
                         p.Name = line;
                         db.Provinces.Add(p);
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                     }
 
                     Entity.Ciltys.Ciltys c = new Ciltys.Ciltys();
@@ -407,7 +407,7 @@ namespace HM_ERP_System.Entity.Basic_information
                         c.Name = city[1];
 
                         db.Ciltys.Add(c);
-                        db.SaveChanges();
+                        db.SaveChangesSafe();
                     }
 
                 }

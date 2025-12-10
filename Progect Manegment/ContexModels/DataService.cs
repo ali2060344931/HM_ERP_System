@@ -1,4 +1,5 @@
-﻿using Progect_Manegment;
+﻿
+using Progect_Manegment;
 
 using System;
 using System.Collections.Generic;
@@ -15,15 +16,6 @@ public class Repository<T> where T : class
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
-
-    //نحوه استفاده در فرم ها
-    //    int LisId = integerInput1.Value;
-    //            using (var context = new DBcontextModel())
-    //{
-    //    var userRepo = new Repository<Unit>(context);
-    //    userRepo.SaveOrUpdate(new Unit { Id = LisId, Name = myTextBox1.Text }, LisId);
-    //}
-
 
     /// <summary>
     /// ذخیره/ویرایش
@@ -57,8 +49,8 @@ public class Repository<T> where T : class
                         throw new Exception($"رکورد با شناسه {id} یافت نشد.");
                     }
                 }
-
-                _context.SaveChanges();
+                
+                _context.SaveChangesSafe();
                 transaction.Commit();
                 return true;
             }
@@ -144,7 +136,7 @@ public class Repository<T> where T : class
                 {
                     // افزودن رکورد جدید
                     _context.Set<T>().Add(entity);
-                   _context.SaveChanges();
+                   _context.SaveChangesSafe();
 
                     // استخراج Id از entity
                     resultId = (int)typeof(T).GetProperty("Id").GetValue(entity);
@@ -156,7 +148,7 @@ public class Repository<T> where T : class
                     if (existingEntity != null)
                     {
                         _context.Entry(existingEntity).CurrentValues.SetValues(entity);
-                        _context.SaveChanges();
+                        _context.SaveChangesSafe();
                         resultId = id; // در حالت ویرایش، همان id ورودی برگردانده می‌شود
                     }
                     else
@@ -191,7 +183,7 @@ public class Repository<T> where T : class
                 {
                     // افزودن رکورد جدید
                     _context.Set<T>().Add(entity);
-                    _context.SaveChanges();
+                    _context.SaveChangesSafe();
 
                     // استخراج Id از entity
                     resultId = (int)typeof(T).GetProperty("Id").GetValue(entity);
@@ -203,7 +195,7 @@ public class Repository<T> where T : class
                     if (existingEntity != null)
                     {
                         _context.Entry(existingEntity).CurrentValues.SetValues(entity);
-                        _context.SaveChanges();
+                        _context.SaveChangesSafe();
                         resultId = id; // در حالت ویرایش، همان id ورودی برگردانده می‌شود
                     }
                     else

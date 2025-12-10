@@ -643,6 +643,12 @@
   <data name="T174" xml:space="preserve">
     <value>کد پستی را وارد نمائید.</value>
   </data>
+  <data name="T175" xml:space="preserve">
+    <value>برنامه در حال حاضر در حال اجرا می باشد.</value>
+  </data>
+  <data name="T176" xml:space="preserve">
+    <value>ارتباط با دیتابیس قطع می باشد.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

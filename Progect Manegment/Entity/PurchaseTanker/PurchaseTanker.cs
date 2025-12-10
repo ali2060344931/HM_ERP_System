@@ -71,6 +71,17 @@ namespace HM_ERP_System.Entity.PurchaseTanker
         /// وضعیت ثبت سند حسابداری
         /// </summary>
         public bool TransactionsStatuse { get; set; }
+
+        /// <summary>
+        /// تاریخ ثبت
+        /// </summary>
+        public DateTime RecordDateTime { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// کد کاربر
+        /// </summary>
+        public int UserId { get; set; }
+
     }
     public class PurchaseTankerConfig : EntityTypeConfiguration<PurchaseTanker>
     {

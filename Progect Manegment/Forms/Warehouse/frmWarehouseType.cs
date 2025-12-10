@@ -133,7 +133,7 @@ namespace HM_ERP_System.Forms.Warehouse
                             var q = db.WarehouseTypes.Where(c => c.Id == ListId).First();
                             db.WarehouseTypes.Remove(q);
                             PublicClass.WindowAlart("2");
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             FilldgvList();
                             CelearItems();
                         }

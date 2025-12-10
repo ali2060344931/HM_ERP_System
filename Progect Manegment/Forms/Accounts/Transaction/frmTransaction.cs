@@ -384,6 +384,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
 
         private void buttonX2_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node2_1_5", 1)) return;
             frmSpecificAccount f = new frmSpecificAccount(this);
             f.ShowDialog();
             FillcmbSpecificAccount(TransactionsCode);
@@ -392,6 +393,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
 
         private void btnAddNewCity1_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_1", 1)) return;
             frmCustomer f = new frmCustomer(this);
             f.ShowDialog();
             FillcmbContraAccountFrom();

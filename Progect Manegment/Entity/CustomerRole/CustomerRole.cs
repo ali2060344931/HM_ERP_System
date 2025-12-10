@@ -25,6 +25,16 @@ namespace HM_ERP_System.Entity.CustomerRole
         /// وضعیت فعال/غیرفعال
         /// </summary>
         public bool Status { get; set; }
+        
+        /// <summary>
+        /// تاریخ ثبت
+        /// </summary>
+        public DateTime RecordDateTime { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// کد کاربر
+        /// </summary>
+        public int UserId { get; set; }
 
     }
     public class CustomerRoleConfig : EntityTypeConfiguration<CustomerRole>

@@ -337,7 +337,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
 
                                 }
                             }
-                            db.SaveChanges();
+                            db.SaveChangesSafe();
                             transaction.Commit();
 
                             PublicClass.WindowAlart("1");
@@ -498,6 +498,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
 
         private void btnAddNewBanck1_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node2_1_2", 1)) return;
             frmContraAccounts f = new frmContraAccounts(this);
             f.cmbTypeAccounts.Enabled = false;
             f.TypeAccounts_Id=3;
@@ -509,6 +510,8 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
 
         private void btnAddNewBanck2_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node2_1_2", 1)) return;
+
             frmContraAccounts f = new frmContraAccounts(this);
             f.cmbTypeAccounts.Enabled = false;
             f.TypeAccounts_Id=3;
@@ -577,7 +580,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
                                 }
                                 //db.Transactions.RemoveRange(list);
                                 PublicClass.WindowAlart("2");
-                                db.SaveChanges();
+                                db.SaveChangesSafe();
                                 FilldgvList();
                                 CelearItems();
                             }

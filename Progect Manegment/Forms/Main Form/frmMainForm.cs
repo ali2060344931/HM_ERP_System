@@ -15,6 +15,7 @@ using HM_ERP_System.Forms.Accounts.TransferBetweenBanks;
 using HM_ERP_System.Forms.Accounts.TransferBetweenPersons;
 using HM_ERP_System.Forms.AppointmentScheduling;
 using HM_ERP_System.Forms.BlacList;
+using HM_ERP_System.Forms.Calendar;
 using HM_ERP_System.Forms.Car;
 using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.Comers;
@@ -273,7 +274,6 @@ namespace HM_ERP_System.Forms.Main_Form
                             ribbon1.Tabs["Spare"].Groups["Definitions"].Commands["TenkerPurchase"].Visible = PublicClass.SetPeremission("Node4_1_2");
                         }
                     }
-                    
 
                     //تنظیمات
                     ribbon1.Tabs["Setings"].Visible = PublicClass.SetPeremission("Node5");
@@ -427,6 +427,30 @@ namespace HM_ERP_System.Forms.Main_Form
             {
                 buttonCommand16_Click(null, null);
             }
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F12)
+            {
+                ribbon1.Tabs["Setings"].Visible =true;
+                {
+                    //بخش امنیتی نـــرم افـــزار
+                    ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Visible = true;
+                    {
+                        //ثبت کاربران سیستم
+                        ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Commands["RegisteringSystemUsers"].Visible = true;
+                        //مدیریت سطوح دسترسی
+                        ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Commands["AccessLevelManagement"].Visible = true;
+                    }
+                    //تنظیمات نرم افزار
+                    ribbon1.Tabs["Setings"].Groups["SoftwareSettings"].Visible = true;
+                    {
+                        //تنظیمات نرم افزار
+                        ribbon1.Tabs["Setings"].Groups["SoftwareSettings"].Commands["SoftwareSettings"].Visible = true;
+                        //تعریف سال مالی
+                        ribbon1.Tabs["Setings"].Groups["SoftwareSettings"].Commands["DefinitionFiscalYear"].Visible = true;
+                    }
+                }
+
+            }
+
 
         }
         private void btnTankerRental_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
@@ -589,6 +613,25 @@ namespace HM_ERP_System.Forms.Main_Form
         private void buttonCommand10_Click_1(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             FormManager.ShowMdiChildForm<frmWarehouse>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
+        }
+
+        private void lblDate_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            frmCalendar f = new frmCalendar();
+
+            //// گرفتن موقعیت فعلی موس
+            //var mousePos = Cursor.Position;
+
+            //// تعیین مختصات: چپ + پایین موس
+            //int x = mousePos.X - f.Width - 10;
+            //int y = mousePos.Y + 10;
+
+            //// اگر سمت چپ صفحه بیرون زد → اصلاح
+            //if (x < 0) x = 10;
+
+            //f.Location = new Point(x, y);
+
+            f.ShowDialog();
         }
     }
 }

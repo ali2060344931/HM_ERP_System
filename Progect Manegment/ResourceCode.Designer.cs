@@ -1654,6 +1654,42 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to آیتم وارد شده تکراری می باشد.
+        /// </summary>
+        internal static string T177 {
+            get {
+                return ResourceManager.GetString("T177", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لیست شهرهای شناور خالی می باشد.
+        /// </summary>
+        internal static string T178 {
+            get {
+                return ResourceManager.GetString("T178", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام شهر اصلی را انتخاب نمائید.
+        /// </summary>
+        internal static string T179 {
+            get {
+                return ResourceManager.GetString("T179", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام شهر اصلی و شناور نباید یکسان باشد.
+        /// </summary>
+        internal static string T180 {
+            get {
+                return ResourceManager.GetString("T180", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

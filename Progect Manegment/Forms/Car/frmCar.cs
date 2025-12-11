@@ -260,7 +260,7 @@ namespace HM_ERP_System.Forms.Car
                         {
                             cr.Id,
                             cr.CarName,
-                            DraverName = cu.Family + " " + cu.Name,
+                            DraverName = cu.Family != "" ? (cu.Family + "، " + cu.Name).Trim() : cu.Name,
                             cr.OwnershipId,
                             OwnershipCompanyName = OWCompany != null ? OWCompany.Name : "-",
                             cr.CarPlat,
@@ -274,7 +274,7 @@ namespace HM_ERP_System.Forms.Car
                             OwnershipName = ow.Name,
                             cr.Status,
                             TruckUsageTypeName = tu.Name,
-                            GoodsAccountName = cu2.Family + " " + cu2.Name,
+                            GoodsAccountName = cu2.Family != "" ? (cu2.Family + "، " + cu2.Name).Trim() : cu2.Name,
                             CodMeli = cu.CodMeli,
                             CityName = ct_ != null ? ct_.Name : "-",
                             ProvincesName = pr_ != null ? pr_.Name : "-",

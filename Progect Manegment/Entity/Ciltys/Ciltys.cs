@@ -3,6 +3,8 @@ using HM_ERP_System.Entity.Unit;
 
 using Microsoft.EntityFrameworkCore;
 
+using NPOI.POIFS.Properties;
+
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
@@ -21,6 +23,7 @@ namespace HM_ERP_System.Entity.Ciltys
         public int ProvincesId { get; set; }
         public string Name { get; set; }
         public virtual Provinces.Provinces Provinces { get; set; }
+        public virtual ICollection<FloatingPublicCities> FloatingPublicCities { get; set; }
     }
     public class CiltysConfig : EntityTypeConfiguration<Ciltys>
     {

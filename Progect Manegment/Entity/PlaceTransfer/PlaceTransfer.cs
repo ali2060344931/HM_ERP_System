@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HM_ERP_System.Entity.Ciltys;
+
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
@@ -46,7 +48,7 @@ namespace HM_ERP_System.Entity.PlaceTransfer
         public int UserId { get; set; }
 
         public virtual EvacuationDeployment.EvacuationDeployment EvacuationDeployment { get; set; }
-
+        public virtual ICollection<FloatingPublicCities> FloatingPublicCities { get; set; }
     }
     public class PlaceTransferConfig : EntityTypeConfiguration<PlaceTransfer>
     {

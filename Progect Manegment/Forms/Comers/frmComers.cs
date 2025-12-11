@@ -224,11 +224,11 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code == 6//گیرنده
+                            where pg.Id == 10//فرستنده و گیرنده
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbResiver2.DataSource = q.ToList();
@@ -258,12 +258,12 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code == 5//گیرنده
+                            where pg.Id == 10//فرستنده و گیرنده
 
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbSender2.DataSource = q.ToList();
@@ -299,7 +299,7 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbCostAccountB.DataSource = q.ToList();
@@ -335,7 +335,7 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbGoodsAccountB.DataSource = q.ToList();
@@ -646,7 +646,7 @@ namespace HM_ERP_System.Forms.Comers
                                 cmh.Id,
                                 Name = cmh.RemiaanceSeryal,
                                 CarPlat = cr.CarPlat + cr.CarPlatSeryal,
-                                DraverName = cu.Family + " " + cu.Name,
+                                DraverName = cu.Family != "" ? (cu.Family + "، " + cu.Name).Trim() : cu.Name,
                                 LoadingOrinig = ct1.Name,
                                 UnLoadingOrinig = ct2.Name,
                                 ProductName = pr.Name,
@@ -825,7 +825,7 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 dr.Id,
-                                Name = cu.Family + " " + cu.Name,
+                                Name = cu.Family != "" ? (cu.Family + "، " + cu.Name).Trim() : cu.Name,
                                 cu.Tel,
                                 cu.CodMeli,
                                 CityName = ct.Name,
@@ -892,7 +892,7 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 dr.Id,
-                                Name = cu.Family + " " + cu.Name,
+                                Name = cu.Family != "" ? (cu.Family + "، " + cu.Name).Trim() : cu.Name,
                                 cu.Tel,
                                 cu.CodMeli,
                                 CityName = ct.Name,
@@ -926,7 +926,7 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbShiper.DataSource = q.ToList();
@@ -963,12 +963,12 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code == 6//گیرنده
+                            where pg.Id == 10//فرستنده و گیرنده
 
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbResiver1.DataSource = q.ToList();
@@ -997,12 +997,12 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code == 6//گیرنده
+                            where pg.Id == 10//فرستنده و گیرنده
 
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbResiverB1.DataSource = q.ToList();
@@ -1030,11 +1030,11 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code == 6//گیرنده
+                            where pg.Id == 10//فرستنده و گیرنده
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbResiverB2.DataSource = q.ToList();
@@ -1064,13 +1064,12 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code == 5//فرستنده
-
+                            where pg.Id == 10//فرستنده و گیرنده
 
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbSender1.DataSource = q.ToList();
@@ -1099,12 +1098,12 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code == 5//فرستنده
+                            where pg.Id == 10//فرستنده و گیرنده
 
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbSenderB1.DataSource = q.ToList();
@@ -1132,12 +1131,12 @@ namespace HM_ERP_System.Forms.Comers
                             join pg in db.PersonGroups
                             on ctg.PersonGroupId equals pg.Id
 
-                            where pg.Code == 5//فرستنده
+                            where pg.Id == 10//فرستنده و گیرنده
 
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbSenderB2.DataSource = q.ToList();
@@ -1172,7 +1171,7 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name =   pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbGoodsAccountH.DataSource = q.ToList();
@@ -1207,7 +1206,7 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 pr.Id,
-                                Name = pr.Family + " " + pr.Name,
+                                Name = pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbCostAccountH.DataSource = q.ToList();
@@ -1230,16 +1229,12 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     var q = from pr in db.PlaceTransfers
 
-                                //join ed in db.EvacuationDeployments
-                                //on pr.EvacuationDeploymentId equals ed.Id
-
                             where pr.CiltyId == cityId || pr.publicStatus
 
                             select new
                             {
                                 pr.Id,
                                 pr.Name,
-                                //EvacuationDeploymentsName = ed.Name,
                             };
                     cmbUnLoadingLocation.DataSource = q.ToList();
                     dt_UnLoadingLocation = new System.Data.DataTable();
@@ -1761,7 +1756,7 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 //نام بارنامه نویس
-                                ShiperName = shLeft != null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
+                                ShiperName = shLeft != null ? (shLeft.Family != "" ? (shLeft.Family + "، " + shLeft.Name).Trim() : shLeft.Name) : "-",
                                 //آمار تعداد مدارک پیوست
                                 CountDoc = docGroup.Where(c => c.FormName == "frmComersH").Count(),
                                 cmh.Id,
@@ -1771,17 +1766,22 @@ namespace HM_ERP_System.Forms.Comers
                                 LoadingLocationName = ll.Name,
                                 UnLoadingOrinigName = ulo.Name,
                                 UnLoadingLocationName = ull.Name,
-                                CostAccountName = (ca.Family + " " + ca.Name).Trim(),
-                                GoodsAccountName = (ga.Family + " " + ga.Name).Trim(),
+                                CostAccountName = ca.Family != "" ? (ca.Family + "، " + ca.Name).Trim() : ca.Name,
+                                //(ca.Family + " " + ca.Name).Trim(),
+                                GoodsAccountName = ga.Family != "" ? (ga.Family + "، " + ga.Name).Trim() : ga.Name,
+                                //(ga.Family + " " + ga.Name).Trim(),
 
-                                SenderName = (sr1.Family + " " + sr1.Name).Trim(),
-                                ResiverName = (rs1.Family + " " + rs1.Name).Trim(),
+                                SenderName = sr1.Family != "" ? (sr1.Family + "، " + sr1.Name).Trim() : sr1.Name,
+                                //(sr1.Family + " " + sr1.Name).Trim(),
+                                ResiverName = rs1.Family != "" ? (rs1.Family + "، " + rs1.Name).Trim() : rs1.Name,
+                                //(rs1.Family + " " + rs1.Name).Trim(),
 
-                                SenderName2 = sender2 != null ? (sender2.Family + " " + sender2.Name).Trim() : "-",
-                                ResiverName2 = reciver2 != null ? (reciver2.Family + " " + reciver2.Name).Trim() : "-",
+                                SenderName2 = sender2 != null ? (sender2.Family != "" ? (sender2.Family + "، " + sender2.Name).Trim() : sender2.Name).Trim() : "-",
+                                ResiverName2 = reciver2 != null ? (reciver2.Family != "" ? (reciver2.Family + "، " + reciver2.Name).Trim() : reciver2.Name).Trim() : "-",
 
-                                DaraverName1 = (cu1.Family + " " + cu1.Name).Trim(),
-                                DaraverName2 = cu2_ != null ? (cu2_.Family + " " + cu2_.Name).Trim() : "-",
+                                DaraverName1 = cu1.Family != "" ? (cu1.Family + "، " + cu1.Name).Trim() : cu1.Name,
+                                //(cu1.Family + " " + cu1.Name).Trim(),
+                                DaraverName2 = cu2_ != null ? (cu2_.Family != "" ? (cu2_.Family + "، " + cu2_.Name).Trim() : cu2_.Name).Trim() : "-",
 
                                 ProductsName = pr.Name,
                                 CarPlat = cr.CarPlat + "-" + cr.CarPlatSeryal,
@@ -1789,7 +1789,7 @@ namespace HM_ERP_System.Forms.Comers
                                 cmh.LoadWeightCapacity,
                                 cmh.Description,
                                 cmh.CotajNumber,
-                                User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
+                                User = CuUser_ != null ? CuUser_.Family != "" ? (CuUser_.Family + "، " + CuUser_.Name).Trim() : CuUser_.Name : "-",
                             };
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dx.DataSource = dt;
                     //dx.AutoSizeColumns();
@@ -1876,17 +1876,17 @@ namespace HM_ERP_System.Forms.Comers
                             where string.Compare(cmb.DateB, dateS) >= 0
                                && string.Compare(cmb.DateB, dateE) <= 0
                                && (string.IsNullOrEmpty(serch)
-                                   || ((sd1.Family + " " + sd1.Name).Contains(serch)
-                                       || (sd2Left.Family + " " + sd2Left.Name).Contains(serch)
-                                       || (rs1.Family + " " + rs1.Name).Contains(serch)
-                                       || (rs2Left.Family + " " + rs2Left.Name).Contains(serch)
-                                       || (shLeft.Family + " " + shLeft.Name).Contains(serch)
+                                   || ((sd1.Family + "، " + sd1.Name).Contains(serch)
+                                       || (sd2Left.Family + "، " + sd2Left.Name).Contains(serch)
+                                       || (rs1.Family + "، " + rs1.Name).Contains(serch)
+                                       || (rs2Left.Family + "، " + rs2Left.Name).Contains(serch)
+                                       || (shLeft.Family + "، " + shLeft.Name).Contains(serch)
                                        || (ct1.Name).Contains(serch)
                                        || (pt1.Name).Contains(serch)
                                        || (ct2.Name).Contains(serch)
                                        || (pt2.Name).Contains(serch)
-                                       || (ca.Family + " " + ca.Name).Contains(serch)
-                                       || (ga.Family + " " + ga.Name).Contains(serch)))
+                                       || (ca.Family + "، " + ca.Name).Contains(serch)
+                                       || (ga.Family + "، " + ga.Name).Contains(serch)))
 
      && (hideIfInCommission ? (Id == null || !db.Commissions.Any(c => c.ComersBId == cmb.Id && c.CommissionTypeId == Id.Value)) : (Id == null || cmh.Id == Id.Value)
     )
@@ -1905,18 +1905,26 @@ namespace HM_ERP_System.Forms.Comers
                                 LoadingLocationName = pt1.Name,
                                 UnLoadingOrinigName = ct2.Name,
                                 UnLoadingLocationName = pt2.Name,
-                                CostAccountName = (ca.Family + " " + ca.Name).Trim(),
-                                GoodsAccountName = (ga.Family + " " + ga.Name).Trim(),
-                                ShiperName = shLeft != null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
+                                CostAccountName = ca.Family != "" ? (ca.Family + "، " + ca.Name).Trim() : ca.Name,
+                                //(ca.Family + " " + ca.Name).Trim(),
+                                GoodsAccountName = ga.Family != "" ? (ga.Family + "، " + ga.Name).Trim() : ga.Name,
+                                //(ga.Family + " " + ga.Name).Trim(),
+                                ShiperName = shLeft != null ? (shLeft.Family != "" ? (shLeft.Family + "، " + shLeft.Name).Trim() : shLeft.Name).Trim() : "-",
                                 CarPlat = cr.CarPlatSeryal + " " + cr.CarPlat,
-                                DaraverName = cu1.Family + " " + cu1.Name,
+                                DaraverName = cu1.Family != "" ? (cu1.Family + "، " + cu1.Name).Trim() : cu1.Name,
+                                //cu1.Family + " " + cu1.Name,
                                 DaraverTel = cu1.Tel,
-                                DaraverName2 = cu2.Family + " " + cu2.Name,
+                                DaraverName2 = cu2.Family != "" ? (cu2.Family + "، " + cu2.Name).Trim() : cu2.Name,
+                                //cu2.Family + " " + cu2.Name,
                                 DaraverTel2 = cu2.Tel,
-                                SenderName = sd1.Family + " " + sd1.Name,
-                                ResiverName = rs1.Family + " " + rs1.Name,
-                                SenderName2 = sd2Left != null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
-                                ResiverName2 = rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
+                                SenderName = sd1.Family != "" ? (sd1.Family + "، " + sd1.Name).Trim() : sd1.Name,
+                                //sd1.Family + " " + sd1.Name,
+                                ResiverName = rs1.Family != "" ? (rs1.Family + "، " + rs1.Name).Trim() : rs1.Name,
+                                //rs1.Family + " " + rs1.Name,
+                                SenderName2 = sd2Left.Family != "" ? (sd2Left.Family + "، " + sd2Left.Name).Trim() : sd2Left.Name,
+                                //sd2Left != null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
+                                ResiverName2 = rs2Left.Family != "" ? (rs2Left.Family + "، " + rs2Left.Name).Trim() : rs2Left.Name,
+                                //rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
                                 ProductsName = pr.Name,
                                 FareCalcMethodName = tcf.Name,
                                 MethodCalFareName = mcf.Name,
@@ -2057,6 +2065,7 @@ namespace HM_ERP_System.Forms.Comers
 
         void AddPerson()
         {
+            if (!PublicClass.SetPeremission("Node1_1_1", 1)) return;
             Customer.frmCustomer frmCustomer = new Customer.frmCustomer(this);
             frmCustomer.ShowDialog();
 
@@ -2105,6 +2114,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnAddDraver_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_2", 1)) return;
             Draver.frmDraver frmDraver = new Draver.frmDraver(this);
             frmDraver.ShowDialog();
             FillcmbDraversH1();
@@ -2112,6 +2122,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnAddProducts_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_5", 1)) return;
             Product.frmProduct frmProduct = new Product.frmProduct(this);
             frmProduct.ShowDialog();
             FillcmbProducts();
@@ -2119,6 +2130,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnAddCare_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_3", 1)) return;
             Car.frmCar frmCar = new Car.frmCar(this);
             frmCar.ShowDialog();
             FillcmbCarplate();
@@ -2126,6 +2138,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             if (ComerTabKey == "ComersH")
                 SaveFildsH();// متد ثبت اطلاعات حـــواله
             else if (ComerTabKey == "ComersB")
@@ -2153,6 +2166,8 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_2_1_2_1", 1)) return;
+
                 if (ControlEmptyFildsB())
                     return;
                 using (var db = new DBcontextModel())
@@ -2292,6 +2307,7 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
+                if (!PublicClass.SetPeremission("Node1_2_1_1_1", 1)) return;
                 if (ControlEmptyFildsH())// کنترل فیلدهای خالی در زمان ثبت اطلاعات بخش حواله
                     return;
                 using (var db = new DBcontextModel())
@@ -3540,7 +3556,7 @@ namespace HM_ERP_System.Forms.Comers
                                  Id = cmb.ComersHId,
                                  cmh.date,
                                  CarPlat = cr.CarPlat + cr.CarPlatSeryal,
-                                 DraverName = cu.Family + " " + cu.Name,
+                                 DraverName = cu.Family != "" ? (cu.Family + "، " + cu.Name).Trim() : cu.Name,
                                  LoadingOrinigName = lo.Name,
                                  LoadingLocationName = ll.Name,
                                  UnLoadingOrinigName = ulo.Name,
@@ -3788,6 +3804,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnAddDraverB1_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_2", 1)) return;
             Draver.frmDraver frmDraver = new Draver.frmDraver(this);
             frmDraver.ShowDialog();
             FillcmbDraversB1();
@@ -3796,7 +3813,8 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnAddDraverB2_Click(object sender, EventArgs e)
         {
-            Draver.frmDraver frmDraver = new Draver.frmDraver(this);
+            if (!PublicClass.SetPeremission("Node1_1_2", 1)) return;
+                        Draver.frmDraver frmDraver = new Draver.frmDraver(this);
             frmDraver.ShowDialog();
             FillcmbDraversB2();
 
@@ -3804,6 +3822,8 @@ namespace HM_ERP_System.Forms.Comers
 
         private void buttonX3_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_2", 1)) return;
+
             Customer.frmCustomer cu = new Customer.frmCustomer(this);
             cu.ShowDialog();
             FillcmbResiverB1();
@@ -3984,6 +4004,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_2_1_2_3", 1)) return;
             if (dgvListB.GetCheckedRows().Count() != 1)
             {
                 PublicClass.ErrorMesseg(ResourceCode.T076); return;
@@ -4001,6 +4022,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnEditItem_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_2_1_2_2", 1)) return;
             if (dgvListB.GetCheckedRows().Count() != 1)
             {
                 PublicClass.ErrorMesseg(ResourceCode.T076); return;
@@ -4107,6 +4129,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnAddDraverH2_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node1_1_2", 1)) return;
             Draver.frmDraver frmDraver = new Draver.frmDraver(this);
             frmDraver.ShowDialog();
             FillcmbDraversH2();
@@ -4200,6 +4223,7 @@ namespace HM_ERP_System.Forms.Comers
 
 
                 case "Edit":
+                    if (!PublicClass.SetPeremission("Node1_2_1_1_2", 1)) return;
                     using (var db = new DBcontextModel())
                     {
 
@@ -4249,7 +4273,7 @@ namespace HM_ERP_System.Forms.Comers
                 case "Delete":
 
                     //if (!PublicClass.SetPeremission("d1", 1)) return;
-
+                    if (!PublicClass.SetPeremission("Node1_2_1_1_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
                         //this.dgwList.ClearSelection();
@@ -4568,6 +4592,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnPaymentToOthers_Click(object sender, EventArgs e)
         {
+            if (!PublicClass.SetPeremission("Node2_1_6", 1)) return;
             frmDetailedAccount f = new frmDetailedAccount(this);
             f.IsRequest = true;
             f.ShowDialog();

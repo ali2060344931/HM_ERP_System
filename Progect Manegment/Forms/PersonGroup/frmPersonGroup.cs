@@ -130,11 +130,11 @@ namespace HM_ERP_System.Forms.PersonGroup
                     using (var db = new DBcontextModel())
                     {
 
-                        //if (db.Ciltys.Where(c => c.ProvincesId == LisId).Count() != 0)
-                        //{
-                        //    PublicClass.ErrorMesseg(ResourceCode.T004);
-                        //    return;
-                        //}
+                        if (db.CustomerToGroups.Where(c => c.PersonGroupId == LisId).Count() != 0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            return;
+                        }
 
                         if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {

@@ -649,6 +649,18 @@
   <data name="T176" xml:space="preserve">
     <value>ارتباط با دیتابیس قطع می باشد.</value>
   </data>
+  <data name="T177" xml:space="preserve">
+    <value>آیتم وارد شده تکراری می باشد</value>
+  </data>
+  <data name="T178" xml:space="preserve">
+    <value>لیست شهرهای شناور خالی می باشد</value>
+  </data>
+  <data name="T179" xml:space="preserve">
+    <value>نام شهر اصلی را انتخاب نمائید</value>
+  </data>
+  <data name="T180" xml:space="preserve">
+    <value>نام شهر اصلی و شناور نباید یکسان باشد</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

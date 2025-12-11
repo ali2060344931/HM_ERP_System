@@ -81,7 +81,7 @@ namespace HM_ERP_System.Forms.Draver
                         select new
                         {
                             c.Id,
-                            Name = c.Family + " " + c.Name,
+                            Name = c.Family != "" ? (c.Family + "، " + c.Name).Trim() : c.Name,
                             c.CodMeli,
                         };
                 cmbPerson.DataSource = q.ToList();
@@ -126,7 +126,7 @@ namespace HM_ERP_System.Forms.Draver
                             select new
                             {
                                 dr.Id,
-                                Name = cu.Family + " " + cu.Name,
+                                Name = cu.Family + "، " + cu.Name,
                                 cu.CodMeli,
                                 cu.Tel,
                                 cu.Adders,

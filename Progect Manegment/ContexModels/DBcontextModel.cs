@@ -418,6 +418,11 @@ namespace Progect_Manegment
         ///// </summary>
         //public virtual DbSet<GoodsOut> GoodsOuts { get; set; }
 
+        /// <summary>
+        /// جدول شهرهای عمومی شناور
+        /// </summary>
+        public virtual DbSet<FloatingPublicCities> FloatingPublicCities { get; set; }
+
         #endregion
 
 

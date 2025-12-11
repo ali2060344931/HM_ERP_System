@@ -148,7 +148,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(312, 56);
+            this.label14.Location = new System.Drawing.Point(309, 23);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(51, 18);
             this.label14.TabIndex = 108;
@@ -156,7 +156,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(30, 50);
+            this.txtName.Location = new System.Drawing.Point(27, 17);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(276, 28);
             this.txtName.TabIndex = 107;
@@ -196,7 +196,7 @@
             // chkCommission
             // 
             this.chkCommission.AutoSize = true;
-            this.chkCommission.Location = new System.Drawing.Point(163, 83);
+            this.chkCommission.Location = new System.Drawing.Point(160, 50);
             this.chkCommission.Name = "chkCommission";
             this.chkCommission.Size = new System.Drawing.Size(143, 26);
             this.chkCommission.TabIndex = 109;

@@ -580,6 +580,7 @@
     <Compile Include="Entity\BlacList\BlacList.cs" />
     <Compile Include="Entity\Car\Car.cs" />
     <Compile Include="Entity\Ciltys\Ciltys.cs" />
+    <Compile Include="Entity\Ciltys\FloatingPublicCities.cs" />
     <Compile Include="Entity\Color\Color.cs" />
     <Compile Include="Entity\Comers\ComerBResult.cs" />
     <Compile Include="Entity\Comers\ComersB.cs" />

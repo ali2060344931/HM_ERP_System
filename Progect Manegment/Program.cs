@@ -27,6 +27,7 @@ using HM_ERP_System.Forms.Login;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.Peremission;
 using HM_ERP_System.Forms.Persons;
+using HM_ERP_System.Forms.PlaceTransfer;
 using HM_ERP_System.Forms.PurchaseTanker;
 using HM_ERP_System.Forms.Role;
 using HM_ERP_System.Forms.TankerRental;
@@ -135,7 +136,7 @@ namespace Progect_Manegment
 
                     //Application.Run(new frmLoginProg());
                     //Application.Run(new frmMainForm());
-                    Application.Run(new frmCalendar());
+                    Application.Run(new frmPlaceTransfer(null));
                 }
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)

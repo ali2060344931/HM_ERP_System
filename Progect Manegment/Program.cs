@@ -134,9 +134,9 @@ namespace Progect_Manegment
                     AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
                         Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
 
-                    //Application.Run(new frmLoginProg());
+                    Application.Run(new frmLoginProg());
                     //Application.Run(new frmMainForm());
-                    Application.Run(new frmPlaceTransfer(null));
+                    //Application.Run(new frmPlaceTransfer(null));
                 }
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)

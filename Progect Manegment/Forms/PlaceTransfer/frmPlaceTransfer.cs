@@ -203,7 +203,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
                     var userRepo = new Repository<Entity.PlaceTransfer.PlaceTransfer>(db);
                     int id = userRepo.SaveOrUpdateRefId(new Entity.PlaceTransfer.PlaceTransfer { Id = ListId, Name = txtPlaceTransferName.Text, CiltyId = CityId1, PostalCode = txtPostalCode.Text, Addres = txtAddres.Text, publicStatus = chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
-
+                    /*
                     if (chkPublic.Checked && dt_Citi.Rows.Count != 0)
                     {
                         //حذف شهرهای قبلی که در لیست شهرهای جدید نیستند
@@ -241,7 +241,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                             }
                         }
                     }
-
+                    */
                     {
                         PublicClass.WindowAlart("1");
                         if (_updatableForms != null)
@@ -454,7 +454,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
         private void chkPublic_CheckedChanged(object sender, EventArgs e)
         {
-            panel1.Visible = chkPublic.Checked;
+            //panel1.Visible = chkPublic.Checked;
         }
 
         private void cmbCity2_ValueChanged(object sender, EventArgs e)

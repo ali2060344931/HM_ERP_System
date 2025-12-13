@@ -31,7 +31,10 @@
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFloatingPublicCities));
             this.dgvList = new GridExEx.GridExEx();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chkSelectAllList = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvList
@@ -48,13 +51,13 @@
             dgvList_Layout_0.LayoutString = resources.GetString("dgvList_Layout_0.LayoutString");
             this.dgvList.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvList_Layout_0});
-            this.dgvList.Location = new System.Drawing.Point(0, 0);
+            this.dgvList.Location = new System.Drawing.Point(0, 33);
             this.dgvList.Name = "dgvList";
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCiltys";
-            this.dgvList.Size = new System.Drawing.Size(437, 628);
+            this.dgvList.Size = new System.Drawing.Size(544, 595);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -65,17 +68,41 @@
             this.dgvList.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
             this.dgvList.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvList_ColumnButtonClick);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.chkSelectAllList);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(544, 33);
+            this.panel1.TabIndex = 85;
+            // 
+            // chkSelectAllList
+            // 
+            this.chkSelectAllList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkSelectAllList.AutoSize = true;
+            this.chkSelectAllList.Location = new System.Drawing.Point(389, 3);
+            this.chkSelectAllList.Name = "chkSelectAllList";
+            this.chkSelectAllList.Size = new System.Drawing.Size(152, 26);
+            this.chkSelectAllList.TabIndex = 0;
+            this.chkSelectAllList.Text = "نمایش همه لیست ها";
+            this.chkSelectAllList.UseVisualStyleBackColor = true;
+            this.chkSelectAllList.CheckedChanged += new System.EventHandler(this.chkSelectAllList_CheckedChanged);
+            // 
             // frmFloatingPublicCities
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 628);
+            this.ClientSize = new System.Drawing.Size(544, 628);
             this.Controls.Add(this.dgvList);
+            this.Controls.Add(this.panel1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmFloatingPublicCities";
             this.Text = "انبار های شناور";
             this.Load += new System.EventHandler(this.frmFloatingPublicCities_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -83,5 +110,7 @@
         #endregion
 
         public GridExEx.GridExEx dgvList;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox chkSelectAllList;
     }
 }

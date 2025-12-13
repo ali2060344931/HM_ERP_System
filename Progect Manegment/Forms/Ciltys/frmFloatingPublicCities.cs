@@ -37,7 +37,7 @@ namespace HM_ERP_System.Forms.Ciltys
         }
         public void UpdateData()
         {
-
+            dgvList.RootTable.Columns["PlaceTransferName"].Visible = chkSelectAllList.Checked;
             CallUpdateTata();
         }
         private void CallUpdateTata()
@@ -49,18 +49,22 @@ namespace HM_ERP_System.Forms.Ciltys
         {
             using (var db = new DBcontextModel())
             {
-                var q = from fpc in db.FloatingPublicCities
+                var q =
+                    from fpc in db.FloatingPublicCities
+                    join c in db.Ciltys on fpc.CiltysId equals c.Id
+                    join p in db.Provinces on c.ProvincesId equals p.Id
+                    join pt in db.PlaceTransfers on fpc.PlaceTransferId equals pt.Id
+                    where chkSelectAllList.Checked || fpc.PlaceTransferId == citiesId
+                    select new
+                    {
+                        fpc.Id,
+                        NameCity = c.Name,
+                        ProvincesName = p.Name,
+                        PlaceTransferName=pt.Name
+                    };
 
-                        join c in db.Ciltys on fpc.CiltysId equals c.Id
-                        join p in db.Provinces on c.ProvincesId equals p.Id
-                        where fpc.PlaceTransferId == citiesId
-                        select new
-                        {
-                            fpc.Id,
-                            NameCity = c.Name,
-                            ProvincesName = p.Name
-                        };
                 dgvList.DataSource = q.ToList();
+                PublicClass.SettingGridEX(dgvList);
             }
         }
 
@@ -70,7 +74,7 @@ namespace HM_ERP_System.Forms.Ciltys
 
             if (e.Column.Key == "Delete")
             {
-                //if (!PublicClass.SetPeremission("Node1_1_4_3", 1)) return;
+                if (!PublicClass.SetPeremission("Node1_1_4_4_1", 1)) return;
                 using (var db = new DBcontextModel())
                 {
                     //if (db.ComersHs.Where(c => c.LoadingLocationId == ListId || c.UnLoadingLocationId == ListId).Count() != 0)
@@ -89,6 +93,13 @@ namespace HM_ERP_System.Forms.Ciltys
                     }
                 }
             }
+        }
+
+        private void chkSelectAllList_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvList.RootTable.Columns["PlaceTransferName"].Visible = chkSelectAllList.Checked;
+            FilldgvList();
+
         }
     }
 }

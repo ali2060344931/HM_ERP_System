@@ -123,7 +123,9 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                 PublicClass.ShowErrorMessage(er);
             }
         }
-
+        /// <summary>
+        /// پر کردن دیتاگراید ویو لیست مکان های جابجایی
+        /// </summary>
         private void FilldgvList()
         {
             try
@@ -336,6 +338,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                             PublicClass.ErrorMesseg(ResourceCode.T004);
                             return;
                         }
+                        if(db.FloatingPublicCities.Where(c=>c.PlaceTransferId==ListId).Count()!=0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            return;
+                        }
 
                         if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
@@ -351,6 +358,8 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
                 else if (e.Column.Key == "FloatingPublicCities")
                 {
+                    if (!PublicClass.SetPeremission("Node1_1_4_4", 1)) return;
+
                     using (var db = new DBcontextModel())
                     {
                         var q = db.FloatingPublicCities.Where(c => c.PlaceTransferId == ListId);
@@ -456,7 +465,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
         }
-
+        /// <summary>
+        /// گزارش جابجایی مکان
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonX01_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
@@ -469,7 +482,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             f.ShowDialog();
 
         }
-
+        /// <summary>
+        /// وضعیت عمومی
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void chkPublic_CheckedChanged(object sender, EventArgs e)
         {
             panel1.Visible = chkPublic.Checked;

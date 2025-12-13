@@ -28,6 +28,7 @@ namespace HM_ERP_System.Entity.PlaceTransfer
         /// شهر
         /// </summary>
         public int CiltyId { get; set; }
+        public virtual Ciltys.Ciltys Ciltys { get; set; }
         /// <summary>
         /// (وضعیت عمومی(شناور
         /// </summary>

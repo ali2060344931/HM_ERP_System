@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Bibliography;
+
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Linq;
@@ -17,7 +19,7 @@ namespace HM_ERP_System.Entity.Ciltys
         public int PlaceTransferId { get; set; }
         public virtual PlaceTransfer.PlaceTransfer PlaceTransfer { get; set; }
         
-        public int CitiesId { get; set; }
+        public int CiltysId { get; set; }
         public virtual Ciltys Ciltys { get; set; }
 
     }
@@ -29,7 +31,7 @@ namespace HM_ERP_System.Entity.Ciltys
 
             HasRequired(c => c.Ciltys)
             .WithMany(p => p.FloatingPublicCities)
-            .HasForeignKey(c => c.CitiesId)
+            .HasForeignKey(c => c.CiltysId)
             .WillCascadeOnDelete(false);
 
             HasRequired(c => c.PlaceTransfer)

@@ -1050,6 +1050,9 @@ namespace HM_ERP_System.Forms.Comers
         }
 
         System.Data.DataTable dt_bSender1;
+        /// <summary>
+        /// فرستنده بخش حواله
+        /// </summary>
         private void FillcmbSender1H()
         {
             try
@@ -1084,6 +1087,9 @@ namespace HM_ERP_System.Forms.Comers
                 PublicClass.ShowErrorMessage(er);
             }
         }
+        /// <summary>
+        /// فرستنده بخش بارنامه
+        /// </summary>
         private void FillcmbSenderB1()
         {
             try
@@ -1118,6 +1124,9 @@ namespace HM_ERP_System.Forms.Comers
                 PublicClass.ShowErrorMessage(er);
             }
         }
+        /// <summary>
+        /// فرستنده بخش بارنامه
+        /// </summary>
         private void FillcmbSenderB2()
         {
             try
@@ -1171,7 +1180,7 @@ namespace HM_ERP_System.Forms.Comers
                             select new
                             {
                                 pr.Id,
-                                Name =   pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
+                                Name = pr.Family != "" ? (pr.Family + "، " + pr.Name).Trim() : pr.Name,
                                 pr.CodMeli,
                             };
                     cmbGoodsAccountH.DataSource = q.ToList();
@@ -1220,8 +1229,68 @@ namespace HM_ERP_System.Forms.Comers
                 PublicClass.ShowErrorMessage(er);
             }
         }
-
+        /// <summary>
+        /// مکان های تخلیه
+        /// </summary>
+        /// <param name="cityId"></param>
         private void FillcmbPlaceTransfersT(int cityId)
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    //لیست مکان های بارگیری شامل مکان های عمومی و مکان های اختصاصی شهر انتخاب شده
+                    var q = db.PlaceTransfers
+                        .Where(pr =>
+                               pr.CiltyId == cityId
+                               ||
+                               (pr.publicStatus &&
+                               pr.FloatingPublicCities.Any(f => f.CiltysId == cityId)))
+                        .Select(pr => new
+                        {
+                            pr.Id,
+                            pr.Name
+                        })
+                        .ToList();
+                    //تنظیم منبع داده برای کامبوباکس مکان های بارگیری
+                    cmbUnLoadingLocation.DataSource = q.ToList();
+                    //ایجاد دیتاتیبل از لیست مکان های بارگیری
+                    dt_UnLoadingLocation = new System.Data.DataTable();
+                    dt_UnLoadingLocation = PublicClass.AddEntityTableToDataTable(q);
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+
+            //try
+            //{
+            //    using (var db = new DBcontextModel())
+            //    {
+            //        var q = from pr in db.PlaceTransfers
+
+            //                where pr.CiltyId == cityId || pr.publicStatus
+
+            //                select new
+            //                {
+            //                    pr.Id,
+            //                    pr.Name,
+            //                };
+            //        cmbUnLoadingLocation.DataSource = q.ToList();
+            //        dt_UnLoadingLocation = new System.Data.DataTable();
+            //        dt_UnLoadingLocation = PublicClass.AddEntityTableToDataTable(q.ToList());
+
+
+            //    }
+            //}
+            //catch (Exception er)
+            //{
+            //    PublicClass.ShowErrorMessage(er);
+            //}
+        }
+
+        private void FillcmbPlaceTransfersB_(int CitiId)
         {
             try
             {
@@ -1229,18 +1298,16 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     var q = from pr in db.PlaceTransfers
 
-                            where pr.CiltyId == cityId || pr.publicStatus
+                            where pr.CiltyId == CitiId || pr.publicStatus
 
                             select new
                             {
                                 pr.Id,
                                 pr.Name,
                             };
-                    cmbUnLoadingLocation.DataSource = q.ToList();
-                    dt_UnLoadingLocation = new System.Data.DataTable();
-                    dt_UnLoadingLocation = PublicClass.AddEntityTableToDataTable(q.ToList());
-
-
+                    cmbLoadingLocation.DataSource = q.ToList();
+                    dt_LoadingLocation = new System.Data.DataTable();
+                    dt_LoadingLocation = PublicClass.AddEntityTableToDataTable(q.ToList());
                 }
             }
             catch (Exception er)
@@ -1252,31 +1319,28 @@ namespace HM_ERP_System.Forms.Comers
         /// <summary>
         /// مکان های بارگیری
         /// </summary>
-
-
         private void FillcmbPlaceTransfersB(int CitiId)
         {
             try
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = from pr in db.PlaceTransfers
-
-                                //join ed in db.EvacuationDeployments
-                                //on pr.EvacuationDeploymentId equals ed.Id
-
-                            where pr.CiltyId == CitiId || pr.publicStatus
-
-                            select new
-                            {
-                                pr.Id,
-                                pr.Name,
-                                //EvacuationDeploymentsName = ed.Name,
-                            };
+                    //لیست مکان های بارگیری شامل مکان های عمومی و مکان های اختصاصی شهر انتخاب شده
+                    var q = db.PlaceTransfers
+                        .Where(pr =>
+                               pr.CiltyId == CitiId
+                               ||
+                               (pr.publicStatus &&
+                               pr.FloatingPublicCities.Any(f => f.CiltysId == CitiId)))
+                        .Select(pr => new
+                        {
+                            pr.Id,
+                            pr.Name
+                        })
+                        .ToList();
                     cmbLoadingLocation.DataSource = q.ToList();
                     dt_LoadingLocation = new System.Data.DataTable();
                     dt_LoadingLocation = PublicClass.AddEntityTableToDataTable(q.ToList());
-
                 }
             }
             catch (Exception er)
@@ -1284,7 +1348,9 @@ namespace HM_ERP_System.Forms.Comers
                 PublicClass.ShowErrorMessage(er);
             }
         }
-
+        /// <summary>
+        /// نوع سند
+        /// </summary>
         private void FillcmbTypeDocument()
         {
             try
@@ -1302,7 +1368,9 @@ namespace HM_ERP_System.Forms.Comers
                 PublicClass.ShowErrorMessage(er);
             }
         }
-
+        /// <summary>
+        /// شهرهای بارگیری  
+        /// </summary>
         private void FillcmbCity1()
 
         {
@@ -1820,7 +1888,7 @@ namespace HM_ERP_System.Forms.Comers
                 using (var db = new DBcontextModel())
                 {
                     var q = from cmb in db.ComersBs
-                            
+
                             join cuR in db.CustomerRoles
                             on cmb.UserId equals cuR.Id into cuRGroup
                             from cuR_ in cuRGroup.DefaultIfEmpty()
@@ -2192,7 +2260,7 @@ namespace HM_ERP_System.Forms.Comers
                     CalcComerFilds_();
 
                     var com = new Repository<ComersB>(db);
-                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP,UserId=PublicClass.UserId,RecordDateTime=DateTime.Now }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, UserId = PublicClass.UserId, RecordDateTime = DateTime.Now }, ListId);
                     PublicClass.WindowAlart("1");
                     //TypeCalcMethodsBId_
 
@@ -2667,6 +2735,7 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
+                cmbLoadingLocation.ResetText();
                 LoadingOrinigId_ = Convert.ToInt32(cmbLoadingOrinig.Value);
                 FillcmbPlaceTransfersB(LoadingOrinigId_);
             }
@@ -2690,6 +2759,7 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
+                cmbUnLoadingLocation.ResetText();
                 UnLoadingOrinigId_ = Convert.ToInt32(cmbUnLoadingOrinig.Value);
                 FillcmbPlaceTransfersT(UnLoadingOrinigId_);
             }
@@ -3814,7 +3884,7 @@ namespace HM_ERP_System.Forms.Comers
         private void btnAddDraverB2_Click(object sender, EventArgs e)
         {
             if (!PublicClass.SetPeremission("Node1_1_2", 1)) return;
-                        Draver.frmDraver frmDraver = new Draver.frmDraver(this);
+            Draver.frmDraver frmDraver = new Draver.frmDraver(this);
             frmDraver.ShowDialog();
             FillcmbDraversB2();
 

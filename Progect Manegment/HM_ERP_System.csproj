@@ -768,6 +768,12 @@
     <Compile Include="Forms\Ciltys\frmCiltys.Designer.cs">
       <DependentUpon>frmCiltys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Ciltys\frmFloatingPublicCities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ciltys\frmFloatingPublicCities.Designer.cs">
+      <DependentUpon>frmFloatingPublicCities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Color\frmColor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1036,6 +1042,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ciltys\frmCiltys.resx">
       <DependentUpon>frmCiltys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ciltys\frmFloatingPublicCities.resx">
+      <DependentUpon>frmFloatingPublicCities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Color\frmColor.resx">
       <DependentUpon>frmColor.cs</DependentUpon>

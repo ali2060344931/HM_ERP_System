@@ -37,6 +37,11 @@ namespace HM_ERP_System.Forms.Car
             InitializeComponent();
             _updatableForms = updatableForms;
         }
+        /// <summary>
+        /// بارگذاری فرم
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmCar_Load(object sender, EventArgs e)
         {
             UpdateData();
@@ -45,7 +50,9 @@ namespace HM_ERP_System.Forms.Car
         {
             CallUpdateTata();
         }
-
+        /// <summary>
+        /// فراخوانی متدهای آپدیت دیتا
+        /// </summary>
         private void CallUpdateTata()
         {
             FilldgvList();
@@ -59,13 +66,14 @@ namespace HM_ERP_System.Forms.Car
             FillcmbColor();
         }
 
+        /// <summary>
+        /// پر کردن کامبوباکس رنگ
+        /// </summary>
         private void FillcmbColor()
         {
             using (var db = new DBcontextModel())
             {
                 var q = from cu in db.Color_s
-
-                            //where cu.id_TypeCustomer == 2
                         select new
                         {
                             cu.Id,
@@ -75,14 +83,15 @@ namespace HM_ERP_System.Forms.Car
                 cmbColor.DataSource = q.ToList();
             }
         }
-
+        /// <summary>
+        /// پر کردن کامبوباکس سازنده کامیون
+        /// </summary>
         private void FillcmbTruckManufacturer()
         {
             using (var db = new DBcontextModel())
             {
                 var q = from cu in db.TruckManufacturers
 
-                            //where cu.id_TypeCustomer == 2
                         select new
                         {
                             cu.Id,
@@ -93,7 +102,9 @@ namespace HM_ERP_System.Forms.Car
             }
 
         }
-
+        /// <summary>
+        /// پر کردن کامبوباکس شرکت های مالک
+        /// </summary>
         private void FillcmbCompanys()
         {
             using (var db = new DBcontextModel())
@@ -109,7 +120,9 @@ namespace HM_ERP_System.Forms.Car
                 cmbCompanys.DataSource = q.ToList();
             }
         }
-
+        /// <summary>
+        /// پر کردن کامبوباکس نوع کاربری کامیون
+        /// </summary>
         private void FillTruckUsageType()
         {
             using (var db = new DBcontextModel())
@@ -127,6 +140,9 @@ namespace HM_ERP_System.Forms.Car
 
         }
         DataTable dt_GoodsAccount;
+        /// <summary>
+        /// پر کردن کامبوباکس حساب کالا
+        /// </summary>
         private void FillcmbGoodsAccount()
         {
             using (var db = new DBcontextModel())
@@ -153,7 +169,9 @@ namespace HM_ERP_System.Forms.Car
             }
 
         }
-
+        /// <summary>
+        /// پر کردن کامبوباکس نوع مالکیت
+        /// </summary>
         private void FillcmbOwnership()
         {
             using (var db = new DBcontextModel())
@@ -162,7 +180,9 @@ namespace HM_ERP_System.Forms.Car
                 cmbOwnership.DataSource = q;
             }
         }
-
+        /// <summary>
+        /// پر کردن نام خودروها برای تکمیل خودکار
+        /// </summary>
         private void FillCarName()
         {
             using (var db = new DBcontextModel())
@@ -181,6 +201,9 @@ namespace HM_ERP_System.Forms.Car
         }
 
         DataTable dt_DraverName;
+        /// <summary>
+        /// پر کردن کامبوباکس نام راننده
+        /// </summary>
         private void FillcmbDraverName()
         {
             using (var db = new DBcontextModel())
@@ -207,7 +230,9 @@ namespace HM_ERP_System.Forms.Car
 
             }
         }
-
+        /// <summary>
+        /// پر کردن دیتاگراید ویو لیست خودروها
+        /// </summary>
         private void FilldgvList()
         {
             using (var db = new DBcontextModel())
@@ -256,13 +281,15 @@ namespace HM_ERP_System.Forms.Car
                         join CuUser in db.Customers
                         on cuR_.CustomerId equals CuUser.Id into CuUserGroup
                         from CuUser_ in CuUserGroup.DefaultIfEmpty()
+                        where cr.Status == true
+                        
                         select new
                         {
                             cr.Id,
                             cr.CarName,
                             DraverName = cu.Family != "" ? (cu.Family + "، " + cu.Name).Trim() : cu.Name,
-                            CodMeli1= cu.CodMeli,
-                            Tel1 =cu.Tel,
+                            CodMeli1 = cu.CodMeli,
+                            Tel1 = cu.Tel,
                             cr.OwnershipId,
                             OwnershipCompanyName = OWCompany != null ? OWCompany.Name : "-",
                             cr.CarPlat,
@@ -277,19 +304,23 @@ namespace HM_ERP_System.Forms.Car
                             cr.Status,
                             TruckUsageTypeName = tu.Name,
                             GoodsAccountName = cu2.Family != "" ? (cu2.Family + "، " + cu2.Name).Trim() : cu2.Name,
-                            Tel2= cu2.Tel,
+                            Tel2 = cu2.Tel,
                             CodMeli2 = cu.CodMeli,
                             CityName = ct_ != null ? ct_.Name : "-",
                             ProvincesName = pr_ != null ? pr_.Name : "-",
                             TruckManufacturer = tm_ != null ? tm_.Name : "-",
                             Color = cl_ != null ? cl_.Name : "-",
                             User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
-                        };
+                            cr.RecordDateTime,
+                        }
+            ;
                 DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 PublicClass.SettingGridEX(dgvList, Name);
             }
         }
-
+        /// <summary>
+        /// جستجوی پلاک خودرو برای جلوگیری از تکراری بودن
+        /// </summary>
         public void SearchCar_Driver()
         {
             if (txtCarplate.Text.Length == 5 && txtCarplateSeryal.Text.Length == 2 && ListId == 0)
@@ -314,7 +345,11 @@ namespace HM_ERP_System.Forms.Car
             }
 
         }
-
+        /// <summary>
+        /// پاک کردن فیلدها
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonX1_Click(object sender, EventArgs e)
         {
             txtCarplate.ResetText();
@@ -324,13 +359,21 @@ namespace HM_ERP_System.Forms.Car
             txtCarplate.Focus();
         }
 
-
+        /// <summary>
+        /// رفتن به کنترل بعدی با زدن اینتر
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtCarplate1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
         }
-
+        /// <summary>
+        /// ذخیره اطلاعات خودرو
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -415,7 +458,9 @@ namespace HM_ERP_System.Forms.Car
                 PublicClass.ShowErrorMessage(er);
             }
         }
-
+        /// <summary>
+        /// پاک کردن فیلدها
+        /// </summary>
         private void CelearItems()
         {
             txtCarName.ResetText();
@@ -440,6 +485,11 @@ namespace HM_ERP_System.Forms.Car
         }
 
         int DraverId_ = 0;
+        /// <summary>
+        /// انتخاب نام راننده و بررسی در لیست سیاه بودن
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbDraverName_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -469,7 +519,11 @@ namespace HM_ERP_System.Forms.Car
             {
             }
         }
-
+        /// <summary>
+        /// ویرایش و حذف رکورد از طریق دکمه های تعبیه شده در دیتاگرایدویو
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
         {
             try
@@ -539,13 +593,21 @@ namespace HM_ERP_System.Forms.Car
                 PublicClass.ShowErrorMessage(er);
             }
         }
-
+        /// <summary>
+        /// ایجاد رکورد جدید
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNew_Click(object sender, EventArgs e)
         {
             CelearItems();
 
         }
-
+        /// <summary>
+        /// صدور اطلاعات به اکسل
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
             PublicClass.SaveGridExToExcel(dgvList);
@@ -566,6 +628,11 @@ namespace HM_ERP_System.Forms.Car
         }
 
         int OwnershipId_ = 0;
+        /// <summary>
+        /// انتخاب نوع مالکیت و نمایش یا عدم نمایش شرکت های مالک
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbOwnership_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -598,7 +665,11 @@ namespace HM_ERP_System.Forms.Car
             }
 
         }
-
+        /// <summary>
+        /// جستجوی پلاک خودرو برای جلوگیری از تکراری بودن
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtCarplate1_ValueChanged(object sender, EventArgs e)
         {
             SearchCar_Driver();
@@ -694,7 +765,11 @@ namespace HM_ERP_System.Forms.Car
             {
             }
         }
-
+        /// <summary>
+        /// افزودن شرکت مالک جدید
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddCompanys_Click(object sender, EventArgs e)
         {
 
@@ -792,7 +867,11 @@ namespace HM_ERP_System.Forms.Car
                 SendKeys.Send("{TAB}");
 
         }
-
+        /// <summary>
+        /// جستجوی سریال خودرو برای جلوگیری از تکراری بودن
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSeryal_Leave(object sender, EventArgs e)
         {
             if (txtSeryal.Text != "")

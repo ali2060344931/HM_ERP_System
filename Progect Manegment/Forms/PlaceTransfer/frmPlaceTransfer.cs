@@ -169,7 +169,6 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                 PublicClass.ShowErrorMessage(er);
             }
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -203,14 +202,14 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
                     var userRepo = new Repository<Entity.PlaceTransfer.PlaceTransfer>(db);
                     int id = userRepo.SaveOrUpdateRefId(new Entity.PlaceTransfer.PlaceTransfer { Id = ListId, Name = txtPlaceTransferName.Text, CiltyId = CityId1, PostalCode = txtPostalCode.Text, Addres = txtAddres.Text, publicStatus = chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
-                    /*
+
                     if (chkPublic.Checked && dt_Citi.Rows.Count != 0)
                     {
                         //حذف شهرهای قبلی که در لیست شهرهای جدید نیستند
                         var q = db.FloatingPublicCities.Where(c => c.PlaceTransferId == ListId).ToList();
                         foreach (var list in q)
                         {
-                            DataRow existingRow = dt_Citi.Rows.Find(list.CitiesId);
+                            DataRow existingRow = dt_Citi.Rows.Find(list.CiltysId);
                             if (existingRow == null)
                             {
                                 db.FloatingPublicCities.Remove(list);
@@ -228,20 +227,20 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                 else
                                     Id_0 = ListId;
 
-                                var serch = db.FloatingPublicCities.Where(c => c.PlaceTransferId == Id_0 && c.CitiesId == citiid);
+                                var serch = db.FloatingPublicCities.Where(c => c.PlaceTransferId == Id_0 && c.CiltysId == citiid);
 
                                 if (serch.Count() == 0)
                                 {
                                     FloatingPublicCities fpc = new FloatingPublicCities();
                                     fpc.PlaceTransferId = id;
-                                    fpc.CitiesId = citiid;
+                                    fpc.CiltysId = citiid;
                                     db0.FloatingPublicCities.Add(fpc);
                                 }
                                 db0.SaveChangesSafe();
                             }
                         }
                     }
-                    */
+
                     {
                         PublicClass.WindowAlart("1");
                         if (_updatableForms != null)
@@ -284,7 +283,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
             CelearItems();
         }
-
+        /// <summary>
+        /// ویرایش و حذف رکورد
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
         {
             try
@@ -304,17 +307,17 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                         chkPublic.Checked = q.publicStatus;
                         txtPostalCode.Text = q.PostalCode;
                         txtAddres.Text = q.Addres;
-                        if(q.publicStatus)
+                        if (q.publicStatus)
                         {
-                            var srch=db.FloatingPublicCities.Where(c=>c.PlaceTransferId== ListId).ToList();
+                            var srch = db.FloatingPublicCities.Where(c => c.PlaceTransferId == ListId).ToList();
                             foreach (var item in srch)
                             {
                                 DataRow newrow = dt_Citi.NewRow();
                                 {
-                                        newrow["Id"] = item.CitiesId;
-                                        newrow["Name"] = db.Ciltys.Where(c=>c.Id == item.CitiesId).First().Name;
-                                        dt_Citi.Rows.Add(newrow);
-                                        dgvListCity.DataSource = dt_Citi;
+                                    newrow["Id"] = item.CiltysId;
+                                    newrow["Name"] = db.Ciltys.Where(c => c.Id == item.CiltysId).First().Name;
+                                    dt_Citi.Rows.Add(newrow);
+                                    dgvListCity.DataSource = dt_Citi;
                                 }
                             }
                         }
@@ -344,7 +347,22 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                             CelearItems();
                         }
                     }
+                }
 
+                else if (e.Column.Key == "FloatingPublicCities")
+                {
+                    using (var db = new DBcontextModel())
+                    {
+                        var q = db.FloatingPublicCities.Where(c => c.PlaceTransferId == ListId);
+                        if (q.Count() == 0)
+                        {
+                            PublicClass.StopMesseg(ResourceCode.T178);
+                            return;
+                        }
+                        frmFloatingPublicCities frmFloatingPublicCities = new frmFloatingPublicCities(this);
+                        frmFloatingPublicCities.citiesId = ListId;
+                        frmFloatingPublicCities.ShowDialog();
+                    }
                 }
             }
             catch (Exception er)
@@ -454,7 +472,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
         private void chkPublic_CheckedChanged(object sender, EventArgs e)
         {
-            //panel1.Visible = chkPublic.Checked;
+            panel1.Visible = chkPublic.Checked;
         }
 
         private void cmbCity2_ValueChanged(object sender, EventArgs e)
@@ -492,14 +510,14 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
         private void AddCityToLIst_Click(object sender, EventArgs e)
         {
-            if(cmbCity1.SelectedIndex==-1)
+            if (cmbCity1.SelectedIndex == -1)
             {
                 PublicClass.StopMesseg(ResourceCode.T179);
                 cmbCity1.Focus();
                 return;
             }
 
-            if(cmbCity1.Value== cmbCity2.Value)
+            if (cmbCity1.Text == cmbCity2.Text)
             {
                 PublicClass.StopMesseg(ResourceCode.T180);
                 cmbCity2.Focus();

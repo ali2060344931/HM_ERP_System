@@ -57,6 +57,7 @@ namespace Progect_Manegment
             try
             {
                 bool createdNew;
+                // استفاده از Mutex برای جلوگیری از اجرای چندین نمونه از برنامه
                 using (Mutex mutex = new Mutex(true, "HM_ERP_System", out createdNew))
 
                 {
@@ -70,7 +71,7 @@ namespace Progect_Manegment
                     string searchKey = "Data Source=.";
                     string appPath = Application.StartupPath; // مسیر اجرای برنامه
                     string connectionstring_db = File.ReadAllText(appPath + @"\ConectionString.txt", Encoding.UTF8);
-
+                    // مسیر فایل نسخه محلی
                     string localVersionFile = Path.Combine(appPath, "HM_ERP_SystemAppUpdater.txt");
                     string cone = Path.Combine(appPath, "HM_ERP_SystemAppUpdater.txt");
 
@@ -81,9 +82,10 @@ namespace Progect_Manegment
                     // مسیر سرور
                     if (!connectionstring_db.Contains(searchKey))
                     {
+                        // بررسی نسخه برنامه
                         string serverPath = @"\\192.168.0.200\Share\Publish";
                         string serverVersionFile = Path.Combine(serverPath, "HM_ERP_SystemAppUpdater.txt");
-
+                        // بررسی وجود فایل نسخه در سرور
                         if (File.Exists(serverVersionFile))
                         {
                             string serverVersion = File.ReadAllText(serverVersionFile).Trim();
@@ -121,14 +123,15 @@ namespace Progect_Manegment
                     AppSeting seting = new AppSeting();
                     seting.SaveConnectionString("DBcontextModel", connectionstring_db);
                     #endregion
-
+                    //
                     Application.EnableVisualStyles();
+                    
                     Application.SetCompatibleTextRenderingDefault(false);
                     Basic_information.basic_information();
                     HM_ERP_System.Class_General.CreatView.BanckEdid();
                     HM_ERP_System.Properties.Settings.Default.ConnectionString = connectionstring_db;
                     HM_ERP_System.Properties.Settings.Default.Save();
-
+                    // بارگذاری اسمبلی‌های مورد نیاز برای انواع جغرافیایی SQL Server
                     AppDomain.CurrentDomain.SetData("SQLServerTypesAssemblyFileName",
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes\"));
                     AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
@@ -139,15 +142,17 @@ namespace Progect_Manegment
                     //Application.Run(new frmPlaceTransfer(null));
                 }
             }
+            // اگر اتصال به دیتابیس قطع شده باشد
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
                 // اگر اتصال به دیتابیس قطع شده باشد  
                 PublicClass.ErrorMesseg(ResourceCode.T176 + '\n' + ex.Message);
                 // می‌توانید اطلاعات بیشتر از ex.InnerException بگیرید  
             }
-
+            // سایر استثناها
             catch (Exception er)
             {
+                // نمایش پیام خطا به کاربر
                 PublicClass.ShowErrorMessage(er);
             }
 

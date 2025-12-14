@@ -368,9 +368,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                             PublicClass.StopMesseg(ResourceCode.T178);
                             return;
                         }
-                        frmFloatingPublicCities frmFloatingPublicCities = new frmFloatingPublicCities(this);
-                        frmFloatingPublicCities.citiesId = ListId;
-                        frmFloatingPublicCities.ShowDialog();
+
+                        frmFloatingPublicCities f = new frmFloatingPublicCities(this);
+                        f.citiesId = ListId;
+                        f.PlaceTransferName = dgvList.CurrentRow.Cells["PlaceTransferName"].Value.ToString();
+                        f.ShowDialog();
                     }
                 }
             }

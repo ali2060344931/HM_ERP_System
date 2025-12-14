@@ -22,6 +22,7 @@ namespace HM_ERP_System.Forms.Ciltys
         private IUpdatableForms _updatableForms;
         public int ListId = 0;
         public int citiesId = 0;
+        public string PlaceTransferName = "";
         public frmFloatingPublicCities(IUpdatableForms updatableForms)
         {
             InitializeComponent();
@@ -37,7 +38,9 @@ namespace HM_ERP_System.Forms.Ciltys
         }
         public void UpdateData()
         {
+            //MessageBox.Show(PlaceTransferName);
             dgvList.RootTable.Columns["PlaceTransferName"].Visible = chkSelectAllList.Checked;
+            this.Text= this.Text + " - "+ PlaceTransferName;
             CallUpdateTata();
         }
         private void CallUpdateTata()

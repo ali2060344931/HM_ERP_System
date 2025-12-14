@@ -152,6 +152,13 @@ namespace HM_ERP_System.Forms.FinancialYears
                             return;
                         }
 
+                        string FinancialYear=ListId.ToString();
+                        if (db.Transactions.Where(c => c.FinancialYear == FinancialYear).Count() != 0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            return;
+                        }
+
                         if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             var q = db.FinancialYears.Where(c => c.Id == ListId).First();

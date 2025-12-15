@@ -68,20 +68,20 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(659, 412);
+            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(787, 412);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(659, 50);
+            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(787, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 462);
-            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(659, 28);
+            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(787, 28);
             // 
             // pnlAddItemBodi
             // 
@@ -105,14 +105,14 @@
             this.pnlAddItemBodi.Controls.Add(this.txtDes);
             this.pnlAddItemBodi.Controls.Add(this.txtSmartCard);
             this.pnlAddItemBodi.Controls.Add(this.txtSeryalGovahiname);
-            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(553, 462);
+            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(425, 462);
             // 
             // pnlAddItemFoter
             // 
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 462);
-            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlAddItemFoter.Size = new System.Drawing.Size(553, 28);
+            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItemFoter.Size = new System.Drawing.Size(425, 28);
             // 
             // btnSave
             // 
@@ -120,26 +120,26 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(478, 0);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNew.Location = new System.Drawing.Point(350, 0);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(339, 12);
-            this.txtDateStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDateStart.Location = new System.Drawing.Point(403, 12);
+            this.txtDateStart.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 20, 18, 49, 8, 738);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(137, 12);
-            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDateEnd.Location = new System.Drawing.Point(201, 12);
+            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 20, 18, 49, 8, 738);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(47, 15);
-            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowListItems.Location = new System.Drawing.Point(111, 15);
+            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4);
             // 
             // labelX2
             // 
@@ -147,8 +147,8 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(267, 17);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX2.Location = new System.Drawing.Point(331, 17);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
@@ -157,37 +157,37 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(469, 17);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX1.Location = new System.Drawing.Point(533, 17);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(4);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItems.Size = new System.Drawing.Size(661, 518);
+            this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItems.Size = new System.Drawing.Size(789, 518);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(664, 3);
-            this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlAddItems.Size = new System.Drawing.Size(559, 518);
+            this.pnlAddItems.Location = new System.Drawing.Point(792, 3);
+            this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItems.Size = new System.Drawing.Size(431, 518);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(625, 0);
-            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportToExcel.Location = new System.Drawing.Point(753, 0);
+            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(591, 0);
-            this.buttonX01.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonX01.Location = new System.Drawing.Point(719, 0);
+            this.buttonX01.Margin = new System.Windows.Forms.Padding(4);
             this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(556, 0);
-            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(684, 0);
+            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
@@ -211,7 +211,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmDraver";
-            this.dgvList.Size = new System.Drawing.Size(659, 412);
+            this.dgvList.Size = new System.Drawing.Size(787, 412);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 85;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -408,7 +408,7 @@
             this.label97.BackColor = System.Drawing.Color.Transparent;
             this.label97.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label97.ForeColor = System.Drawing.Color.Red;
-            this.label97.Location = new System.Drawing.Point(604, 25);
+            this.label97.Location = new System.Drawing.Point(476, 25);
             this.label97.Name = "label97";
             this.label97.Size = new System.Drawing.Size(15, 15);
             this.label97.TabIndex = 107;
@@ -421,7 +421,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(604, 58);
+            this.label9.Location = new System.Drawing.Point(476, 58);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(15, 15);
             this.label9.TabIndex = 107;
@@ -434,7 +434,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(596, 93);
+            this.label10.Location = new System.Drawing.Point(468, 93);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(15, 15);
             this.label10.TabIndex = 107;
@@ -447,7 +447,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(635, 127);
+            this.label13.Location = new System.Drawing.Point(507, 127);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(15, 15);
             this.label13.TabIndex = 107;
@@ -460,7 +460,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(657, 159);
+            this.label15.Location = new System.Drawing.Point(529, 159);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 15);
             this.label15.TabIndex = 107;
@@ -473,7 +473,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1226, 524);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmDraver";
             this.Text = "فرم ثبت راننده ها";
             this.Load += new System.EventHandler(this.frmDraver_Load);

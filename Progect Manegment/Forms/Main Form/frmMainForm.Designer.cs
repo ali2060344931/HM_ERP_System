@@ -198,10 +198,11 @@
             this.tabStrip1.CloseButtonVisible = true;
             this.tabStrip1.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabStrip1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabStrip1.Location = new System.Drawing.Point(0, 185);
+            this.tabStrip1.Location = new System.Drawing.Point(0, 210);
+            this.tabStrip1.Margin = new System.Windows.Forms.Padding(4);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(858, 27);
+            this.tabStrip1.Size = new System.Drawing.Size(1246, 35);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -226,6 +227,7 @@
             this.ribbon1.HelpButton.Key = "HelpButton";
             this.ribbon1.HelpButton.Text = "";
             this.ribbon1.Location = new System.Drawing.Point(0, 0);
+            this.ribbon1.Margin = new System.Windows.Forms.Padding(4);
             this.ribbon1.Name = "ribbon1";
             this.ribbon1.QuickAccessCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.btnComers,
@@ -235,7 +237,7 @@
             this.ribbon1.QuickAccessCustomizeList.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.btnReviewAccounts});
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(858, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1246, 210);
             // 
             // 
             // 
@@ -886,13 +888,14 @@
             this.lblVersion_,
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 429);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 586);
+            this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(858, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1246, 30);
             // 
             // 
             // 
@@ -954,13 +957,14 @@
             // 
             // frmMainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 452);
+            this.ClientSize = new System.Drawing.Size(1246, 616);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Location = new System.Drawing.Point(0, 0);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmMainForm";
             this.Text = "";
             this.Load += new System.EventHandler(this.frmMainForm_Load);

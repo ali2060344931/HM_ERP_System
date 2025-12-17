@@ -127,7 +127,7 @@
     <value>نام استان را وارد نمائید.</value>
   </data>
   <data name="T003" xml:space="preserve">
-    <value>آیا آیتم مورد نظر ازلیست حذف گردد؟</value>
+    <value>آیا آیتم(سطر) مورد نظر از لیست حذف گردد؟</value>
   </data>
   <data name="T004" xml:space="preserve">
     <value>امکان حذف برای این آیتم وجود ندارد.</value>

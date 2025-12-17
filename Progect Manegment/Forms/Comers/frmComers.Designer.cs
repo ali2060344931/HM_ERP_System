@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout cmbResiver2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout cmbResiver1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSender2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSender1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -62,7 +63,6 @@
             Janus.Windows.GridEX.GridEXLayout cmbCostAccountB_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbPaymentToOthers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
@@ -93,6 +93,7 @@
             this.label52 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
+            this.label119 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
@@ -103,6 +104,7 @@
             this.lblProvinces = new System.Windows.Forms.Label();
             this.lblOwnershipName = new System.Windows.Forms.Label();
             this.lblCountComerH = new System.Windows.Forms.Label();
+            this.lblDraverCarTel = new System.Windows.Forms.Label();
             this.lblDraverCarName = new System.Windows.Forms.Label();
             this.lblCarSeryal = new System.Windows.Forms.Label();
             this.lblTruckCapacity = new System.Windows.Forms.Label();
@@ -831,6 +833,7 @@
             this.uiGroupBox1.Controls.Add(this.label52);
             this.uiGroupBox1.Controls.Add(this.label74);
             this.uiGroupBox1.Controls.Add(this.label56);
+            this.uiGroupBox1.Controls.Add(this.label119);
             this.uiGroupBox1.Controls.Add(this.label55);
             this.uiGroupBox1.Controls.Add(this.label54);
             this.uiGroupBox1.Controls.Add(this.label53);
@@ -841,9 +844,10 @@
             this.uiGroupBox1.Controls.Add(this.lblProvinces);
             this.uiGroupBox1.Controls.Add(this.lblOwnershipName);
             this.uiGroupBox1.Controls.Add(this.lblCountComerH);
-            this.uiGroupBox1.Controls.Add(this.lblDraverCarName);
+            this.uiGroupBox1.Controls.Add(this.lblDraverCarTel);
             this.uiGroupBox1.Controls.Add(this.lblCarSeryal);
             this.uiGroupBox1.Controls.Add(this.lblTruckCapacity);
+            this.uiGroupBox1.Controls.Add(this.lblDraverCarName);
             this.uiGroupBox1.Controls.Add(this.lblCarName);
             this.uiGroupBox1.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.uiGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
@@ -860,7 +864,7 @@
             this.label77.AutoSize = true;
             this.label77.BackColor = System.Drawing.Color.Transparent;
             this.label77.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label77.Location = new System.Drawing.Point(139, 73);
+            this.label77.Location = new System.Drawing.Point(90, 73);
             this.label77.Name = "label77";
             this.label77.Size = new System.Drawing.Size(98, 18);
             this.label77.TabIndex = 97;
@@ -872,7 +876,7 @@
             this.label66.AutoSize = true;
             this.label66.BackColor = System.Drawing.Color.Transparent;
             this.label66.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label66.Location = new System.Drawing.Point(139, 19);
+            this.label66.Location = new System.Drawing.Point(90, 19);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(107, 18);
             this.label66.TabIndex = 97;
@@ -884,7 +888,7 @@
             this.label76.AutoSize = true;
             this.label76.BackColor = System.Drawing.Color.Transparent;
             this.label76.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label76.Location = new System.Drawing.Point(139, 55);
+            this.label76.Location = new System.Drawing.Point(90, 55);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(118, 18);
             this.label76.TabIndex = 97;
@@ -896,7 +900,7 @@
             this.label75.AutoSize = true;
             this.label75.BackColor = System.Drawing.Color.Transparent;
             this.label75.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label75.Location = new System.Drawing.Point(398, 71);
+            this.label75.Location = new System.Drawing.Point(340, 71);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(32, 18);
             this.label75.TabIndex = 97;
@@ -908,7 +912,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label15.Location = new System.Drawing.Point(398, 35);
+            this.label15.Location = new System.Drawing.Point(340, 35);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(64, 18);
             this.label15.TabIndex = 97;
@@ -920,7 +924,7 @@
             this.label52.AutoSize = true;
             this.label52.BackColor = System.Drawing.Color.Transparent;
             this.label52.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label52.Location = new System.Drawing.Point(139, 37);
+            this.label52.Location = new System.Drawing.Point(90, 37);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(102, 18);
             this.label52.TabIndex = 97;
@@ -932,7 +936,7 @@
             this.label74.AutoSize = true;
             this.label74.BackColor = System.Drawing.Color.Transparent;
             this.label74.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label74.Location = new System.Drawing.Point(398, 53);
+            this.label74.Location = new System.Drawing.Point(340, 53);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(40, 18);
             this.label74.TabIndex = 97;
@@ -944,11 +948,23 @@
             this.label56.AutoSize = true;
             this.label56.BackColor = System.Drawing.Color.Transparent;
             this.label56.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label56.Location = new System.Drawing.Point(398, 17);
+            this.label56.Location = new System.Drawing.Point(340, 17);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(66, 18);
             this.label56.TabIndex = 97;
             this.label56.Text = "نوع مالکیت:";
+            // 
+            // label119
+            // 
+            this.label119.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label119.AutoSize = true;
+            this.label119.BackColor = System.Drawing.Color.Transparent;
+            this.label119.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label119.Location = new System.Drawing.Point(626, 37);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(62, 18);
+            this.label119.TabIndex = 97;
+            this.label119.Text = "تلفن مالک:";
             // 
             // label55
             // 
@@ -956,7 +972,7 @@
             this.label55.AutoSize = true;
             this.label55.BackColor = System.Drawing.Color.Transparent;
             this.label55.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label55.Location = new System.Drawing.Point(621, 53);
+            this.label55.Location = new System.Drawing.Point(626, 17);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(69, 18);
             this.label55.TabIndex = 97;
@@ -968,7 +984,7 @@
             this.label54.AutoSize = true;
             this.label54.BackColor = System.Drawing.Color.Transparent;
             this.label54.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label54.Location = new System.Drawing.Point(621, 35);
+            this.label54.Location = new System.Drawing.Point(626, 73);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(81, 18);
             this.label54.TabIndex = 97;
@@ -980,7 +996,7 @@
             this.label53.AutoSize = true;
             this.label53.BackColor = System.Drawing.Color.Transparent;
             this.label53.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label53.Location = new System.Drawing.Point(621, 17);
+            this.label53.Location = new System.Drawing.Point(626, 55);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(59, 18);
             this.label53.TabIndex = 97;
@@ -992,9 +1008,9 @@
             this.lblEndDateComerH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblEndDateComerH.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblEndDateComerH.ForeColor = System.Drawing.Color.Maroon;
-            this.lblEndDateComerH.Location = new System.Drawing.Point(10, 73);
+            this.lblEndDateComerH.Location = new System.Drawing.Point(9, 73);
             this.lblEndDateComerH.Name = "lblEndDateComerH";
-            this.lblEndDateComerH.Size = new System.Drawing.Size(132, 18);
+            this.lblEndDateComerH.Size = new System.Drawing.Size(84, 18);
             this.lblEndDateComerH.TabIndex = 97;
             this.lblEndDateComerH.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1004,9 +1020,9 @@
             this.lblLoadWeightCapacity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblLoadWeightCapacity.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblLoadWeightCapacity.ForeColor = System.Drawing.Color.Maroon;
-            this.lblLoadWeightCapacity.Location = new System.Drawing.Point(10, 19);
+            this.lblLoadWeightCapacity.Location = new System.Drawing.Point(9, 19);
             this.lblLoadWeightCapacity.Name = "lblLoadWeightCapacity";
-            this.lblLoadWeightCapacity.Size = new System.Drawing.Size(132, 18);
+            this.lblLoadWeightCapacity.Size = new System.Drawing.Size(84, 18);
             this.lblLoadWeightCapacity.TabIndex = 97;
             this.lblLoadWeightCapacity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1016,7 +1032,7 @@
             this.lblCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblCity.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCity.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCity.Location = new System.Drawing.Point(269, 71);
+            this.lblCity.Location = new System.Drawing.Point(211, 71);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(132, 18);
             this.lblCity.TabIndex = 97;
@@ -1028,7 +1044,7 @@
             this.lblTruckUsageType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblTruckUsageType.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTruckUsageType.ForeColor = System.Drawing.Color.Maroon;
-            this.lblTruckUsageType.Location = new System.Drawing.Point(269, 35);
+            this.lblTruckUsageType.Location = new System.Drawing.Point(211, 35);
             this.lblTruckUsageType.Name = "lblTruckUsageType";
             this.lblTruckUsageType.Size = new System.Drawing.Size(132, 18);
             this.lblTruckUsageType.TabIndex = 97;
@@ -1040,7 +1056,7 @@
             this.lblProvinces.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblProvinces.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblProvinces.ForeColor = System.Drawing.Color.Maroon;
-            this.lblProvinces.Location = new System.Drawing.Point(269, 53);
+            this.lblProvinces.Location = new System.Drawing.Point(211, 53);
             this.lblProvinces.Name = "lblProvinces";
             this.lblProvinces.Size = new System.Drawing.Size(132, 18);
             this.lblProvinces.TabIndex = 97;
@@ -1052,7 +1068,7 @@
             this.lblOwnershipName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblOwnershipName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblOwnershipName.ForeColor = System.Drawing.Color.Maroon;
-            this.lblOwnershipName.Location = new System.Drawing.Point(269, 17);
+            this.lblOwnershipName.Location = new System.Drawing.Point(211, 17);
             this.lblOwnershipName.Name = "lblOwnershipName";
             this.lblOwnershipName.Size = new System.Drawing.Size(132, 18);
             this.lblOwnershipName.TabIndex = 97;
@@ -1064,11 +1080,23 @@
             this.lblCountComerH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblCountComerH.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCountComerH.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCountComerH.Location = new System.Drawing.Point(10, 55);
+            this.lblCountComerH.Location = new System.Drawing.Point(9, 55);
             this.lblCountComerH.Name = "lblCountComerH";
-            this.lblCountComerH.Size = new System.Drawing.Size(132, 18);
+            this.lblCountComerH.Size = new System.Drawing.Size(84, 18);
             this.lblCountComerH.TabIndex = 97;
             this.lblCountComerH.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblDraverCarTel
+            // 
+            this.lblDraverCarTel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDraverCarTel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblDraverCarTel.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblDraverCarTel.ForeColor = System.Drawing.Color.Maroon;
+            this.lblDraverCarTel.Location = new System.Drawing.Point(504, 37);
+            this.lblDraverCarTel.Name = "lblDraverCarTel";
+            this.lblDraverCarTel.Size = new System.Drawing.Size(125, 18);
+            this.lblDraverCarTel.TabIndex = 97;
+            this.lblDraverCarTel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblDraverCarName
             // 
@@ -1076,9 +1104,9 @@
             this.lblDraverCarName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblDraverCarName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblDraverCarName.ForeColor = System.Drawing.Color.Maroon;
-            this.lblDraverCarName.Location = new System.Drawing.Point(436, 53);
+            this.lblDraverCarName.Location = new System.Drawing.Point(400, 19);
             this.lblDraverCarName.Name = "lblDraverCarName";
-            this.lblDraverCarName.Size = new System.Drawing.Size(188, 18);
+            this.lblDraverCarName.Size = new System.Drawing.Size(229, 18);
             this.lblDraverCarName.TabIndex = 97;
             this.lblDraverCarName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1088,9 +1116,9 @@
             this.lblCarSeryal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblCarSeryal.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarSeryal.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCarSeryal.Location = new System.Drawing.Point(474, 35);
+            this.lblCarSeryal.Location = new System.Drawing.Point(532, 73);
             this.lblCarSeryal.Name = "lblCarSeryal";
-            this.lblCarSeryal.Size = new System.Drawing.Size(150, 18);
+            this.lblCarSeryal.Size = new System.Drawing.Size(97, 18);
             this.lblCarSeryal.TabIndex = 97;
             this.lblCarSeryal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1100,9 +1128,9 @@
             this.lblTruckCapacity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblTruckCapacity.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTruckCapacity.ForeColor = System.Drawing.Color.Maroon;
-            this.lblTruckCapacity.Location = new System.Drawing.Point(10, 37);
+            this.lblTruckCapacity.Location = new System.Drawing.Point(9, 37);
             this.lblTruckCapacity.Name = "lblTruckCapacity";
-            this.lblTruckCapacity.Size = new System.Drawing.Size(132, 18);
+            this.lblTruckCapacity.Size = new System.Drawing.Size(84, 18);
             this.lblTruckCapacity.TabIndex = 97;
             this.lblTruckCapacity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1112,9 +1140,9 @@
             this.lblCarName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblCarName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarName.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCarName.Location = new System.Drawing.Point(474, 17);
+            this.lblCarName.Location = new System.Drawing.Point(515, 55);
             this.lblCarName.Name = "lblCarName";
-            this.lblCarName.Size = new System.Drawing.Size(150, 18);
+            this.lblCarName.Size = new System.Drawing.Size(114, 18);
             this.lblCarName.TabIndex = 97;
             this.lblCarName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -5637,5 +5665,7 @@
         private System.Windows.Forms.RadioButton rdbCostAccount;
         public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
         public DevComponents.DotNetBar.ButtonX buttonX01;
+        private System.Windows.Forms.Label label119;
+        private System.Windows.Forms.Label lblDraverCarTel;
     }
 }

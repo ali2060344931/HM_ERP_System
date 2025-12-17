@@ -1471,12 +1471,15 @@ namespace HM_ERP_System.Forms.Comers
                             var cuId0 = db.Customers.Where(c => c.Id == cars.FirstOrDefault().GoodsAccountId).First().Id;
                             var per0 = db.Customers.Where(c => c.Id == cuId0).First();
                             lblDraverCarName.Text = per0.Name + " " + per0.Family;
+                            lblDraverCarTel.Text = per0.Tel;
                         }
                         else//نام مالک کامیون های شرکتی
                         {
                             var cuId1 = db.Customers.Where(c => c.Id == cars.FirstOrDefault().OwnershipCompanyId).First().Id;
                             var per1 = db.Customers.Where(c => c.Id == cuId1).First();
                             lblDraverCarName.Text = per1.Name + " " + per1.Family;
+                            lblDraverCarTel.Text = per1.Tel;
+
                         }
 
                         //نوع مالکیت
@@ -2608,6 +2611,7 @@ namespace HM_ERP_System.Forms.Comers
             lblCarName.ResetText();
             lblCarSeryal.ResetText();
             lblDraverCarName.ResetText();
+            lblDraverCarTel.ResetText();
             lblOwnershipName.ResetText();
             lblTelDraver1.ResetText();
             lblTelDraver2.ResetText();

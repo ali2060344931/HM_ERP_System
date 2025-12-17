@@ -103,20 +103,20 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(1127, 690);
+            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(620, 527);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(1127, 65);
+            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(620, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 755);
-            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(1127, 36);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 577);
+            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(620, 28);
             // 
             // pnlAddItemBodi
             // 
@@ -161,16 +161,16 @@
             this.pnlAddItemBodi.Controls.Add(this.txtDes);
             this.pnlAddItemBodi.Controls.Add(this.label17);
             this.pnlAddItemBodi.Controls.Add(this.label14);
-            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(548, 755);
+            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(548, 577);
             this.pnlAddItemBodi.TabIndex = 0;
             this.pnlAddItemBodi.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlAddItemBodi_Paint);
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 755);
-            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlAddItemFoter.Size = new System.Drawing.Size(548, 36);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 577);
+            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlAddItemFoter.Size = new System.Drawing.Size(548, 28);
             this.pnlAddItemFoter.TabIndex = 1;
             // 
             // btnSave
@@ -179,26 +179,26 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(441, 0);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnNew.Location = new System.Drawing.Point(473, 0);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(620, 16);
-            this.txtDateStart.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtDateStart.Location = new System.Drawing.Point(350, 12);
+            this.txtDateStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 21, 8, 39, 40, 911);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(332, 16);
-            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtDateEnd.Location = new System.Drawing.Point(148, 12);
+            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 21, 8, 39, 40, 911);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(203, 20);
-            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnShowListItems.Location = new System.Drawing.Point(58, 15);
+            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // labelX2
             // 
@@ -206,9 +206,9 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(517, 22);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.labelX2.Size = new System.Drawing.Size(80, 29);
+            this.labelX2.Location = new System.Drawing.Point(278, 17);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
             // 
@@ -216,38 +216,37 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(806, 22);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.labelX1.Size = new System.Drawing.Size(129, 29);
+            this.labelX1.Location = new System.Drawing.Point(480, 17);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Location = new System.Drawing.Point(3, 3);
-            this.pnlViewItems.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.pnlViewItems.Size = new System.Drawing.Size(1129, 825);
+            this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlViewItems.Size = new System.Drawing.Size(622, 633);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(1132, 3);
-            this.pnlAddItems.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.pnlAddItems.Size = new System.Drawing.Size(554, 825);
+            this.pnlAddItems.Location = new System.Drawing.Point(625, 3);
+            this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlAddItems.Size = new System.Drawing.Size(554, 633);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(1078, 0);
-            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnExportToExcel.Location = new System.Drawing.Point(586, 0);
+            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(1029, 0);
-            this.buttonX01.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.buttonX01.Location = new System.Drawing.Point(552, 0);
+            this.buttonX01.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(979, 0);
-            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(517, 0);
+            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
@@ -266,13 +265,12 @@
             this.dgvList.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvList_Layout_0});
             this.dgvList.Location = new System.Drawing.Point(0, 0);
-            this.dgvList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvList.Name = "dgvList";
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCar";
-            this.dgvList.Size = new System.Drawing.Size(1127, 690);
+            this.dgvList.Size = new System.Drawing.Size(620, 527);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 86;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -287,34 +285,31 @@
             // 
             this.chkStatus.Checked = true;
             this.chkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStatus.Location = new System.Drawing.Point(354, 658);
-            this.chkStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkStatus.Location = new System.Drawing.Point(248, 506);
             this.chkStatus.Name = "chkStatus";
-            this.chkStatus.Size = new System.Drawing.Size(70, 32);
+            this.chkStatus.Size = new System.Drawing.Size(49, 25);
             this.chkStatus.TabIndex = 16;
             this.chkStatus.Text = "فعال";
             this.chkStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTruckUsageType_ValueChanged);
             // 
             // txtDes
             // 
-            this.txtDes.Location = new System.Drawing.Point(30, 592);
-            this.txtDes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDes.Location = new System.Drawing.Point(21, 455);
             this.txtDes.Multiline = true;
             this.txtDes.Name = "txtDes";
-            this.txtDes.Size = new System.Drawing.Size(394, 65);
+            this.txtDes.Size = new System.Drawing.Size(276, 50);
             this.txtDes.TabIndex = 15;
             this.txtDes.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtDes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTruckUsageType_ValueChanged);
             // 
             // txtCreatModel
             // 
-            this.txtCreatModel.Location = new System.Drawing.Point(330, 415);
-            this.txtCreatModel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCreatModel.Location = new System.Drawing.Point(231, 319);
             this.txtCreatModel.Maximum = 3000;
             this.txtCreatModel.MaxLength = 4;
             this.txtCreatModel.Minimum = 1000;
             this.txtCreatModel.Name = "txtCreatModel";
-            this.txtCreatModel.Size = new System.Drawing.Size(94, 34);
+            this.txtCreatModel.Size = new System.Drawing.Size(66, 28);
             this.txtCreatModel.TabIndex = 11;
             this.txtCreatModel.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtCreatModel.UseCompatibleTextRendering = false;
@@ -328,12 +323,11 @@
             this.cmbDraverName.DesignTimeLayout = cmbDraverName_DesignTimeLayout;
             this.cmbDraverName.DisplayMember = "Name";
             this.cmbDraverName.Image = ((System.Drawing.Image)(resources.GetObject("cmbDraverName.Image")));
-            this.cmbDraverName.Location = new System.Drawing.Point(74, 147);
-            this.cmbDraverName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbDraverName.Location = new System.Drawing.Point(52, 113);
             this.cmbDraverName.Name = "cmbDraverName";
             this.cmbDraverName.SelectedIndex = -1;
             this.cmbDraverName.SelectedItem = null;
-            this.cmbDraverName.Size = new System.Drawing.Size(350, 34);
+            this.cmbDraverName.Size = new System.Drawing.Size(245, 30);
             this.cmbDraverName.TabIndex = 4;
             this.cmbDraverName.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbDraverName.ValueMember = "id";
@@ -345,11 +339,10 @@
             this.btnAddDravers.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddDravers.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddDravers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddDravers.Location = new System.Drawing.Point(44, 147);
-            this.btnAddDravers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddDravers.Location = new System.Drawing.Point(31, 113);
             this.btnAddDravers.Name = "btnAddDravers";
             this.btnAddDravers.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddDravers.Size = new System.Drawing.Size(26, 36);
+            this.btnAddDravers.Size = new System.Drawing.Size(18, 28);
             this.btnAddDravers.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddDravers.Symbol = "";
             this.btnAddDravers.SymbolSize = 12F;
@@ -360,13 +353,12 @@
             // 
             // txtAxisCount
             // 
-            this.txtAxisCount.Location = new System.Drawing.Point(330, 370);
-            this.txtAxisCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAxisCount.Location = new System.Drawing.Point(231, 285);
             this.txtAxisCount.Maximum = 99;
             this.txtAxisCount.MaxLength = 1;
             this.txtAxisCount.Minimum = 12;
             this.txtAxisCount.Name = "txtAxisCount";
-            this.txtAxisCount.Size = new System.Drawing.Size(94, 34);
+            this.txtAxisCount.Size = new System.Drawing.Size(66, 28);
             this.txtAxisCount.TabIndex = 10;
             this.txtAxisCount.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtAxisCount.Value = 12;
@@ -376,10 +368,9 @@
             // 
             this.txtCarName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtCarName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtCarName.Location = new System.Drawing.Point(194, 503);
-            this.txtCarName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCarName.Location = new System.Drawing.Point(136, 387);
             this.txtCarName.Name = "txtCarName";
-            this.txtCarName.Size = new System.Drawing.Size(230, 34);
+            this.txtCarName.Size = new System.Drawing.Size(161, 28);
             this.txtCarName.TabIndex = 13;
             this.txtCarName.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtCarName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTruckUsageType_ValueChanged);
@@ -390,12 +381,11 @@
             cmbOwnership_DesignTimeLayout.LayoutString = resources.GetString("cmbOwnership_DesignTimeLayout.LayoutString");
             this.cmbOwnership.DesignTimeLayout = cmbOwnership_DesignTimeLayout;
             this.cmbOwnership.DisplayMember = "Name";
-            this.cmbOwnership.Location = new System.Drawing.Point(260, 194);
-            this.cmbOwnership.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbOwnership.Location = new System.Drawing.Point(182, 149);
             this.cmbOwnership.Name = "cmbOwnership";
             this.cmbOwnership.SelectedIndex = -1;
             this.cmbOwnership.SelectedItem = null;
-            this.cmbOwnership.Size = new System.Drawing.Size(164, 34);
+            this.cmbOwnership.Size = new System.Drawing.Size(115, 28);
             this.cmbOwnership.TabIndex = 5;
             this.cmbOwnership.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbOwnership.ValueMember = "id";
@@ -407,10 +397,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(433, 508);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(303, 391);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 23);
+            this.label1.Size = new System.Drawing.Size(94, 18);
             this.label1.TabIndex = 98;
             this.label1.Text = "نام(عنوان) ناوگان:";
             // 
@@ -419,10 +408,9 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(431, 62);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(302, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 23);
+            this.label2.Size = new System.Drawing.Size(68, 18);
             this.label2.TabIndex = 98;
             this.label2.Text = "پلاک ناوبری:";
             // 
@@ -431,10 +419,9 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(431, 153);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(302, 118);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 23);
+            this.label3.Size = new System.Drawing.Size(39, 18);
             this.label3.TabIndex = 98;
             this.label3.Text = "راننده:";
             // 
@@ -443,10 +430,9 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(431, 20);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(302, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 23);
+            this.label4.Size = new System.Drawing.Size(82, 18);
             this.label4.TabIndex = 98;
             this.label4.Text = "سریال هوشمند:";
             // 
@@ -455,10 +441,9 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(431, 421);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(302, 324);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 23);
+            this.label5.Size = new System.Drawing.Size(66, 18);
             this.label5.TabIndex = 98;
             this.label5.Text = "مدل ساخت:";
             // 
@@ -467,10 +452,9 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(431, 377);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(302, 290);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 23);
+            this.label6.Size = new System.Drawing.Size(62, 18);
             this.label6.TabIndex = 98;
             this.label6.Text = "تعداد چرخ:";
             // 
@@ -479,10 +463,9 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(431, 200);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(302, 154);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(108, 23);
+            this.label7.Size = new System.Drawing.Size(86, 18);
             this.label7.TabIndex = 98;
             this.label7.Text = "وضعیت مالکیت:";
             // 
@@ -491,10 +474,9 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(431, 662);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(302, 509);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 23);
+            this.label8.Size = new System.Drawing.Size(49, 18);
             this.label8.TabIndex = 98;
             this.label8.Text = "وضعیت:";
             // 
@@ -503,10 +485,9 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(431, 592);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(302, 455);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 23);
+            this.label9.Size = new System.Drawing.Size(57, 18);
             this.label9.TabIndex = 98;
             this.label9.Text = "توضیحات:";
             // 
@@ -515,10 +496,9 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label16.Location = new System.Drawing.Point(174, 62);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(122, 48);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(39, 23);
+            this.label16.Size = new System.Drawing.Size(31, 18);
             this.label16.TabIndex = 102;
             this.label16.Text = "ایران";
             // 
@@ -527,10 +507,9 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label15.Location = new System.Drawing.Point(219, 62);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(153, 48);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(83, 23);
+            this.label15.Size = new System.Drawing.Size(67, 18);
             this.label15.TabIndex = 103;
             this.label15.Text = "سریال پلاک:";
             // 
@@ -545,12 +524,12 @@
             this.txtCarplateSeryal.FocusHighlightColor = System.Drawing.SystemColors.Control;
             this.txtCarplateSeryal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtCarplateSeryal.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtCarplateSeryal.Location = new System.Drawing.Point(131, 60);
-            this.txtCarplateSeryal.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.txtCarplateSeryal.Location = new System.Drawing.Point(92, 46);
+            this.txtCarplateSeryal.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtCarplateSeryal.MaxValue = 99;
             this.txtCarplateSeryal.MinValue = 0;
             this.txtCarplateSeryal.Name = "txtCarplateSeryal";
-            this.txtCarplateSeryal.Size = new System.Drawing.Size(43, 26);
+            this.txtCarplateSeryal.Size = new System.Drawing.Size(30, 23);
             this.txtCarplateSeryal.TabIndex = 2;
             this.txtCarplateSeryal.ValueChanged += new System.EventHandler(this.txtCarplate2_ValueChanged);
             this.txtCarplateSeryal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTruckUsageType_ValueChanged);
@@ -565,23 +544,22 @@
             this.txtCarplate.FocusHighlightColor = System.Drawing.SystemColors.Control;
             this.txtCarplate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtCarplate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtCarplate.Location = new System.Drawing.Point(327, 60);
-            this.txtCarplate.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.txtCarplate.Location = new System.Drawing.Point(229, 46);
+            this.txtCarplate.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtCarplate.MaxValue = 99999;
             this.txtCarplate.MinValue = 0;
             this.txtCarplate.Name = "txtCarplate";
-            this.txtCarplate.Size = new System.Drawing.Size(97, 26);
+            this.txtCarplate.Size = new System.Drawing.Size(68, 23);
             this.txtCarplate.TabIndex = 1;
             this.txtCarplate.ValueChanged += new System.EventHandler(this.txtCarplate1_ValueChanged);
             this.txtCarplate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTruckUsageType_ValueChanged);
             // 
             // txtSeryal
             // 
-            this.txtSeryal.Location = new System.Drawing.Point(261, 13);
-            this.txtSeryal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSeryal.Location = new System.Drawing.Point(183, 10);
             this.txtSeryal.MaxLength = 7;
             this.txtSeryal.Name = "txtSeryal";
-            this.txtSeryal.Size = new System.Drawing.Size(163, 34);
+            this.txtSeryal.Size = new System.Drawing.Size(114, 28);
             this.txtSeryal.TabIndex = 0;
             this.txtSeryal.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtSeryal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTruckUsageType_ValueChanged);
@@ -593,10 +571,9 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(434, 107);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(304, 82);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(131, 23);
+            this.label10.Size = new System.Drawing.Size(106, 18);
             this.label10.TabIndex = 98;
             this.label10.Text = "طرف حساب کامیون:";
             // 
@@ -606,12 +583,11 @@
             cmbTruckUsageType_DesignTimeLayout.LayoutString = resources.GetString("cmbTruckUsageType_DesignTimeLayout.LayoutString");
             this.cmbTruckUsageType.DesignTimeLayout = cmbTruckUsageType_DesignTimeLayout;
             this.cmbTruckUsageType.DisplayMember = "Name";
-            this.cmbTruckUsageType.Location = new System.Drawing.Point(261, 238);
-            this.cmbTruckUsageType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbTruckUsageType.Location = new System.Drawing.Point(183, 183);
             this.cmbTruckUsageType.Name = "cmbTruckUsageType";
             this.cmbTruckUsageType.SelectedIndex = -1;
             this.cmbTruckUsageType.SelectedItem = null;
-            this.cmbTruckUsageType.Size = new System.Drawing.Size(163, 34);
+            this.cmbTruckUsageType.Size = new System.Drawing.Size(114, 28);
             this.cmbTruckUsageType.TabIndex = 7;
             this.cmbTruckUsageType.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbTruckUsageType.ValueMember = "id";
@@ -623,10 +599,9 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.Location = new System.Drawing.Point(431, 244);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(302, 188);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 23);
+            this.label11.Size = new System.Drawing.Size(64, 18);
             this.label11.TabIndex = 98;
             this.label11.Text = "نوع کاربری:";
             // 
@@ -635,11 +610,10 @@
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX2.Location = new System.Drawing.Point(47, 100);
-            this.buttonX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonX2.Location = new System.Drawing.Point(33, 77);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.buttonX2.Size = new System.Drawing.Size(26, 36);
+            this.buttonX2.Size = new System.Drawing.Size(18, 28);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX2.Symbol = "";
             this.buttonX2.SymbolSize = 12F;
@@ -653,20 +627,18 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(430, 289);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(301, 222);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(133, 23);
+            this.label12.Size = new System.Drawing.Size(105, 18);
             this.label12.TabIndex = 98;
             this.label12.Text = "ظرفیت مجاز کامیون:";
             // 
             // txtTruckCapacity
             // 
-            this.txtTruckCapacity.Location = new System.Drawing.Point(260, 282);
-            this.txtTruckCapacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTruckCapacity.Location = new System.Drawing.Point(182, 217);
             this.txtTruckCapacity.MaxLength = 5;
             this.txtTruckCapacity.Name = "txtTruckCapacity";
-            this.txtTruckCapacity.Size = new System.Drawing.Size(163, 34);
+            this.txtTruckCapacity.Size = new System.Drawing.Size(114, 28);
             this.txtTruckCapacity.TabIndex = 8;
             this.txtTruckCapacity.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtTruckCapacity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTruckUsageType_ValueChanged);
@@ -677,20 +649,18 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label13.Location = new System.Drawing.Point(430, 333);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(301, 256);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(129, 23);
+            this.label13.Size = new System.Drawing.Size(104, 18);
             this.label13.TabIndex = 98;
             this.label13.Text = "ظرفیت مجازبارگیری:";
             // 
             // txtLoadWeightCapacity
             // 
-            this.txtLoadWeightCapacity.Location = new System.Drawing.Point(260, 326);
-            this.txtLoadWeightCapacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLoadWeightCapacity.Location = new System.Drawing.Point(182, 251);
             this.txtLoadWeightCapacity.MaxLength = 5;
             this.txtLoadWeightCapacity.Name = "txtLoadWeightCapacity";
-            this.txtLoadWeightCapacity.Size = new System.Drawing.Size(163, 34);
+            this.txtLoadWeightCapacity.Size = new System.Drawing.Size(114, 28);
             this.txtLoadWeightCapacity.TabIndex = 9;
             this.txtLoadWeightCapacity.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtLoadWeightCapacity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTruckUsageType_ValueChanged);
@@ -703,12 +673,11 @@
             this.cmbGoodsAccount.DesignTimeLayout = cmbGoodsAccount_DesignTimeLayout;
             this.cmbGoodsAccount.DisplayMember = "Name";
             this.cmbGoodsAccount.Image = ((System.Drawing.Image)(resources.GetObject("cmbGoodsAccount.Image")));
-            this.cmbGoodsAccount.Location = new System.Drawing.Point(74, 100);
-            this.cmbGoodsAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbGoodsAccount.Location = new System.Drawing.Point(52, 77);
             this.cmbGoodsAccount.Name = "cmbGoodsAccount";
             this.cmbGoodsAccount.SelectedIndex = -1;
             this.cmbGoodsAccount.SelectedItem = null;
-            this.cmbGoodsAccount.Size = new System.Drawing.Size(353, 34);
+            this.cmbGoodsAccount.Size = new System.Drawing.Size(247, 30);
             this.cmbGoodsAccount.TabIndex = 3;
             this.cmbGoodsAccount.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbGoodsAccount.ValueMember = "id";
@@ -720,10 +689,9 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(207, 289);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(145, 222);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 18);
+            this.label14.Size = new System.Drawing.Size(38, 15);
             this.label14.TabIndex = 105;
             this.label14.Text = "کیلوگرم";
             // 
@@ -732,10 +700,9 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label17.Location = new System.Drawing.Point(207, 333);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(145, 256);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 18);
+            this.label17.Size = new System.Drawing.Size(38, 15);
             this.label17.TabIndex = 105;
             this.label17.Text = "کیلوگرم";
             // 
@@ -745,12 +712,11 @@
             cmbCompanys_DesignTimeLayout.LayoutString = resources.GetString("cmbCompanys_DesignTimeLayout.LayoutString");
             this.cmbCompanys.DesignTimeLayout = cmbCompanys_DesignTimeLayout;
             this.cmbCompanys.DisplayMember = "Name";
-            this.cmbCompanys.Location = new System.Drawing.Point(71, 194);
-            this.cmbCompanys.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCompanys.Location = new System.Drawing.Point(50, 149);
             this.cmbCompanys.Name = "cmbCompanys";
             this.cmbCompanys.SelectedIndex = -1;
             this.cmbCompanys.SelectedItem = null;
-            this.cmbCompanys.Size = new System.Drawing.Size(184, 34);
+            this.cmbCompanys.Size = new System.Drawing.Size(129, 28);
             this.cmbCompanys.TabIndex = 6;
             this.cmbCompanys.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.toolTip1.SetToolTip(this.cmbCompanys, "انتخاب نام شرکت");
@@ -764,11 +730,10 @@
             this.btnAddCompanys.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddCompanys.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddCompanys.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddCompanys.Location = new System.Drawing.Point(44, 194);
-            this.btnAddCompanys.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddCompanys.Location = new System.Drawing.Point(31, 149);
             this.btnAddCompanys.Name = "btnAddCompanys";
             this.btnAddCompanys.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddCompanys.Size = new System.Drawing.Size(26, 36);
+            this.btnAddCompanys.Size = new System.Drawing.Size(18, 28);
             this.btnAddCompanys.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddCompanys.Symbol = "";
             this.btnAddCompanys.SymbolSize = 12F;
@@ -784,12 +749,11 @@
             cmbTruckManufacturer_DesignTimeLayout.LayoutString = resources.GetString("cmbTruckManufacturer_DesignTimeLayout.LayoutString");
             this.cmbTruckManufacturer.DesignTimeLayout = cmbTruckManufacturer_DesignTimeLayout;
             this.cmbTruckManufacturer.DisplayMember = "Name";
-            this.cmbTruckManufacturer.Location = new System.Drawing.Point(194, 459);
-            this.cmbTruckManufacturer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbTruckManufacturer.Location = new System.Drawing.Point(136, 353);
             this.cmbTruckManufacturer.Name = "cmbTruckManufacturer";
             this.cmbTruckManufacturer.SelectedIndex = -1;
             this.cmbTruckManufacturer.SelectedItem = null;
-            this.cmbTruckManufacturer.Size = new System.Drawing.Size(230, 34);
+            this.cmbTruckManufacturer.Size = new System.Drawing.Size(161, 28);
             this.cmbTruckManufacturer.TabIndex = 12;
             this.cmbTruckManufacturer.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbTruckManufacturer.ValueMember = "id";
@@ -801,10 +765,9 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label18.Location = new System.Drawing.Point(431, 465);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(302, 358);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(100, 23);
+            this.label18.Size = new System.Drawing.Size(81, 18);
             this.label18.TabIndex = 98;
             this.label18.Text = "کارخانه سازنده:";
             // 
@@ -813,11 +776,10 @@
             this.btnAddTruckManufacturer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddTruckManufacturer.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddTruckManufacturer.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddTruckManufacturer.Location = new System.Drawing.Point(166, 459);
-            this.btnAddTruckManufacturer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddTruckManufacturer.Location = new System.Drawing.Point(116, 353);
             this.btnAddTruckManufacturer.Name = "btnAddTruckManufacturer";
             this.btnAddTruckManufacturer.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddTruckManufacturer.Size = new System.Drawing.Size(26, 36);
+            this.btnAddTruckManufacturer.Size = new System.Drawing.Size(18, 28);
             this.btnAddTruckManufacturer.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddTruckManufacturer.Symbol = "";
             this.btnAddTruckManufacturer.SymbolSize = 12F;
@@ -832,12 +794,11 @@
             cmbColor_DesignTimeLayout.LayoutString = resources.GetString("cmbColor_DesignTimeLayout.LayoutString");
             this.cmbColor.DesignTimeLayout = cmbColor_DesignTimeLayout;
             this.cmbColor.DisplayMember = "Name";
-            this.cmbColor.Location = new System.Drawing.Point(194, 547);
-            this.cmbColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbColor.Location = new System.Drawing.Point(136, 421);
             this.cmbColor.Name = "cmbColor";
             this.cmbColor.SelectedIndex = -1;
             this.cmbColor.SelectedItem = null;
-            this.cmbColor.Size = new System.Drawing.Size(230, 34);
+            this.cmbColor.Size = new System.Drawing.Size(161, 28);
             this.cmbColor.TabIndex = 14;
             this.cmbColor.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbColor.ValueMember = "id";
@@ -849,11 +810,10 @@
             this.btnAddColor.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddColor.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddColor.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddColor.Location = new System.Drawing.Point(166, 547);
-            this.btnAddColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddColor.Location = new System.Drawing.Point(116, 421);
             this.btnAddColor.Name = "btnAddColor";
             this.btnAddColor.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddColor.Size = new System.Drawing.Size(26, 36);
+            this.btnAddColor.Size = new System.Drawing.Size(18, 28);
             this.btnAddColor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddColor.Symbol = "";
             this.btnAddColor.SymbolSize = 12F;
@@ -867,20 +827,19 @@
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label19.Location = new System.Drawing.Point(431, 554);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(302, 426);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(38, 23);
+            this.label19.Size = new System.Drawing.Size(31, 18);
             this.label19.TabIndex = 98;
             this.label19.Text = "رنگ:";
             // 
             // frmCar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1689, 831);
+            this.ClientSize = new System.Drawing.Size(1182, 639);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(7, 10, 7, 10);
+            this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "frmCar";
             this.Text = "فرم ثبت ناوگان ها";
             this.Load += new System.EventHandler(this.frmCar_Load);

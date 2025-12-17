@@ -357,9 +357,17 @@ namespace HM_ERP_System.Forms.Customer
 
                 if (cmbGroup.Text == "")
                 {
-                    PublicClass.ErrorMesseg(ResourceCode.T097);
-                    cmbGroup.Focus();
-                    return;
+                    if (ListId_ != 0)
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T181);
+                        return;
+                    }
+                    else
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T097);
+                        cmbGroup.Focus();
+                        return;
+                    }
                 }
 
 
@@ -624,6 +632,11 @@ namespace HM_ERP_System.Forms.Customer
                         if (!PublicClass.SetPeremission("Node1_1_1_2", 1)) return;
                         using (var db = new DBcontextModel())
                         {
+                            var ch=db.CustomerToGroups.Where(c=>c.CustomerId==ListId).Count();
+                            if(ch==0)
+                            {
+                                PublicClass.StopMesseg(ResourceCode.T181+'\n'+ ResourceCode.T182); return;
+                            }
                             var q = db.Customers.Where(c => c.Id == ListId).First();
                             cmbTypeCustomer.Value = q.id_TypeCustomer;
                             txtName.Text = q.Name;

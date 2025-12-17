@@ -106,21 +106,21 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(1214, 673);
+            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(737, 511);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(1214, 65);
+            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(737, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnAddCustomerByExcelFil);
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 738);
-            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(1214, 36);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 561);
+            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(737, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
@@ -171,44 +171,44 @@
             this.pnlAddItemBodi.Controls.Add(this.label15);
             this.pnlAddItemBodi.Controls.Add(this.label14);
             this.pnlAddItemBodi.Controls.Add(this.label3);
-            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(345, 730);
+            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(350, 555);
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 730);
-            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlAddItemFoter.Size = new System.Drawing.Size(345, 44);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 555);
+            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItemFoter.Size = new System.Drawing.Size(350, 34);
             // 
             // btnSave
             // 
-            this.btnSave.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnSave.Size = new System.Drawing.Size(107, 44);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Size = new System.Drawing.Size(75, 34);
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(238, 0);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.btnNew.Size = new System.Drawing.Size(107, 44);
+            this.btnNew.Location = new System.Drawing.Point(275, 0);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNew.Size = new System.Drawing.Size(75, 34);
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(811, 16);
-            this.txtDateStart.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtDateStart.Location = new System.Drawing.Point(511, 12);
+            this.txtDateStart.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 20, 17, 4, 6, 98);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(523, 16);
-            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.txtDateEnd.Location = new System.Drawing.Point(309, 12);
+            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 20, 17, 4, 6, 98);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(394, 20);
-            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnShowListItems.Location = new System.Drawing.Point(219, 15);
+            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4);
             // 
             // labelX2
             // 
@@ -216,9 +216,9 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(708, 22);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.labelX2.Size = new System.Drawing.Size(80, 29);
+            this.labelX2.Location = new System.Drawing.Point(439, 17);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
             // 
@@ -226,33 +226,33 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(997, 22);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.labelX1.Size = new System.Drawing.Size(129, 29);
+            this.labelX1.Location = new System.Drawing.Point(641, 17);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Location = new System.Drawing.Point(3, 27);
-            this.pnlViewItems.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlViewItems.Size = new System.Drawing.Size(1216, 808);
+            this.pnlViewItems.Location = new System.Drawing.Point(3, 25);
+            this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItems.Size = new System.Drawing.Size(739, 617);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(1219, 27);
-            this.pnlAddItems.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.pnlAddItems.Size = new System.Drawing.Size(351, 808);
+            this.pnlAddItems.Location = new System.Drawing.Point(742, 25);
+            this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItems.Size = new System.Drawing.Size(356, 617);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(978, 0);
-            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnExportToExcel.Location = new System.Drawing.Point(572, 0);
+            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(1027, 0);
-            this.buttonX01.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.buttonX01.Size = new System.Drawing.Size(137, 36);
+            this.buttonX01.Location = new System.Drawing.Point(606, 0);
+            this.buttonX01.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonX01.Size = new System.Drawing.Size(96, 28);
             this.buttonX01.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnRepC1,
             this.buttonItem1});
@@ -261,8 +261,8 @@
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(1164, 0);
-            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(702, 0);
+            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
@@ -284,13 +284,12 @@
             this.dgvList.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvList_Layout_0});
             this.dgvList.Location = new System.Drawing.Point(0, 0);
-            this.dgvList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvList.Name = "dgvList";
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCustomer";
-            this.dgvList.Size = new System.Drawing.Size(1214, 673);
+            this.dgvList.Size = new System.Drawing.Size(737, 511);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -307,12 +306,11 @@
             cmbTypeCustomer_DesignTimeLayout.LayoutString = resources.GetString("cmbTypeCustomer_DesignTimeLayout.LayoutString");
             this.cmbTypeCustomer.DesignTimeLayout = cmbTypeCustomer_DesignTimeLayout;
             this.cmbTypeCustomer.DisplayMember = "Name";
-            this.cmbTypeCustomer.Location = new System.Drawing.Point(184, 5);
-            this.cmbTypeCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbTypeCustomer.Location = new System.Drawing.Point(129, 4);
             this.cmbTypeCustomer.Name = "cmbTypeCustomer";
             this.cmbTypeCustomer.SelectedIndex = -1;
             this.cmbTypeCustomer.SelectedItem = null;
-            this.cmbTypeCustomer.Size = new System.Drawing.Size(169, 34);
+            this.cmbTypeCustomer.Size = new System.Drawing.Size(118, 28);
             this.cmbTypeCustomer.TabIndex = 0;
             this.cmbTypeCustomer.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbTypeCustomer.ValueMember = "id";
@@ -321,31 +319,28 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(54, 136);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Location = new System.Drawing.Point(38, 105);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(299, 34);
+            this.txtName.Size = new System.Drawing.Size(209, 28);
             this.txtName.TabIndex = 3;
             this.txtName.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // txtFamily
             // 
-            this.txtFamily.Location = new System.Drawing.Point(54, 182);
-            this.txtFamily.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFamily.Location = new System.Drawing.Point(38, 140);
             this.txtFamily.Name = "txtFamily";
-            this.txtFamily.Size = new System.Drawing.Size(299, 34);
+            this.txtFamily.Size = new System.Drawing.Size(209, 28);
             this.txtFamily.TabIndex = 4;
             this.txtFamily.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtFamily.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // txtTel1
             // 
-            this.txtTel1.Location = new System.Drawing.Point(184, 226);
-            this.txtTel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTel1.Location = new System.Drawing.Point(129, 174);
             this.txtTel1.MaxLength = 11;
             this.txtTel1.Name = "txtTel1";
-            this.txtTel1.Size = new System.Drawing.Size(169, 34);
+            this.txtTel1.Size = new System.Drawing.Size(118, 28);
             this.txtTel1.TabIndex = 5;
             this.txtTel1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtTel1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
@@ -353,10 +348,9 @@
             // 
             // txtAdders1
             // 
-            this.txtAdders1.Location = new System.Drawing.Point(54, 355);
-            this.txtAdders1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAdders1.Location = new System.Drawing.Point(38, 273);
             this.txtAdders1.Name = "txtAdders1";
-            this.txtAdders1.Size = new System.Drawing.Size(299, 34);
+            this.txtAdders1.Size = new System.Drawing.Size(209, 28);
             this.txtAdders1.TabIndex = 8;
             this.txtAdders1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtAdders1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
@@ -366,8 +360,7 @@
             this.txtCodMeli.CheackCodeMeli = true;
             this.txtCodMeli.CodeMeliTextLength = 11;
             this.txtCodMeli.Day = 0;
-            this.txtCodMeli.Location = new System.Drawing.Point(184, 92);
-            this.txtCodMeli.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodMeli.Location = new System.Drawing.Point(129, 71);
             this.txtCodMeli.Miladi = new System.DateTime(((long)(0)));
             this.txtCodMeli.Month = 0;
             this.txtCodMeli.Name = "txtCodMeli";
@@ -375,7 +368,7 @@
             this.txtCodMeli.Number = null;
             this.txtCodMeli.SelectedDate = null;
             this.txtCodMeli.Shamsi = null;
-            this.txtCodMeli.Size = new System.Drawing.Size(167, 34);
+            this.txtCodMeli.Size = new System.Drawing.Size(118, 28);
             this.txtCodMeli.TabIndex = 2;
             this.txtCodMeli.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCodMeli.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
@@ -389,22 +382,20 @@
             // 
             // txtDes
             // 
-            this.txtDes.Location = new System.Drawing.Point(54, 619);
-            this.txtDes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDes.Location = new System.Drawing.Point(38, 476);
             this.txtDes.Multiline = true;
             this.txtDes.Name = "txtDes";
-            this.txtDes.Size = new System.Drawing.Size(299, 73);
+            this.txtDes.Size = new System.Drawing.Size(209, 56);
             this.txtDes.TabIndex = 14;
             this.txtDes.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtDes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // txtDabitCardNumber
             // 
-            this.txtDabitCardNumber.Location = new System.Drawing.Point(54, 533);
-            this.txtDabitCardNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDabitCardNumber.Location = new System.Drawing.Point(38, 410);
             this.txtDabitCardNumber.MaxLength = 16;
             this.txtDabitCardNumber.Name = "txtDabitCardNumber";
-            this.txtDabitCardNumber.Size = new System.Drawing.Size(299, 34);
+            this.txtDabitCardNumber.Size = new System.Drawing.Size(209, 28);
             this.txtDabitCardNumber.TabIndex = 12;
             this.txtDabitCardNumber.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtDabitCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
@@ -412,11 +403,10 @@
             // 
             // txtSeryalShaba
             // 
-            this.txtSeryalShaba.Location = new System.Drawing.Point(54, 575);
-            this.txtSeryalShaba.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSeryalShaba.Location = new System.Drawing.Point(38, 442);
             this.txtSeryalShaba.MaxLength = 24;
             this.txtSeryalShaba.Name = "txtSeryalShaba";
-            this.txtSeryalShaba.Size = new System.Drawing.Size(299, 34);
+            this.txtSeryalShaba.Size = new System.Drawing.Size(209, 28);
             this.txtSeryalShaba.TabIndex = 13;
             this.txtSeryalShaba.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtSeryalShaba.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
@@ -427,10 +417,9 @@
             this.label24.AutoSize = true;
             this.label24.BackColor = System.Drawing.Color.Transparent;
             this.label24.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label24.Location = new System.Drawing.Point(360, 12);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Location = new System.Drawing.Point(252, 9);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(79, 23);
+            this.label24.Size = new System.Drawing.Size(64, 18);
             this.label24.TabIndex = 98;
             this.label24.Text = "نوع شخص:";
             // 
@@ -439,10 +428,9 @@
             this.lblName.AutoSize = true;
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblName.Location = new System.Drawing.Point(360, 143);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(252, 110);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(32, 23);
+            this.lblName.Size = new System.Drawing.Size(26, 18);
             this.lblName.TabIndex = 98;
             this.lblName.Text = "نام:";
             // 
@@ -451,10 +439,9 @@
             this.lblFamily.AutoSize = true;
             this.lblFamily.BackColor = System.Drawing.Color.Transparent;
             this.lblFamily.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblFamily.Location = new System.Drawing.Point(360, 188);
-            this.lblFamily.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFamily.Location = new System.Drawing.Point(252, 145);
             this.lblFamily.Name = "lblFamily";
-            this.lblFamily.Size = new System.Drawing.Size(89, 23);
+            this.lblFamily.Size = new System.Drawing.Size(73, 18);
             this.lblFamily.TabIndex = 98;
             this.lblFamily.Text = "نام خانوادگی:";
             // 
@@ -463,10 +450,9 @@
             this.lblCcodeMeli.AutoSize = true;
             this.lblCcodeMeli.BackColor = System.Drawing.Color.Transparent;
             this.lblCcodeMeli.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCcodeMeli.Location = new System.Drawing.Point(360, 101);
-            this.lblCcodeMeli.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCcodeMeli.Location = new System.Drawing.Point(252, 78);
             this.lblCcodeMeli.Name = "lblCcodeMeli";
-            this.lblCcodeMeli.Size = new System.Drawing.Size(58, 23);
+            this.lblCcodeMeli.Size = new System.Drawing.Size(46, 18);
             this.lblCcodeMeli.TabIndex = 98;
             this.lblCcodeMeli.Text = "کد ملی:";
             // 
@@ -475,10 +461,9 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(360, 233);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(252, 179);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 23);
+            this.label4.Size = new System.Drawing.Size(42, 18);
             this.label4.TabIndex = 98;
             this.label4.Text = "تلفن 1:";
             // 
@@ -487,10 +472,9 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(360, 361);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(252, 278);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 23);
+            this.label5.Size = new System.Drawing.Size(47, 18);
             this.label5.TabIndex = 98;
             this.label5.Text = "آدرس 1:";
             // 
@@ -499,10 +483,9 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(360, 540);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(252, 415);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 23);
+            this.label6.Size = new System.Drawing.Size(67, 18);
             this.label6.TabIndex = 98;
             this.label6.Text = "شماره کارت:";
             // 
@@ -511,10 +494,9 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(360, 581);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(252, 447);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 23);
+            this.label7.Size = new System.Drawing.Size(59, 18);
             this.label7.TabIndex = 98;
             this.label7.Text = "شماره شبا:";
             // 
@@ -523,10 +505,9 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(360, 619);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(252, 476);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 23);
+            this.label8.Size = new System.Drawing.Size(57, 18);
             this.label8.TabIndex = 98;
             this.label8.Text = "توضیحات:";
             // 
@@ -535,20 +516,18 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(26, 578);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(18, 445);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 29);
+            this.label9.Size = new System.Drawing.Size(23, 23);
             this.label9.TabIndex = 98;
             this.label9.Text = "IR";
             // 
             // txtTel2
             // 
-            this.txtTel2.Location = new System.Drawing.Point(184, 270);
-            this.txtTel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTel2.Location = new System.Drawing.Point(129, 208);
             this.txtTel2.MaxLength = 11;
             this.txtTel2.Name = "txtTel2";
-            this.txtTel2.Size = new System.Drawing.Size(169, 34);
+            this.txtTel2.Size = new System.Drawing.Size(118, 28);
             this.txtTel2.TabIndex = 6;
             this.txtTel2.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.txtTel2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
@@ -559,19 +538,17 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(360, 277);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(252, 213);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 23);
+            this.label10.Size = new System.Drawing.Size(45, 18);
             this.label10.TabIndex = 98;
             this.label10.Text = "تلفن 2:";
             // 
             // txtAdders2
             // 
-            this.txtAdders2.Location = new System.Drawing.Point(54, 399);
-            this.txtAdders2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAdders2.Location = new System.Drawing.Point(38, 307);
             this.txtAdders2.Name = "txtAdders2";
-            this.txtAdders2.Size = new System.Drawing.Size(299, 34);
+            this.txtAdders2.Size = new System.Drawing.Size(209, 28);
             this.txtAdders2.TabIndex = 9;
             this.txtAdders2.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtAdders2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
@@ -581,10 +558,9 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.Location = new System.Drawing.Point(360, 406);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(252, 312);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 23);
+            this.label11.Size = new System.Drawing.Size(50, 18);
             this.label11.TabIndex = 98;
             this.label11.Text = "آدرس 2:";
             // 
@@ -593,19 +569,17 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(360, 494);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(252, 380);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(62, 23);
+            this.label12.Size = new System.Drawing.Size(51, 18);
             this.label12.TabIndex = 98;
             this.label12.Text = "نام بانک:";
             // 
             // txtPostalCode
             // 
-            this.txtPostalCode.Location = new System.Drawing.Point(184, 443);
-            this.txtPostalCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPostalCode.Location = new System.Drawing.Point(129, 341);
             this.txtPostalCode.Name = "txtPostalCode";
-            this.txtPostalCode.Size = new System.Drawing.Size(169, 34);
+            this.txtPostalCode.Size = new System.Drawing.Size(118, 28);
             this.txtPostalCode.TabIndex = 10;
             this.txtPostalCode.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.txtPostalCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
@@ -616,10 +590,9 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label13.Location = new System.Drawing.Point(360, 450);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(252, 346);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(67, 23);
+            this.label13.Size = new System.Drawing.Size(54, 18);
             this.label13.TabIndex = 98;
             this.label13.Text = "کد پستی:";
             // 
@@ -628,10 +601,9 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(166, 12);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(116, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(21, 23);
+            this.label3.Size = new System.Drawing.Size(15, 18);
             this.label3.TabIndex = 98;
             this.label3.Text = "*";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -641,10 +613,9 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(36, 142);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(25, 109);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(21, 23);
+            this.label14.Size = new System.Drawing.Size(15, 18);
             this.label14.TabIndex = 98;
             this.label14.Text = "*";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -654,10 +625,9 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(36, 187);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(25, 144);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(21, 23);
+            this.label15.Size = new System.Drawing.Size(15, 18);
             this.label15.TabIndex = 98;
             this.label15.Text = "*";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -667,10 +637,9 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(113, 98);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(79, 75);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(21, 23);
+            this.label16.Size = new System.Drawing.Size(15, 18);
             this.label16.TabIndex = 98;
             this.label16.Text = "*";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -680,10 +649,9 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(166, 233);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(116, 179);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(21, 23);
+            this.label17.Size = new System.Drawing.Size(15, 18);
             this.label17.TabIndex = 98;
             this.label17.Text = "*";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -691,10 +659,9 @@
             // chkControlCodeMeli
             // 
             this.chkControlCodeMeli.AutoSize = true;
-            this.chkControlCodeMeli.Location = new System.Drawing.Point(134, 101);
-            this.chkControlCodeMeli.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkControlCodeMeli.Location = new System.Drawing.Point(94, 78);
             this.chkControlCodeMeli.Name = "chkControlCodeMeli";
-            this.chkControlCodeMeli.Size = new System.Drawing.Size(18, 17);
+            this.chkControlCodeMeli.Size = new System.Drawing.Size(15, 14);
             this.chkControlCodeMeli.TabIndex = 99;
             this.toolTip1.SetToolTip(this.chkControlCodeMeli, "جهت کنترل صحیح بودن کد ملی اشخاص");
             this.chkControlCodeMeli.UseVisualStyleBackColor = true;
@@ -710,12 +677,11 @@
             this.cmbCity.DesignTimeLayout = cmbCity_DesignTimeLayout;
             this.cmbCity.DisplayMember = "CiltyName";
             this.cmbCity.Image = ((System.Drawing.Image)(resources.GetObject("cmbCity.Image")));
-            this.cmbCity.Location = new System.Drawing.Point(54, 311);
-            this.cmbCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCity.Location = new System.Drawing.Point(38, 239);
             this.cmbCity.Name = "cmbCity";
             this.cmbCity.SelectedIndex = -1;
             this.cmbCity.SelectedItem = null;
-            this.cmbCity.Size = new System.Drawing.Size(299, 34);
+            this.cmbCity.Size = new System.Drawing.Size(209, 30);
             this.cmbCity.TabIndex = 7;
             this.cmbCity.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.toolTip1.SetToolTip(this.cmbCity, "F2 جستجوی بر اساس فیلدها");
@@ -732,11 +698,11 @@
             this.cmbGroup.DropDownDisplayMember = "Name";
             this.cmbGroup.DropDownValueMember = "id";
             this.cmbGroup.Image = ((System.Drawing.Image)(resources.GetObject("cmbGroup.Image")));
-            this.cmbGroup.Location = new System.Drawing.Point(54, 48);
-            this.cmbGroup.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cmbGroup.Location = new System.Drawing.Point(38, 37);
+            this.cmbGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbGroup.Name = "cmbGroup";
             this.cmbGroup.SaveSettings = false;
-            this.cmbGroup.Size = new System.Drawing.Size(299, 34);
+            this.cmbGroup.Size = new System.Drawing.Size(209, 30);
             this.cmbGroup.TabIndex = 1;
             this.cmbGroup.ValuesDataMember = null;
             this.cmbGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGroup_KeyDown);
@@ -746,10 +712,9 @@
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label20.Location = new System.Drawing.Point(360, 56);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Location = new System.Drawing.Point(252, 43);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(59, 23);
+            this.label20.Size = new System.Drawing.Size(48, 18);
             this.label20.TabIndex = 114;
             this.label20.Text = "گروه ها:";
             // 
@@ -758,11 +723,10 @@
             this.btnAddGroup.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddGroup.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddGroup.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddGroup.Location = new System.Drawing.Point(24, 49);
-            this.btnAddGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddGroup.Location = new System.Drawing.Point(17, 38);
             this.btnAddGroup.Name = "btnAddGroup";
             this.btnAddGroup.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddGroup.Size = new System.Drawing.Size(29, 36);
+            this.btnAddGroup.Size = new System.Drawing.Size(20, 28);
             this.btnAddGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddGroup.Symbol = "";
             this.btnAddGroup.SymbolSize = 12F;
@@ -776,10 +740,9 @@
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label21.ForeColor = System.Drawing.Color.Red;
-            this.label21.Location = new System.Drawing.Point(7, 56);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Location = new System.Drawing.Point(5, 43);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(21, 23);
+            this.label21.Size = new System.Drawing.Size(15, 18);
             this.label21.TabIndex = 98;
             this.label21.Text = "*";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -791,10 +754,9 @@
             this.btnAddCustomerByExcelFil.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnAddCustomerByExcelFil.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
             this.btnAddCustomerByExcelFil.Location = new System.Drawing.Point(0, 0);
-            this.btnAddCustomerByExcelFil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddCustomerByExcelFil.Name = "btnAddCustomerByExcelFil";
             this.btnAddCustomerByExcelFil.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddCustomerByExcelFil.Size = new System.Drawing.Size(277, 36);
+            this.btnAddCustomerByExcelFil.Size = new System.Drawing.Size(194, 28);
             this.btnAddCustomerByExcelFil.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddCustomerByExcelFil.Symbol = "59390";
             this.btnAddCustomerByExcelFil.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
@@ -843,10 +805,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(360, 318);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(252, 245);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 23);
+            this.label1.Size = new System.Drawing.Size(53, 18);
             this.label1.TabIndex = 98;
             this.label1.Text = "نام شهــر:";
             // 
@@ -856,11 +817,10 @@
             this.btnAddNewCity.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewCity.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewCity.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddNewCity.Location = new System.Drawing.Point(27, 312);
-            this.btnAddNewCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddNewCity.Location = new System.Drawing.Point(19, 240);
             this.btnAddNewCity.Name = "btnAddNewCity";
             this.btnAddNewCity.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddNewCity.Size = new System.Drawing.Size(26, 36);
+            this.btnAddNewCity.Size = new System.Drawing.Size(18, 28);
             this.btnAddNewCity.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddNewCity.Symbol = "";
             this.btnAddNewCity.SymbolSize = 15F;
@@ -873,10 +833,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(4, 318);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(3, 245);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 23);
+            this.label2.Size = new System.Drawing.Size(15, 18);
             this.label2.TabIndex = 98;
             this.label2.Text = "*";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -887,11 +846,10 @@
             this.btnAddBanck.BackColor = System.Drawing.Color.Transparent;
             this.btnAddBanck.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddBanck.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddBanck.Location = new System.Drawing.Point(27, 487);
-            this.btnAddBanck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddBanck.Location = new System.Drawing.Point(19, 375);
             this.btnAddBanck.Name = "btnAddBanck";
             this.btnAddBanck.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnAddBanck.Size = new System.Drawing.Size(26, 36);
+            this.btnAddBanck.Size = new System.Drawing.Size(18, 28);
             this.btnAddBanck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddBanck.Symbol = "";
             this.btnAddBanck.SymbolSize = 15F;
@@ -907,12 +865,11 @@
             this.cmbBanck.DesignTimeLayout = cmbBanck_DesignTimeLayout;
             this.cmbBanck.DisplayMember = "Name";
             this.cmbBanck.Image = ((System.Drawing.Image)(resources.GetObject("cmbBanck.Image")));
-            this.cmbBanck.Location = new System.Drawing.Point(54, 486);
-            this.cmbBanck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbBanck.Location = new System.Drawing.Point(38, 374);
             this.cmbBanck.Name = "cmbBanck";
             this.cmbBanck.SelectedIndex = -1;
             this.cmbBanck.SelectedItem = null;
-            this.cmbBanck.Size = new System.Drawing.Size(299, 34);
+            this.cmbBanck.Size = new System.Drawing.Size(209, 30);
             this.cmbBanck.TabIndex = 11;
             this.cmbBanck.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.cmbBanck.ValueMember = "id";
@@ -925,11 +882,10 @@
             this.btnCratMelyCode.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCratMelyCode.Enabled = false;
             this.btnCratMelyCode.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnCratMelyCode.Location = new System.Drawing.Point(156, 92);
-            this.btnCratMelyCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCratMelyCode.Location = new System.Drawing.Point(109, 71);
             this.btnCratMelyCode.Name = "btnCratMelyCode";
             this.btnCratMelyCode.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnCratMelyCode.Size = new System.Drawing.Size(29, 36);
+            this.btnCratMelyCode.Size = new System.Drawing.Size(20, 28);
             this.btnCratMelyCode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCratMelyCode.Symbol = "";
             this.btnCratMelyCode.SymbolSize = 12F;
@@ -953,11 +909,11 @@
             // 
             // frmCustomer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1573, 838);
+            this.ClientSize = new System.Drawing.Size(1101, 645);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmCustomer";
             this.Text = "فرم ثبت اشخاص";
             this.Load += new System.EventHandler(this.frmCustomer_Load);

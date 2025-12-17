@@ -553,7 +553,7 @@ namespace HM_ERP_System.Forms.Car
                         cmbOwnership.Value = q.OwnershipId;
                         txtDes.Text = q.Description;
                         cmbTruckManufacturer.Value = q.TruckManufacturerId;
-                        cmbColor.Value = q.Color;
+                        cmbColor.Value = q.ColorId;
                         chkStatus.Checked = q.Status;
                         if (q.OwnershipCompanyId != 0)
                         {

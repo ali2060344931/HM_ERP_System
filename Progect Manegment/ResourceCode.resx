@@ -661,6 +661,12 @@
   <data name="T180" xml:space="preserve">
     <value>نام شهر اصلی و شناور نباید یکسان باشد</value>
   </data>
+  <data name="T181" xml:space="preserve">
+    <value>ابتدا باید برای این شخص در بخش گروه بندی اشخاص، گروه(گروهای) موردش نظر را انتخاب نمائید.</value>
+  </data>
+  <data name="T182" xml:space="preserve">
+    <value>امکان ویرایش وجود ندارد.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

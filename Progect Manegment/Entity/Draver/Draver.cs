@@ -75,8 +75,8 @@ namespace HM_ERP_System.Entity.Draver
             HasKey(x => x.Id);
             //Property(d => d.Name).IsRequired().HasMaxLength(100);
             Property(d => d.BirDate).IsRequired().HasMaxLength(10);
-            Property(d => d.SeryalGovahiname).HasMaxLength(15);
-            Property(d => d.SmartCard).HasMaxLength(15);
+            Property(d => d.SeryalGovahiname).HasMaxLength(20);
+            Property(d => d.SmartCard).HasMaxLength(20);
 
         }
     }

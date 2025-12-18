@@ -561,6 +561,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                 return;
             }
             cmbCity2.Focus();
+            cmbCity2.ResetText();
         }
     }
 }

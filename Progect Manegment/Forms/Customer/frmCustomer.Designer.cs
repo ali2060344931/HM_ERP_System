@@ -106,18 +106,21 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(742, 511);
+            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(737, 511);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(742, 50);
+            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(737, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnAddCustomerByExcelFil);
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 561);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(742, 28);
+            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(737, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnExportToExcel, 0);
@@ -168,37 +171,44 @@
             this.pnlAddItemBodi.Controls.Add(this.label15);
             this.pnlAddItemBodi.Controls.Add(this.label14);
             this.pnlAddItemBodi.Controls.Add(this.label3);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(345, 555);
+            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(350, 555);
             // 
             // pnlAddItemFoter
             // 
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 555);
-            this.pnlAddItemFoter.Size = new System.Drawing.Size(345, 34);
+            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItemFoter.Size = new System.Drawing.Size(350, 34);
             // 
             // btnSave
             // 
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Size = new System.Drawing.Size(75, 34);
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(270, 0);
+            this.btnNew.Location = new System.Drawing.Point(275, 0);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Size = new System.Drawing.Size(75, 34);
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(503, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(511, 12);
+            this.txtDateStart.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 20, 17, 4, 6, 98);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(301, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(309, 12);
+            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 20, 17, 4, 6, 98);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(211, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(219, 15);
+            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4);
             // 
             // labelX2
             // 
@@ -206,7 +216,8 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(431, 17);
+            this.labelX2.Location = new System.Drawing.Point(439, 17);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
@@ -215,27 +226,32 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(633, 17);
+            this.labelX1.Location = new System.Drawing.Point(641, 17);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(4);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
             this.pnlViewItems.Location = new System.Drawing.Point(3, 25);
-            this.pnlViewItems.Size = new System.Drawing.Size(744, 617);
+            this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItems.Size = new System.Drawing.Size(739, 617);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(747, 25);
-            this.pnlAddItems.Size = new System.Drawing.Size(351, 617);
+            this.pnlAddItems.Location = new System.Drawing.Point(742, 25);
+            this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItems.Size = new System.Drawing.Size(356, 617);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(577, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(572, 0);
+            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(611, 0);
+            this.buttonX01.Location = new System.Drawing.Point(606, 0);
+            this.buttonX01.Margin = new System.Windows.Forms.Padding(4);
             this.buttonX01.Size = new System.Drawing.Size(96, 28);
             this.buttonX01.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnRepC1,
@@ -245,7 +261,8 @@
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(707, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(702, 0);
+            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
@@ -272,7 +289,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCustomer";
-            this.dgvList.Size = new System.Drawing.Size(742, 511);
+            this.dgvList.Size = new System.Drawing.Size(737, 511);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -896,6 +913,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1101, 645);
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmCustomer";
             this.Text = "فرم ثبت اشخاص";
             this.Load += new System.EventHandler(this.frmCustomer_Load);

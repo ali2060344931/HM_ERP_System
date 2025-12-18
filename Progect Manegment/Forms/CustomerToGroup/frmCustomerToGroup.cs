@@ -81,7 +81,8 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                             select new
                             {
                                 cg.Id,
-                                personName = cu.Family!=""?(cu.Family + "، " + cu.Name).Trim(): cu.Name,
+                                //personName = cu.Family!=""?(cu.Family + "، " + cu.Name).Trim(): cu.Name,
+                                personName =cu.Family + " " + cu.Name,
                                 groupName = pg.Name,
                                 cu.CodMeli,
                             };
@@ -111,7 +112,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                             select new
                             {
                                 cu.Id,
-                                name = cu.Family != "" ? (cu.Family + "، " + cu.Name).Trim() : cu.Name,
+                                name = cu.Family + " " + cu.Name,
                                 CustomerType = ct.Name,
                                 cu.CodMeli,
                             };

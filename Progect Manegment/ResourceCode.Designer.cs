@@ -88,7 +88,7 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to آیا آیتم مورد نظر ازلیست حذف گردد؟.
+        ///   Looks up a localized string similar to آیا آیتم(سطر) مورد نظر از لیست حذف گردد؟.
         /// </summary>
         internal static string T003 {
             get {
@@ -1686,6 +1686,24 @@ namespace HM_ERP_System {
         internal static string T180 {
             get {
                 return ResourceManager.GetString("T180", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ابتدا باید برای این شخص در بخش گروه بندی اشخاص، گروه(گروهای) موردش نظر را انتخاب نمائید..
+        /// </summary>
+        internal static string T181 {
+            get {
+                return ResourceManager.GetString("T181", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to امکان ویرایش وجود ندارد..
+        /// </summary>
+        internal static string T182 {
+            get {
+                return ResourceManager.GetString("T182", resourceCulture);
             }
         }
         

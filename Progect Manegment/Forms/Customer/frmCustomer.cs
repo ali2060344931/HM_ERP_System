@@ -357,9 +357,17 @@ namespace HM_ERP_System.Forms.Customer
 
                 if (cmbGroup.Text == "")
                 {
-                    PublicClass.ErrorMesseg(ResourceCode.T097);
-                    cmbGroup.Focus();
-                    return;
+                    if (ListId_ != 0)
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T181);
+                        return;
+                    }
+                    else
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T097);
+                        cmbGroup.Focus();
+                        return;
+                    }
                 }
 
 
@@ -624,6 +632,11 @@ namespace HM_ERP_System.Forms.Customer
                         if (!PublicClass.SetPeremission("Node1_1_1_2", 1)) return;
                         using (var db = new DBcontextModel())
                         {
+                            var ch=db.CustomerToGroups.Where(c=>c.CustomerId==ListId).Count();
+                            if(ch==0)
+                            {
+                                PublicClass.StopMesseg(ResourceCode.T181+'\n'+ ResourceCode.T182); return;
+                            }
                             var q = db.Customers.Where(c => c.Id == ListId).First();
                             cmbTypeCustomer.Value = q.id_TypeCustomer;
                             txtName.Text = q.Name;
@@ -662,13 +675,13 @@ namespace HM_ERP_System.Forms.Customer
 
                         using (var db = new DBcontextModel())
                         {
-
                             var c1 = db.DetailedAccounts.Where(c => c.CustomerId == ListId);
                             var c2 = db.CustomerToGroups.Where(c => c.CustomerId == ListId);
                             var c3 = db.CustomerRoles.Where(c => c.CustomerId == ListId);
                             //var c4 = db.CustomerRoles.Where(c => c.CustomerId == ListId);
 
-                            if (c1 != null || c2 != null || c3 != null )
+                            //if (c1 != null || c2 != null || c3 != null /*|| c4 != null*/)
+                            if (c1.Count() != 0 || c2.Count() != 0 || c3.Count() != 0 )
                             {
                                 PublicClass.StopMesseg(ResourceCode.T004); return;
                             }

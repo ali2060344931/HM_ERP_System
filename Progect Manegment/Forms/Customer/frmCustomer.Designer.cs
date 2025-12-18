@@ -106,7 +106,7 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(742, 533);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(742, 511);
             // 
             // pnlViewItemHeder
             // 
@@ -116,7 +116,7 @@
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnAddCustomerByExcelFil);
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 583);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 561);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(742, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.buttonX01, 0);
@@ -168,11 +168,11 @@
             this.pnlAddItemBodi.Controls.Add(this.label15);
             this.pnlAddItemBodi.Controls.Add(this.label14);
             this.pnlAddItemBodi.Controls.Add(this.label3);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(345, 577);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(345, 555);
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 577);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 555);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(345, 34);
             // 
             // btnSave
@@ -220,12 +220,13 @@
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Size = new System.Drawing.Size(744, 639);
+            this.pnlViewItems.Location = new System.Drawing.Point(3, 25);
+            this.pnlViewItems.Size = new System.Drawing.Size(744, 617);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(747, 3);
-            this.pnlAddItems.Size = new System.Drawing.Size(351, 639);
+            this.pnlAddItems.Location = new System.Drawing.Point(747, 25);
+            this.pnlAddItems.Size = new System.Drawing.Size(351, 617);
             // 
             // btnExportToExcel
             // 
@@ -271,7 +272,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCustomer";
-            this.dgvList.Size = new System.Drawing.Size(742, 533);
+            this.dgvList.Size = new System.Drawing.Size(742, 511);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -897,7 +898,6 @@
             this.KeyPreview = true;
             this.Name = "frmCustomer";
             this.Text = "فرم ثبت اشخاص";
-            //this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCustomer_FormClosing);
             this.Load += new System.EventHandler(this.frmCustomer_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCustomer_KeyDown);
             this.Controls.SetChildIndex(this.pnlAddItems, 0);

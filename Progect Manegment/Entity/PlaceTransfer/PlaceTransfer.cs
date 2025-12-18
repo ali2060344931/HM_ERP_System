@@ -38,7 +38,10 @@ namespace HM_ERP_System.Entity.PlaceTransfer
         /// </summary>
         public string PostalCode { get; set; }
         public string Addres { get; set; }
-
+        /// <summary>
+        /// جدول رشته های فعالیت
+        /// </summary>
+        public int? FieldActivityId { get; set; }
         /// <summary>
         /// تاریخ ثبت
         /// </summary>
@@ -48,7 +51,8 @@ namespace HM_ERP_System.Entity.PlaceTransfer
         /// </summary>
         public int UserId { get; set; }
 
-        public virtual EvacuationDeployment.EvacuationDeployment EvacuationDeployment { get; set; }
+        //public virtual EvacuationDeployment.EvacuationDeployment EvacuationDeployment { get; set; }
+        public virtual FieldActivity.FieldActivity FieldActivitys { get; set; }
         public virtual ICollection<FloatingPublicCities> FloatingPublicCities { get; set; }
     }
     public class PlaceTransferConfig : EntityTypeConfiguration<PlaceTransfer>
@@ -59,6 +63,14 @@ namespace HM_ERP_System.Entity.PlaceTransfer
             Property(d => d.Name).IsRequired().HasMaxLength(150);
             Property(d => d.PostalCode).HasMaxLength(10);
             Property(d => d.Addres).HasMaxLength(500);
+
+            //HasRequired(c => c.FieldActivitys)
+            //    .WithMany(p => p.PlaceTransfers)
+            //    .HasForeignKey(c => c.FieldActivityId)
+            //    .WillCascadeOnDelete(false);
+            HasOptional(c => c.FieldActivitys)
+    .WithMany(p => p.PlaceTransfers)
+    .HasForeignKey(c => c.FieldActivityId);
         }
     }
 

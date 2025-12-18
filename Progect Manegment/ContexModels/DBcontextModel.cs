@@ -26,6 +26,7 @@ using HM_ERP_System.Entity.DocumentBanck;
 using HM_ERP_System.Entity.Draver;
 using HM_ERP_System.Entity.EvacuationDeployment;
 using HM_ERP_System.Entity.FareCalcMethod;
+using HM_ERP_System.Entity.FieldActivity;
 using HM_ERP_System.Entity.FinancialYear;
 using HM_ERP_System.Entity.Gender;
 using HM_ERP_System.Entity.GoodsTransfer;
@@ -139,7 +140,7 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new ColorConfig());
             modelBuilder.Configurations.Add(new WarehouseConfig());
             modelBuilder.Configurations.Add(new WarehouseTypeConfig());
-            //modelBuilder.Configurations.Add(new GoodsInConfig());
+            modelBuilder.Configurations.Add(new FieldActivityConfig());
 
 
             base.OnModelCreating(modelBuilder);
@@ -421,7 +422,12 @@ namespace Progect_Manegment
         /// <summary>
         /// جدول شهرهای عمومی شناور
         /// </summary>
+        
         public virtual DbSet<FloatingPublicCities> FloatingPublicCities { get; set; }
+        /// <summary>
+        /// جدول رشته های فعالیت در انبارها
+        /// </summary>
+        public virtual DbSet<FieldActivity> FieldActivities { get; set; }
 
         #endregion
 

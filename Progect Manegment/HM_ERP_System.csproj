@@ -593,6 +593,7 @@
     <Compile Include="Entity\Draver\Draver.cs" />
     <Compile Include="Entity\EvacuationDeployment\EvacuationDeployment.cs" />
     <Compile Include="Entity\FareCalcMethod\FareCalcMethod.cs" />
+    <Compile Include="Entity\FieldActivity\FieldActivity.cs" />
     <Compile Include="Entity\FinancialYear\FinancialYear.cs" />
     <Compile Include="Entity\Gender\Gender.cs" />
     <Compile Include="Entity\GoodsTransfer\GoodsIn.cs" />
@@ -828,6 +829,12 @@
     </Compile>
     <Compile Include="Forms\Draver\frmDraver.Designer.cs">
       <DependentUpon>frmDraver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FieldActivity\frmFieldActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FieldActivity\frmFieldActivity.Designer.cs">
+      <DependentUpon>frmFieldActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FinancialYears\frmFinancialYears.cs">
       <SubType>Form</SubType>
@@ -1074,6 +1081,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Draver\frmDraver.resx">
       <DependentUpon>frmDraver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FieldActivity\frmFieldActivity.resx">
+      <DependentUpon>frmFieldActivity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FinancialYears\frmFinancialYears.resx">
       <DependentUpon>frmFinancialYears.cs</DependentUpon>

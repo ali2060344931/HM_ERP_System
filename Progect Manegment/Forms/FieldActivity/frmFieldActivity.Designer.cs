@@ -1,6 +1,6 @@
-﻿namespace HM_ERP_System.Forms.Persons
+﻿namespace HM_ERP_System.Forms.FieldActivity
 {
-    partial class frmProvinces
+    partial class frmFieldActivity
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProvinces));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFieldActivity));
+            this.label14 = new System.Windows.Forms.Label();
             this.txtName = new Janus.Windows.GridEX.EditControls.EditBox();
             this.dgvList = new GridExEx.GridExEx();
-            this.label14 = new System.Windows.Forms.Label();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -46,45 +46,51 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(474, 332);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(818, 338);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(474, 50);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(818, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 382);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(474, 34);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 388);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(818, 28);
             // 
             // pnlAddItemBodi
             // 
             this.pnlAddItemBodi.Controls.Add(this.label14);
             this.pnlAddItemBodi.Controls.Add(this.txtName);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(312, 388);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(472, 388);
             // 
             // pnlAddItemFoter
             // 
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 388);
+            this.pnlAddItemFoter.Size = new System.Drawing.Size(472, 28);
             // 
             // btnSave
             // 
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(397, 0);
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(235, 12);
-            this.txtDateStart.Value = new System.DateTime(2025, 6, 20, 11, 23, 14, 114);
+            this.txtDateStart.Location = new System.Drawing.Point(438, 12);
+            this.txtDateStart.Value = new System.DateTime(2025, 12, 17, 9, 22, 23, 655);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(33, 12);
-            this.txtDateEnd.Value = new System.DateTime(2025, 6, 20, 11, 23, 14, 114);
+            this.txtDateEnd.Location = new System.Drawing.Point(236, 12);
+            this.txtDateEnd.Value = new System.DateTime(2025, 12, 17, 9, 22, 23, 655);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(-57, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(146, 15);
             // 
             // labelX2
             // 
@@ -92,7 +98,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(163, 17);
+            this.labelX2.Location = new System.Drawing.Point(366, 17);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
@@ -101,41 +107,48 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(365, 17);
+            this.labelX1.Location = new System.Drawing.Point(568, 17);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Size = new System.Drawing.Size(476, 444);
+            this.pnlViewItems.Size = new System.Drawing.Size(820, 444);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(479, 3);
-            this.pnlAddItems.Size = new System.Drawing.Size(318, 444);
+            this.pnlAddItems.Location = new System.Drawing.Point(823, 3);
+            this.pnlAddItems.Size = new System.Drawing.Size(478, 444);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(430, 0);
-            this.btnExportToExcel.Size = new System.Drawing.Size(44, 34);
+            this.btnExportToExcel.Location = new System.Drawing.Point(784, 0);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(396, 0);
-            this.buttonX01.Size = new System.Drawing.Size(34, 34);
+            this.buttonX01.Location = new System.Drawing.Point(750, 0);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(361, 0);
-            this.btnShowGridExHideColumns.Size = new System.Drawing.Size(35, 34);
-            this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(715, 0);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label14.Location = new System.Drawing.Point(342, 18);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(98, 18);
+            this.label14.TabIndex = 108;
+            this.label14.Text = "نام(عنوان) فعالیت:";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(29, 18);
+            this.txtName.Location = new System.Drawing.Point(17, 13);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(183, 28);
-            this.txtName.TabIndex = 1;
+            this.txtName.Size = new System.Drawing.Size(324, 28);
+            this.txtName.TabIndex = 107;
             this.txtName.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             // 
             // dgvList
@@ -158,9 +171,9 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmProvinces";
-            this.dgvList.Size = new System.Drawing.Size(474, 332);
+            this.dgvList.Size = new System.Drawing.Size(818, 338);
             this.dgvList.Sortable = true;
-            this.dgvList.TabIndex = 82;
+            this.dgvList.TabIndex = 83;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.dgvList.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.dgvList.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
@@ -169,27 +182,14 @@
             this.dgvList.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
             this.dgvList.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvList_ColumnButtonClick);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(218, 23);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 18);
-            this.label14.TabIndex = 106;
-            this.label14.Text = "نام استان:";
-            // 
-            // frmProvinces
+            // frmFieldActivity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.KeyPreview = true;
-            this.Name = "frmProvinces";
-            this.Text = "فرم تعریف استان ها";
-            this.Load += new System.EventHandler(this.frmProvinces_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProvinces_KeyDown);
+            this.ClientSize = new System.Drawing.Size(1304, 450);
+            this.Name = "frmFieldActivity";
+            this.Text = "فعالیت های انبارها";
+            this.Load += new System.EventHandler(this.frmFieldActivity_Load);
             this.Controls.SetChildIndex(this.pnlAddItems, 0);
             this.Controls.SetChildIndex(this.pnlViewItems, 0);
             this.pnlViewItemBody.ResumeLayout(false);
@@ -207,8 +207,9 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label14;
         private Janus.Windows.GridEX.EditControls.EditBox txtName;
         public GridExEx.GridExEx dgvList;
-        private System.Windows.Forms.Label label14;
     }
 }

@@ -281,6 +281,7 @@ namespace HM_ERP_System.Forms.Car
                         join CuUser in db.Customers
                         on cuR_.CustomerId equals CuUser.Id into CuUserGroup
                         from CuUser_ in CuUserGroup.DefaultIfEmpty()
+                        
                         where cr.Status == true
                         
                         select new

@@ -1,8 +1,10 @@
 ﻿using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.Ciltys;
+using HM_ERP_System.Entity.FieldActivity;
 using HM_ERP_System.Entity.Provinces;
 using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.CustomerToGroup;
+using HM_ERP_System.Forms.FieldActivity;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.Reports;
 
@@ -51,6 +53,26 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             FilldgvList();
             fillcmbCiti1();
             fillcmbCiti2();
+            FillcmbFieldActivity();
+        }
+
+        DataTable dt_FieldActivities;
+        private void FillcmbFieldActivity()
+        {
+            using (var db = new DBcontextModel())
+            {
+                var q = (from fa in db.FieldActivities
+                         select new
+                         {
+                             fa.Id,
+                             fa.Name,
+                         }).ToList();
+
+                cmbFieldActivity.DataSource = q;
+                dt_FieldActivities = new DataTable();
+                dt_FieldActivities = PublicClass.AddEntityTableToDataTable(q);
+            }
+
         }
 
         private void fillcmbCiti2()
@@ -149,6 +171,9 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                             on cuR_.CustomerId equals CuUser.Id into CuUserGroup
                             from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
+                            join fa in db.FieldActivities
+                            on pt.FieldActivityId equals fa.Id into faGroup
+                            from fa_ in faGroup.DefaultIfEmpty()
 
                             select new
                             {
@@ -160,7 +185,9 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                 pt.PostalCode,
                                 pt.Addres,
                                 User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
+                                FieldActivity= fa_ != null ? fa_.Name : "-",
                             };
+
                     DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                     PublicClass.SettingGridEX(dgvList, Name);
                 }
@@ -203,7 +230,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     }
 
                     var userRepo = new Repository<Entity.PlaceTransfer.PlaceTransfer>(db);
-                    int id = userRepo.SaveOrUpdateRefId(new Entity.PlaceTransfer.PlaceTransfer { Id = ListId, Name = txtPlaceTransferName.Text, CiltyId = CityId1, PostalCode = txtPostalCode.Text, Addres = txtAddres.Text, publicStatus = chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
+                    int id = userRepo.SaveOrUpdateRefId(new Entity.PlaceTransfer.PlaceTransfer { Id = ListId, Name = txtPlaceTransferName.Text, CiltyId = CityId1, PostalCode = txtPostalCode.Text, Addres = txtAddres.Text,FieldActivityId=FieldActivityId, publicStatus = chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
 
                     if (chkPublic.Checked && dt_Citi.Rows.Count != 0)
                     {
@@ -263,8 +290,10 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             txtPostalCode.ResetText();
             txtAddres.ResetText();
             ListId = 0;
+            FieldActivityId = 0;
             txtPostalCode.Focus();
             chkPublic.Checked = false;
+            cmbFieldActivity.ResetText();
             FilldgvList();
             dt_Citi.Clear();
         }
@@ -309,6 +338,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                         chkPublic.Checked = q.publicStatus;
                         txtPostalCode.Text = q.PostalCode;
                         txtAddres.Text = q.Addres;
+                        cmbFieldActivity.Value=q.FieldActivityId;
                         if (q.publicStatus)
                         {
                             var srch = db.FloatingPublicCities.Where(c => c.PlaceTransferId == ListId).ToList();
@@ -562,6 +592,26 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             }
             cmbCity2.Focus();
             cmbCity2.ResetText();
+        }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            frmFieldActivity f=new frmFieldActivity(this);
+            f.ShowDialog();
+
+        }
+        int FieldActivityId =0;
+        private void cmbFieldActivity_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                FieldActivityId = Convert.ToInt32(cmbFieldActivity.Value);
+            }
+            catch (Exception)
+            {
+            }
+
+
         }
     }
 }

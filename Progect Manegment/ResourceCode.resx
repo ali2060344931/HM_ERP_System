@@ -667,6 +667,9 @@
   <data name="T182" xml:space="preserve">
     <value>امکان ویرایش وجود ندارد.</value>
   </data>
+  <data name="T183" xml:space="preserve">
+    <value>نام(عنوان) رشته فعالیت را وارد نمائید.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

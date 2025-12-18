@@ -1708,6 +1708,15 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نام(عنوان) رشته فعالیت را وارد نمائید..
+        /// </summary>
+        internal static string T183 {
+            get {
+                return ResourceManager.GetString("T183", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

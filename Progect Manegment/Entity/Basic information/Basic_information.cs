@@ -35,7 +35,7 @@ namespace HM_ERP_System.Entity.Basic_information
 
                 //ثبت اطلاعات استان و شهرها از فایل
                 var q0 = db.Provinces.Count();
-                if (q0==0)
+                if (q0 == 0)
                 {
                     AddProvincesCityToDataBase();
                 }
@@ -150,50 +150,88 @@ namespace HM_ERP_System.Entity.Basic_information
                     db.Roles.Add(new Role.Role { Name = "کاربر سطح 2" });
                     db.SaveChangesSafe();
                 }
+
                 var q12_0 = db.Customers.Count();
                 if (q12_0 == 0)
                 {
-                    db.Customers.Add(new Customer.Customer { Name="علی اصغر", Family="غلامزاده", CodMeli="admin", id_TypeCustomer=1, Tel="09111161996", Tel2="09021161996" });
-                    
-                    db.Customers.Add(new Customer.Customer { Name="اداره دارایی-مالیات بر ارزش افزوده خرید", CodMeli="1000000001", id_TypeCustomer=2, Tel="0",SecretCode=1});
-                    
-                    db.Customers.Add(new Customer.Customer { Name="اداره دارایی-مالیات بر ارزش افزوده فروش", CodMeli="1000000002", id_TypeCustomer=2, Tel="0", SecretCode=2 });
-                    
-                    db.Customers.Add(new Customer.Customer { Name="درآمد حمل کالا", CodMeli="1000000003", id_TypeCustomer=7, Tel="0", SecretCode=3 });
-                    
-                    db.Customers.Add(new Customer.Customer { Name="هزینه حمل کالا", CodMeli="1000000004", id_TypeCustomer=8, Tel="0", SecretCode=4 });
-                    
-                    db.Customers.Add(new Customer.Customer { Name="سایر هزینه ها", CodMeli="1000000005", id_TypeCustomer=8, Tel="0", SecretCode=5 });
-                    
-                    db.Customers.Add(new Customer.Customer { Name="حساب تجمیع هزینه های متفرقه", CodMeli="1000000006", id_TypeCustomer=8, Tel="0", SecretCode=6 });
-                    db.Customers.Add(new Customer.Customer { Name="هزینه های کارمزد خدمات بانکی", CodMeli="1000000007", id_TypeCustomer=8, Tel="0", SecretCode=7 });
+                    db.Customers.Add(new Customer.Customer { Name = "علی اصغر", Family = "غلامزاده", CodMeli = "admin", id_TypeCustomer = 1, Tel = "09111161996", Tel2 = "09021161996" });
 
-                    db.Customers.Add(new Customer.Customer { Name="مرکز درآمد اجاره تانکرها", CodMeli="1000000008", id_TypeCustomer=7, Tel="0", SecretCode=8 });
-                    
-                    db.Customers.Add(new Customer.Customer { Name="هزینه صدور بارنامه", CodMeli="1000000009", id_TypeCustomer=8, Tel="0", SecretCode=9 });
+                    db.Customers.Add(new Customer.Customer { Name = "اداره دارایی-مالیات بر ارزش افزوده خرید", CodMeli = "1000000001", id_TypeCustomer = 2, Tel = "0", SecretCode = 1 });
 
+                    db.Customers.Add(new Customer.Customer { Name = "اداره دارایی-مالیات بر ارزش افزوده فروش", CodMeli = "1000000002", id_TypeCustomer = 2, Tel = "0", SecretCode = 2 });
                     db.SaveChangesSafe();
-
                 }
 
-                var q12_1 = db.Customers.Where(c=>c.SecretCode==10).Count();
+                var q12_00 = db.Customers.Where(c => c.SecretCode == 3).Count();
+                if (q12_00 == 0)
+
+                {
+                    db.Customers.Add(new Customer.Customer { Name = "درآمد حمل کالا", CodMeli = "1000000003", id_TypeCustomer = 7, Tel = "0", SecretCode = 3 });
+                    db.SaveChangesSafe();
+                }
+                var q12_01 = db.Customers.Where(c => c.SecretCode == 4).Count();
+                if (q12_01 == 0)
+                {
+                    db.Customers.Add(new Customer.Customer { Name = "هزینه حمل کالا", CodMeli = "1000000004", id_TypeCustomer = 8, Tel = "0", SecretCode = 4 });
+                    db.SaveChangesSafe();
+                }
+                var q12_02 = db.Customers.Where(c => c.SecretCode == 5).Count();
+                if (q12_02 == 0)
+                {
+                    db.Customers.Add(new Customer.Customer { Name = "سایر هزینه ها", CodMeli = "1000000005", id_TypeCustomer = 8, Tel = "0", SecretCode = 5 });
+
+                    db.SaveChangesSafe();
+                }
+                var q12_03 = db.Customers.Where(c => c.SecretCode == 6).Count();
+                if (q12_03 == 0)
+                {
+                    db.Customers.Add(new Customer.Customer { Name = "حساب تجمیع هزینه های متفرقه", CodMeli = "1000000006", id_TypeCustomer = 8, Tel = "0", SecretCode = 6 });
+
+                    db.SaveChangesSafe();
+                }
+                var q12_04 = db.Customers.Where(c => c.SecretCode == 7).Count();
+                if (q12_04 == 0)
+                {
+                    db.Customers.Add(new Customer.Customer { Name = "هزینه های کارمزد خدمات بانکی", CodMeli = "1000000007", id_TypeCustomer = 8, Tel = "0", SecretCode = 7 });
+
+                    db.SaveChangesSafe();
+                }
+                var q12_05 = db.Customers.Where(c => c.SecretCode == 8).Count();
+                if (q12_05 == 0)
+                {
+                    db.Customers.Add(new Customer.Customer { Name = "مرکز درآمد اجاره تانکرها", CodMeli = "1000000008", id_TypeCustomer = 7, Tel = "0", SecretCode = 8 });
+
+                    db.SaveChangesSafe();
+                }
+
+                var q12_06 = db.Customers.Where(c => c.SecretCode == 9).Count();
+                if (q12_06 == 0)
+                {
+
+                    db.Customers.Add(new Customer.Customer { Name = "هزینه صدور بارنامه", CodMeli = "1000000009", id_TypeCustomer = 8, Tel = "0", SecretCode = 9 });
+
+                    db.SaveChangesSafe();
+                }
+
+
+                var q12_1 = db.Customers.Where(c => c.SecretCode == 10).Count();
                 if (q12_1 == 0)
                 {
-                    db.Customers.Add(new Customer.Customer { Name="سند رزور افتتاحیه", CodMeli="1000000010", id_TypeCustomer=5, Tel="0", SecretCode=10 });
+                    db.Customers.Add(new Customer.Customer { Name = "سند رزور افتتاحیه", CodMeli = "1000000010", id_TypeCustomer = 5, Tel = "0", SecretCode = 10 });
                     db.SaveChangesSafe();
                 }
 
 
-                var q12_2 = db.Customers.Where(c=>c.SecretCode==11).Count();
+                var q12_2 = db.Customers.Where(c => c.SecretCode == 11).Count();
                 if (q12_2 == 0)
                 {
-                    db.Customers.Add(new Customer.Customer { Name="هزینه پورسانت", CodMeli="1000000011", id_TypeCustomer=8, Tel="0", SecretCode=11 });
+                    db.Customers.Add(new Customer.Customer { Name = "هزینه پورسانت", CodMeli = "1000000011", id_TypeCustomer = 8, Tel = "0", SecretCode = 11 });
                     db.SaveChangesSafe();
                 }
-                var q12_3 = db.Customers.Where(c=>c.SecretCode==12).Count();
+                var q12_3 = db.Customers.Where(c => c.SecretCode == 12).Count();
                 if (q12_3 == 0)
                 {
-                    db.Customers.Add(new Customer.Customer { Name= "مرکز هزینه اجاره تانکرها", CodMeli="1000000012", id_TypeCustomer=8, Tel="0", SecretCode=12 });
+                    db.Customers.Add(new Customer.Customer { Name = "مرکز هزینه اجاره تانکرها", CodMeli = "1000000012", id_TypeCustomer = 8, Tel = "0", SecretCode = 12 });
                     db.SaveChangesSafe();
                 }
 
@@ -202,7 +240,7 @@ namespace HM_ERP_System.Entity.Basic_information
                 var q13 = db.CustomerRoles.Count();
                 if (q13 == 0)
                 {
-                    db.CustomerRoles.Add(new CustomerRole.CustomerRole { CustomerId=1, RoleId=1,Password=PublicClass.GenerateHash("1") });
+                    db.CustomerRoles.Add(new CustomerRole.CustomerRole { CustomerId = 1, RoleId = 1, Password = PublicClass.GenerateHash("1") });
                     db.SaveChangesSafe();
                 }
 
@@ -265,107 +303,107 @@ namespace HM_ERP_System.Entity.Basic_information
                 var q18 = db.TransactionTypes.Count();
                 if (q18 == 0)
                 {
-                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name="درآمد" });
-                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name="هزینه" });
-                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name="جابجایی" });
-                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name="دریافت" });
-                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name="پرداخت" });
+                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name = "درآمد" });
+                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name = "هزینه" });
+                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name = "جابجایی" });
+                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name = "دریافت" });
+                    db.TransactionTypes.Add(new Entity.Accounts.TransactionType.TransactionType { Name = "پرداخت" });
                     db.SaveChangesSafe();
                 }
 
-                var q19=db.DetailedAccounts.Count();
+                var q19 = db.DetailedAccounts.Count();
                 if (q19 == 0)
                 {
-                    db=new DBcontextModel();
-                    int SpecificAccountTaxId = db.SpecificAccounts.Where(c => c.Cod==10406).First().Id;
+                    db = new DBcontextModel();
+                    int SpecificAccountTaxId = db.SpecificAccounts.Where(c => c.Cod == 10406).First().Id;
                     int CodeAccount_ = PublicClass.CeratDetailedAccountCode(SpecificAccountTaxId);
 
                     var insert1 = new Repository<DetailedAccount>(db);
-                    insert1.SaveOrUpdate(new DetailedAccount { Id = 0, SpecificAccountId=SpecificAccountTaxId, CustomerId=2, CodeAccount=CodeAccount_}, 0);
+                    insert1.SaveOrUpdate(new DetailedAccount { Id = 0, SpecificAccountId = SpecificAccountTaxId, CustomerId = 2, CodeAccount = CodeAccount_ }, 0);
 
-                    db=new DBcontextModel();
-                    SpecificAccountTaxId = db.SpecificAccounts.Where(c => c.Cod==30602).First().Id;
+                    db = new DBcontextModel();
+                    SpecificAccountTaxId = db.SpecificAccounts.Where(c => c.Cod == 30602).First().Id;
                     CodeAccount_ = PublicClass.CeratDetailedAccountCode(SpecificAccountTaxId);
 
                     var insert2 = new Repository<DetailedAccount>(db);
-                    insert2.SaveOrUpdate(new DetailedAccount { Id = 0, SpecificAccountId=SpecificAccountTaxId, CustomerId=3, CodeAccount=CodeAccount_}, 0);
+                    insert2.SaveOrUpdate(new DetailedAccount { Id = 0, SpecificAccountId = SpecificAccountTaxId, CustomerId = 3, CodeAccount = CodeAccount_ }, 0);
                 }
 
                 var q20 = db.PersonGroups.Count();
                 if (q20 == 0)
                 {
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="راننده" });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="بارنامه نویس" });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب کامیون" });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب کالا" });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="فرستنده" });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="گیرنده" });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="کارکنان" });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="سایر" });
-                   
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "راننده" });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "بارنامه نویس" });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "طرف حساب کامیون" });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "طرف حساب کالا" });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "فرستنده" });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "گیرنده" });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "کارکنان" });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "سایر" });
+
                     db.SaveChangesSafe();
                 }
-                
+
 
                 var q21 = db.WarantyTypes.Count();
                 if (q21 == 0)
                 {
-                    db.WarantyTypes.Add(new Entity.WarantyType.WarantyType { Name="چک" });
-                    db.WarantyTypes.Add(new Entity.WarantyType.WarantyType { Name="سفته" });
-                    db.WarantyTypes.Add(new Entity.WarantyType.WarantyType { Name="ندارد" });
+                    db.WarantyTypes.Add(new Entity.WarantyType.WarantyType { Name = "چک" });
+                    db.WarantyTypes.Add(new Entity.WarantyType.WarantyType { Name = "سفته" });
+                    db.WarantyTypes.Add(new Entity.WarantyType.WarantyType { Name = "ندارد" });
                     db.SaveChangesSafe();
                 }
 
                 var q22 = db.ChequeTypes.Count();
                 if (q22 == 0)
                 {
-                    db.ChequeTypes.Add(new Entity.Accounts.Cheque.ChequeType { Name="دریافتنی" });
-                    db.ChequeTypes.Add(new Entity.Accounts.Cheque.ChequeType { Name="پرداختنی" });
+                    db.ChequeTypes.Add(new Entity.Accounts.Cheque.ChequeType { Name = "دریافتنی" });
+                    db.ChequeTypes.Add(new Entity.Accounts.Cheque.ChequeType { Name = "پرداختنی" });
                     db.SaveChangesSafe();
                 }
-                
+
                 var q23 = db.ChequeStatusTypes.Count();
                 if (q23 == 0)
                 {
-                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name="در جریان وصول" });
-                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name="به صندوق/بانک خوابانده شد" });
-                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name="پاس شد" });
-                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name="برگشت خورد" });
-                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name="خرج شد" });
-                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name="ثبت شده" });
+                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name = "در جریان وصول" });
+                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name = "به صندوق/بانک خوابانده شد" });
+                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name = "پاس شد" });
+                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name = "برگشت خورد" });
+                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name = "خرج شد" });
+                    db.ChequeStatusTypes.Add(new Entity.Accounts.Cheque.ChequeStatusType { Name = "ثبت شده" });
                     db.SaveChangesSafe();
                 }
 
                 var q24 = db.PersonGroups.Where(c => c.IsCommission).Count();
                 if (q24 == 0)
                 {
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب جذب کامیون", IsCommission=true });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب اعلام بار", IsCommission=true });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت بارنامه نویسی", IsCommission = true });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت مخازن", IsCommission = true });
-                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name="طرف حساب پورسانت ترخیصکار", IsCommission = true });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "طرف حساب جذب کامیون", IsCommission = true });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "طرف حساب اعلام بار", IsCommission = true });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "طرف حساب پورسانت بارنامه نویسی", IsCommission = true });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "طرف حساب پورسانت مخازن", IsCommission = true });
+                    db.PersonGroups.Add(new Entity.PersonGroup.PersonGroup { Name = "طرف حساب پورسانت ترخیصکار", IsCommission = true });
                     db.SaveChangesSafe();
                 }
                 var q25 = db.TypeAccounts.Count();
                 if (q25 == 0)
                 {
-                    db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name="جاری" });
-                    db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name="پس انداز" });
+                    db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name = "جاری" });
+                    db.TypeAccounts.Add(new Entity.Accounts.TypeAccount.TypeAccount { Name = "پس انداز" });
                     db.SaveChangesSafe();
                 }
 
                 var q26 = db.RentalTypes.Count();
                 if (q26 == 0)
                 {
-                    db.RentalTypes.Add(new RentalType { Name="اجــاره داده" });
-                    db.RentalTypes.Add(new RentalType { Name="اجـاره شـده" });
+                    db.RentalTypes.Add(new RentalType { Name = "اجــاره داده" });
+                    db.RentalTypes.Add(new RentalType { Name = "اجـاره شـده" });
                     db.SaveChangesSafe();
                 }
 
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage( er);
+                PublicClass.ShowErrorMessage(er);
             }
         }
 
@@ -375,7 +413,7 @@ namespace HM_ERP_System.Entity.Basic_information
         static void AddProvincesCityToDataBase()
         {
             var q = db.Ciltys.Count();
-            if (q==0)
+            if (q == 0)
             {
                 try
                 {
@@ -401,7 +439,7 @@ namespace HM_ERP_System.Entity.Basic_information
                     {
                         string[] city = line.Split(',');
                         string cityname = city[0];
-                        var qp = db.Provinces.Where(x => x.Name==cityname).First().Id;
+                        var qp = db.Provinces.Where(x => x.Name == cityname).First().Id;
 
                         c.ProvincesId = qp;
                         c.Name = city[1];

@@ -312,7 +312,7 @@ namespace Progect_Manegment
         public virtual DbSet<DetailedAccount> DetailedAccounts { get; set; }
         
         /// <summary>
-        /// جدول نوبت دهی
+        /// جدول نوبت دهی کامیون ها
         /// </summary>
         public virtual DbSet<AppointmentScheduling> AppointmentSchedulings { get; set; }
         /// <summary>

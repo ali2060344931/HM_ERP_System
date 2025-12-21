@@ -736,6 +736,14 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                     using (var db = new DBcontextModel())
                     {
 
+                        var da=db.DetailedAccounts.Where(c=>c.Id== ListId).First().CustomerId;
+                        var cu = db.Customers.Where(c => c.Id == da).First();
+                        if(cu.SecretCode!=0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            return;
+                        }
+
                         if (db.Transactions.Where(c => c.DetailedAccountId == ListId).Count() != 0)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T004);

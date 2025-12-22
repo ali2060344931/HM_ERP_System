@@ -1,4 +1,6 @@
 ﻿
+using Progect_Manegment;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -52,7 +54,7 @@ namespace BotProgram
                 Bot.StartReceiving();
                 Bot.OnMessage += Bot_OnMessage;
                 Bot.OnCallbackQuery += Bot_OnCallbackQuery;
-                Bot.OnUpdate+=Bot_OnUpdate;
+                Bot.OnUpdate += Bot_OnUpdate;
             }
         }
 
@@ -93,8 +95,30 @@ namespace BotProgram
         [Obsolete]
         private static async void Bot_OnMessage(object sender, MessageEventArgs e)
         {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    if (e.Message.Text.ToLower() == "/inf")
+                    {
+                        var ComersHs = db.ComersHs.Count();
+                        var ComersBs = db.ComersBs.Count();
+                        var Transactions = db.Transactions.Count();
+                        var Commissions = db.Commissions.Count();
+                        var Customers = db.Customers.Count();
 
+                        await Bot.SendTextMessageAsync(e.Message.Chat.Id,
+                           "تعداد حواله: " + ComersHs + '\n' + "تعداد بارنامه: " + ComersBs + '\n' + "تعداد تراکنش مالی: " + Transactions + '\n' + "تعداد پرسانت ها: " + Transactions + '\n' + "تعداد مشتری ها: " + Customers);
 
+                        return;
+                    }
+
+                }
+
+            }
+            catch (Exception)
+            {
+            }
         }
 
         [Obsolete]

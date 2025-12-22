@@ -1,4 +1,6 @@
-﻿using DevComponents.DotNetBar;
+﻿using BotProgram;
+
+using DevComponents.DotNetBar;
 
 using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.Accounts.Banck;
@@ -52,11 +54,13 @@ namespace HM_ERP_System.Forms.Main_Form
     {
 
         public int UsersId = 0;
-
+        [Obsolete]
         public frmMainForm()
         {
             InitializeComponent();
             this.KeyPreview = true;
+            BaleBotClass.RunTelegram();
+
         }
         public void UpdateData()
         {
@@ -73,10 +77,9 @@ namespace HM_ERP_System.Forms.Main_Form
                 return cp;
             }
         }
-
+        [Obsolete]
         private void frmMainForm_Load(object sender, EventArgs e)
         {
-
             try
             {
                 this.Text = ResourceCode.ProgName;
@@ -104,6 +107,7 @@ namespace HM_ERP_System.Forms.Main_Form
                 setPeremissions();//تنظیمات سطوح دسترسی
                 SetRibbonStatusBar();
 
+                MetohdsClass.SendMessageForAdmin("✅برنامه اجرا شد", lblUserName.Text);
             }
             catch (Exception er)
             {
@@ -295,7 +299,7 @@ namespace HM_ERP_System.Forms.Main_Form
                             ribbon1.Tabs["Setings"].Groups["SoftwareSettings"].Commands["DefinitionFiscalYear"].Visible = PublicClass.SetPeremission("Node5_2_2");
                         }
                     }
-                    
+
                 }
 
             }
@@ -429,7 +433,7 @@ namespace HM_ERP_System.Forms.Main_Form
             }
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F12)
             {
-                ribbon1.Tabs["Setings"].Visible =true;
+                ribbon1.Tabs["Setings"].Visible = true;
                 {
                     //بخش امنیتی نـــرم افـــزار
                     ribbon1.Tabs["Setings"].Groups["SoftwareSecuritySection"].Visible = true;
@@ -597,7 +601,10 @@ namespace HM_ERP_System.Forms.Main_Form
         private void btnExitProgram_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             if (MessageBox.Show(ResourceCode.T151, MyClass.PublicClass.ProjectName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                MetohdsClass.SendMessageForAdmin("❌برنامه بسته شد", lblUserName.Text);
                 Application.Exit();
+            }
         }
 
         private void btnRegCheques__Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)

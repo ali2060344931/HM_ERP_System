@@ -509,9 +509,12 @@
   <ItemGroup>
     <Compile Include="Class General\AddEditBankc.cs" />
     <Compile Include="Class General\BankClass.cs" />
+    <Compile Include="Class General\Bot Class\BaleBotClass.cs" />
+    <Compile Include="Class General\Bot Class\MetodsClass.cs" />
     <Compile Include="Class General\CalculatComerB.cs" />
     <Compile Include="Class General\CreatView.cs" />
     <Compile Include="Class General\Cryptography.cs" />
+    <Compile Include="Class General\DynamicToolTip.cs" />
     <Compile Include="Class General\FormManager.cs" />
     <Compile Include="Class General\GridExporter.cs" />
     <Compile Include="Class General\GridPrintColumn.cs" />

@@ -6,6 +6,8 @@ using HM_ERP_System.Forms.Persons;
 
 using MyClass;
 
+using NPOI.POIFS.Properties;
+
 using Progect_Manegment;
 
 using System;
@@ -29,13 +31,17 @@ namespace HM_ERP_System.Forms.Ciltys
         public frmCiltys(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
         }
 
         private void frmCiltys_Load(object sender, EventArgs e)
         {
+            DynamicToolTip.Attach(this);
             UpdateData();
         }
+
+
+
         private void CallUpdateTata()
         {
             FilldgvList();
@@ -43,7 +49,7 @@ namespace HM_ERP_System.Forms.Ciltys
         }
         public void UpdateData()
         {
-           
+
             CallUpdateTata();
         }
         DataTable dt_Provinces;
@@ -76,9 +82,9 @@ namespace HM_ERP_System.Forms.Ciltys
                             // اگر ProvincesId برابر با 0 باشد، یا pr برابر با null باشد، خالی نشان بده
                             ProvincesName = (ct.ProvincesId == 0 || pr == null) ? "" : pr.Name
                         };
-                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 //dgvList.AutoSizeColumns();
-                PublicClass.SettingGridEX(dgvList,Name);
+                PublicClass.SettingGridEX(dgvList, Name);
             }
         }
 
@@ -117,7 +123,7 @@ namespace HM_ERP_System.Forms.Ciltys
                     {
                         PublicClass.WindowAlart("1");
                         FilldgvList();
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
                         CelearItems();
                     }
@@ -172,12 +178,12 @@ namespace HM_ERP_System.Forms.Ciltys
                     if (!PublicClass.SetPeremission("Node1_1_6_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
-                        var q1=db.Customers.Where(c=>c.CityId == ListId).Count();
-                        var q2=db.ComersHs.Where(c=>c.LoadingOrinigId == ListId).Count();
-                        var q3=db.ComersHs.Where(c=>c.UnLoadingOrinigId == ListId).Count();
+                        var q1 = db.Customers.Where(c => c.CityId == ListId).Count();
+                        var q2 = db.ComersHs.Where(c => c.LoadingOrinigId == ListId).Count();
+                        var q3 = db.ComersHs.Where(c => c.UnLoadingOrinigId == ListId).Count();
 
 
-                        if (q1 != 0 ||q2 != 0 ||q3 != 0 )
+                        if (q1 != 0 || q2 != 0 || q3 != 0)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T004);
                             return;
@@ -227,7 +233,7 @@ namespace HM_ERP_System.Forms.Ciltys
                 if (PublicClass.CloseForm())
                     this.Close();
             }
-                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void label14_Click(object sender, EventArgs e)
@@ -237,7 +243,7 @@ namespace HM_ERP_System.Forms.Ciltys
 
         private void cmbProvinces_KeyDown(object sender, KeyEventArgs e)
         {
-                        if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
 
             if (e.KeyCode == Keys.F2)
@@ -256,7 +262,7 @@ namespace HM_ERP_System.Forms.Ciltys
         {
             try
             {
-               
+
                 dgvList.SaveComponentSettings();
             }
             catch { }

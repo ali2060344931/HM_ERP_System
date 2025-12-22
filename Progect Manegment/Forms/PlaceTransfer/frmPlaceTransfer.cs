@@ -203,7 +203,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             try
             {
                 if (!PublicClass.SetPeremission("Node1_1_4_1", 1)) return;
-                if (PublicClass.FindEmptyControls(cmbCity1, ResourceCode.T014, txtPlaceTransferName, ResourceCode.T023))
+                if (PublicClass.FindEmptyControls(cmbCity1, ResourceCode.T014, txtPlaceTransferName, ResourceCode.T023, cmbFieldActivity, ResourceCode.T184))
                     return;
                 if (chkPublic.Checked && dt_Citi.Rows.Count == 0)
                 {

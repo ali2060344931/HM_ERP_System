@@ -670,6 +670,9 @@
   <data name="T183" xml:space="preserve">
     <value>نام(عنوان) رشته فعالیت را وارد نمائید.</value>
   </data>
+  <data name="T184" xml:space="preserve">
+    <value>رشته فعالیت را انتخاب نمائید.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

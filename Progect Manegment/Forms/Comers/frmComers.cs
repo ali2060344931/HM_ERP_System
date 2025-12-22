@@ -105,7 +105,6 @@ namespace HM_ERP_System.Forms.Comers
 
         int BillLadingCastId_ = 0;
         int BillLadingMethodId_ = 0;
-
         public frmComers(IUpdatableForms updatableForms)
         {
             InitializeComponent();
@@ -114,6 +113,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void frmComers_Load(object sender, EventArgs e)
         {
+            DynamicToolTip.Attach(this);
             WindowState = FormWindowState.Maximized;
             txtDateB.Value = DateTime.Now;
             txtDateH.Value = DateTime.Now;
@@ -144,7 +144,6 @@ namespace HM_ERP_System.Forms.Comers
 
             CallUpdateTataH();
         }
-
         public void UpdateData()
         {
             CallUpdateTataH();
@@ -1479,7 +1478,6 @@ namespace HM_ERP_System.Forms.Comers
                             var per1 = db.Customers.Where(c => c.Id == cuId1).First();
                             lblDraverCarName.Text = per1.Name + " " + per1.Family;
                             lblDraverCarTel.Text = per1.Tel;
-
                         }
 
                         //نوع مالکیت
@@ -1553,7 +1551,7 @@ namespace HM_ERP_System.Forms.Comers
                         lblShiperName.Text = sn.Name + " " + sn.Family;
                     }
 
-                    lblProdectName.Text = pn.Name + " - " + pnG.Name;
+                    lblProdectName.Text = pnG.Name + " - " + pn.Name;
                     lblLoadingOrinig.Text = qlo.Name + " - " + qll.Name;
                     lblUnLoadingOrinig.Text = qulo.Name + " - " + qull.Name;
                     if (ListId == 0)

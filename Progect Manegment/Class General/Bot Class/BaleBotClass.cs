@@ -1,4 +1,7 @@
 ﻿
+using HM_ERP_System.Entity.Commission;
+using HM_ERP_System.Entity.Customer;
+
 using Progect_Manegment;
 
 using System;
@@ -108,11 +111,42 @@ namespace BotProgram
                         var Customers = db.Customers.Count();
 
                         await Bot.SendTextMessageAsync(e.Message.Chat.Id,
-                           "تعداد حواله: " + ComersHs + '\n' + "تعداد بارنامه: " + ComersBs + '\n' + "تعداد تراکنش مالی: " + Transactions + '\n' + "تعداد پرسانت ها: " + Transactions + '\n' + "تعداد مشتری ها: " + Customers);
+                           "تعداد حواله: " + ComersHs + '\n' + "تعداد بارنامه: " + ComersBs + '\n' + "تعداد تراکنش مالی: " + Transactions + '\n' + "تعداد پرسانت ها: " + Commissions + '\n' + "تعداد مشتری ها: " + Customers);
 
                         return;
                     }
 
+                    if (e.Message.Text.Split('#').Length == 3)
+                    {
+                        string[] code = e.Message.Text.Split('#');
+                        if (code[0] == "1")
+                        {
+                            string CodMeli = code[1];
+                            string Tel = code[2];
+                            var q = db.Customers.Where(c => c.CodMeli == CodMeli && c.Tel == Tel);
+                            if (q.Count() != 0)
+                            {
+                                if (q.First().ChatId == null || q.First().ChatId == 0)
+                                {
+                                    q.First().ChatId = e.Message.Chat.Id;
+                                    db.SaveChangesSafe();
+                                    await Bot.SendTextMessageAsync(e.Message.Chat.Id, "ثبت نام شما با موفقیت انجام شد");
+                                    return;
+                                }
+                                else
+                                {
+                                    await Bot.SendTextMessageAsync(e.Message.Chat.Id, "ثبت نام شما قبلا انجام شده است");
+                                    return;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            await Bot.SendTextMessageAsync(e.Message.Chat.Id, "اطلاعات وارد شده معتبر نمی باشد");
+                            return;
+                        }
+
+                    }
                 }
 
             }

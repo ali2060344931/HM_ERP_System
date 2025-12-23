@@ -7,16 +7,17 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Telegram.Bot;
+using Telegram.Bot.Exceptions;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.Payments;
 using Telegram.Bot.Types.ReplyMarkups;
-using Telegram.Bot.Exceptions;
 
 namespace BotProgram
 {
@@ -34,11 +35,15 @@ namespace BotProgram
         static InlineKeyboardButton[][] keyboard = Buttons.ToArray();
         static InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup(keyboard);
 
-        public static void SendMessageForAdmin(string message1, string message2)
+        [Obsolete]
+        public static async Task SendMessageForAdminAsync(string message1, string message2)
         {
             try
             {
-                Bot.SendTextMessageAsync(MyChatId, message1 + '\n' + message2 + '\n' + DateTime.Now);
+                var version = Assembly.GetExecutingAssembly().GetName().Version;
+                string vr  = "نسخه برنامه: " + version.ToString();
+
+                await Bot.SendTextMessageAsync(MyChatId, message1 + '\n' + message2 + '\n' + DateTime.Now+'\n'+ vr);
             }
             catch (Exception)
             {

@@ -46,6 +46,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HM_ERP_System.Forms.Main_Form
@@ -77,7 +78,6 @@ namespace HM_ERP_System.Forms.Main_Form
                 return cp;
             }
         }
-        [Obsolete]
         private void frmMainForm_Load(object sender, EventArgs e)
         {
             try
@@ -107,7 +107,7 @@ namespace HM_ERP_System.Forms.Main_Form
                 setPeremissions();//تنظیمات سطوح دسترسی
                 SetRibbonStatusBar();
 
-                MetohdsClass.SendMessageForAdmin("✅برنامه اجرا شد", lblUserName.Text);
+               MetohdsClass.SendMessageForAdminAsync("✅برنامه اجرا شد", lblUserName.Text);
             }
             catch (Exception er)
             {
@@ -597,12 +597,12 @@ namespace HM_ERP_System.Forms.Main_Form
             frmComersList.ShowDialog();
 
         }
-
+       
         private void btnExitProgram_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             if (MessageBox.Show(ResourceCode.T151, MyClass.PublicClass.ProjectName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
-                MetohdsClass.SendMessageForAdmin("❌برنامه بسته شد", lblUserName.Text);
+               MetohdsClass.SendMessageForAdminAsync("❌برنامه بسته شد", lblUserName.Text);
                 Application.Exit();
             }
         }

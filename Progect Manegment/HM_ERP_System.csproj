@@ -508,6 +508,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class General\AddEditBankc.cs" />
+    <Compile Include="Class General\AiService.cs" />
     <Compile Include="Class General\BankClass.cs" />
     <Compile Include="Class General\Bot Class\BaleBotClass.cs" />
     <Compile Include="Class General\Bot Class\MetodsClass.cs" />

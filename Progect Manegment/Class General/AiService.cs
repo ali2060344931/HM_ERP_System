@@ -1,13 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using iTextSharp.xmp.impl.xpath;
+
+using Newtonsoft.Json;
 
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 public class AiService
 {
-    private readonly string _apiKey = "000";
+    private readonly string _apiKey = File.ReadAllText(Application.StartupPath + @"\ChatGPT ApiKey.txt", Encoding.UTF8);
 
     public async Task<string> AnalyzeResult(string question, string data)
     {

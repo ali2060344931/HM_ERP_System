@@ -970,8 +970,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HM_ERP_System1DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="IAiService.cs" />
+    <Compile Include="MockAiService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RealAiService.cs" />
     <Compile Include="ResourceCode.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -178,6 +178,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.uiTabPage2 = new Janus.Windows.UI.Tab.UITabPage();
             this.uiGroupBox6 = new Janus.Windows.EditControls.UIGroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbBillLadingCast = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.cmbMethodCalFare = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtDescriptionB = new System.Windows.Forms.RichTextBox();
@@ -187,7 +188,6 @@
             this.cmbFareCalcMethods = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtSeryalB = new Janus.Windows.GridEX.EditControls.EditBox();
             this.txtDateB = new Atf.UI.DateTimeSelector();
-            this.lblCarOwnerShip = new System.Windows.Forms.Label();
             this.lblCarPlatB = new System.Windows.Forms.Label();
             this.cmbListSimilarComerB = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.cmbCarplateB = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -201,11 +201,15 @@
             this.label72 = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.label110 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
+            this.label118 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.label116 = new System.Windows.Forms.Label();
             this.label108 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
+            this.lblCarOwnerShip = new System.Windows.Forms.Label();
+            this.label110 = new System.Windows.Forms.Label();
             this.uiGroupBox2 = new Janus.Windows.EditControls.UIGroupBox();
             this.lblReciverTel2 = new System.Windows.Forms.Label();
             this.lblSenderTel2 = new System.Windows.Forms.Label();
@@ -267,6 +271,7 @@
             this.label59 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.panelLanding = new Janus.Windows.EditControls.UIGroupBox();
+            this.label120 = new System.Windows.Forms.Label();
             this.chkIncomeDocument = new System.Windows.Forms.CheckBox();
             this.txtBaseFreight = new DevComponents.Editors.DoubleInput();
             this.txtBillLadingAmount = new DevComponents.Editors.DoubleInput();
@@ -368,11 +373,6 @@
             this.separatorCommand3 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.btnAddDocCB = new Janus.Windows.Ribbon.DropDownCommand();
             this.btnAccountingDocumentRegistration = new Janus.Windows.Ribbon.DropDownCommand();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label83 = new System.Windows.Forms.Label();
-            this.label118 = new System.Windows.Forms.Label();
-            this.label120 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -403,6 +403,7 @@
             this.uiTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox6)).BeginInit();
             this.uiGroupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBillLadingCast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMethodCalFare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFareCalcMethods)).BeginInit();
@@ -470,7 +471,6 @@
             this.panelDeleteEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSeryalH_DE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWeightDeliveredGoods)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // uiPanelManager1
@@ -2264,6 +2264,17 @@
             this.uiGroupBox6.Text = "بارنامه";
             this.uiGroupBox6.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(341, 17);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(115, 113);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 118;
+            this.pictureBox1.TabStop = false;
+            // 
             // cmbBillLadingCast
             // 
             this.cmbBillLadingCast.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -2391,20 +2402,6 @@
             this.txtDateB.TabIndex = 1;
             this.txtDateB.UsePersianFormat = true;
             this.txtDateB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDateB_KeyDown);
-            // 
-            // lblCarOwnerShip
-            // 
-            this.lblCarOwnerShip.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblCarOwnerShip.BackColor = System.Drawing.Color.Transparent;
-            this.lblCarOwnerShip.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCarOwnerShip.ForeColor = System.Drawing.Color.Purple;
-            this.lblCarOwnerShip.Location = new System.Drawing.Point(28, 77);
-            this.lblCarOwnerShip.Name = "lblCarOwnerShip";
-            this.lblCarOwnerShip.Size = new System.Drawing.Size(413, 18);
-            this.lblCarOwnerShip.TabIndex = 105;
-            this.lblCarOwnerShip.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.toolTip1.SetToolTip(this.lblCarOwnerShip, "وضعیت مالکیت کامیون");
-            this.lblCarOwnerShip.Click += new System.EventHandler(this.lblCarOwnerShip_Click);
             // 
             // lblCarPlatB
             // 
@@ -2625,19 +2622,6 @@
             this.label49.TabIndex = 98;
             this.label49.Text = "پلاک";
             // 
-            // label110
-            // 
-            this.label110.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label110.BackColor = System.Drawing.Color.Transparent;
-            this.label110.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label110.ForeColor = System.Drawing.Color.Red;
-            this.label110.Location = new System.Drawing.Point(395, 133);
-            this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(15, 15);
-            this.label110.TabIndex = 100;
-            this.label110.Text = "*";
-            this.label110.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label84
             // 
             this.label84.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -2650,6 +2634,45 @@
             this.label84.TabIndex = 100;
             this.label84.Text = "*";
             this.label84.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label118
+            // 
+            this.label118.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label118.BackColor = System.Drawing.Color.Transparent;
+            this.label118.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label118.ForeColor = System.Drawing.Color.Red;
+            this.label118.Location = new System.Drawing.Point(401, 286);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(15, 15);
+            this.label118.TabIndex = 100;
+            this.label118.Text = "*";
+            this.label118.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label83
+            // 
+            this.label83.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label83.BackColor = System.Drawing.Color.Transparent;
+            this.label83.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label83.ForeColor = System.Drawing.Color.Red;
+            this.label83.Location = new System.Drawing.Point(363, 257);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(15, 15);
+            this.label83.TabIndex = 100;
+            this.label83.Text = "*";
+            this.label83.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label24
+            // 
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(404, 229);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(15, 15);
+            this.label24.TabIndex = 100;
+            this.label24.Text = "*";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label116
             // 
@@ -2688,6 +2711,33 @@
             this.label58.Size = new System.Drawing.Size(33, 15);
             this.label58.TabIndex = 105;
             this.label58.Text = "تخلیه:";
+            // 
+            // lblCarOwnerShip
+            // 
+            this.lblCarOwnerShip.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCarOwnerShip.BackColor = System.Drawing.Color.Transparent;
+            this.lblCarOwnerShip.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblCarOwnerShip.ForeColor = System.Drawing.Color.Purple;
+            this.lblCarOwnerShip.Location = new System.Drawing.Point(28, 77);
+            this.lblCarOwnerShip.Name = "lblCarOwnerShip";
+            this.lblCarOwnerShip.Size = new System.Drawing.Size(413, 18);
+            this.lblCarOwnerShip.TabIndex = 105;
+            this.lblCarOwnerShip.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTip1.SetToolTip(this.lblCarOwnerShip, "وضعیت مالکیت کامیون");
+            this.lblCarOwnerShip.Click += new System.EventHandler(this.lblCarOwnerShip_Click);
+            // 
+            // label110
+            // 
+            this.label110.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label110.BackColor = System.Drawing.Color.Transparent;
+            this.label110.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label110.ForeColor = System.Drawing.Color.Red;
+            this.label110.Location = new System.Drawing.Point(395, 133);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(15, 15);
+            this.label110.TabIndex = 100;
+            this.label110.Text = "*";
+            this.label110.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // uiGroupBox2
             // 
@@ -3700,6 +3750,19 @@
             this.panelLanding.TabIndex = 3;
             this.panelLanding.Text = "بارنامه نویس";
             this.panelLanding.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
+            // 
+            // label120
+            // 
+            this.label120.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label120.BackColor = System.Drawing.Color.Transparent;
+            this.label120.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label120.ForeColor = System.Drawing.Color.Red;
+            this.label120.Location = new System.Drawing.Point(197, 133);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(15, 15);
+            this.label120.TabIndex = 116;
+            this.label120.Text = "*";
+            this.label120.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chkIncomeDocument
             // 
@@ -5215,69 +5278,6 @@
             this.btnAccountingDocumentRegistration.Name = "btnAccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Text = "ثبت سند حسابداری";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(341, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(115, 113);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 118;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label24
-            // 
-            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(404, 229);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(15, 15);
-            this.label24.TabIndex = 100;
-            this.label24.Text = "*";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label83
-            // 
-            this.label83.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label83.BackColor = System.Drawing.Color.Transparent;
-            this.label83.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label83.ForeColor = System.Drawing.Color.Red;
-            this.label83.Location = new System.Drawing.Point(363, 257);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(15, 15);
-            this.label83.TabIndex = 100;
-            this.label83.Text = "*";
-            this.label83.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label118
-            // 
-            this.label118.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label118.BackColor = System.Drawing.Color.Transparent;
-            this.label118.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label118.ForeColor = System.Drawing.Color.Red;
-            this.label118.Location = new System.Drawing.Point(401, 286);
-            this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(15, 15);
-            this.label118.TabIndex = 100;
-            this.label118.Text = "*";
-            this.label118.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label120
-            // 
-            this.label120.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label120.BackColor = System.Drawing.Color.Transparent;
-            this.label120.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label120.ForeColor = System.Drawing.Color.Red;
-            this.label120.Location = new System.Drawing.Point(197, 133);
-            this.label120.Name = "label120";
-            this.label120.Size = new System.Drawing.Size(15, 15);
-            this.label120.TabIndex = 116;
-            this.label120.Text = "*";
-            this.label120.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // frmComers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -5326,6 +5326,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox6)).EndInit();
             this.uiGroupBox6.ResumeLayout(false);
             this.uiGroupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBillLadingCast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMethodCalFare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFareCalcMethods)).EndInit();
@@ -5400,7 +5401,6 @@
             this.panelDeleteEdit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtSeryalH_DE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWeightDeliveredGoods)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

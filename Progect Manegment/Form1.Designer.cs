@@ -28,72 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.button1 = new System.Windows.Forms.Button();
-            this.dgvList = new GridExEx.GridExEx();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            this.btnAsk = new System.Windows.Forms.Button();
+            this.txtQuestion = new System.Windows.Forms.TextBox();
+            this.rtbAnswer = new System.Windows.Forms.RichTextBox();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAsk
             // 
-            this.button1.Location = new System.Drawing.Point(162, 108);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 26);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAsk.Location = new System.Drawing.Point(307, 52);
+            this.btnAsk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAsk.Name = "btnAsk";
+            this.btnAsk.Size = new System.Drawing.Size(91, 26);
+            this.btnAsk.TabIndex = 0;
+            this.btnAsk.Text = "button1";
+            this.btnAsk.UseVisualStyleBackColor = true;
+            //this.btnAsk.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dgvList
+            // txtQuestion
             // 
-            this.dgvList.DefaultComment = null;
-            this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvList.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
-            this.dgvList.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
-            this.dgvList.FindCondition = null;
-            this.dgvList.HiddenColumnSortingEnabled = false;
-            this.dgvList.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
-            dgvList_Layout_0.IsCurrentLayout = true;
-            dgvList_Layout_0.Key = "MyGrig";
-            dgvList_Layout_0.LayoutString = resources.GetString("dgvList_Layout_0.LayoutString");
-            this.dgvList.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
-            dgvList_Layout_0});
-            this.dgvList.Location = new System.Drawing.Point(0, 0);
-            this.dgvList.Name = "dgvList";
-            this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.Size = new System.Drawing.Size(641, 392);
-            this.dgvList.Sortable = true;
-            this.dgvList.TabIndex = 81;
-            this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvList.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
-            this.dgvList.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.dgvList.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
+            this.txtQuestion.Location = new System.Drawing.Point(428, 50);
+            this.txtQuestion.Name = "txtQuestion";
+            this.txtQuestion.Size = new System.Drawing.Size(100, 28);
+            this.txtQuestion.TabIndex = 1;
+            // 
+            // rtbAnswer
+            // 
+            this.rtbAnswer.Location = new System.Drawing.Point(428, 102);
+            this.rtbAnswer.Name = "rtbAnswer";
+            this.rtbAnswer.Size = new System.Drawing.Size(100, 96);
+            this.rtbAnswer.TabIndex = 2;
+            this.rtbAnswer.Text = "";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(470, 25);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(44, 22);
+            this.lblStatus.TabIndex = 3;
+            this.lblStatus.Text = "label1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 392);
-            this.Controls.Add(this.dgvList);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.rtbAnswer);
+            this.Controls.Add(this.txtQuestion);
+            this.Controls.Add(this.btnAsk);
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private Components.Carplate carplate1;
-        private System.Windows.Forms.Button button1;
-        public GridExEx.GridExEx dgvList;
+        private System.Windows.Forms.Button btnAsk;
+        private System.Windows.Forms.TextBox txtQuestion;
+        private System.Windows.Forms.RichTextBox rtbAnswer;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

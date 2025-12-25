@@ -46,5 +46,34 @@ public class AiService
         }
     }
 
+    public async Task<string> TestApiKeyAsync()
+    {
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add(
+                "Authorization", $"Bearer {_apiKey}");
+
+            var body = new
+            {
+                model = "gpt-4.1-mini",
+                input = "Say only: OK"
+            };
+
+            var content = new StringContent(
+                JsonConvert.SerializeObject(body),
+                Encoding.UTF8,
+                "application/json");
+
+            var response = await client.PostAsync(
+                "https://api.openai.com/v1/responses", content);
+
+            string result = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+                return "❌ ApiKey نامعتبر یا مسدود است\n" + result;
+
+            return "✅ ApiKey سالم است";
+        }
+    }
 
 }

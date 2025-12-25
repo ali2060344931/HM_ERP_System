@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 public class AiService
 {
-    private readonly string _apiKey = File.ReadAllText(Application.StartupPath + @"\ChatGPT ApiKey.txt", Encoding.UTF8);
+    private readonly string ApiKey = File.ReadAllText(Application.StartupPath + @"\ChatGPT ApiKey.txt", Encoding.UTF8);
 
     public async Task<string> AnalyzeResult(string question, string data)
     {
         using (var client = new HttpClient())
         {
             client.DefaultRequestHeaders.Add(
-                "Authorization", $"Bearer {_apiKey}");
+                "Authorization", $"Bearer {ApiKey}");
 
             var body = new
             {
@@ -55,7 +55,7 @@ public class AiService
         using (var client = new HttpClient())
         {
             client.DefaultRequestHeaders.Add(
-                "Authorization", $"Bearer {_apiKey}");
+                "Authorization", $"Bearer {ApiKey}");
 
             var body = new
             {

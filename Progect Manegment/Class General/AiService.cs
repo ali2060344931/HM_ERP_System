@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 public class AiService
 {
-    private readonly string _apiKey =
-        System.Configuration.ConfigurationManager.AppSettings["OpenAI_ApiKey"];
+    private readonly string _apiKey = "000";
 
     public async Task<string> AnalyzeResult(string question, string data)
     {
@@ -45,6 +44,7 @@ public class AiService
             return "پاسخی از هوش مصنوعی دریافت نشد.";
         }
     }
+
 
     public async Task<string> TestApiKeyAsync()
     {

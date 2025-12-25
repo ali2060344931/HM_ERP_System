@@ -768,6 +768,12 @@
     <Compile Include="Forms\Car\frmCar.Designer.cs">
       <DependentUpon>frmCar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Chat GPT\frmChatGpt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Chat GPT\frmChatGpt.Designer.cs">
+      <DependentUpon>frmChatGpt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Ciltys\frmCiltys.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1054,6 +1060,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Car\frmCar.resx">
       <DependentUpon>frmCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Chat GPT\frmChatGpt.resx">
+      <DependentUpon>frmChatGpt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ciltys\frmCiltys.resx">
       <DependentUpon>frmCiltys.cs</DependentUpon>

@@ -680,7 +680,7 @@ namespace HM_ERP_System.Forms.Customer
                             var c3 = db.CustomerRoles.Where(c => c.CustomerId == ListId);
                             //var c4 = db.CustomerRoles.Where(c => c.CustomerId == ListId);
 
-                            if (c1 != null || c2 != null || c3 != null || c4 != null)
+                            if (c1.Count()==0 || c2.Count() == 0 || c3.Count() == 0)
                             {
                                 PublicClass.StopMesseg(ResourceCode.T004); return;
                             }

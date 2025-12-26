@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout cmbResiver2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout cmbResiver1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSender2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSender1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -63,6 +62,7 @@
             Janus.Windows.GridEX.GridEXLayout cmbCostAccountB_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbPaymentToOthers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
@@ -105,9 +105,9 @@
             this.lblOwnershipName = new System.Windows.Forms.Label();
             this.lblCountComerH = new System.Windows.Forms.Label();
             this.lblDraverCarTel = new System.Windows.Forms.Label();
-            this.lblDraverCarName = new System.Windows.Forms.Label();
             this.lblCarSeryal = new System.Windows.Forms.Label();
             this.lblTruckCapacity = new System.Windows.Forms.Label();
+            this.lblDraverCarName = new System.Windows.Forms.Label();
             this.lblCarName = new System.Windows.Forms.Label();
             this.txtCotajNumber = new Janus.Windows.GridEX.EditControls.EditBox();
             this.txtDateH = new Atf.UI.DateTimeSelector();
@@ -178,6 +178,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.uiTabPage2 = new Janus.Windows.UI.Tab.UITabPage();
             this.uiGroupBox6 = new Janus.Windows.EditControls.UIGroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbBillLadingCast = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.cmbMethodCalFare = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtDescriptionB = new System.Windows.Forms.RichTextBox();
@@ -187,7 +188,6 @@
             this.cmbFareCalcMethods = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtSeryalB = new Janus.Windows.GridEX.EditControls.EditBox();
             this.txtDateB = new Atf.UI.DateTimeSelector();
-            this.lblCarOwnerShip = new System.Windows.Forms.Label();
             this.lblCarPlatB = new System.Windows.Forms.Label();
             this.cmbListSimilarComerB = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.cmbCarplateB = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -197,16 +197,19 @@
             this.txtLoadWeightCapacity = new DevComponents.Editors.IntegerInput();
             this.txtLoadWeight = new DevComponents.Editors.IntegerInput();
             this.label50 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.label110 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
+            this.label118 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.label116 = new System.Windows.Forms.Label();
             this.label108 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.lblCarOwnerShip = new System.Windows.Forms.Label();
+            this.label110 = new System.Windows.Forms.Label();
             this.uiGroupBox2 = new Janus.Windows.EditControls.UIGroupBox();
             this.lblReciverTel2 = new System.Windows.Forms.Label();
             this.lblSenderTel2 = new System.Windows.Forms.Label();
@@ -236,7 +239,6 @@
             this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
             this.cmbDraversB1 = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
-            this.label83 = new System.Windows.Forms.Label();
             this.btnAddDraverB2 = new DevComponents.DotNetBar.ButtonX();
             this.label94 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
@@ -269,6 +271,7 @@
             this.label59 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.panelLanding = new Janus.Windows.EditControls.UIGroupBox();
+            this.label120 = new System.Windows.Forms.Label();
             this.chkIncomeDocument = new System.Windows.Forms.CheckBox();
             this.txtBaseFreight = new DevComponents.Editors.DoubleInput();
             this.txtBillLadingAmount = new DevComponents.Editors.DoubleInput();
@@ -400,6 +403,7 @@
             this.uiTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox6)).BeginInit();
             this.uiGroupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBillLadingCast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMethodCalFare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFareCalcMethods)).BeginInit();
@@ -1098,18 +1102,6 @@
             this.lblDraverCarTel.TabIndex = 97;
             this.lblDraverCarTel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblDraverCarName
-            // 
-            this.lblDraverCarName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDraverCarName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblDraverCarName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblDraverCarName.ForeColor = System.Drawing.Color.Maroon;
-            this.lblDraverCarName.Location = new System.Drawing.Point(400, 19);
-            this.lblDraverCarName.Name = "lblDraverCarName";
-            this.lblDraverCarName.Size = new System.Drawing.Size(229, 18);
-            this.lblDraverCarName.TabIndex = 97;
-            this.lblDraverCarName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // lblCarSeryal
             // 
             this.lblCarSeryal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1133,6 +1125,18 @@
             this.lblTruckCapacity.Size = new System.Drawing.Size(84, 18);
             this.lblTruckCapacity.TabIndex = 97;
             this.lblTruckCapacity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblDraverCarName
+            // 
+            this.lblDraverCarName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDraverCarName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblDraverCarName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblDraverCarName.ForeColor = System.Drawing.Color.Maroon;
+            this.lblDraverCarName.Location = new System.Drawing.Point(400, 19);
+            this.lblDraverCarName.Name = "lblDraverCarName";
+            this.lblDraverCarName.Size = new System.Drawing.Size(229, 18);
+            this.lblDraverCarName.TabIndex = 97;
+            this.lblDraverCarName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCarName
             // 
@@ -2220,6 +2224,7 @@
             this.uiGroupBox6.AutoScrollMinSize = new System.Drawing.Size(300, 0);
             this.uiGroupBox6.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.uiGroupBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.uiGroupBox6.Controls.Add(this.pictureBox1);
             this.uiGroupBox6.Controls.Add(this.cmbBillLadingCast);
             this.uiGroupBox6.Controls.Add(this.cmbMethodCalFare);
             this.uiGroupBox6.Controls.Add(this.txtDescriptionB);
@@ -2229,7 +2234,6 @@
             this.uiGroupBox6.Controls.Add(this.cmbFareCalcMethods);
             this.uiGroupBox6.Controls.Add(this.txtSeryalB);
             this.uiGroupBox6.Controls.Add(this.txtDateB);
-            this.uiGroupBox6.Controls.Add(this.lblCarOwnerShip);
             this.uiGroupBox6.Controls.Add(this.lblCarPlatB);
             this.uiGroupBox6.Controls.Add(this.cmbListSimilarComerB);
             this.uiGroupBox6.Controls.Add(this.cmbCarplateB);
@@ -2239,16 +2243,19 @@
             this.uiGroupBox6.Controls.Add(this.txtLoadWeightCapacity);
             this.uiGroupBox6.Controls.Add(this.txtLoadWeight);
             this.uiGroupBox6.Controls.Add(this.label50);
-            this.uiGroupBox6.Controls.Add(this.label58);
-            this.uiGroupBox6.Controls.Add(this.label24);
             this.uiGroupBox6.Controls.Add(this.label40);
             this.uiGroupBox6.Controls.Add(this.label72);
             this.uiGroupBox6.Controls.Add(this.label73);
             this.uiGroupBox6.Controls.Add(this.label49);
-            this.uiGroupBox6.Controls.Add(this.label110);
             this.uiGroupBox6.Controls.Add(this.label84);
+            this.uiGroupBox6.Controls.Add(this.label118);
+            this.uiGroupBox6.Controls.Add(this.label83);
+            this.uiGroupBox6.Controls.Add(this.label24);
             this.uiGroupBox6.Controls.Add(this.label116);
             this.uiGroupBox6.Controls.Add(this.label108);
+            this.uiGroupBox6.Controls.Add(this.label58);
+            this.uiGroupBox6.Controls.Add(this.lblCarOwnerShip);
+            this.uiGroupBox6.Controls.Add(this.label110);
             this.uiGroupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiGroupBox6.Location = new System.Drawing.Point(1233, 5);
             this.uiGroupBox6.Name = "uiGroupBox6";
@@ -2257,6 +2264,17 @@
             this.uiGroupBox6.Text = "بارنامه";
             this.uiGroupBox6.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(341, 17);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(115, 113);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 118;
+            this.pictureBox1.TabStop = false;
+            // 
             // cmbBillLadingCast
             // 
             this.cmbBillLadingCast.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -2264,7 +2282,7 @@
             cmbBillLadingCast_DesignTimeLayout.LayoutString = resources.GetString("cmbBillLadingCast_DesignTimeLayout.LayoutString");
             this.cmbBillLadingCast.DesignTimeLayout = cmbBillLadingCast_DesignTimeLayout;
             this.cmbBillLadingCast.DisplayMember = "Name";
-            this.cmbBillLadingCast.Location = new System.Drawing.Point(130, 272);
+            this.cmbBillLadingCast.Location = new System.Drawing.Point(162, 280);
             this.cmbBillLadingCast.Name = "cmbBillLadingCast";
             this.cmbBillLadingCast.SelectedIndex = -1;
             this.cmbBillLadingCast.SelectedItem = null;
@@ -2282,7 +2300,7 @@
             cmbMethodCalFare_DesignTimeLayout.LayoutString = resources.GetString("cmbMethodCalFare_DesignTimeLayout.LayoutString");
             this.cmbMethodCalFare.DesignTimeLayout = cmbMethodCalFare_DesignTimeLayout;
             this.cmbMethodCalFare.DisplayMember = "Name";
-            this.cmbMethodCalFare.Location = new System.Drawing.Point(130, 214);
+            this.cmbMethodCalFare.Location = new System.Drawing.Point(162, 222);
             this.cmbMethodCalFare.Name = "cmbMethodCalFare";
             this.cmbMethodCalFare.SelectedIndex = -1;
             this.cmbMethodCalFare.SelectedItem = null;
@@ -2297,7 +2315,7 @@
             // 
             this.txtDescriptionB.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDescriptionB.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtDescriptionB.Location = new System.Drawing.Point(130, 310);
+            this.txtDescriptionB.Location = new System.Drawing.Point(47, 312);
             this.txtDescriptionB.Name = "txtDescriptionB";
             this.txtDescriptionB.Size = new System.Drawing.Size(244, 59);
             this.txtDescriptionB.TabIndex = 9;
@@ -2310,7 +2328,7 @@
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label25.Location = new System.Drawing.Point(254, 62);
+            this.label25.Location = new System.Drawing.Point(294, 103);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(36, 18);
             this.label25.TabIndex = 98;
@@ -2323,7 +2341,7 @@
             this.label105.BackColor = System.Drawing.Color.Transparent;
             this.label105.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label105.ForeColor = System.Drawing.Color.Black;
-            this.label105.Location = new System.Drawing.Point(259, 193);
+            this.label105.Location = new System.Drawing.Point(291, 197);
             this.label105.Name = "label105";
             this.label105.Size = new System.Drawing.Size(94, 18);
             this.label105.TabIndex = 98;
@@ -2335,11 +2353,11 @@
             this.label36.AutoSize = true;
             this.label36.BackColor = System.Drawing.Color.Transparent;
             this.label36.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label36.Location = new System.Drawing.Point(259, 156);
+            this.label36.Location = new System.Drawing.Point(291, 164);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(46, 18);
+            this.label36.Size = new System.Drawing.Size(84, 18);
             this.label36.TabIndex = 98;
-            this.label36.Text = "وزن بار:";
+            this.label36.Text = "وزن بار بارگیری:";
             // 
             // cmbFareCalcMethods
             // 
@@ -2348,7 +2366,7 @@
             cmbFareCalcMethods_DesignTimeLayout.LayoutString = resources.GetString("cmbFareCalcMethods_DesignTimeLayout.LayoutString");
             this.cmbFareCalcMethods.DesignTimeLayout = cmbFareCalcMethods_DesignTimeLayout;
             this.cmbFareCalcMethods.DisplayMember = "Name";
-            this.cmbFareCalcMethods.Location = new System.Drawing.Point(130, 243);
+            this.cmbFareCalcMethods.Location = new System.Drawing.Point(162, 251);
             this.cmbFareCalcMethods.Name = "cmbFareCalcMethods";
             this.cmbFareCalcMethods.SelectedIndex = -1;
             this.cmbFareCalcMethods.SelectedItem = null;
@@ -2363,7 +2381,7 @@
             // txtSeryalB
             // 
             this.txtSeryalB.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtSeryalB.Location = new System.Drawing.Point(130, 105);
+            this.txtSeryalB.Location = new System.Drawing.Point(162, 128);
             this.txtSeryalB.MaxLength = 7;
             this.txtSeryalB.Name = "txtSeryalB";
             this.txtSeryalB.Size = new System.Drawing.Size(129, 28);
@@ -2377,37 +2395,23 @@
             // 
             this.txtDateB.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateB.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateB.Location = new System.Drawing.Point(126, 57);
+            this.txtDateB.Location = new System.Drawing.Point(162, 98);
             this.txtDateB.Name = "txtDateB";
             this.txtDateB.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDateB.Size = new System.Drawing.Size(124, 29);
+            this.txtDateB.Size = new System.Drawing.Size(128, 29);
             this.txtDateB.TabIndex = 1;
             this.txtDateB.UsePersianFormat = true;
             this.txtDateB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDateB_KeyDown);
             // 
-            // lblCarOwnerShip
-            // 
-            this.lblCarOwnerShip.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblCarOwnerShip.BackColor = System.Drawing.Color.Transparent;
-            this.lblCarOwnerShip.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCarOwnerShip.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCarOwnerShip.Location = new System.Drawing.Point(303, 51);
-            this.lblCarOwnerShip.Name = "lblCarOwnerShip";
-            this.lblCarOwnerShip.Size = new System.Drawing.Size(137, 46);
-            this.lblCarOwnerShip.TabIndex = 105;
-            this.lblCarOwnerShip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolTip1.SetToolTip(this.lblCarOwnerShip, "وضعیت مالکیت کامیون");
-            this.lblCarOwnerShip.Click += new System.EventHandler(this.lblCarOwnerShip_Click);
-            // 
             // lblCarPlatB
             // 
             this.lblCarPlatB.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblCarPlatB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblCarPlatB.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblCarPlatB.BackColor = System.Drawing.Color.Transparent;
+            this.lblCarPlatB.Font = new System.Drawing.Font("Vazir FD", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarPlatB.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCarPlatB.Location = new System.Drawing.Point(310, 32);
+            this.lblCarPlatB.Location = new System.Drawing.Point(131, 53);
             this.lblCarPlatB.Name = "lblCarPlatB";
-            this.lblCarPlatB.Size = new System.Drawing.Size(122, 18);
+            this.lblCarPlatB.Size = new System.Drawing.Size(207, 20);
             this.lblCarPlatB.TabIndex = 105;
             this.lblCarPlatB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.toolTip1.SetToolTip(this.lblCarPlatB, "شماره پلاک کامیون");
@@ -2421,12 +2425,12 @@
             this.cmbListSimilarComerB.DesignTimeLayout = cmbListSimilarComerB_DesignTimeLayout;
             this.cmbListSimilarComerB.DisplayMember = "CarPlat";
             this.cmbListSimilarComerB.Image = ((System.Drawing.Image)(resources.GetObject("cmbListSimilarComerB.Image")));
-            this.cmbListSimilarComerB.Location = new System.Drawing.Point(18, 28);
+            this.cmbListSimilarComerB.Location = new System.Drawing.Point(6, 20);
             this.cmbListSimilarComerB.MaxLength = 8;
             this.cmbListSimilarComerB.Name = "cmbListSimilarComerB";
             this.cmbListSimilarComerB.SelectedIndex = -1;
             this.cmbListSimilarComerB.SelectedItem = null;
-            this.cmbListSimilarComerB.Size = new System.Drawing.Size(96, 30);
+            this.cmbListSimilarComerB.Size = new System.Drawing.Size(151, 30);
             this.cmbListSimilarComerB.TabIndex = 2;
             this.cmbListSimilarComerB.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.toolTip1.SetToolTip(this.cmbListSimilarComerB, "لیست بارنامه های مشابه");
@@ -2444,7 +2448,7 @@
             this.cmbCarplateB.DesignTimeLayout = cmbCarplateB_DesignTimeLayout;
             this.cmbCarplateB.DisplayMember = "CarPlat";
             this.cmbCarplateB.Image = ((System.Drawing.Image)(resources.GetObject("cmbCarplateB.Image")));
-            this.cmbCarplateB.Location = new System.Drawing.Point(126, 28);
+            this.cmbCarplateB.Location = new System.Drawing.Point(169, 20);
             this.cmbCarplateB.MaxLength = 8;
             this.cmbCarplateB.Name = "cmbCarplateB";
             this.cmbCarplateB.SelectedIndex = -1;
@@ -2466,7 +2470,7 @@
             this.btnListSimilarComerB.BackColor = System.Drawing.Color.Transparent;
             this.btnListSimilarComerB.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnListSimilarComerB.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnListSimilarComerB.Location = new System.Drawing.Point(114, 28);
+            this.btnListSimilarComerB.Location = new System.Drawing.Point(157, 20);
             this.btnListSimilarComerB.Name = "btnListSimilarComerB";
             this.btnListSimilarComerB.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4);
             this.btnListSimilarComerB.Size = new System.Drawing.Size(12, 30);
@@ -2484,10 +2488,10 @@
             this.label57.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label57.AutoSize = true;
             this.label57.BackColor = System.Drawing.Color.Transparent;
-            this.label57.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label57.Location = new System.Drawing.Point(375, 308);
+            this.label57.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label57.Location = new System.Drawing.Point(292, 310);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(48, 15);
+            this.label57.Size = new System.Drawing.Size(57, 18);
             this.label57.TabIndex = 100;
             this.label57.Text = "توضیحات:";
             // 
@@ -2501,7 +2505,7 @@
             this.txtWeightDeliveredGoodsMain.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtWeightDeliveredGoodsMain.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtWeightDeliveredGoodsMain.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtWeightDeliveredGoodsMain.Location = new System.Drawing.Point(29, 150);
+            this.txtWeightDeliveredGoodsMain.Location = new System.Drawing.Point(33, 159);
             this.txtWeightDeliveredGoodsMain.MaxValue = 999999;
             this.txtWeightDeliveredGoodsMain.MinValue = 0;
             this.txtWeightDeliveredGoodsMain.Name = "txtWeightDeliveredGoodsMain";
@@ -2522,7 +2526,7 @@
             this.txtLoadWeightCapacity.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtLoadWeightCapacity.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLoadWeightCapacity.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtLoadWeightCapacity.Location = new System.Drawing.Point(130, 183);
+            this.txtLoadWeightCapacity.Location = new System.Drawing.Point(162, 192);
             this.txtLoadWeightCapacity.MaxValue = 999999;
             this.txtLoadWeightCapacity.MinValue = 0;
             this.txtLoadWeightCapacity.Name = "txtLoadWeightCapacity";
@@ -2543,7 +2547,7 @@
             this.txtLoadWeight.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLoadWeight.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtLoadWeight.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtLoadWeight.Location = new System.Drawing.Point(130, 150);
+            this.txtLoadWeight.Location = new System.Drawing.Point(162, 157);
             this.txtLoadWeight.MaxValue = 999999;
             this.txtLoadWeight.MinValue = 0;
             this.txtLoadWeight.Name = "txtLoadWeight";
@@ -2559,35 +2563,11 @@
             this.label50.AutoSize = true;
             this.label50.BackColor = System.Drawing.Color.Transparent;
             this.label50.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label50.Location = new System.Drawing.Point(259, 110);
+            this.label50.Location = new System.Drawing.Point(291, 133);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(106, 18);
             this.label50.TabIndex = 98;
             this.label50.Text = "شماره(سریال) بارنامه";
-            // 
-            // label58
-            // 
-            this.label58.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label58.AutoSize = true;
-            this.label58.BackColor = System.Drawing.Color.Transparent;
-            this.label58.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label58.Location = new System.Drawing.Point(59, 135);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(30, 15);
-            this.label58.TabIndex = 105;
-            this.label58.Text = "تخلیه";
-            // 
-            // label24
-            // 
-            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label24.Location = new System.Drawing.Point(176, 135);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(36, 15);
-            this.label24.TabIndex = 105;
-            this.label24.Text = "بارگیری";
             // 
             // label40
             // 
@@ -2596,7 +2576,7 @@
             this.label40.BackColor = System.Drawing.Color.Transparent;
             this.label40.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label40.ForeColor = System.Drawing.Color.Black;
-            this.label40.Location = new System.Drawing.Point(259, 277);
+            this.label40.Location = new System.Drawing.Point(291, 285);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(112, 18);
             this.label40.TabIndex = 98;
@@ -2609,7 +2589,7 @@
             this.label72.BackColor = System.Drawing.Color.Transparent;
             this.label72.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label72.ForeColor = System.Drawing.Color.Black;
-            this.label72.Location = new System.Drawing.Point(259, 219);
+            this.label72.Location = new System.Drawing.Point(291, 227);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(114, 18);
             this.label72.TabIndex = 98;
@@ -2623,7 +2603,7 @@
             this.label73.BackColor = System.Drawing.Color.Transparent;
             this.label73.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label73.ForeColor = System.Drawing.Color.Black;
-            this.label73.Location = new System.Drawing.Point(259, 249);
+            this.label73.Location = new System.Drawing.Point(291, 257);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(74, 18);
             this.label73.TabIndex = 117;
@@ -2636,24 +2616,11 @@
             this.label49.AutoSize = true;
             this.label49.BackColor = System.Drawing.Color.Transparent;
             this.label49.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label49.Location = new System.Drawing.Point(246, 35);
+            this.label49.Location = new System.Drawing.Point(289, 27);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(31, 18);
             this.label49.TabIndex = 98;
             this.label49.Text = "پلاک";
-            // 
-            // label110
-            // 
-            this.label110.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label110.BackColor = System.Drawing.Color.Transparent;
-            this.label110.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label110.ForeColor = System.Drawing.Color.Red;
-            this.label110.Location = new System.Drawing.Point(360, 111);
-            this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(15, 15);
-            this.label110.TabIndex = 100;
-            this.label110.Text = "*";
-            this.label110.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label84
             // 
@@ -2661,12 +2628,51 @@
             this.label84.BackColor = System.Drawing.Color.Transparent;
             this.label84.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label84.ForeColor = System.Drawing.Color.Red;
-            this.label84.Location = new System.Drawing.Point(278, 36);
+            this.label84.Location = new System.Drawing.Point(316, 28);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(15, 15);
             this.label84.TabIndex = 100;
             this.label84.Text = "*";
             this.label84.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label118
+            // 
+            this.label118.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label118.BackColor = System.Drawing.Color.Transparent;
+            this.label118.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label118.ForeColor = System.Drawing.Color.Red;
+            this.label118.Location = new System.Drawing.Point(401, 286);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(15, 15);
+            this.label118.TabIndex = 100;
+            this.label118.Text = "*";
+            this.label118.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label83
+            // 
+            this.label83.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label83.BackColor = System.Drawing.Color.Transparent;
+            this.label83.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label83.ForeColor = System.Drawing.Color.Red;
+            this.label83.Location = new System.Drawing.Point(363, 257);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(15, 15);
+            this.label83.TabIndex = 100;
+            this.label83.Text = "*";
+            this.label83.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label24
+            // 
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(404, 229);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(15, 15);
+            this.label24.TabIndex = 100;
+            this.label24.Text = "*";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label116
             // 
@@ -2674,7 +2680,7 @@
             this.label116.BackColor = System.Drawing.Color.Transparent;
             this.label116.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label116.ForeColor = System.Drawing.Color.Red;
-            this.label116.Location = new System.Drawing.Point(211, 135);
+            this.label116.Location = new System.Drawing.Point(372, 166);
             this.label116.Name = "label116";
             this.label116.Size = new System.Drawing.Size(15, 15);
             this.label116.TabIndex = 100;
@@ -2687,12 +2693,51 @@
             this.label108.BackColor = System.Drawing.Color.Transparent;
             this.label108.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label108.ForeColor = System.Drawing.Color.Red;
-            this.label108.Location = new System.Drawing.Point(286, 64);
+            this.label108.Location = new System.Drawing.Point(326, 105);
             this.label108.Name = "label108";
             this.label108.Size = new System.Drawing.Size(15, 15);
             this.label108.TabIndex = 100;
             this.label108.Text = "*";
             this.label108.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label58
+            // 
+            this.label58.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label58.AutoSize = true;
+            this.label58.BackColor = System.Drawing.Color.Transparent;
+            this.label58.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label58.Location = new System.Drawing.Point(127, 166);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(33, 15);
+            this.label58.TabIndex = 105;
+            this.label58.Text = "تخلیه:";
+            // 
+            // lblCarOwnerShip
+            // 
+            this.lblCarOwnerShip.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCarOwnerShip.BackColor = System.Drawing.Color.Transparent;
+            this.lblCarOwnerShip.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblCarOwnerShip.ForeColor = System.Drawing.Color.Purple;
+            this.lblCarOwnerShip.Location = new System.Drawing.Point(28, 77);
+            this.lblCarOwnerShip.Name = "lblCarOwnerShip";
+            this.lblCarOwnerShip.Size = new System.Drawing.Size(413, 18);
+            this.lblCarOwnerShip.TabIndex = 105;
+            this.lblCarOwnerShip.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTip1.SetToolTip(this.lblCarOwnerShip, "وضعیت مالکیت کامیون");
+            this.lblCarOwnerShip.Click += new System.EventHandler(this.lblCarOwnerShip_Click);
+            // 
+            // label110
+            // 
+            this.label110.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label110.BackColor = System.Drawing.Color.Transparent;
+            this.label110.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label110.ForeColor = System.Drawing.Color.Red;
+            this.label110.Location = new System.Drawing.Point(395, 133);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(15, 15);
+            this.label110.TabIndex = 100;
+            this.label110.Text = "*";
+            this.label110.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // uiGroupBox2
             // 
@@ -2726,7 +2771,6 @@
             this.uiGroupBox2.Controls.Add(this.buttonX4);
             this.uiGroupBox2.Controls.Add(this.cmbDraversB1);
             this.uiGroupBox2.Controls.Add(this.buttonX3);
-            this.uiGroupBox2.Controls.Add(this.label83);
             this.uiGroupBox2.Controls.Add(this.btnAddDraverB2);
             this.uiGroupBox2.Controls.Add(this.label94);
             this.uiGroupBox2.Controls.Add(this.label60);
@@ -2810,7 +2854,7 @@
             // 
             this.lblProdectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProdectName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblProdectName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblProdectName.Font = new System.Drawing.Font("Vazir FD", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblProdectName.ForeColor = System.Drawing.Color.Maroon;
             this.lblProdectName.Location = new System.Drawing.Point(14, 106);
             this.lblProdectName.Name = "lblProdectName";
@@ -2835,7 +2879,7 @@
             // 
             this.lblSeryalH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSeryalH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblSeryalH.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblSeryalH.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblSeryalH.ForeColor = System.Drawing.Color.Maroon;
             this.lblSeryalH.Location = new System.Drawing.Point(14, 24);
             this.lblSeryalH.Name = "lblSeryalH";
@@ -2847,7 +2891,7 @@
             // 
             this.lblDateB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDateB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblDateB.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblDateB.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblDateB.ForeColor = System.Drawing.Color.Maroon;
             this.lblDateB.Location = new System.Drawing.Point(195, 24);
             this.lblDateB.Name = "lblDateB";
@@ -2871,7 +2915,7 @@
             // 
             this.lblLoadingOrinig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLoadingOrinig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblLoadingOrinig.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblLoadingOrinig.Font = new System.Drawing.Font("Vazir FD", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblLoadingOrinig.ForeColor = System.Drawing.Color.Maroon;
             this.lblLoadingOrinig.Location = new System.Drawing.Point(14, 44);
             this.lblLoadingOrinig.Name = "lblLoadingOrinig";
@@ -2914,7 +2958,7 @@
             // 
             this.lblUnLoadingOrinig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUnLoadingOrinig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblUnLoadingOrinig.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblUnLoadingOrinig.Font = new System.Drawing.Font("Vazir FD", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblUnLoadingOrinig.ForeColor = System.Drawing.Color.Maroon;
             this.lblUnLoadingOrinig.Location = new System.Drawing.Point(14, 75);
             this.lblUnLoadingOrinig.Name = "lblUnLoadingOrinig";
@@ -3153,19 +3197,6 @@
             this.buttonX3.TabStop = false;
             this.buttonX3.Tooltip = "ثبت آیتم جدید";
             this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
-            // 
-            // label83
-            // 
-            this.label83.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label83.BackColor = System.Drawing.Color.Transparent;
-            this.label83.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label83.ForeColor = System.Drawing.Color.Red;
-            this.label83.Location = new System.Drawing.Point(327, 180);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(15, 15);
-            this.label83.TabIndex = 100;
-            this.label83.Text = "*";
-            this.label83.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAddDraverB2
             // 
@@ -3689,6 +3720,7 @@
             // panelLanding
             // 
             this.panelLanding.AutoScroll = true;
+            this.panelLanding.Controls.Add(this.label120);
             this.panelLanding.Controls.Add(this.chkIncomeDocument);
             this.panelLanding.Controls.Add(this.txtBaseFreight);
             this.panelLanding.Controls.Add(this.txtBillLadingAmount);
@@ -3718,6 +3750,19 @@
             this.panelLanding.TabIndex = 3;
             this.panelLanding.Text = "بارنامه نویس";
             this.panelLanding.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
+            // 
+            // label120
+            // 
+            this.label120.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label120.BackColor = System.Drawing.Color.Transparent;
+            this.label120.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label120.ForeColor = System.Drawing.Color.Red;
+            this.label120.Location = new System.Drawing.Point(197, 133);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(15, 15);
+            this.label120.TabIndex = 116;
+            this.label120.Text = "*";
+            this.label120.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chkIncomeDocument
             // 
@@ -4030,7 +4075,7 @@
             this.lblShiperName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblShiperName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblShiperName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblShiperName.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblShiperName.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblShiperName.ForeColor = System.Drawing.Color.Maroon;
             this.lblShiperName.Location = new System.Drawing.Point(28, 35);
             this.lblShiperName.Name = "lblShiperName";
@@ -4884,7 +4929,7 @@
             this.dgvListH.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
             this.dgvListH.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.dgvListH.FindCondition = null;
-            this.dgvListH.FrozenColumns = 7;
+            this.dgvListH.FrozenColumns = 8;
             this.dgvListH.GroupTotals = Janus.Windows.GridEX.GroupTotals.Always;
             this.dgvListH.HiddenColumnSortingEnabled = false;
             this.dgvListH.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
@@ -4893,14 +4938,14 @@
             dgvListH_Layout_0.LayoutString = resources.GetString("dgvListH_Layout_0.LayoutString");
             this.dgvListH.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvListH_Layout_0});
-            this.dgvListH.Location = new System.Drawing.Point(126, 4);
+            this.dgvListH.Location = new System.Drawing.Point(8, 4);
             this.dgvListH.Name = "dgvListH";
             this.dgvListH.RecordNavigator = true;
             this.dgvListH.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListH.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListH.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListH.SettingsKey = "frmComersH";
-            this.dgvListH.Size = new System.Drawing.Size(572, 195);
+            this.dgvListH.Size = new System.Drawing.Size(690, 195);
             this.dgvListH.Sortable = true;
             this.dgvListH.TabIndex = 85;
             this.dgvListH.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -5281,6 +5326,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox6)).EndInit();
             this.uiGroupBox6.ResumeLayout(false);
             this.uiGroupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBillLadingCast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMethodCalFare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFareCalcMethods)).EndInit();
@@ -5376,7 +5422,6 @@
         public Atf.UI.DateTimeSelector txtDateStart;
         public System.Windows.Forms.Panel pnlViewItemFoter;
         public DevComponents.DotNetBar.ButtonX btnExportToExcel;
-        public GridExEx.GridExEx dgvListH;
         private Janus.Windows.UI.Tab.UITab uiTab1;
         private Janus.Windows.UI.Tab.UITabPage uiTabPage1;
         private Janus.Windows.UI.Tab.UITabPage uiTabPage2;
@@ -5510,7 +5555,6 @@
         public DevComponents.DotNetBar.ButtonX btnChangStatusGoods;
         private DevComponents.DotNetBar.ButtonItem btnUnChangStatusGoods;
         public DevComponents.DotNetBar.ButtonX btnListSimilarComerB;
-        private System.Windows.Forms.Label label24;
         private DevComponents.Editors.IntegerInput txtLoadWeight;
         private System.Windows.Forms.Label label12;
         private Janus.Windows.GridEX.EditControls.EditBox txtCotajNumber;
@@ -5556,7 +5600,6 @@
         public DevComponents.DotNetBar.ButtonX buttonX5;
         public DevComponents.DotNetBar.ButtonX buttonX4;
         private DevComponents.Editors.DoubleInput txtAC;
-        private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Label label81;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.Label lblDraver2Tel;
@@ -5651,7 +5694,6 @@
         private System.Windows.Forms.Label label113;
         private System.Windows.Forms.Label label114;
         private System.Windows.Forms.Label label115;
-        private System.Windows.Forms.Label lblCarOwnerShip;
         private System.Windows.Forms.Label lblCarPlatB;
         private System.Windows.Forms.Label label110;
         private System.Windows.Forms.Label label84;
@@ -5667,5 +5709,12 @@
         public DevComponents.DotNetBar.ButtonX buttonX01;
         private System.Windows.Forms.Label label119;
         private System.Windows.Forms.Label lblDraverCarTel;
+        public GridExEx.GridExEx dgvListH;
+        private System.Windows.Forms.Label lblCarOwnerShip;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label118;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label120;
     }
 }

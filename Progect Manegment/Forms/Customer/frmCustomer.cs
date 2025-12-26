@@ -678,9 +678,7 @@ namespace HM_ERP_System.Forms.Customer
                             var c1 = db.DetailedAccounts.Where(c => c.CustomerId == ListId);
                             var c2 = db.CustomerToGroups.Where(c => c.CustomerId == ListId);
                             var c3 = db.CustomerRoles.Where(c => c.CustomerId == ListId);
-                            //var c4 = db.CustomerRoles.Where(c => c.CustomerId == ListId);
-
-                            if (c1.Count()==0 || c2.Count() == 0 || c3.Count() == 0)
+                            if (c1.Count()!=0 || c2.Count() != 0 || c3.Count() != 0)
                             {
                                 PublicClass.StopMesseg(ResourceCode.T004); return;
                             }

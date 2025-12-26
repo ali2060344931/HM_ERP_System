@@ -80,7 +80,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
             isactive = true;
             UpdateData();
-
+            FillAllList();
         }
 
         public void UpdateData()
@@ -102,27 +102,6 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             FilldgvListAllAcconts();//تفصیلی
             dgvList.DataSource = null;
             dgvListTransaction.DataSource = null;
-            PublicClass.WindowAlart("1", "بروز رسانی انجام شد.");
-            /*
-            switch (TabKey)
-            {
-                case "G":
-                    FilldgvListG();//گروه
-                    break;
-                case "T":
-                    FilldgvListT();//کل
-                    break;
-                case "S":
-                    FilldgvListS();//معیین
-                    break;
-                case "D":
-                    FilldgvListD();//تفصیلی
-                    break;
-                case "AllAcconts":
-                    FilldgvListAllAcconts();//تفصیلی
-                    break;
-            }
-            */
         }
         /// <summary>
         /// همه حسابها
@@ -238,6 +217,8 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         private void btnListRefresh_Click(object sender, EventArgs e)
         {
             FillAllList();
+            PublicClass.WindowAlart("1", "بروز رسانی انجام شد.");
+
         }
 
         private void txtTransactionCodeS_ValueChanged(object sender, EventArgs e)
@@ -441,24 +422,21 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
                         uiTab1.TabPages["List"].Selected = true;
                     }
-
                 }
-                //else if (e.Column.Key == "Transaction")
-                //{
-                //    using (var db = new DBcontextModel())
-                //    {
-                //        List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
-                //        PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
-                //        uiTab1.TabPages["List"].Selected = true;
-                //    }
-                //}
-
+                else if (e.Column.Key == "Transaction")
+                {
+                    using (var db = new DBcontextModel())
+                    {
+                        List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
+                        PublicClass.FilldgvListTransaction(dgvList, txtDateS.Text, txtDateE.Text, requiredIds, ListId, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
+                        uiTab1.TabPages["List"].Selected = true;
+                    }
+                }
             }
             catch (Exception er)
             {
                 PublicClass.ShowErrorMessage(er);
             }
-
         }
 
         private void buttonX01_Click(object sender, EventArgs e)

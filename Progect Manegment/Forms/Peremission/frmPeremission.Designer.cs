@@ -1038,7 +1038,7 @@
             treeNode164.ImageIndex = 3;
             treeNode164.Name = "Node5_2_1_3";
             treeNode164.Text = "حذف";
-            treeNode165.ImageIndex = 17;
+            treeNode165.ImageIndex = 15;
             treeNode165.Name = "Node5_2_1";
             treeNode165.Text = "تنظیمات برنامه";
             treeNode166.ImageIndex = 1;
@@ -1050,9 +1050,10 @@
             treeNode168.ImageIndex = 3;
             treeNode168.Name = "Node5_2_2_3";
             treeNode168.Text = "حذف";
-            treeNode169.ImageIndex = 17;
+            treeNode169.ImageIndex = 15;
             treeNode169.Name = "Node5_2_2";
             treeNode169.Text = "تعریف سال مالی";
+            treeNode170.ImageIndex = 14;
             treeNode170.Name = "Node5_2";
             treeNode170.Text = "تنظیمات نرم افزار";
             treeNode171.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1106,7 +1107,7 @@
             this.uiTabPage2.Controls.Add(this.dgvList);
             this.uiTabPage2.Location = new System.Drawing.Point(3, 1);
             this.uiTabPage2.Name = "uiTabPage2";
-            this.uiTabPage2.Size = new System.Drawing.Size(514, 524);
+            this.uiTabPage2.Size = new System.Drawing.Size(1042, 530);
             this.uiTabPage2.TabStop = true;
             this.uiTabPage2.Text = "لیست دسترسی ها";
             // 
@@ -1130,7 +1131,7 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.Size = new System.Drawing.Size(514, 524);
+            this.dgvList.Size = new System.Drawing.Size(1042, 530);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 85;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);

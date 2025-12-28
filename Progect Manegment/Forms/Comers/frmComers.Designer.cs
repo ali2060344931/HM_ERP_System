@@ -178,7 +178,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.uiTabPage2 = new Janus.Windows.UI.Tab.UITabPage();
             this.uiGroupBox6 = new Janus.Windows.EditControls.UIGroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmbBillLadingCast = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.cmbMethodCalFare = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtDescriptionB = new System.Windows.Forms.RichTextBox();
@@ -403,7 +402,6 @@
             this.uiTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox6)).BeginInit();
             this.uiGroupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBillLadingCast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMethodCalFare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFareCalcMethods)).BeginInit();
@@ -2221,10 +2219,9 @@
             // uiGroupBox6
             // 
             this.uiGroupBox6.AutoScroll = true;
-            this.uiGroupBox6.AutoScrollMinSize = new System.Drawing.Size(300, 0);
+            this.uiGroupBox6.AutoScrollMinSize = new System.Drawing.Size(100, 0);
             this.uiGroupBox6.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.uiGroupBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.uiGroupBox6.Controls.Add(this.pictureBox1);
             this.uiGroupBox6.Controls.Add(this.cmbBillLadingCast);
             this.uiGroupBox6.Controls.Add(this.cmbMethodCalFare);
             this.uiGroupBox6.Controls.Add(this.txtDescriptionB);
@@ -2257,23 +2254,12 @@
             this.uiGroupBox6.Controls.Add(this.lblCarOwnerShip);
             this.uiGroupBox6.Controls.Add(this.label110);
             this.uiGroupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiGroupBox6.Location = new System.Drawing.Point(1233, 5);
+            this.uiGroupBox6.Location = new System.Drawing.Point(1368, 5);
             this.uiGroupBox6.Name = "uiGroupBox6";
-            this.uiGroupBox6.Size = new System.Drawing.Size(459, 377);
+            this.uiGroupBox6.Size = new System.Drawing.Size(324, 377);
             this.uiGroupBox6.TabIndex = 0;
             this.uiGroupBox6.Text = "بارنامه";
             this.uiGroupBox6.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(341, 17);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(115, 113);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 118;
-            this.pictureBox1.TabStop = false;
             // 
             // cmbBillLadingCast
             // 
@@ -2282,7 +2268,7 @@
             cmbBillLadingCast_DesignTimeLayout.LayoutString = resources.GetString("cmbBillLadingCast_DesignTimeLayout.LayoutString");
             this.cmbBillLadingCast.DesignTimeLayout = cmbBillLadingCast_DesignTimeLayout;
             this.cmbBillLadingCast.DisplayMember = "Name";
-            this.cmbBillLadingCast.Location = new System.Drawing.Point(162, 280);
+            this.cmbBillLadingCast.Location = new System.Drawing.Point(95, 280);
             this.cmbBillLadingCast.Name = "cmbBillLadingCast";
             this.cmbBillLadingCast.SelectedIndex = -1;
             this.cmbBillLadingCast.SelectedItem = null;
@@ -2300,7 +2286,7 @@
             cmbMethodCalFare_DesignTimeLayout.LayoutString = resources.GetString("cmbMethodCalFare_DesignTimeLayout.LayoutString");
             this.cmbMethodCalFare.DesignTimeLayout = cmbMethodCalFare_DesignTimeLayout;
             this.cmbMethodCalFare.DisplayMember = "Name";
-            this.cmbMethodCalFare.Location = new System.Drawing.Point(162, 222);
+            this.cmbMethodCalFare.Location = new System.Drawing.Point(95, 222);
             this.cmbMethodCalFare.Name = "cmbMethodCalFare";
             this.cmbMethodCalFare.SelectedIndex = -1;
             this.cmbMethodCalFare.SelectedItem = null;
@@ -2315,7 +2301,7 @@
             // 
             this.txtDescriptionB.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDescriptionB.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtDescriptionB.Location = new System.Drawing.Point(47, 312);
+            this.txtDescriptionB.Location = new System.Drawing.Point(-20, 312);
             this.txtDescriptionB.Name = "txtDescriptionB";
             this.txtDescriptionB.Size = new System.Drawing.Size(244, 59);
             this.txtDescriptionB.TabIndex = 9;
@@ -2328,7 +2314,7 @@
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label25.Location = new System.Drawing.Point(294, 103);
+            this.label25.Location = new System.Drawing.Point(227, 103);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(36, 18);
             this.label25.TabIndex = 98;
@@ -2341,7 +2327,7 @@
             this.label105.BackColor = System.Drawing.Color.Transparent;
             this.label105.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label105.ForeColor = System.Drawing.Color.Black;
-            this.label105.Location = new System.Drawing.Point(291, 197);
+            this.label105.Location = new System.Drawing.Point(224, 197);
             this.label105.Name = "label105";
             this.label105.Size = new System.Drawing.Size(94, 18);
             this.label105.TabIndex = 98;
@@ -2353,7 +2339,7 @@
             this.label36.AutoSize = true;
             this.label36.BackColor = System.Drawing.Color.Transparent;
             this.label36.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label36.Location = new System.Drawing.Point(291, 164);
+            this.label36.Location = new System.Drawing.Point(224, 164);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(84, 18);
             this.label36.TabIndex = 98;
@@ -2366,7 +2352,7 @@
             cmbFareCalcMethods_DesignTimeLayout.LayoutString = resources.GetString("cmbFareCalcMethods_DesignTimeLayout.LayoutString");
             this.cmbFareCalcMethods.DesignTimeLayout = cmbFareCalcMethods_DesignTimeLayout;
             this.cmbFareCalcMethods.DisplayMember = "Name";
-            this.cmbFareCalcMethods.Location = new System.Drawing.Point(162, 251);
+            this.cmbFareCalcMethods.Location = new System.Drawing.Point(95, 251);
             this.cmbFareCalcMethods.Name = "cmbFareCalcMethods";
             this.cmbFareCalcMethods.SelectedIndex = -1;
             this.cmbFareCalcMethods.SelectedItem = null;
@@ -2381,7 +2367,7 @@
             // txtSeryalB
             // 
             this.txtSeryalB.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtSeryalB.Location = new System.Drawing.Point(162, 128);
+            this.txtSeryalB.Location = new System.Drawing.Point(95, 128);
             this.txtSeryalB.MaxLength = 7;
             this.txtSeryalB.Name = "txtSeryalB";
             this.txtSeryalB.Size = new System.Drawing.Size(129, 28);
@@ -2395,7 +2381,7 @@
             // 
             this.txtDateB.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateB.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateB.Location = new System.Drawing.Point(162, 98);
+            this.txtDateB.Location = new System.Drawing.Point(95, 98);
             this.txtDateB.Name = "txtDateB";
             this.txtDateB.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDateB.Size = new System.Drawing.Size(128, 29);
@@ -2409,7 +2395,7 @@
             this.lblCarPlatB.BackColor = System.Drawing.Color.Transparent;
             this.lblCarPlatB.Font = new System.Drawing.Font("Vazir FD", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarPlatB.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCarPlatB.Location = new System.Drawing.Point(131, 53);
+            this.lblCarPlatB.Location = new System.Drawing.Point(64, 53);
             this.lblCarPlatB.Name = "lblCarPlatB";
             this.lblCarPlatB.Size = new System.Drawing.Size(207, 20);
             this.lblCarPlatB.TabIndex = 105;
@@ -2425,7 +2411,7 @@
             this.cmbListSimilarComerB.DesignTimeLayout = cmbListSimilarComerB_DesignTimeLayout;
             this.cmbListSimilarComerB.DisplayMember = "CarPlat";
             this.cmbListSimilarComerB.Image = ((System.Drawing.Image)(resources.GetObject("cmbListSimilarComerB.Image")));
-            this.cmbListSimilarComerB.Location = new System.Drawing.Point(6, 20);
+            this.cmbListSimilarComerB.Location = new System.Drawing.Point(-67, 19);
             this.cmbListSimilarComerB.MaxLength = 8;
             this.cmbListSimilarComerB.Name = "cmbListSimilarComerB";
             this.cmbListSimilarComerB.SelectedIndex = -1;
@@ -2448,7 +2434,7 @@
             this.cmbCarplateB.DesignTimeLayout = cmbCarplateB_DesignTimeLayout;
             this.cmbCarplateB.DisplayMember = "CarPlat";
             this.cmbCarplateB.Image = ((System.Drawing.Image)(resources.GetObject("cmbCarplateB.Image")));
-            this.cmbCarplateB.Location = new System.Drawing.Point(169, 20);
+            this.cmbCarplateB.Location = new System.Drawing.Point(102, 19);
             this.cmbCarplateB.MaxLength = 8;
             this.cmbCarplateB.Name = "cmbCarplateB";
             this.cmbCarplateB.SelectedIndex = -1;
@@ -2470,10 +2456,10 @@
             this.btnListSimilarComerB.BackColor = System.Drawing.Color.Transparent;
             this.btnListSimilarComerB.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnListSimilarComerB.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnListSimilarComerB.Location = new System.Drawing.Point(157, 20);
+            this.btnListSimilarComerB.Location = new System.Drawing.Point(84, 19);
             this.btnListSimilarComerB.Name = "btnListSimilarComerB";
             this.btnListSimilarComerB.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4);
-            this.btnListSimilarComerB.Size = new System.Drawing.Size(12, 30);
+            this.btnListSimilarComerB.Size = new System.Drawing.Size(18, 30);
             this.btnListSimilarComerB.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnListSimilarComerB.Symbol = "";
             this.btnListSimilarComerB.SymbolSize = 15F;
@@ -2489,7 +2475,7 @@
             this.label57.AutoSize = true;
             this.label57.BackColor = System.Drawing.Color.Transparent;
             this.label57.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label57.Location = new System.Drawing.Point(292, 310);
+            this.label57.Location = new System.Drawing.Point(225, 310);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(57, 18);
             this.label57.TabIndex = 100;
@@ -2505,7 +2491,7 @@
             this.txtWeightDeliveredGoodsMain.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtWeightDeliveredGoodsMain.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtWeightDeliveredGoodsMain.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtWeightDeliveredGoodsMain.Location = new System.Drawing.Point(33, 159);
+            this.txtWeightDeliveredGoodsMain.Location = new System.Drawing.Point(-34, 159);
             this.txtWeightDeliveredGoodsMain.MaxValue = 999999;
             this.txtWeightDeliveredGoodsMain.MinValue = 0;
             this.txtWeightDeliveredGoodsMain.Name = "txtWeightDeliveredGoodsMain";
@@ -2526,7 +2512,7 @@
             this.txtLoadWeightCapacity.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtLoadWeightCapacity.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLoadWeightCapacity.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtLoadWeightCapacity.Location = new System.Drawing.Point(162, 192);
+            this.txtLoadWeightCapacity.Location = new System.Drawing.Point(95, 192);
             this.txtLoadWeightCapacity.MaxValue = 999999;
             this.txtLoadWeightCapacity.MinValue = 0;
             this.txtLoadWeightCapacity.Name = "txtLoadWeightCapacity";
@@ -2547,7 +2533,7 @@
             this.txtLoadWeight.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLoadWeight.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtLoadWeight.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtLoadWeight.Location = new System.Drawing.Point(162, 157);
+            this.txtLoadWeight.Location = new System.Drawing.Point(95, 157);
             this.txtLoadWeight.MaxValue = 999999;
             this.txtLoadWeight.MinValue = 0;
             this.txtLoadWeight.Name = "txtLoadWeight";
@@ -2563,7 +2549,7 @@
             this.label50.AutoSize = true;
             this.label50.BackColor = System.Drawing.Color.Transparent;
             this.label50.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label50.Location = new System.Drawing.Point(291, 133);
+            this.label50.Location = new System.Drawing.Point(224, 133);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(106, 18);
             this.label50.TabIndex = 98;
@@ -2576,7 +2562,7 @@
             this.label40.BackColor = System.Drawing.Color.Transparent;
             this.label40.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label40.ForeColor = System.Drawing.Color.Black;
-            this.label40.Location = new System.Drawing.Point(291, 285);
+            this.label40.Location = new System.Drawing.Point(224, 285);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(112, 18);
             this.label40.TabIndex = 98;
@@ -2589,7 +2575,7 @@
             this.label72.BackColor = System.Drawing.Color.Transparent;
             this.label72.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label72.ForeColor = System.Drawing.Color.Black;
-            this.label72.Location = new System.Drawing.Point(291, 227);
+            this.label72.Location = new System.Drawing.Point(224, 227);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(114, 18);
             this.label72.TabIndex = 98;
@@ -2603,7 +2589,7 @@
             this.label73.BackColor = System.Drawing.Color.Transparent;
             this.label73.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label73.ForeColor = System.Drawing.Color.Black;
-            this.label73.Location = new System.Drawing.Point(291, 257);
+            this.label73.Location = new System.Drawing.Point(224, 257);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(74, 18);
             this.label73.TabIndex = 117;
@@ -2616,7 +2602,7 @@
             this.label49.AutoSize = true;
             this.label49.BackColor = System.Drawing.Color.Transparent;
             this.label49.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label49.Location = new System.Drawing.Point(289, 27);
+            this.label49.Location = new System.Drawing.Point(222, 27);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(31, 18);
             this.label49.TabIndex = 98;
@@ -2628,7 +2614,7 @@
             this.label84.BackColor = System.Drawing.Color.Transparent;
             this.label84.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label84.ForeColor = System.Drawing.Color.Red;
-            this.label84.Location = new System.Drawing.Point(316, 28);
+            this.label84.Location = new System.Drawing.Point(249, 28);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(15, 15);
             this.label84.TabIndex = 100;
@@ -2641,7 +2627,7 @@
             this.label118.BackColor = System.Drawing.Color.Transparent;
             this.label118.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label118.ForeColor = System.Drawing.Color.Red;
-            this.label118.Location = new System.Drawing.Point(401, 286);
+            this.label118.Location = new System.Drawing.Point(334, 286);
             this.label118.Name = "label118";
             this.label118.Size = new System.Drawing.Size(15, 15);
             this.label118.TabIndex = 100;
@@ -2654,7 +2640,7 @@
             this.label83.BackColor = System.Drawing.Color.Transparent;
             this.label83.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label83.ForeColor = System.Drawing.Color.Red;
-            this.label83.Location = new System.Drawing.Point(363, 257);
+            this.label83.Location = new System.Drawing.Point(296, 257);
             this.label83.Name = "label83";
             this.label83.Size = new System.Drawing.Size(15, 15);
             this.label83.TabIndex = 100;
@@ -2667,7 +2653,7 @@
             this.label24.BackColor = System.Drawing.Color.Transparent;
             this.label24.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(404, 229);
+            this.label24.Location = new System.Drawing.Point(337, 229);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(15, 15);
             this.label24.TabIndex = 100;
@@ -2680,7 +2666,7 @@
             this.label116.BackColor = System.Drawing.Color.Transparent;
             this.label116.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label116.ForeColor = System.Drawing.Color.Red;
-            this.label116.Location = new System.Drawing.Point(372, 166);
+            this.label116.Location = new System.Drawing.Point(305, 166);
             this.label116.Name = "label116";
             this.label116.Size = new System.Drawing.Size(15, 15);
             this.label116.TabIndex = 100;
@@ -2693,7 +2679,7 @@
             this.label108.BackColor = System.Drawing.Color.Transparent;
             this.label108.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label108.ForeColor = System.Drawing.Color.Red;
-            this.label108.Location = new System.Drawing.Point(326, 105);
+            this.label108.Location = new System.Drawing.Point(259, 105);
             this.label108.Name = "label108";
             this.label108.Size = new System.Drawing.Size(15, 15);
             this.label108.TabIndex = 100;
@@ -2706,7 +2692,7 @@
             this.label58.AutoSize = true;
             this.label58.BackColor = System.Drawing.Color.Transparent;
             this.label58.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label58.Location = new System.Drawing.Point(127, 166);
+            this.label58.Location = new System.Drawing.Point(60, 166);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(33, 15);
             this.label58.TabIndex = 105;
@@ -2718,7 +2704,7 @@
             this.lblCarOwnerShip.BackColor = System.Drawing.Color.Transparent;
             this.lblCarOwnerShip.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarOwnerShip.ForeColor = System.Drawing.Color.Purple;
-            this.lblCarOwnerShip.Location = new System.Drawing.Point(28, 77);
+            this.lblCarOwnerShip.Location = new System.Drawing.Point(-39, 77);
             this.lblCarOwnerShip.Name = "lblCarOwnerShip";
             this.lblCarOwnerShip.Size = new System.Drawing.Size(413, 18);
             this.lblCarOwnerShip.TabIndex = 105;
@@ -2732,7 +2718,7 @@
             this.label110.BackColor = System.Drawing.Color.Transparent;
             this.label110.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label110.ForeColor = System.Drawing.Color.Red;
-            this.label110.Location = new System.Drawing.Point(395, 133);
+            this.label110.Location = new System.Drawing.Point(328, 133);
             this.label110.Name = "label110";
             this.label110.Size = new System.Drawing.Size(15, 15);
             this.label110.TabIndex = 100;
@@ -2781,7 +2767,7 @@
             this.uiGroupBox2.Controls.Add(this.label81);
             this.uiGroupBox2.Controls.Add(this.label80);
             this.uiGroupBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiGroupBox2.Location = new System.Drawing.Point(867, 5);
+            this.uiGroupBox2.Location = new System.Drawing.Point(1002, 5);
             this.uiGroupBox2.Name = "uiGroupBox2";
             this.uiGroupBox2.Size = new System.Drawing.Size(366, 377);
             this.uiGroupBox2.TabIndex = 1;
@@ -3350,9 +3336,9 @@
             this.uiGroupBox3.Controls.Add(this.label59);
             this.uiGroupBox3.Controls.Add(this.label31);
             this.uiGroupBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiGroupBox3.Location = new System.Drawing.Point(661, 5);
+            this.uiGroupBox3.Location = new System.Drawing.Point(757, 5);
             this.uiGroupBox3.Name = "uiGroupBox3";
-            this.uiGroupBox3.Size = new System.Drawing.Size(206, 377);
+            this.uiGroupBox3.Size = new System.Drawing.Size(245, 377);
             this.uiGroupBox3.TabIndex = 2;
             this.uiGroupBox3.Text = "صاحب کالا";
             this.uiGroupBox3.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
@@ -3369,7 +3355,7 @@
             this.txtCargoInsurance.DisplayFormat = "#,##0";
             this.txtCargoInsurance.Increment = 1D;
             this.txtCargoInsurance.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtCargoInsurance.Location = new System.Drawing.Point(31, 96);
+            this.txtCargoInsurance.Location = new System.Drawing.Point(48, 96);
             this.txtCargoInsurance.MaxValue = 1797693134862.3157D;
             this.txtCargoInsurance.MinValue = 0D;
             this.txtCargoInsurance.Name = "txtCargoInsurance";
@@ -3392,7 +3378,7 @@
             this.txtLoadinCast.DisplayFormat = "#,##0";
             this.txtLoadinCast.Increment = 1D;
             this.txtLoadinCast.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtLoadinCast.Location = new System.Drawing.Point(32, 130);
+            this.txtLoadinCast.Location = new System.Drawing.Point(49, 130);
             this.txtLoadinCast.MaxValue = 1797693134862.3157D;
             this.txtLoadinCast.MinValue = 0D;
             this.txtLoadinCast.Name = "txtLoadinCast";
@@ -3415,7 +3401,7 @@
             this.txtIncentive.DisplayFormat = "#,##0";
             this.txtIncentive.Increment = 1D;
             this.txtIncentive.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtIncentive.Location = new System.Drawing.Point(32, 161);
+            this.txtIncentive.Location = new System.Drawing.Point(49, 161);
             this.txtIncentive.MaxValue = 1797693134862.3157D;
             this.txtIncentive.MinValue = 0D;
             this.txtIncentive.Name = "txtIncentive";
@@ -3437,7 +3423,7 @@
             this.txtStopCharge.DisplayFormat = "#,##0";
             this.txtStopCharge.Increment = 1D;
             this.txtStopCharge.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtStopCharge.Location = new System.Drawing.Point(31, 194);
+            this.txtStopCharge.Location = new System.Drawing.Point(48, 194);
             this.txtStopCharge.MaxValue = 1797693134862.3157D;
             this.txtStopCharge.MinValue = 0D;
             this.txtStopCharge.Name = "txtStopCharge";
@@ -3459,7 +3445,7 @@
             this.txtFreightRate.DisplayFormat = "#,##0";
             this.txtFreightRate.Increment = 1D;
             this.txtFreightRate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtFreightRate.Location = new System.Drawing.Point(31, 64);
+            this.txtFreightRate.Location = new System.Drawing.Point(48, 64);
             this.txtFreightRate.MaxValue = 1797693134862.3157D;
             this.txtFreightRate.MinValue = 0D;
             this.txtFreightRate.Name = "txtFreightRate";
@@ -3481,7 +3467,7 @@
             this.txtDeduction.DisplayFormat = "#,##0";
             this.txtDeduction.Increment = 1D;
             this.txtDeduction.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtDeduction.Location = new System.Drawing.Point(31, 228);
+            this.txtDeduction.Location = new System.Drawing.Point(48, 228);
             this.txtDeduction.MaxValue = 1797693134862.3157D;
             this.txtDeduction.MinValue = 0D;
             this.txtDeduction.Name = "txtDeduction";
@@ -3504,7 +3490,7 @@
             this.txtBalanceAccount.DisplayFormat = "#,##0";
             this.txtBalanceAccount.Increment = 1D;
             this.txtBalanceAccount.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtBalanceAccount.Location = new System.Drawing.Point(32, 296);
+            this.txtBalanceAccount.Location = new System.Drawing.Point(49, 296);
             this.txtBalanceAccount.MaxValue = 1797693134862.3157D;
             this.txtBalanceAccount.MinValue = -1797693134862.3157D;
             this.txtBalanceAccount.Name = "txtBalanceAccount";
@@ -3531,7 +3517,7 @@
             this.txtAC.Increment = 1D;
             this.txtAC.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
             this.txtAC.IsInputReadOnly = true;
-            this.txtAC.Location = new System.Drawing.Point(32, 326);
+            this.txtAC.Location = new System.Drawing.Point(49, 326);
             this.txtAC.MaxValue = 1797693134862.3157D;
             this.txtAC.MinValue = -1797693134862.3157D;
             this.txtAC.Name = "txtAC";
@@ -3551,7 +3537,7 @@
             this.cmbGoodsAccountB.DesignTimeLayout = cmbGoodsAccountB_DesignTimeLayout;
             this.cmbGoodsAccountB.DisplayMember = "Name";
             this.cmbGoodsAccountB.Image = ((System.Drawing.Image)(resources.GetObject("cmbGoodsAccountB.Image")));
-            this.cmbGoodsAccountB.Location = new System.Drawing.Point(32, 33);
+            this.cmbGoodsAccountB.Location = new System.Drawing.Point(49, 33);
             this.cmbGoodsAccountB.Name = "cmbGoodsAccountB";
             this.cmbGoodsAccountB.SelectedIndex = -1;
             this.cmbGoodsAccountB.SelectedItem = null;
@@ -3571,7 +3557,7 @@
             this.buttonX7.BackColor = System.Drawing.Color.Transparent;
             this.buttonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX7.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX7.Location = new System.Drawing.Point(12, 33);
+            this.buttonX7.Location = new System.Drawing.Point(29, 33);
             this.buttonX7.Name = "buttonX7";
             this.buttonX7.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX7.Size = new System.Drawing.Size(18, 28);
@@ -3589,7 +3575,7 @@
             this.label62.AutoSize = true;
             this.label62.BackColor = System.Drawing.Color.Transparent;
             this.label62.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label62.Location = new System.Drawing.Point(125, 19);
+            this.label62.Location = new System.Drawing.Point(142, 19);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(75, 15);
             this.label62.TabIndex = 114;
@@ -3601,7 +3587,7 @@
             this.label91.BackColor = System.Drawing.Color.Transparent;
             this.label91.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label91.ForeColor = System.Drawing.Color.Red;
-            this.label91.Location = new System.Drawing.Point(110, 19);
+            this.label91.Location = new System.Drawing.Point(127, 19);
             this.label91.Name = "label91";
             this.label91.Size = new System.Drawing.Size(15, 15);
             this.label91.TabIndex = 117;
@@ -3614,7 +3600,7 @@
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label26.Location = new System.Drawing.Point(142, 69);
+            this.label26.Location = new System.Drawing.Point(159, 69);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(46, 15);
             this.label26.TabIndex = 98;
@@ -3626,7 +3612,7 @@
             this.label27.AutoSize = true;
             this.label27.BackColor = System.Drawing.Color.Transparent;
             this.label27.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label27.Location = new System.Drawing.Point(142, 103);
+            this.label27.Location = new System.Drawing.Point(159, 103);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(44, 15);
             this.label27.TabIndex = 98;
@@ -3638,7 +3624,7 @@
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label28.Location = new System.Drawing.Point(142, 137);
+            this.label28.Location = new System.Drawing.Point(159, 137);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(42, 15);
             this.label28.TabIndex = 98;
@@ -3650,7 +3636,7 @@
             this.label29.AutoSize = true;
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label29.Location = new System.Drawing.Point(142, 171);
+            this.label29.Location = new System.Drawing.Point(159, 171);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(40, 15);
             this.label29.TabIndex = 98;
@@ -3662,7 +3648,7 @@
             this.label115.AutoSize = true;
             this.label115.BackColor = System.Drawing.Color.Transparent;
             this.label115.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label115.Location = new System.Drawing.Point(11, 333);
+            this.label115.Location = new System.Drawing.Point(28, 333);
             this.label115.Name = "label115";
             this.label115.Size = new System.Drawing.Size(21, 15);
             this.label115.TabIndex = 98;
@@ -3675,7 +3661,7 @@
             this.label90.AutoSize = true;
             this.label90.BackColor = System.Drawing.Color.Transparent;
             this.label90.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label90.Location = new System.Drawing.Point(143, 333);
+            this.label90.Location = new System.Drawing.Point(160, 333);
             this.label90.Name = "label90";
             this.label90.Size = new System.Drawing.Size(28, 15);
             this.label90.TabIndex = 98;
@@ -3687,7 +3673,7 @@
             this.label30.AutoSize = true;
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label30.Location = new System.Drawing.Point(142, 199);
+            this.label30.Location = new System.Drawing.Point(159, 199);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(48, 15);
             this.label30.TabIndex = 98;
@@ -3699,7 +3685,7 @@
             this.label59.AutoSize = true;
             this.label59.BackColor = System.Drawing.Color.Transparent;
             this.label59.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label59.Location = new System.Drawing.Point(143, 303);
+            this.label59.Location = new System.Drawing.Point(160, 303);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(51, 15);
             this.label59.TabIndex = 98;
@@ -3711,7 +3697,7 @@
             this.label31.AutoSize = true;
             this.label31.BackColor = System.Drawing.Color.Transparent;
             this.label31.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label31.Location = new System.Drawing.Point(142, 231);
+            this.label31.Location = new System.Drawing.Point(159, 231);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(41, 15);
             this.label31.TabIndex = 98;
@@ -3744,9 +3730,9 @@
             this.panelLanding.Controls.Add(this.rdbShiper);
             this.panelLanding.Controls.Add(this.rdbCostAccount);
             this.panelLanding.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLanding.Location = new System.Drawing.Point(423, 5);
+            this.panelLanding.Location = new System.Drawing.Point(497, 5);
             this.panelLanding.Name = "panelLanding";
-            this.panelLanding.Size = new System.Drawing.Size(238, 377);
+            this.panelLanding.Size = new System.Drawing.Size(260, 377);
             this.panelLanding.TabIndex = 3;
             this.panelLanding.Text = "بارنامه نویس";
             this.panelLanding.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
@@ -3757,7 +3743,7 @@
             this.label120.BackColor = System.Drawing.Color.Transparent;
             this.label120.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label120.ForeColor = System.Drawing.Color.Red;
-            this.label120.Location = new System.Drawing.Point(197, 133);
+            this.label120.Location = new System.Drawing.Point(200, 133);
             this.label120.Name = "label120";
             this.label120.Size = new System.Drawing.Size(15, 15);
             this.label120.TabIndex = 116;
@@ -3769,7 +3755,7 @@
             this.chkIncomeDocument.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkIncomeDocument.AutoSize = true;
             this.chkIncomeDocument.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.chkIncomeDocument.Location = new System.Drawing.Point(140, 269);
+            this.chkIncomeDocument.Location = new System.Drawing.Point(154, 269);
             this.chkIncomeDocument.Name = "chkIncomeDocument";
             this.chkIncomeDocument.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkIncomeDocument.Size = new System.Drawing.Size(73, 19);
@@ -3791,7 +3777,7 @@
             this.txtBaseFreight.DisplayFormat = "#,##0";
             this.txtBaseFreight.Increment = 1D;
             this.txtBaseFreight.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtBaseFreight.Location = new System.Drawing.Point(28, 63);
+            this.txtBaseFreight.Location = new System.Drawing.Point(42, 63);
             this.txtBaseFreight.MaxValue = 1797693134862.3157D;
             this.txtBaseFreight.MinValue = 0D;
             this.txtBaseFreight.Name = "txtBaseFreight";
@@ -3813,7 +3799,7 @@
             this.txtBillLadingAmount.DisplayFormat = "#,##0";
             this.txtBillLadingAmount.Increment = 1D;
             this.txtBillLadingAmount.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtBillLadingAmount.Location = new System.Drawing.Point(28, 194);
+            this.txtBillLadingAmount.Location = new System.Drawing.Point(42, 194);
             this.txtBillLadingAmount.MaxValue = 1797693134862.3157D;
             this.txtBillLadingAmount.MinValue = 0D;
             this.txtBillLadingAmount.Name = "txtBillLadingAmount";
@@ -3835,7 +3821,7 @@
             this.txtInsuranceAmount.DisplayFormat = "#,##0";
             this.txtInsuranceAmount.Increment = 1D;
             this.txtInsuranceAmount.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtInsuranceAmount.Location = new System.Drawing.Point(28, 96);
+            this.txtInsuranceAmount.Location = new System.Drawing.Point(42, 96);
             this.txtInsuranceAmount.MaxValue = 1797693134862.3157D;
             this.txtInsuranceAmount.MinValue = 0D;
             this.txtInsuranceAmount.Name = "txtInsuranceAmount";
@@ -3859,7 +3845,7 @@
             this.txtAY.Increment = 1D;
             this.txtAY.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
             this.txtAY.IsInputReadOnly = true;
-            this.txtAY.Location = new System.Drawing.Point(26, 326);
+            this.txtAY.Location = new System.Drawing.Point(40, 326);
             this.txtAY.MaxValue = 1797693134862.3157D;
             this.txtAY.MinValue = -1797693134862.3157D;
             this.txtAY.Name = "txtAY";
@@ -3883,7 +3869,7 @@
             this.txtBillLadingWriterPercent.DisplayFormat = "#,##0.00";
             this.txtBillLadingWriterPercent.Increment = 1D;
             this.txtBillLadingWriterPercent.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtBillLadingWriterPercent.Location = new System.Drawing.Point(27, 161);
+            this.txtBillLadingWriterPercent.Location = new System.Drawing.Point(41, 161);
             this.txtBillLadingWriterPercent.MaxValue = 1797693134862.3157D;
             this.txtBillLadingWriterPercent.MinValue = 0D;
             this.txtBillLadingWriterPercent.Name = "txtBillLadingWriterPercent";
@@ -3906,7 +3892,7 @@
             this.txtBalanceBillLadingAmount.DisplayFormat = "#,##0";
             this.txtBalanceBillLadingAmount.Increment = 1D;
             this.txtBalanceBillLadingAmount.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtBalanceBillLadingAmount.Location = new System.Drawing.Point(26, 296);
+            this.txtBalanceBillLadingAmount.Location = new System.Drawing.Point(40, 296);
             this.txtBalanceBillLadingAmount.MaxValue = 1797693134862.3157D;
             this.txtBalanceBillLadingAmount.MinValue = -1797693134862.3157D;
             this.txtBalanceBillLadingAmount.Name = "txtBalanceBillLadingAmount";
@@ -3926,7 +3912,7 @@
             cmbBillLadingMethod_DesignTimeLayout.LayoutString = resources.GetString("cmbBillLadingMethod_DesignTimeLayout.LayoutString");
             this.cmbBillLadingMethod.DesignTimeLayout = cmbBillLadingMethod_DesignTimeLayout;
             this.cmbBillLadingMethod.DisplayMember = "Name";
-            this.cmbBillLadingMethod.Location = new System.Drawing.Point(27, 128);
+            this.cmbBillLadingMethod.Location = new System.Drawing.Point(41, 128);
             this.cmbBillLadingMethod.Name = "cmbBillLadingMethod";
             this.cmbBillLadingMethod.SelectedIndex = -1;
             this.cmbBillLadingMethod.SelectedItem = null;
@@ -3943,7 +3929,7 @@
             this.label41.AutoSize = true;
             this.label41.BackColor = System.Drawing.Color.Transparent;
             this.label41.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label41.Location = new System.Drawing.Point(135, 133);
+            this.label41.Location = new System.Drawing.Point(149, 133);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(63, 15);
             this.label41.TabIndex = 98;
@@ -3955,7 +3941,7 @@
             this.label42.AutoSize = true;
             this.label42.BackColor = System.Drawing.Color.Transparent;
             this.label42.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label42.Location = new System.Drawing.Point(135, 70);
+            this.label42.Location = new System.Drawing.Point(149, 70);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(45, 15);
             this.label42.TabIndex = 98;
@@ -3967,7 +3953,7 @@
             this.label45.AutoSize = true;
             this.label45.BackColor = System.Drawing.Color.Transparent;
             this.label45.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label45.Location = new System.Drawing.Point(135, 166);
+            this.label45.Location = new System.Drawing.Point(149, 166);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(85, 15);
             this.label45.TabIndex = 98;
@@ -3985,7 +3971,7 @@
             this.txtAmountPaidTruckDriver.DisplayFormat = "#,##0";
             this.txtAmountPaidTruckDriver.Increment = 1D;
             this.txtAmountPaidTruckDriver.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtAmountPaidTruckDriver.Location = new System.Drawing.Point(26, 228);
+            this.txtAmountPaidTruckDriver.Location = new System.Drawing.Point(40, 228);
             this.txtAmountPaidTruckDriver.MaxValue = 1797693134862.3157D;
             this.txtAmountPaidTruckDriver.MinValue = 0D;
             this.txtAmountPaidTruckDriver.Name = "txtAmountPaidTruckDriver";
@@ -4002,7 +3988,7 @@
             this.label43.AutoSize = true;
             this.label43.BackColor = System.Drawing.Color.Transparent;
             this.label43.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label43.Location = new System.Drawing.Point(135, 199);
+            this.label43.Location = new System.Drawing.Point(149, 199);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(90, 15);
             this.label43.TabIndex = 98;
@@ -4014,7 +4000,7 @@
             this.label114.AutoSize = true;
             this.label114.BackColor = System.Drawing.Color.Transparent;
             this.label114.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label114.Location = new System.Drawing.Point(7, 333);
+            this.label114.Location = new System.Drawing.Point(21, 333);
             this.label114.Name = "label114";
             this.label114.Size = new System.Drawing.Size(20, 15);
             this.label114.TabIndex = 98;
@@ -4027,7 +4013,7 @@
             this.label33.AutoSize = true;
             this.label33.BackColor = System.Drawing.Color.Transparent;
             this.label33.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label33.Location = new System.Drawing.Point(133, 333);
+            this.label33.Location = new System.Drawing.Point(147, 333);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(28, 15);
             this.label33.TabIndex = 98;
@@ -4039,7 +4025,7 @@
             this.label82.AutoSize = true;
             this.label82.BackColor = System.Drawing.Color.Transparent;
             this.label82.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label82.Location = new System.Drawing.Point(133, 303);
+            this.label82.Location = new System.Drawing.Point(147, 303);
             this.label82.Name = "label82";
             this.label82.Size = new System.Drawing.Size(51, 15);
             this.label82.TabIndex = 98;
@@ -4051,7 +4037,7 @@
             this.label44.AutoSize = true;
             this.label44.BackColor = System.Drawing.Color.Transparent;
             this.label44.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label44.Location = new System.Drawing.Point(135, 103);
+            this.label44.Location = new System.Drawing.Point(149, 103);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(44, 15);
             this.label44.TabIndex = 98;
@@ -4063,7 +4049,7 @@
             this.label46.AutoSize = true;
             this.label46.BackColor = System.Drawing.Color.Transparent;
             this.label46.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label46.Location = new System.Drawing.Point(135, 234);
+            this.label46.Location = new System.Drawing.Point(149, 234);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(71, 15);
             this.label46.TabIndex = 98;
@@ -4077,7 +4063,7 @@
             this.lblShiperName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblShiperName.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblShiperName.ForeColor = System.Drawing.Color.Maroon;
-            this.lblShiperName.Location = new System.Drawing.Point(28, 35);
+            this.lblShiperName.Location = new System.Drawing.Point(42, 35);
             this.lblShiperName.Name = "lblShiperName";
             this.lblShiperName.Size = new System.Drawing.Size(196, 24);
             this.lblShiperName.TabIndex = 102;
@@ -4089,7 +4075,7 @@
             this.label111.AutoSize = true;
             this.label111.BackColor = System.Drawing.Color.Transparent;
             this.label111.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label111.Location = new System.Drawing.Point(113, 22);
+            this.label111.Location = new System.Drawing.Point(127, 22);
             this.label111.Name = "label111";
             this.label111.Size = new System.Drawing.Size(112, 15);
             this.label111.TabIndex = 114;
@@ -4100,7 +4086,7 @@
             this.rdbShiper.AutoSize = true;
             this.rdbShiper.Enabled = false;
             this.rdbShiper.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rdbShiper.Location = new System.Drawing.Point(54, 276);
+            this.rdbShiper.Location = new System.Drawing.Point(46, 276);
             this.rdbShiper.Name = "rdbShiper";
             this.rdbShiper.Size = new System.Drawing.Size(82, 21);
             this.rdbShiper.TabIndex = 115;
@@ -4113,7 +4099,7 @@
             this.rdbCostAccount.Checked = true;
             this.rdbCostAccount.Enabled = false;
             this.rdbCostAccount.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rdbCostAccount.Location = new System.Drawing.Point(47, 257);
+            this.rdbCostAccount.Location = new System.Drawing.Point(39, 257);
             this.rdbCostAccount.Name = "rdbCostAccount";
             this.rdbCostAccount.Size = new System.Drawing.Size(89, 21);
             this.rdbCostAccount.TabIndex = 115;
@@ -4150,9 +4136,9 @@
             this.uiGroupBox4.Controls.Add(this.label38);
             this.uiGroupBox4.Controls.Add(this.label39);
             this.uiGroupBox4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiGroupBox4.Location = new System.Drawing.Point(172, 5);
+            this.uiGroupBox4.Location = new System.Drawing.Point(205, 5);
             this.uiGroupBox4.Name = "uiGroupBox4";
-            this.uiGroupBox4.Size = new System.Drawing.Size(251, 377);
+            this.uiGroupBox4.Size = new System.Drawing.Size(292, 377);
             this.uiGroupBox4.TabIndex = 4;
             this.uiGroupBox4.Text = "طرف حساب کامیون";
             this.uiGroupBox4.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
@@ -4162,7 +4148,7 @@
             this.chkPaymentToOthers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkPaymentToOthers.AutoSize = true;
             this.chkPaymentToOthers.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.chkPaymentToOthers.Location = new System.Drawing.Point(130, 233);
+            this.chkPaymentToOthers.Location = new System.Drawing.Point(155, 233);
             this.chkPaymentToOthers.Name = "chkPaymentToOthers";
             this.chkPaymentToOthers.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.chkPaymentToOthers.Size = new System.Drawing.Size(113, 19);
@@ -4184,7 +4170,7 @@
             this.txtPaidFreightRate.DisplayFormat = "#,##0";
             this.txtPaidFreightRate.Increment = 1D;
             this.txtPaidFreightRate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtPaidFreightRate.Location = new System.Drawing.Point(18, 64);
+            this.txtPaidFreightRate.Location = new System.Drawing.Point(43, 64);
             this.txtPaidFreightRate.MaxValue = 1797693134862.3157D;
             this.txtPaidFreightRate.MinValue = 0D;
             this.txtPaidFreightRate.Name = "txtPaidFreightRate";
@@ -4208,7 +4194,7 @@
             this.txtAV.Increment = 1D;
             this.txtAV.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
             this.txtAV.IsInputReadOnly = true;
-            this.txtAV.Location = new System.Drawing.Point(18, 326);
+            this.txtAV.Location = new System.Drawing.Point(43, 326);
             this.txtAV.MaxValue = 1797693134862.3157D;
             this.txtAV.MinValue = -1797693134862.3157D;
             this.txtAV.Name = "txtAV";
@@ -4233,7 +4219,7 @@
             this.txtBalanceAccountِDraver.DisplayFormat = "#,##0";
             this.txtBalanceAccountِDraver.Increment = 1D;
             this.txtBalanceAccountِDraver.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtBalanceAccountِDraver.Location = new System.Drawing.Point(18, 296);
+            this.txtBalanceAccountِDraver.Location = new System.Drawing.Point(43, 296);
             this.txtBalanceAccountِDraver.MaxValue = 1797693134862.3157D;
             this.txtBalanceAccountِDraver.MinValue = -1797693134862.3157D;
             this.txtBalanceAccountِDraver.Name = "txtBalanceAccountِDraver";
@@ -4253,7 +4239,7 @@
             this.lblPaymentToOthers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPaymentToOthers.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblPaymentToOthers.ForeColor = System.Drawing.Color.Maroon;
-            this.lblPaymentToOthers.Location = new System.Drawing.Point(18, 276);
+            this.lblPaymentToOthers.Location = new System.Drawing.Point(43, 276);
             this.lblPaymentToOthers.Name = "lblPaymentToOthers";
             this.lblPaymentToOthers.Size = new System.Drawing.Size(183, 18);
             this.lblPaymentToOthers.TabIndex = 103;
@@ -4271,7 +4257,7 @@
             this.txtInsurancCost.DisplayFormat = "#,##0";
             this.txtInsurancCost.Increment = 1D;
             this.txtInsurancCost.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtInsurancCost.Location = new System.Drawing.Point(18, 96);
+            this.txtInsurancCost.Location = new System.Drawing.Point(43, 96);
             this.txtInsurancCost.MaxValue = 1797693134862.3157D;
             this.txtInsurancCost.MinValue = 0D;
             this.txtInsurancCost.Name = "txtInsurancCost";
@@ -4295,7 +4281,7 @@
             this.txtPaymentToOthers1.Enabled = false;
             this.txtPaymentToOthers1.Increment = 1D;
             this.txtPaymentToOthers1.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtPaymentToOthers1.Location = new System.Drawing.Point(18, 228);
+            this.txtPaymentToOthers1.Location = new System.Drawing.Point(43, 228);
             this.txtPaymentToOthers1.MaxValue = 1797693134862.3157D;
             this.txtPaymentToOthers1.MinValue = 0D;
             this.txtPaymentToOthers1.Name = "txtPaymentToOthers1";
@@ -4311,7 +4297,7 @@
             this.label117.AutoSize = true;
             this.label117.BackColor = System.Drawing.Color.Transparent;
             this.label117.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label117.Location = new System.Drawing.Point(0, 325);
+            this.label117.Location = new System.Drawing.Point(25, 325);
             this.label117.Name = "label117";
             this.label117.Size = new System.Drawing.Size(20, 15);
             this.label117.TabIndex = 98;
@@ -4324,7 +4310,7 @@
             this.label113.AutoSize = true;
             this.label113.BackColor = System.Drawing.Color.Transparent;
             this.label113.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label113.Location = new System.Drawing.Point(0, 340);
+            this.label113.Location = new System.Drawing.Point(25, 340);
             this.label113.Name = "label113";
             this.label113.Size = new System.Drawing.Size(20, 15);
             this.label113.TabIndex = 98;
@@ -4337,7 +4323,7 @@
             this.label112.AutoSize = true;
             this.label112.BackColor = System.Drawing.Color.Transparent;
             this.label112.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label112.Location = new System.Drawing.Point(145, 333);
+            this.label112.Location = new System.Drawing.Point(170, 333);
             this.label112.Name = "label112";
             this.label112.Size = new System.Drawing.Size(28, 15);
             this.label112.TabIndex = 98;
@@ -4355,7 +4341,7 @@
             this.txtPaidIncentive.DisplayFormat = "#,##0";
             this.txtPaidIncentive.Increment = 1D;
             this.txtPaidIncentive.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtPaidIncentive.Location = new System.Drawing.Point(18, 128);
+            this.txtPaidIncentive.Location = new System.Drawing.Point(43, 128);
             this.txtPaidIncentive.MaxValue = 1797693134862.3157D;
             this.txtPaidIncentive.MinValue = 0D;
             this.txtPaidIncentive.Name = "txtPaidIncentive";
@@ -4377,7 +4363,7 @@
             this.txtPaidStopCharge.DisplayFormat = "#,##0";
             this.txtPaidStopCharge.Increment = 1D;
             this.txtPaidStopCharge.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtPaidStopCharge.Location = new System.Drawing.Point(18, 161);
+            this.txtPaidStopCharge.Location = new System.Drawing.Point(43, 161);
             this.txtPaidStopCharge.MaxValue = 1797693134862.3157D;
             this.txtPaidStopCharge.MinValue = 0D;
             this.txtPaidStopCharge.Name = "txtPaidStopCharge";
@@ -4399,7 +4385,7 @@
             this.txtDriverDeduction.DisplayFormat = "#,##0";
             this.txtDriverDeduction.Increment = 1D;
             this.txtDriverDeduction.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtDriverDeduction.Location = new System.Drawing.Point(18, 194);
+            this.txtDriverDeduction.Location = new System.Drawing.Point(43, 194);
             this.txtDriverDeduction.MaxValue = 1797693134862.3157D;
             this.txtDriverDeduction.MinValue = 0D;
             this.txtDriverDeduction.Name = "txtDriverDeduction";
@@ -4415,7 +4401,7 @@
             this.label85.AutoSize = true;
             this.label85.BackColor = System.Drawing.Color.Transparent;
             this.label85.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label85.Location = new System.Drawing.Point(128, 302);
+            this.label85.Location = new System.Drawing.Point(153, 302);
             this.label85.Name = "label85";
             this.label85.Size = new System.Drawing.Size(51, 15);
             this.label85.TabIndex = 98;
@@ -4429,7 +4415,7 @@
             this.cmbCostAccountB.DesignTimeLayout = cmbCostAccountB_DesignTimeLayout;
             this.cmbCostAccountB.DisplayMember = "Name";
             this.cmbCostAccountB.Image = ((System.Drawing.Image)(resources.GetObject("cmbCostAccountB.Image")));
-            this.cmbCostAccountB.Location = new System.Drawing.Point(34, 31);
+            this.cmbCostAccountB.Location = new System.Drawing.Point(59, 31);
             this.cmbCostAccountB.Name = "cmbCostAccountB";
             this.cmbCostAccountB.SelectedIndex = -1;
             this.cmbCostAccountB.SelectedItem = null;
@@ -4451,7 +4437,7 @@
             this.cmbPaymentToOthers.DisplayMember = "Name";
             this.cmbPaymentToOthers.Enabled = false;
             this.cmbPaymentToOthers.Image = ((System.Drawing.Image)(resources.GetObject("cmbPaymentToOthers.Image")));
-            this.cmbPaymentToOthers.Location = new System.Drawing.Point(195, 302);
+            this.cmbPaymentToOthers.Location = new System.Drawing.Point(220, 302);
             this.cmbPaymentToOthers.Name = "cmbPaymentToOthers";
             this.cmbPaymentToOthers.SelectedIndex = -1;
             this.cmbPaymentToOthers.SelectedItem = null;
@@ -4469,7 +4455,7 @@
             this.label109.AutoSize = true;
             this.label109.BackColor = System.Drawing.Color.Transparent;
             this.label109.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label109.Location = new System.Drawing.Point(140, 17);
+            this.label109.Location = new System.Drawing.Point(165, 17);
             this.label109.Name = "label109";
             this.label109.Size = new System.Drawing.Size(89, 15);
             this.label109.TabIndex = 114;
@@ -4481,7 +4467,7 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(125, 17);
+            this.label16.Location = new System.Drawing.Point(150, 17);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(15, 15);
             this.label16.TabIndex = 117;
@@ -4497,7 +4483,7 @@
             this.btnPaymentToOthers.Enabled = false;
             this.btnPaymentToOthers.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnPaymentToOthers.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnPaymentToOthers.Location = new System.Drawing.Point(18, 257);
+            this.btnPaymentToOthers.Location = new System.Drawing.Point(43, 257);
             this.btnPaymentToOthers.Name = "btnPaymentToOthers";
             this.btnPaymentToOthers.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnPaymentToOthers.Size = new System.Drawing.Size(183, 19);
@@ -4517,7 +4503,7 @@
             this.buttonX6.BackColor = System.Drawing.Color.Transparent;
             this.buttonX6.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX6.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX6.Location = new System.Drawing.Point(14, 31);
+            this.buttonX6.Location = new System.Drawing.Point(39, 31);
             this.buttonX6.Name = "buttonX6";
             this.buttonX6.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX6.Size = new System.Drawing.Size(18, 28);
@@ -4535,7 +4521,7 @@
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.Transparent;
             this.label34.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label34.Location = new System.Drawing.Point(128, 94);
+            this.label34.Location = new System.Drawing.Point(153, 94);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(39, 15);
             this.label34.TabIndex = 98;
@@ -4548,7 +4534,7 @@
             this.label35.AutoSize = true;
             this.label35.BackColor = System.Drawing.Color.Transparent;
             this.label35.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label35.Location = new System.Drawing.Point(128, 71);
+            this.label35.Location = new System.Drawing.Point(153, 71);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(45, 15);
             this.label35.TabIndex = 98;
@@ -4560,7 +4546,7 @@
             this.label37.AutoSize = true;
             this.label37.BackColor = System.Drawing.Color.Transparent;
             this.label37.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label37.Location = new System.Drawing.Point(128, 132);
+            this.label37.Location = new System.Drawing.Point(153, 132);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(40, 15);
             this.label37.TabIndex = 98;
@@ -4572,7 +4558,7 @@
             this.label38.AutoSize = true;
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label38.Location = new System.Drawing.Point(128, 165);
+            this.label38.Location = new System.Drawing.Point(153, 165);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(48, 15);
             this.label38.TabIndex = 98;
@@ -4584,7 +4570,7 @@
             this.label39.AutoSize = true;
             this.label39.BackColor = System.Drawing.Color.Transparent;
             this.label39.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label39.Location = new System.Drawing.Point(128, 199);
+            this.label39.Location = new System.Drawing.Point(153, 199);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(41, 15);
             this.label39.TabIndex = 98;
@@ -4601,7 +4587,7 @@
             this.uiGroupBox5.Dock = System.Windows.Forms.DockStyle.Left;
             this.uiGroupBox5.Location = new System.Drawing.Point(5, 5);
             this.uiGroupBox5.Name = "uiGroupBox5";
-            this.uiGroupBox5.Size = new System.Drawing.Size(167, 377);
+            this.uiGroupBox5.Size = new System.Drawing.Size(200, 377);
             this.uiGroupBox5.TabIndex = 5;
             this.uiGroupBox5.Text = "ســــایر هزینه ها";
             this.uiGroupBox5.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
@@ -4609,11 +4595,11 @@
             // txtDesToOthers
             // 
             this.txtDesToOthers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDesToOthers.Location = new System.Drawing.Point(5, 85);
+            this.txtDesToOthers.Location = new System.Drawing.Point(6, 85);
             this.txtDesToOthers.MaxLength = 2147483647;
             this.txtDesToOthers.Multiline = true;
             this.txtDesToOthers.Name = "txtDesToOthers";
-            this.txtDesToOthers.Size = new System.Drawing.Size(156, 73);
+            this.txtDesToOthers.Size = new System.Drawing.Size(188, 73);
             this.txtDesToOthers.TabIndex = 1;
             this.toolTip1.SetToolTip(this.txtDesToOthers, "شماره سریال بارنامه");
             // 
@@ -4629,7 +4615,7 @@
             this.txtPaymentToOthers2.DisplayFormat = "#,##0";
             this.txtPaymentToOthers2.Increment = 1D;
             this.txtPaymentToOthers2.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtPaymentToOthers2.Location = new System.Drawing.Point(6, 30);
+            this.txtPaymentToOthers2.Location = new System.Drawing.Point(39, 30);
             this.txtPaymentToOthers2.MaxValue = 1797693134862.3157D;
             this.txtPaymentToOthers2.MinValue = 0D;
             this.txtPaymentToOthers2.Name = "txtPaymentToOthers2";
@@ -4645,7 +4631,7 @@
             this.label86.AutoSize = true;
             this.label86.BackColor = System.Drawing.Color.Transparent;
             this.label86.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label86.Location = new System.Drawing.Point(130, 66);
+            this.label86.Location = new System.Drawing.Point(163, 66);
             this.label86.Name = "label86";
             this.label86.Size = new System.Drawing.Size(29, 15);
             this.label86.TabIndex = 98;
@@ -4657,7 +4643,7 @@
             this.label89.AutoSize = true;
             this.label89.BackColor = System.Drawing.Color.Transparent;
             this.label89.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label89.Location = new System.Drawing.Point(131, 35);
+            this.label89.Location = new System.Drawing.Point(164, 35);
             this.label89.Name = "label89";
             this.label89.Size = new System.Drawing.Size(28, 15);
             this.label89.TabIndex = 98;
@@ -5326,7 +5312,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox6)).EndInit();
             this.uiGroupBox6.ResumeLayout(false);
             this.uiGroupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbBillLadingCast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbMethodCalFare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbFareCalcMethods)).EndInit();
@@ -5711,7 +5696,6 @@
         private System.Windows.Forms.Label lblDraverCarTel;
         public GridExEx.GridExEx dgvListH;
         private System.Windows.Forms.Label lblCarOwnerShip;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label118;
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Label label24;

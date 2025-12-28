@@ -113,7 +113,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void frmComers_Load(object sender, EventArgs e)
         {
-            DynamicToolTip.Attach(this);
+            //DynamicToolTip.Attach(this);
             WindowState = FormWindowState.Maximized;
             txtDateB.Value = DateTime.Now;
             txtDateH.Value = DateTime.Now;
@@ -1541,6 +1541,7 @@ namespace HM_ERP_System.Forms.Comers
 
                     StatusLading(q.StatusLading);
                     lblDateB.Text = q.date;
+                    txtDateB.Text = q.date;
                     lblSeryalH.Text = q.RemiaanceSeryal.ToString();
 
                     if (q.ShiperId == 0)
@@ -1550,7 +1551,6 @@ namespace HM_ERP_System.Forms.Comers
                         var sn = db.Customers.Where(c => c.Id == q.ShiperId).First();
                         lblShiperName.Text = sn.Name + " " + sn.Family;
                     }
-
                     lblProdectName.Text = pnG.Name + " - " + pn.Name;
                     lblLoadingOrinig.Text = qlo.Name + " - " + qll.Name;
                     lblUnLoadingOrinig.Text = qulo.Name + " - " + qull.Name;
@@ -1568,8 +1568,13 @@ namespace HM_ERP_System.Forms.Comers
                         if (q.CostAccountId != 0) cmbCostAccountB.Value = q.CostAccountId;
                         if (q.GoodsAccountId != 0) cmbGoodsAccountB.Value = q.GoodsAccountId;
                         SelectEndBillLading(ComersHId_);
-
                     }
+                    ////در صورتیکه شهر و محل انبار بارگیری و تخلیه یکی باشد
+                    //if (q.LoadingOrinigId == q.UnLoadingOrinigId && q.LoadingLocationId == q.UnLoadingLocationId)
+                    //{
+
+                    //}
+
                 }
             }
             catch (Exception er)
@@ -1818,16 +1823,18 @@ namespace HM_ERP_System.Forms.Comers
                             on cmh.ShiperId equals sh.Id into shGroup
                             from shLeft in shGroup.DefaultIfEmpty()
 
+
                             where string.Compare(cmh.date, dateS) >= 0 && string.Compare(cmh.date, dateE) <= 0 && (Id == null || cmh.Id == Id.Value)
 
                             orderby cmh.Id descending
-
+                            /*
                             select new
                             {
                                 //نام بارنامه نویس
                                 ShiperName = shLeft != null ? (shLeft.Family != "" ? (shLeft.Family + "، " + shLeft.Name).Trim() : shLeft.Name) : "-",
                                 //آمار تعداد مدارک پیوست
                                 CountDoc = docGroup.Where(c => c.FormName == "frmComersH").Count(),
+
                                 cmh.Id,
                                 cmh.date,
                                 TypeDocumentName = td.Name,
@@ -1860,7 +1867,67 @@ namespace HM_ERP_System.Forms.Comers
                                 cmh.Description,
                                 cmh.CotajNumber,
                                 User = CuUser_ != null ? CuUser_.Family != "" ? (CuUser_.Family + "، " + CuUser_.Name).Trim() : CuUser_.Name : "-",
+                            }
+                            */
+                            select new
+                            {
+                                //نام بارنامه نویس
+                                ShiperName = shLeft != null
+        ? (shLeft.Family != "" ? (shLeft.Family + "، " + shLeft.Name).Trim() : shLeft.Name)
+        : "-",
+
+                                //آمار تعداد مدارک پیوست
+                                CountDoc = docGroup.Where(c => c.FormName == "frmComersH").Count(),
+
+                                // ✅ وضعیت وجود در ComersBs
+                                ComersBStatus = db.ComersBs.Any(b => b.ComersHId == cmh.Id),
+
+                                cmh.Id,
+                                cmh.date,
+                                TypeDocumentName = td.Name,
+                                LoadingOrinigName = lo.Name,
+                                LoadingLocationName = ll.Name,
+                                UnLoadingOrinigName = ulo.Name,
+                                UnLoadingLocationName = ull.Name,
+
+                                CostAccountName = ca.Family != "" ? (ca.Family + "، " + ca.Name).Trim() : ca.Name,
+                                GoodsAccountName = ga.Family != "" ? (ga.Family + "، " + ga.Name).Trim() : ga.Name,
+
+                                SenderName = sr1.Family != "" ? (sr1.Family + "، " + sr1.Name).Trim() : sr1.Name,
+                                ResiverName = rs1.Family != "" ? (rs1.Family + "، " + rs1.Name).Trim() : rs1.Name,
+
+                                SenderName2 = sender2 != null
+        ? (sender2.Family != "" ? (sender2.Family + "، " + sender2.Name).Trim() : sender2.Name)
+        : "-",
+
+                                ResiverName2 = reciver2 != null
+        ? (reciver2.Family != "" ? (reciver2.Family + "، " + reciver2.Name).Trim() : reciver2.Name)
+        : "-",
+
+                                DaraverName1 = cu1.Family != "" ? (cu1.Family + "، " + cu1.Name).Trim() : cu1.Name,
+                                DaraverName2 = cu2_ != null
+        ? (cu2_.Family != "" ? (cu2_.Family + "، " + cu2_.Name).Trim() : cu2_.Name)
+        : "-",
+
+                                Daraver1Tel = cu1.Tel,
+                                Daraver1Codmeli = cu1.CodMeli,
+
+                                ProductsName = pr.Name,
+                                CarPlat = cr.CarPlat + "-" + cr.CarPlatSeryal,
+
+                                cmh.RemiaanceSeryal,
+                                cmh.LoadWeightCapacity,
+                                cmh.Description,
+                                cmh.CotajNumber,
+
+                                User = CuUser_ != null
+        ? (CuUser_.Family != "" ? (CuUser_.Family + "، " + CuUser_.Name).Trim() : CuUser_.Name)
+        : "-"
                             };
+
+
+                    ;
+
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dx.DataSource = dt;
                     //dx.AutoSizeColumns();
                     PublicClass.SettingGridEX(dx, formname);
@@ -2613,19 +2680,6 @@ namespace HM_ERP_System.Forms.Comers
             CelearLableItemslH();
         }
 
-        private void CelearItemsB()
-        {
-            ListId = 0;
-            //FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
-            CelearLableItemslB();
-            SeryalHId_ = 0;
-            txtSeryalB.ResetText();
-            StatusDeliveryGoods = false;
-            cmbCarplateB.ResetText();
-            cmbCarplateB.Enabled = true;
-            btnListSimilarComerB.Enabled = true;
-        }
-
         private void CelearLableItemslH()
         {
             lblCarName.ResetText();
@@ -2646,7 +2700,47 @@ namespace HM_ERP_System.Forms.Comers
             cmbDraversH1.SelectedIndex = -1;
             cmbCostAccountH.SelectedIndex = -1;
         }
+        private void CelearItemsAllH()
+        {
+            txtDateB.Value = DateTime.Now;
 
+            CelearItemsH();
+            cmbDraversH2.SelectedIndex = -1;
+            //cmbTypeDocument.SelectedIndex = -1;
+            cmbLoadingOrinig.SelectedIndex = -1;
+            cmbLoadingLocation.SelectedIndex = -1;
+            cmbUnLoadingOrinig.SelectedIndex = -1;
+            cmbUnLoadingLocation.SelectedIndex = -1;
+            cmbCostAccountH.SelectedIndex = -1;
+            cmbGoodsAccountH.SelectedIndex = -1;
+            cmbSender1.SelectedIndex = -1;
+            cmbResiver1.SelectedIndex = -1;
+            cmbSender2.SelectedIndex = -1;
+            cmbResiver2.SelectedIndex = -1;
+
+
+            cmbShiper.SelectedIndex = -1;
+            cmbProducts.SelectedIndex = -1;
+            cmbTypeDocument.Focus();
+            ShiperId_ = 0;
+            chkStatusLading.Checked = false;
+        }
+
+
+        private void CelearItemsB()
+        {
+            ListId = 0;
+            CelearLableItemslB();
+            SeryalHId_ = 0;
+            txtSeryalB.ResetText();
+            txtLoadWeight.ResetText();
+            txtLoadWeightCapacity.ResetText();
+            txtBaseFreight.ResetText();
+            StatusDeliveryGoods = false;
+            cmbCarplateB.ResetText();
+            cmbCarplateB.Enabled = true;
+            btnListSimilarComerB.Enabled = true;
+        }
         private void CelearLableItemslB()
         {
             lblDateB.ResetText();
@@ -2671,29 +2765,6 @@ namespace HM_ERP_System.Forms.Comers
             cmbListSimilarComerB.ResetText();
         }
 
-        private void CelearItemsAllH()
-        {
-            CelearItemsH();
-            cmbDraversH2.SelectedIndex = -1;
-            //cmbTypeDocument.SelectedIndex = -1;
-            cmbLoadingOrinig.SelectedIndex = -1;
-            cmbLoadingLocation.SelectedIndex = -1;
-            cmbUnLoadingOrinig.SelectedIndex = -1;
-            cmbUnLoadingLocation.SelectedIndex = -1;
-            cmbCostAccountH.SelectedIndex = -1;
-            cmbGoodsAccountH.SelectedIndex = -1;
-            cmbSender1.SelectedIndex = -1;
-            cmbResiver1.SelectedIndex = -1;
-            cmbSender2.SelectedIndex = -1;
-            cmbResiver2.SelectedIndex = -1;
-
-
-            cmbShiper.SelectedIndex = -1;
-            cmbProducts.SelectedIndex = -1;
-            cmbTypeDocument.Focus();
-            ShiperId_ = 0;
-            chkStatusLading.Checked = false;
-        }
 
         private void CelearItemsAllB()
         {
@@ -3677,18 +3748,15 @@ namespace HM_ERP_System.Forms.Comers
         int ComersHId_ = 0;
         private void cmbCarPlatB_ValueChanged(object sender, EventArgs e)
         {
-
             try
             {
                 if (cmbCarplateB.SelectedIndex != -1 && cmbCarplateB.Text.Length == 7)
                 {
                     ComersHId_ = Convert.ToInt32(cmbCarplateB.Value);
-
                     using (var db = new DBcontextModel())
                     {
                         var CarId = db.ComersHs.Where(x => x.Id == ComersHId_).First().CarId;
                         var Car = db.Cars.Where(c => c.Id == CarId).First();
-
                         var Ownerships = db.Ownerships.Where(c => c.Id == Car.OwnershipId).First();
 
                         CarIdB_ = Car.Id;
@@ -3700,8 +3768,6 @@ namespace HM_ERP_System.Forms.Comers
                         {
                             OwnershipCompany = " - " + db.Customers.Where(c => c.Id == Car.OwnershipCompanyId).First().Name;
                         }
-
-
                         lblCarOwnerShip.Text = ("نوع مالکیت: " + Ownerships.Name + OwnershipCompany).Trim();
                     }
                 }
@@ -3711,7 +3777,6 @@ namespace HM_ERP_System.Forms.Comers
                     ComersHId_ = 0;
                     CelearLableItemslB();
                 }
-
             }
             catch (Exception er)
             {

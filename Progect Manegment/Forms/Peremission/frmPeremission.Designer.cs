@@ -383,11 +383,18 @@
             this.uiTabPage1 = new Janus.Windows.UI.Tab.UITabPage();
             this.trPeremission = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClearSearch = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.uiTabPage2 = new Janus.Windows.UI.Tab.UITabPage();
             this.dgvList = new GridExEx.GridExEx();
             this.panelAddNew = new System.Windows.Forms.Panel();
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnNew = new DevComponents.DotNetBar.ButtonX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox1)).BeginInit();
             this.uiGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbRoles)).BeginInit();
@@ -396,6 +403,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uiTab1)).BeginInit();
             this.uiTab1.SuspendLayout();
             this.uiTabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.uiTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.panelAddNew.SuspendLayout();
@@ -420,11 +428,11 @@
             cmbRoles_DesignTimeLayout.LayoutString = resources.GetString("cmbRoles_DesignTimeLayout.LayoutString");
             this.cmbRoles.DesignTimeLayout = cmbRoles_DesignTimeLayout;
             this.cmbRoles.DisplayMember = "Name";
-            this.cmbRoles.Location = new System.Drawing.Point(807, 17);
+            this.cmbRoles.Location = new System.Drawing.Point(693, 17);
             this.cmbRoles.Name = "cmbRoles";
             this.cmbRoles.SelectedIndex = -1;
             this.cmbRoles.SelectedItem = null;
-            this.cmbRoles.Size = new System.Drawing.Size(166, 28);
+            this.cmbRoles.Size = new System.Drawing.Size(280, 28);
             this.cmbRoles.TabIndex = 3;
             this.cmbRoles.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbRoles.ValueMember = "id";
@@ -473,6 +481,7 @@
             // uiTabPage1
             // 
             this.uiTabPage1.Controls.Add(this.trPeremission);
+            this.uiTabPage1.Controls.Add(this.panel1);
             this.uiTabPage1.Location = new System.Drawing.Point(3, 1);
             this.uiTabPage1.Name = "uiTabPage1";
             this.uiTabPage1.Size = new System.Drawing.Size(1042, 530);
@@ -486,7 +495,7 @@
             this.trPeremission.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.trPeremission.ImageIndex = 16;
             this.trPeremission.ImageList = this.imageList1;
-            this.trPeremission.Location = new System.Drawing.Point(0, 0);
+            this.trPeremission.Location = new System.Drawing.Point(0, 60);
             this.trPeremission.Name = "trPeremission";
             treeNode1.ImageIndex = 1;
             treeNode1.Name = "Node1_1_7_1";
@@ -1072,7 +1081,7 @@
             this.trPeremission.RightToLeftLayout = true;
             this.trPeremission.SelectedImageIndex = 11;
             this.trPeremission.ShowNodeToolTips = true;
-            this.trPeremission.Size = new System.Drawing.Size(1042, 530);
+            this.trPeremission.Size = new System.Drawing.Size(1042, 470);
             this.trPeremission.TabIndex = 0;
             // 
             // imageList1
@@ -1101,6 +1110,84 @@
             this.imageList1.Images.SetKeyName(19, "Very-Basic-Menu-icon (2).png");
             this.imageList1.Images.SetKeyName(20, "Save-icon (2).png");
             this.imageList1.Images.SetKeyName(21, "Documents-icon (2).png");
+            this.imageList1.Images.SetKeyName(22, "Actions-arrow-down-icon - Copy.png");
+            this.imageList1.Images.SetKeyName(23, "Actions-arrow-down-icon.png");
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnClearSearch);
+            this.panel1.Controls.Add(this.labelX1);
+            this.panel1.Controls.Add(this.btnPrev);
+            this.panel1.Controls.Add(this.btnNext);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.txtSearch);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1042, 60);
+            this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnClearSearch
+            // 
+            this.btnClearSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnClearSearch.Location = new System.Drawing.Point(583, 16);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(57, 29);
+            this.btnClearSearch.TabIndex = 3;
+            this.btnClearSearch.Text = "انصراف";
+            this.btnClearSearch.UseVisualStyleBackColor = true;
+            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnPrev.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrev.ImageIndex = 22;
+            this.btnPrev.ImageList = this.imageList1;
+            this.btnPrev.Location = new System.Drawing.Point(647, 1);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(67, 29);
+            this.btnPrev.TabIndex = 2;
+            this.btnPrev.Text = "قبلی";
+            this.btnPrev.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnNext.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNext.ImageIndex = 23;
+            this.btnNext.ImageList = this.imageList1;
+            this.btnNext.Location = new System.Drawing.Point(647, 30);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(67, 29);
+            this.btnNext.TabIndex = 2;
+            this.btnNext.Text = "بعدی";
+            this.btnNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSearch.Location = new System.Drawing.Point(720, 16);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 29);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "جستجو...";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtSearch.Location = new System.Drawing.Point(801, 16);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(166, 28);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // uiTabPage2
             // 
@@ -1187,6 +1274,21 @@
             this.btnNew.TabIndex = 3;
             this.btnNew.Text = "جدید F4";
             // 
+            // labelX1
+            // 
+            this.labelX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelX1.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Location = new System.Drawing.Point(972, 19);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.labelX1.Size = new System.Drawing.Size(45, 23);
+            this.labelX1.TabIndex = 4;
+            this.labelX1.Text = "جستجو:";
+            // 
             // frmPeremission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -1210,6 +1312,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.uiTab1)).EndInit();
             this.uiTab1.ResumeLayout(false);
             this.uiTabPage1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.uiTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.panelAddNew.ResumeLayout(false);
@@ -1232,5 +1336,12 @@
         private Janus.Windows.UI.Tab.UITabPage uiTabPage1;
         private Janus.Windows.UI.Tab.UITabPage uiTabPage2;
         public GridExEx.GridExEx dgvList;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnClearSearch;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }

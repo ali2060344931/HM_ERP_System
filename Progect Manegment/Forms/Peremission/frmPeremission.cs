@@ -16,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace HM_ERP_System.Forms.Peremission
 {
@@ -24,6 +25,11 @@ namespace HM_ERP_System.Forms.Peremission
     /// </summary>
     public partial class frmPeremission : frmMasterForm
     {
+        Dictionary<TreeNode, bool> _expandState = new Dictionary<TreeNode, bool>();
+        List<TreeNode> _foundNodes = new List<TreeNode>();
+        int _currentIndex = -1;
+        string _searchText = "";
+
         public frmPeremission()
         {
             InitializeComponent();
@@ -31,11 +37,37 @@ namespace HM_ERP_System.Forms.Peremission
 
         private void frmPeremission_Load(object sender, EventArgs e)
         {
-            WindowState= FormWindowState.Maximized;
+            trPeremission.DrawMode = TreeViewDrawMode.OwnerDrawText;
+            trPeremission.DrawNode += treeView1_DrawNode;
+            WindowState = FormWindowState.Maximized;
             FillcmbRoles();
             CallUpdateTata();
             FilldgvList();
         }
+
+        private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        {
+            if (_foundNodes.Contains(e.Node))
+            {
+                Font font = e.Node == trPeremission.SelectedNode
+                    ? new Font(e.Node.TreeView.Font, FontStyle.Bold)
+                    : e.Node.TreeView.Font;
+
+                TextRenderer.DrawText(
+                    e.Graphics,
+                    e.Node.Text,
+                    font,
+                    e.Bounds,
+                 System.Drawing.Color.Red,          // رنگ Highlight
+                    TextFormatFlags.GlyphOverhangPadding
+                );
+            }
+            else
+            {
+                e.DrawDefault = true;
+            }
+        }
+
         private void FilldgvList()
         {
             using (var db = new DBcontextModel())
@@ -49,7 +81,7 @@ namespace HM_ERP_System.Forms.Peremission
                             PeremissionName = pr.Des,
                             Path = pr.Rot,
                         };
-                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                 dgvList.AutoSizeColumns();
             }
         }
@@ -82,10 +114,10 @@ namespace HM_ERP_System.Forms.Peremission
                         var pr = db.Peremissions.ToList();
                         foreach (var item in pr)
                         {
-                            var q = db.RolePermissiones.Where(c => c.RoleId==role.Id && c.PermissionId==item.Id);
-                            if (q.Count()==0)
+                            var q = db.RolePermissiones.Where(c => c.RoleId == role.Id && c.PermissionId == item.Id);
+                            if (q.Count() == 0)
                             {
-                                db.RolePermissiones.Add(new RolePermissione { RoleId = role.Id, PermissionId=item.Id, status=true });
+                                db.RolePermissiones.Add(new RolePermissione { RoleId = role.Id, PermissionId = item.Id, status = true });
                             }
                         }
                     }
@@ -112,19 +144,19 @@ namespace HM_ERP_System.Forms.Peremission
                 {
                     foreach (TreeNode thisNode in Node.Nodes)
                     {
-                        var PeremissionsId = db.Peremissions.Where(x => x.NodeName==thisNode.Name).First().Id;
+                        var PeremissionsId = db.Peremissions.Where(x => x.NodeName == thisNode.Name).First().Id;
 
-                        var TF = db.RolePermissiones.Where(c => c.RoleId==RoleId_ && c.PermissionId==PeremissionsId).First();
+                        var TF = db.RolePermissiones.Where(c => c.RoleId == RoleId_ && c.PermissionId == PeremissionsId).First();
                         //if(RoleId_==1 && PeremissionsId==2)
                         //{
                         //    MessageBox.Show("Test");
                         //}
 
-                        if (Mode==0)
+                        if (Mode == 0)
                             thisNode.Checked = TF.status;
                         else
                         {
-                            TF.status=thisNode.Checked;
+                            TF.status = thisNode.Checked;
                             db.SaveChangesSafe();
                         }
                         AddChildren(Nodes, thisNode, Mode);
@@ -148,18 +180,18 @@ namespace HM_ERP_System.Forms.Peremission
                     {
                         void SaveNode(TreeNode node)
                         {
-                            var q0 = db.Peremissions.Where(c => c.NodeName==node.Name);
+                            var q0 = db.Peremissions.Where(c => c.NodeName == node.Name);
                             if (q0.Count() == 0)
                             {//جدید
-                                db.Peremissions.Add(new Entity.Peremission.Peremission { Des = node.Text, NodeName=node.Name, Rot=node.FullPath });
+                                db.Peremissions.Add(new Entity.Peremission.Peremission { Des = node.Text, NodeName = node.Name, Rot = node.FullPath });
                                 //db.SaveChangesSafe();
                                 n++;
                             }
                             else
                             {//ویرایش
-                                q0.First().Des= node.Text;
-                                q0.First().NodeName= node.Name;
-                                q0.First().Rot=node.FullPath;
+                                q0.First().Des = node.Text;
+                                q0.First().NodeName = node.Name;
+                                q0.First().Rot = node.FullPath;
                             }
                             db.SaveChangesSafe();
                             foreach (TreeNode child in node.Nodes)
@@ -195,8 +227,8 @@ namespace HM_ERP_System.Forms.Peremission
                     AddChildren(Nodes, trPeremission.Nodes[i], 0);
                 }
 
-                grListPeremission.Visible= true;
-                panelAddNew.Visible= true;
+                grListPeremission.Visible = true;
+                panelAddNew.Visible = true;
             }
             catch (Exception)
             {
@@ -207,7 +239,7 @@ namespace HM_ERP_System.Forms.Peremission
         {
             try
             {
-                if (cmbRoles.SelectedIndex==-1)
+                if (cmbRoles.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T064); return;
                 }
@@ -242,6 +274,135 @@ namespace HM_ERP_System.Forms.Peremission
 
             }
             //            if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            _expandState.Clear();
+            SaveExpandState(trPeremission.Nodes);
+            _foundNodes.Clear();
+            _currentIndex = -1;
+            _searchText = txtSearch.Text.Trim();
+
+            if (string.IsNullOrEmpty(_searchText))
+                return;
+
+            FindAllNodes(trPeremission.Nodes, _searchText);
+
+            if (_foundNodes.Count > 0)
+                GoToNode(0);
+
+            trPeremission.Invalidate(); // رفرش Highlight
+
+            if (_foundNodes.Count > 0)
+            {
+                btnSearch.Text ="تعداد: " +_foundNodes.Count.ToString();
+            }
+            else
+            {
+                btnSearch.Text = "جستجو...";
+
+            }
+        }
+        private void FindAllNodes(TreeNodeCollection nodes, string searchText)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (node.Text.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    _foundNodes.Add(node);
+
+                FindAllNodes(node.Nodes, searchText);
+            }
+        }
+
+        private void GoToNode(int index)
+        {
+            TreeNode node = _foundNodes[index];
+
+            ExpandPath(node);
+            trPeremission.SelectedNode = node;
+            node.EnsureVisible();
+
+            trPeremission.Invalidate();
+        }
+
+        private void ExpandPath(TreeNode node)
+        {
+            TreeNode parent = node.Parent;
+            while (parent != null)
+            {
+                parent.Expand();
+                parent = parent.Parent;
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (_foundNodes.Count == 0) return;
+
+            _currentIndex++;
+            if (_currentIndex >= _foundNodes.Count)
+                _currentIndex = 0;
+
+            GoToNode(_currentIndex);
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            if (_foundNodes.Count == 0) return;
+
+            _currentIndex--;
+            if (_currentIndex < 0)
+                _currentIndex = _foundNodes.Count - 1;
+
+            GoToNode(_currentIndex);
+        }
+
+        private void SaveExpandState(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                _expandState[node] = node.IsExpanded;
+                SaveExpandState(node.Nodes);
+            }
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            // پاک کردن نتایج جستجو
+            _foundNodes.Clear();
+            _currentIndex = -1;
+            _searchText = "";
+
+            // برگرداندن وضعیت Expand
+            RestoreExpandState(trPeremission.Nodes);
+
+            // حذف انتخاب
+            trPeremission.SelectedNode = null;
+
+            // رفرش برای حذف Highlight
+            trPeremission.Invalidate();
+            btnSearch.Text = "جستجو...";
+        }
+        private void RestoreExpandState(TreeNodeCollection nodes)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                if (_expandState.TryGetValue(node, out bool isExpanded))
+                {
+                    if (isExpanded)
+                        node.Expand();
+                    else
+                        node.Collapse();
+                }
+
+                RestoreExpandState(node.Nodes);
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

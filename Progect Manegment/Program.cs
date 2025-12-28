@@ -14,6 +14,7 @@ using HM_ERP_System.Forms.AppointmentScheduling;
 using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Calendar;
 using HM_ERP_System.Forms.Car;
+using HM_ERP_System.Forms.Chat_GPT;
 using HM_ERP_System.Forms.Ciltys;
 using HM_ERP_System.Forms.Color;
 using HM_ERP_System.Forms.Comers;
@@ -139,7 +140,7 @@ namespace Progect_Manegment
 
                     Application.Run(new frmLoginProg());
                     //Application.Run(new frmMainForm());
-                    //Application.Run(new frmPlaceTransfer(null));
+                    //Application.Run(new frmChatGpt());
                 }
             }
             // اگر اتصال به دیتابیس قطع شده باشد

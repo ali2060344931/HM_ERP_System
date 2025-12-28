@@ -109,7 +109,11 @@ namespace HM_ERP_System.Entity.Customer
         /// کد برای توسعه برنامه
         /// </summary>
         public int SecretCode {  get; set; }
-
+        /// <summary>
+        /// کد شناسایی ربات
+        /// </summary>
+        public long? ChatId { get; set; } 
+        
         public virtual TypeCustomer.TypeCustomer TypeCustomer { get; set; }
         public virtual ICollection<Draver.Draver> Dravers { get; set; }
         public virtual ICollection <Car.Car > Car { get; set; }

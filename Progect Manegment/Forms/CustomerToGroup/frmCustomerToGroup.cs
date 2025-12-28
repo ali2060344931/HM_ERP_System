@@ -112,7 +112,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                             select new
                             {
                                 cu.Id,
-                                name = cu.Family + " " + cu.Name,
+                                name = (cu.Family + " " + cu.Name).Trim(),
                                 CustomerType = ct.Name,
                                 cu.CodMeli,
                             };

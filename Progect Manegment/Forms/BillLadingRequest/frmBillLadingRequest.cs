@@ -230,6 +230,8 @@ namespace HM_ERP_System.Forms.BillLadingRequest
                             on cmh.ShiperId equals sh.Id into shGroup
                             from shLeft in shGroup.DefaultIfEmpty()
 
+
+
                             where !cmh.StatusLading  &&  string.Compare(cmh.date, txtDateStart.Text) >= 0 && string.Compare(cmh.date, txtDateEnd.Text) <= 0 && cmh.DH_StatusRejistered==chkSended.Checked
 
                             //orderby cmh.Id descending
@@ -240,6 +242,7 @@ namespace HM_ERP_System.Forms.BillLadingRequest
                                 ShiperName = shLeft!=null ? (shLeft.Family + " " + shLeft.Name).Trim() : "-",
                                 //آمار تعداد مدارک پیوست
                                 CountDoc = docGroup.Where(c => c.FormName=="frmComersH").Count(),
+
                                 cmh.Id,
                                 cmh.date,
                                 TypeDocumentName = td.Name,

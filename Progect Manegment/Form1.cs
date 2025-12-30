@@ -1,5 +1,7 @@
 ﻿using HM_ERP_System.Forms.Main_Form;
 
+using MySqlX.XDevAPI.Relational;
+
 using Org.BouncyCastle.Asn1.Cmp;
 
 using Progect_Manegment;
@@ -66,6 +68,19 @@ namespace HM_ERP_System
         private void Form1_Load(object sender, EventArgs e)
         {
             WindowState= FormWindowState.Maximized;
+        }
+
+        private void btnAsk_Click_1(object sender, EventArgs e)
+        {
+            var repo = new AccountingRepository("_connectionString");
+            var ai = new AiQueryService(repo);
+
+            var result = ai.Execute(txtQuestion.Text);
+
+            if (result.IsSuccess)
+                rtbAnswer.Text = result.Message;
+            else
+                MessageBox.Show(result.Message);
         }
     }
     public class AccountingQueryService

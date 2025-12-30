@@ -43,7 +43,7 @@
             this.btnAsk.TabIndex = 0;
             this.btnAsk.Text = "button1";
             this.btnAsk.UseVisualStyleBackColor = true;
-            //this.btnAsk.Click += new System.EventHandler(this.button1_Click);
+            this.btnAsk.Click += new System.EventHandler(this.btnAsk_Click_1);
             // 
             // txtQuestion
             // 

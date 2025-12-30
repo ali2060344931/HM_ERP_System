@@ -508,6 +508,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class General\AddEditBankc.cs" />
+    <Compile Include="Class General\AI Class\AccountingRepository.cs" />
+    <Compile Include="Class General\AI Class\AiQueryService.cs" />
+    <Compile Include="Class General\AI Class\AiResponse.cs" />
+    <Compile Include="Class General\AI Class\DateRules.cs" />
+    <Compile Include="Class General\AI Class\IntentDetector.cs" />
     <Compile Include="Class General\AiService.cs" />
     <Compile Include="Class General\BankClass.cs" />
     <Compile Include="Class General\Bot Class\BaleBotClass.cs" />

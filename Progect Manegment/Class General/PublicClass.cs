@@ -590,7 +590,6 @@ namespace MyClass
             }
         }
 
-
         /// <summary>
         /// جستجو در کمبوباکس ها
         /// </summary>
@@ -629,7 +628,6 @@ namespace MyClass
                 return 0;
             }
         }
-
 
         public static object SearchToCmb(object comboControl, System.Data.DataTable dt)
         {
@@ -702,8 +700,6 @@ namespace MyClass
                 return 0;
             }
         }
-
-
 
         /// <summary>
         /// افزودن مقادیر در دیتاتیبل
@@ -1005,12 +1001,6 @@ namespace MyClass
         }
         //""""""""""""""""""""""""""""""""""""""
 
-
-
-
-
-
-
         /// <summary>
         /// افزدون مدارک پیوستی
         /// </summary>
@@ -1065,8 +1055,6 @@ namespace MyClass
         /// <param name="mode">صفر0: بدون اعلام 1: با اعلام</param>
         /// <returns></returns>
         public static bool SetPeremission(string ControlName, int mode = 0)
-
-
         {
             try
             {
@@ -1079,7 +1067,6 @@ namespace MyClass
                     var perId = db.Peremissions.Where(c => c.NodeName == ControlName).First().Id;
 
                     var q = db.RolePermissiones.Where(c => c.RoleId == rlId && c.PermissionId == perId).First();
-
 
                     if (q.status)
                         return q.status;
@@ -1094,7 +1081,6 @@ namespace MyClass
                         }
                     }
                 }
-
             }
             catch (Exception er)
             {
@@ -2130,9 +2116,6 @@ namespace MyClass
             }
         }
 
-
-
-
         /// <summary>
         ///  نمایش اطلاعات در جدول درآمد/هزینه و دریافت/پرداخت و جابجایی ها
         /// </summary>
@@ -2202,8 +2185,6 @@ namespace MyClass
                 return null;
             }
         }
-
-
 
         /// <summary>
         /// تنطیمات عمومی دیتاگرید جانوس
@@ -2358,7 +2339,6 @@ namespace MyClass
             }
 
         }
-
 
         public static System.Data.DataTable GetCustomerDetailedAccountsChildTable(int customerId, string financialYear, string dateS, string dateE, int? transactionCodeS, int? transactionCodeE)
         {
@@ -2721,7 +2701,6 @@ namespace MyClass
             }
         }
 
-
         public static System.Data.DataTable EntityTableToDataTable<T>(List<T> items, string tableName = "Data")
         {
             try
@@ -2824,7 +2803,6 @@ namespace MyClass
                 return null;
             }
         }
-
 
         public static DataSet DetailedAccountTransactionsTree_(string DateS, string DateE, int? TransactionCodeS = 0, int? TransactionCodeE = 0)
         {
@@ -4142,7 +4120,6 @@ namespace MyClass
             }
         }
 
-
         /// <summary>
         /// ثبت تمامی اسناد مالی
         /// </summary>
@@ -4170,7 +4147,6 @@ namespace MyClass
                 ADR.SaveOrUpdateByCommit(new Transaction { Id = Id, FinancialYear = FinancialYear, TransactionCode = TransactionCode, TransactionDate = TransactionDate, TransactionTypeId = TransactionTypeId, SpecificAccountId = SpecificAccountId, DetailedAccountId = DetailedAccountId, Amount = Amount, PaymentBed = PaymentBed, PaymentBes = PaymentBes, ComerBId = ComerBId, Description = Description, SeryalNumber = SeryalNumber, UserId = UserId, Series = Series, DateTime = DateTime.Now, FinalRegistry = false, Status = false, IsAutoRejDoc = IsAutoRejDoc, IsBeginningBalance = IsBeginningBalance }, Id);
             }
         }
-
 
         /// <summary>
         /// ثبت تمامی اسناد مالی
@@ -4234,7 +4210,6 @@ namespace MyClass
             }
         }
 
-
         public static int AddToDetailedAccounts(int SpecificAccountId, int CustomerId)
         {
             using (var db = new DBcontextModel())
@@ -4244,7 +4219,6 @@ namespace MyClass
                 return code.SaveOrUpdateRefId(new DetailedAccount { Id = ListId, SpecificAccountId = SpecificAccountId, CustomerId = CustomerId, CodeAccount = Convert.ToInt32(PublicClass.CeratDetailedAccountCode(SpecificAccountId).ToString()) }, ListId);
             }
         }
-
 
         /// <summary>
         /// کنترل تاریخ در بازه سال مالی
@@ -4471,16 +4445,6 @@ namespace MyClass
             return (positiveRand % range) + min;
         }
 
-
-        public static (int, int) aaaa()
-        {
-
-
-
-
-
-            return (0, 0);
-        }
 
 
     }

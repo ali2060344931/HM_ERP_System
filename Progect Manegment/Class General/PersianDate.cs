@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace MyClass
 {
@@ -298,6 +299,120 @@ namespace MyClass
             DateTime dtValue;
             return DateTime.TryParse(date, out dtValue);
         }
+
+
+        public static class PersianDateHelper
+        {
+            public static string ToPersianDateString(DateTime date)
+            {
+                var pc = new PersianCalendar();
+
+                return $"{pc.GetYear(date):0000}/" +
+                       $"{pc.GetMonth(date):00}/" +
+                       $"{pc.GetDayOfMonth(date):00}";
+            }
+        }
+
+
+        public static class PersianDateRules
+        {
+            private static readonly PersianCalendar pc = new PersianCalendar();
+
+            public static (string From, string To) DetectRange(string question)
+            {
+                question = Normalize(question);
+                var now = DateTime.Now;
+
+                // امروز
+                if (question.Contains("امروز"))
+                    return GetDayRange(now);
+
+                // دیروز
+                if (question.Contains("دیروز"))
+                    return GetDayRange(now.AddDays(-1));
+
+                // ۳ هفته قبل / 2 هفته قبل
+                var weekMatch = Regex.Match(question, @"(\d+)\s*هفته\s*قبل");
+                if (weekMatch.Success)
+                {
+                    int weeks = int.Parse(weekMatch.Groups[1].Value);
+                    var target = now.AddDays(-7 * weeks);
+                    return GetWeekRange(target);
+                }
+
+                // هفته قبل
+                if (question.Contains("هفته قبل"))
+                    return GetWeekRange(now.AddDays(-7));
+
+                // هفته جاری
+                if (question.Contains("هفته"))
+                    return GetWeekRange(now);
+
+                // ماه قبل
+                if (question.Contains("ماه قبل"))
+                    return GetMonthRange(now.AddMonths(-1));
+
+                // این ماه
+                if (question.Contains("این ماه"))
+                    return GetMonthRange(now);
+
+                // پیش‌فرض: ماه جاری
+                return GetMonthRange(now);
+            }
+
+            private static string ToPersian(DateTime date)
+            {
+                var p = new PersianCalendar();
+                return $"{p.GetYear(date):0000}/{p.GetMonth(date):00}/{p.GetDayOfMonth(date):00}";
+            }
+
+
+
+            private static (string From, string To) GetDayRange(DateTime date)
+            {
+                var p = new PersianCalendar();
+                var s = $"{p.GetYear(date):0000}/{p.GetMonth(date):00}/{p.GetDayOfMonth(date):00}";
+                return (s, s);
+            }
+
+            private static (string From, string To) GetWeekRange(DateTime date)
+            {
+                var p = new PersianCalendar();
+
+                int diff = (int)date.DayOfWeek;
+                var start = date.AddDays(-diff);
+                var end = start.AddDays(6);
+
+                return (ToPersian(start), ToPersian(end));
+            }
+
+            private static (string From, string To) GetMonthRange(DateTime date)
+            {
+                var p = new PersianCalendar();
+                int year = p.GetYear(date);
+                int month = p.GetMonth(date);
+
+                var start = p.ToDateTime(year, month, 1, 0, 0, 0, 0);
+                var end = start.AddMonths(1).AddDays(-1);
+
+                return (ToPersian(start), ToPersian(end));
+            }
+
+            private static string ToShamsi(DateTime date)
+            {
+                return $"{pc.GetYear(date):0000}/" +
+                       $"{pc.GetMonth(date):00}/" +
+                       $"{pc.GetDayOfMonth(date):00}";
+            }
+
+            private static string Normalize(string s)
+            {
+                return s.Replace("ی", "ي").Replace("ک", "ك").ToLower();
+            }
+        }
+
+
+
     }
 
 }

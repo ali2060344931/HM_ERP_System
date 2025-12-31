@@ -32,6 +32,7 @@
             this.txtQuestion = new System.Windows.Forms.TextBox();
             this.rtbAnswer = new System.Windows.Forms.RichTextBox();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.TrainingService = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAsk
@@ -49,14 +50,14 @@
             // 
             this.txtQuestion.Location = new System.Drawing.Point(428, 50);
             this.txtQuestion.Name = "txtQuestion";
-            this.txtQuestion.Size = new System.Drawing.Size(100, 28);
+            this.txtQuestion.Size = new System.Drawing.Size(191, 28);
             this.txtQuestion.TabIndex = 1;
             // 
             // rtbAnswer
             // 
             this.rtbAnswer.Location = new System.Drawing.Point(428, 102);
             this.rtbAnswer.Name = "rtbAnswer";
-            this.rtbAnswer.Size = new System.Drawing.Size(100, 96);
+            this.rtbAnswer.Size = new System.Drawing.Size(191, 96);
             this.rtbAnswer.TabIndex = 2;
             this.rtbAnswer.Text = "";
             // 
@@ -69,11 +70,22 @@
             this.lblStatus.TabIndex = 3;
             this.lblStatus.Text = "label1";
             // 
+            // TrainingService
+            // 
+            this.TrainingService.Location = new System.Drawing.Point(12, 12);
+            this.TrainingService.Name = "TrainingService";
+            this.TrainingService.Size = new System.Drawing.Size(117, 35);
+            this.TrainingService.TabIndex = 4;
+            this.TrainingService.Text = "آموزش برنامه";
+            this.TrainingService.UseVisualStyleBackColor = true;
+            this.TrainingService.Click += new System.EventHandler(this.TrainingService_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 392);
+            this.Controls.Add(this.TrainingService);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.rtbAnswer);
             this.Controls.Add(this.txtQuestion);
@@ -95,5 +107,6 @@
         private System.Windows.Forms.TextBox txtQuestion;
         private System.Windows.Forms.RichTextBox rtbAnswer;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button TrainingService;
     }
 }

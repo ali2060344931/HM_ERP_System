@@ -10,6 +10,7 @@ using HM_ERP_System.Entity.Accounts.TotalAccount;
 using HM_ERP_System.Entity.Accounts.Transaction;
 using HM_ERP_System.Entity.Accounts.TransactionType;
 using HM_ERP_System.Entity.Accounts.TypeAccount;
+using HM_ERP_System.Entity.AiQuestionLog;
 using HM_ERP_System.Entity.Alphabet;
 using HM_ERP_System.Entity.AppointmentScheduling;
 using HM_ERP_System.Entity.BillLadingWriterPercent;
@@ -141,6 +142,7 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new WarehouseConfig());
             modelBuilder.Configurations.Add(new WarehouseTypeConfig());
             modelBuilder.Configurations.Add(new FieldActivityConfig());
+            modelBuilder.Configurations.Add(new AiQuestionLogConfig());
 
 
             base.OnModelCreating(modelBuilder);
@@ -428,6 +430,7 @@ namespace Progect_Manegment
         /// جدول رشته های فعالیت در انبارها
         /// </summary>
         public virtual DbSet<FieldActivity> FieldActivities { get; set; }
+        public virtual DbSet<AiQuestionLog> AiQuestionLogs { get; set; }
 
         #endregion
 

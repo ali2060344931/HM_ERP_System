@@ -1,4 +1,6 @@
-﻿using HM_ERP_System.Forms.Main_Form;
+﻿using HM_ERP_System.Class_General.AI_Class;
+using HM_ERP_System.Entity.AiQuestionLog;
+using HM_ERP_System.Forms.Main_Form;
 
 using MySqlX.XDevAPI.Relational;
 
@@ -15,23 +17,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.Windows.Forms.Design;
+using System.Windows.Forms.Design;
+
 
 using Telerik.WinControls;
+
+using Ubiety.Dns.Core;
 
 namespace HM_ERP_System
 {
     public partial class Form1 : frmMasterForm
     {
         DBcontextModel db=new DBcontextModel();
-        //private readonly IUIService _aiService;
         private readonly AccountingQueryService _queryService;
-        //private AiService _aiService;
+        private readonly AiQueryService _aiService;
         public Form1()
         {
             InitializeComponent();
-            //_aiService = new AiService();
             _queryService = new AccountingQueryService();
+            
+            var repo = new AccountingAiRepository(new DBcontextModel());
+            _aiService = new AiQueryService(repo);
         }
 
         private  void btnAsk_Click(object sender, EventArgs e)
@@ -67,22 +73,74 @@ namespace HM_ERP_System
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            WindowState= FormWindowState.Maximized;
+           
         }
 
         private void btnAsk_Click_1(object sender, EventArgs e)
         {
-            var repo = new AccountingRepository("_connectionString");
-            var ai = new AiQueryService(repo);
+            rtbAnswer.ResetText();
+            var question = txtQuestion.Text.Trim();
+            if (string.IsNullOrEmpty(question))
+                return;
 
-            var result = ai.Execute(txtQuestion.Text);
+            var result = _aiService.Execute(question);
 
             if (result.IsSuccess)
                 rtbAnswer.Text = result.Message;
             else
                 MessageBox.Show(result.Message);
         }
+
+        private void TrainingService_Click(object sender, EventArgs e)
+        {
+            NightlyTrainingService.Run();
+
+            //Task.Run(async () =>
+            //{
+            //    while (true)
+            //    {
+            //        var now = DateTime.Now;
+
+            //        if (now.Hour == 2) // ساعت ۲ شب
+            //        {
+            //            NightlyTrainingService.Run();
+            //            await Task.Delay(TimeSpan.FromHours(24));
+            //        }
+
+            //        await Task.Delay(TimeSpan.FromMinutes(10));
+            //    }
+            //});
+
+        }
+
+
+        public class NightlyTrainingService
+        {
+            public static void Run()
+            {
+                using (var db = new DBcontextModel())
+                {
+                    var trainingData = db.AiQuestionLogs
+                        .Where(x => x.Intent != "Unknown")
+                        .Select(x => new AiTrainingData
+                        {
+                            Text = x.Question,
+                            Label = x.Intent
+                        })
+                        .ToList();
+
+                    if (trainingData.Count < 20)
+                        return;
+
+                    AiModelTrainer.TrainAndSaveModel("IntentModel.zip");
+                }
+            }
+        }
+
     }
+
+
+
     public class AccountingQueryService
     {
         public string ExecuteSmartQuery(string question)

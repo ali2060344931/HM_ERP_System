@@ -4,10 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-    using Microsoft.ML;
-    using Microsoft.ML.Data;
 
-    using Progect_Manegment;
+using Microsoft.ML;
+using Microsoft.ML.Data;
+
+using Progect_Manegment;
 
 namespace HM_ERP_System.Class_General.AI_Class
 {
@@ -31,6 +32,18 @@ namespace HM_ERP_System.Class_General.AI_Class
             // ===== Intentهای دیگر =====
             new AiTrainingData { Text = "فروش این ماه", Label = "MonthlySales" },
             new AiTrainingData { Text = "بدهکارترین مشتری", Label = "TopDebtor" },
+
+            new AiTrainingData { Text = "لیست اشخاص", Label = "Customer_List" },
+            new AiTrainingData { Text = "مشتریان", Label = "Customer_List" },
+            new AiTrainingData { Text = "اشخاص حقیقی", Label = "Customer_List" },
+            new AiTrainingData { Text = "اشخاص حقوقی", Label = "Customer_List" },
+
+            new AiTrainingData { Text = "تلفن علی احمدی", Label = "Customer_FieldValue" },
+            new AiTrainingData { Text = "آدرس شرکت فلان", Label = "Customer_FieldValue" },
+            new AiTrainingData { Text = "کد ملی علی", Label = "Customer_FieldValue" },
+
+            new AiTrainingData { Text = "اطلاعات علی احمدی", Label = "Customer_Find" },
+            new AiTrainingData { Text = "مشخصات مشتری", Label = "Customer_Find" },
         };
             // 👆👆👆 فقط همین‌جا
 

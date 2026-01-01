@@ -313,96 +313,124 @@ namespace MyClass
             }
         }
 
-
+        /// <summary>
+        /// تاریخ ها در هوش مصنوعی
+        /// </summary>
         public static class PersianDateRules
         {
             private static readonly PersianCalendar pc = new PersianCalendar();
 
-            public static (string From, string To) DetectRange(string question)
+            public static (string From, string To) Detect(string question)
             {
                 question = Normalize(question);
+
+                var specific = DetectSpecificMonth(question);
+                if (specific != null)
+                    return specific.Value;
+
+                return DetectRange(question);
+            }
+
+            public static (string From, string To) DetectRange(string question)
+            {
                 var now = DateTime.Now;
 
-                // امروز
                 if (question.Contains("امروز"))
                     return GetDayRange(now);
 
-                // دیروز
                 if (question.Contains("دیروز"))
                     return GetDayRange(now.AddDays(-1));
 
-                // ۳ هفته قبل / 2 هفته قبل
                 var weekMatch = Regex.Match(question, @"(\d+)\s*هفته\s*قبل");
                 if (weekMatch.Success)
                 {
                     int weeks = int.Parse(weekMatch.Groups[1].Value);
-                    var target = now.AddDays(-7 * weeks);
-                    return GetWeekRange(target);
+                    return GetWeekRange(now.AddDays(-7 * weeks));
                 }
 
-                // هفته قبل
                 if (question.Contains("هفته قبل"))
                     return GetWeekRange(now.AddDays(-7));
 
-                // هفته جاری
                 if (question.Contains("هفته"))
                     return GetWeekRange(now);
 
-                // ماه قبل
                 if (question.Contains("ماه قبل"))
                     return GetMonthRange(now.AddMonths(-1));
 
-                // این ماه
                 if (question.Contains("این ماه"))
                     return GetMonthRange(now);
 
-                // پیش‌فرض: ماه جاری
                 return GetMonthRange(now);
             }
 
-            private static string ToPersian(DateTime date)
+            private static (string From, string To)? DetectSpecificMonth(string question)
             {
-                var p = new PersianCalendar();
-                return $"{p.GetYear(date):0000}/{p.GetMonth(date):00}/{p.GetDayOfMonth(date):00}";
+                var months = new Dictionary<string, int>
+        {
+            { "فروردین", 1 }, { "اردیبهشت", 2 }, { "خرداد", 3 },
+            { "تیر", 4 }, { "مرداد", 5 }, { "شهریور", 6 },
+            { "مهر", 7 }, { "آبان", 8 }, { "آذر", 9 },
+            { "دی", 10 }, { "بهمن", 11 }, { "اسفند", 12 }
+        };
+
+                int? month = null;
+                foreach (var m in months)
+                    if (question.Contains(m.Key))
+                    {
+                        month = m.Value;
+                        break;
+                    }
+
+                if (month == null)
+                    return null;
+
+                int year = DetectYear(question);
+
+                var start = pc.ToDateTime(year, month.Value, 1, 0, 0, 0, 0);
+                var end = start.AddMonths(1).AddDays(-1);
+
+                return (ToShamsi(start), ToShamsi(end));
             }
 
+            private static int DetectYear(string question)
+            {
+                var yearMatch = Regex.Match(question, @"14\d{2}");
+                if (yearMatch.Success)
+                    return int.Parse(yearMatch.Value);
 
+                if (question.Contains("سال قبل"))
+                    return pc.GetYear(DateTime.Now) - 1;
+
+                return pc.GetYear(DateTime.Now);
+            }
 
             private static (string From, string To) GetDayRange(DateTime date)
             {
-                var p = new PersianCalendar();
-                var s = $"{p.GetYear(date):0000}/{p.GetMonth(date):00}/{p.GetDayOfMonth(date):00}";
-                return (s, s);
+                return (ToShamsi(date), ToShamsi(date));
             }
 
             private static (string From, string To) GetWeekRange(DateTime date)
             {
-                var p = new PersianCalendar();
-
                 int diff = (int)date.DayOfWeek;
                 var start = date.AddDays(-diff);
                 var end = start.AddDays(6);
-
-                return (ToPersian(start), ToPersian(end));
+                return (ToShamsi(start), ToShamsi(end));
             }
 
             private static (string From, string To) GetMonthRange(DateTime date)
             {
-                var p = new PersianCalendar();
-                int year = p.GetYear(date);
-                int month = p.GetMonth(date);
+                int year = pc.GetYear(date);
+                int month = pc.GetMonth(date);
 
-                var start = p.ToDateTime(year, month, 1, 0, 0, 0, 0);
+                var start = pc.ToDateTime(year, month, 1, 0, 0, 0, 0);
                 var end = start.AddMonths(1).AddDays(-1);
 
-                return (ToPersian(start), ToPersian(end));
+                return (ToShamsi(start), ToShamsi(end));
             }
 
             private static string ToShamsi(DateTime date)
             {
-                return $"{pc.GetYear(date):0000}/" +
-                       $"{pc.GetMonth(date):00}/" +
-                       $"{pc.GetDayOfMonth(date):00}";
+                return $"{pc.GetYear(date):0000}/{pc.GetMonth(date):00}/{pc.GetDayOfMonth(date):00}";
             }
 
             private static string Normalize(string s)

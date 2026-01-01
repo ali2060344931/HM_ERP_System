@@ -142,9 +142,9 @@ namespace Progect_Manegment
                     AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
                         Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
 
-                    //Application.Run(new frmLoginProg());
+                    Application.Run(new frmLoginProg());
                     //Application.Run(new frmMainForm());
-                    Application.Run(new Form1());
+                    //Application.Run(new ChatGPT());
                 }
             }
             // اگر اتصال به دیتابیس قطع شده باشد

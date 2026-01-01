@@ -4915,7 +4915,7 @@
             this.dgvListH.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
             this.dgvListH.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.dgvListH.FindCondition = null;
-            this.dgvListH.FrozenColumns = 8;
+            this.dgvListH.FrozenColumns = 9;
             this.dgvListH.GroupTotals = Janus.Windows.GridEX.GroupTotals.Always;
             this.dgvListH.HiddenColumnSortingEnabled = false;
             this.dgvListH.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;

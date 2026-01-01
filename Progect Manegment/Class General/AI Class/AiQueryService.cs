@@ -15,22 +15,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
+using Telerik.WinControls.Svg;
+
 using static MyClass.PersianDate;
 
 public class AiQueryService
 {
     private readonly IAccountingAiRepository _repo;
+    private readonly ICustomerAiRepository _customerRepo;
     private readonly MLContext _mlContext;
     private PredictionEngine<AiTrainingData, AiPrediction> _predictor;
     private string _modelPath;
 
-    public AiQueryService(IAccountingAiRepository repo, string modelFileName = "IntentModel.zip")
+    public AiQueryService(IAccountingAiRepository repo, ICustomerAiRepository customerRepo, string modelFileName = "IntentModel.zip")
     {
         _repo = repo;
+        _customerRepo = customerRepo;
         _mlContext = new MLContext();
         _modelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, modelFileName);
 
-        // بارگذاری مدل یا آموزش اولیه
         if (!File.Exists(_modelPath))
             AiModelTrainer.TrainAndSaveModel(modelFileName);
 
@@ -57,7 +60,7 @@ public class AiQueryService
             db.SaveChanges();
         }
 
-        // 2️⃣ تشخیص Intent با Rule-Based
+        // 2️⃣ تشخیص سوالات Intent با Rule-Based
         var intent = IntentDetector.Detect(question);
 
         // 3️⃣ اگر Rule-Based جواب نداد → ML
@@ -83,7 +86,9 @@ public class AiQueryService
                 );
 
             case AiIntent.MonthlySales:
-                var (from, to) = PersianDateRules.DetectRange(question);
+                
+                
+                var (from, to) =PersianDateRules.DetectRange(question);
                 var sales = _repo.GetMonthlySales(from, to);
 
                 return AiResponse.Ok(
@@ -92,7 +97,18 @@ public class AiQueryService
                     $"میزان فروش از {from} تا {to} برابر است با {sales:N0} ریال"
                 );
 
-            case AiIntent.GetBillOfLadings:
+
+
+            case AiIntent.Customer_List:
+            case AiIntent.Customer_Find:
+            case AiIntent.Customer_FieldValue:
+
+                var entity = CustomerEntityExtractor.Extract(question);
+                var data = _customerRepo.Query(entity, intent);
+
+                return AiResponse.Ok(intent, data, "نتیجه اشخاص");
+            
+              case AiIntent.GetBillOfLadings:
                 // ۱- استخراج پارامترها
                 var (fromStr, toStr) = PersianDateRules.DetectRange(question);
                 var hideIfInCommission = question.Contains("بدون پورسانت");
@@ -102,9 +118,9 @@ public class AiQueryService
               //FilldgvListB(grid, fromStr, toStr, null, driverName, hideIfInCommission);
 
                 return AiResponse.Ok(intent, null, "لیست بارنامه‌ها بارگذاری شد");
-
-
-
+          
+            
+            
             default:
                 return AiResponse.Fail("سؤال قابل تحلیل نیست.");
         }
@@ -121,58 +137,5 @@ public class AiQueryService
         }
         return null;
     }
-    /*
-    public AiResponse Execute(string question)
-    {
-        // ثبت سوال
-        var newEntry = new AiQuestionLog
-        {
-            Question = question,
-            Intent = "Unknown",
-            CreateDate = DateTime.Now
-        };
-
-        using (var db = new DBcontextModel())
-        {
-            db.AiQuestionLogs.Add(newEntry);
-            db.SaveChanges();
-        }
-
-        // Retrain خودکار در Background (اختیاری: فقط اگر تعداد سوالات جدید به حد مشخص رسید)
-        Task.Run(() => AiModelTrainer.TrainAndSaveModel());
-
-        // پیش‌بینی Intent با مدل فعلی
-        var prediction = _predictor.Predict(new AiTrainingData { Text = question });
-        if (!Enum.TryParse<AiIntent>(prediction.PredictedLabel, out var intent))
-            intent = AiIntent.Unknown;
-
-        // پاسخ‌دهی Rule-Based
-        switch (intent)
-        {
-            case AiIntent.TopDebtor:
-                var debtor = _repo.GetTopDebtorWithName();
-                if (debtor.Amount <= 0)
-                    return AiResponse.Fail("بدهکاری یافت نشد.");
-
-                return AiResponse.Ok(
-                    intent,
-                    debtor,
-                    $"بدهکارترین شخص ({debtor.Name}) مبلغ {debtor.Amount:N0} ریال بدهکار است"
-                );
-
-            case AiIntent.MonthlySales:
-                var (from, to) = PersianDateRules.DetectRange(question);
-                var sales = _repo.GetMonthlySales(from, to);
-
-                return AiResponse.Ok(
-                    intent,
-                    sales,
-                    $"میزان فروش از {from:yyyy/MM/dd} تا {to:yyyy/MM/dd} برابر است با {sales:N0} ریال"
-                );
-            default:
-                return AiResponse.Fail("سؤال قابل تحلیل نیست.");
-        }
-    }
-    */
 }
 

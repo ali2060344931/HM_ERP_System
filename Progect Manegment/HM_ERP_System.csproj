@@ -557,10 +557,14 @@
     <Compile Include="Class General\AI Class\AiQueryService.cs" />
     <Compile Include="Class General\AI Class\AiResponse.cs" />
     <Compile Include="Class General\AI Class\AiTrainingData.cs" />
+    <Compile Include="Class General\AI Class\CustomerAiRepository.cs" />
+    <Compile Include="Class General\AI Class\CustomerEntityExtractor.cs" />
     <Compile Include="Class General\AI Class\DateRules.cs" />
+    <Compile Include="Class General\AI Class\EntityGpt\CustomerQueryEntity.cs" />
     <Compile Include="Class General\AI Class\IAccountingAiRepository.cs" />
     <Compile Include="Class General\AI Class\IAccountingRepository.cs" />
     <Compile Include="Class General\AI Class\IAiLogRepository.cs" />
+    <Compile Include="Class General\AI Class\ICustomerAiRepository.cs" />
     <Compile Include="Class General\AI Class\IntentDetector.cs" />
     <Compile Include="Class General\AiService.cs" />
     <Compile Include="Class General\BankClass.cs" />
@@ -685,11 +689,11 @@
     <Compile Include="Entity\WarantyType\WarantyType.cs" />
     <Compile Include="Entity\Warehouse\Warehouse.cs" />
     <Compile Include="Entity\Warehouse\WarehouseType.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="ChatGPT.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ChatGPT.Designer.cs">
+      <DependentUpon>ChatGPT.cs</DependentUpon>
     </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
@@ -1047,8 +1051,8 @@
       <DependentUpon>CarPlatNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Date_Time.resx" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="ChatGPT.resx">
+      <DependentUpon>ChatGPT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>

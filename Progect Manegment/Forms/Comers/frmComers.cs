@@ -1880,7 +1880,7 @@ namespace HM_ERP_System.Forms.Comers
                                 CountDoc = docGroup.Where(c => c.FormName == "frmComersH").Count(),
 
                                 // ✅ وضعیت وجود در ComersBs
-                                ComersBStatus = db.ComersBs.Any(b => b.ComersHId == cmh.Id),
+                                ComersBStatus = db.ComersBs.Any(b => b.ComersHId == cmh.Id) ? "بله" : "",
 
                                 cmh.Id,
                                 cmh.date,
@@ -1919,7 +1919,7 @@ namespace HM_ERP_System.Forms.Comers
                                 cmh.LoadWeightCapacity,
                                 cmh.Description,
                                 cmh.CotajNumber,
-
+                                
                                 User = CuUser_ != null
         ? (CuUser_.Family != "" ? (CuUser_.Family + "، " + CuUser_.Name).Trim() : CuUser_.Name)
         : "-"
@@ -2049,7 +2049,7 @@ namespace HM_ERP_System.Forms.Comers
                                 cmb.DateB,
                                 cmb.SeryalB,
                                 cmb.SeryalH,
-                                Transaction = TrGroup.Any(),
+                                Transaction = TrGroup.Any()?"بله":"",
                                 LoadingOrinigName = ct1.Name,
                                 LoadingLocationName = pt1.Name,
                                 UnLoadingOrinigName = ct2.Name,
@@ -2084,8 +2084,9 @@ namespace HM_ERP_System.Forms.Comers
                                 
                                 ResiverName2 = rs2Left.Family != "" ? (rs2Left.Family + "، " + rs2Left.Name).Trim() : rs2Left.Name,
                                 //rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
-                                
-                                
+
+//                                StatusDeliveryGoods
+//Transaction
                                 ProductsName = pr.Name,
                                 FareCalcMethodName = tcf.Name,
                                 MethodCalFareName = mcf.Name,
@@ -2111,7 +2112,7 @@ namespace HM_ERP_System.Forms.Comers
                                 cmb.OtherBillLadingCosts,
                                 cmb.AmountPaidTruckDriver,
                                 cmb.BalanceAccountDraver,
-                                cmb.StatusDeliveryGoods,
+                                StatusDeliveryGoods= cmb.StatusDeliveryGoods?"بله":"",
                                 cmb.Description,
                                 cmb.PaymentToOthers1,
                                 cmb.PaymentToOthers2,

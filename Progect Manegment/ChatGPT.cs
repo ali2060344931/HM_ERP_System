@@ -26,54 +26,20 @@ using Ubiety.Dns.Core;
 
 namespace HM_ERP_System
 {
-    public partial class Form1 : frmMasterForm
+    public partial class ChatGPT : frmMasterForm
     {
         DBcontextModel db=new DBcontextModel();
         private readonly AccountingQueryService _queryService;
         private readonly AiQueryService _aiService;
-        public Form1()
+        public ChatGPT()
         {
             InitializeComponent();
             _queryService = new AccountingQueryService();
-            
+
             var repo = new AccountingAiRepository(new DBcontextModel());
-            _aiService = new AiQueryService(repo);
-        }
-
-        private  void btnAsk_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                lblStatus.Text = "در حال پردازش...";
-                btnAsk.Enabled = false;
-
-                string userQuestion = txtQuestion.Text.Trim();
-                if (string.IsNullOrEmpty(userQuestion))
-                    return;
-
-                // 1️⃣ تشخیص نوع سؤال
-                string sqlResult = _queryService.ExecuteSmartQuery(userQuestion);
-
-                // 2️⃣ ارسال نتیجه به AI برای توضیح انسانی
-                //string finalAnswer = await _aiService.AnalyzeResult(userQuestion, sqlResult);
-
-                //rtbAnsweسوr.Text = finalAnswer;
-                lblStatus.Text = "آماده";
-            }
-            catch (Exception ex)
-            {
-                rtbAnswer.Text = ex.Message;
-                lblStatus.Text = "خطا";
-            }
-            finally
-            {
-                btnAsk.Enabled = true;
-            }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-           
+            var customerRepo = new CustomerAiRepository(); // ← این را اضافه کن
+            _aiService = new AiQueryService(repo, customerRepo); // ← دو پارامتر ارسال شد
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void btnAsk_Click_1(object sender, EventArgs e)
@@ -137,6 +103,41 @@ namespace HM_ERP_System
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblStatus.Text = "در حال پردازش...";
+                btnAsk.Enabled = false;
+
+                string userQuestion = txtQuestion.Text.Trim();
+                if (string.IsNullOrEmpty(userQuestion))
+                    return;
+
+                // 1️⃣ تشخیص نوع سؤال
+                string sqlResult = _queryService.ExecuteSmartQuery(userQuestion);
+
+                // 2️⃣ ارسال نتیجه به AI برای توضیح انسانی
+                //string finalAnswer = await _aiService.AnalyzeResult(userQuestion, sqlResult);
+
+                //rtbAnsweسوr.Text = finalAnswer;
+                lblStatus.Text = "آماده";
+            }
+            catch (Exception ex)
+            {
+                rtbAnswer.Text = ex.Message;
+                lblStatus.Text = "خطا";
+            }
+            finally
+            {
+                btnAsk.Enabled = true;
+            }
+        }
+
+        private void ChatGPT_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

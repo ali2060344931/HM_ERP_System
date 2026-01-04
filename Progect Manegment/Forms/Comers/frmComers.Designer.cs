@@ -3342,6 +3342,7 @@
             this.uiGroupBox3.TabIndex = 2;
             this.uiGroupBox3.Text = "صاحب کالا";
             this.uiGroupBox3.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
+            this.uiGroupBox3.Leave += new System.EventHandler(this.uiGroupBox3_Leave);
             // 
             // txtCargoInsurance
             // 
@@ -3736,6 +3737,7 @@
             this.panelLanding.TabIndex = 3;
             this.panelLanding.Text = "بارنامه نویس";
             this.panelLanding.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
+            this.panelLanding.Leave += new System.EventHandler(this.panelLanding_Leave);
             // 
             // label120
             // 
@@ -4142,6 +4144,7 @@
             this.uiGroupBox4.TabIndex = 4;
             this.uiGroupBox4.Text = "طرف حساب کامیون";
             this.uiGroupBox4.TextAlignment = Janus.Windows.EditControls.TextAlignment.Center;
+            this.uiGroupBox4.Leave += new System.EventHandler(this.uiGroupBox4_Leave);
             // 
             // chkPaymentToOthers
             // 

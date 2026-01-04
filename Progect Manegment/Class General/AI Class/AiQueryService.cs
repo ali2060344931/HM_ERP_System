@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-using Telerik.WinControls.Svg;
+//using Telerik.WinControls.Svg;
 
 using static MyClass.PersianDate;
 
@@ -24,6 +24,11 @@ public class AiQueryService
     private readonly IAccountingAiRepository _repo;
     private readonly ICustomerAiRepository _customerRepo;
     private readonly MLContext _mlContext;
+
+
+
+
+
     private PredictionEngine<AiTrainingData, AiPrediction> _predictor;
     private string _modelPath;
 

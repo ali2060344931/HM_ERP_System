@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyClass;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -60,8 +62,9 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void frmAddItems_Load(object sender, EventArgs e)
         {
-            txtDateStart.Value = DateTime.Now;
-            txtDateEnd.Value = DateTime.Now;
+
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
+            txtDateEnd.Text = PersianDate.DateEnd();
             WindowState = FormWindowState.Maximized;
         }
 

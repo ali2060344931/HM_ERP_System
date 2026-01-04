@@ -120,7 +120,8 @@ namespace HM_ERP_System.Forms.Comers
 
 
             txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
-            txtDateEnd.Value = DateTime.Now;
+            //txtDateEnd.Value = DateTime.Now;
+            txtDateEnd.Text = PersianDate.DateEnd();
 
             chkDocumentBanck.Checked = Properties.Settings.Default.SetDocumentBan;
             //cmbListSimilarComerB.Size = new Size(126, 30);

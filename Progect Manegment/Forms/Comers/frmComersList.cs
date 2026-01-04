@@ -38,7 +38,7 @@ namespace HM_ERP_System.Forms.Comers
             try
             {
                 txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
-                txtDateEnd.Value = DateTime.Now;
+                txtDateEnd.Text =PersianDate.DateEnd();
 
 
                 string layoutPathComersB = Path.Combine(Application.StartupPath, "DefaultGridLayoutComersB.xml");

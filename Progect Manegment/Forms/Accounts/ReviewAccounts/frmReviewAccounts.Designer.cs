@@ -533,7 +533,7 @@
             this.uiTabPage3.Key = "S";
             this.uiTabPage3.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage3.Name = "uiTabPage3";
-            this.uiTabPage3.Size = new System.Drawing.Size(797, 296);
+            this.uiTabPage3.Size = new System.Drawing.Size(797, 329);
             this.uiTabPage3.TabStop = true;
             this.uiTabPage3.Text = "معیــــن";
             // 
@@ -566,7 +566,7 @@
             this.dgvListS.RecordNavigator = true;
             this.dgvListS.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListS.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListS.Size = new System.Drawing.Size(797, 296);
+            this.dgvListS.Size = new System.Drawing.Size(797, 329);
             this.dgvListS.Sortable = true;
             this.dgvListS.TabIndex = 89;
             this.dgvListS.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -632,7 +632,7 @@
             this.uiTabPage6.Key = "AllAcconts";
             this.uiTabPage6.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage6.Name = "uiTabPage6";
-            this.uiTabPage6.Size = new System.Drawing.Size(797, 296);
+            this.uiTabPage6.Size = new System.Drawing.Size(797, 329);
             this.uiTabPage6.TabStop = true;
             this.uiTabPage6.Text = "همه حساب ها";
             // 
@@ -661,7 +661,7 @@
             this.dgvListAllAcconts.RecordNavigator = true;
             this.dgvListAllAcconts.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListAllAcconts.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListAllAcconts.Size = new System.Drawing.Size(797, 296);
+            this.dgvListAllAcconts.Size = new System.Drawing.Size(797, 329);
             this.dgvListAllAcconts.Sortable = true;
             this.dgvListAllAcconts.TabIndex = 91;
             this.dgvListAllAcconts.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Progect_Manegment;
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -223,7 +225,7 @@ namespace MyClass
         /// <returns></returns>
         public static int ComparisonOfTowDates(string Date, int Cod)
         {
-            if (Cod==2) return 3;
+            if (Cod == 2) return 3;
 
             try
             {
@@ -248,7 +250,7 @@ namespace MyClass
             DateTime inputDate = Day; // تاریخ ورودی
             DateTime beginningOfWeek = inputDate.AddDays(-(int)inputDate.DayOfWeek); // تاریخ اولین روز هفته
             DateTime endOfWeek = beginningOfWeek.AddDays(6); // تاریخ آخرین روز هفته
-            return beginningOfWeek.ToString("MM/dd/yyyy")+"|"+endOfWeek.ToString("MM/dd/yyyy");
+            return beginningOfWeek.ToString("MM/dd/yyyy") + "|" + endOfWeek.ToString("MM/dd/yyyy");
         }
 
         /// <summary>
@@ -264,7 +266,7 @@ namespace MyClass
             DateTime firstDayOfMonth = new DateTime(inputDate.Year, inputDate.Month, 1);
             // محاسبه تاریخ آخر ماه
             DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-            return firstDayOfMonth.ToString("MM/dd/yyyy")+"|"+lastDayOfMonth.ToString("MM/dd/yyyy");
+            return firstDayOfMonth.ToString("MM/dd/yyyy") + "|" + lastDayOfMonth.ToString("MM/dd/yyyy");
         }
 
         /// <summary>
@@ -286,7 +288,7 @@ namespace MyClass
             DateTime endOfYear = new DateTime(inputDate.Year, 12, 31);
 
             //DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-            return startOfYear.ToString("MM/dd/yyyy")+"|"+endOfYear.ToString("MM/dd/yyyy");
+            return startOfYear.ToString("MM/dd/yyyy") + "|" + endOfYear.ToString("MM/dd/yyyy");
         }
         //ToDo کنترل صحت سنجی تاریخ میلادی
         /// <summary>
@@ -310,6 +312,16 @@ namespace MyClass
                 return $"{pc.GetYear(date):0000}/" +
                        $"{pc.GetMonth(date):00}/" +
                        $"{pc.GetDayOfMonth(date):00}";
+            }
+        }
+
+        public static string DateEnd()
+        {
+            using (var db = new DBcontextModel())
+            {
+                int FinancialYear =Convert.ToInt32( PublicClass.FinancialYear);
+                var q = db.FinancialYears.Where(c => c.Id == FinancialYear).First();
+                return q.DateEnd;
             }
         }
 
@@ -437,6 +449,7 @@ namespace MyClass
             {
                 return s.Replace("ی", "ي").Replace("ک", "ك").ToLower();
             }
+
         }
 
 

@@ -93,7 +93,6 @@ namespace MyClass
         public static void SetFinancialYear()
         {
             FinancialYear = HM_ERP_System.Properties.Settings.Default.FinancialYear;
-            //FinancialYear =db_.CustomerRoles.Where(c => c.Id==UserId).First().FinancialYearId.ToString();
         }
         //-------------------------------------------------------
         public static bool RunningProject()

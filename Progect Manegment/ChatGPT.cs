@@ -20,7 +20,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
 
-using Telerik.WinControls;
+//using Telerik.WinControls;
 
 using Ubiety.Dns.Core;
 

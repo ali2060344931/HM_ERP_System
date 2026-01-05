@@ -55,6 +55,8 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Controls;
 using System.Windows.Forms;
+
+using static ClosedXML.Excel.XLPredefinedFormat;
 namespace HM_ERP_System.Forms.Comers
 {
     public partial class frmComers : frmMasterForm, IUpdatableForms
@@ -115,8 +117,8 @@ namespace HM_ERP_System.Forms.Comers
         {
             //DynamicToolTip.Attach(this);
             WindowState = FormWindowState.Maximized;
-            txtDateB.Value = DateTime.Now;
-            txtDateH.Value = DateTime.Now;
+            txtDateB.Value = System.DateTime.Now;
+            txtDateH.Value = System.DateTime.Now;
 
 
             txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
@@ -153,7 +155,6 @@ namespace HM_ERP_System.Forms.Comers
 
         private void uiTab1_SelectedTabChanged(object sender, Janus.Windows.UI.Tab.TabEventArgs e)
         {
-            //if (FormLoded)
             {
                 ComerTabKey = uiTab1.SelectedTab.Key;
                 switch (ComerTabKey)
@@ -173,10 +174,8 @@ namespace HM_ERP_System.Forms.Comers
         /// </summary>
         private void CallUpdateTataH()
         {
-            dgvListH.SaveSettings = true;
-            dgvListH.SettingsKey = this.Name;
-            //uiPanel0.Height=325;
-
+            //dgvListH.SaveSettings = true;
+            //dgvListH.SettingsKey = this.Name;
             uiPanel0.Text = "بخش ثبت اطلاعات حواله";
             uiPanel1.Text = "بخش لیست نمایش اطلاعات حواله";
             dgvListH.BringToFront();
@@ -194,20 +193,17 @@ namespace HM_ERP_System.Forms.Comers
             FillcmbGoodsAccountH();
             FillcmbCostAccountB();
             FillcmbGoodsAccountB();
-
-
             FillcmbSender1H();
             FillcmbResiver1H();
             FillcmbSender2H();
             FillcmbResiver2H();
-
             FillcmbShiper();
             FillcmbDraversH1();
             FillcmbDraversH2();
-
             FillcmbProducts();
             FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
         }
+        
         System.Data.DataTable dt_Resiver2;
 
         private void FillcmbResiver2H()
@@ -355,14 +351,13 @@ namespace HM_ERP_System.Forms.Comers
         /// </summary>
         private void CallUpdateTataB()
         {
-            dgvListB.SaveSettings = true;
-            dgvListB.SettingsKey = this.Name;
+            //dgvListB.SaveSettings = true;
+            //dgvListB.SettingsKey = this.Name;
             //uiPanel0.Height=405;
-
-            dgvListB.BringToFront();
-            dgvListB.Dock = DockStyle.Fill;
             uiPanel0.Text = "بخش ثبت اطلاعات بارنامه";
             uiPanel1.Text = "بخش لیست نمایش اطلاعات بارنامه";
+            dgvListB.BringToFront();
+            dgvListB.Dock = DockStyle.Fill;
             btnChangStatusGoods.Visible = true;
             txtWeightDeliveredGoods.Visible = true;
             txtWeightDeliveredGoods.BringToFront();
@@ -1757,7 +1752,7 @@ namespace HM_ERP_System.Forms.Comers
                             from cuR_ in cuRGroup.DefaultIfEmpty()
 
                             join CuUser in db.Customers
-                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            on cmh.UserId equals CuUser.Id into CuUserGroup
                             from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
 
@@ -1923,13 +1918,56 @@ namespace HM_ERP_System.Forms.Comers
 
                                 User = CuUser_ != null
         ? (CuUser_.Family != "" ? (CuUser_.Family + "، " + CuUser_.Name).Trim() : CuUser_.Name)
-        : "-"
+        : "-",
+                                Date_Time = cmh.RecordDateTime,
                             };
 
+                    var list = q.ToList();
 
-                    ;
+                    var result = list.Select(x => new
+                    {
+                        x.ShiperName,
+                        x.CountDoc,
+                        x.ComersBStatus,
+                        x.Id,
+                        x.date,
+                        x.TypeDocumentName,
+                        x.LoadingOrinigName,
+                        x.LoadingLocationName,
+                        x.UnLoadingOrinigName,
+                        x.UnLoadingLocationName,
+                        x.CostAccountName,
+                        x.GoodsAccountName,
+                        x.SenderName,
+                        x.ResiverName,
+                        x.SenderName2,
+                        x.ResiverName2,
+                        x.DaraverName1,
+                        x.DaraverName2,
+                        x.Daraver1Tel,
+                        x.Daraver1Codmeli,
+                        x.ProductsName,
+                        x.CarPlat,
+                        x.RemiaanceSeryal,
+                        x.LoadWeightCapacity,
+                        x.Description,
+                        x.CotajNumber,
+                        x.User,
 
-                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dx.DataSource = dt;
+                        // 👇 تبدیل به شمسی
+                        Date_Time = PersianDate.ToPersianDateTime(x.Date_Time)
+                    }).ToList();
+
+                    //System.Data.DataTable dt =
+                    //    PublicClass.EntityTableToDataTable(result);
+
+                    //dx.DataSource = dt;
+
+
+
+
+
+                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(result); dx.DataSource = dt;
                     //dx.AutoSizeColumns();
                     PublicClass.SettingGridEX(dx, formname);
                     return dx;
@@ -1964,7 +2002,7 @@ namespace HM_ERP_System.Forms.Comers
                             from cuR_ in cuRGroup.DefaultIfEmpty()
 
                             join CuUser in db.Customers
-                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            on cmb.UserId equals CuUser.Id into CuUserGroup
                             from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
                             join cmh in db.ComersHs on cmb.ComersHId equals cmh.Id
@@ -1975,9 +2013,6 @@ namespace HM_ERP_System.Forms.Comers
                             join pr in db.Products on cmh.ProductsId equals pr.Id
                             join dr1 in db.Dravers on cmb.DaraverId1_ equals dr1.Id
                             join cu1 in db.Customers on dr1.CustomerId equals cu1.Id
-
-                            //join dr2 in db.Dravers on cmb.DaraverId2_ equals dr2.Id
-                            //join cu2 in db.Customers on dr2.CustomerId equals cu2.Id
 
                             join dr2 in db.Dravers
     on cmb.DaraverId2_ equals dr2.Id into dr2Group
@@ -2091,7 +2126,6 @@ namespace HM_ERP_System.Forms.Comers
                                 ProductsName = pr.Name,
                                 FareCalcMethodName = tcf.Name,
                                 MethodCalFareName = mcf.Name,
-                                CountDoc = docGroup.Count(c => c.FormName == "frmComersB"),
                                 cmb.LoadWeight,
                                 cmb.WeightDeliveredGoods,
                                 cmb.FreightRate,
@@ -2134,10 +2168,86 @@ namespace HM_ERP_System.Forms.Comers
                                 cmb.BV,
                                 cmb.Ac,
                                 cmb.Bn,
+                                CountDoc = docGroup.Count(c => c.FormName == "frmComersB"),
                                 User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
+                                Date_Time=cmb.RecordDateTime,
                             };
+                    var list = q.ToList();
 
-                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); Gx.DataSource = dt;
+                    var result = list.Select(x => new
+                    {
+                        x.Id,
+                        x.SeryalB,
+                        x.SeryalH,
+                        x.Transaction,
+                        x.LoadingOrinigName,
+                        x.LoadingLocationName,
+                        x.UnLoadingOrinigName,
+                        x.UnLoadingLocationName,
+                        x.CostAccountName,
+                        x.GoodsAccountName,
+                        x.ShiperName,
+                        x.CarPlat,
+                        x.DaraverName,
+                        x.DaraverTel,
+                        x.DaraverName2,
+                        x.DaraverTel2,
+                        x.SenderName,
+                        x.ResiverName,
+                        x.SenderName2,
+                        x.ResiverName2,
+                        x.ProductsName,
+                        x.FareCalcMethodName,
+                        x.MethodCalFareName,
+                        x.LoadWeight,
+                        x.WeightDeliveredGoods,
+                        x.FreightRate,
+                        x.CargoInsurance,
+                        x.LoadinCast,
+                        x.Incentive,
+                        x.StopCharge,
+                        x.Deduction,
+                        x.BalanceAccount,
+                        x.PaidFreightRate,
+                        x.InsurancCost,
+                        x.PaidIncentive,
+                        x.PaidStopCharge,
+                        x.DriverDeduction,
+                        x.BaseFreight,
+                        x.BillLadingAmount,
+                        x.InsuranceAmount,
+                        x.BillLadingWriterPercent,
+                        x.OtherBillLadingCosts,
+                        x.AmountPaidTruckDriver,
+                        x.BalanceAccountDraver,
+                        x.StatusDeliveryGoods,
+                        x.Description,
+                        x.PaymentToOthers1,
+                        x.PaymentToOthers2,
+                        x.PaymentToOthersName,
+                        x.DesToOthers,
+                        x.BillLadingCast,
+                        x.BillLadingMethod,
+                        x.BO,
+                        x.AE,
+                        x.AV,
+                        x.AX,
+                        x.AZ,
+                        x.BP,
+                        x.BK,
+                        x.BS,
+                        x.BT,
+                        x.AY,
+                        x.BV,
+                        x.Ac,
+                        x.Bn,
+                        x.CountDoc,
+                        x.User,
+                        Date_Time = PersianDate.ToPersianDateTime(x.Date_Time),
+
+                    }).ToList();
+
+                    System.Data.DataTable dt = PublicClass.EntityTableToDataTable(result); Gx.DataSource = dt;
                     //gx.AutoSizeColumns();
                     PublicClass.SettingGridEX(Gx, formNmane);
 
@@ -2150,10 +2260,6 @@ namespace HM_ERP_System.Forms.Comers
                 return null;
             }
         }
-
-
-
-
 
         private void txtSeryal_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -2355,7 +2461,7 @@ namespace HM_ERP_System.Forms.Comers
                     CalcComerFilds_();
 
                     var com = new Repository<ComersB>(db);
-                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, UserId = PublicClass.UserId, RecordDateTime = DateTime.Now }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
                     PublicClass.WindowAlart("1");
                     //TypeCalcMethodsBId_
 
@@ -2502,7 +2608,7 @@ namespace HM_ERP_System.Forms.Comers
 
                     var com = new Repository<ComersH>(db);
 
-                    int newId = com.SaveOrUpdateRefId(new ComersH { Id = ListId, date = txtDateH.Text, TypeDocumentId = TypeDocumentId_, LoadingOrinigId = LoadingOrinigId_, LoadingLocationId = LoadingLocationId_, UnLoadingOrinigId = UnLoadingOrinigId_, UnLoadingLocationId = UnLoadingLocationId_, CostAccountId = CostAccountIdH_, GoodsAccountId = GoodsAccountIdH_, SenderId = Sender1Id_, Sender2Id = Sender2Id_, ResiverId = Resiver1Id_, Resiver2Id = Resiver2Id_, ShiperId = ShiperId_, CarId = CarIdH_, DaraverId1 = DaraverIdH1_, DaraverId2 = DaraverIdH2_, RemiaanceSeryal = Convert.ToInt32(txtNumberTranferForm.Text), ProductsId = ProductsId_, LoadWeightCapacity = txtTruckCapacity.Value, Description = txtDescriptionH.Text, CotajNumber = txtCotajNumber.Text, StatusLading = chkStatusLading.Checked }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersH { Id = ListId, date = txtDateH.Text, TypeDocumentId = TypeDocumentId_, LoadingOrinigId = LoadingOrinigId_, LoadingLocationId = LoadingLocationId_, UnLoadingOrinigId = UnLoadingOrinigId_, UnLoadingLocationId = UnLoadingLocationId_, CostAccountId = CostAccountIdH_, GoodsAccountId = GoodsAccountIdH_, SenderId = Sender1Id_, Sender2Id = Sender2Id_, ResiverId = Resiver1Id_, Resiver2Id = Resiver2Id_, ShiperId = ShiperId_, CarId = CarIdH_, DaraverId1 = DaraverIdH1_, DaraverId2 = DaraverIdH2_, RemiaanceSeryal = Convert.ToInt32(txtNumberTranferForm.Text), ProductsId = ProductsId_, LoadWeightCapacity = txtTruckCapacity.Value, Description = txtDescriptionH.Text, CotajNumber = txtCotajNumber.Text, StatusLading = chkStatusLading.Checked,UserId=PublicClass.UserId,RecordDateTime=System.DateTime.Now }, ListId);
 
                     PublicClass.WindowAlart("1");
 
@@ -2711,7 +2817,7 @@ namespace HM_ERP_System.Forms.Comers
         }
         private void CelearItemsAllH()
         {
-            txtDateB.Value = DateTime.Now;
+            txtDateB.Value = System.DateTime.Now;
 
             CelearItemsH();
             cmbDraversH2.SelectedIndex = -1;
@@ -3597,9 +3703,9 @@ namespace HM_ERP_System.Forms.Comers
                     foreach (GridEXRow item in dgvListB.GetCheckedRows())
                     {
                         int id = Convert.ToInt32(item.Cells["Id"].Value);
-                        
+
                         //if (!Convert.ToBoolean(item.Cells["StatusDeliveryGoods"].Value))
-                        if (item.Cells["StatusDeliveryGoods"].Value.ToString()=="")
+                        if (item.Cells["StatusDeliveryGoods"].Value.ToString() == "")
                         {
                             var q = db.ComersBs.Where(c => c.Id == id).First();
                             var cmh = db.ComersHs.Where(c => c.Id == q.ComersHId).First();

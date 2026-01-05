@@ -315,6 +315,20 @@ namespace MyClass
             }
         }
 
+        public static string ToPersianDateTime(DateTime? dt)
+        {
+            if (dt == null) return "-";
+
+            var pc = new System.Globalization.PersianCalendar();
+
+            return $"{pc.GetYear(dt.Value):0000}/" +
+                   $"{pc.GetMonth(dt.Value):00}/" +
+                   $"{pc.GetDayOfMonth(dt.Value):00} " +
+                   $"{dt.Value:HH:mm:ss}";
+        }
+
+
+
         public static string DateEnd()
         {
             using (var db = new DBcontextModel())

@@ -133,6 +133,7 @@ namespace Progect_Manegment
                     
                     Application.SetCompatibleTextRenderingDefault(false);
                     Basic_information.basic_information();
+                    MyClass.Add_Edit_Bancks.BanckEdid();
                     HM_ERP_System.Class_General.CreatView.BanckEdid();
                     HM_ERP_System.Properties.Settings.Default.ConnectionString = connectionstring_db;
                     HM_ERP_System.Properties.Settings.Default.Save();
@@ -142,8 +143,8 @@ namespace Progect_Manegment
                     AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
                         Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
 
-                    Application.Run(new frmLoginProg());
-                    //Application.Run(new frmMainForm());
+                    //Application.Run(new frmLoginProg());
+                    Application.Run(new frmMainForm());
                     //Application.Run(new ChatGPT());
                 }
             }

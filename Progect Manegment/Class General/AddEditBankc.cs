@@ -1,4 +1,5 @@
 ﻿using DevComponents.DotNetBar;
+
 using Progect_Manegment;
 
 using System.Data;
@@ -18,7 +19,16 @@ namespace MyClass
 
         public static bool BanckEdid()
         {
-           
+
+            using (var db = new DBcontextModel())
+            {
+                var q=db.ComersHs.Where(c=>c.UserId==0).ToList();
+                foreach (var c in q)
+                {
+                    c.UserId = 1;
+                }
+                db.SaveChanges();
+            }
 
 
 

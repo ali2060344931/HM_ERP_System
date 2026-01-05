@@ -2652,7 +2652,7 @@ namespace MyClass
 
                                     where specificAccountIds.Contains(da.SpecificAccountId)
 
-                                    group new { da, cu, trGroup } by new { da.SpecificAccountId, da.Id, da.CodeAccount, cu.Name, cu.Family, Id_ = cu.Id } into g
+                                    group new { da, cu, trGroup } by new { da.SpecificAccountId, da.Id, da.CodeAccount, cu.Name, cu.Family,cu.CodMeli,cu.Tel, Id_ = cu.Id } into g
 
                                     let DebitTurnoverSumD = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBed) ?? 0.0
                                     let CreditTurnoverSumD = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBes) ?? 0.0
@@ -2672,6 +2672,8 @@ namespace MyClass
                                         CustomerName = g.Key.Name,
                                         Code = g.Key.CodeAccount,
                                         Name = g.Key.Family + " " + g.Key.Name,
+                                        CodMeli=g.Key.CodMeli,
+                                        Tel = g.Key.Tel,
                                         DebitTurnover = DebitTurnoverSumD,
                                         CreditTurnover = CreditTurnoverSumD,
                                         DebitBalance = EndingBalanceD > 0 ? EndingBalanceD : 0.0,
@@ -3040,7 +3042,7 @@ namespace MyClass
     int? TransactionCodeS = 0,
     int? TransactionCodeE = 0,
     bool ShowZeroBalance = false,
-    bool IsBeginningBalanceFilter = false) // 👈 پارامتر جدید
+    bool IsBeginningBalanceFilter = false,string txtSearch="") // 👈 پارامتر جدید
         {
             DataSet ds = new DataSet("AccountingDataSet");
 
@@ -3078,7 +3080,11 @@ namespace MyClass
                 // کوئری سطح والد (Customers)
                 // ----------------------------------------------------------------
                 var qCustomers = from da in db.DetailedAccounts
+                                 
                                  join cu in db.Customers on da.CustomerId equals cu.Id
+                                 join ctg in db.CustomerToGroups on cu.Id equals ctg.CustomerId
+                                 join cg in db.PersonGroups on ctg.PersonGroupId equals cg.Id
+                                 
                                  join sa in db.SpecificAccounts on da.SpecificAccountId equals sa.Id
                                  join ta in db.TotalAccounts on sa.Id_TotalAccount equals ta.Id
                                  join ga in db.GroupAccounts on ta.Id_GroupAccount equals ga.Id
@@ -3089,12 +3095,13 @@ namespace MyClass
                                  into trGroup
                                  where ga.Id == 1 || ga.Id == 2 || ga.Id == 3 || ga.Id == 4 || ga.Id == 5
 
-                                 group new { da, trGroup, sa, ta, ga, na, cu } by cu.Id into g
+                                 group new { da, trGroup, sa, ta, ga, na, cu,ctg,cg } by cu.Id into g
 
                                  let CustomerData = g.FirstOrDefault()
                                  let CustomerName = (CustomerData.cu.Family + " " + CustomerData.cu.Name).Trim()
                                  let CustomerCode = CustomerData.cu.Id
-
+                                 let CodMeli= CustomerData.cu.CodMeli
+                                 let Tel= CustomerData.cu.Tel
                                  let DebitTurnoverSum = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBed) ?? 0.0
                                  let CreditTurnoverSum = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBes) ?? 0.0
                                  let EndingBalance = DebitTurnoverSum - CreditTurnoverSum
@@ -3102,11 +3109,23 @@ namespace MyClass
                                  // اعمال شرط مانده صفر برای سطح والد
                                  where ShowZeroBalance ||
                                        (Math.Abs(EndingBalance) != 0 || Math.Abs(DebitTurnoverSum) != 0 || Math.Abs(CreditTurnoverSum) != 0)
+                                 // اعمال شرط مانده + فیلتر گروه اشخاص
+                                 //where
+                                 //(
+                                 //    ShowZeroBalance ||
+                                 //    (Math.Abs(EndingBalance) != 0 ||
+                                 //     Math.Abs(DebitTurnoverSum) != 0 ||
+                                 //     Math.Abs(CreditTurnoverSum) != 0)
+                                 //)
+                                 //&&
+                                 //g.Any(x => txtSearch.Contains(x.cg.Name))
 
                                  select new
                                  {
                                      Id = g.Key,
                                      Name = CustomerName,
+                                     CodMeli,
+                                     Tel,
                                      Code = CustomerCode,
                                      DebitTurnover = DebitTurnoverSum,
                                      CreditTurnover = CreditTurnoverSum,

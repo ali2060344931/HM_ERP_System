@@ -95,6 +95,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
         void FillAllList()
         {
+            FillcmbGroup();
             FilldgvListG();//گروه
             FilldgvListT();//کل
             FilldgvListS();//معیین
@@ -103,6 +104,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             dgvList.DataSource = null;
             dgvListTransaction.DataSource = null;
         }
+        
         /// <summary>
         /// همه حسابها
         /// </summary>
@@ -128,7 +130,9 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             try
             {
                 PublicClass.GroupAccountTransactions(dgvListG, txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value, chkIsBeginningBalanceFilter.Checked);
-                dgvListG.AutoSizeColumns();
+                //dgvListG.AutoSizeColumns();
+                PublicClass.SettingGridEX(dgvListG);
+
             }
             catch (Exception er)
             {
@@ -144,7 +148,9 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             try
             {
                 PublicClass.TotalAccountTransactions(dgvListT, txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value, chkIsBeginningBalanceFilter.Checked);
-                dgvListT.AutoSizeColumns();
+                //dgvListT.AutoSizeColumns();
+                PublicClass.SettingGridEX(dgvListT);
+
             }
             catch (Exception er)
             {
@@ -152,34 +158,21 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             }
 
         }
+        
         /// <summary>
         /// حساب معین
         /// </summary>
-        private void FilldgvListS_()
-        {
-            try
-            {
-                PublicClass.SpecificAccountTransactions(dgvListS, txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value);
-                dgvListS.AutoSizeColumns();
-            }
-            catch (Exception er)
-            {
-                PublicClass.ShowErrorMessage(er);
-            }
-        }
-
         private void FilldgvListS()
         {
             try
             {
                 DataSet ds = PublicClass.SpecificAccountTransactionsTree(txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value, chkShowZeroBalance.Checked);
-
                 if (ds != null)
                 {
                     dgvListS.DataMember = "SpecificAccounts";
                     dgvListS.RootTable.ChildTables[0].DataMember = ds.Relations[0].RelationName;
                     dgvListS.DataSource = ds;
-                    dgvListS.AutoSizeColumns();
+                    PublicClass.SettingGridEX(dgvListS);
                 }
             }
             catch (Exception er)
@@ -187,7 +180,6 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 PublicClass.ShowErrorMessage(er);
             }
         }
-
 
         /// <summary>
         /// حساب تفصیلی
@@ -202,7 +194,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                     dgvListD.DataMember = "Customers";
                     dgvListD.RootTable.ChildTables[0].DataMember = ds.Relations[0].RelationName;
                     dgvListD.DataSource = ds;
-                    dgvListD.AutoSizeColumns();
+                    //dgvListD.AutoSizeColumns();
                 }
 
                 PublicClass.SettingGridEX(dgvListD);
@@ -212,6 +204,26 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 PublicClass.ShowErrorMessage(er);
             }
 
+        }
+
+        DataTable dt_Group;
+        private void FillcmbGroup()
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.PersonGroups;
+                    cmbGroup.DropDownDataSource = q.ToList();
+                    dt_Group = new DataTable();
+                    dt_Group = PublicClass.AddEntityTableToDataTable(q.ToList());
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
         private void btnListRefresh_Click(object sender, EventArgs e)

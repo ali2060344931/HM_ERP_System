@@ -1726,6 +1726,24 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to سریال بارنامه تکراری می باشد. آیا با همین سریال ادامه میدهد؟.
+        /// </summary>
+        internal static string T185 {
+            get {
+                return ResourceManager.GetString("T185", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطا: در تنظیمات دسترسی به این آیتم با خطا مواجع شده است.
+        /// </summary>
+        internal static string T186 {
+            get {
+                return ResourceManager.GetString("T186", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

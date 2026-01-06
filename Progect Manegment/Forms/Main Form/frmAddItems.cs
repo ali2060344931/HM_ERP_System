@@ -65,7 +65,7 @@ namespace HM_ERP_System.Forms.Main_Form
 
             //txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
             //txtDateEnd.Text = PersianDate.DateEnd();
-            //WindowState = FormWindowState.Maximized;
+            WindowState = FormWindowState.Maximized;
         }
 
         private void btnExportToExcel_Click(object sender, EventArgs e)

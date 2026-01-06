@@ -1083,6 +1083,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
+                PublicClass.WindowAlart("2", ResourceCode.T186+ '\n'+ ControlName);
                 //PublicClass.ShowErrorMessage(er);
                 return false;
             }
@@ -3035,8 +3036,136 @@ namespace MyClass
             return ds;
         }
 
-
         public static DataSet DetailedAccountTransactionsTree(
+    string DateS,
+    string DateE,
+    int? TransactionCodeS = 0,
+    int? TransactionCodeE = 0,
+    bool ShowZeroBalance = false,
+    bool IsBeginningBalanceFilter = false,
+    string txtSearch = "")
+        {
+            DataSet ds = new DataSet("AccountingDataSet");
+
+            using (var db = new DBcontextModel())
+            {
+                string FinancialYear = PublicClass.FinancialYear;
+
+                // -------------------------------------------------
+                // 1️⃣ فیلتر تراکنش‌ها
+                // -------------------------------------------------
+                var transactionsQuery = db.Transactions
+                    .Where(t => t.FinancialYear == FinancialYear && !t.Status)
+                    .Where(t => t.TransactionDate.CompareTo(DateS) >= 0 &&
+                                t.TransactionDate.CompareTo(DateE) <= 0);
+
+                if (TransactionCodeS > 0)
+                    transactionsQuery = transactionsQuery.Where(t => t.TransactionCode >= TransactionCodeS);
+
+                if (TransactionCodeE > 0)
+                    transactionsQuery = transactionsQuery.Where(t => t.TransactionCode <= TransactionCodeE);
+
+                if (!IsBeginningBalanceFilter)
+                    transactionsQuery = transactionsQuery.Where(t => !t.IsBeginningBalance);
+
+                if (!transactionsQuery.Any())
+                    return null;
+
+                // -------------------------------------------------
+                // 2️⃣ سطح فرزند (Detailed Accounts) – محاسبه واقعی
+                // -------------------------------------------------
+                var qDetailed =
+                    from da in db.DetailedAccounts
+                    join tr in transactionsQuery on da.Id equals tr.DetailedAccountId into trGroup
+                    join cu in db.Customers on da.CustomerId equals cu.Id
+                    join sp in db.SpecificAccounts on da.SpecificAccountId equals sp.Id
+
+                    group new { da, sp, trGroup } by new
+                    {
+                        da.Id,
+                        da.CustomerId,
+                        da.CodeAccount,
+                        sp.Name
+                    }
+                    into g
+
+                    let DebitTurnover = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBed) ?? 0
+                    let CreditTurnover = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBes) ?? 0
+                    let Balance = DebitTurnover - CreditTurnover
+
+                    where ShowZeroBalance ||
+                          DebitTurnover != 0 ||
+                          CreditTurnover != 0 ||
+                          Balance != 0
+
+                    select new
+                    {
+                        ParentCustomerId = g.Key.CustomerId,
+                        Id = g.Key.Id,
+                        Code = g.Key.CodeAccount,
+                        Name = g.Key.Name,
+                        DebitTurnover,
+                        CreditTurnover,
+                        DebitBalance = Balance > 0 ? Balance : 0,
+                        CreditBalance = Balance < 0 ? Math.Abs(Balance) : 0
+                    };
+
+                var detailedList = qDetailed.ToList();
+
+                // -------------------------------------------------
+                // 3️⃣ سطح والد (Customers) – جمع فرزندان
+                // -------------------------------------------------
+                var qCustomers =
+                    from d in detailedList
+                    join cu in db.Customers on d.ParentCustomerId equals cu.Id
+                    group new { d, cu } by cu.Id into g
+
+                    let DebitTurnover = g.Sum(x => x.d.DebitTurnover)
+                    let CreditTurnover = g.Sum(x => x.d.CreditTurnover)
+                    let Balance = DebitTurnover - CreditTurnover
+
+                    where ShowZeroBalance ||
+                          DebitTurnover != 0 ||
+                          CreditTurnover != 0 ||
+                          Balance != 0
+
+                    select new
+                    {
+                        Id = g.Key,
+                        Code = g.Key,
+                        Name = (g.First().cu.Family + " " + g.First().cu.Name).Trim(),
+                        CodMeli = g.First().cu.CodMeli,
+                        Tel = g.First().cu.Tel,
+                        DebitTurnover,
+                        CreditTurnover,
+                        DebitBalance = Balance > 0 ? Balance : 0,
+                        CreditBalance = Balance < 0 ? Math.Abs(Balance) : 0
+                    };
+
+                // -------------------------------------------------
+                // 4️⃣ ساخت DataSet
+                // -------------------------------------------------
+                ds.Tables.Add(PublicClass.EntityTableToDataTable(qCustomers.ToList(), "Customers"));
+                ds.Tables.Add(PublicClass.EntityTableToDataTable(detailedList, "DetailedAccounts"));
+            }
+
+            // -------------------------------------------------
+            // 5️⃣ Relation
+            // -------------------------------------------------
+            ds.Relations.Add(
+                new DataRelation(
+                    "CustomerToDetailed",
+                    ds.Tables["Customers"].Columns["Id"],
+                    ds.Tables["DetailedAccounts"].Columns["ParentCustomerId"],
+                    false
+                )
+            );
+
+            return ds;
+        }
+
+
+        public static DataSet DetailedAccountTransactionsTree0(
     string DateS,
     string DateE,
     int? TransactionCodeS = 0,
@@ -3109,17 +3238,6 @@ namespace MyClass
                                  // اعمال شرط مانده صفر برای سطح والد
                                  where ShowZeroBalance ||
                                        (Math.Abs(EndingBalance) != 0 || Math.Abs(DebitTurnoverSum) != 0 || Math.Abs(CreditTurnoverSum) != 0)
-                                 // اعمال شرط مانده + فیلتر گروه اشخاص
-                                 //where
-                                 //(
-                                 //    ShowZeroBalance ||
-                                 //    (Math.Abs(EndingBalance) != 0 ||
-                                 //     Math.Abs(DebitTurnoverSum) != 0 ||
-                                 //     Math.Abs(CreditTurnoverSum) != 0)
-                                 //)
-                                 //&&
-                                 //g.Any(x => txtSearch.Contains(x.cg.Name))
-
                                  select new
                                  {
                                      Id = g.Key,

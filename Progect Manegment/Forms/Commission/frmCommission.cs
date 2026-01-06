@@ -368,7 +368,7 @@ namespace HM_ERP_System.Forms.Commission
         {
             try
             {
-                if (!PublicClass.SetPeremission("Node1_2_1_3_1", 1)) return;
+                if (!PublicClass.SetPeremission("Node1_2_2_1", 1)) return;
                 using (var db = new DBcontextModel())
                 {
 
@@ -740,7 +740,7 @@ namespace HM_ERP_System.Forms.Commission
                     case "Edit":
                         using (var db = new DBcontextModel())
                         {
-                            if (!PublicClass.SetPeremission("Node1_2_1_3_2", 1)) return;
+                            if (!PublicClass.SetPeremission("Node1_2_2_2", 1)) return;
                             ListId = ListId_;
                             var q0 = db.Commissions.Where(c => c.Id == ListId).First();
                             if (q0.TransactionId == 0)
@@ -765,7 +765,7 @@ namespace HM_ERP_System.Forms.Commission
                     case "Delete":
                         using (var db = new DBcontextModel())
                         {
-                            if (!PublicClass.SetPeremission("Node1_2_1_3_3", 1)) return;
+                            if (!PublicClass.SetPeremission("Node1_2_2_3", 1)) return;
                             ListId = ListId_;
                             var q0 = db.Commissions.Where(c => c.Id == ListId).First();
                             if (q0.TransactionId == 0)

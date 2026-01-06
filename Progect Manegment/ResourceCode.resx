@@ -673,6 +673,12 @@
   <data name="T184" xml:space="preserve">
     <value>رشته فعالیت را انتخاب نمائید.</value>
   </data>
+  <data name="T185" xml:space="preserve">
+    <value>سریال بارنامه تکراری می باشد. آیا با همین سریال ادامه میدهد؟</value>
+  </data>
+  <data name="T186" xml:space="preserve">
+    <value>خطا: در تنظیمات دسترسی به این آیتم با خطا مواجع شده است</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

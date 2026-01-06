@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.util;
 
 using Telegram.Bot;
 using Telegram.Bot.Args;
@@ -64,6 +65,7 @@ namespace BotProgram
         [Obsolete]
         private static void Bot_OnUpdate(object sender, UpdateEventArgs e)
         {
+
             //if (e.Update.PreCheckoutQuery != null)
             //{
             //    var checkoutId = e.Update.PreCheckoutQuery.Id;
@@ -102,7 +104,15 @@ namespace BotProgram
             {
                 using (var db = new DBcontextModel())
                 {
-                    if (e.Message.Text.ToLower() == "/inf")
+                    if (string.Equals(e.Message.Text, "/start", StringComparison.OrdinalIgnoreCase) && HM_ERP_System.Properties.Settings.Default.UsersId == 1)
+                    {
+                        await Bot.SendTextMessageAsync(e.Message.Chat.Id, "به ربات نرم افزار گروه *پیمانکاری شرکت ایران خزر* خوش آمدید" + '\n' + "این برنامه(ربات) به سفارش آقای *محمد حیدری* و با طراحی آقای *غلامزاده* انجام شده است. فعلا در وضعیت آزمایشی قرار دارد ");
+
+                    }
+
+
+
+                    if (string.Equals(e.Message.Text, "/inf", StringComparison.OrdinalIgnoreCase) && HM_ERP_System.Properties.Settings.Default.UsersId == 1)
                     {
                         var ComersHs = db.ComersHs.Count();
                         var ComersBs = db.ComersBs.Count();
@@ -115,6 +125,44 @@ namespace BotProgram
 
                         return;
                     }
+
+
+                    //if (e.Message.Text=="/c")
+                    if (e.Message.Text.IndexOf("/c", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+
+                        if (e.Message.Text.Length >= 12 && HM_ERP_System.Properties.Settings.Default.UsersId==1)
+                        {
+                            string txt = "";
+                            var q = db.Customers.Where(c => c.CodMeli == e.Message.Text.Substring(2, 11));
+                            if (q.Count() != 0)
+                            {
+                                var ct = db.Ciltys.Where(c => c.Id == q.FirstOrDefault().CityId).First();
+                                var pr = db.Provinces.Where(c => c.Id == ct.ProvincesId).First();
+
+                                txt = "نام و نام خانوادگی: " + q.First().Name + " " + q.First().Family + '\n';
+                                txt += "شماره تماس: " + q.First().Tel + '\n';
+                                txt += "استان و شهر: " + pr.Name + " - " + ct.Name + '\n';
+                                txt += "آدرس: " + q.First().Adders + '\n';
+
+                                var ctg = db.CustomerToGroups.Where(c => c.CustomerId == q.FirstOrDefault().Id).ToList();
+                                string hf = "";
+                                foreach (var item in ctg)
+                                {
+                                    var pg=db.PersonGroups.Where(c=>c.Id==item.PersonGroupId).First();
+                                    hf += "🔘" + pg.Name + '\n';
+                                }
+                                    txt += "حوزه فعالیت: " + '\n'+ hf;
+
+                                await Bot.SendTextMessageAsync(e.Message.Chat.Id, txt);
+                            }
+                            else
+                            {
+                                await Bot.SendTextMessageAsync(e.Message.Chat.Id, "هیچ اطلاعاتی برای این کد ملی یافت نشده است.");
+                            }
+                        }
+                    }
+
 
                     if (e.Message.Text.Split('#').Length == 3)
                     {

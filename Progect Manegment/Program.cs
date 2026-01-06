@@ -143,8 +143,8 @@ namespace Progect_Manegment
                     AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
                         Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
 
-                    //Application.Run(new frmLoginProg());
-                    Application.Run(new frmMainForm());
+                    Application.Run(new frmLoginProg());
+                    //Application.Run(new frmMainForm());
                     //Application.Run(new ChatGPT());
                 }
             }

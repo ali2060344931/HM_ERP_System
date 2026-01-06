@@ -203,7 +203,7 @@ namespace HM_ERP_System.Forms.Comers
             FillcmbProducts();
             FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
         }
-        
+
         System.Data.DataTable dt_Resiver2;
 
         private void FillcmbResiver2H()
@@ -2170,7 +2170,7 @@ namespace HM_ERP_System.Forms.Comers
                                 cmb.Bn,
                                 CountDoc = docGroup.Count(c => c.FormName == "frmComersB"),
                                 User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
-                                Date_Time=cmb.RecordDateTime,
+                                Date_Time = cmb.RecordDateTime,
                             };
                     var list = q.ToList();
 
@@ -2608,7 +2608,7 @@ namespace HM_ERP_System.Forms.Comers
 
                     var com = new Repository<ComersH>(db);
 
-                    int newId = com.SaveOrUpdateRefId(new ComersH { Id = ListId, date = txtDateH.Text, TypeDocumentId = TypeDocumentId_, LoadingOrinigId = LoadingOrinigId_, LoadingLocationId = LoadingLocationId_, UnLoadingOrinigId = UnLoadingOrinigId_, UnLoadingLocationId = UnLoadingLocationId_, CostAccountId = CostAccountIdH_, GoodsAccountId = GoodsAccountIdH_, SenderId = Sender1Id_, Sender2Id = Sender2Id_, ResiverId = Resiver1Id_, Resiver2Id = Resiver2Id_, ShiperId = ShiperId_, CarId = CarIdH_, DaraverId1 = DaraverIdH1_, DaraverId2 = DaraverIdH2_, RemiaanceSeryal = Convert.ToInt32(txtNumberTranferForm.Text), ProductsId = ProductsId_, LoadWeightCapacity = txtTruckCapacity.Value, Description = txtDescriptionH.Text, CotajNumber = txtCotajNumber.Text, StatusLading = chkStatusLading.Checked,UserId=PublicClass.UserId,RecordDateTime=System.DateTime.Now }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersH { Id = ListId, date = txtDateH.Text, TypeDocumentId = TypeDocumentId_, LoadingOrinigId = LoadingOrinigId_, LoadingLocationId = LoadingLocationId_, UnLoadingOrinigId = UnLoadingOrinigId_, UnLoadingLocationId = UnLoadingLocationId_, CostAccountId = CostAccountIdH_, GoodsAccountId = GoodsAccountIdH_, SenderId = Sender1Id_, Sender2Id = Sender2Id_, ResiverId = Resiver1Id_, Resiver2Id = Resiver2Id_, ShiperId = ShiperId_, CarId = CarIdH_, DaraverId1 = DaraverIdH1_, DaraverId2 = DaraverIdH2_, RemiaanceSeryal = Convert.ToInt32(txtNumberTranferForm.Text), ProductsId = ProductsId_, LoadWeightCapacity = txtTruckCapacity.Value, Description = txtDescriptionH.Text, CotajNumber = txtCotajNumber.Text, StatusLading = chkStatusLading.Checked, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
 
                     PublicClass.WindowAlart("1");
 
@@ -4373,7 +4373,12 @@ namespace HM_ERP_System.Forms.Comers
         private void txtBalanceAccountِDraver_Leave(object sender, EventArgs e)
         {
             CalcComerFilds_();
-            txtAV.Value = AX;
+            //txtAV.Value = AX;
+            if (AV != 0)
+                txtAV.Value = AV;
+            else
+                txtAV.Value = AX;
+
         }
 
         private void txtBalanceBillLadingAmount_Enter(object sender, EventArgs e)
@@ -5195,6 +5200,34 @@ namespace HM_ERP_System.Forms.Comers
         private void uiGroupBox4_Leave(object sender, EventArgs e)
         {
             txtBalanceAccountِDraver_Leave(null, null);
+        }
+
+        private void txtSeryalB_Leave(object sender, EventArgs e)
+        {
+            using (var db = new DBcontextModel())
+            {
+                try
+                {
+                    if (txtSeryalB.Text != "")
+                    {
+                        int SeryalB = Convert.ToInt32(txtSeryalB.Text);
+                        var q = db.ComersBs.Any(c => c.SeryalB == SeryalB);
+                        if (q)
+                        {
+                            PublicClass.StopMesseg(ResourceCode.T154);
+                            txtSeryalB.ResetText();
+                            txtSeryalB.Focus();
+                            return;
+                        }
+                    }
+
+                }
+                catch (Exception er)
+                {
+                    PublicClass.ShowErrorMessage(er);
+                }
+            }
+
         }
     }
 }

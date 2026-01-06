@@ -2376,6 +2376,7 @@
             this.toolTip1.SetToolTip(this.txtSeryalB, "شماره سریال بارنامه");
             this.txtSeryalB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeryalB_KeyDown);
             this.txtSeryalB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSeryal_KeyPress);
+            this.txtSeryalB.Leave += new System.EventHandler(this.txtSeryalB_Leave);
             // 
             // txtDateB
             // 

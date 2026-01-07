@@ -10,6 +10,7 @@ namespace HM_ERP_System.Class_General
     {
         public static void BanckEdid()
         {
+            /*
             V_Customers();
             V_Dravers();
             V_Cars();
@@ -31,6 +32,7 @@ namespace HM_ERP_System.Class_General
             V_ReviewAccountsTransaction();
             V_BanckCofer();
             V_BlacLists();
+            */
         }
 
         /// <summary>

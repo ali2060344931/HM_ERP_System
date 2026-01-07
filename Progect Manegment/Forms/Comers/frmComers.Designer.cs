@@ -64,6 +64,7 @@
             Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout multiColumnCombo1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel0Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
@@ -376,6 +377,7 @@
             this.separatorCommand3 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.btnAddDocCB = new Janus.Windows.Ribbon.DropDownCommand();
             this.btnAccountingDocumentRegistration = new Janus.Windows.Ribbon.DropDownCommand();
+            this.multiColumnCombo1 = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -473,6 +475,7 @@
             this.panelDeleteEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSeryalH_DE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWeightDeliveredGoods)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.multiColumnCombo1)).BeginInit();
             this.SuspendLayout();
             // 
             // uiPanelManager1
@@ -2226,6 +2229,7 @@
             this.uiGroupBox6.AutoScrollMinSize = new System.Drawing.Size(100, 0);
             this.uiGroupBox6.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.uiGroupBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.uiGroupBox6.Controls.Add(this.multiColumnCombo1);
             this.uiGroupBox6.Controls.Add(this.cmbBillLadingCast);
             this.uiGroupBox6.Controls.Add(this.cmbMethodCalFare);
             this.uiGroupBox6.Controls.Add(this.txtDescriptionB);
@@ -2272,7 +2276,7 @@
             cmbBillLadingCast_DesignTimeLayout.LayoutString = resources.GetString("cmbBillLadingCast_DesignTimeLayout.LayoutString");
             this.cmbBillLadingCast.DesignTimeLayout = cmbBillLadingCast_DesignTimeLayout;
             this.cmbBillLadingCast.DisplayMember = "Name";
-            this.cmbBillLadingCast.Location = new System.Drawing.Point(95, 280);
+            this.cmbBillLadingCast.Location = new System.Drawing.Point(87, 312);
             this.cmbBillLadingCast.Name = "cmbBillLadingCast";
             this.cmbBillLadingCast.SelectedIndex = -1;
             this.cmbBillLadingCast.SelectedItem = null;
@@ -2290,7 +2294,7 @@
             cmbMethodCalFare_DesignTimeLayout.LayoutString = resources.GetString("cmbMethodCalFare_DesignTimeLayout.LayoutString");
             this.cmbMethodCalFare.DesignTimeLayout = cmbMethodCalFare_DesignTimeLayout;
             this.cmbMethodCalFare.DisplayMember = "Name";
-            this.cmbMethodCalFare.Location = new System.Drawing.Point(95, 222);
+            this.cmbMethodCalFare.Location = new System.Drawing.Point(87, 254);
             this.cmbMethodCalFare.Name = "cmbMethodCalFare";
             this.cmbMethodCalFare.SelectedIndex = -1;
             this.cmbMethodCalFare.SelectedItem = null;
@@ -2305,9 +2309,9 @@
             // 
             this.txtDescriptionB.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDescriptionB.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtDescriptionB.Location = new System.Drawing.Point(-20, 312);
+            this.txtDescriptionB.Location = new System.Drawing.Point(-28, 344);
             this.txtDescriptionB.Name = "txtDescriptionB";
-            this.txtDescriptionB.Size = new System.Drawing.Size(244, 59);
+            this.txtDescriptionB.Size = new System.Drawing.Size(244, 28);
             this.txtDescriptionB.TabIndex = 9;
             this.txtDescriptionB.Text = "";
             this.txtDescriptionB.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDescriptionB_KeyDown);
@@ -2318,7 +2322,7 @@
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label25.Location = new System.Drawing.Point(227, 103);
+            this.label25.Location = new System.Drawing.Point(219, 135);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(36, 18);
             this.label25.TabIndex = 98;
@@ -2331,7 +2335,7 @@
             this.label105.BackColor = System.Drawing.Color.Transparent;
             this.label105.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label105.ForeColor = System.Drawing.Color.Black;
-            this.label105.Location = new System.Drawing.Point(224, 197);
+            this.label105.Location = new System.Drawing.Point(219, 229);
             this.label105.Name = "label105";
             this.label105.Size = new System.Drawing.Size(94, 18);
             this.label105.TabIndex = 98;
@@ -2343,7 +2347,7 @@
             this.label36.AutoSize = true;
             this.label36.BackColor = System.Drawing.Color.Transparent;
             this.label36.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label36.Location = new System.Drawing.Point(224, 164);
+            this.label36.Location = new System.Drawing.Point(219, 196);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(84, 18);
             this.label36.TabIndex = 98;
@@ -2356,7 +2360,7 @@
             cmbFareCalcMethods_DesignTimeLayout.LayoutString = resources.GetString("cmbFareCalcMethods_DesignTimeLayout.LayoutString");
             this.cmbFareCalcMethods.DesignTimeLayout = cmbFareCalcMethods_DesignTimeLayout;
             this.cmbFareCalcMethods.DisplayMember = "Name";
-            this.cmbFareCalcMethods.Location = new System.Drawing.Point(95, 251);
+            this.cmbFareCalcMethods.Location = new System.Drawing.Point(87, 283);
             this.cmbFareCalcMethods.Name = "cmbFareCalcMethods";
             this.cmbFareCalcMethods.SelectedIndex = -1;
             this.cmbFareCalcMethods.SelectedItem = null;
@@ -2371,7 +2375,7 @@
             // txtSeryalB
             // 
             this.txtSeryalB.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtSeryalB.Location = new System.Drawing.Point(95, 128);
+            this.txtSeryalB.Location = new System.Drawing.Point(87, 160);
             this.txtSeryalB.MaxLength = 7;
             this.txtSeryalB.Name = "txtSeryalB";
             this.txtSeryalB.Size = new System.Drawing.Size(129, 28);
@@ -2385,7 +2389,7 @@
             // 
             this.txtDateB.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateB.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateB.Location = new System.Drawing.Point(95, 98);
+            this.txtDateB.Location = new System.Drawing.Point(87, 130);
             this.txtDateB.Name = "txtDateB";
             this.txtDateB.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDateB.Size = new System.Drawing.Size(128, 29);
@@ -2399,7 +2403,7 @@
             this.lblCarPlatB.BackColor = System.Drawing.Color.Transparent;
             this.lblCarPlatB.Font = new System.Drawing.Font("Vazir FD", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarPlatB.ForeColor = System.Drawing.Color.Maroon;
-            this.lblCarPlatB.Location = new System.Drawing.Point(64, 53);
+            this.lblCarPlatB.Location = new System.Drawing.Point(56, 85);
             this.lblCarPlatB.Name = "lblCarPlatB";
             this.lblCarPlatB.Size = new System.Drawing.Size(207, 20);
             this.lblCarPlatB.TabIndex = 105;
@@ -2415,7 +2419,7 @@
             this.cmbListSimilarComerB.DesignTimeLayout = cmbListSimilarComerB_DesignTimeLayout;
             this.cmbListSimilarComerB.DisplayMember = "CarPlat";
             this.cmbListSimilarComerB.Image = ((System.Drawing.Image)(resources.GetObject("cmbListSimilarComerB.Image")));
-            this.cmbListSimilarComerB.Location = new System.Drawing.Point(-67, 19);
+            this.cmbListSimilarComerB.Location = new System.Drawing.Point(-77, 19);
             this.cmbListSimilarComerB.MaxLength = 8;
             this.cmbListSimilarComerB.Name = "cmbListSimilarComerB";
             this.cmbListSimilarComerB.SelectedIndex = -1;
@@ -2460,10 +2464,10 @@
             this.btnListSimilarComerB.BackColor = System.Drawing.Color.Transparent;
             this.btnListSimilarComerB.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnListSimilarComerB.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnListSimilarComerB.Location = new System.Drawing.Point(84, 19);
+            this.btnListSimilarComerB.Location = new System.Drawing.Point(73, 19);
             this.btnListSimilarComerB.Name = "btnListSimilarComerB";
             this.btnListSimilarComerB.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4);
-            this.btnListSimilarComerB.Size = new System.Drawing.Size(18, 30);
+            this.btnListSimilarComerB.Size = new System.Drawing.Size(29, 30);
             this.btnListSimilarComerB.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnListSimilarComerB.Symbol = "";
             this.btnListSimilarComerB.SymbolSize = 15F;
@@ -2479,7 +2483,7 @@
             this.label57.AutoSize = true;
             this.label57.BackColor = System.Drawing.Color.Transparent;
             this.label57.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label57.Location = new System.Drawing.Point(225, 310);
+            this.label57.Location = new System.Drawing.Point(219, 342);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(57, 18);
             this.label57.TabIndex = 100;
@@ -2495,7 +2499,7 @@
             this.txtWeightDeliveredGoodsMain.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtWeightDeliveredGoodsMain.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtWeightDeliveredGoodsMain.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtWeightDeliveredGoodsMain.Location = new System.Drawing.Point(-34, 159);
+            this.txtWeightDeliveredGoodsMain.Location = new System.Drawing.Point(-45, 189);
             this.txtWeightDeliveredGoodsMain.MaxValue = 999999;
             this.txtWeightDeliveredGoodsMain.MinValue = 0;
             this.txtWeightDeliveredGoodsMain.Name = "txtWeightDeliveredGoodsMain";
@@ -2516,7 +2520,7 @@
             this.txtLoadWeightCapacity.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtLoadWeightCapacity.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLoadWeightCapacity.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtLoadWeightCapacity.Location = new System.Drawing.Point(95, 192);
+            this.txtLoadWeightCapacity.Location = new System.Drawing.Point(87, 224);
             this.txtLoadWeightCapacity.MaxValue = 999999;
             this.txtLoadWeightCapacity.MinValue = 0;
             this.txtLoadWeightCapacity.Name = "txtLoadWeightCapacity";
@@ -2525,6 +2529,7 @@
             this.txtLoadWeightCapacity.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
             this.txtLoadWeightCapacity.WatermarkText = "kg وزن مجاز بارگیری";
             this.txtLoadWeightCapacity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTypeDocument_KeyDown);
+            this.txtLoadWeightCapacity.Leave += new System.EventHandler(this.txtLoadWeightCapacity_Leave);
             // 
             // txtLoadWeight
             // 
@@ -2537,7 +2542,7 @@
             this.txtLoadWeight.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtLoadWeight.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.txtLoadWeight.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtLoadWeight.Location = new System.Drawing.Point(95, 157);
+            this.txtLoadWeight.Location = new System.Drawing.Point(87, 189);
             this.txtLoadWeight.MaxValue = 999999;
             this.txtLoadWeight.MinValue = 0;
             this.txtLoadWeight.Name = "txtLoadWeight";
@@ -2546,6 +2551,7 @@
             this.txtLoadWeight.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
             this.txtLoadWeight.WatermarkText = "kg بارگیری";
             this.txtLoadWeight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTypeDocument_KeyDown);
+            this.txtLoadWeight.Leave += new System.EventHandler(this.txtLoadWeight_Leave);
             // 
             // label50
             // 
@@ -2553,11 +2559,11 @@
             this.label50.AutoSize = true;
             this.label50.BackColor = System.Drawing.Color.Transparent;
             this.label50.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label50.Location = new System.Drawing.Point(224, 133);
+            this.label50.Location = new System.Drawing.Point(219, 165);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(106, 18);
+            this.label50.Size = new System.Drawing.Size(110, 18);
             this.label50.TabIndex = 98;
-            this.label50.Text = "شماره(سریال) بارنامه";
+            this.label50.Text = "شماره(سریال) بارنامه:";
             // 
             // label40
             // 
@@ -2566,7 +2572,7 @@
             this.label40.BackColor = System.Drawing.Color.Transparent;
             this.label40.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label40.ForeColor = System.Drawing.Color.Black;
-            this.label40.Location = new System.Drawing.Point(224, 285);
+            this.label40.Location = new System.Drawing.Point(219, 317);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(112, 18);
             this.label40.TabIndex = 98;
@@ -2579,7 +2585,7 @@
             this.label72.BackColor = System.Drawing.Color.Transparent;
             this.label72.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label72.ForeColor = System.Drawing.Color.Black;
-            this.label72.Location = new System.Drawing.Point(224, 227);
+            this.label72.Location = new System.Drawing.Point(219, 259);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(114, 18);
             this.label72.TabIndex = 98;
@@ -2593,7 +2599,7 @@
             this.label73.BackColor = System.Drawing.Color.Transparent;
             this.label73.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label73.ForeColor = System.Drawing.Color.Black;
-            this.label73.Location = new System.Drawing.Point(224, 257);
+            this.label73.Location = new System.Drawing.Point(219, 289);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(74, 18);
             this.label73.TabIndex = 117;
@@ -2683,7 +2689,7 @@
             this.label108.BackColor = System.Drawing.Color.Transparent;
             this.label108.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label108.ForeColor = System.Drawing.Color.Red;
-            this.label108.Location = new System.Drawing.Point(259, 105);
+            this.label108.Location = new System.Drawing.Point(251, 137);
             this.label108.Name = "label108";
             this.label108.Size = new System.Drawing.Size(15, 15);
             this.label108.TabIndex = 100;
@@ -2696,7 +2702,7 @@
             this.label58.AutoSize = true;
             this.label58.BackColor = System.Drawing.Color.Transparent;
             this.label58.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label58.Location = new System.Drawing.Point(60, 166);
+            this.label58.Location = new System.Drawing.Point(52, 198);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(33, 15);
             this.label58.TabIndex = 105;
@@ -2708,7 +2714,7 @@
             this.lblCarOwnerShip.BackColor = System.Drawing.Color.Transparent;
             this.lblCarOwnerShip.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblCarOwnerShip.ForeColor = System.Drawing.Color.Purple;
-            this.lblCarOwnerShip.Location = new System.Drawing.Point(-39, 77);
+            this.lblCarOwnerShip.Location = new System.Drawing.Point(-47, 109);
             this.lblCarOwnerShip.Name = "lblCarOwnerShip";
             this.lblCarOwnerShip.Size = new System.Drawing.Size(413, 18);
             this.lblCarOwnerShip.TabIndex = 105;
@@ -3745,11 +3751,11 @@
             // 
             // label120
             // 
-            this.label120.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label120.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label120.BackColor = System.Drawing.Color.Transparent;
             this.label120.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label120.ForeColor = System.Drawing.Color.Red;
-            this.label120.Location = new System.Drawing.Point(200, 133);
+            this.label120.Location = new System.Drawing.Point(214, 133);
             this.label120.Name = "label120";
             this.label120.Size = new System.Drawing.Size(15, 15);
             this.label120.TabIndex = 116;
@@ -4672,14 +4678,15 @@
             // btnCalculations
             // 
             this.btnCalculations.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCalculations.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnCalculations.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
             this.btnCalculations.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCalculations.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnCalculations.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnCalculations.Location = new System.Drawing.Point(1549, 0);
+            this.btnCalculations.Location = new System.Drawing.Point(1471, 0);
             this.btnCalculations.Name = "btnCalculations";
             this.btnCalculations.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnCalculations.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F3);
-            this.btnCalculations.Size = new System.Drawing.Size(179, 28);
+            this.btnCalculations.Size = new System.Drawing.Size(257, 28);
             this.btnCalculations.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCalculations.Symbol = "";
             this.btnCalculations.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
@@ -5216,14 +5223,12 @@
             // 
             // dropDownCommand1
             // 
-            this.dropDownCommand1.Image = ((System.Drawing.Image)(resources.GetObject("dropDownCommand1.Image")));
             this.dropDownCommand1.Key = "Edit";
             this.dropDownCommand1.Name = "dropDownCommand1";
             this.dropDownCommand1.Text = "ویرایش";
             // 
             // dropDownCommand2
             // 
-            this.dropDownCommand2.Image = ((System.Drawing.Image)(resources.GetObject("dropDownCommand2.Image")));
             this.dropDownCommand2.Key = "Delete";
             this.dropDownCommand2.Name = "dropDownCommand2";
             this.dropDownCommand2.Text = "حــــذف";
@@ -5235,7 +5240,6 @@
             // 
             // dropDownCommand3
             // 
-            this.dropDownCommand3.Image = ((System.Drawing.Image)(resources.GetObject("dropDownCommand3.Image")));
             this.dropDownCommand3.Key = "AddDocumentToBanck";
             this.dropDownCommand3.Name = "dropDownCommand3";
             this.dropDownCommand3.Text = "ثبت مدارک";
@@ -5247,14 +5251,12 @@
             // 
             // dropDownCommand4
             // 
-            this.dropDownCommand4.Image = ((System.Drawing.Image)(resources.GetObject("dropDownCommand4.Image")));
             this.dropDownCommand4.Key = "BillLadingRequests";
             this.dropDownCommand4.Name = "dropDownCommand4";
             this.dropDownCommand4.Text = "درخواست بارنامه";
             // 
             // dropDownCommand5
             // 
-            this.dropDownCommand5.Image = ((System.Drawing.Image)(resources.GetObject("dropDownCommand5.Image")));
             this.dropDownCommand5.Key = "CeatComerB";
             this.dropDownCommand5.Name = "dropDownCommand5";
             this.dropDownCommand5.Text = "ثبت بارنامه";
@@ -5266,14 +5268,12 @@
             // 
             // btnCopy
             // 
-            this.btnCopy.Image = ((System.Drawing.Image)(resources.GetObject("btnCopy.Image")));
             this.btnCopy.Key = "Copy";
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Text = "استفاده مجدد(کپی)";
             // 
             // btnCancellation
             // 
-            this.btnCancellation.Image = ((System.Drawing.Image)(resources.GetObject("btnCancellation.Image")));
             this.btnCancellation.Key = "Cancellation";
             this.btnCancellation.Name = "btnCancellation";
             this.btnCancellation.Text = "ابطال حواله";
@@ -5310,17 +5310,36 @@
             // 
             // btnAddDocCB
             // 
-            this.btnAddDocCB.Image = ((System.Drawing.Image)(resources.GetObject("btnAddDocCB.Image")));
             this.btnAddDocCB.Key = "AddDocumentToBanck";
             this.btnAddDocCB.Name = "btnAddDocCB";
             this.btnAddDocCB.Text = "ثبت مدارک";
             // 
             // btnAccountingDocumentRegistration
             // 
-            this.btnAccountingDocumentRegistration.Image = ((System.Drawing.Image)(resources.GetObject("btnAccountingDocumentRegistration.Image")));
             this.btnAccountingDocumentRegistration.Key = "AccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Name = "btnAccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Text = "ثبت سند حسابداری";
+            // 
+            // multiColumnCombo1
+            // 
+            this.multiColumnCombo1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.multiColumnCombo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.multiColumnCombo1.DataMember = "id";
+            multiColumnCombo1_DesignTimeLayout.LayoutString = resources.GetString("multiColumnCombo1_DesignTimeLayout.LayoutString");
+            this.multiColumnCombo1.DesignTimeLayout = multiColumnCombo1_DesignTimeLayout;
+            this.multiColumnCombo1.DisplayMember = "CarPlat";
+            this.multiColumnCombo1.Image = ((System.Drawing.Image)(resources.GetObject("multiColumnCombo1.Image")));
+            this.multiColumnCombo1.Location = new System.Drawing.Point(73, 48);
+            this.multiColumnCombo1.MaxLength = 8;
+            this.multiColumnCombo1.Name = "multiColumnCombo1";
+            this.multiColumnCombo1.SelectedIndex = -1;
+            this.multiColumnCombo1.SelectedItem = null;
+            this.multiColumnCombo1.Size = new System.Drawing.Size(151, 30);
+            this.multiColumnCombo1.TabIndex = 118;
+            this.multiColumnCombo1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.toolTip1.SetToolTip(this.multiColumnCombo1, "لیست بارنامه های مشابه");
+            this.multiColumnCombo1.ValueMember = "id";
+            this.multiColumnCombo1.Visible = false;
             // 
             // frmComers
             // 
@@ -5444,6 +5463,7 @@
             this.panelDeleteEdit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtSeryalH_DE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWeightDeliveredGoods)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.multiColumnCombo1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -5762,5 +5782,6 @@
         private Janus.Windows.Ribbon.ButtonCommand btnCopy;
         private Janus.Windows.Ribbon.ButtonCommand btnCancellation;
         public DevComponents.DotNetBar.ButtonX btnCalculations;
+        private Janus.Windows.GridEX.EditControls.MultiColumnCombo multiColumnCombo1;
     }
 }

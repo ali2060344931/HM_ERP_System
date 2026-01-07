@@ -173,7 +173,7 @@ namespace HM_ERP_System.Forms.Comers
         /// </summary>
         private void CallUpdateTataH()
         {
-            
+
             //dgvListH.SaveSettings = true;
             //dgvListH.SettingsKey = this.Name;
             uiPanel0.Text = "بخش ثبت اطلاعات حواله";
@@ -1622,18 +1622,19 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
+
                 //txtLoadWeight.Value = (int)q.First().LoadWeight;
-                txtWeightDeliveredGoodsMain.Value = (int)q.First().WeightDeliveredGoods;
+                //txtWeightDeliveredGoodsMain.Value = (int)q.First().WeightDeliveredGoods;
                 cmbFareCalcMethods.Value = q.First().TypeCalFareId;
                 cmbMethodCalFare.Value = q.First().MethodCalFareId;
                 txtFreightRate.Value = q.First().FreightRate;
                 txtCargoInsurance.Value = q.First().CargoInsurance;
                 txtLoadinCast.Value = q.First().LoadinCast;
-                txtLoadWeightCapacity.Value = q.First().LoadWeightCapacityB;
+                //txtLoadWeightCapacity.Value = q.First().LoadWeightCapacityB;
                 txtIncentive.Value = q.First().Incentive;
                 txtStopCharge.Value = q.First().StopCharge;
                 txtDeduction.Value = q.First().Deduction;
-                txtBalanceAccount.Value = q.First().BalanceAccount;
+                //txtBalanceAccount.Value = q.First().BalanceAccount;
                 //cmbTypeCalcMethodsB.Value = q.First().TypeCalcMethodsBId;
                 txtPaidFreightRate.Value = q.First().PaidFreightRate;
                 txtInsurancCost.Value = q.First().InsurancCost;
@@ -1648,7 +1649,7 @@ namespace HM_ERP_System.Forms.Comers
                 txtInsuranceAmount.Value = q.First().InsuranceAmount;
                 txtBillLadingWriterPercent.Value = q.First().BillLadingWriterPercent;
                 //txtAmountPaidTruckDriver.Value = q.First().AmountPaidTruckDriver;
-                txtBalanceAccountِDraver.Value = q.First().BalanceAccountDraver;
+                //txtBalanceAccountِDraver.Value = q.First().BalanceAccountDraver;
                 txtDescriptionB.Text = q.First().Description;
                 cmbDraversB1.Value = q.First().DaraverId1_;
                 cmbDraversB2.Value = q.First().DaraverId2_;
@@ -2808,6 +2809,8 @@ namespace HM_ERP_System.Forms.Comers
             cmbTypeDocument.Focus();
             ShiperId_ = 0;
             chkStatusLading.Checked = false;
+            ListId = 0;
+            ListId_ = 0;
         }
 
 
@@ -2898,7 +2901,8 @@ namespace HM_ERP_System.Forms.Comers
             txtSeryalB.Enabled = true;
             cmbBillLadingCast.Enabled = true;
             cmbBillLadingCast.SelectedIndex = 1;
-
+            ListId = 0;
+            ListId_ = 0;
         }
 
 
@@ -3278,8 +3282,6 @@ namespace HM_ERP_System.Forms.Comers
                 CelearItemsAllH();
                 CelearItemsH();
             }
-
-
             else if (ComerTabKey == "ComersB")
             {
                 cmbCarplateB.ResetText();
@@ -4482,7 +4484,7 @@ namespace HM_ERP_System.Forms.Comers
         {
             using (var db = new DBcontextModel())
             {
-                if (mode==0 && db.ComersBs.Any(c => c.ComersHId == listId))
+                if (mode == 0 && db.ComersBs.Any(c => c.ComersHId == listId))
                 {
                     PublicClass.StopMesseg(ResourceCode.T037);
                     return;
@@ -4552,7 +4554,14 @@ namespace HM_ERP_System.Forms.Comers
 
                 case "Edit":
                     if (!PublicClass.SetPeremission("Node1_2_1_1_2", 1)) return;
-
+                    using (var db = new DBcontextModel())
+                    {
+                        var qs = db.ComersHs.Any(c => c.Id == ListId && c.Cancellation);
+                        if (qs)
+                        {
+                            PublicClass.StopMesseg(ResourceCode.T182); return;
+                        }
+                    }
                     LoadComersHToForm(ListId);
                     /*
                     using (var db = new DBcontextModel())
@@ -4622,6 +4631,14 @@ namespace HM_ERP_System.Forms.Comers
                             PublicClass.StopMesseg(ResourceCode.T038); return;
                         }
 
+                        var qs = db.ComersHs.Any(c => c.Id == ListId && c.Cancellation);
+                        if (qs)
+                        {
+                            PublicClass.StopMesseg(ResourceCode.T004); return;
+                        }
+
+
+
                         if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign) == DialogResult.Yes)
                         {
                             var q = db.ComersHs.Where(c => c.Id == ListId).First();
@@ -4677,7 +4694,7 @@ namespace HM_ERP_System.Forms.Comers
                     break;
                 case "Copy"://(کپی(استفاده مجدد
                     if (!PublicClass.SetPeremission("Node1_2_1_1_7", 1)) return;
-                    LoadComersHToForm(ListId,1);
+                    LoadComersHToForm(ListId, 1);
                     ListId = 0;
 
                     break;
@@ -5320,17 +5337,6 @@ namespace HM_ERP_System.Forms.Comers
             txtBalanceAccountِDraver_Leave(null, null);
         }
 
-        private void txtLoadWeight_Leave(object sender, EventArgs e)
-        {
-            if (txtLoadWeight.Text != "")
-                Calculations();
-        }
-
-        private void txtLoadWeightCapacity_Leave(object sender, EventArgs e)
-        {
-            if (txtLoadWeightCapacity.Text != "")
-                Calculations();
-        }
 
         private void label7_Click(object sender, EventArgs e)
         {
@@ -5340,6 +5346,17 @@ namespace HM_ERP_System.Forms.Comers
         private void btnCalculations_Click_1(object sender, EventArgs e)
         {
             Calculations();
+        }
+
+        private void txtLoadWeight_Leave(object sender, EventArgs e)
+        {
+            if (txtLoadWeight.Text != "")
+                Calculations();
+        }
+        private void txtLoadWeightCapacity_Leave(object sender, EventArgs e)
+        {
+            if (txtLoadWeightCapacity.Text != "")
+                Calculations();
         }
     }
 }

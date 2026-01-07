@@ -54,6 +54,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 using static ClosedXML.Excel.XLPredefinedFormat;
@@ -1494,7 +1495,11 @@ namespace HM_ERP_System.Forms.Comers
                         lblCity.Text = db.Ciltys.Where(c => c.Id == drv.CityId).First().Name;
                         txtTruckCapacity.Value = cars.First().LoadWeightCapacity;
 
-                        if (StatusCar(CarIdH_) && ListId == 0)
+                        int count = 0;
+                        bool statuscar = false;
+                        (statuscar, count) = StatusCar(CarIdH_);
+
+                        if (statuscar && ListId == 0)
                         {
                             string ertext = ResourceCode.T039 + '\n' + ResourceCode.T084;
                             if (PublicClass.ErrorMessegYesNo(ertext) == DialogResult.No)
@@ -1535,6 +1540,7 @@ namespace HM_ERP_System.Forms.Comers
                     var qulo = db.Ciltys.Where(c => c.Id == q.UnLoadingOrinigId).First();
                     var qull = db.PlaceTransfers.Where(c => c.Id == q.UnLoadingLocationId).First();
 
+
                     StatusLading(q.StatusLading);
                     lblDateB.Text = q.date;
                     txtDateB.Text = q.date;
@@ -1565,11 +1571,16 @@ namespace HM_ERP_System.Forms.Comers
                         if (q.GoodsAccountId != 0) cmbGoodsAccountB.Value = q.GoodsAccountId;
                         SelectEndBillLading(ComersHId_);
                     }
-                    ////در صورتیکه شهر و محل انبار بارگیری و تخلیه یکی باشد
-                    //if (q.LoadingOrinigId == q.UnLoadingOrinigId && q.LoadingLocationId == q.UnLoadingLocationId)
-                    //{
 
-                    //}
+                    int count = 0;
+                    bool statuscar = false;
+                    (statuscar, count) = StatusCar(q.CarId);
+                    if (statuscar && count > 1)
+                    {
+                        if (MessageBox.Show(ResourceCode.T193 + '\n' + "تعداد حواله آزاد: " + count, ResourceCode.ProgName, MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK)
+                            return;
+                        //cmbBillLadingMethod.Focus();
+                    }
 
                 }
             }
@@ -1712,20 +1723,22 @@ namespace HM_ERP_System.Forms.Comers
         /// بررسی وضعیت خالی بودن کامیون
         /// </summary>
         /// <param name="carid"></param>
-        private bool StatusCar(int carid)
+        private (bool, int) StatusCar(int carid)
         {
             try
             {
                 using (var db = new DBcontextModel())
                 {
                     var q1 = (from cmb in db.ComersBs
+
                               join cmh in db.ComersHs
                               on cmb.ComersHId equals cmh.Id
+
                               where (cmh.CarId == carid && cmb.StatusDeliveryGoods == false)
                               select cmb);
                     if (q1.Count() > 0)
                     {
-                        return true;
+                        return (true, q1.Count());
                     }
                     var q2 = from ch in db.ComersHs
                              where !db.ComersBs.Any(c => c.SeryalH == ch.RemiaanceSeryal) && ch.CarId == carid
@@ -1733,18 +1746,18 @@ namespace HM_ERP_System.Forms.Comers
 
                     if (q2.Count() > 0)
                     {
-                        return true;
+                        return (true, q2.Count());
                     }
 
 
-                    return false;
+                    return (false, 0);
                 }
             }
             catch (Exception er)
             {
 
                 PublicClass.ShowErrorMessage(er);
-                return false;
+                return (false, 0);
             }
         }
 
@@ -2026,6 +2039,7 @@ namespace HM_ERP_System.Forms.Comers
                             join tf in db.TransactionFees on cmb.BT equals tf.Id
 
                             join doc in db.DocumentBancks on cmb.Id equals doc.ListInFoemId into docGroup
+                            
                             join tr in db.Transactions on cmb.Id equals tr.ComerBId into TrGroup
 
                             where string.Compare(cmb.DateB, dateS) >= 0
@@ -2054,7 +2068,7 @@ namespace HM_ERP_System.Forms.Comers
                                 dateB = cmb.DateB,
                                 cmb.SeryalB,
                                 cmb.SeryalH,
-                                Transaction = TrGroup.Any() ? "بله" : "",
+                                Transaction = TrGroup.Any(x => !x.Status) ? "بله" : "",
                                 LoadingOrinigName = ct1.Name,
                                 LoadingLocationName = pt1.Name,
                                 UnLoadingOrinigName = ct2.Name,
@@ -3833,6 +3847,7 @@ namespace HM_ERP_System.Forms.Comers
         }
         private void cmbSeryalH_Leave(object sender, EventArgs e)
         {
+
             btnListSimilarComerB.Visible = true;
             SearchCar_DriverB();
         }
@@ -4257,10 +4272,30 @@ namespace HM_ERP_System.Forms.Comers
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
             if (!PublicClass.SetPeremission("Node1_2_1_2_3", 1)) return;
+
             if (dgvListB.GetCheckedRows().Count() != 1)
             {
                 PublicClass.ErrorMesseg(ResourceCode.T076); return;
             }
+
+            using (var db = new DBcontextModel())
+            {
+                var q = db.Transactions.Any(c => c.ComerBId == ListId && !c.Status);
+                if (q)
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T115);
+                    //T194
+                    if (MessageBox.Show(ResourceCode.T194, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+                    else
+                    {
+                        if (!DeleteAccountingDocument(ListId))
+                            return;
+                    }
+
+                }
+            }
+
             ListId = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
 
             int SeryalB = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["SeryalH"].Value);
@@ -4268,8 +4303,34 @@ namespace HM_ERP_System.Forms.Comers
             {
                 PublicClass.ErrorMesseg(ResourceCode.T077); return;
             }
+
             DeletegvListB(ListId);
             FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
+        }
+
+        /// <summary>
+        /// حذف اسناد حسابداری بارنامه مورد نظر
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        bool DeleteAccountingDocument(int id)
+        {
+            using (var db = new DBcontextModel())
+            {
+                var q = db.Transactions.Where(c => c.ComerBId == ListId).ToList();
+                //db.Transactions.RemoveRange(q);
+
+                foreach (var item in q)
+                {
+                    item.Status = true;
+                }
+                if (db.SaveChangesSafe())
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
         }
 
         private void btnEditItem_Click(object sender, EventArgs e)
@@ -4281,13 +4342,30 @@ namespace HM_ERP_System.Forms.Comers
             }
             ListId = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
 
+            //using (var db = new DBcontextModel())
+            //{
+            //    var q = db.Transactions.Where(c => c.ComerBId == ListId);
+            //    if (q.Count() != 0)
+            //    {
+            //        PublicClass.ErrorMesseg(ResourceCode.T115);
+            //        return;
+            //    }
+            //}
+
             using (var db = new DBcontextModel())
             {
-                var q = db.Transactions.Where(c => c.ComerBId == ListId);
-                if (q.Count() != 0)
+                var q = db.Transactions.Any(c => c.ComerBId == ListId && !c.Status);
+                if (q)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T115);
-                    return;
+                    //T194
+                    if (MessageBox.Show(ResourceCode.T194, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+                    else
+                    {
+                        if (!DeleteAccountingDocument(ListId))
+                            return;
+                    }
                 }
             }
 
@@ -4765,16 +4843,15 @@ namespace HM_ERP_System.Forms.Comers
                 case "AccountingDocumentRegistration"://سند حسابداری
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.Transactions.Where(c => c.ComerBId == ListId);
-                        if (q.Count() == 0)
-                        {
-                            AccountingDocumentRegistration(ListId);
-
-                            FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
-                        }
-                        else
+                        var q = db.Transactions.Any(c => c.ComerBId == ListId && c.Status==false);
+                        if (q)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T110);
+                        }
+                        else
+                        { 
+                            AccountingDocumentRegistration(ListId);
+                            FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                         }
                     }
 

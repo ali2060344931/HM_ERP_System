@@ -1096,7 +1096,7 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to بدلیل ثبت سند حسابداری بارنامه مورد نظر امکان ویرایش نمی باشد..
+        ///   Looks up a localized string similar to بدلیل ثبت سند حسابداری بارنامه مورد نظر امکان ویرایش/حـــذف نمی باشد..
         /// </summary>
         internal static string T115 {
             get {
@@ -1794,6 +1794,24 @@ namespace HM_ERP_System {
         internal static string T192 {
             get {
                 return ResourceManager.GetString("T192", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to پلاک مورد نظر بیش از یک حواله آزاد در لیست وجود دارد. آیا حواله انتخاب شده مورد نظر شما بوده است..
+        /// </summary>
+        internal static string T193 {
+            get {
+                return ResourceManager.GetString("T193", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آیا سند حسابداری بارنامه مورد نظر حذف شود؟.
+        /// </summary>
+        internal static string T194 {
+            get {
+                return ResourceManager.GetString("T194", resourceCulture);
             }
         }
         

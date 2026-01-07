@@ -463,7 +463,7 @@
     <value>نام شرکت مورد نظر را انتخاب نمائید.</value>
   </data>
   <data name="T115" xml:space="preserve">
-    <value>بدلیل ثبت سند حسابداری بارنامه مورد نظر امکان ویرایش نمی باشد.</value>
+    <value>بدلیل ثبت سند حسابداری بارنامه مورد نظر امکان ویرایش/حـــذف نمی باشد.</value>
   </data>
   <data name="T116" xml:space="preserve">
     <value>مبلغ وارد شده بیش از مانده حساب می باشد.</value>
@@ -696,6 +696,12 @@
   </data>
   <data name="T192" xml:space="preserve">
     <value>حواله مورد نظر قبلا ابطال شد. آیا میخواهد از ابطال خارج شود؟</value>
+  </data>
+  <data name="T193" xml:space="preserve">
+    <value>پلاک مورد نظر بیش از یک حواله آزاد در لیست وجود دارد. آیا حواله انتخاب شده مورد نظر شما بوده است.</value>
+  </data>
+  <data name="T194" xml:space="preserve">
+    <value>آیا سند حسابداری بارنامه مورد نظر حذف شود؟</value>
   </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>

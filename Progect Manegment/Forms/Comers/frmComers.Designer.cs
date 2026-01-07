@@ -64,7 +64,6 @@
             Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.GridEX.GridEXLayout multiColumnCombo1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel0Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
@@ -377,7 +376,6 @@
             this.separatorCommand3 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.btnAddDocCB = new Janus.Windows.Ribbon.DropDownCommand();
             this.btnAccountingDocumentRegistration = new Janus.Windows.Ribbon.DropDownCommand();
-            this.multiColumnCombo1 = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -475,7 +473,6 @@
             this.panelDeleteEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSeryalH_DE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWeightDeliveredGoods)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.multiColumnCombo1)).BeginInit();
             this.SuspendLayout();
             // 
             // uiPanelManager1
@@ -1192,9 +1189,9 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1416, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(1470, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(281, 387);
+            this.pictureBox2.Size = new System.Drawing.Size(227, 387);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 103;
             this.pictureBox2.TabStop = false;
@@ -2229,7 +2226,6 @@
             this.uiGroupBox6.AutoScrollMinSize = new System.Drawing.Size(100, 0);
             this.uiGroupBox6.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.uiGroupBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.uiGroupBox6.Controls.Add(this.multiColumnCombo1);
             this.uiGroupBox6.Controls.Add(this.cmbBillLadingCast);
             this.uiGroupBox6.Controls.Add(this.cmbMethodCalFare);
             this.uiGroupBox6.Controls.Add(this.txtDescriptionB);
@@ -2419,7 +2415,7 @@
             this.cmbListSimilarComerB.DesignTimeLayout = cmbListSimilarComerB_DesignTimeLayout;
             this.cmbListSimilarComerB.DisplayMember = "CarPlat";
             this.cmbListSimilarComerB.Image = ((System.Drawing.Image)(resources.GetObject("cmbListSimilarComerB.Image")));
-            this.cmbListSimilarComerB.Location = new System.Drawing.Point(-77, 19);
+            this.cmbListSimilarComerB.Location = new System.Drawing.Point(73, 51);
             this.cmbListSimilarComerB.MaxLength = 8;
             this.cmbListSimilarComerB.Name = "cmbListSimilarComerB";
             this.cmbListSimilarComerB.SelectedIndex = -1;
@@ -5031,7 +5027,7 @@
             this.panelDeleteEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelDeleteEdit.Location = new System.Drawing.Point(0, 0);
             this.panelDeleteEdit.Name = "panelDeleteEdit";
-            this.panelDeleteEdit.Size = new System.Drawing.Size(309, 27);
+            this.panelDeleteEdit.Size = new System.Drawing.Size(366, 27);
             this.panelDeleteEdit.TabIndex = 16;
             this.panelDeleteEdit.Visible = false;
             // 
@@ -5041,17 +5037,17 @@
             this.btnEditItem.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnEditItem.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnEditItem.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnEditItem.Location = new System.Drawing.Point(210, 0);
+            this.btnEditItem.Location = new System.Drawing.Point(231, 0);
             this.btnEditItem.Name = "btnEditItem";
             this.btnEditItem.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnEditItem.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F8);
-            this.btnEditItem.Size = new System.Drawing.Size(81, 27);
+            this.btnEditItem.Size = new System.Drawing.Size(113, 27);
             this.btnEditItem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnEditItem.Symbol = "";
             this.btnEditItem.SymbolColor = System.Drawing.Color.Green;
             this.btnEditItem.SymbolSize = 15F;
             this.btnEditItem.TabIndex = 14;
-            this.btnEditItem.Text = "ویرایش";
+            this.btnEditItem.Text = "ویرایش بارنامه";
             this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
             // btnDeleteItem
@@ -5064,13 +5060,13 @@
             this.btnDeleteItem.Name = "btnDeleteItem";
             this.btnDeleteItem.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnDeleteItem.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F8);
-            this.btnDeleteItem.Size = new System.Drawing.Size(84, 27);
+            this.btnDeleteItem.Size = new System.Drawing.Size(105, 27);
             this.btnDeleteItem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDeleteItem.Symbol = "";
             this.btnDeleteItem.SymbolColor = System.Drawing.Color.Maroon;
             this.btnDeleteItem.SymbolSize = 15F;
             this.btnDeleteItem.TabIndex = 13;
-            this.btnDeleteItem.Text = "حذف";
+            this.btnDeleteItem.Text = "حذف بارنامه";
             this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
             // 
             // txtSeryalH_DE
@@ -5320,27 +5316,6 @@
             this.btnAccountingDocumentRegistration.Name = "btnAccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Text = "ثبت سند حسابداری";
             // 
-            // multiColumnCombo1
-            // 
-            this.multiColumnCombo1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.multiColumnCombo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.multiColumnCombo1.DataMember = "id";
-            multiColumnCombo1_DesignTimeLayout.LayoutString = resources.GetString("multiColumnCombo1_DesignTimeLayout.LayoutString");
-            this.multiColumnCombo1.DesignTimeLayout = multiColumnCombo1_DesignTimeLayout;
-            this.multiColumnCombo1.DisplayMember = "CarPlat";
-            this.multiColumnCombo1.Image = ((System.Drawing.Image)(resources.GetObject("multiColumnCombo1.Image")));
-            this.multiColumnCombo1.Location = new System.Drawing.Point(73, 48);
-            this.multiColumnCombo1.MaxLength = 8;
-            this.multiColumnCombo1.Name = "multiColumnCombo1";
-            this.multiColumnCombo1.SelectedIndex = -1;
-            this.multiColumnCombo1.SelectedItem = null;
-            this.multiColumnCombo1.Size = new System.Drawing.Size(151, 30);
-            this.multiColumnCombo1.TabIndex = 118;
-            this.multiColumnCombo1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.toolTip1.SetToolTip(this.multiColumnCombo1, "لیست بارنامه های مشابه");
-            this.multiColumnCombo1.ValueMember = "id";
-            this.multiColumnCombo1.Visible = false;
-            // 
             // frmComers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -5463,7 +5438,6 @@
             this.panelDeleteEdit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtSeryalH_DE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWeightDeliveredGoods)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.multiColumnCombo1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -5782,6 +5756,5 @@
         private Janus.Windows.Ribbon.ButtonCommand btnCopy;
         private Janus.Windows.Ribbon.ButtonCommand btnCancellation;
         public DevComponents.DotNetBar.ButtonX btnCalculations;
-        private Janus.Windows.GridEX.EditControls.MultiColumnCombo multiColumnCombo1;
     }
 }

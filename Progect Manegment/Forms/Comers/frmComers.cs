@@ -1747,6 +1747,7 @@ namespace HM_ERP_System.Forms.Comers
                 using (var db = new DBcontextModel())
                 {
                     var q = from cmh in db.ComersHs
+                            
                             join cuR in db.CustomerRoles
                             on cmh.UserId equals cuR.Id into cuRGroup
                             from cuR_ in cuRGroup.DefaultIfEmpty()
@@ -1910,7 +1911,7 @@ namespace HM_ERP_System.Forms.Comers
 
                                 ProductsName = pr.Name,
                                 CarPlat = cr.CarPlat + "-" + cr.CarPlatSeryal,
-
+                                SeryalCar=cr.Seryal,
                                 cmh.RemiaanceSeryal,
                                 cmh.LoadWeightCapacity,
                                 cmh.Description,
@@ -1948,6 +1949,7 @@ namespace HM_ERP_System.Forms.Comers
                         x.Daraver1Codmeli,
                         x.ProductsName,
                         x.CarPlat,
+                        x.SeryalCar,
                         x.RemiaanceSeryal,
                         x.LoadWeightCapacity,
                         x.Description,
@@ -2080,9 +2082,8 @@ namespace HM_ERP_System.Forms.Comers
 
                             select new
                             {
-
                                 cmb.Id,
-                                cmb.DateB,
+                                dateB = cmb.DateB,
                                 cmb.SeryalB,
                                 cmb.SeryalH,
                                 Transaction = TrGroup.Any() ? "بله" : "",
@@ -2177,6 +2178,7 @@ namespace HM_ERP_System.Forms.Comers
                     var result = list.Select(x => new
                     {
                         x.Id,
+                        x.dateB,
                         x.SeryalB,
                         x.SeryalH,
                         x.Transaction,
@@ -4363,13 +4365,6 @@ namespace HM_ERP_System.Forms.Comers
                 txtBalanceAccountِDraver.Value = 0;
             }
         }
-
-        private void txtBalanceAccount_Leave(object sender, EventArgs e)
-        {
-            CalcComerFilds_();
-            txtAC.Value = AC;
-        }
-
         private void txtBalanceAccountِDraver_Leave(object sender, EventArgs e)
         {
             CalcComerFilds_();
@@ -4380,6 +4375,13 @@ namespace HM_ERP_System.Forms.Comers
                 txtAV.Value = AX;
 
         }
+
+        private void txtBalanceAccount_Leave(object sender, EventArgs e)
+        {
+            CalcComerFilds_();
+            txtAV.Value = AX;
+        }
+
 
         private void txtBalanceBillLadingAmount_Enter(object sender, EventArgs e)
         {
@@ -5200,34 +5202,6 @@ namespace HM_ERP_System.Forms.Comers
         private void uiGroupBox4_Leave(object sender, EventArgs e)
         {
             txtBalanceAccountِDraver_Leave(null, null);
-        }
-
-        private void txtSeryalB_Leave(object sender, EventArgs e)
-        {
-            using (var db = new DBcontextModel())
-            {
-                try
-                {
-                    if (txtSeryalB.Text != "")
-                    {
-                        int SeryalB = Convert.ToInt32(txtSeryalB.Text);
-                        var q = db.ComersBs.Any(c => c.SeryalB == SeryalB);
-                        if (q)
-                        {
-                            PublicClass.StopMesseg(ResourceCode.T154);
-                            txtSeryalB.ResetText();
-                            txtSeryalB.Focus();
-                            return;
-                        }
-                    }
-
-                }
-                catch (Exception er)
-                {
-                    PublicClass.ShowErrorMessage(er);
-                }
-            }
-
         }
     }
 }

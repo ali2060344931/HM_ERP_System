@@ -145,7 +145,7 @@ namespace Progect_Manegment
 
                     Application.Run(new frmLoginProg());
                     //Application.Run(new frmMainForm());
-                    //Application.Run(new ChatGPT());
+                    //Application.Run(new frmCustomerToGroup(null));
                 }
             }
             // اگر اتصال به دیتابیس قطع شده باشد

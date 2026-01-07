@@ -150,6 +150,11 @@ namespace HM_ERP_System.Entity.Comers
         public bool StatusLading { get; set; }
         
         /// <summary>
+        /// ابطالی
+        /// </summary>
+        public bool Cancellation { get; set; }
+       
+        /// <summary>
         /// تاریخ ثبت
         /// </summary>
         public DateTime RecordDateTime { get; set; } = DateTime.Now;

@@ -15,6 +15,10 @@ namespace HM_ERP_System.Entity.CustomerToGroup
         public int Id { get; set; }
         public int CustomerId { get; set; }
         public int PersonGroupId { get; set; }
+        /// <summary>
+        /// نقش پایه
+        /// </summary>
+        public bool BasicRole { get; set; }=false;
     }
     public class CustomerToGroupConfig : EntityTypeConfiguration<CustomerToGroup>
     {

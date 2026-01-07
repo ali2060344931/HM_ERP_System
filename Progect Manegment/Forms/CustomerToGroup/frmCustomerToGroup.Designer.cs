@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.Common.Layouts.JanusLayoutReference dgvList_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column8.ButtonImage");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerToGroup));
+            Janus.Windows.Common.Layouts.JanusLayoutReference dgvList_Layout_0_Reference_1 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column9.ButtonImage");
             Janus.Windows.GridEX.GridEXLayout cmbGroup_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbPerson_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout cmbGroupR_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             this.dgvList = new GridExEx.GridExEx();
             this.btnAddPerson = new DevComponents.DotNetBar.ButtonX();
             this.label14 = new System.Windows.Forms.Label();
@@ -39,6 +42,9 @@
             this.btnAddGroup = new DevComponents.DotNetBar.ButtonX();
             this.cmbGroup = new Janus.Windows.GridEX.EditControls.CheckedComboBox();
             this.cmbPerson = new Janus.Windows.GridEX.EditControls.CheckedComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbGroupR = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.btnAddPerson1 = new DevComponents.DotNetBar.ButtonX();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -47,36 +53,40 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGroupR)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(429, 345);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(697, 360);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(429, 50);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(697, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 395);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(429, 28);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 410);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(697, 28);
             // 
             // pnlAddItemBodi
             // 
+            this.pnlAddItemBodi.Controls.Add(this.cmbGroupR);
+            this.pnlAddItemBodi.Controls.Add(this.btnAddPerson1);
             this.pnlAddItemBodi.Controls.Add(this.cmbPerson);
             this.pnlAddItemBodi.Controls.Add(this.cmbGroup);
+            this.pnlAddItemBodi.Controls.Add(this.label2);
             this.pnlAddItemBodi.Controls.Add(this.label1);
             this.pnlAddItemBodi.Controls.Add(this.label14);
             this.pnlAddItemBodi.Controls.Add(this.btnAddGroup);
             this.pnlAddItemBodi.Controls.Add(this.btnAddPerson);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(424, 395);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(424, 410);
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 395);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 410);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(424, 28);
             // 
             // btnSave
@@ -89,17 +99,17 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(190, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(324, 12);
             this.txtDateStart.Value = new System.DateTime(2025, 8, 13, 20, 54, 32, 498);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(-12, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(122, 12);
             this.txtDateEnd.Value = new System.DateTime(2025, 8, 13, 20, 54, 32, 498);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(-102, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(32, 15);
             // 
             // labelX2
             // 
@@ -107,7 +117,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(118, 17);
+            this.labelX2.Location = new System.Drawing.Point(252, 17);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
@@ -117,32 +127,32 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(320, 17);
+            this.labelX1.Location = new System.Drawing.Point(454, 17);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
             this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlViewItems.Size = new System.Drawing.Size(431, 451);
+            this.pnlViewItems.Size = new System.Drawing.Size(699, 466);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(434, 3);
+            this.pnlAddItems.Location = new System.Drawing.Point(702, 3);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlAddItems.Size = new System.Drawing.Size(430, 451);
+            this.pnlAddItems.Size = new System.Drawing.Size(430, 466);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(395, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(663, 0);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(361, 0);
+            this.buttonX01.Location = new System.Drawing.Point(629, 0);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(326, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(594, 0);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
@@ -159,6 +169,11 @@
             this.dgvList.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
             dgvList_Layout_0.IsCurrentLayout = true;
             dgvList_Layout_0.Key = "MyGrig";
+            dgvList_Layout_0_Reference_0.Instance = ((object)(resources.GetObject("dgvList_Layout_0_Reference_0.Instance")));
+            dgvList_Layout_0_Reference_1.Instance = ((object)(resources.GetObject("dgvList_Layout_0_Reference_1.Instance")));
+            dgvList_Layout_0.LayoutReferences.AddRange(new Janus.Windows.Common.Layouts.JanusLayoutReference[] {
+            dgvList_Layout_0_Reference_0,
+            dgvList_Layout_0_Reference_1});
             dgvList_Layout_0.LayoutString = resources.GetString("dgvList_Layout_0.LayoutString");
             this.dgvList.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvList_Layout_0});
@@ -169,7 +184,7 @@
             this.dgvList.RowFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCustomerToGroup";
-            this.dgvList.Size = new System.Drawing.Size(429, 345);
+            this.dgvList.Size = new System.Drawing.Size(697, 360);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -273,11 +288,57 @@
             this.cmbPerson.ValuesDataMember = null;
             this.cmbPerson.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPerson_KeyDown);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label2.Location = new System.Drawing.Point(333, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 18);
+            this.label2.TabIndex = 109;
+            this.label2.Text = "نقش پایه:";
+            // 
+            // cmbGroupR
+            // 
+            this.cmbGroupR.DataMember = "id";
+            cmbGroupR_DesignTimeLayout.LayoutString = resources.GetString("cmbGroupR_DesignTimeLayout.LayoutString");
+            this.cmbGroupR.DesignTimeLayout = cmbGroupR_DesignTimeLayout;
+            this.cmbGroupR.DisplayMember = "Name";
+            this.cmbGroupR.Image = ((System.Drawing.Image)(resources.GetObject("cmbGroupR.Image")));
+            this.cmbGroupR.Location = new System.Drawing.Point(38, 93);
+            this.cmbGroupR.Name = "cmbGroupR";
+            this.cmbGroupR.SelectedIndex = -1;
+            this.cmbGroupR.SelectedItem = null;
+            this.cmbGroupR.Size = new System.Drawing.Size(295, 30);
+            this.cmbGroupR.TabIndex = 113;
+            this.cmbGroupR.TabStop = false;
+            this.cmbGroupR.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.cmbGroupR.ValueMember = "id";
+            this.cmbGroupR.ValueChanged += new System.EventHandler(this.cmbGroupR_ValueChanged);
+            // 
+            // btnAddPerson1
+            // 
+            this.btnAddPerson1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddPerson1.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddPerson1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddPerson1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnAddPerson1.Location = new System.Drawing.Point(17, 94);
+            this.btnAddPerson1.Name = "btnAddPerson1";
+            this.btnAddPerson1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnAddPerson1.Size = new System.Drawing.Size(18, 28);
+            this.btnAddPerson1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddPerson1.Symbol = "";
+            this.btnAddPerson1.SymbolSize = 12F;
+            this.btnAddPerson1.TabIndex = 114;
+            this.btnAddPerson1.TabStop = false;
+            this.btnAddPerson1.Tooltip = "ثبت آیتم جدید";
+            // 
             // frmCustomerToGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(867, 457);
+            this.ClientSize = new System.Drawing.Size(1135, 472);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "frmCustomerToGroup";
@@ -296,6 +357,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlViewItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlAddItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGroupR)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,7 +369,19 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label14;
         public DevComponents.DotNetBar.ButtonX btnAddGroup;
+        /// <summary>
+        /// گروه ها
+        /// </summary>
         private Janus.Windows.GridEX.EditControls.CheckedComboBox cmbGroup;
+        /// <summary>
+        /// اشخاص
+        /// </summary>
         private Janus.Windows.GridEX.EditControls.CheckedComboBox cmbPerson;
+        private System.Windows.Forms.Label label2;
+        /// <summary>
+        /// نقش پایه
+        /// </summary>
+        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbGroupR;
+        public DevComponents.DotNetBar.ButtonX btnAddPerson1;
     }
 }

@@ -1744,6 +1744,60 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نقش پایه را مشخص نمائید..
+        /// </summary>
+        internal static string T187 {
+            get {
+                return ResourceManager.GetString("T187", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آیا آیتم مورد نظر به عنوان نقش پایه ثبت شود؟.
+        /// </summary>
+        internal static string T188 {
+            get {
+                return ResourceManager.GetString("T188", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آیتم مورد نظر قبلا به عنوان نقش پایه تعریف شده است..
+        /// </summary>
+        internal static string T189 {
+            get {
+                return ResourceManager.GetString("T189", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to بدلیل ثبت بارنامه برای این حواله امکان ابـــــــطال وجود ندارد..
+        /// </summary>
+        internal static string T190 {
+            get {
+                return ResourceManager.GetString("T190", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آیا حواله مورد نظـــر ابطال شود؟.
+        /// </summary>
+        internal static string T191 {
+            get {
+                return ResourceManager.GetString("T191", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to حواله مورد نظر قبلا ابطال شد. آیا میخواهد از ابطال خارج شود؟.
+        /// </summary>
+        internal static string T192 {
+            get {
+                return ResourceManager.GetString("T192", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

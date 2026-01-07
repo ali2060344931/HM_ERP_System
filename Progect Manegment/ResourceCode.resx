@@ -679,6 +679,24 @@
   <data name="T186" xml:space="preserve">
     <value>خطا: در تنظیمات دسترسی به این آیتم با خطا مواجع شده است</value>
   </data>
+  <data name="T187" xml:space="preserve">
+    <value>نقش پایه را مشخص نمائید.</value>
+  </data>
+  <data name="T188" xml:space="preserve">
+    <value>آیا آیتم مورد نظر به عنوان نقش پایه ثبت شود؟</value>
+  </data>
+  <data name="T189" xml:space="preserve">
+    <value>آیتم مورد نظر قبلا به عنوان نقش پایه تعریف شده است.</value>
+  </data>
+  <data name="T190" xml:space="preserve">
+    <value>بدلیل ثبت بارنامه برای این حواله امکان ابـــــــطال وجود ندارد.</value>
+  </data>
+  <data name="T191" xml:space="preserve">
+    <value>آیا حواله مورد نظـــر ابطال شود؟</value>
+  </data>
+  <data name="T192" xml:space="preserve">
+    <value>حواله مورد نظر قبلا ابطال شد. آیا میخواهد از ابطال خارج شود؟</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

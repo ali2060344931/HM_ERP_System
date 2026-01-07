@@ -2258,6 +2258,26 @@ namespace MyClass
             }
         }
 
+        public static void /*GridExEx.GridExEx*/ SetCurrentRowById(GridEX GX, int id)
+        {
+            foreach (GridEXRow row in GX.GetRows())
+            {
+                if (row.RowType != Janus.Windows.GridEX.RowType.Record)
+                    continue;
+
+                if (Convert.ToInt32(row.Cells["Id"].Value) == id)
+                {
+                    GX.Row = row.Position;
+                    GX.Focus();
+                    break;
+                }
+            }
+
+           
+        }
+
+
+
         /// <summary>
         /// محاسبه مانده حساب های معین
         /// </summary>
@@ -4580,6 +4600,11 @@ namespace MyClass
             // ۴. آن را به محدوده مورد نظر محدود کنید
             return (positiveRand % range) + min;
         }
+
+
+
+
+
 
 
 

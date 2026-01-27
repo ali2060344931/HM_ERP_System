@@ -1816,6 +1816,141 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to حـــــواله بارگیری.
+        /// </summary>
+        internal static string T195 {
+            get {
+                return ResourceManager.GetString("T195", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام (عنوان) شرکت را وارد نمائید..
+        /// </summary>
+        internal static string T196 {
+            get {
+                return ResourceManager.GetString("T196", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام(عنوان ) شرکت وارد شده تکراری می باشد..
+        /// </summary>
+        internal static string T197 {
+            get {
+                return ResourceManager.GetString("T197", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آدرس را وارد نمائید..
+        /// </summary>
+        internal static string T198 {
+            get {
+                return ResourceManager.GetString("T198", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تلفن ها را وارد نمائید.
+        /// </summary>
+        internal static string T199 {
+            get {
+                return ResourceManager.GetString("T199", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to موضوع شرکت را وارد نمائید..
+        /// </summary>
+        internal static string T200 {
+            get {
+                return ResourceManager.GetString("T200", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تصاویر مورد نظر را انتخاب نمائید..
+        /// </summary>
+        internal static string T201 {
+            get {
+                return ResourceManager.GetString("T201", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام شرکت پیشفرض را از قسمت تنظیمات شخصی مشخص نمائید..
+        /// </summary>
+        internal static string T202 {
+            get {
+                return ResourceManager.GetString("T202", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام (عنوان) شرکت را انتخــــاب نمائید..
+        /// </summary>
+        internal static string T203 {
+            get {
+                return ResourceManager.GetString("T203", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آیتم مورد نظر به عنوان پیشفرض تعریف شده است..
+        /// </summary>
+        internal static string T204 {
+            get {
+                return ResourceManager.GetString("T204", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to قبلا برای این حواله بارنامه ثبت شده است..
+        /// </summary>
+        internal static string T205 {
+            get {
+                return ResourceManager.GetString("T205", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to بدلیل ابطال شده حواله امکان ثبت بارنامه وجود ندارد..
+        /// </summary>
+        internal static string T206 {
+            get {
+                return ResourceManager.GetString("T206", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شمـــاره حــــواله: .
+        /// </summary>
+        internal static string T207 {
+            get {
+                return ResourceManager.GetString("T207", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شماره سند را وارد نمائید..
+        /// </summary>
+        internal static string T208 {
+            get {
+                return ResourceManager.GetString("T208", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to برای این بارنامه سند حسابداری ثبت نشده است..
+        /// </summary>
+        internal static string T209 {
+            get {
+                return ResourceManager.GetString("T209", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

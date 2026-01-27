@@ -39,8 +39,9 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
             {
                 txtTransactionDate.Value = DateTime.Now;
                 txtTransactionCode.Text=PublicClass.CreatTransactionCode();
-                txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
-                txtDateEnd.Value = DateTime.Now;
+                txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
+                //txtDateEnd.Value = DateTime.Now;
+                txtDateEnd.Text = PersianDate.DateEnd();
                 WindowState = FormWindowState.Maximized;
                 UpdateData();
 

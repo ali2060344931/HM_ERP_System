@@ -43,6 +43,8 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             dt_Citi = new System.Data.DataTable();
             dt_Citi.Columns.Add("Id", typeof(int));
             dt_Citi.Columns.Add("Name", typeof(string));
+            dt_Citi.Columns.Add("PostalCode", typeof(string));
+
             DataColumn productColumn1 = dt_Citi.Columns["Id"];
             dt_Citi.PrimaryKey = new DataColumn[] { productColumn1 };
 
@@ -230,7 +232,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     }
 
                     var userRepo = new Repository<Entity.PlaceTransfer.PlaceTransfer>(db);
-                    int id = userRepo.SaveOrUpdateRefId(new Entity.PlaceTransfer.PlaceTransfer { Id = ListId, Name = txtPlaceTransferName.Text, CiltyId = CityId1, PostalCode = txtPostalCode.Text, Addres = txtAddres.Text,FieldActivityId=FieldActivityId, publicStatus = chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
+                    int id = userRepo.SaveOrUpdateRefId(new Entity.PlaceTransfer.PlaceTransfer { Id = ListId, Name = txtPlaceTransferName.Text, CiltyId = CityId1, PostalCode = txtPostalCode1.Text, Addres = txtAddres.Text,FieldActivityId=FieldActivityId, publicStatus = chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
 
                     if (chkPublic.Checked && dt_Citi.Rows.Count != 0)
                     {
@@ -244,6 +246,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                 db.FloatingPublicCities.Remove(list);
                             }
                         }
+
                         db.SaveChangesSafe();
                         foreach (DataRow item in dt_Citi.Rows)
                         {
@@ -263,6 +266,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                     FloatingPublicCities fpc = new FloatingPublicCities();
                                     fpc.PlaceTransferId = id;
                                     fpc.CiltysId = citiid;
+                                    fpc.PostalCode = item["PostalCode"].ToString();
                                     db0.FloatingPublicCities.Add(fpc);
                                 }
                                 db0.SaveChangesSafe();
@@ -287,11 +291,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         private void CelearItems()
         {
             txtPlaceTransferName.ResetText();
-            txtPostalCode.ResetText();
+            txtPostalCode1.ResetText();
             txtAddres.ResetText();
             ListId = 0;
             FieldActivityId = 0;
-            txtPostalCode.Focus();
+            txtPostalCode1.Focus();
             chkPublic.Checked = false;
             cmbFieldActivity.ResetText();
             FilldgvList();
@@ -314,6 +318,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
             CelearItems();
         }
+        
         /// <summary>
         /// ویرایش و حذف رکورد
         /// </summary>
@@ -323,7 +328,6 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
             try
             {
-
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
                 if (e.Column.Key == "Edit")
                 {
@@ -331,12 +335,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     using (var db = new DBcontextModel())
                     {
                         var q = db.PlaceTransfers.Where(c => c.Id == ListId).First();
-
                         //cmbEvacuationDeployment.Value = q.EvacuationDeploymentId;
                         cmbCity1.Value = q.CiltyId;
                         txtPlaceTransferName.Text = q.Name;
                         chkPublic.Checked = q.publicStatus;
-                        txtPostalCode.Text = q.PostalCode;
+                        txtPostalCode1.Text = q.PostalCode;
                         txtAddres.Text = q.Addres;
                         cmbFieldActivity.Value=q.FieldActivityId;
                         if (q.publicStatus)
@@ -348,15 +351,14 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                 {
                                     newrow["Id"] = item.CiltysId;
                                     newrow["Name"] = db.Ciltys.Where(c => c.Id == item.CiltysId).First().Name;
+                                    newrow["PostalCode"] = item.PostalCode;
                                     dt_Citi.Rows.Add(newrow);
                                     dgvListCity.DataSource = dt_Citi;
                                 }
                             }
                         }
                     }
-
                 }
-
                 else if (e.Column.Key == "Delete")
                 {
                     if (!PublicClass.SetPeremission("Node1_1_4_3", 1)) return;
@@ -385,7 +387,6 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                         }
                     }
                 }
-
                 else if (e.Column.Key == "FloatingPublicCities")
                 {
                     if (!PublicClass.SetPeremission("Node1_1_4_4", 1)) return;
@@ -478,14 +479,14 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
             using (var db = new DBcontextModel())
             {
-                if (txtPostalCode.Text != "")
+                if (txtPostalCode1.Text != "")
                 {
-                    var q = db.PlaceTransfers.Where(c => c.PostalCode == txtPostalCode.Text);
+                    var q = db.PlaceTransfers.Where(c => c.PostalCode == txtPostalCode1.Text);
                     if (q.Count() > 0)
                     {
                         PublicClass.ErrorMesseg(ResourceCode.T157);
-                        txtPostalCode.ResetText();
-                        txtPostalCode.Focus();
+                        txtPostalCode1.ResetText();
+                        txtPostalCode1.Focus();
                         return;
                     }
                 }
@@ -581,6 +582,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                 {
                     newrow["Id"] = CityId2;
                     newrow["Name"] = cmbCity2.Text;
+                    newrow["PostalCode"] = txtPostalCode2.Text;
                     dt_Citi.Rows.Add(newrow);
                     dgvListCity.DataSource = dt_Citi;
                 }
@@ -590,8 +592,9 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                 PublicClass.StopMesseg(ResourceCode.T177);
                 return;
             }
-            cmbCity2.Focus();
             cmbCity2.ResetText();
+            txtPostalCode2.ResetText();
+            cmbCity2.Focus();
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
@@ -611,6 +614,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
             {
             }
 
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

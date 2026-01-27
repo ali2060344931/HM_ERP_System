@@ -3,7 +3,6 @@
 using DevComponents.DotNetBar;
 
 using HM_ERP_System.Class_General;
-using HM_ERP_System.Entity.Accounts.Banck;
 using HM_ERP_System.Forms.Accounts.Banck;
 using HM_ERP_System.Forms.Accounts.Cheque;
 using HM_ERP_System.Forms.Accounts.ContraAccounts;
@@ -46,25 +45,40 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HM_ERP_System.Forms.Main_Form
 {
     public partial class frmMainForm : frmMasterForm, IUpdatableForms
     {
+        private readonly IUpdatableForms _updatableForms;
 
         public int UsersId = 0;
-        [Obsolete]
-        public frmMainForm()
+        //[Obsolete]
+        public frmMainForm(IUpdatableForms updatableForms)
         {
             InitializeComponent();
             this.KeyPreview = true;
             BaleBotClass.RunTelegram();
+            _updatableForms = updatableForms;
 
+            this.IsMdiContainer = true;
+            tabStrip1.AutoSelectAttachedControl = true;
+            tabStrip1.CanReorderTabs = true;
+            tabStrip1.CloseButtonOnTabsVisible = true;
+            tabStrip1.CloseButtonVisible = false;
+            tabStrip1.Dock = DockStyle.Top;
+            tabStrip1.Location = new Point(0, 50);
+            tabStrip1.MdiTabbedDocuments = true;
+            tabStrip1.SelectedTabFont = new Font("Tahoma", 10F);
+            tabStrip1.Style = eTabStripStyle.OneNote;
+            tabStrip1.TabAlignment = eTabStripAlignment.Top;
+            tabStrip1.TabLayoutType = eTabLayoutType.FixedWithNavigationBox;
+            tabStrip1.MdiForm = this;
         }
         public void UpdateData()
         {
+
         }
 
         protected override CreateParams CreateParams
@@ -78,36 +92,17 @@ namespace HM_ERP_System.Forms.Main_Form
                 return cp;
             }
         }
+
+        [Obsolete]
         private void frmMainForm_Load(object sender, EventArgs e)
         {
             try
             {
                 this.Text = ResourceCode.ProgName;
                 WindowState = FormWindowState.Maximized;
-                IsMdiContainer = true;
-                {
-                    tabStrip1.AutoSelectAttachedControl = true;
-                    tabStrip1.CanReorderTabs = true;
-                    tabStrip1.CloseButtonOnTabsVisible = true;
-                    tabStrip1.CloseButtonVisible = false;
-                    tabStrip1.Dock = DockStyle.Top;
-                    tabStrip1.Location = new Point(0, 50);
-                    tabStrip1.MdiTabbedDocuments = true;
-                    tabStrip1.Name = "tabStrip1";
-                    tabStrip1.SelectedTab = null;
-                    tabStrip1.SelectedTabFont = new Font("Tahoma", 10F, 0, GraphicsUnit.Point, 0);//Microsoft Sans Tahoma
-                    tabStrip1.Size = new Size(512, 26);
-                    tabStrip1.Style = eTabStripStyle.OneNote;
-                    tabStrip1.TabAlignment = eTabStripAlignment.Top;
-                    tabStrip1.TabIndex = 6;
-                    tabStrip1.TabLayoutType = eTabLayoutType.FixedWithNavigationBox;
-                    tabStrip1.Text = "tabStrip1";
-                }
-                tabStrip1.MdiForm = this;
                 setPeremissions();//تنظیمات سطوح دسترسی
                 SetRibbonStatusBar();
-
-               MetohdsClass.SendMessageForAdminAsync("✅برنامه اجرا شد", lblUserName.Text);
+                MetohdsClass.SendMessageForAdminAsync("✅برنامه اجرا شد", lblUserName.Text);
             }
             catch (Exception er)
             {
@@ -502,7 +497,7 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void btnAddBancksAc_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            frmContraAccounts f = new frmContraAccounts(this);
+            frmContraAccounts f = new frmContraAccounts(null);
             f.cmbTypeAccounts.Enabled = false;
             f.TypeAccounts_Id = 3;
             f.SpecificAccountCode = 10102;//بانک
@@ -512,7 +507,7 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void btnAddCofersAc_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            frmContraAccounts f = new frmContraAccounts(this);
+            frmContraAccounts f = new frmContraAccounts(null);
             f.cmbTypeAccounts.Enabled = false;
             f.TypeAccounts_Id = 4;
             f.SpecificAccountCode = 10101;//صندوق
@@ -569,40 +564,33 @@ namespace HM_ERP_System.Forms.Main_Form
         private void btnRepCustomer1_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             frmReport f = new frmReport();
-            f.Cod = "0";
+            f.Code = "0";
             //f.Condition="";
             f.DateReport = "گزارش از تاریخ: " + "1404/01/01" + "  تا تاریخ: " + "1404/05/25";
             f.ShowDialog();
         }
-
+        frmComersListH frmComersList = new frmComersListH();
         private void btnShowListComersH_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            frmComersList frmComersList = new frmComersList();
-            frmComersList.FormName = "ComersH";
-            frmComersList.ShowDialog();
+            FormManager.ShowMdiChildForm<frmComersListH>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
 
         private void btnShowListComersB_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            frmComersList frmComersList = new frmComersList();
-            frmComersList.FormName = "ComersB";
-            frmComersList.ShowDialog();
+            FormManager.ShowMdiChildForm<frmComersListB>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
 
         }
 
         private void btnShowListCommission_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            frmComersList frmComersList = new frmComersList();
-            frmComersList.FormName = "Commission";
-            frmComersList.ShowDialog();
-
+            FormManager.ShowMdiChildForm<frmCommissionList>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
         }
-       
+
         private void btnExitProgram_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
             if (MessageBox.Show(ResourceCode.T151, MyClass.PublicClass.ProjectName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
-               MetohdsClass.SendMessageForAdminAsync("❌برنامه بسته شد", lblUserName.Text);
+                //MetohdsClass.SendMessageForAdminAsync("❌برنامه بسته شد", lblUserName.Text);
                 Application.Exit();
             }
         }
@@ -640,5 +628,6 @@ namespace HM_ERP_System.Forms.Main_Form
 
             f.ShowDialog();
         }
+
     }
 }

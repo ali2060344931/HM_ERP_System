@@ -571,12 +571,14 @@
     <Compile Include="Class General\Bot Class\BaleBotClass.cs" />
     <Compile Include="Class General\Bot Class\MetodsClass.cs" />
     <Compile Include="Class General\CalculatComerB.cs" />
+    <Compile Include="Class General\CreatAccountDescriptions.cs" />
     <Compile Include="Class General\CreatView.cs" />
     <Compile Include="Class General\Cryptography.cs" />
     <Compile Include="Class General\DynamicToolTip.cs" />
     <Compile Include="Class General\FormManager.cs" />
     <Compile Include="Class General\GridExporter.cs" />
     <Compile Include="Class General\GridPrintColumn.cs" />
+    <Compile Include="Class General\IFormParameterReceiver.cs" />
     <Compile Include="Class General\IUpdatableForms.cs" />
     <Compile Include="Class General\Manage_Photos.cs" />
     <Compile Include="Class General\MyTextBox.cs">
@@ -857,11 +859,17 @@
     <Compile Include="Forms\Comers\frmComers.Designer.cs">
       <DependentUpon>frmComers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Comers\frmComersList.cs">
+    <Compile Include="Forms\Comers\frmComersListB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Comers\frmComersList.Designer.cs">
-      <DependentUpon>frmComersList.cs</DependentUpon>
+    <Compile Include="Forms\Comers\frmComersListB.Designer.cs">
+      <DependentUpon>frmComersListB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Comers\frmComersListH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Comers\frmComersListH.Designer.cs">
+      <DependentUpon>frmComersListH.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Commission\frmCommission.cs">
       <SubType>Form</SubType>
@@ -874,6 +882,12 @@
     </Compile>
     <Compile Include="Forms\Commission\frmCommissionCreateFile.Designer.cs">
       <DependentUpon>frmCommissionCreateFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Commission\frmCommissionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Commission\frmCommissionList.Designer.cs">
+      <DependentUpon>frmCommissionList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CustomerToGroup\frmCustomerToGroup.cs">
       <SubType>Form</SubType>
@@ -976,6 +990,12 @@
     </Compile>
     <Compile Include="Forms\PurchaseTanker\frmPurchase_Tanker.Designer.cs">
       <DependentUpon>frmPurchase_Tanker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmAllReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmAllReports.Designer.cs">
+      <DependentUpon>frmAllReports.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\frmReport.cs">
       <SubType>Form</SubType>
@@ -1136,14 +1156,20 @@
       <DependentUpon>frmComers.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Comers\frmComersList.resx">
-      <DependentUpon>frmComersList.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Comers\frmComersListB.resx">
+      <DependentUpon>frmComersListB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Comers\frmComersListH.resx">
+      <DependentUpon>frmComersListH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Commission\frmCommission.resx">
       <DependentUpon>frmCommission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Commission\frmCommissionCreateFile.resx">
       <DependentUpon>frmCommissionCreateFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Commission\frmCommissionList.resx">
+      <DependentUpon>frmCommissionList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomerToGroup\frmCustomerToGroup.resx">
       <DependentUpon>frmCustomerToGroup.cs</DependentUpon>
@@ -1196,6 +1222,9 @@
     <EmbeddedResource Include="Forms\PurchaseTanker\frmPurchase_Tanker.resx">
       <DependentUpon>frmPurchase_Tanker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmAllReports.resx">
+      <DependentUpon>frmAllReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -1236,11 +1265,13 @@
     </Compile>
     <EmbeddedResource Include="ReportViewer\Report_Cars.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_ComersB.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_ComersHSelectedList.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_Commission.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_AppointmentScheduling.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_ComersH.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_BanckCofer.rdlc" />
     <EmbeddedResource Include="ReportViewer\Report_BlacLists.rdlc" />
+    <EmbeddedResource Include="ReportViewer\Report_ComersHSelected.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsTransaction.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsList.rdlc" />
     <EmbeddedResource Include="ReportViewer\ReviewAccountsAllAcconts.rdlc" />

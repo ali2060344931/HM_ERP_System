@@ -1,4 +1,6 @@
 ﻿
+using MyClass;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -45,10 +47,10 @@ namespace BotProgram
 
                 await Bot.SendTextMessageAsync(MyChatId, message1 + '\n' + message2 + '\n' + DateTime.Now+'\n'+ vr);
             }
-            catch (Exception)
-            {
-
-            }
+                catch (Exception er)
+                {
+                    //PublicClass.ShowErrorMessage(er);
+                }
         }
 
 

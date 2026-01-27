@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace HM_ERP_System.Forms.PersonGroup
 {
-    public partial class frmPersonGroup : frmAddItems, IUpdatableForms
+    public partial class frmPersonGroup : frmAddItems, IUpdatableForms, IFormParameterReceiver
     {
         private IUpdatableForms _updatableForms;
         public int LisId = 0;
@@ -29,7 +29,10 @@ namespace HM_ERP_System.Forms.PersonGroup
             _updatableForms=updatableForms;
 
         }
+        public void SetParameters(object[] parameters)
+        {
 
+        }
         private void frmPersonGroup_Load(object sender, EventArgs e)
         {
             CallUpdateTata();

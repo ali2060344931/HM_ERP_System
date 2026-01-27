@@ -85,9 +85,11 @@
             this.uiTabPage7 = new Janus.Windows.UI.Tab.UITabPage();
             this.dgvListTransaction = new GridExEx.GridExEx();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTransactionCode = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
+            this.btnDeleteTransaction = new DevComponents.DotNetBar.ButtonX();
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlViewItemFoter = new System.Windows.Forms.Panel();
@@ -101,6 +103,7 @@
             this.buttonCommand4 = new Janus.Windows.Ribbon.ButtonCommand();
             this.uiCommandBar1 = new Janus.Windows.UI.CommandBars.UICommandBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
@@ -764,7 +767,7 @@
             this.uiTabPage5.Key = "List";
             this.uiTabPage5.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage5.Name = "uiTabPage5";
-            this.uiTabPage5.Size = new System.Drawing.Size(797, 329);
+            this.uiTabPage5.Size = new System.Drawing.Size(1026, 446);
             this.uiTabPage5.TabStop = true;
             this.uiTabPage5.Text = "گـــردش حســــاب";
             // 
@@ -797,7 +800,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.Size = new System.Drawing.Size(797, 329);
+            this.dgvList.Size = new System.Drawing.Size(1026, 446);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -817,7 +820,7 @@
             this.uiTabPage7.Key = "Transaction";
             this.uiTabPage7.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage7.Name = "uiTabPage7";
-            this.uiTabPage7.Size = new System.Drawing.Size(797, 329);
+            this.uiTabPage7.Size = new System.Drawing.Size(1026, 446);
             this.uiTabPage7.TabStop = true;
             this.uiTabPage7.Text = "سنــــد";
             // 
@@ -847,7 +850,7 @@
             this.dgvListTransaction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListTransaction.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvListTransaction.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListTransaction.Size = new System.Drawing.Size(797, 294);
+            this.dgvListTransaction.Size = new System.Drawing.Size(1026, 411);
             this.dgvListTransaction.Sortable = true;
             this.dgvListTransaction.TabIndex = 88;
             this.dgvListTransaction.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -860,17 +863,44 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtTransactionCode);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.lblDate);
             this.panel1.Controls.Add(this.lblCode);
+            this.panel1.Controls.Add(this.btnDeleteTransaction);
             this.panel1.Controls.Add(this.btnPrint);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(797, 35);
+            this.panel1.Size = new System.Drawing.Size(1026, 35);
             this.panel1.TabIndex = 89;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // txtTransactionCode
+            // 
+            this.txtTransactionCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtTransactionCode.CheackCodeMeli = false;
+            this.txtTransactionCode.Day = 0;
+            this.txtTransactionCode.Location = new System.Drawing.Point(86, 3);
+            this.txtTransactionCode.Miladi = new System.DateTime(((long)(0)));
+            this.txtTransactionCode.Month = 0;
+            this.txtTransactionCode.Name = "txtTransactionCode";
+            this.txtTransactionCode.NowDateSelected = false;
+            this.txtTransactionCode.Number = null;
+            this.txtTransactionCode.SelectedDate = null;
+            this.txtTransactionCode.Shamsi = null;
+            this.txtTransactionCode.Size = new System.Drawing.Size(108, 28);
+            this.txtTransactionCode.TabIndex = 203;
+            this.txtTransactionCode.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtTransactionCode.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
+            this.txtTransactionCode.TextDigitGroup = false;
+            this.txtTransactionCode.TextMode = HM_ERP_System.Class_General.MyTextBoxJanus.TextBoxMode.IntNumber;
+            this.txtTransactionCode.TextSimple = "";
+            this.txtTransactionCode.TextWatermark = "";
+            this.txtTransactionCode.TextWatermarkForeColor = System.Drawing.Color.Gray;
+            this.txtTransactionCode.Year = 0;
             // 
             // label5
             // 
@@ -878,7 +908,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(546, 14);
+            this.label5.Location = new System.Drawing.Point(775, 8);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 18);
             this.label5.TabIndex = 141;
@@ -890,7 +920,7 @@
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDate.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblDate.Location = new System.Drawing.Point(440, 11);
+            this.lblDate.Location = new System.Drawing.Point(669, 5);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(106, 25);
             this.lblDate.TabIndex = 141;
@@ -902,22 +932,43 @@
             this.lblCode.BackColor = System.Drawing.Color.Transparent;
             this.lblCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCode.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCode.Location = new System.Drawing.Point(604, 11);
+            this.lblCode.Location = new System.Drawing.Point(833, 5);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(81, 25);
             this.lblCode.TabIndex = 141;
             this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnDeleteTransaction
+            // 
+            this.btnDeleteTransaction.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDeleteTransaction.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnDeleteTransaction.AutoExpandOnClick = true;
+            this.btnDeleteTransaction.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeleteTransaction.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnDeleteTransaction.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.btnDeleteTransaction.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnDeleteTransaction.Location = new System.Drawing.Point(7, 6);
+            this.btnDeleteTransaction.Name = "btnDeleteTransaction";
+            this.btnDeleteTransaction.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnDeleteTransaction.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
+            this.btnDeleteTransaction.Size = new System.Drawing.Size(74, 23);
+            this.btnDeleteTransaction.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDeleteTransaction.SymbolSize = 20F;
+            this.btnDeleteTransaction.TabIndex = 202;
+            this.btnDeleteTransaction.TabStop = false;
+            this.btnDeleteTransaction.Text = "حذف سند";
+            this.btnDeleteTransaction.Click += new System.EventHandler(this.btnDeleteTransaction_Click);
+            // 
             // btnPrint
             // 
             this.btnPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnPrint.AutoExpandOnClick = true;
             this.btnPrint.BackColor = System.Drawing.Color.Transparent;
             this.btnPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnPrint.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnPrint.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnPrint.Location = new System.Drawing.Point(360, 11);
+            this.btnPrint.Location = new System.Drawing.Point(589, 5);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnPrint.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
@@ -935,7 +986,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(685, 14);
+            this.label4.Location = new System.Drawing.Point(914, 8);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 18);
             this.label4.TabIndex = 141;
@@ -1076,6 +1127,18 @@
             this.uiCommandBar1.Size = new System.Drawing.Size(49, 26);
             this.uiCommandBar1.Text = "CommandBar1";
             // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label6.Location = new System.Drawing.Point(197, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 18);
+            this.label6.TabIndex = 141;
+            this.label6.Text = "شماره سند:";
+            // 
             // frmReviewAccounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -1084,7 +1147,6 @@
             this.Controls.Add(this.uiPanel1);
             this.Controls.Add(this.uiPanel0);
             this.Controls.Add(this.ribbonStatusBar1);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmReviewAccounts";
             this.Text = "مرور حســــاب ها";
             this.Load += new System.EventHandler(this.frmReviewAccounts_Load);
@@ -1183,5 +1245,8 @@
         private System.Windows.Forms.Label label20;
         public DevComponents.DotNetBar.ButtonX btnAddGroup;
         public DevComponents.DotNetBar.ButtonX buttonX1;
+        public DevComponents.DotNetBar.ButtonX btnDeleteTransaction;
+        private Class_General.MyTextBoxJanus txtTransactionCode;
+        private System.Windows.Forms.Label label6;
     }
 }

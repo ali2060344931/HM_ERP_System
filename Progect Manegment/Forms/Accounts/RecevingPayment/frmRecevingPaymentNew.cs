@@ -60,8 +60,9 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             txtDueDate.Value = DateTime.Now;
             txtTransactionCode.Text = PublicClass.CreatTransactionCode();
 
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
-            txtDateEnd.Value = DateTime.Now;
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
+            //txtDateEnd.Value = DateTime.Now;
+            txtDateEnd.Text = PersianDate.DateEnd();
             WindowState = FormWindowState.Maximized;
 
             rdbIncomr.Checked = true;
@@ -201,7 +202,6 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         private void FilldgvList()
         {
             List<int> requiredIds = new List<int> { 4, 5 };
-
             PublicClass.FilldgvListTransaction(dgvList, txtDateStart.Text, txtDateEnd.Text, requiredIds);
         }
 

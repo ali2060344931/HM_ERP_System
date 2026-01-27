@@ -1,35 +1,19 @@
 ﻿using HM_ERP_System.Class_General;
-
-using HM_ERP_System.Entity.Accounts.Banck;
-using HM_ERP_System.Entity.Accounts.NatureAccount;
-using HM_ERP_System.Entity.Gender;
-using HM_ERP_System.Entity.Provinces;
 using HM_ERP_System.Forms.Accounts.Banck;
-using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.PersonGroup;
 using HM_ERP_System.Forms.Reports;
 
 using Janus.Windows.GridEX;
-using Janus.Windows.UI.Tab;
-
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.Reporting.WinForms;
 
 using MyClass;
 
 using Progect_Manegment;
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 
 //using Telerik.WinControls.Svg;
@@ -54,17 +38,27 @@ namespace HM_ERP_System.Forms.Customer
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+            //    if (File.Exists("GridLayout.xml"))
+            //    {
+            //        string layout = File.ReadAllText("GridLayout.xml");
+            //        dgvList.LoadComponentSettings();
+            //        dgvList.SaveComponentSettings();
+            //    }
+            //}
+            //catch { }
+
+            chkControlCodeMeli.Checked = true;
+            using (var db = new DBcontextModel())
             {
-                if (File.Exists("GridLayout.xml"))
+                var q = db.Customers.Any(c => c.CodMeliCorrect);
+                if (q)
                 {
-                    string layout = File.ReadAllText("GridLayout.xml");
-                    dgvList.LoadComponentSettings();
-                    dgvList.SaveComponentSettings();
+                    button1.Visible = false;
                 }
             }
-            catch { }
-            chkControlCodeMeli.Checked = true;
+
             UpdateData();
         }
 
@@ -113,25 +107,6 @@ namespace HM_ERP_System.Forms.Customer
             {
                 using (var db = new DBcontextModel())
                 {
-                    //var q = from bb in db.BankBranches
-                    //        join ba in db.Bancks
-                    //        on bb.BanckId equals ba.Id
-                    //        select new
-                    //        {
-                    //            bb.Id,
-                    //            bb.Name,
-                    //            BanckName = ba.Name,
-                    //        };
-
-                    //var q = from bb in db.BankBranches
-                    //        join ba in db.Bancks
-                    //        on bb.BanckId equals ba.Id
-                    //        select new
-                    //        {
-                    //            bb.Id,
-                    //            bb.Name,
-                    //            BanckName = ba.Name,
-                    //        };
 
                     var q = db.Bancks;
                     cmbBanck.DataSource = q.ToList();
@@ -252,7 +227,6 @@ namespace HM_ERP_System.Forms.Customer
                         on cuR_.CustomerId equals CuUser.Id into CuUserGroup
                         from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
-
                         where cu.id_TypeCustomer <= 2
 
                         select new
@@ -261,6 +235,7 @@ namespace HM_ERP_System.Forms.Customer
                             cu.Name,
                             cu.Family,
                             cu.CodMeli,
+                            cu.CodMeliCorrect,
                             TypeCustomerName = tc.Name,
                             cu.Tel,
                             cu.Tel2,
@@ -279,7 +254,7 @@ namespace HM_ERP_System.Forms.Customer
                             cu.UserId,
                             cu.BanckId,
                             cu.CityId,
-                            User = CuUser_!=null ? CuUser_.Family + " " + CuUser_.Name:"-",
+                            User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
 
                     DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());
@@ -421,7 +396,7 @@ namespace HM_ERP_System.Forms.Customer
                     if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
                     var userRepo = new Repository<HM_ERP_System.Entity.Customer.Customer>(db);
-                    int CustomerId = userRepo.SaveOrUpdateRefId(new Entity.Customer.Customer { Id = ListId, Name = txtName.Text, Family = txtFamily.Text, CodMeli = txtCodMeli.Text, id_TypeCustomer = TypeCustomerId, CityId = CityId, Tel = txtTel1.Text, Tel2 = txtTel2.Text, Adders = txtAdders1.Text, Adders2 = txtAdders2.Text, PostalCode = txtPostalCode.Text, BanckId = BanckId, DabitCardNumber = txtDabitCardNumber.Text, SeryalShaba = txtSeryalShaba.Text, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
+                    int CustomerId = userRepo.SaveOrUpdateRefId(new Entity.Customer.Customer { Id = ListId, Name = txtName.Text, Family = txtFamily.Text, CodMeli = txtCodMeli.Text, CodMeliCorrect = PublicClass.checCodmeli(txtCodMeli.Text), id_TypeCustomer = TypeCustomerId, CityId = CityId, Tel = txtTel1.Text, Tel2 = txtTel2.Text, Adders = txtAdders1.Text, Adders2 = txtAdders2.Text, PostalCode = txtPostalCode.Text, BanckId = BanckId, DabitCardNumber = txtDabitCardNumber.Text, SeryalShaba = txtSeryalShaba.Text, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
                     if (ListId == 0)
                     {
                         if (CustomerId > 0)
@@ -631,10 +606,10 @@ namespace HM_ERP_System.Forms.Customer
                         if (!PublicClass.SetPeremission("Node1_1_1_2", 1)) return;
                         using (var db = new DBcontextModel())
                         {
-                            var ch=db.CustomerToGroups.Where(c=>c.CustomerId==ListId).Count();
-                            if(ch==0)
+                            var ch = db.CustomerToGroups.Where(c => c.CustomerId == ListId).Count();
+                            if (ch == 0)
                             {
-                                PublicClass.StopMesseg(ResourceCode.T181+'\n'+ ResourceCode.T182); return;
+                                PublicClass.StopMesseg(ResourceCode.T181 + '\n' + ResourceCode.T182); return;
                             }
                             var q = db.Customers.Where(c => c.Id == ListId).First();
                             cmbTypeCustomer.Value = q.id_TypeCustomer;
@@ -677,7 +652,7 @@ namespace HM_ERP_System.Forms.Customer
                             var c1 = db.DetailedAccounts.Where(c => c.CustomerId == ListId);
                             var c2 = db.CustomerToGroups.Where(c => c.CustomerId == ListId);
                             var c3 = db.CustomerRoles.Where(c => c.CustomerId == ListId);
-                            if (c1.Count()!=0 || c2.Count() != 0 || c3.Count() != 0)
+                            if (c1.Count() != 0 || c2.Count() != 0 || c3.Count() != 0)
                             {
                                 PublicClass.StopMesseg(ResourceCode.T004); return;
                             }
@@ -700,9 +675,9 @@ namespace HM_ERP_System.Forms.Customer
 
                         break;
                     case "AddDocumentToBanck"://ثبت مدارک
-                        
+
                         if (!PublicClass.SetPeremission("Node1_1_1_4", 1)) return;
-                        
+
                         string lblCaption = "نام و نام خانوادگی: " + dgvList.GetRow().Cells["Name"].Value.ToString() + " " + dgvList.GetRow().Cells["Family"].Value.ToString() + " کد ملی: " + dgvList.GetRow().Cells["CodMeli"].Value.ToString();
 
                         PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
@@ -829,5 +804,28 @@ namespace HM_ERP_System.Forms.Customer
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.Customers.ToList();
+                    foreach (var item in q)
+                    {
+                        if (item.CodMeli != null)
+                            if (PublicClass.checCodmeli(item.CodMeli))
+                                item.CodMeliCorrect = true;
+                    }
+                    if (db.SaveChangesSafe())
+                        FilldgvList();
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+        }
     }
 }

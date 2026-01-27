@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            Janus.Windows.Common.Layouts.JanusLayoutReference dgvList_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column23.ButtonImage");
+            Janus.Windows.Common.Layouts.JanusLayoutReference dgvList_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column24.ButtonImage");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             Janus.Windows.GridEX.GridEXLayout cmbTypeCustomer_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbCity_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -90,6 +90,7 @@
             this.btnCratMelyCode = new DevComponents.DotNetBar.ButtonX();
             this.btnRepC1 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -107,7 +108,7 @@
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(737, 533);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(737, 582);
             // 
             // pnlViewItemHeder
             // 
@@ -118,7 +119,7 @@
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnAddCustomerByExcelFil);
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 583);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 632);
             this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(737, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
@@ -128,6 +129,7 @@
             // 
             // pnlAddItemBodi
             // 
+            this.pnlAddItemBodi.Controls.Add(this.button1);
             this.pnlAddItemBodi.Controls.Add(this.btnAddBanck);
             this.pnlAddItemBodi.Controls.Add(this.cmbBanck);
             this.pnlAddItemBodi.Controls.Add(this.btnAddNewCity);
@@ -172,11 +174,11 @@
             this.pnlAddItemBodi.Controls.Add(this.label14);
             this.pnlAddItemBodi.Controls.Add(this.label3);
             this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(350, 577);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(350, 626);
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 577);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 626);
             this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(350, 34);
             // 
@@ -195,19 +197,19 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(511, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(397, 12);
             this.txtDateStart.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 20, 17, 4, 6, 98);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(309, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(195, 12);
             this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 20, 17, 4, 6, 98);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(219, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(105, 15);
             this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4);
             // 
             // labelX2
@@ -216,7 +218,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(439, 17);
+            this.labelX2.Location = new System.Drawing.Point(325, 17);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
@@ -226,20 +228,20 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(641, 17);
+            this.labelX1.Location = new System.Drawing.Point(527, 17);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
             this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItems.Size = new System.Drawing.Size(739, 639);
+            this.pnlViewItems.Size = new System.Drawing.Size(739, 688);
             // 
             // pnlAddItems
             // 
             this.pnlAddItems.Location = new System.Drawing.Point(742, 3);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlAddItems.Size = new System.Drawing.Size(356, 639);
+            this.pnlAddItems.Size = new System.Drawing.Size(356, 688);
             // 
             // btnExportToExcel
             // 
@@ -288,7 +290,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCustomer";
-            this.dgvList.Size = new System.Drawing.Size(737, 533);
+            this.dgvList.Size = new System.Drawing.Size(737, 582);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -704,7 +706,6 @@
             this.cmbGroup.Size = new System.Drawing.Size(209, 30);
             this.cmbGroup.TabIndex = 1;
             this.cmbGroup.ValuesDataMember = null;
-            //this.cmbGroup.CheckedValuesChanged += new System.EventHandler(this.cmbGroup_CheckedValuesChanged);
             this.cmbGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGroup_KeyDown);
             // 
             // label20
@@ -907,11 +908,22 @@
             this.buttonItem1.Text = "گزارش pdf";
             this.buttonItem1.Click += new System.EventHandler(this.buttonItem1_Click);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(228, 593);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 26);
+            this.button1.TabIndex = 159;
+            this.button1.Text = "بررسی کد ملی ها";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 645);
+            this.ClientSize = new System.Drawing.Size(1101, 694);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmCustomer";
@@ -992,5 +1004,6 @@
         public DevComponents.DotNetBar.ButtonX btnCratMelyCode;
         private DevComponents.DotNetBar.ButtonItem btnRepC1;
         private DevComponents.DotNetBar.ButtonItem buttonItem1;
+        private System.Windows.Forms.Button button1;
     }
 }

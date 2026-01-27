@@ -24,19 +24,41 @@ namespace HM_ERP_System.Entity.Settings
         public string StrCode1 { get; set; }
         public string StrCode2 { get; set; }
         public string StrCode3 { get; set; }
+        public string StrCode4 { get; set; }
+        public string StrCode5 { get; set; }
         public double DoubCode1 { get; set; }
         public double DoubCode2 { get; set; }
         public double DoubCode3 { get; set; }
+        public byte[] Image1 { get; set; }
+        public byte[] Image2 { get; set; }
+        public byte[] Image3 { get; set; }
+        ///// <summary>
+        ///// پیش فرض
+        ///// </summary>
+        //public bool Default { get; set; }
+        
+
+        /// <summary>
+        /// تاریخ ثبت
+        /// </summary>
+        public DateTime RecordDateTime { get; set; } = DateTime.Now;
+        /// <summary>
+        /// کد کاربر
+        /// </summary>
+        public int UserId { get; set; }
+
     }
-            public class SettingConfig : EntityTypeConfiguration<Setting>
+    public class SettingConfig : EntityTypeConfiguration<Setting>
     {
         public SettingConfig()
         {
             HasKey(x => x.Id);
-            Property(d => d.Subject).HasMaxLength(100);
-            Property(d => d.StrCode1).HasMaxLength(200);
-            Property(d => d.StrCode2).HasMaxLength(300);
-            Property(d => d.StrCode3).HasMaxLength(400);
+            Property(d => d.Subject).HasMaxLength(int.MaxValue);
+            Property(d => d.StrCode1).HasMaxLength(int.MaxValue);
+            Property(d => d.StrCode2).HasMaxLength(int.MaxValue);
+            Property(d => d.StrCode3).HasMaxLength(int.MaxValue);
+            Property(d => d.StrCode4).HasMaxLength(int.MaxValue);
+            Property(d => d.StrCode5).HasMaxLength(int.MaxValue);
         }
     }
 

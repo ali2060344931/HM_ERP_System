@@ -73,7 +73,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         {
             WindowState = FormWindowState.Maximized;
 
-            //txtDateS.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
+            //txtDateS.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList() * -1);
             //txtDateE.Value = DateTime.Now;
 
             btnFinancialYear_Click(null, null);
@@ -104,7 +104,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             dgvList.DataSource = null;
             dgvListTransaction.DataSource = null;
         }
-        
+
         /// <summary>
         /// همه حسابها
         /// </summary>
@@ -158,7 +158,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             }
 
         }
-        
+
         /// <summary>
         /// حساب معین
         /// </summary>
@@ -301,15 +301,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
 
                 if (e.Column.Key == "Transaction")
                 {
-                    using (var db = new DBcontextModel())
-                    {
-                        //var q = db.DetailedAccounts.Where(c => c.Id == ListId).First();
-
-                        PublicClass.FilldgvListTransaction(dgvListTransaction, Date, Date, TransactionCode);
-                        lblCode.Text = TransactionCode.ToString();
-                        lblDate.Text = Date;
-                        uiTab1.TabPages["Transaction"].Selected = true;
-                    }
+                    FilldgvListTransaction(TransactionCode, Date);
                 }
             }
             catch (Exception er)
@@ -317,6 +309,26 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 PublicClass.ShowErrorMessage(er);
             }
         }
+
+        /// <summary>
+        /// نمایش لیست اسناد
+        /// </summary>
+        /// <param name="TransactionCode"></param>
+        /// <param name="Date"></param>
+        void FilldgvListTransaction(int TransactionCode, string Date,int code=0)
+        {
+            using (var db = new DBcontextModel())
+            {
+                PublicClass.FilldgvListTransaction(dgvListTransaction, Date, Date, TransactionCode);
+                if (code == 0)
+                {
+                    lblCode.Text = TransactionCode.ToString();
+                    lblDate.Text = Date;
+                    uiTab1.TabPages["Transaction"].Selected = true;
+                }
+            }
+        }
+
 
         private void btnFinancialYear_Click(object sender, EventArgs e)
         {
@@ -339,7 +351,8 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         private void btnThisDay_Click(object sender, EventArgs e)
         {
             txtDateS.Value = DateTime.Now;
-            txtDateE.Value = DateTime.Now;
+            //txtDateE.Value = DateTime.Now;
+            txtDateE.Text = PersianDate.DateEnd();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -563,6 +576,36 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 case "List"://لیست تراکنش ها
                     dgvList.ShowFieldChooser(this, ResourceCode.T158);
                     break;
+            }
+        }
+
+        private void btnDeleteTransaction_Click(object sender, EventArgs e)
+        {
+            if (txtTransactionCode.Text == "")
+            {
+                PublicClass.ErrorMesseg(ResourceCode.T208); return;
+            }
+            if (txtTransactionCode.Text == lblCode.Text)
+            {
+                if (MessageBox.Show(ResourceCode.T053, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
+                using (var db = new DBcontextModel())
+                {
+                    int TransactionCode=Convert.ToInt32(txtTransactionCode.Text);
+                    var q=db.Transactions.Where(c=>c.TransactionCode== TransactionCode).ToList();
+                    foreach (var item in q)
+                    {
+                        item.Status = true;
+                    }
+                    db.SaveChangesSafe();
+                    FilldgvListTransaction(TransactionCode, lblDate.Text,1);
+                    PublicClass.WindowAlart("2");
+                }
+
+
+            }
+            else
+            {
+                PublicClass.ErrorMesseg(ResourceCode.T208); return;
             }
         }
     }

@@ -703,6 +703,51 @@
   <data name="T194" xml:space="preserve">
     <value>آیا سند حسابداری بارنامه مورد نظر حذف شود؟</value>
   </data>
+  <data name="T195" xml:space="preserve">
+    <value>حـــــواله بارگیری</value>
+  </data>
+  <data name="T196" xml:space="preserve">
+    <value>نام (عنوان) شرکت را وارد نمائید.</value>
+  </data>
+  <data name="T197" xml:space="preserve">
+    <value>نام(عنوان ) شرکت وارد شده تکراری می باشد.</value>
+  </data>
+  <data name="T198" xml:space="preserve">
+    <value>آدرس را وارد نمائید.</value>
+  </data>
+  <data name="T199" xml:space="preserve">
+    <value>تلفن ها را وارد نمائید</value>
+  </data>
+  <data name="T200" xml:space="preserve">
+    <value>موضوع شرکت را وارد نمائید.</value>
+  </data>
+  <data name="T201" xml:space="preserve">
+    <value>تصاویر مورد نظر را انتخاب نمائید.</value>
+  </data>
+  <data name="T202" xml:space="preserve">
+    <value>نام شرکت پیشفرض را از قسمت تنظیمات شخصی مشخص نمائید.</value>
+  </data>
+  <data name="T203" xml:space="preserve">
+    <value>نام (عنوان) شرکت را انتخــــاب نمائید.</value>
+  </data>
+  <data name="T204" xml:space="preserve">
+    <value>آیتم مورد نظر به عنوان پیشفرض تعریف شده است.</value>
+  </data>
+  <data name="T205" xml:space="preserve">
+    <value>قبلا برای این حواله بارنامه ثبت شده است.</value>
+  </data>
+  <data name="T206" xml:space="preserve">
+    <value>بدلیل ابطال شده حواله امکان ثبت بارنامه وجود ندارد.</value>
+  </data>
+  <data name="T207" xml:space="preserve">
+    <value>شمـــاره حــــواله: </value>
+  </data>
+  <data name="T208" xml:space="preserve">
+    <value>شماره سند را وارد نمائید.</value>
+  </data>
+  <data name="T209" xml:space="preserve">
+    <value>برای این بارنامه سند حسابداری ثبت نشده است.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

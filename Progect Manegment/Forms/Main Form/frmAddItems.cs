@@ -63,7 +63,7 @@ namespace HM_ERP_System.Forms.Main_Form
         private void frmAddItems_Load(object sender, EventArgs e)
         {
 
-            //txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
+            //txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList() * -1);
             //txtDateEnd.Text = PersianDate.DateEnd();
             WindowState = FormWindowState.Maximized;
         }
@@ -80,7 +80,8 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void labelX2_Click(object sender, EventArgs e)
         {
-            txtDateEnd.Value = DateTime.Now;
+            //txtDateEnd.Value = DateTime.Now;
+            txtDateEnd.Text = PersianDate.DateEnd();
         }
     }
 }

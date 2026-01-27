@@ -34,9 +34,9 @@ namespace HM_ERP_System.Forms.PurchaseTanker
         }
         private void frmPurchase_Tanker_Load(object sender, EventArgs e)
         {
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
-            txtDateEnd.Value = DateTime.Now;
-
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
+            //txtDateEnd.Value = DateTime.Now;
+            txtDateEnd.Text = PersianDate.DateEnd();
             txtDate.Value= DateTime.Now;
             UpdateData();
         }

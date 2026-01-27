@@ -1,5 +1,6 @@
 ﻿
 using BehComponents;
+
 using ClosedXML.Excel;
 
 using DevComponents.DotNetBar;
@@ -88,6 +89,17 @@ namespace MyClass
         public static void SetUserId()
         {
             UserId = HM_ERP_System.Properties.Settings.Default.UsersId;
+        }
+        /// <summary>
+        /// تعداد روز قبل از تاریخ جاری جهت نمایش لیست گزارشات
+        /// </summary>
+
+        public static int SetDayToReportList()
+        {
+            using (var db = new DBcontextModel())
+            {
+                return db.CustomerRoles.Where(c => c.Id == UserId).First().SetDayToReportList * -1;
+            }
         }
 
         public static void SetFinancialYear()
@@ -1083,7 +1095,7 @@ namespace MyClass
             }
             catch (Exception er)
             {
-                PublicClass.WindowAlart("2", ResourceCode.T186+ '\n'+ ControlName);
+                PublicClass.WindowAlart("2", ResourceCode.T186 + '\n' + ControlName);
                 //PublicClass.ShowErrorMessage(er);
                 return false;
             }
@@ -1688,7 +1700,7 @@ namespace MyClass
 
                                    join coH in db.ComersHs on coB_.ComersHId equals coH.Id into coHGroup
                                    from coH_ in coHGroup.DefaultIfEmpty()
-                                   
+
                                    join cuR in db.CustomerRoles
                                    on tr.UserId equals cuR.Id into cuRGroup
                                    from cuR_ in cuRGroup.DefaultIfEmpty()
@@ -2273,7 +2285,7 @@ namespace MyClass
                 }
             }
 
-           
+
         }
 
 
@@ -2673,7 +2685,7 @@ namespace MyClass
 
                                     where specificAccountIds.Contains(da.SpecificAccountId)
 
-                                    group new { da, cu, trGroup } by new { da.SpecificAccountId, da.Id, da.CodeAccount, cu.Name, cu.Family,cu.CodMeli,cu.Tel, Id_ = cu.Id } into g
+                                    group new { da, cu, trGroup } by new { da.SpecificAccountId, da.Id, da.CodeAccount, cu.Name, cu.Family, cu.CodMeli, cu.Tel, Id_ = cu.Id } into g
 
                                     let DebitTurnoverSumD = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBed) ?? 0.0
                                     let CreditTurnoverSumD = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBes) ?? 0.0
@@ -2693,7 +2705,7 @@ namespace MyClass
                                         CustomerName = g.Key.Name,
                                         Code = g.Key.CodeAccount,
                                         Name = g.Key.Family + " " + g.Key.Name,
-                                        CodMeli=g.Key.CodMeli,
+                                        CodMeli = g.Key.CodMeli,
                                         Tel = g.Key.Tel,
                                         DebitTurnover = DebitTurnoverSumD,
                                         CreditTurnover = CreditTurnoverSumD,
@@ -3100,12 +3112,13 @@ namespace MyClass
                     join cu in db.Customers on da.CustomerId equals cu.Id
                     join sp in db.SpecificAccounts on da.SpecificAccountId equals sp.Id
 
-                    group new { da, sp, trGroup } by new
+                    group new { da, sp, trGroup, cu } by new
                     {
                         da.Id,
                         da.CustomerId,
                         da.CodeAccount,
-                        sp.Name
+                        sp.Name,
+                        cu.SecretCode,
                     }
                     into g
 
@@ -3113,11 +3126,12 @@ namespace MyClass
                     let CreditTurnover = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBes) ?? 0
                     let Balance = DebitTurnover - CreditTurnover
 
+                    where g.Key.SecretCode == 0
+
                     where ShowZeroBalance ||
                           DebitTurnover != 0 ||
                           CreditTurnover != 0 ||
                           Balance != 0
-
                     select new
                     {
                         ParentCustomerId = g.Key.CustomerId,
@@ -3191,7 +3205,7 @@ namespace MyClass
     int? TransactionCodeS = 0,
     int? TransactionCodeE = 0,
     bool ShowZeroBalance = false,
-    bool IsBeginningBalanceFilter = false,string txtSearch="") // 👈 پارامتر جدید
+    bool IsBeginningBalanceFilter = false, string txtSearch = "") // 👈 پارامتر جدید
         {
             DataSet ds = new DataSet("AccountingDataSet");
 
@@ -3229,11 +3243,11 @@ namespace MyClass
                 // کوئری سطح والد (Customers)
                 // ----------------------------------------------------------------
                 var qCustomers = from da in db.DetailedAccounts
-                                 
+
                                  join cu in db.Customers on da.CustomerId equals cu.Id
                                  join ctg in db.CustomerToGroups on cu.Id equals ctg.CustomerId
                                  join cg in db.PersonGroups on ctg.PersonGroupId equals cg.Id
-                                 
+
                                  join sa in db.SpecificAccounts on da.SpecificAccountId equals sa.Id
                                  join ta in db.TotalAccounts on sa.Id_TotalAccount equals ta.Id
                                  join ga in db.GroupAccounts on ta.Id_GroupAccount equals ga.Id
@@ -3244,13 +3258,13 @@ namespace MyClass
                                  into trGroup
                                  where ga.Id == 1 || ga.Id == 2 || ga.Id == 3 || ga.Id == 4 || ga.Id == 5
 
-                                 group new { da, trGroup, sa, ta, ga, na, cu,ctg,cg } by cu.Id into g
+                                 group new { da, trGroup, sa, ta, ga, na, cu, ctg, cg } by cu.Id into g
 
                                  let CustomerData = g.FirstOrDefault()
                                  let CustomerName = (CustomerData.cu.Family + " " + CustomerData.cu.Name).Trim()
                                  let CustomerCode = CustomerData.cu.Id
-                                 let CodMeli= CustomerData.cu.CodMeli
-                                 let Tel= CustomerData.cu.Tel
+                                 let CodMeli = CustomerData.cu.CodMeli
+                                 let Tel = CustomerData.cu.Tel
                                  let DebitTurnoverSum = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBed) ?? 0.0
                                  let CreditTurnoverSum = g.SelectMany(x => x.trGroup).Sum(t => (double?)t.PaymentBes) ?? 0.0
                                  let EndingBalance = DebitTurnoverSum - CreditTurnoverSum
@@ -3970,6 +3984,7 @@ namespace MyClass
                 {
                     try
                     {
+                        string Description = "";
                         int ListId = 0;
                         int TransactionCode = Convert.ToInt32(PublicClass.CreatTransactionCode());
                         //شماره سریال سند
@@ -3977,14 +3992,15 @@ namespace MyClass
                         int SpecificAccountId = 0;
                         int DetailedAccountId = 0;
                         int customertId = 0;
-                        var qcom = db.ComersBs.Where(c => c.Id == ComerBId).First();
-                        //var ADR = new Repository<Transaction>(db);
+                        var qcomB = db.ComersBs.Where(c => c.Id == ComerBId).First();
 
                         //AE سند طرف حساب کالا
-                        //دریافت از صاحب کالا بابت حمل کالا.جزء درآمد می باشد
-                        {
-                            if (qcom.AE != 0)
+                        {//دریافت از صاحب کالا بابت حمل کالا.جزء درآمد می باشد
+                            if (qcomB.AE != 0)
                             {
+                                // شرح سند مربوط به صاحب کالا
+                                Description = CreatAccountDescriptions.GoodsAccountDes(ComerBId);
+
                                 //سند بد
                                 Series++;
                                 //حساب معین
@@ -4001,7 +4017,7 @@ namespace MyClass
                                 else
                                     DetailedAccountId = serch1.First().Id;
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcom.AE, qcom.AE, 0, ComerBId, "بایت دریافتی از صاحب کالا", "", Series, true);
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomB.AE, qcomB.AE, 0, ComerBId, Description, "", Series, true);
 
 
                                 //*****************
@@ -4022,17 +4038,24 @@ namespace MyClass
                                     DetailedAccountId = serch2.First().Id;
 
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcom.AE, 0, qcom.AE, ComerBId, "بایت دریافتی از صاحب کالا", "", Series, true);
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomB.AE, 0, qcomB.AE, ComerBId, Description, "", Series, true);
 
                             }
                         }
-                        //AV سند کرایه راننده
-                        {
-                            double qcomBV = Math.Abs(qcom.BV);
-                            if (qcom.BV < 0)//AXسند هرینه
-                            {
-                                Series++;
 
+                        //AV سند کرایه صاحب کامیون
+
+                        double qcomBV = Math.Abs(qcomB.BV);
+                        {
+                            Description = CreatAccountDescriptions.CostAccounDes(ComerBId);
+                            if (qcomB.BV < 0)//AXسند هرینه
+                            {
+                                // شرح سند مربوط به صاحب کامیون
+
+
+                                //شرح سند
+
+                                Series++;
                                 //حساب معین
                                 SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 80801).First().Id;//هزینه حمل کالا
 
@@ -4045,7 +4068,7 @@ namespace MyClass
                                 else
                                     DetailedAccountId = serch1.First().Id;
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, "بابت هزینه کرایه حمل", "", Series, true);
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, Description, "", Series, true);
 
 
                                 //*****************
@@ -4062,30 +4085,33 @@ namespace MyClass
                                 else
                                     DetailedAccountId = serch2.First().Id;
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, 0, qcomBV, ComerBId, "بابت هزینه کرایه حمل", "", Series, true);
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, 0, qcomBV, ComerBId, Description, "", Series, true);
 
                             }
-                            else if (qcom.BV > 0)//AV سند درآمد
+                            else if (qcomB.BV > 0)//AV سند درآمد
                             {
-                                Series++;
+                                //شرح سند
 
-                                //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;//بدهکاران تجاری، خریداران
+                                if (qcomB.PaymentToOthers1 != qcomBV)
+                                {
+                                    Series++;
+                                    //حساب معین
+                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;//بدهکاران تجاری، خریداران
 
-                                //حساب تفصیلی
-                                customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
+                                    //حساب تفصیلی
+                                    customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
 
-                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
 
-                                if (serch1.Count() == 0)
-                                    //ایجاد حساب تفصیلی
-                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
-                                else
-                                    DetailedAccountId = serch1.First().Id;
+                                    if (serch1.Count() == 0)
+                                        //ایجاد حساب تفصیلی
+                                        DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    else
+                                        DetailedAccountId = serch1.First().Id;
 
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, "بابت درآمد کرایه حمل", "", Series, true);
-
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, Description, "", Series, true);
+                                }
                                 //*****************
 
                                 Series++;
@@ -4103,19 +4129,23 @@ namespace MyClass
                                 else
                                     DetailedAccountId = serch2.First().Id;
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomBV, 0, qcomBV, ComerBId, "بابت درآمد کرایه حمل", "", Series, true);
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomBV, 0, qcomBV, ComerBId, Description, "", Series, true);
 
                             }
                         }
+
                         //AZ سند بارنامه نویس
                         {
-                            double qcomAZ = Math.Abs(qcom.AZ);
+                            double qcomAZ = Math.Abs(qcomB.AZ);
                             //وضعیت بارنامه:دارای بارنامه/فاقد بارنامه
-                            var StatusLading = db.ComersHs.Where(c => c.Id == qcom.ComersHId).First().StatusLading;
+                            var StatusLading = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First().StatusLading;
+                            Description = CreatAccountDescriptions.ShiperAccountDes(ComerBId);
 
                             if (!StatusLading)
                             {
-                                if (qcom.AZ < 0)//(پرداخت شود(سند هزینه
+                                // شرح سند بارنامه نویس
+
+                                if (qcomB.AZ < 0)//(پرداخت شود(سند هزینه
                                 {
                                     Series++;
                                     //حساب معین
@@ -4130,9 +4160,7 @@ namespace MyClass
                                     else
                                         DetailedAccountId = serch1.First().Id;
 
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomAZ, qcomAZ, 0, ComerBId, "بابت هزینه بارنامه نویسی", "", Series, true);
-
-
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomAZ, qcomAZ, 0, ComerBId, Description, "", Series, true);
 
                                     //*****************
 
@@ -4141,7 +4169,7 @@ namespace MyClass
                                     SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id;//بستانکاران تجاری فروشندگان
 
                                     //طرف حساب بارنامه نویس
-                                    customertId = db.ComersHs.Where(c => c.Id == qcom.ComersHId).First().ShiperId;
+                                    customertId = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First().ShiperId;
 
                                     var serch2 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
                                     if (serch2.Count() == 0)
@@ -4149,17 +4177,17 @@ namespace MyClass
                                     else
                                         DetailedAccountId = serch2.First().Id;
 
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomAZ, 0, qcomAZ, ComerBId, "بابت هزینه بارنامه نویسی", "", Series, true);
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomAZ, 0, qcomAZ, ComerBId, Description, "", Series, true);
 
                                 }
-                                else if (qcom.AZ > 0)//(دریافت شود(سند درآمد
+                                else if (qcomB.AZ > 0)//(دریافت شود(سند درآمد
                                 {
                                     Series++;
                                     //حساب معین
                                     SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;//بدهکاران تجاری، خریداران
 
                                     //حساب تفصیلی
-                                    customertId = db.ComersHs.Where(c => c.Id == qcom.ComersHId).First().ShiperId;
+                                    customertId = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First().ShiperId;
 
                                     var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
 
@@ -4169,7 +4197,7 @@ namespace MyClass
                                     else
                                         DetailedAccountId = serch1.First().Id;
 
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomAZ, qcomAZ, 0, ComerBId, "بابت دریافتی از بارنامه نویسی", "", Series, true);
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomAZ, qcomAZ, 0, ComerBId, Description, "", Series, true);
                                     //*****************
 
                                     Series++;
@@ -4186,43 +4214,47 @@ namespace MyClass
                                     else
                                         DetailedAccountId = serch2.First().Id;
 
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomAZ, 0, qcomAZ, ComerBId, "بابت دریافتی از بارنامه نویسی", "", Series, true);
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, qcomAZ, 0, qcomAZ, ComerBId, Description, "", Series, true);
 
                                 }
                             }
                         }
+
                         //سند پرداختی سایر
                         {
-                            var PaymentToOthers = db.ComersBs.Where(c => c.Id == ComerBId).First();
 
-                            if (PaymentToOthers.PaymentToOthersId != 0)
+                            if (qcomB.PaymentToOthersId != 0)
                             {
+                            Description = CreatAccountDescriptions.AnterAccountDes(ComerBId);
 
                                 Series++;
-                                SpecificAccountId = db.DetailedAccounts.Where(c => c.Id == PaymentToOthers.PaymentToOthersId).First().SpecificAccountId;
-                                DetailedAccountId = PaymentToOthers.PaymentToOthersId;
+                                SpecificAccountId = db.DetailedAccounts.Where(c => c.Id == qcomB.PaymentToOthersId).First().SpecificAccountId;
+                                DetailedAccountId = qcomB.PaymentToOthersId;
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers1, PaymentToOthers.PaymentToOthers1, 0, ComerBId, "پرداختی سایر", "", Series, true);
-
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomB.PaymentToOthers1, qcomB.PaymentToOthers1, 0, ComerBId, Description, "", Series, true);
 
                                 //*****************
+                                if (qcomB.PaymentToOthers1 != qcomBV)
+                                {
+                                    Series++;
+                                    //حساب معین
+                                    SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id; //هزینه حمل کالا
 
-                                Series++;
-                                //حساب معین
-                                SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id; //هزینه حمل کالا
-                                                                                                               //حساب تفصیلی
-                                customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
+                                    //حساب تفصیلی
+                                    customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
 
-                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
-                                if (serch1.Count() == 0)
-                                    DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
-                                else
-                                    DetailedAccountId = serch1.First().Id;
+                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    if (serch1.Count() == 0)
+                                        DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    else
+                                        DetailedAccountId = serch1.First().Id;
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers1, 0, PaymentToOthers.PaymentToOthers1, ComerBId, "پرداختی سایر", "", Series, true);
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, qcomB.PaymentToOthers1, 0, qcomB.PaymentToOthers1, ComerBId, Description, "", Series, true);
+                                }
 
                             }
                         }
+
                         //سایر هزینه ها
                         {
                             var PaymentToOthers = db.ComersBs.Where(c => c.Id == ComerBId).First();
@@ -4243,7 +4275,7 @@ namespace MyClass
                                     DetailedAccountId = serch1.First().Id;
 
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers2, PaymentToOthers.PaymentToOthers2, 0, ComerBId, qcom.DesToOthers, "", Series, true);
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers2, PaymentToOthers.PaymentToOthers2, 0, ComerBId, qcomB.DesToOthers, "", Series, true);
 
                                 //*****************
                                 Series++;
@@ -4251,6 +4283,7 @@ namespace MyClass
                                 //حساب معین
                                 SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id;//بستانکاران تجاری فروشندگان
 
+                                //SecretCode = 6 حساب تجمیع هزینه های متفرقه
                                 customertId = db.Customers.Where(c => c.SecretCode == 6).First().Id;
 
                                 serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
@@ -4260,7 +4293,7 @@ namespace MyClass
                                 else
                                     DetailedAccountId = serch1.First().Id;
 
-                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers2, 0, PaymentToOthers.PaymentToOthers2, ComerBId, qcom.DesToOthers, "", Series, true);
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers2, 0, PaymentToOthers.PaymentToOthers2, ComerBId, qcomB.DesToOthers, "", Series, true);
                             }
                         }
                         WindowAlart("1");
@@ -4603,6 +4636,35 @@ namespace MyClass
 
 
 
+        public static bool checCodmeli(string NumberCodMeli)
+        {
+            if (NumberCodMeli == "" || NumberCodMeli.Length != 10)
+            {
+                return false;
+            }
+            for (int i = 0; i <= 9; i++)
+            {
+                string s = new string((char)(i + 48), 10);
+                if (s == NumberCodMeli)
+                {
+                    return false;
+                }
+            }
+            int p1, p2, p3;
+            p1 = 0;
+            for (int i = 0; i <= 8; i++)
+            {
+                p1 += (int.Parse((NumberCodMeli.Substring(i, 1))) * (10 - i));
+            }
+            p2 = p1 - p1 / 11 * 11;
+            if (p2 > 1)
+                p2 = 11 - p2;
+            p3 = int.Parse(NumberCodMeli.Substring(9, 1));
+            if (p3 == p2)
+                return true;
+            else
+                return false;
+        }
 
 
 

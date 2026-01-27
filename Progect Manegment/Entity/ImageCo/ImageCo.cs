@@ -14,7 +14,14 @@ namespace HM_ERP_System.Entity.ImageCo
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        /// <summary>
+        /// تصویر لوگو
+        /// </summary>
         public byte[] Image { get; set; }
+        /// <summary>
+        /// تصویر مهر(امضاء
+        /// </summary>
+        public byte[] ImageReg { get; set; }
 
     }
     public class ImageCoConfig : EntityTypeConfiguration<ImageCo>

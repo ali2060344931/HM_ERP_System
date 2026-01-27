@@ -34,13 +34,24 @@ namespace HM_ERP_System.Forms.Ciltys
         {
             WindowState = FormWindowState.Normal;
 
+            using (var db = new DBcontextModel())
+            {
+                var q = db.PlaceTransfers.Where(c => c.Id == citiesId).First();
+                
+                lblProvinces.Text = db.Provinces.Where(c=>c.Id==db.Ciltys.Where(x=>x.Id==q.CiltyId).FirstOrDefault().ProvincesId).First().Name;
+                lblCity.Text = db.Ciltys.Where(x => x.Id == q.CiltyId).FirstOrDefault().Name;
+                lblStor.Text = q.Name;
+                lblPostalCode.Text = q.PostalCode;
+            }
+
+
             UpdateData();
         }
         public void UpdateData()
         {
             //MessageBox.Show(PlaceTransferName);
             dgvList.RootTable.Columns["PlaceTransferName"].Visible = chkSelectAllList.Checked;
-            this.Text= this.Text + " - "+ PlaceTransferName;
+            this.Text = this.Text + " - " + PlaceTransferName;
             CallUpdateTata();
         }
         private void CallUpdateTata()
@@ -63,7 +74,8 @@ namespace HM_ERP_System.Forms.Ciltys
                         fpc.Id,
                         NameCity = c.Name,
                         ProvincesName = p.Name,
-                        PlaceTransferName=pt.Name
+                        PlaceTransferName = pt.Name,
+                        fpc.PostalCode,
                     };
 
                 dgvList.DataSource = q.ToList();

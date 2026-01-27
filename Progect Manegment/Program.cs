@@ -30,7 +30,9 @@ using HM_ERP_System.Forms.Peremission;
 using HM_ERP_System.Forms.Persons;
 using HM_ERP_System.Forms.PlaceTransfer;
 using HM_ERP_System.Forms.PurchaseTanker;
+using HM_ERP_System.Forms.Reports;
 using HM_ERP_System.Forms.Role;
+using HM_ERP_System.Forms.Settings;
 using HM_ERP_System.Forms.TankerRental;
 using HM_ERP_System.Forms.TruckManufacturer;
 using HM_ERP_System.Forms.User;
@@ -53,6 +55,7 @@ namespace Progect_Manegment
     internal static class Program
     {
         [STAThread]
+        //[Obsolete]
         private static void Main()
         {
             try
@@ -60,13 +63,13 @@ namespace Progect_Manegment
                 bool createdNew;
                 // استفاده از Mutex برای جلوگیری از اجرای چندین نمونه از برنامه
                 using (Mutex mutex = new Mutex(true, "HM_ERP_System", out createdNew))
-
                 {
+
                     if (!createdNew)
                     {
                         MessageBox.Show(ResourceCode.T175);
                         Application.Exit();
-                        return; 
+                        return;
                     }
 
                     string searchKey = "Data Source=.";
@@ -81,6 +84,7 @@ namespace Progect_Manegment
                     File.WriteAllText(localVersionFile, version.ToString());
 
                     // مسیر سرور
+
                     if (!connectionstring_db.Contains(searchKey))
                     {
                         // بررسی نسخه برنامه
@@ -103,9 +107,14 @@ namespace Progect_Manegment
 
                                 if (dr == DialogResult.Yes)
                                 {
+                                    Basic_information.basic_information();
+                                    MyClass.Add_Edit_Bancks.BanckEdid();
+                                    HM_ERP_System.Class_General.CreatView.BanckEdid();
+
                                     string updaterPath = Path.Combine(appPath, "AppUpdater.exe");
                                     if (File.Exists(updaterPath))
                                     {
+
                                         // اجرای Updater با مسیر سرور به عنوان آرگومان
                                         Process.Start(updaterPath, $"\"{serverPath}\"");
                                         return; // برنامه اصلی بسته شود تا بروزرسانی انجام شود
@@ -129,23 +138,25 @@ namespace Progect_Manegment
                     seting.SaveConnectionString("DBcontextModel", connectionstring_db);
                     #endregion
                     //
-                    Application.EnableVisualStyles();
-                    
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Basic_information.basic_information();
-                    MyClass.Add_Edit_Bancks.BanckEdid();
-                    HM_ERP_System.Class_General.CreatView.BanckEdid();
+
+
                     HM_ERP_System.Properties.Settings.Default.ConnectionString = connectionstring_db;
                     HM_ERP_System.Properties.Settings.Default.Save();
+
+
                     // بارگذاری اسمبلی‌های مورد نیاز برای انواع جغرافیایی SQL Server
                     AppDomain.CurrentDomain.SetData("SQLServerTypesAssemblyFileName",
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes\"));
                     AppDomain.CurrentDomain.SetData("SqlServerTypesLocation",
                         Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SqlServerTypes"));
 
+                    Application.EnableVisualStyles();
+
+                    Application.SetCompatibleTextRenderingDefault(false);
+
                     Application.Run(new frmLoginProg());
-                    //Application.Run(new frmMainForm());
-                    //Application.Run(new frmCustomerToGroup(null));
+                    //Application.Run(new frmMainForm(null));
+                    //Application.Run(new frmAllReports(null));
                 }
             }
             // اگر اتصال به دیتابیس قطع شده باشد

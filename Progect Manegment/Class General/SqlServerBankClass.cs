@@ -412,7 +412,7 @@ namespace MyClass
 
                 for (int i = 0; i < n * 3; i += 3)
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("select * from " + prm[i] + " " + prm[i + 1], connection);
+                    SqlDataAdapter da = new SqlDataAdapter("select * from " + prm[i]/*نام جدول*/ + " " + prm[i + 1]/*شــرط*/, connection);
                     DataTable table1 = new DataTable();
                     da.Fill(table1);
                     BindingSource bindingSource1 = new BindingSource();

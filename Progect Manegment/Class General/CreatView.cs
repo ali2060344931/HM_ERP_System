@@ -10,14 +10,15 @@ namespace HM_ERP_System.Class_General
     {
         public static void BanckEdid()
         {
+
             /*
+            V_ComersH();
             V_Customers();
             V_Dravers();
             V_Cars();
             V_PlaceTransfer();
             V_Commission();
             V_AppointmentScheduling();
-            V_ComersH();
             V_ComersB();
             V_TankerRental();
             V_Purchase_Tanker();
@@ -32,7 +33,9 @@ namespace HM_ERP_System.Class_General
             V_ReviewAccountsTransaction();
             V_BanckCofer();
             V_BlacLists();
+            V_ComersHAll();
             */
+
         }
 
         /// <summary>
@@ -42,7 +45,7 @@ namespace HM_ERP_System.Class_General
         {
             //string txt = "SELECT        dbo.Customers.Id, dbo.Customers.Name, dbo.Customers.Family, dbo.Customers.CodMeli, dbo.TypeCustomers.Name AS TypeCustomerName, dbo.Customers.Tel, dbo.Customers.Tel2, dbo.Customers.Adders, \r\n                         dbo.Customers.Adders2, dbo.Customers.PostalCode, dbo.Customers.Description, dbo.Customers.BanckName, dbo.Customers.SeryalShaba, dbo.Customers.DabitCardNumber, dbo.Customers.RecordDateTime, \r\n                         dbo.BankBranches.Name AS BankBranchesName, dbo.Bancks.Name AS BancksName, dbo.Customers.SecretCode, dbo.Ciltys.Name AS CiltysName, dbo.Customers.id_TypeCustomer, dbo.Customers.UserId, \r\n                         dbo.Customers.BanckId, dbo.Customers.CityId, dbo.Customers.TypeCustomer_Id\r\nFROM            dbo.TypeCustomers INNER JOIN\r\n                         dbo.Customers ON dbo.TypeCustomers.Id = dbo.Customers.id_TypeCustomer LEFT OUTER JOIN\r\n                         dbo.Ciltys ON dbo.Customers.CityId = dbo.Ciltys.Id LEFT OUTER JOIN\r\n                         dbo.BankBranches INNER JOIN\r\n                         dbo.Bancks ON dbo.BankBranches.BanckId = dbo.Bancks.Id ON dbo.Customers.BanckId = dbo.BankBranches.Id";
             string txt = "SELECT        cu.Id, cu.Name, cu.Family, cu.CodMeli, tc.Name AS TypeCustomerName, cu.Tel, cu.Tel2, cu.Adders, cu.Adders2, cu.PostalCode, cu.Description, cu.SeryalShaba, cu.DabitCardNumber, cu.RecordDateTime, \r\n                         CASE WHEN bb.Id IS NOT NULL AND ba.Id IS NOT NULL THEN ba.Name + ' - ' + bb.Name ELSE '-' END AS BanckName, cu.SecretCode, CASE WHEN ct.Id IS NOT NULL THEN ct.Name ELSE '-' END AS CiltysName, \r\n                         CASE WHEN pr.Id IS NOT NULL THEN pr.Name ELSE '-' END AS ProvincesName, cu.id_TypeCustomer, cu.UserId, cu.BanckId, cu.CityId\r\nFROM            Customers AS cu INNER JOIN\r\n                         TypeCustomers AS tc ON cu.id_TypeCustomer = tc.Id LEFT OUTER JOIN\r\n                         Ciltys AS ct ON cu.CityId = ct.Id LEFT OUTER JOIN\r\n                         Provinces AS pr ON ct.ProvincesId = pr.Id LEFT OUTER JOIN\r\n                         BankBranches AS bb ON cu.BanckId = bb.Id LEFT OUTER JOIN\r\n                         Bancks AS ba ON bb.BanckId = ba.Id\r\nWHERE        (cu.id_TypeCustomer <= 2)";
-            
+
             MyClass.SqlBankClass.AddColumnInTable("Drop view  V_Customers");
             MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_Customers] AS " + txt);
 
@@ -103,6 +106,17 @@ namespace HM_ERP_System.Class_General
             MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ComersH");
             MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ComersH] AS " + txt);
         }
+        static void V_ComersHAll()
+        {
+           
+           string txt = "SELECT        V_ComersH.ShiperName, V_ComersH.CountDoc, V_ComersH.Id, V_ComersH.[date] AS date_, V_ComersH.TypeDocumentName, V_ComersH.LoadingOrinigName, V_ComersH.LoadingLocationName, \r\n                         V_ComersH.UnLoadingOrinigName, V_ComersH.UnLoadingLocationName, V_ComersH.CostAccountName, V_ComersH.GoodsAccountName, V_ComersH.SenderName, V_ComersH.ResiverName, V_ComersH.SenderName2, \r\n                         V_ComersH.ResiverName2, V_ComersH.DaraverName1, V_ComersH.DaraverName2, V_ComersH.ProductsName, V_ComersH.CarPlat, V_ComersH.RemiaanceSeryal, V_ComersH.LoadWeightCapacity, V_ComersH.Description, \r\n                         V_ComersH.CotajNumber, Customers.Name, Customers.Family, Customers.Tel, Customers.CodMeli, Dravers.SeryalGovahiname, Dravers.SmartCard, Cars.CarPlat AS CarPlat_0, Cars.CarPlatSeryal AS CarPlatSeryal_0, \r\n                         Cars.CarName, Cars.Seryal, Customers_1.Name AS GoodsAccount_Name, Customers_1.Family AS GoodsAccount_Family, Customers_1.CodMeli AS GoodsAccount_CodMeli, Customers_1.Tel AS GoodsAccount_Tel\r\nFROM            V_ComersH INNER JOIN\r\n                         ComersHes ON V_ComersH.Id = ComersHes.Id INNER JOIN\r\n                         Dravers ON ComersHes.DaraverId1 = Dravers.Id INNER JOIN\r\n                         Customers ON Dravers.CustomerId = Customers.Id INNER JOIN\r\n                         Cars ON ComersHes.CarId = Cars.Id INNER JOIN\r\n                         Customers Customers_1 ON Cars.GoodsAccountId = Customers_1.Id";
+            
+            
+            MyClass.SqlBankClass.AddColumnInTable("Drop view  V_ComersHAll");
+            MyClass.SqlBankClass.AddColumnInTable("CREATE VIEW [V_ComersHAll] AS " + txt);
+        }
+
+
         /// <summary>
         /// بارنامه
         /// </summary>

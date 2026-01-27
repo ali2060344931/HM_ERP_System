@@ -22,7 +22,5 @@ namespace HM_ERP_System.Forms.Main_Form
             InitializeComponent();
         }
 
-
-
     }
 }

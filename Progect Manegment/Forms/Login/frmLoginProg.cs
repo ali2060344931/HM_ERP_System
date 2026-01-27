@@ -93,7 +93,7 @@ namespace HM_ERP_System.Forms.Login
         {
             try
             {
-                frmMainForm f = new frmMainForm();
+                frmMainForm f = new frmMainForm(null);
                 this.Hide();
                 
                 using (var db=new DBcontextModel())

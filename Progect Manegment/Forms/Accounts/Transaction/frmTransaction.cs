@@ -34,17 +34,19 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
         public frmTransaction(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
 
         }
 
         private void frmTransaction_Load(object sender, EventArgs e)
         {
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
+            txtDateEnd.Text = PersianDate.DateEnd();
 
             txtTransactionDate.Value = DateTime.Now;
-            txtTransactionCode.Text=PublicClass.CreatTransactionCode();
-            rdbIncomr.Checked=true;
+            //txtTransactionDate.Text = PersianDate.DateEnd();
+            txtTransactionCode.Text = PublicClass.CreatTransactionCode();
+            rdbIncomr.Checked = true;
             UpdateData();
         }
         public void UpdateData()
@@ -53,8 +55,8 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
         }
         private void CallUpdateTata()
         {
-            dgvList.SaveSettings=true;
-            dgvList.SettingsKey=this.Name;
+            dgvList.SaveSettings = true;
+            dgvList.SettingsKey = this.Name;
             FilldgvList();
             FillcmbContraAccountFrom();
             FillcmbContraAccountTo();
@@ -149,16 +151,16 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
                         join tc in db.TypeCustomers
                         on cu.id_TypeCustomer equals tc.Id
 
-                        where cu.id_TypeCustomer<=2
+                        where cu.id_TypeCustomer <= 2
                         select new
                         {
                             cu.Id,
-                            Name = cu.Family+" "+cu.Name,
+                            Name = cu.Family + " " + cu.Name,
                             cu.CodMeli,
                             cu.Tel,
                             CustomerType = tc.Name,
                         };
-                cmbContraAccountFrom.DataSource= q.ToList();
+                cmbContraAccountFrom.DataSource = q.ToList();
 
                 dt_ContraAccountFrom = new DataTable();
                 dt_ContraAccountFrom = PublicClass.AddEntityTableToDataTable(q.ToList());
@@ -178,7 +180,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
 
                         join ta in db.TotalAccounts
                         on sp.Id_TotalAccount equals ta.Id
-                        where (int)sp.Cod/1000==Code && sp.Status
+                        where (int)sp.Cod / 1000 == Code && sp.Status
                         select new
                         {
                             sp.Id,
@@ -207,29 +209,29 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
         {
             if (rdbIncomr.Checked)
             {
-                TransactionsCode=1;
-                lblSpecificAccount.Text="درآمد بابت:";
-                lblContraAccountFrom.Text="دریافت از:";
-                lblContraAccountTo.Text="واریز به:";
-                lblTotalAmount.Text="مبلغ درآمـــــد:";
-                lblIEAmount.Text="پیش دریافت:";
+                TransactionsCode = 1;
+                lblSpecificAccount.Text = "درآمد بابت:";
+                lblContraAccountFrom.Text = "دریافت از:";
+                lblContraAccountTo.Text = "واریز به:";
+                lblTotalAmount.Text = "مبلغ درآمـــــد:";
+                lblIEAmount.Text = "پیش دریافت:";
                 FillcmbSpecificAccount(60);
                 cmbSpecificAccount.ResetText();
-                lblInOut.Symbol="";
-                lblInOut.SymbolColor=System.Drawing.Color.Green;
+                lblInOut.Symbol = "";
+                lblInOut.SymbolColor = System.Drawing.Color.Green;
             }
             else
             {
-                TransactionsCode=2;
-                lblSpecificAccount.Text="هزینه بابت:";
-                lblContraAccountFrom.Text="پرداخت به:";
-                lblContraAccountTo.Text="واریــز از:";
-                lblTotalAmount.Text="مبلغ هــــــزینه:";
-                lblIEAmount.Text="پیش پرداخت:";
+                TransactionsCode = 2;
+                lblSpecificAccount.Text = "هزینه بابت:";
+                lblContraAccountFrom.Text = "پرداخت به:";
+                lblContraAccountTo.Text = "واریــز از:";
+                lblTotalAmount.Text = "مبلغ هــــــزینه:";
+                lblIEAmount.Text = "پیش پرداخت:";
                 FillcmbSpecificAccount(80);
                 cmbSpecificAccount.ResetText();
-                lblInOut.Symbol="";
-                lblInOut.SymbolColor=System.Drawing.Color.Red;
+                lblInOut.Symbol = "";
+                lblInOut.SymbolColor = System.Drawing.Color.Red;
 
             }
 
@@ -237,7 +239,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
 
         private void txtTotalAmount_ValueChanged(object sender, EventArgs e)
         {
-            txtIEAmount.Value=txtTotalAmount.Value;
+            txtIEAmount.Value = txtTotalAmount.Value;
         }
 
         private void cmbSpecificAccount_KeyDown(object sender, KeyEventArgs e)
@@ -276,7 +278,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
 
         private void txtIEAmount_Enter(object sender, EventArgs e)
         {
-            txtIEAmount.Value=txtTotalAmount.Value;
+            txtIEAmount.Value = txtTotalAmount.Value;
         }
 
         int SpecificAccountId = 0;
@@ -326,7 +328,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
                 if (!PublicClass.SetPeremission("Node2_2_1_1", 1)) return;
                 PublicClass.Transaction(TransactionCode: Convert.ToInt32(txtTransactionCode.Text), TransactionDate: txtTransactionDate.Text, TransactionTypeId: TransactionsCode, SpecificAccountId, ContraAccountFromId, ContraAccountToId, TotlAmount: txtTotalAmount.Value, txtIEAmount.Value, TaxAmount: txtTaxAmount.Value, ComerBId: 0, Description: txtDescription.Text);
                 FilldgvList();
-                if (_updatableForms!=null)
+                if (_updatableForms != null)
                     _updatableForms.UpdateData();
                 CelearItems();
             }
@@ -338,7 +340,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
 
         private void CelearItems()
         {
-            txtTransactionCode.Text=PublicClass.CreatTransactionCode();
+            txtTransactionCode.Text = PublicClass.CreatTransactionCode();
             cmbSpecificAccount.ResetText();
             cmbContraAccountFrom.ResetText();
             cmbContraAccountTo.ResetText();
@@ -357,10 +359,10 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
         {
             if (chkTax.Checked)
             {
-                txtTaxAmount.Enabled= true;
+                txtTaxAmount.Enabled = true;
             }
             else
-            { txtTaxAmount.Enabled= false; }
+            { txtTaxAmount.Enabled = false; }
         }
 
         private void txtTransactionCode_KeyPress(object sender, KeyPressEventArgs e)
@@ -419,7 +421,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
                     this.Close();
 
             }
-                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)

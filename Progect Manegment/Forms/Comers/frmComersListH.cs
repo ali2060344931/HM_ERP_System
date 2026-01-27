@@ -22,31 +22,30 @@ using System.Windows.Forms;
 
 namespace HM_ERP_System.Forms.Comers
 {
-    public partial class frmComersList : frmMasterForm, IUpdatableForms
+    public partial class frmComersListH : frmMasterForm, IUpdatableForms
     {
         private readonly IUpdatableForms _updatableForms;
         public int ListId = 0;
         int UserId_ = PublicClass.UserId;
-        public string FormName = "";
-        public frmComersList()
+        public string FormName = "ComersH";
+        public frmComersListH()
         {
             InitializeComponent();
         }
-
         private void frmComersList_Load(object sender, EventArgs e)
         {
             try
             {
-                txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
+                txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
                 txtDateEnd.Text =PersianDate.DateEnd();
 
 
-                string layoutPathComersB = Path.Combine(Application.StartupPath, "DefaultGridLayoutComersB.xml");
+                //string layoutPathComersB = Path.Combine(Application.StartupPath, "DefaultGridLayoutComersB.xml");
 
-                using (var fs = new FileStream(layoutPathComersB, FileMode.OpenOrCreate, FileAccess.Read))
-                {
-                    dgvListB.LoadLayoutFile(fs);
-                }
+                //using (var fs = new FileStream(layoutPathComersB, FileMode.OpenOrCreate, FileAccess.Read))
+                //{
+                //    dgvListB.LoadLayoutFile(fs);
+                //}
                 string layoutPathComersH = Path.Combine(Application.StartupPath, "DefaultGridLayoutComersH.xml");
 
                 using (var fs = new FileStream(layoutPathComersH, FileMode.OpenOrCreate, FileAccess.Read))
@@ -54,11 +53,11 @@ namespace HM_ERP_System.Forms.Comers
                     dgvListH.LoadLayoutFile(fs);
                 }
 
-                string layoutPathCommission = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutCommission.xml");
-                using (var fs = new FileStream(layoutPathCommission, FileMode.OpenOrCreate, FileAccess.Read))
-                {
-                    dgvListCommission.LoadLayoutFile(fs);
-                }
+                //string layoutPathCommission = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutCommission.xml");
+                //using (var fs = new FileStream(layoutPathCommission, FileMode.OpenOrCreate, FileAccess.Read))
+                //{
+                //    dgvListCommission.LoadLayoutFile(fs);
+                //}
 
 
                 UpdateData();
@@ -79,37 +78,12 @@ namespace HM_ERP_System.Forms.Comers
         {
             try
             {
-                if (FormName=="ComersB")
-                {
-                    frmComers.FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, "",false, "ComersB");
-                    dgvListB.Dock= DockStyle.Fill;
-                    dgvListH.Visible=false;
-                    dgvListCommission.Visible=false;
-                    this.Text="لیست بـــارنامه ها";
-                    dgvListB.RootTable.Columns["Details"].Visible=false;
-                    dgvListB.RootTable.Columns["select"].Visible=false;
-                }
-
-                else if (FormName=="ComersH")
-                {
                     frmComers.FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text,null, "ComersH");
                     dgvListH.Dock= DockStyle.Fill;
                     dgvListB.Visible=false;
                     dgvListCommission.Visible=false;
                     this.Text="لیست حـــواله ها";
                     dgvListH.RootTable.Columns["Details"].Visible=false;
-                }
-
-                else if (FormName=="Commission")
-                {
-                    frmCommission.FilldgvList(dgvListCommission, txtDateStart.Text, txtDateEnd.Text, "Commission");
-                    dgvListCommission.Dock= DockStyle.Fill;
-                    dgvListB.Visible=false;
-                    dgvListH.Visible=false;
-                    this.Text="لیست پورسانت ها";
-                    dgvListCommission.RootTable.Columns["Details"].Visible=false;
-                    dgvListCommission.RootTable.Columns["Details2"].Visible=true;
-                }
             }
             catch (Exception er)
             {
@@ -144,7 +118,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-
+            PublicClass.SaveGridExToExcel(dgvListH);
         }
 
         

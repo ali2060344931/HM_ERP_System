@@ -42,8 +42,8 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
 
         private void frmAppointmentScheduling_Load(object sender, EventArgs e)
         {
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
-            txtDateEnd.Value = DateTime.Now;
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList() * -1);
+            txtDateEnd.Text = PersianDate.DateEnd();
 
             UpdateData();
             if (isSelectCarPlat)

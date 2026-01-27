@@ -21,22 +21,102 @@
           <DataField>Id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
+        <Field Name="Code">
+          <DataField>Code</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Subject">
+          <DataField>Subject</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Image">
-          <DataField>Image</DataField>
+        <Field Name="IntCode1">
+          <DataField>IntCode1</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IntCode2">
+          <DataField>IntCode2</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IntCode3">
+          <DataField>IntCode3</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="BoolCode1">
+          <DataField>BoolCode1</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="BoolCode2">
+          <DataField>BoolCode2</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="BoolCode3">
+          <DataField>BoolCode3</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="StrCode1">
+          <DataField>StrCode1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StrCode2">
+          <DataField>StrCode2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StrCode3">
+          <DataField>StrCode3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DoubCode1">
+          <DataField>DoubCode1</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="DoubCode2">
+          <DataField>DoubCode2</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="DoubCode3">
+          <DataField>DoubCode3</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="StrCode4">
+          <DataField>StrCode4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StrCode5">
+          <DataField>StrCode5</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Image1">
+          <DataField>Image1</DataField>
           <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="Image2">
+          <DataField>Image2</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="Image3">
+          <DataField>Image3</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="RecordDateTime">
+          <DataField>RecordDateTime</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UserId">
+          <DataField>UserId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Default">
+          <DataField>Default</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet1</rd:DataSetName>
         <rd:SchemaPath>D:\c#\HM_ERP_System\Progect Manegment\DataSet1.xsd</rd:SchemaPath>
-        <rd:TableName>ImageCoes</rd:TableName>
+        <rd:TableName>Settings</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>ImageCoesTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>SettingsTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
     <DataSet Name="DataSet1">
@@ -1140,7 +1220,7 @@
             <Top>0.635cm</Top>
             <Left>0.1436cm</Left>
             <Height>1.0825cm</Height>
-            <Width>28.17789cm</Width>
+            <Width>28.17792cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1167,7 +1247,6 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NameHesab</rd:DefaultName>
-            <Top>0cm</Top>
             <Left>1.18984cm</Left>
             <Height>0.6cm</Height>
             <Width>26.58683cm</Width>
@@ -1235,7 +1314,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!NameCompani.Value</Value>
+                      <Value>=First(Fields!Subject.Value, "DataSet2")</Value>
                       <Style>
                         <FontFamily>B Titr</FontFamily>
                         <FontSize>12pt</FontSize>
@@ -1267,7 +1346,7 @@
             </Textbox>
             <Image Name="Image1">
               <Source>Database</Source>
-              <Value>=First(Fields!Image.Value, "DataSet2")</Value>
+              <Value>=First(Fields!Image1.Value, "DataSet2")</Value>
               <MIMEType>image/bmp</MIMEType>
               <Sizing>FitProportional</Sizing>
               <Top>0.08738cm</Top>
@@ -1358,7 +1437,6 @@
               </Paragraphs>
               <rd:DefaultName>Tarikh</rd:DefaultName>
               <Top>0.61147cm</Top>
-              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>4.1224cm</Width>
               <ZIndex>4</ZIndex>

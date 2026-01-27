@@ -16,11 +16,17 @@ namespace HM_ERP_System.Entity.Ciltys
     {
         public int Id { get; set; }
         
+
         public int PlaceTransferId { get; set; }
         public virtual PlaceTransfer.PlaceTransfer PlaceTransfer { get; set; }
         
         public int CiltysId { get; set; }
         public virtual Ciltys Ciltys { get; set; }
+        /// <summary>
+        /// کد پستی
+        /// </summary>
+        public string PostalCode { get; set; }
+
 
     }
         public class FloatingPublicCitiesxConfig : EntityTypeConfiguration<FloatingPublicCities>
@@ -28,6 +34,7 @@ namespace HM_ERP_System.Entity.Ciltys
         public FloatingPublicCitiesxConfig()
         {
             HasKey(x => x.Id);
+            Property(d => d.PostalCode).HasMaxLength(10);
 
             HasRequired(c => c.Ciltys)
             .WithMany(p => p.FloatingPublicCities)

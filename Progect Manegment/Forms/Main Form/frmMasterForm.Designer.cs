@@ -41,7 +41,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMasterForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            //this.Load += new System.EventHandler(this.frmMasterForm_Load);
             this.ResumeLayout(false);
 
         }

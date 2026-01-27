@@ -25,7 +25,21 @@ namespace HM_ERP_System.Entity.CustomerRole
         /// وضعیت فعال/غیرفعال
         /// </summary>
         public bool Status { get; set; }
-        
+        /// <summary>
+        /// کد پبیشفرض تنظیمات
+        /// </summary>
+        public int DefultSetingId { get; set; }
+
+        /// <summary>
+        /// تعداد روز قبل از روز جاری جهت نمایش لیست ها
+        /// </summary>
+        public int SetDayToReportList {  get; set; }
+
+        /// <summary>
+        /// درخواست ثبت مدارک
+        /// </summary>
+        public bool DocumentBanckReg { get; set; }
+
         /// <summary>
         /// تاریخ ثبت
         /// </summary>

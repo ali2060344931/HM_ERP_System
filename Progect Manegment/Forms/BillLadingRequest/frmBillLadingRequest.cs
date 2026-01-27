@@ -41,7 +41,7 @@ namespace HM_ERP_System.Forms.BillLadingRequest
         private void frmBillLadingRequest_Load(object sender, EventArgs e)
         {
 
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
             pnlAddItems.Visible=false;
 
             UpdateData();

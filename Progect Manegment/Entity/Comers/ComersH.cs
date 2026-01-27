@@ -60,10 +60,6 @@ namespace HM_ERP_System.Entity.Comers
         ///2 گیرنده
         /// </summary>
         public int Resiver2Id { get; set; }
-        
-        
-        
-        
         /// <summary>
         /// بارنامه نویس
         /// </summary>

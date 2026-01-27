@@ -30,6 +30,10 @@ namespace HM_ERP_System.Entity.Customer
         /// کد ملی /اقتصادی
         /// </summary>
         public string CodMeli { get; set; }
+        /// <summary>
+        /// کد ملی صحیح
+        /// </summary>
+        public bool CodMeliCorrect { get; set; }
         
         /// <summary>
         /// کد نوع مشتری حقیقی/حقوقی

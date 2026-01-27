@@ -242,6 +242,7 @@ namespace HM_ERP_System.Forms.Accounts.DetailedAccount
                             into trGroup
 
                             where sa.Name.Contains(cmbSpecificAccount.Text)
+                            where cu.SecretCode==0
 
                             select new
                             {

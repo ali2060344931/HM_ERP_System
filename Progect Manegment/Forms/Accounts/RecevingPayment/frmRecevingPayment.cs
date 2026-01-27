@@ -58,7 +58,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             FontAwesome.Sharp.Icon icon;
 
             rdbIncomr.Checked=true;
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList*-1);
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
 
             txtTransactionDate.Value = DateTime.Now;
             txtTransactionCode.Text=PublicClass.CreatTransactionCode();

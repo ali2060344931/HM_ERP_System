@@ -1,6 +1,6 @@
 ﻿namespace HM_ERP_System.Forms.Comers
 {
-    partial class frmComersList
+    partial class frmComersListB
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComersList));
-            Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListCommission_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComersListB));
+            Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             this.pnlViewItemHeder = new System.Windows.Forms.Panel();
             this.txtDateEnd = new Atf.UI.DateTimeSelector();
             this.btnShowListItems = new DevComponents.DotNetBar.ButtonX();
             this.txtDateStart = new Atf.UI.DateTimeSelector();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.dgvListCommission = new GridExEx.GridExEx();
             this.dgvListH = new GridExEx.GridExEx();
             this.dgvListB = new GridExEx.GridExEx();
-            this.dgvListCommission = new GridExEx.GridExEx();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TxtDescription = new Janus.Windows.GridEX.EditControls.EditBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -48,9 +48,9 @@
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
             this.pnlViewItemHeder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListCommission)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListCommission)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +58,6 @@
             // 
             this.pnlViewItemHeder.AutoScroll = true;
             this.pnlViewItemHeder.AutoScrollMinSize = new System.Drawing.Size(400, 0);
-            this.pnlViewItemHeder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlViewItemHeder.Controls.Add(this.txtDateEnd);
             this.pnlViewItemHeder.Controls.Add(this.btnShowListItems);
             this.pnlViewItemHeder.Controls.Add(this.txtDateStart);
@@ -67,14 +66,14 @@
             this.pnlViewItemHeder.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlViewItemHeder.Location = new System.Drawing.Point(0, 0);
             this.pnlViewItemHeder.Name = "pnlViewItemHeder";
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(1027, 50);
-            this.pnlViewItemHeder.TabIndex = 88;
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(800, 50);
+            this.pnlViewItemHeder.TabIndex = 93;
             // 
             // txtDateEnd
             // 
             this.txtDateEnd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateEnd.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateEnd.Location = new System.Drawing.Point(339, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(227, 12);
             this.txtDateEnd.Name = "txtDateEnd";
             this.txtDateEnd.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDateEnd.Size = new System.Drawing.Size(124, 29);
@@ -87,7 +86,7 @@
             this.btnShowListItems.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnShowListItems.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnShowListItems.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowListItems.Location = new System.Drawing.Point(249, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(137, 15);
             this.btnShowListItems.Name = "btnShowListItems";
             this.btnShowListItems.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnShowListItems.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F8);
@@ -103,7 +102,7 @@
             // 
             this.txtDateStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateStart.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateStart.Location = new System.Drawing.Point(541, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(429, 12);
             this.txtDateStart.Name = "txtDateStart";
             this.txtDateStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDateStart.Size = new System.Drawing.Size(124, 29);
@@ -118,7 +117,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(671, 17);
+            this.labelX1.Location = new System.Drawing.Point(559, 17);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             this.labelX1.Symbol = "";
@@ -135,7 +134,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(469, 17);
+            this.labelX2.Location = new System.Drawing.Point(357, 17);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             this.labelX2.Symbol = "";
@@ -143,6 +142,35 @@
             this.labelX2.TabIndex = 1;
             this.labelX2.Text = "تا تاریخ:";
             this.labelX2.TextAlignment = System.Drawing.StringAlignment.Far;
+            // 
+            // dgvListCommission
+            // 
+            this.dgvListCommission.DefaultComment = null;
+            this.dgvListCommission.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
+            this.dgvListCommission.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
+            this.dgvListCommission.FindCondition = null;
+            this.dgvListCommission.FrozenColumns = 5;
+            this.dgvListCommission.HiddenColumnSortingEnabled = false;
+            this.dgvListCommission.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
+            dgvListCommission_Layout_0.IsCurrentLayout = true;
+            dgvListCommission_Layout_0.Key = "MyGrig";
+            dgvListCommission_Layout_0.LayoutString = resources.GetString("dgvListCommission_Layout_0.LayoutString");
+            this.dgvListCommission.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
+            dgvListCommission_Layout_0});
+            this.dgvListCommission.Location = new System.Drawing.Point(154, 251);
+            this.dgvListCommission.Name = "dgvListCommission";
+            this.dgvListCommission.RecordNavigator = true;
+            this.dgvListCommission.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dgvListCommission.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
+            this.dgvListCommission.Size = new System.Drawing.Size(475, 89);
+            this.dgvListCommission.Sortable = true;
+            this.dgvListCommission.TabIndex = 90;
+            this.dgvListCommission.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dgvListCommission.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
+            this.dgvListCommission.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.dgvListCommission.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListCommission.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
+            this.dgvListCommission.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
             // 
             // dgvListH
             // 
@@ -165,7 +193,7 @@
             this.dgvListH.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvListH.Size = new System.Drawing.Size(475, 89);
             this.dgvListH.Sortable = true;
-            this.dgvListH.TabIndex = 87;
+            this.dgvListH.TabIndex = 91;
             this.dgvListH.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.dgvListH.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.dgvListH.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
@@ -194,43 +222,13 @@
             this.dgvListB.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvListB.Size = new System.Drawing.Size(475, 82);
             this.dgvListB.Sortable = true;
-            this.dgvListB.TabIndex = 87;
+            this.dgvListB.TabIndex = 92;
             this.dgvListB.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.dgvListB.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
             this.dgvListB.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.dgvListB.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListB.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListB.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
-            // 
-            // dgvListCommission
-            // 
-            this.dgvListCommission.DefaultComment = null;
-            this.dgvListCommission.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
-            this.dgvListCommission.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
-            this.dgvListCommission.FindCondition = null;
-            this.dgvListCommission.FrozenColumns = 5;
-            this.dgvListCommission.HiddenColumnSortingEnabled = false;
-            this.dgvListCommission.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
-            dgvListCommission_Layout_0.IsCurrentLayout = true;
-            dgvListCommission_Layout_0.Key = "MyGrig";
-            dgvListCommission_Layout_0.LayoutString = resources.GetString("dgvListCommission_Layout_0.LayoutString");
-            this.dgvListCommission.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
-            dgvListCommission_Layout_0});
-            this.dgvListCommission.Location = new System.Drawing.Point(154, 251);
-            this.dgvListCommission.Name = "dgvListCommission";
-            this.dgvListCommission.RecordNavigator = true;
-            this.dgvListCommission.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dgvListCommission.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListCommission.Size = new System.Drawing.Size(475, 89);
-            this.dgvListCommission.Sortable = true;
-            this.dgvListCommission.TabIndex = 87;
-            this.dgvListCommission.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvListCommission.TableHeaderFormatStyle.FontBold = Janus.Windows.GridEX.TriState.True;
-            this.dgvListCommission.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.dgvListCommission.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListCommission.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListCommission.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
-            this.dgvListCommission.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvListCommission_ColumnButtonClick);
             // 
             // panel1
             // 
@@ -240,10 +238,10 @@
             this.panel1.Controls.Add(this.buttonX1);
             this.panel1.Controls.Add(this.btnShowGridExHideColumns);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 398);
+            this.panel1.Location = new System.Drawing.Point(0, 419);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1027, 31);
-            this.panel1.TabIndex = 89;
+            this.panel1.Size = new System.Drawing.Size(800, 31);
+            this.panel1.TabIndex = 94;
             // 
             // TxtDescription
             // 
@@ -253,7 +251,7 @@
             this.TxtDescription.Location = new System.Drawing.Point(12, 1);
             this.TxtDescription.MaxLength = 36000000;
             this.TxtDescription.Name = "TxtDescription";
-            this.TxtDescription.Size = new System.Drawing.Size(801, 28);
+            this.TxtDescription.Size = new System.Drawing.Size(574, 28);
             this.TxtDescription.TabIndex = 98;
             this.TxtDescription.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.TxtDescription.ButtonClick += new System.EventHandler(this.TxtDescription_ButtonClick);
@@ -264,7 +262,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(813, 6);
+            this.label12.Location = new System.Drawing.Point(586, 6);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(91, 18);
             this.label12.TabIndex = 99;
@@ -277,7 +275,7 @@
             this.buttonX01.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX01.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonX01.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX01.Location = new System.Drawing.Point(924, 0);
+            this.buttonX01.Location = new System.Drawing.Point(697, 0);
             this.buttonX01.Name = "buttonX01";
             this.buttonX01.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX01.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlP);
@@ -297,7 +295,7 @@
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX1.Location = new System.Drawing.Point(958, 0);
+            this.buttonX1.Location = new System.Drawing.Point(731, 0);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX1.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F9);
@@ -317,7 +315,7 @@
             this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(992, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(765, 0);
             this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
             this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnShowGridExHideColumns.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlQ);
@@ -331,27 +329,24 @@
             this.btnShowGridExHideColumns.Tooltip = "نمایش ستون های مخفی";
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
-            // frmComersList
+            // frmComersListB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.AutoScrollMinSize = new System.Drawing.Size(0, 250);
-            this.ClientSize = new System.Drawing.Size(1027, 429);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pnlViewItemHeder);
             this.Controls.Add(this.dgvListCommission);
             this.Controls.Add(this.dgvListH);
             this.Controls.Add(this.dgvListB);
-            this.Controls.Add(this.pnlViewItemHeder);
             this.Controls.Add(this.panel1);
-            this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "frmComersList";
-            this.Text = "frmComersList";
-            this.Load += new System.EventHandler(this.frmComersList_Load);
+            this.Name = "frmComersListB";
+            this.Text = "لیست بارنامه ها";
+            this.Load += new System.EventHandler(this.frmComersListB_Load);
             this.pnlViewItemHeder.ResumeLayout(false);
             this.pnlViewItemHeder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListCommission)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListCommission)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -360,8 +355,6 @@
 
         #endregion
 
-        public GridExEx.GridExEx dgvListB;
-        public GridExEx.GridExEx dgvListH;
         public System.Windows.Forms.Panel pnlViewItemHeder;
         public Atf.UI.DateTimeSelector txtDateEnd;
         public DevComponents.DotNetBar.ButtonX btnShowListItems;
@@ -369,11 +362,13 @@
         public DevComponents.DotNetBar.LabelX labelX1;
         public DevComponents.DotNetBar.LabelX labelX2;
         public GridExEx.GridExEx dgvListCommission;
+        public GridExEx.GridExEx dgvListH;
+        public GridExEx.GridExEx dgvListB;
         private System.Windows.Forms.Panel panel1;
-        public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
-        public DevComponents.DotNetBar.ButtonX buttonX01;
-        public DevComponents.DotNetBar.ButtonX buttonX1;
         private Janus.Windows.GridEX.EditControls.EditBox TxtDescription;
         private System.Windows.Forms.Label label12;
+        public DevComponents.DotNetBar.ButtonX buttonX01;
+        public DevComponents.DotNetBar.ButtonX buttonX1;
+        public DevComponents.DotNetBar.ButtonX btnShowGridExHideColumns;
     }
 }

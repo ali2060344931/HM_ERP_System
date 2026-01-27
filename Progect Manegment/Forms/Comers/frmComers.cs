@@ -22,6 +22,7 @@ using HM_ERP_System.Forms.Reports;
 
 using Janus.Windows.GridEX;
 using Janus.Windows.UI.Dock;
+using Janus.Windows.UI.Tab;
 
 using K4os.Hash.xxHash;
 
@@ -95,12 +96,6 @@ namespace HM_ERP_System.Forms.Comers
         /// </summary>
         int MethodCalFareBId_ = 0;
         bool FormLoded = false;
-
-        //public frmComers(int daraverIdH_)
-        //{
-        //    DaraverIdH1_ = daraverIdH_;
-        //}
-
         //------------
         int SeryalHId_ = 0;
         //int TypeCalcMethodsBId_ = 0;
@@ -108,6 +103,23 @@ namespace HM_ERP_System.Forms.Comers
 
         int BillLadingCastId_ = 0;
         int BillLadingMethodId_ = 0;
+
+        double BO = 0;
+        double AE = 0;
+        double AV = 0;
+        double AX = 0;
+        double AZ = 0;
+        double BK = 0;
+        double BS = 0;
+        double BT = 0;
+        double AY = 0;
+        double BV = 0;
+        double AC = 0;
+        double BN = 0;
+        double BP = 0;
+        bool StatusDeliveryGoods_ = false;
+
+
         public frmComers(IUpdatableForms updatableForms)
         {
             InitializeComponent();
@@ -116,12 +128,13 @@ namespace HM_ERP_System.Forms.Comers
 
         private void frmComers_Load(object sender, EventArgs e)
         {
+
             //DynamicToolTip.Attach(this);
             WindowState = FormWindowState.Maximized;
             txtDateB.Value = System.DateTime.Now;
             txtDateH.Value = System.DateTime.Now;
 
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, Properties.Settings.Default.SetDayToReportList * -1);
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
             //txtDateEnd.Value = DateTime.Now;
             txtDateEnd.Text = PersianDate.DateEnd();
 
@@ -145,12 +158,15 @@ namespace HM_ERP_System.Forms.Comers
             }
             FormLoded = true;
 
-            CallUpdateTataH();
+            //CallUpdateTataH();
+            UpdateData();
+
         }
         public void UpdateData()
         {
+            uiTab1.SelectedIndex = 0;
             CallUpdateTataH();
-            CallUpdateTataB();
+            //CallUpdateTataB();
         }
 
         private void uiTab1_SelectedTabChanged(object sender, Janus.Windows.UI.Tab.TabEventArgs e)
@@ -186,6 +202,9 @@ namespace HM_ERP_System.Forms.Comers
             panelDeleteEdit.Visible = false;
             txtSearch.Visible = false;
             btnCalculations.Visible = false;
+            checkBox1.Visible = false;
+            checkBox2.Visible = false;
+            checkBox3.Visible = false;
             CreatRemiaanceSeryal();
             FillcmbTypeDocument();
             FillcmbCity1();
@@ -366,6 +385,10 @@ namespace HM_ERP_System.Forms.Comers
             panelDeleteEdit.Visible = true;
             txtSearch.Visible = true;
             btnCalculations.Visible = true;
+
+            checkBox1.Visible = true;
+            checkBox2.Visible = true;
+            checkBox3.Visible = true;
 
             FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);//لیست اسناد
             FillcmbCarPlatB();
@@ -639,6 +662,9 @@ namespace HM_ERP_System.Forms.Comers
 
                             where !db.ComersBs.Any(c => c.SeryalH == cmh.RemiaanceSeryal && ListId == 0)
                             where !cmh.Cancellation
+
+                            where !db.ComersBs.Any(b => b.ComersHId == cmh.Id)
+
                             select new
                             {
                                 cmh.Id,
@@ -650,15 +676,13 @@ namespace HM_ERP_System.Forms.Comers
                                 ProductName = pr.Name,
                                 LoadingLocation = pt1.Name,
                                 UnLoadingLocation = pt2.Name,
+                                DateH = cmh.date,
                             };
-
 
                     cmbCarplateB.DataSource = q.ToList();
 
                     dt_SeryalH = new System.Data.DataTable();
                     dt_SeryalH = PublicClass.AddEntityTableToDataTable(q.ToList());
-
-
                 }
             }
             catch (Exception er)
@@ -1571,17 +1595,18 @@ namespace HM_ERP_System.Forms.Comers
                         if (q.GoodsAccountId != 0) cmbGoodsAccountB.Value = q.GoodsAccountId;
                         SelectEndBillLading(ComersHId_);
                     }
-
                     int count = 0;
                     bool statuscar = false;
-                    (statuscar, count) = StatusCar(q.CarId);
-                    if (statuscar && count > 1)
-                    {
-                        if (MessageBox.Show(ResourceCode.T193 + '\n' + "تعداد حواله آزاد: " + count, ResourceCode.ProgName, MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK)
-                            return;
-                        //cmbBillLadingMethod.Focus();
-                    }
 
+                    //(statuscar, count) = StatusCar(q.CarId, 1);
+                    //if (statuscar && count != 0)
+                    count = aa(q.CarId);
+                    if (count > 1)
+                    {
+                        if (MessageBox.Show(ResourceCode.T193 + '\n' + "تعداد حواله آزاد: " + count, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            cmbCarplateB.Focus();
+                        return;
+                    }
                 }
             }
             catch (Exception er)
@@ -1590,10 +1615,40 @@ namespace HM_ERP_System.Forms.Comers
             }
         }
 
+        int aa(int carid)
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    var Count = (from cmh in db.ComersHs
+                                 join cr in db.Cars
+                                 on cmh.CarId equals cr.Id
+
+                                 where !db.ComersBs.Any(c => c.SeryalH == cmh.RemiaanceSeryal && ListId == 0)
+                                 where !cmh.Cancellation
+                                 where !db.ComersBs.Any(b => b.ComersHId == cmh.Id)
+                                 where cr.Id == carid
+                                 select new
+                                 {
+                                     cmh.Id,
+                                     Name = cmh.RemiaanceSeryal,
+                                     CarPlat = cr.CarPlat + cr.CarPlatSeryal,
+                                 }).Count();
+                    return Count;
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return 0;
+            }
+        }
+
+
         /// <summary>
         /// لیست آیتم های آخرین بارنامه با پلاک انتخاب شده
         /// </summary>
-
         private void SelectEndBillLading(int ComersHId)
         {
             try
@@ -1614,10 +1669,9 @@ namespace HM_ERP_System.Forms.Comers
 
                     if (q.Count() != 0)
                     {
-                        AddDataToItems(q);
+                        AddDataToItems_(q);
                     }
                 }
-
             }
             catch (Exception er)
             {
@@ -1719,52 +1773,159 @@ namespace HM_ERP_System.Forms.Comers
             }
         }
 
+        public void AddDataToItems_(IEnumerable<ComersB> q)
+        {
+            try
+            {
+                txtBaseFreight.ResetText();
+                cmbFareCalcMethods.Value = q.First().TypeCalFareId;
+                cmbMethodCalFare.Value = q.First().MethodCalFareId;
+                txtFreightRate.Value = q.First().FreightRate;
+                txtCargoInsurance.ResetText();
+                txtLoadinCast.ResetText();
+                txtIncentive.ResetText();
+                txtStopCharge.ResetText();
+                txtDeduction.ResetText();
+                txtPaidFreightRate.Value = q.First().PaidFreightRate;
+                txtInsurancCost.ResetText();
+                txtPaidIncentive.ResetText();
+                txtPaidStopCharge.ResetText();
+                txtDriverDeduction.ResetText();
+                cmbBillLadingCast.ResetText();
+                cmbBillLadingMethod.Value = q.First().BillLadingMethodId;
+                txtBillLadingAmount.ResetText();
+                txtInsuranceAmount.ResetText();
+                txtBillLadingWriterPercent.Value = q.First().BillLadingWriterPercent;
+                txtDescriptionB.ResetText();
+                cmbDraversB2.Value = q.First().DaraverId2_;
+                cmbSenderB1.Value = q.First().SenderId;
+                cmbSenderB2.Value = q.First().SenderId2;
+                cmbResiverB1.Value = q.First().ResiverId;
+                cmbResiverB2.Value = q.First().ResiverId2;
+                chkPaymentToOthers.Checked = false;
+                txtPaymentToOthers1.ResetText();
+                lblPaymentToOthers.ResetText();
+                txtPaymentToOthers2.ResetText();
+                txtDesToOthers.ResetText();
+
+                //ثبت درصد بارنامه نویس
+                {
+                    var comersHId = q.Select(x => x.ComersHId).FirstOrDefault();
+
+                    using (var db = new DBcontextModel())
+                    {
+                        var shid = db.ComersHs.FirstOrDefault(c => c.Id == comersHId);
+
+                        if (shid != null)
+                        {
+                            var bwp = db.BillLadingWriterPercents
+                                        .Where(c => c.CustomerId == shid.ShiperId)
+                                        .Select(c => c.Percent)
+                                        .FirstOrDefault();
+
+                            txtBillLadingWriterPercent.Value = bwp;
+                        }
+                    }
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+        }
+
         /// <summary>
         /// بررسی وضعیت خالی بودن کامیون
         /// </summary>
-        /// <param name="carid"></param>
-        private (bool, int) StatusCar(int carid)
+        /// <param name="carid">آی دی کامیون</param>
+        /// <param name="mode">حواله=0 بارنامه=1</param>
+        private (bool, int) StatusCar0(int carid, int mode = 0)
         {
             try
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q1 = (from cmb in db.ComersBs
-
-                              join cmh in db.ComersHs
-                              on cmb.ComersHId equals cmh.Id
-
-                              where (cmh.CarId == carid && cmb.StatusDeliveryGoods == false)
-                              select cmb);
-                    if (q1.Count() > 0)
+                    var q1 = from cmb in db.ComersBs
+                             join cmh in db.ComersHs
+                             on cmb.ComersHId equals cmh.Id
+                             where cmh.CarId == carid && cmb.StatusDeliveryGoods == false
+                             select cmb;
+                    if (q1.Count() != 0)
                     {
                         return (true, q1.Count());
                     }
-                    var q2 = from ch in db.ComersHs
-                             where !db.ComersBs.Any(c => c.SeryalH == ch.RemiaanceSeryal) && ch.CarId == carid
-                             select ch;
-
-                    if (q2.Count() > 0)
-                    {
-                        return (true, q2.Count());
-                    }
-
-
                     return (false, 0);
                 }
             }
             catch (Exception er)
             {
-
                 PublicClass.ShowErrorMessage(er);
                 return (false, 0);
             }
         }
 
+        private (bool status, int count) StatusCar(int carid, int mode = 0)
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    int count = (
+                        from cmb in db.ComersBs
+                        join cmh in db.ComersHs
+                            on cmb.ComersHId equals cmh.Id
+                        //where cmh.CarId == carid && cmb.StatusDeliveryGoods == false
+                        where cmh.CarId == carid && (cmb == null || cmb.StatusDeliveryGoods == false)
+
+                        select cmb
+                    ).Count();
+
+                    return (count > 0, count);
+                }
+            }
+            catch (Exception ex)
+            {
+                PublicClass.ShowErrorMessage(ex);
+                return (false, 0);
+            }
+        }
+
+        private (bool status, int count) StatusCar1(int carid, int mode = 0)
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    int count =
+                    (
+                        from cmh in db.ComersHs
+
+                        join cmb in db.ComersBs
+                        on cmh.Id equals cmb.ComersHId into cmbGroup
+                        from cmb in cmbGroup.DefaultIfEmpty()
+
+                        where cmh.CarId == carid && (cmb == null || cmb.StatusDeliveryGoods == false)
+                        select cmh.Id
+                    ).Count();
+
+                    return (count > 0, count);
+                }
+            }
+            catch (Exception ex)
+            {
+                PublicClass.ShowErrorMessage(ex);
+                return (false, 0);
+            }
+        }
+
+
+
+
         public static GridEX FilldgvListH(GridExEx.GridExEx dx, string dateS, string dateE, int? Id = null, string formname = null)
         {
             try
             {
+                //ComersBStatus
                 using (var db = new DBcontextModel())
                 {
                     var q = from cmh in db.ComersHs
@@ -1776,7 +1937,6 @@ namespace HM_ERP_System.Forms.Comers
                             join CuUser in db.Customers
                             on cmh.UserId equals CuUser.Id into CuUserGroup
                             from CuUser_ in CuUserGroup.DefaultIfEmpty()
-
 
                             join td in db.TypeDocuments
                             on cmh.TypeDocumentId equals td.Id
@@ -1832,6 +1992,7 @@ namespace HM_ERP_System.Forms.Comers
 
                             join cr in db.Cars
                             on cmh.CarId equals cr.Id
+
 
                             join doc in db.DocumentBancks
                             on cmh.Id equals doc.ListInFoemId into docGroup
@@ -1889,7 +2050,8 @@ namespace HM_ERP_System.Forms.Comers
                                 Daraver1Codmeli = cu1.CodMeli,
 
                                 ProductsName = pr.Name,
-                                CarPlat = cr.CarPlat + "-" + cr.CarPlatSeryal,
+                                CarPlat = cr.CarPlat,
+                                CarPlatSeryal = "ایران" + cr.CarPlatSeryal,
                                 SeryalCar = cr.Seryal,
                                 cmh.RemiaanceSeryal,
                                 cmh.LoadWeightCapacity,
@@ -1908,7 +2070,6 @@ namespace HM_ERP_System.Forms.Comers
                     var result = list.Select(x => new
                     {
                         x.ShiperName,
-                        x.CountDoc,
                         x.ComersBStatus,
                         x.Id,
                         x.date,
@@ -1929,15 +2090,15 @@ namespace HM_ERP_System.Forms.Comers
                         x.Daraver1Codmeli,
                         x.ProductsName,
                         x.CarPlat,
+                        x.CarPlatSeryal,
                         x.SeryalCar,
                         x.RemiaanceSeryal,
                         x.LoadWeightCapacity,
                         x.Description,
                         x.CotajNumber,
+                        x.CountDoc,
                         x.User,
                         x.Cancellation,
-
-                        // 👇 تبدیل به شمسی
                         Date_Time = PersianDate.ToPersianDateTime(x.Date_Time)
                     }).ToList();
 
@@ -1962,6 +2123,7 @@ namespace HM_ERP_System.Forms.Comers
                 return null;
             }
         }
+
 
         public static GridEX FilldgvListB(
             GridExEx.GridExEx Gx,
@@ -2039,7 +2201,7 @@ namespace HM_ERP_System.Forms.Comers
                             join tf in db.TransactionFees on cmb.BT equals tf.Id
 
                             join doc in db.DocumentBancks on cmb.Id equals doc.ListInFoemId into docGroup
-                            
+
                             join tr in db.Transactions on cmb.Id equals tr.ComerBId into TrGroup
 
                             where string.Compare(cmb.DateB, dateS) >= 0
@@ -2081,7 +2243,8 @@ namespace HM_ERP_System.Forms.Comers
                                 //(ga.Family + " " + ga.Name).Trim(),
 
                                 ShiperName = shLeft != null ? (shLeft.Family != "" ? (shLeft.Family + "، " + shLeft.Name).Trim() : shLeft.Name).Trim() : "-",
-                                CarPlat = cr.CarPlatSeryal + " " + cr.CarPlat,
+                                CarPlat = cr.CarPlat,
+                                CarPlatSeryal = "ایران" + cr.CarPlatSeryal,
 
                                 DaraverName = cu1.Family != "" ? (cu1.Family + "، " + cu1.Name).Trim() : cu1.Name,
                                 //cu1.Family + " " + cu1.Name,
@@ -2172,6 +2335,7 @@ namespace HM_ERP_System.Forms.Comers
                         x.GoodsAccountName,
                         x.ShiperName,
                         x.CarPlat,
+                        x.CarPlatSeryal,
                         x.DaraverName,
                         x.DaraverTel,
                         x.DaraverName2,
@@ -2232,7 +2396,6 @@ namespace HM_ERP_System.Forms.Comers
                     }).ToList();
 
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(result); Gx.DataSource = dt;
-                    //gx.AutoSizeColumns();
                     PublicClass.SettingGridEX(Gx, formNmane);
 
                     return Gx;
@@ -2398,20 +2561,6 @@ namespace HM_ERP_System.Forms.Comers
                 SaveFildsB();// متد ثبت اطلاعات بارنامه
         }
 
-        double BO = 0;
-        double AE = 0;
-        double AV = 0;
-        double AX = 0;
-        double AZ = 0;
-        double BK = 0;
-        double BS = 0;
-        double BT = 0;
-        double AY = 0;
-        double BV = 0;
-        double AC = 0;
-        double BN = 0;
-        double BP = 0;
-        bool StatusDeliveryGoods_ = false;
         /// <summary>
         /// متد ثبت اطلاعات بارنامه
         /// </summary>
@@ -2452,7 +2601,6 @@ namespace HM_ERP_System.Forms.Comers
                     var q = db.ComersHs.Where(c => c.Id == ComersHId_).First();
                     q.LoadWeightCapacity = txtLoadWeightCapacity.Value;
                     db.SaveChangesSafe();
-
                     //ثبت مدارک پیوست
                     if (newId != ListId && chkDocumentBanck.Checked)
                     {
@@ -2465,7 +2613,9 @@ namespace HM_ERP_System.Forms.Comers
                     FillcmbCarPlatB();
 
                     AddBillLadingWriterPercents();//ثبت درصد بارنامه نویس در دیتابیس
+
                     AccountingDocumentRegistration(newId);//ثبت سند حسابداری
+
                     FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                     CelearItemsB();
                 }
@@ -3847,7 +3997,6 @@ namespace HM_ERP_System.Forms.Comers
         }
         private void cmbSeryalH_Leave(object sender, EventArgs e)
         {
-
             btnListSimilarComerB.Visible = true;
             SearchCar_DriverB();
         }
@@ -4129,7 +4278,8 @@ namespace HM_ERP_System.Forms.Comers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PublicClass.CelereTables();
+            //PublicClass.CelereTables();
+            //uiTab1.SelectedTab.Key = "ComersH";
         }
 
         private void txtWeightDeliveredGoods_Enter(object sender, EventArgs e)
@@ -4271,41 +4421,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void btnDeleteItem_Click(object sender, EventArgs e)
         {
-            if (!PublicClass.SetPeremission("Node1_2_1_2_3", 1)) return;
 
-            if (dgvListB.GetCheckedRows().Count() != 1)
-            {
-                PublicClass.ErrorMesseg(ResourceCode.T076); return;
-            }
-
-            using (var db = new DBcontextModel())
-            {
-                var q = db.Transactions.Any(c => c.ComerBId == ListId && !c.Status);
-                if (q)
-                {
-                    PublicClass.ErrorMesseg(ResourceCode.T115);
-                    //T194
-                    if (MessageBox.Show(ResourceCode.T194, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        return;
-                    else
-                    {
-                        if (!DeleteAccountingDocument(ListId))
-                            return;
-                    }
-
-                }
-            }
-
-            ListId = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
-
-            int SeryalB = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["SeryalH"].Value);
-            if (txtSeryalH_DE.Value == 0 || SeryalB != txtSeryalH_DE.Value)
-            {
-                PublicClass.ErrorMesseg(ResourceCode.T077); return;
-            }
-
-            DeletegvListB(ListId);
-            FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
         }
 
         /// <summary>
@@ -4318,8 +4434,6 @@ namespace HM_ERP_System.Forms.Comers
             using (var db = new DBcontextModel())
             {
                 var q = db.Transactions.Where(c => c.ComerBId == ListId).ToList();
-                //db.Transactions.RemoveRange(q);
-
                 foreach (var item in q)
                 {
                     item.Status = true;
@@ -4426,7 +4540,7 @@ namespace HM_ERP_System.Forms.Comers
         private void txtBalanceAccount_Leave(object sender, EventArgs e)
         {
             CalcComerFilds_();
-            txtAV.Value = AX;
+            txtAC.Value = AC;
         }
 
 
@@ -4762,12 +4876,35 @@ namespace HM_ERP_System.Forms.Comers
 
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.Cars.Where(c => c.Id == db.ComersHs.Where(x => x.Id == ListId).FirstOrDefault().CarId).First();
-                        ListId = 0;
+
+                        var q = db.ComersHs.Where(c => c.Id == ListId).First();
+
+                        var q0 = db.ComersBs.Any(c => c.ComersHId == ListId);
+
+                        var q1 = db.ComersHs.Any(c => c.Id == ListId && c.Cancellation);
+
+                        if (q0)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T205 + '\n' + ResourceCode.T207 + q.RemiaanceSeryal);
+                            ListId = 0;
+                            return;
+                        }
+
+                        if (q1)
+                        {
+                            PublicClass.ErrorMesseg(ResourceCode.T206 + '\n' + ResourceCode.T207 + q.RemiaanceSeryal);
+                            ListId = 0;
+                            return;
+                        }
+
+
                         uiTab1.TabPages["ComersB"].Selected = true;
-                        cmbCarplateB.Text = q.CarPlat + q.CarPlatSeryal;
-                        cmbSeryalH_Leave(null, null);
-                        txtSeryalB.Focus();
+
+                        cmbCarplateB.Value = ListId;
+                        cmbCarplateB.Focus();
+                        //cmbSeryalH_Leave(null, null);
+                        //txtSeryalB.Focus();
+                        ListId = 0;
                     }
                     break;
                 case "Copy"://(کپی(استفاده مجدد
@@ -4814,10 +4951,34 @@ namespace HM_ERP_System.Forms.Comers
                     }
 
                     break;
+                case "PrintComersH"://چـــاپ حواله
+
+                    frmAllReports frmComersList = new frmAllReports(this);
+                    //frmComersList.FormName = "ComersH";
+                    frmComersList.ListId = ListId;
+                    frmComersList.ShowDialog();
+
+
+                    //FormManager.ShowMdiChildForm<frmAllReports>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
+
+                    //frmReport f0 = new frmReport();
+                    //f0.Code = "1";
+                    //f0.View_Table_Name = "V_ComersH";
+                    //f0.grid = dgvListH;
+                    //f0.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
+                    //f0.TitelString = ResourceCode.TRcomerH;
+                    //f0.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersHSelected.rdlc";
+                    //f0.ShowDialog();
+
+                    break;
+
             }
             //ListId=0;
         }
-
+        /// <summary>
+        /// ثبت بارنامه از بخش حواله
+        /// </summary>
+        bool IsRegComerB_Of_ComersH = false;
         private void SetCurrentRowById(int id)
         {
             foreach (GridEXRow row in dgvListH.GetRows())
@@ -4843,13 +5004,13 @@ namespace HM_ERP_System.Forms.Comers
                 case "AccountingDocumentRegistration"://سند حسابداری
                     using (var db = new DBcontextModel())
                     {
-                        var q = db.Transactions.Any(c => c.ComerBId == ListId && c.Status==false);
+                        var q = db.Transactions.Any(c => c.ComerBId == ListId && c.Status == false);
                         if (q)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T110);
                         }
                         else
-                        { 
+                        {
                             AccountingDocumentRegistration(ListId);
                             FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                         }
@@ -5360,28 +5521,6 @@ namespace HM_ERP_System.Forms.Comers
 
         private void buttonX01_Click(object sender, EventArgs e)
         {
-            switch (ComerTabKey)
-            {
-                case "ComersH":
-                    frmReport f = new frmReport();
-                    f.grid = dgvListH;
-                    f.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
-                    f.TitelString = ResourceCode.TRcomerH;
-                    f.Description = " ";
-                    f.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersH.rdlc";
-                    f.ShowDialog();
-
-                    break;
-                case "ComersB":
-                    frmReport f1 = new frmReport();
-                    f1.grid = dgvListB;
-                    f1.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
-                    f1.TitelString = ResourceCode.TRcomerB;
-                    f1.Description = " ";
-                    f1.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
-                    f1.ShowDialog();
-                    break;
-            }
 
         }
 
@@ -5434,6 +5573,162 @@ namespace HM_ERP_System.Forms.Comers
         {
             if (txtLoadWeightCapacity.Text != "")
                 Calculations();
+        }
+
+        private void btnGrigPrint_Click(object sender, EventArgs e)
+        {
+            switch (ComerTabKey)
+            {
+                case "ComersH":
+                    frmReport f = new frmReport();
+                    f.grid = dgvListH;
+                    f.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
+                    f.TitelString = ResourceCode.TRcomerH;
+                    f.Description = " ";
+                    f.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersH.rdlc";
+                    f.ShowDialog();
+
+                    break;
+                case "ComersB":
+                    frmReport f1 = new frmReport();
+                    f1.grid = dgvListB;
+                    f1.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
+                    f1.TitelString = ResourceCode.TRcomerB;
+                    f1.Description = " ";
+                    f1.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
+                    f1.ShowDialog();
+                    break;
+            }
+        }
+
+        private void btnListSelectPrint_Click(object sender, EventArgs e)
+        {
+            switch (ComerTabKey)
+            {
+                case "ComersH":
+                    //frmReport f = new frmReport();
+                    //f.grid = dgvListH;
+                    //f.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
+                    //f.TitelString = ResourceCode.TRcomerH;
+                    //f.Description = " ";
+                    //f.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersH.rdlc";
+                    //f.ShowDialog();
+
+                    break;
+                case "ComersB":
+                    //frmReport f1 = new frmReport();
+                    //f1.grid = dgvListB;
+                    //f1.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
+                    //f1.TitelString = ResourceCode.TRcomerB;
+                    //f1.Description = " ";
+                    //f1.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
+                    //f1.ShowDialog();
+                    break;
+            }
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            uiGroupBox4.Visible = checkBox1.Checked;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            panelLanding.Visible = checkBox2.Checked;
+
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            uiGroupBox3.Visible = checkBox3.Checked;
+
+        }
+
+        private void btnDeleteComers_Click(object sender, EventArgs e)
+        {
+            ListId = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
+
+            if (!PublicClass.SetPeremission("Node1_2_1_2_3", 1)) return;
+
+            if (dgvListB.GetCheckedRows().Count() != 1)
+            {
+                PublicClass.ErrorMesseg(ResourceCode.T076); return;
+            }
+
+
+            int SeryalB = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["SeryalH"].Value);
+            if (txtSeryalH_DE.Value == 0 || SeryalB != txtSeryalH_DE.Value)
+            {
+                PublicClass.ErrorMesseg(ResourceCode.T077); return;
+            }
+
+            using (var db = new DBcontextModel())
+            {
+                var q = db.Transactions.Any(c => c.ComerBId == ListId && !c.Status);
+                if (q)
+                {
+                    if (PublicClass.ErrorMessegYesNo(ResourceCode.T115) == DialogResult.Yes)
+                    {
+                        if (MessageBox.Show(ResourceCode.T194, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            return;
+                        else
+                        {
+                            if (!DeleteAccountingDocument(ListId))
+                                return;
+                        }
+                    }
+                    else
+                        return;
+
+                }
+            }
+
+            //ListId = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
+
+            DeletegvListB(ListId);
+            FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
+            txtSeryalH_DE.ResetText();
+            buttonX1_Click(null, null);
+        }
+
+        private void btnDeleteAccoints_Click(object sender, EventArgs e)
+        {
+            if (!PublicClass.SetPeremission("Node1_2_1_2_3", 1)) return;
+
+            if (dgvListB.GetCheckedRows().Count() != 1)
+            {
+                PublicClass.ErrorMesseg(ResourceCode.T076); return;
+            }
+
+            ListId = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
+
+            int SeryalB = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["SeryalH"].Value);
+            if (txtSeryalH_DE.Value == 0 || SeryalB != txtSeryalH_DE.Value)
+            {
+                PublicClass.ErrorMesseg(ResourceCode.T077); return;
+            }
+
+            using (var db = new DBcontextModel())
+            {
+                var q = db.Transactions.Any(c => c.ComerBId == ListId && c.Status == false);
+                if (q)
+                {
+                    if (MessageBox.Show(ResourceCode.T194, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+
+                    if (DeleteAccountingDocument(ListId))
+                    {
+                        btnShowListItems_Click(null, null);
+                        PublicClass.WindowAlart("2");
+                        txtSeryalH_DE.ResetText();
+                    }
+                }
+                else
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T209); return;
+                }
+            }
         }
     }
 }

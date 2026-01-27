@@ -47,16 +47,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.chkPublic = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtPostalCode = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
+            this.txtPostalCode1 = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.txtAddres = new Janus.Windows.GridEX.EditControls.EditBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvListCity = new GridExEx.GridExEx();
             this.cmbCity2 = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.txtPostalCode2 = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.AddCityToLIst = new DevComponents.DotNetBar.ButtonX();
             this.btnAddCity2 = new DevComponents.DotNetBar.ButtonX();
+            this.label9 = new System.Windows.Forms.Label();
             this.cmbFieldActivity = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
@@ -80,25 +82,25 @@
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(907, 647);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(766, 647);
             // 
             // pnlViewItemHeder
             // 
             this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(907, 50);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(766, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 697);
             this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(907, 28);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(766, 28);
             // 
             // pnlAddItemBodi
             // 
             this.pnlAddItemBodi.Controls.Add(this.panel1);
             this.pnlAddItemBodi.Controls.Add(this.txtAddres);
-            this.pnlAddItemBodi.Controls.Add(this.txtPostalCode);
+            this.pnlAddItemBodi.Controls.Add(this.txtPostalCode1);
             this.pnlAddItemBodi.Controls.Add(this.buttonX1);
             this.pnlAddItemBodi.Controls.Add(this.btnAddCity1);
             this.pnlAddItemBodi.Controls.Add(this.label3);
@@ -114,14 +116,14 @@
             this.pnlAddItemBodi.Controls.Add(this.txtPlaceTransferName);
             this.pnlAddItemBodi.Controls.Add(this.chkPublic);
             this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(373, 697);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(514, 697);
             this.pnlAddItemBodi.TabIndex = 0;
             // 
             // pnlAddItemFoter
             // 
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 697);
             this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlAddItemFoter.Size = new System.Drawing.Size(373, 28);
+            this.pnlAddItemFoter.Size = new System.Drawing.Size(514, 28);
             this.pnlAddItemFoter.TabIndex = 1;
             // 
             // btnSave
@@ -130,25 +132,25 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(298, 0);
+            this.btnNew.Location = new System.Drawing.Point(439, 0);
             this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(505, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(435, 12);
             this.txtDateStart.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 22, 23, 2, 54, 641);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(303, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(233, 12);
             this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 22, 23, 2, 54, 641);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(213, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(143, 15);
             this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4);
             // 
             // labelX2
@@ -157,7 +159,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(433, 17);
+            this.labelX2.Location = new System.Drawing.Point(363, 17);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
@@ -167,36 +169,36 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(635, 17);
+            this.labelX1.Location = new System.Drawing.Point(565, 17);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
             this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlViewItems.Size = new System.Drawing.Size(909, 753);
+            this.pnlViewItems.Size = new System.Drawing.Size(768, 753);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(912, 3);
+            this.pnlAddItems.Location = new System.Drawing.Point(771, 3);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlAddItems.Size = new System.Drawing.Size(379, 753);
+            this.pnlAddItems.Size = new System.Drawing.Size(520, 753);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(873, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(732, 0);
             this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(839, 0);
+            this.buttonX01.Location = new System.Drawing.Point(698, 0);
             this.buttonX01.Margin = new System.Windows.Forms.Padding(4);
             this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(804, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(663, 0);
             this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
@@ -220,7 +222,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmPlaceTransfer";
-            this.dgvList.Size = new System.Drawing.Size(907, 647);
+            this.dgvList.Size = new System.Drawing.Size(766, 647);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -237,7 +239,7 @@
             cmbEvacuationDeployment_DesignTimeLayout.LayoutString = resources.GetString("cmbEvacuationDeployment_DesignTimeLayout.LayoutString");
             this.cmbEvacuationDeployment.DesignTimeLayout = cmbEvacuationDeployment_DesignTimeLayout;
             this.cmbEvacuationDeployment.DisplayMember = "Name";
-            this.cmbEvacuationDeployment.Location = new System.Drawing.Point(81, 10);
+            this.cmbEvacuationDeployment.Location = new System.Drawing.Point(202, 10);
             this.cmbEvacuationDeployment.Name = "cmbEvacuationDeployment";
             this.cmbEvacuationDeployment.SelectedIndex = -1;
             this.cmbEvacuationDeployment.SelectedItem = null;
@@ -251,7 +253,7 @@
             // 
             // txtPlaceTransferName
             // 
-            this.txtPlaceTransferName.Location = new System.Drawing.Point(81, 115);
+            this.txtPlaceTransferName.Location = new System.Drawing.Point(202, 115);
             this.txtPlaceTransferName.Name = "txtPlaceTransferName";
             this.txtPlaceTransferName.Size = new System.Drawing.Size(183, 28);
             this.txtPlaceTransferName.TabIndex = 3;
@@ -265,7 +267,7 @@
             this.cmbCity1.DesignTimeLayout = cmbCity1_DesignTimeLayout;
             this.cmbCity1.DisplayMember = "Name";
             this.cmbCity1.Image = ((System.Drawing.Image)(resources.GetObject("cmbCity1.Image")));
-            this.cmbCity1.Location = new System.Drawing.Point(81, 78);
+            this.cmbCity1.Location = new System.Drawing.Point(202, 78);
             this.cmbCity1.Name = "cmbCity1";
             this.cmbCity1.SelectedIndex = -1;
             this.cmbCity1.SelectedItem = null;
@@ -281,7 +283,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(268, 15);
+            this.label14.Location = new System.Drawing.Point(389, 15);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(71, 18);
             this.label14.TabIndex = 106;
@@ -293,7 +295,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(268, 83);
+            this.label1.Location = new System.Drawing.Point(389, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 18);
             this.label1.TabIndex = 106;
@@ -304,7 +306,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(268, 120);
+            this.label2.Location = new System.Drawing.Point(389, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 18);
             this.label2.TabIndex = 106;
@@ -315,7 +317,7 @@
             this.btnAddCity1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddCity1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddCity1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddCity1.Location = new System.Drawing.Point(61, 78);
+            this.btnAddCity1.Location = new System.Drawing.Point(182, 78);
             this.btnAddCity1.Name = "btnAddCity1";
             this.btnAddCity1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddCity1.Size = new System.Drawing.Size(18, 28);
@@ -331,7 +333,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(268, 298);
+            this.label3.Location = new System.Drawing.Point(389, 298);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 18);
             this.label3.TabIndex = 106;
@@ -340,7 +342,7 @@
             // chkPublic
             // 
             this.chkPublic.AutoSize = true;
-            this.chkPublic.Location = new System.Drawing.Point(156, 295);
+            this.chkPublic.Location = new System.Drawing.Point(277, 295);
             this.chkPublic.Name = "chkPublic";
             this.chkPublic.Size = new System.Drawing.Size(108, 26);
             this.chkPublic.TabIndex = 6;
@@ -353,44 +355,44 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(268, 49);
+            this.label4.Location = new System.Drawing.Point(389, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 18);
             this.label4.TabIndex = 106;
             this.label4.Text = "کد پستی:";
             // 
-            // txtPostalCode
+            // txtPostalCode1
             // 
-            this.txtPostalCode.CheackCodeMeli = false;
-            this.txtPostalCode.Day = 0;
-            this.txtPostalCode.Location = new System.Drawing.Point(138, 44);
-            this.txtPostalCode.MaxLength = 10;
-            this.txtPostalCode.Miladi = new System.DateTime(((long)(0)));
-            this.txtPostalCode.Month = 0;
-            this.txtPostalCode.Name = "txtPostalCode";
-            this.txtPostalCode.NowDateSelected = false;
-            this.txtPostalCode.Number = null;
-            this.txtPostalCode.SelectedDate = null;
-            this.txtPostalCode.Shamsi = null;
-            this.txtPostalCode.Size = new System.Drawing.Size(126, 28);
-            this.txtPostalCode.TabIndex = 1;
-            this.txtPostalCode.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
-            this.txtPostalCode.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
-            this.txtPostalCode.TextDigitGroup = false;
-            this.txtPostalCode.TextMode = HM_ERP_System.Class_General.MyTextBoxJanus.TextBoxMode.IntNumber;
-            this.txtPostalCode.TextSimple = "";
-            this.txtPostalCode.TextWatermark = null;
-            this.txtPostalCode.TextWatermarkForeColor = System.Drawing.Color.Gray;
-            this.txtPostalCode.Year = 0;
-            this.txtPostalCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEvacuationDeployment_KeyDown);
-            this.txtPostalCode.Leave += new System.EventHandler(this.txtPostalCode_Leave);
+            this.txtPostalCode1.CheackCodeMeli = false;
+            this.txtPostalCode1.Day = 0;
+            this.txtPostalCode1.Location = new System.Drawing.Point(259, 44);
+            this.txtPostalCode1.MaxLength = 10;
+            this.txtPostalCode1.Miladi = new System.DateTime(((long)(0)));
+            this.txtPostalCode1.Month = 0;
+            this.txtPostalCode1.Name = "txtPostalCode1";
+            this.txtPostalCode1.NowDateSelected = false;
+            this.txtPostalCode1.Number = null;
+            this.txtPostalCode1.SelectedDate = null;
+            this.txtPostalCode1.Shamsi = null;
+            this.txtPostalCode1.Size = new System.Drawing.Size(126, 28);
+            this.txtPostalCode1.TabIndex = 1;
+            this.txtPostalCode1.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtPostalCode1.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
+            this.txtPostalCode1.TextDigitGroup = false;
+            this.txtPostalCode1.TextMode = HM_ERP_System.Class_General.MyTextBoxJanus.TextBoxMode.IntNumber;
+            this.txtPostalCode1.TextSimple = "";
+            this.txtPostalCode1.TextWatermark = null;
+            this.txtPostalCode1.TextWatermarkForeColor = System.Drawing.Color.Gray;
+            this.txtPostalCode1.Year = 0;
+            this.txtPostalCode1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEvacuationDeployment_KeyDown);
+            this.txtPostalCode1.Leave += new System.EventHandler(this.txtPostalCode_Leave);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(268, 187);
+            this.label5.Location = new System.Drawing.Point(389, 187);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 18);
             this.label5.TabIndex = 106;
@@ -398,7 +400,7 @@
             // 
             // txtAddres
             // 
-            this.txtAddres.Location = new System.Drawing.Point(3, 187);
+            this.txtAddres.Location = new System.Drawing.Point(124, 187);
             this.txtAddres.Multiline = true;
             this.txtAddres.Name = "txtAddres";
             this.txtAddres.Size = new System.Drawing.Size(261, 102);
@@ -408,17 +410,21 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.dgvListCity);
             this.panel1.Controls.Add(this.cmbCity2);
+            this.panel1.Controls.Add(this.txtPostalCode2);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.AddCityToLIst);
             this.panel1.Controls.Add(this.btnAddCity2);
-            this.panel1.Location = new System.Drawing.Point(11, 319);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Location = new System.Drawing.Point(54, 319);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(260, 351);
+            this.panel1.Size = new System.Drawing.Size(404, 351);
             this.panel1.TabIndex = 7;
             this.panel1.Visible = false;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // dgvListCity
             // 
@@ -435,13 +441,13 @@
             dgvListCity_Layout_0.LayoutString = resources.GetString("dgvListCity_Layout_0.LayoutString");
             this.dgvListCity.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvListCity_Layout_0});
-            this.dgvListCity.Location = new System.Drawing.Point(3, 103);
+            this.dgvListCity.Location = new System.Drawing.Point(9, 101);
             this.dgvListCity.Name = "dgvListCity";
             this.dgvListCity.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListCity.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvListCity.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListCity.SettingsKey = "frmProvinces";
-            this.dgvListCity.Size = new System.Drawing.Size(249, 241);
+            this.dgvListCity.Size = new System.Drawing.Size(386, 241);
             this.dgvListCity.Sortable = true;
             this.dgvListCity.TabIndex = 108;
             this.dgvListCity.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -455,16 +461,42 @@
             this.cmbCity2.DesignTimeLayout = cmbCity2_DesignTimeLayout;
             this.cmbCity2.DisplayMember = "Name";
             this.cmbCity2.Image = ((System.Drawing.Image)(resources.GetObject("cmbCity2.Image")));
-            this.cmbCity2.Location = new System.Drawing.Point(69, 67);
+            this.cmbCity2.Location = new System.Drawing.Point(187, 65);
             this.cmbCity2.Name = "cmbCity2";
             this.cmbCity2.SelectedIndex = -1;
             this.cmbCity2.SelectedItem = null;
-            this.cmbCity2.Size = new System.Drawing.Size(183, 30);
+            this.cmbCity2.Size = new System.Drawing.Size(208, 30);
             this.cmbCity2.TabIndex = 0;
             this.cmbCity2.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.cmbCity2.ValueMember = "id";
             this.cmbCity2.ValueChanged += new System.EventHandler(this.cmbCity2_ValueChanged);
             this.cmbCity2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCity2_KeyDown);
+            // 
+            // txtPostalCode2
+            // 
+            this.txtPostalCode2.CheackCodeMeli = false;
+            this.txtPostalCode2.Day = 0;
+            this.txtPostalCode2.Location = new System.Drawing.Point(55, 66);
+            this.txtPostalCode2.MaxLength = 10;
+            this.txtPostalCode2.Miladi = new System.DateTime(((long)(0)));
+            this.txtPostalCode2.Month = 0;
+            this.txtPostalCode2.Name = "txtPostalCode2";
+            this.txtPostalCode2.NowDateSelected = false;
+            this.txtPostalCode2.Number = null;
+            this.txtPostalCode2.SelectedDate = null;
+            this.txtPostalCode2.Shamsi = null;
+            this.txtPostalCode2.Size = new System.Drawing.Size(126, 28);
+            this.txtPostalCode2.TabIndex = 1;
+            this.txtPostalCode2.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtPostalCode2.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
+            this.txtPostalCode2.TextDigitGroup = false;
+            this.txtPostalCode2.TextMode = HM_ERP_System.Class_General.MyTextBoxJanus.TextBoxMode.IntNumber;
+            this.txtPostalCode2.TextSimple = "";
+            this.txtPostalCode2.TextWatermark = null;
+            this.txtPostalCode2.TextWatermarkForeColor = System.Drawing.Color.Gray;
+            this.txtPostalCode2.Year = 0;
+            this.txtPostalCode2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEvacuationDeployment_KeyDown);
+            this.txtPostalCode2.Leave += new System.EventHandler(this.txtPostalCode_Leave);
             // 
             // label7
             // 
@@ -472,7 +504,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.LightGray;
             this.label7.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(57, 6);
+            this.label7.Location = new System.Drawing.Point(128, 6);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(147, 23);
             this.label7.TabIndex = 106;
@@ -483,7 +515,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(194, 46);
+            this.label6.Location = new System.Drawing.Point(337, 44);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 18);
             this.label6.TabIndex = 106;
@@ -494,7 +526,7 @@
             this.AddCityToLIst.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.AddCityToLIst.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.AddCityToLIst.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.AddCityToLIst.Location = new System.Drawing.Point(48, 67);
+            this.AddCityToLIst.Location = new System.Drawing.Point(31, 66);
             this.AddCityToLIst.Name = "AddCityToLIst";
             this.AddCityToLIst.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.AddCityToLIst.Size = new System.Drawing.Size(18, 28);
@@ -502,7 +534,7 @@
             this.AddCityToLIst.Symbol = "";
             this.AddCityToLIst.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.AddCityToLIst.SymbolSize = 15F;
-            this.AddCityToLIst.TabIndex = 1;
+            this.AddCityToLIst.TabIndex = 2;
             this.AddCityToLIst.Tooltip = "افزودن به لیست";
             this.AddCityToLIst.Click += new System.EventHandler(this.AddCityToLIst_Click);
             // 
@@ -511,7 +543,7 @@
             this.btnAddCity2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddCity2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddCity2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddCity2.Location = new System.Drawing.Point(28, 67);
+            this.btnAddCity2.Location = new System.Drawing.Point(11, 66);
             this.btnAddCity2.Name = "btnAddCity2";
             this.btnAddCity2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddCity2.Size = new System.Drawing.Size(18, 28);
@@ -522,6 +554,17 @@
             this.btnAddCity2.Tooltip = "ثبت آیتم جدید";
             this.btnAddCity2.Click += new System.EventHandler(this.btnAddCity_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label9.Location = new System.Drawing.Point(127, 44);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 18);
+            this.label9.TabIndex = 106;
+            this.label9.Text = "کد پستی:";
+            // 
             // cmbFieldActivity
             // 
             this.cmbFieldActivity.DataMember = "id";
@@ -529,7 +572,7 @@
             this.cmbFieldActivity.DesignTimeLayout = cmbFieldActivity_DesignTimeLayout;
             this.cmbFieldActivity.DisplayMember = "Name";
             this.cmbFieldActivity.Image = ((System.Drawing.Image)(resources.GetObject("cmbFieldActivity.Image")));
-            this.cmbFieldActivity.Location = new System.Drawing.Point(27, 149);
+            this.cmbFieldActivity.Location = new System.Drawing.Point(148, 149);
             this.cmbFieldActivity.Name = "cmbFieldActivity";
             this.cmbFieldActivity.SelectedIndex = -1;
             this.cmbFieldActivity.SelectedItem = null;
@@ -545,7 +588,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(268, 154);
+            this.label8.Location = new System.Drawing.Point(389, 154);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 18);
             this.label8.TabIndex = 106;
@@ -556,7 +599,7 @@
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX1.Location = new System.Drawing.Point(7, 149);
+            this.buttonX1.Location = new System.Drawing.Point(128, 149);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX1.Size = new System.Drawing.Size(18, 28);
@@ -614,7 +657,7 @@
         private System.Windows.Forms.CheckBox chkPublic;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private Class_General.MyTextBoxJanus txtPostalCode;
+        private Class_General.MyTextBoxJanus txtPostalCode1;
         private System.Windows.Forms.Label label5;
         private Janus.Windows.GridEX.EditControls.EditBox txtAddres;
         private System.Windows.Forms.Panel panel1;
@@ -627,5 +670,7 @@
         public DevComponents.DotNetBar.ButtonX buttonX1;
         private System.Windows.Forms.Label label8;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbFieldActivity;
+        private Class_General.MyTextBoxJanus txtPostalCode2;
+        private System.Windows.Forms.Label label9;
     }
 }

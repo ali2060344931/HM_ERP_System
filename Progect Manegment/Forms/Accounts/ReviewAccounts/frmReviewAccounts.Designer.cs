@@ -91,6 +91,7 @@
             this.lblCode = new System.Windows.Forms.Label();
             this.btnDeleteTransaction = new DevComponents.DotNetBar.ButtonX();
             this.btnPrint = new DevComponents.DotNetBar.ButtonX();
+            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlViewItemFoter = new System.Windows.Forms.Panel();
             this.btnShowGridExHideColumns = new DevComponents.DotNetBar.ButtonX();
@@ -103,7 +104,6 @@
             this.buttonCommand4 = new Janus.Windows.Ribbon.ButtonCommand();
             this.uiCommandBar1 = new Janus.Windows.UI.CommandBars.UICommandBar();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
@@ -980,6 +980,18 @@
             this.btnPrint.Text = "چاپ";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label6.Location = new System.Drawing.Point(197, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 18);
+            this.label6.TabIndex = 141;
+            this.label6.Text = "شماره سند:";
+            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1126,18 +1138,6 @@
             this.uiCommandBar1.Name = "uiCommandBar1";
             this.uiCommandBar1.Size = new System.Drawing.Size(49, 26);
             this.uiCommandBar1.Text = "CommandBar1";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(197, 8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 18);
-            this.label6.TabIndex = 141;
-            this.label6.Text = "شماره سند:";
             // 
             // frmReviewAccounts
             // 

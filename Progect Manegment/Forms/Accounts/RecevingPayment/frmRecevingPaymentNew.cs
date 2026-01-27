@@ -351,123 +351,6 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             dt_Cheque2.PrimaryKey = new DataColumn[] { productColumn2 };
         }
 
-        private void dgvListMulti_InitCustomEdit(object sender, Janus.Windows.GridEX.InitCustomEditEventArgs e)
-        {
-            //if (e.Column.Key=="SpecificAccount")
-            //{
-            //    if (e.Value==null)
-            //    {
-            //        cmbSpecificAccountTo.SelectedIndex=-1;
-            //    }
-            //    else
-            //    {
-            //        cmbSpecificAccountTo.Text=e.Value.ToString();
-            //    }
-            //    e.EditControl=cmbSpecificAccountTo;
-            //}
-            //else if (e.Column.Key=="DetailedAccount")
-            //{
-            //    if (e.Value==null)
-            //    {
-            //        cmbDetailedAccountsTo.SelectedIndex=-1;
-            //    }
-            //    else
-            //    {
-            //        cmbDetailedAccountsTo.Text=e.Value.ToString();
-            //    }
-
-            //    e.EditControl=cmbDetailedAccountsTo;
-
-            //}
-            //else if (e.Column.Key=="Amount1")
-            //{
-            //    if (e.Value==null)
-            //    {
-            //        txtAmount1.ResetText();
-            //    }
-            //    else
-            //    {
-            //        txtAmount1.Text=e.Value.ToString();
-            //    }
-
-            //    e.EditControl=txtAmount1;
-
-            //}
-            //else if (e.Column.Key=="Amount2")
-            //{
-            //    if (e.Value==null)
-            //    {
-            //        txtAmount2.ResetText();
-            //    }
-            //    else
-            //    {
-            //        txtAmount2.Text=e.Value.ToString();
-            //    }
-            //    e.EditControl=txtAmount2;
-            //}
-        }
-
-        private void dgvListMulti_EndCustomEdit(object sender, Janus.Windows.GridEX.EndCustomEditEventArgs e)
-        {
-            //try
-            //{
-            //    if (e.Column.Key=="SpecificAccount")
-            //    {
-            //        if (cmbSpecificAccountTo.SelectedIndex!=-1)
-            //        {
-            //            dgvListMulti.GetRow().Cells["SpecificAccountId"].Value=cmbSpecificAccountTo.Value;
-            //            e.Value=cmbSpecificAccountTo.Text;
-            //        }
-            //        else
-            //        {
-            //            dgvListMulti.GetRow().Cells["SpecificAccountId"].Value=null;
-            //            e.Value=null;
-            //        }
-            //    }
-            //    else if (e.Column.Key=="DetailedAccount")
-            //    {
-            //        if (cmbDetailedAccountsTo.SelectedIndex!=-1)
-            //        {
-            //            dgvListMulti.GetRow().Cells["DetailedAccountId"].Value=cmbDetailedAccountsTo.Value;
-            //            e.Value=cmbDetailedAccountsTo.Text;
-            //        }
-            //        else
-            //        {
-            //            dgvListMulti.GetRow().Cells["DetailedAccountId"].Value=null;
-            //            e.Value=null;
-
-            //        }
-            //    }
-            //    else if (e.Column.Key=="Amount1")
-            //    {
-            //        if (txtAmount1.Text!="")
-            //        {
-            //            e.Value=txtAmount1.TextSimple;
-            //            CalcTotalAmountAddToItems();
-            //        }
-
-            //        else
-            //            e.Value=0;
-
-            //    }
-            //    else if (e.Column.Key=="Amount2")
-            //    {
-            //        if (txtAmount2.Text!="")
-            //        {
-            //            e.Value=txtAmount2.TextSimple;
-            //            CalcTotalAmountAddToItems();
-            //        }
-
-            //        else
-            //            e.Value=0;
-            //    }
-
-            //}
-            //catch (Exception)
-            //{
-
-            //}
-        }
 
         string CheangRDB_ = "";
         private void rdbIncomr_CheckedChanged(object sender, EventArgs e)
@@ -729,6 +612,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 cmbDetailedAccountsTo.ResetText();
                 txtDescription.ResetText();
                 lblAccountBalancF.ResetText();
+                cmbListDoc.ResetText();
                 dgvListMulti.DataSource = dt_MultipleAccount;
                 ListId = 0;
                 cmbTypeDocument.ResetText();
@@ -1266,10 +1150,6 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             }
         }
 
-        private void btnCreatDescription_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnAddNewCity1_Click(object sender, EventArgs e)
         {
             if (cmbSpecificAccountFrom.SelectedIndex != -1)
@@ -1443,16 +1323,6 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             {
                 PublicClass.ShowErrorMessage(er);
             }
-        }
-
-        private void dgvListMulti_GetNewRow(object sender, GetNewRowEventArgs e)
-        {
-            //CalcTotalAmountAddToItems();
-        }
-
-        private void dgvListCheque_GetNewRow(object sender, GetNewRowEventArgs e)
-        {
-            //CalcTotalAmountAddToItems();
         }
 
         private void txtTotalAmount_KeyDown(object sender, KeyEventArgs e)
@@ -1855,15 +1725,9 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
         private void btnNew_Click(object sender, EventArgs e)
         {
-
+            CelearItems();
         }
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
@@ -2101,14 +1965,5 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             f.ShowDialog();
         }
 
-        private void buttonX1_Click(object sender, EventArgs e)
-        {
-            //PdfReportHelper.ExportJanusGridToPDF(dgvList, "لیست صورتحساب");
-        }
-
-        private void btnAddNewCustomer_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

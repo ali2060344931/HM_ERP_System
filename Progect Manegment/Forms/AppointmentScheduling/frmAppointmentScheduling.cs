@@ -37,7 +37,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
         public frmAppointmentScheduling(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
         }
 
         private void frmAppointmentScheduling_Load(object sender, EventArgs e)
@@ -50,13 +50,13 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
             {
                 using (var db = new DBcontextModel())
                 {
-                    var q = db.AppointmentSchedulings.Where(c => c.IsSelected==true);
-                    if (q.Count()!=0)
+                    var q = db.AppointmentSchedulings.Where(c => c.IsSelected == true);
+                    if (q.Count() != 0)
                     {
-                        q.First().IsSelected=false;
+                        q.First().IsSelected = false;
                         db.SaveChangesSafe();
                     }
-                    dgvList.RootTable.Columns["SelectItem"].Visible=true;
+                    dgvList.RootTable.Columns["SelectItem"].Visible = true;
                 }
             }
         }
@@ -98,23 +98,23 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                             from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
 
-                            where carList.Status== chkSelected.Checked && string.Compare(carList.Date, txtDateStart.Text) >= 0 && string.Compare(carList.Date, txtDateEnd.Text) <= 0
+                            where carList.Status == chkSelected.Checked && string.Compare(carList.Date, txtDateStart.Text) >= 0 && string.Compare(carList.Date, txtDateEnd.Text) <= 0
 
                             select new
                             {
                                 carList.Id,
-                                CarPlat = cr.CarPlat+cr.CarPlatSeryal,
-                                DraverName = pr.Family +" "+pr.Name,
+                                CarPlat = cr.CarPlat + cr.CarPlatSeryal,
+                                DraverName = pr.Family + " " + pr.Name,
                                 CarName = cr.CarName,
-                                DateTime = carList.Date+"-"+carList.Time,
+                                DateTime = carList.Date + "-" + carList.Time,
                                 ProvincesList = carList.ProvincesList,
                                 Tel = pr.Tel,
                                 carList.Status,
-                                GoodsAccount = GA.Family +" "+GA.Name,
+                                GoodsAccount = GA.Family + " " + GA.Name,
                                 User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                             };
 
-                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
+                    DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
                     dgvList.AutoSizeColumns();
                 }
             }
@@ -229,12 +229,12 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
 
         private void btnAddToList_Click(object sender, EventArgs e)
         {
-            if (cmbProvinces.SelectedIndex==-1) return;
+            if (cmbProvinces.SelectedIndex == -1) return;
             if (txtProvincesList.Text.Contains(cmbProvinces.Text) == true)
             {
                 PublicClass.ErrorMesseg(ResourceCode.T090); return;
             }
-            txtProvincesList.Text+= cmbProvinces.Text+"، ";
+            txtProvincesList.Text += cmbProvinces.Text + "، ";
             cmbProvinces.ResetText();
             cmbProvinces.Focus();
         }
@@ -251,18 +251,18 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                     {
                         var q = db.Cars.Where(c => c.Id == CarId_).First();
 
-                        var per = db.Dravers.Where(c => c.Id== db.Cars.Where(x => x.Id==CarId_).FirstOrDefault().DraverId).First().CustomerId;
+                        var per = db.Dravers.Where(c => c.Id == db.Cars.Where(x => x.Id == CarId_).FirstOrDefault().DraverId).First().CustomerId;
 
                         Carplate_ = q.CarPlatSeryal + " " + ResourceCode.T016 + " " + q.CarPlat.ToString().Substring(2, 3) + "ع" + q.CarPlat.ToString().Substring(0, 2);
 
                         bool bl1 = false;
                         bool bl2 = false;
                         string name = "";
-                        (bl1, bl2, name)=PublicClass.CheckBlacList(per);
+                        (bl1, bl2, name) = PublicClass.CheckBlacList(per);
                         if (bl1 && bl2)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T101+'\n'+name);
-                            cmbCarplate.SelectedIndex=-1;
+                            PublicClass.StopMesseg(ResourceCode.T101 + '\n' + name);
+                            cmbCarplate.SelectedIndex = -1;
                         }
 
 
@@ -300,19 +300,19 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
             try
             {
                 if (!PublicClass.SetPeremission("Node1_2_1_4_1", 1)) return;
-                if (cmbCarplate.SelectedIndex==-1)
+                if (cmbCarplate.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T052);
                     cmbCarplate.Focus();
                     return;
                 }
-                if (txtDate.Text.Length!=10 || txtTime.Text.Length!=5)
+                if (txtDate.Text.Length != 10 || txtTime.Text.Length != 5)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T091);
                     txtDate.Focus();
                     return;
                 }
-                if (txtProvincesList.Text=="")
+                if (txtProvincesList.Text == "")
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T092);
                     txtProvincesList.Focus();
@@ -329,7 +329,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                         int cont = db.AppointmentSchedulings.Count(c => c.CarId == CarId_ && c.Date.Contains(txtDate.Text)/* && c.CityList.Contains(txtCityList.Text)*/);
                         if (cont > 0)
                         {
-                            if (PublicClass.ErrorMessegYesNo(ResourceCode.T093)==DialogResult.No) return;
+                            if (PublicClass.ErrorMessegYesNo(ResourceCode.T093) == DialogResult.No) return;
                         }
                     }
                     //else
@@ -345,12 +345,12 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                         return;
 
                     var car = new Repository<Entity.AppointmentScheduling.AppointmentScheduling>(db);
-                    if (car.SaveOrUpdate(new Entity.AppointmentScheduling.AppointmentScheduling { Id = ListId, CarId=CarId_, ProvincesList=txtProvincesList.Text, Date=txtDate.Text, Time= txtTime.Text, RecordDateTime=DateTime.Now, UserId=UserId_ }, ListId))
+                    if (car.SaveOrUpdate(new Entity.AppointmentScheduling.AppointmentScheduling { Id = ListId, CarId = CarId_, ProvincesList = txtProvincesList.Text, Date = txtDate.Text, Time = txtTime.Text, RecordDateTime = DateTime.Now, UserId = UserId_ }, ListId))
                     {
                         PublicClass.WindowAlart("1");
                         FilldgvList();
 
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
                         CelearItems();
                     }
@@ -375,7 +375,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
             cmbProvinces.ResetText();
             txtProvincesList.ResetText();
             cmbCarplate.Focus();
-            ListId=0;
+            ListId = 0;
         }
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
@@ -393,7 +393,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                         cmbCarplate.Value = q.CarId;
                         txtDate.Text = q.Date;
                         txtTime.Text = q.Time;
-                        txtProvincesList.Text=q.ProvincesList;
+                        txtProvincesList.Text = q.ProvincesList;
                     }
 
                 }
@@ -409,8 +409,10 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                         //    PublicClass.ErrorMesseg(ResourceCode.T004);
                         //    return;
                         //}
+                        string Item = "شماره پلاک: " + dgvList.CurrentRow.Cells["CarPlat"].Value.ToString();
 
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
                         {
                             var q = db.AppointmentSchedulings.Where(c => c.Id == ListId).First();
                             db.AppointmentSchedulings.Remove(q);
@@ -427,11 +429,11 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                     using (var db = new DBcontextModel())
                     {
                         var q = db.AppointmentSchedulings.Where(c => c.Id == ListId).First();
-                        q.IsSelected= true;
+                        q.IsSelected = true;
                         db.SaveChangesSafe();
 
                         frmComers f = Application.OpenForms["frmComers"] as frmComers;
-                        f.cmbCarplateH.Text=dgvList.CurrentRow.Cells["CarPlat"].Value.ToString();
+                        f.cmbCarplateH.Text = dgvList.CurrentRow.Cells["CarPlat"].Value.ToString();
                         f.cmbCarplateH.Select();
                         this.Close();
 
@@ -471,7 +473,7 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
                 if (PublicClass.CloseForm())
                     this.Close();
             }
-                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void btnShowListItems_Click(object sender, EventArgs e)
@@ -492,10 +494,10 @@ namespace HM_ERP_System.Forms.AppointmentScheduling
         private void buttonX01_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
-            f.grid=dgvList;
-            f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
-            f.TitelString =ResourceCode.TRappointmentScheduling;
-            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_AppointmentScheduling.rdlc";
+            f.grid = dgvList;
+            f.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
+            f.TitelString = ResourceCode.TRappointmentScheduling;
+            f.ReporFileName = "HM_ERP_System.ReportViewer.Report_AppointmentScheduling.rdlc";
             f.ShowDialog();
         }
     }

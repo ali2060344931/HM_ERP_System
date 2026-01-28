@@ -26,7 +26,7 @@ namespace HM_ERP_System.Forms.PersonGroup
         public frmPersonGroup(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
 
         }
         public void SetParameters(object[] parameters)
@@ -53,7 +53,7 @@ namespace HM_ERP_System.Forms.PersonGroup
             {
                 var q = db.PersonGroups;
                 System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
-                PublicClass.SettingGridEX(dgvList,Name);
+                PublicClass.SettingGridEX(dgvList, Name);
             }
         }
 
@@ -86,11 +86,11 @@ namespace HM_ERP_System.Forms.PersonGroup
                     }
 
                     var userRepo = new Repository<Entity.PersonGroup.PersonGroup>(db);
-                    if (userRepo.SaveOrUpdate(new Entity.PersonGroup.PersonGroup { Id = LisId, Name = txtName.Text,IsCommission=chkCommission.Checked }, LisId))
+                    if (userRepo.SaveOrUpdate(new Entity.PersonGroup.PersonGroup { Id = LisId, Name = txtName.Text, IsCommission = chkCommission.Checked }, LisId))
                     {
                         PublicClass.WindowAlart("1");
                         FilldgvList();
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
 
                         CelearItems();
@@ -133,13 +133,15 @@ namespace HM_ERP_System.Forms.PersonGroup
                     using (var db = new DBcontextModel())
                     {
 
+                        string Item = dgvList.CurrentRow.Cells["Name"].Value.ToString();
+
                         if (db.CustomerToGroups.Where(c => c.PersonGroupId == LisId).Count() != 0)
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            PublicClass.ErrorMesseg(ResourceCode.T004 + '\n' + Item);
                             return;
                         }
 
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign) == DialogResult.Yes)
                         {
                             var q = db.PersonGroups.Where(c => c.Id == LisId).First();
                             db.PersonGroups.Remove(q);
@@ -174,7 +176,7 @@ namespace HM_ERP_System.Forms.PersonGroup
                 if (PublicClass.CloseForm())
                     this.Close();
             }
-                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)

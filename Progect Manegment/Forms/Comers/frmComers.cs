@@ -4808,30 +4808,28 @@ namespace HM_ERP_System.Forms.Comers
                     if (!PublicClass.SetPeremission("Node1_2_1_1_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
-                        //this.dgwList.ClearSelection();
-                        //this.dgwList.Rows[e.RowIndex].Selected = true;
-                        //int r = e.RowIndex;//.ToString();
-                        //idsabt = dgwList.Rows[e.RowIndex].Cells[0].Value.ToString();
-                        //this.Text = idsabt;
-                        //this.dgvList.CurrentCell = this.dgvList.Rows[e.RowIndex].Cells[1];
-                        //this.contextMenuStrip_dgvListH.Show(this.dgwList, e.Location);
+
+                        string Item ="شماره حواله: " + db.ComersHs.Where(c=>c.Id==ListId).First().RemiaanceSeryal.ToString();
 
 
                         var search = db.ComersBs.Where(c => c.ComersHId == ListId);
                         if (search.Count() != 0)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T038); return;
+                            PublicClass.StopMesseg(ResourceCode.T038 + '\n' + Item); return;
                         }
+
 
                         var qs = db.ComersHs.Any(c => c.Id == ListId && c.Cancellation);
+                        
                         if (qs)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T004); return;
+                            PublicClass.StopMesseg(ResourceCode.T004 + '\n' + Item); return;
                         }
 
+                        
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
 
 
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign) == DialogResult.Yes)
                         {
                             var q = db.ComersHs.Where(c => c.Id == ListId).First();
                             var dc = db.DocumentBancks.Where(c => c.FormName == "frmComersH" && c.ListInFoemId == ListId).ToList();
@@ -4919,16 +4917,18 @@ namespace HM_ERP_System.Forms.Comers
                     using (var db = new DBcontextModel())
                     {
                         var q = db.ComersHs.Where(c => c.Id == ListId).First();
+                        
+                        string Item = "شماره حواله: " + q.RemiaanceSeryal.ToString();
 
                         var search = db.ComersBs.Any(c => c.ComersHId == ListId);
                         if (search)
                         {
-                            PublicClass.StopMesseg(ResourceCode.T190); return;
+                            PublicClass.StopMesseg(ResourceCode.T190 + '\n' + Item); return;
                         }
 
                         if (q.Cancellation)
                         {
-                            if (PublicClass.ErrorMessegYesNo(ResourceCode.T192) == DialogResult.Yes)
+                            if (PublicClass.ErrorMessegYesNo(ResourceCode.T192 + '\n' + Item) == DialogResult.Yes)
                             {
                                 q.Cancellation = false;
                                 PublicClass.WindowAlart("1");
@@ -4940,7 +4940,9 @@ namespace HM_ERP_System.Forms.Comers
                             return;
                         }
 
-                        if (MessageBox.Show(ResourceCode.T191, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
                         {
                             q.Cancellation = true;
                             PublicClass.WindowAlart("1");
@@ -4954,22 +4956,8 @@ namespace HM_ERP_System.Forms.Comers
                 case "PrintComersH"://چـــاپ حواله
 
                     frmAllReports frmComersList = new frmAllReports(this);
-                    //frmComersList.FormName = "ComersH";
                     frmComersList.ListId = ListId;
                     frmComersList.ShowDialog();
-
-
-                    //FormManager.ShowMdiChildForm<frmAllReports>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
-
-                    //frmReport f0 = new frmReport();
-                    //f0.Code = "1";
-                    //f0.View_Table_Name = "V_ComersH";
-                    //f0.grid = dgvListH;
-                    //f0.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
-                    //f0.TitelString = ResourceCode.TRcomerH;
-                    //f0.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersHSelected.rdlc";
-                    //f0.ShowDialog();
-
                     break;
 
             }

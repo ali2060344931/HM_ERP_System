@@ -29,7 +29,7 @@ namespace HM_ERP_System.Forms.Product
         public frmProduct(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
 
         }
 
@@ -64,12 +64,12 @@ namespace HM_ERP_System.Forms.Product
                         {
                             pr.Id,
                             pr.Name,
-                            ProductGroupName= prg.Name,
+                            ProductGroupName = prg.Name,
                             User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
-                
-                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
-                PublicClass.SettingGridEX(dgvList,Name);
+
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
+                PublicClass.SettingGridEX(dgvList, Name);
             }
         }
         DataTable dt_ProductGroup;
@@ -149,7 +149,7 @@ namespace HM_ERP_System.Forms.Product
                 {
                     var q = db.Products.Where(c => c.Id == LisId).First();
                     txtName.Text = q.Name;
-                    cmbProductGroup.Value=q.ProductGroupId;
+                    cmbProductGroup.Value = q.ProductGroupId;
                 }
 
             }
@@ -159,14 +159,16 @@ namespace HM_ERP_System.Forms.Product
                 if (!PublicClass.SetPeremission("Node1_1_5_3", 1)) return;
                 using (var db = new DBcontextModel())
                 {
+                    string Item = dgvList.CurrentRow.Cells["Name"].Value.ToString();
 
                     if (db.ComersHs.Where(c => c.ProductsId == LisId).Count() != 0)
                     {
-                        PublicClass.ErrorMesseg(ResourceCode.T004);
+                        PublicClass.ErrorMesseg(ResourceCode.T004 + '\n' + Item);
                         return;
                     }
 
-                    if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
                     {
                         var q = db.Products.Where(c => c.Id == LisId).First();
                         db.Products.Remove(q);
@@ -197,7 +199,7 @@ namespace HM_ERP_System.Forms.Product
                 if (PublicClass.CloseForm())
                     this.Close();
             }
-                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         int ProductGroupId = 0;
@@ -223,7 +225,7 @@ namespace HM_ERP_System.Forms.Product
 
         private void cmbProductGroup_KeyDown(object sender, KeyEventArgs e)
         {
-                        if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
 
             if (e.KeyCode == Keys.F2)
@@ -240,11 +242,11 @@ namespace HM_ERP_System.Forms.Product
         private void buttonX01_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
-            f.grid=dgvList;
+            f.grid = dgvList;
             //f.DateReport=ResourceCode.T159+txtDateStart.Text+ ResourceCode.T160+txtDateEnd.Text;
-            f.TitelString =ResourceCode.TRproduct;
-            f.Description=" ";
-            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Product.rdlc";
+            f.TitelString = ResourceCode.TRproduct;
+            f.Description = " ";
+            f.ReporFileName = "HM_ERP_System.ReportViewer.Report_Product.rdlc";
             f.ShowDialog();
 
         }

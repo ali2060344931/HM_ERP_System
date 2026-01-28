@@ -39,7 +39,7 @@ namespace HM_ERP_System.Forms.TankerRental
         public frmTankerRental(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
         }
 
         private void frmTankerRental_Load(object sender, EventArgs e)
@@ -48,8 +48,8 @@ namespace HM_ERP_System.Forms.TankerRental
             txtDateE.Value = DateTime.Now;
 
             string yyyymmdd = PersianDate.NowPersianDate;
-            txtYear.Text=yyyymmdd.Substring(0, 4);
-            cmbMont.SelectedIndex=Convert.ToInt32(yyyymmdd.Substring(5, 2))-1;
+            txtYear.Text = yyyymmdd.Substring(0, 4);
+            cmbMont.SelectedIndex = Convert.ToInt32(yyyymmdd.Substring(5, 2)) - 1;
             UpdateData();
         }
 
@@ -81,8 +81,8 @@ namespace HM_ERP_System.Forms.TankerRental
             using (var db = new DBcontextModel())
             {
                 var q = db.WarantyTypes.ToList();
-                cmbWarantyType.DataSource= q;
-                cmbWarantyType.SelectedIndex=0;
+                cmbWarantyType.DataSource = q;
+                cmbWarantyType.SelectedIndex = 0;
 
             }
 
@@ -254,14 +254,14 @@ namespace HM_ERP_System.Forms.TankerRental
                 if (PublicClass.FindEmptyControls(txtContactNo, ResourceCode.T103, txtTankerNo, ResourceCode.T104, txtSecurityDeposit, ResourceCode.T105, txtRentAmount, ResourceCode.T106))
                     return;
 
-                if (cmbCarplate.SelectedIndex==-1)
+                if (cmbCarplate.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T052);
                     return;
                 }
 
 
-                if (string.Compare(txtDateS.Text, txtDateE.Text)==1 || string.Compare(txtDateS.Text, txtDateE.Text)==0)
+                if (string.Compare(txtDateS.Text, txtDateE.Text) == 1 || string.Compare(txtDateS.Text, txtDateE.Text) == 0)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T108);
                     return;
@@ -274,7 +274,7 @@ namespace HM_ERP_System.Forms.TankerRental
 
                     if (ListId == 0)
                     {
-                        int cont = db.Spares.Where(c => c.TankerNo==txtTankerNo.Text /*&& c.ContactNo==txtContactNo.Text*/).Count();
+                        int cont = db.Spares.Where(c => c.TankerNo == txtTankerNo.Text /*&& c.ContactNo==txtContactNo.Text*/).Count();
                         if (cont > 0)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T107);
@@ -284,7 +284,7 @@ namespace HM_ERP_System.Forms.TankerRental
                     }
                     else
                     {
-                        int cont = db.Spares.Where(c => c.TankerNo==txtTankerNo.Text /*&& c.ContactNo==txtContactNo.Text*/ && c.Id != ListId).Count();
+                        int cont = db.Spares.Where(c => c.TankerNo == txtTankerNo.Text /*&& c.ContactNo==txtContactNo.Text*/ && c.Id != ListId).Count();
                         if (cont > 0)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T107);
@@ -297,10 +297,10 @@ namespace HM_ERP_System.Forms.TankerRental
                         return;
 
                     var spares = new Repository<Entity.Spare.Spare>(db);
-                    if (spares.SaveOrUpdate(new Entity.Spare.Spare { Id = ListId, ContactNo=txtContactNo.Text, TankerNo=txtTankerNo.Text, CarId=CarId_, DataStart=txtDateS.Text, DataEnd=txtDateE.Text, WarantyTypeId=WarantyTypeId_,RentalTypeId=RentalTypeId, SecurityDeposit=Convert.ToDouble(txtSecurityDeposit.TextSimple), RentAmount=Convert.ToDouble(txtRentAmount.TextSimple), ContractStatus=chkContractStatus.Checked, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
+                    if (spares.SaveOrUpdate(new Entity.Spare.Spare { Id = ListId, ContactNo = txtContactNo.Text, TankerNo = txtTankerNo.Text, CarId = CarId_, DataStart = txtDateS.Text, DataEnd = txtDateE.Text, WarantyTypeId = WarantyTypeId_, RentalTypeId = RentalTypeId, SecurityDeposit = Convert.ToDouble(txtSecurityDeposit.TextSimple), RentAmount = Convert.ToDouble(txtRentAmount.TextSimple), ContractStatus = chkContractStatus.Checked, Description = txtDes.Text, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
                         CelearItems();
                     }
@@ -318,14 +318,14 @@ namespace HM_ERP_System.Forms.TankerRental
 
         private void CelearItems()
         {
-            ListId=0;
+            ListId = 0;
             txtContactNo.ResetText();
             txtTankerNo.ResetText();
             txtSecurityDeposit.ResetText();
             txtRentAmount.ResetText();
             txtDes.ResetText();
-            cmbCarplate.SelectedIndex=-1;
-            chkContractStatus.Checked=true;
+            cmbCarplate.SelectedIndex = -1;
+            chkContractStatus.Checked = true;
             txtContactNo.Focus();
             FilldgvList();
         }
@@ -424,7 +424,11 @@ namespace HM_ERP_System.Forms.TankerRental
                         {
                             ListId = ListId_;
 
-                            if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            var Item ="شماره تانکر: "+ db.Spares.Where(c => c.Id == ListId).First().TankerNo;
+                            
+                            if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
+
                             {
                                 var q = db.Spares.Where(c => c.Id == ListId).First();
                                 db.Spares.Remove(q);
@@ -544,7 +548,7 @@ namespace HM_ERP_System.Forms.TankerRental
                                         DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
                                     else
                                         DetailedAccountId = serch1.First().Id;
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, RentAmount, RentAmount, 0, 0, "دریافت "+txtDes, "", Series, true);
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, PersianDate.NowPersianDate, 1, SpecificAccountId, DetailedAccountId, RentAmount, RentAmount, 0, 0, "دریافت " + txtDes, "", Series, true);
 
 
 
@@ -628,7 +632,7 @@ namespace HM_ERP_System.Forms.TankerRental
                 if (PublicClass.CloseForm())
                     this.Close();
             }
-                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
@@ -639,9 +643,9 @@ namespace HM_ERP_System.Forms.TankerRental
         private void buttonX01_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
-            f.grid=dgvList;
-            f.TitelString =ResourceCode.TRtankerRental;
-            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_TankerRental.rdlc";
+            f.grid = dgvList;
+            f.TitelString = ResourceCode.TRtankerRental;
+            f.ReporFileName = "HM_ERP_System.ReportViewer.Report_TankerRental.rdlc";
             f.ShowDialog();
         }
 

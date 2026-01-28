@@ -29,7 +29,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
         public frmPurchase_Tanker(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
 
         }
         private void frmPurchase_Tanker_Load(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
             txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
             //txtDateEnd.Value = DateTime.Now;
             txtDateEnd.Text = PersianDate.DateEnd();
-            txtDate.Value= DateTime.Now;
+            txtDate.Value = DateTime.Now;
             UpdateData();
         }
         public void UpdateData()
@@ -66,7 +66,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                 {
                     a.Add(i.DocumentStatus);
                 }
-                txtDocumentStatus.AutoCompleteCustomSource=a;
+                txtDocumentStatus.AutoCompleteCustomSource = a;
             }
 
         }
@@ -81,7 +81,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                 {
                     a.Add(i.Manufacturer);
                 }
-                txtManufacturer.AutoCompleteCustomSource=a;
+                txtManufacturer.AutoCompleteCustomSource = a;
             }
         }
 
@@ -98,7 +98,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                 {
                     a.Add(i.TypeChassisCapsule);
                 }
-                txtTypeChassisCapsule.AutoCompleteCustomSource=a;
+                txtTypeChassisCapsule.AutoCompleteCustomSource = a;
             }
         }
 
@@ -107,7 +107,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
             using (var db = new DBcontextModel())
             {
                 var q = db.TruckUsageTypes.ToList()/*.OrderBy(c=>c.Name)*/;
-                cmbTypeTrailer.DataSource=q;
+                cmbTypeTrailer.DataSource = q;
             }
         }
 
@@ -118,13 +118,13 @@ namespace HM_ERP_System.Forms.PurchaseTanker
             using (var db = new DBcontextModel())
             {
                 var q = (from cu in db.Customers
-                         where cu.id_TypeCustomer<=2
+                         where cu.id_TypeCustomer <= 2
 
 
                          select new
                          {
                              cu.Id,
-                             Name = cu.Family +" "+cu.Name,
+                             Name = cu.Family + " " + cu.Name,
                              cu.Tel,
                          }).OrderBy(c => c.Name);
 
@@ -143,12 +143,12 @@ namespace HM_ERP_System.Forms.PurchaseTanker
             using (var db = new DBcontextModel())
             {
                 var q = (from cu in db.Customers
-                         where cu.id_TypeCustomer<=2
+                         where cu.id_TypeCustomer <= 2
 
                          select new
                          {
                              cu.Id,
-                             Name = cu.Family +" "+cu.Name,
+                             Name = cu.Family + " " + cu.Name,
                              cu.Tel,
                          }).OrderBy(c => c.Name);
                 cmbSeller.DataSource = q.ToList();
@@ -188,8 +188,8 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                         {
                             pt.Id,
                             pt.Date,
-                            Seller = Seller.Family +" "+Seller.Name,
-                            Buyer = Buyer.Family +" "+Buyer.Name,
+                            Seller = Seller.Family + " " + Seller.Name,
+                            Buyer = Buyer.Family + " " + Buyer.Name,
                             TypeTrailer = tut.Name,
                             pt.TankerNo,
                             pt.Manufacturer,
@@ -204,7 +204,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                             pt.TransactionsStatuse,
                             User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
-                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList,Name);
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt; PublicClass.SettingGridEX(dgvList, Name);
             }
         }
 
@@ -274,11 +274,11 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                     }
 
                     var save = new Repository<Entity.PurchaseTanker.PurchaseTanker>(db);
-                    if (save.SaveOrUpdate(new Entity.PurchaseTanker.PurchaseTanker { Id = ListId, TankerNo=Convert.ToInt32(txtTankerNo.Text), Date=txtDate.Text, SellerId=SellerId, BuyerId=BuyerId, NumberAxles=Convert.ToInt32(txtNumberAxles.Text), TypeTrailerId=TypeTrailerId, TypeChassisCapsule=txtTypeChassisCapsule.Text, Manufacturer=txtManufacturer.Text, DocumentStatus=txtDocumentStatus.Text, PreviousPlateNumber= Convert.ToInt32(txtPreviousPlateNumber.Text), NewPlateNumber=Convert.ToInt32(txtNewPlateNumber.Text), PurchaseAmount=Convert.ToInt64(txtPurchaseAmount.TextSimple), BlockedAmountDocument=Convert.ToInt64(txtBlockedAmountDocument.TextSimple), AgencyCommission=Convert.ToInt64(txtAgencyCommission.TextSimple),UserId=PublicClass.UserId,RecordDateTime=DateTime.Now }, ListId))
+                    if (save.SaveOrUpdate(new Entity.PurchaseTanker.PurchaseTanker { Id = ListId, TankerNo = Convert.ToInt32(txtTankerNo.Text), Date = txtDate.Text, SellerId = SellerId, BuyerId = BuyerId, NumberAxles = Convert.ToInt32(txtNumberAxles.Text), TypeTrailerId = TypeTrailerId, TypeChassisCapsule = txtTypeChassisCapsule.Text, Manufacturer = txtManufacturer.Text, DocumentStatus = txtDocumentStatus.Text, PreviousPlateNumber = Convert.ToInt32(txtPreviousPlateNumber.Text), NewPlateNumber = Convert.ToInt32(txtNewPlateNumber.Text), PurchaseAmount = Convert.ToInt64(txtPurchaseAmount.TextSimple), BlockedAmountDocument = Convert.ToInt64(txtBlockedAmountDocument.TextSimple), AgencyCommission = Convert.ToInt64(txtAgencyCommission.TextSimple), UserId = PublicClass.UserId, RecordDateTime = DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
                         FilldgvList();
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
                         CelearItems();
                     }
@@ -305,7 +305,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
             txtPurchaseAmount.ResetText();
             txtAgencyCommission.ResetText();
             txtBlockedAmountDocument.ResetText();
-            ListId=0;
+            ListId = 0;
             txtTankerNo.Focus();
         }
 
@@ -329,20 +329,20 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                     using (var db = new DBcontextModel())
                     {
                         var q = db.PurchaseTankers.Where(c => c.Id == ListId).First();
-                        txtTankerNo.Text=q.TankerNo.ToString();
-                        txtDate.Text=q.Date.ToString();
-                        cmbSeller.Value=q.SellerId;
-                        cmbBuyer.Value=q.BuyerId;
-                        txtNumberAxles.Text=q.NumberAxles.ToString();
-                        cmbTypeTrailer.Value=q.TypeTrailerId;
-                        txtTypeChassisCapsule.Text=q.TypeChassisCapsule;
-                        txtManufacturer.Text=q.Manufacturer;
-                        txtDocumentStatus.Text=q.DocumentStatus;
-                        txtPreviousPlateNumber.Text=q.PreviousPlateNumber.ToString();
+                        txtTankerNo.Text = q.TankerNo.ToString();
+                        txtDate.Text = q.Date.ToString();
+                        cmbSeller.Value = q.SellerId;
+                        cmbBuyer.Value = q.BuyerId;
+                        txtNumberAxles.Text = q.NumberAxles.ToString();
+                        cmbTypeTrailer.Value = q.TypeTrailerId;
+                        txtTypeChassisCapsule.Text = q.TypeChassisCapsule;
+                        txtManufacturer.Text = q.Manufacturer;
+                        txtDocumentStatus.Text = q.DocumentStatus;
+                        txtPreviousPlateNumber.Text = q.PreviousPlateNumber.ToString();
                         txtNewPlateNumber.Text = q.NewPlateNumber.ToString();
-                        txtPurchaseAmount.Text=q.PurchaseAmount.ToString();
-                        txtAgencyCommission.Text=q.AgencyCommission.ToString();
-                        txtBlockedAmountDocument.Text=q.BlockedAmountDocument.ToString();
+                        txtPurchaseAmount.Text = q.PurchaseAmount.ToString();
+                        txtAgencyCommission.Text = q.AgencyCommission.ToString();
+                        txtBlockedAmountDocument.Text = q.BlockedAmountDocument.ToString();
 
                     }
 
@@ -359,7 +359,16 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                         //    return;
                         //}
 
-                        if (System.Windows.Forms.MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        string Item ="شماره تانکر: " +dgvList.CurrentRow.Cells["TankerNo"].Value.ToString();
+                        if (System.Windows.Forms.MessageBox.Show(
+                                ResourceCode.T003 + "\n" + Item,
+                                ResourceCode.ProgName,
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question,
+                                MessageBoxDefaultButton.Button1,
+                                System.Windows.Forms.MessageBoxOptions.RightAlign
+                            ) == DialogResult.Yes)
+
                         {
                             var q = db.PurchaseTankers.Where(c => c.Id == ListId).First();
                             db.PurchaseTankers.Remove(q);
@@ -407,9 +416,9 @@ namespace HM_ERP_System.Forms.PurchaseTanker
 
         private void btnRegDocAccounts_Click(object sender, EventArgs e)
         {
-            if(dgvList.GetCheckedRows().Count()!=1)
+            if (dgvList.GetCheckedRows().Count() != 1)
             {
-                PublicClass.ErrorMesseg(ResourceCode.T076);return;
+                PublicClass.ErrorMesseg(ResourceCode.T076); return;
             }
 
         }
@@ -421,7 +430,7 @@ namespace HM_ERP_System.Forms.PurchaseTanker
                 if (PublicClass.CloseForm())
                     this.Close();
             }
-                        if (e.Control && e.KeyCode == Keys.F12) { UpdateData();PublicClass.WindowAlart("1", ResourceCode.T161); }
+            if (e.Control && e.KeyCode == Keys.F12) { UpdateData(); PublicClass.WindowAlart("1", ResourceCode.T161); }
         }
 
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
@@ -432,9 +441,9 @@ namespace HM_ERP_System.Forms.PurchaseTanker
         private void buttonX01_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
-            f.grid=dgvList;
-            f.TitelString =ResourceCode.TRPurchase_Tanker;
-            f.ReporFileName ="HM_ERP_System.ReportViewer.Report_Purchase_Tanker.rdlc";
+            f.grid = dgvList;
+            f.TitelString = ResourceCode.TRPurchase_Tanker;
+            f.ReporFileName = "HM_ERP_System.ReportViewer.Report_Purchase_Tanker.rdlc";
             f.ShowDialog();
         }
     }

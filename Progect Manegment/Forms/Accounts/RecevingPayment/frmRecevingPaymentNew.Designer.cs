@@ -242,7 +242,7 @@
             this.pnlFrom.Size = new System.Drawing.Size(1337, 178);
             this.pnlFrom.TabIndex = 4;
             this.pnlFrom.Text = "دریافت/پرداخت از";
-            this.pnlFrom.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
+            this.pnlFrom.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Far;
             // 
             // uiPanel0Container
             // 
@@ -675,7 +675,7 @@
             this.pnlTo.Size = new System.Drawing.Size(1337, 239);
             this.pnlTo.TabIndex = 4;
             this.pnlTo.Text = "دریافت/پرداخت به";
-            this.pnlTo.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
+            this.pnlTo.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Far;
             // 
             // uiPanel20Container
             // 
@@ -750,11 +750,8 @@
             this.dgvListMulti.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.dgvListMulti.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListMulti.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
-            //this.dgvListMulti.GetNewRow += new Janus.Windows.GridEX.GetNewRowEventHandler(this.dgvListMulti_GetNewRow);
             this.dgvListMulti.RecordsDeleted += new System.EventHandler(this.dgvListMulti_RecordsDeleted);
             this.dgvListMulti.AddingRecord += new System.ComponentModel.CancelEventHandler(this.dgvListMulti_AddingRecord);
-            //this.dgvListMulti.InitCustomEdit += new Janus.Windows.GridEX.InitCustomEditEventHandler(this.dgvListMulti_InitCustomEdit);
-            //this.dgvListMulti.EndCustomEdit += new Janus.Windows.GridEX.EndCustomEditEventHandler(this.dgvListMulti_EndCustomEdit);
             // 
             // panel5
             // 
@@ -1047,7 +1044,6 @@
             this.dgvListCheque1.TableHeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.dgvListCheque1.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListCheque1.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
-            //this.dgvListCheque1.GetNewRow += new Janus.Windows.GridEX.GetNewRowEventHandler(this.dgvListCheque_GetNewRow);
             this.dgvListCheque1.RecordsDeleted += new System.EventHandler(this.dgvListCheque_RecordsDeleted);
             this.dgvListCheque1.AddingRecord += new System.ComponentModel.CancelEventHandler(this.dgvListCheque_AddingRecord);
             this.dgvListCheque1.InitCustomEdit += new Janus.Windows.GridEX.InitCustomEditEventHandler(this.dgvListCheque_InitCustomEdit);
@@ -1347,7 +1343,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(400, 165);
             this.panel2.TabIndex = 0;
-            //this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtDescriptionDoc
             // 
@@ -1783,7 +1778,6 @@
             this.buttonX1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonX1.SymbolSize = 15F;
             this.buttonX1.TabIndex = 4;
-            //this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // btnExportToExcel
             // 
@@ -1975,7 +1969,6 @@
             this.Controls.Add(this.uiPanelGroup1);
             this.Controls.Add(this.pnlTo);
             this.Controls.Add(this.pnlFrom);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "frmRecevingPaymentNew";
             this.Text = "خزانه داری - اعلامی دریافت و پرداخت";

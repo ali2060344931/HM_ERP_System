@@ -4993,7 +4993,7 @@
             this.dgvListH.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListH.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListH.SettingsKey = "frmComersH";
-            this.dgvListH.Size = new System.Drawing.Size(690, 195);
+            this.dgvListH.Size = new System.Drawing.Size(690, 191);
             this.dgvListH.Sortable = true;
             this.dgvListH.TabIndex = 85;
             this.dgvListH.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -5025,7 +5025,7 @@
             this.dgvListB.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowPosition;
             this.dgvListB.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListB.SettingsKey = "frmComersB";
-            this.dgvListB.Size = new System.Drawing.Size(821, 195);
+            this.dgvListB.Size = new System.Drawing.Size(821, 191);
             this.dgvListB.Sortable = true;
             this.dgvListB.TabIndex = 86;
             this.dgvListB.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);

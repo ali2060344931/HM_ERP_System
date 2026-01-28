@@ -54,20 +54,20 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(374, 338);
+            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(676, 338);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(374, 50);
+            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(676, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 388);
-            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(374, 28);
+            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(676, 28);
             // 
             // pnlAddItemBodi
             // 
@@ -79,13 +79,13 @@
             this.pnlAddItemBodi.Controls.Add(this.label14);
             this.pnlAddItemBodi.Controls.Add(this.btnAddNewItem);
             this.pnlAddItemBodi.Controls.Add(this.cmbPerson);
-            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4);
             this.pnlAddItemBodi.Size = new System.Drawing.Size(412, 388);
             // 
             // pnlAddItemFoter
             // 
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 388);
-            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(412, 28);
             // 
             // btnSave
@@ -95,25 +95,25 @@
             // btnNew
             // 
             this.btnNew.Location = new System.Drawing.Point(337, 0);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(221, 12);
-            this.txtDateStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDateStart.Location = new System.Drawing.Point(359, 12);
+            this.txtDateStart.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateStart.Value = new System.DateTime(2025, 8, 18, 11, 51, 26, 957);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(19, 12);
-            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDateEnd.Location = new System.Drawing.Point(157, 12);
+            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateEnd.Value = new System.DateTime(2025, 8, 18, 11, 51, 26, 957);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(-71, 15);
-            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowListItems.Location = new System.Drawing.Point(67, 15);
+            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4);
             // 
             // labelX2
             // 
@@ -121,8 +121,8 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(149, 17);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX2.Location = new System.Drawing.Point(287, 17);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
@@ -131,36 +131,36 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(351, 17);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX1.Location = new System.Drawing.Point(489, 17);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(4);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItems.Size = new System.Drawing.Size(376, 444);
+            this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItems.Size = new System.Drawing.Size(678, 444);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(379, 3);
-            this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlAddItems.Location = new System.Drawing.Point(681, 3);
+            this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4);
             this.pnlAddItems.Size = new System.Drawing.Size(418, 444);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(340, 0);
-            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportToExcel.Location = new System.Drawing.Point(642, 0);
+            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(306, 0);
-            this.buttonX01.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonX01.Location = new System.Drawing.Point(608, 0);
+            this.buttonX01.Margin = new System.Windows.Forms.Padding(4);
             this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(271, 0);
-            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(573, 0);
+            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // label14
@@ -273,7 +273,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmBlacList";
-            this.dgvList.Size = new System.Drawing.Size(374, 338);
+            this.dgvList.Size = new System.Drawing.Size(676, 338);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -296,8 +296,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ClientSize = new System.Drawing.Size(1102, 450);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmBlacList";
             this.Text = "لیست سیـــاه";
             this.Load += new System.EventHandler(this.frmBlacList_Load);

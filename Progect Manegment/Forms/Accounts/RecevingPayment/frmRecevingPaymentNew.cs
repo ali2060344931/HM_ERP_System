@@ -789,6 +789,11 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             if (!PublicClass.SetPeremission("Node2_1_5", 1)) return;
             frmSpecificAccountsGroup f = new frmSpecificAccountsGroup(this);
+            if (rdbIncomr.Checked)
+                f.TransactionTypesId_ = 4;
+            else if (rdbExpense.Checked)
+                f.TransactionTypesId_ = 5;
+
             f.ShowDialog();
             CheangRDB(CheangRDB_);
         }
@@ -1895,7 +1900,10 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
                             var q = db.Transactions.Where(c => c.Id == ListId).First().TransactionCode;
                             var list = db.Transactions.Where(c => c.TransactionCode == q).ToList();
-                            if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+
+                            string Item = "شماره سند: " + q;
+                            if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
                             {
                                 foreach (var item in list)
                                 {

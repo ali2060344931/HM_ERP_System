@@ -178,6 +178,8 @@ namespace HM_ERP_System.Forms.Ciltys
                     if (!PublicClass.SetPeremission("Node1_1_6_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
+                        string Item = dgvList.CurrentRow.Cells["NameCity"].Value.ToString();
+
                         var q1 = db.Customers.Where(c => c.CityId == ListId).Count();
                         var q2 = db.ComersHs.Where(c => c.LoadingOrinigId == ListId).Count();
                         var q3 = db.ComersHs.Where(c => c.UnLoadingOrinigId == ListId).Count();
@@ -185,11 +187,13 @@ namespace HM_ERP_System.Forms.Ciltys
 
                         if (q1 != 0 || q2 != 0 || q3 != 0)
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            PublicClass.ErrorMesseg(ResourceCode.T004 + '\n' + Item);
                             return;
                         }
 
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
+
                         {
                             var q = db.Ciltys.Where(c => c.Id == ListId).First();
                             db.Ciltys.Remove(q);

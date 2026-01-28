@@ -657,7 +657,9 @@ namespace HM_ERP_System.Forms.Customer
                                 PublicClass.StopMesseg(ResourceCode.T004); return;
                             }
 
-                            if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                            var Item = db.Customers.Where(c => c.Id == ListId).First();
+                            if (MessageBox.Show(ResourceCode.T003 + '\n' + Item.Name + " " + Item.Family, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
 
                             {
                                 var q = db.Customers.Where(c => c.Id == ListId).First();

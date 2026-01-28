@@ -408,7 +408,7 @@
             this.label97.BackColor = System.Drawing.Color.Transparent;
             this.label97.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label97.ForeColor = System.Drawing.Color.Red;
-            this.label97.Location = new System.Drawing.Point(476, 25);
+            this.label97.Location = new System.Drawing.Point(459, 25);
             this.label97.Name = "label97";
             this.label97.Size = new System.Drawing.Size(15, 15);
             this.label97.TabIndex = 107;
@@ -421,7 +421,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(476, 58);
+            this.label9.Location = new System.Drawing.Point(459, 58);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(15, 15);
             this.label9.TabIndex = 107;
@@ -434,7 +434,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(468, 93);
+            this.label10.Location = new System.Drawing.Point(451, 93);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(15, 15);
             this.label10.TabIndex = 107;
@@ -447,7 +447,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(507, 127);
+            this.label13.Location = new System.Drawing.Point(490, 127);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(15, 15);
             this.label13.TabIndex = 107;
@@ -460,7 +460,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(529, 159);
+            this.label15.Location = new System.Drawing.Point(512, 159);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 15);
             this.label15.TabIndex = 107;

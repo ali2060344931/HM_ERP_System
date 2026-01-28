@@ -26,7 +26,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
     {
         private IUpdatableForms _updatableForms;
         public int ListId = 0;
-
+        public int TransactionTypesId_ = 0;
         public frmSpecificAccountsGroup(IUpdatableForms updatableForms)
         {
             InitializeComponent();
@@ -35,25 +35,26 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
         }
         public void UpdateData()
         {
-          CallUpdateTata();
+            CallUpdateTata();
         }
 
         private void frmSpecificAccountsGroup_Load(object sender, EventArgs e)
         {
-
             UpdateData();
+            cmbTransactionTypes.Value = TransactionTypesId_;
+
         }
         private void CallUpdateTata()
         {
             FilldgvList();
             FillcmbTransactionTypes();
             FillcmbSpecificAccountF();
-            PublicClass.SettingGridEX(dgvList,Name);
+            PublicClass.SettingGridEX(dgvList, Name);
         }
 
         private void FilldgvList()
         {
-            using(var db=new DBcontextModel())
+            using (var db = new DBcontextModel())
             {
                 var q = from sag in db.SpecificAccountsGroups
 
@@ -63,17 +64,17 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                         join spaF in db.SpecificAccounts
                         on sag.SpecificAccountIdF equals spaF.Id
 
-                       select new
+                        select new
                         {
                             sag.Id,
                             sag.Name,
                             sag.Description,
                             TransactionType = tt.Name,
                             SpecificAccount = spaF.Name,
-                            
+
                         };
                 System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
-                dgvList.AutoSizeColumns();
+                //dgvList.AutoSizeColumns();
 
             }
         }
@@ -114,7 +115,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
         {
             using (var db = new DBcontextModel())
             {
-                var q = db.TransactionTypes.ToList();
+                var q = db.TransactionTypes.Where(c => c.Id == 4 || c.Id == 5).ToList();
                 cmbTransactionTypes.DataSource = q;
             }
 
@@ -155,7 +156,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                 if (PublicClass.FindEmptyControls(cmbTransactionTypes, ResourceCode.T125, txtName, ResourceCode.T126, cmbSpecificAccountF, ResourceCode.T127))
                     return;
 
-                if (cmbSpecificAccountF.SelectedIndex==-1)
+                if (cmbSpecificAccountF.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T045);
                     return;
@@ -165,7 +166,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                 {
                     if (ListId == 0)
                     {
-                        int cont = db.SpecificAccountsGroups.Count(c => c.SpecificAccountIdF == SpecificAccountIdF  && c.Name==txtName.Text && c.TransactionTypeId==TransactionTypesId);
+                        int cont = db.SpecificAccountsGroups.Count(c => c.SpecificAccountIdF == SpecificAccountIdF && c.Name == txtName.Text && c.TransactionTypeId == TransactionTypesId);
                         if (cont > 0)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T119); return;
@@ -173,7 +174,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                     }
                     else
                     {
-                        int cont = db.SpecificAccountsGroups.Count(c => c.SpecificAccountIdF == SpecificAccountIdF  && c.Name==txtName.Text && c.TransactionTypeId==TransactionTypesId && c.Id != ListId);
+                        int cont = db.SpecificAccountsGroups.Count(c => c.SpecificAccountIdF == SpecificAccountIdF && c.Name == txtName.Text && c.TransactionTypeId == TransactionTypesId && c.Id != ListId);
                         if (cont > 0)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T018); return;
@@ -184,12 +185,12 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                         return;
 
                     var save = new Repository<SpecificAccountsGroup>(db);
-                    if (save.SaveOrUpdate(new SpecificAccountsGroup { Id = ListId,TransactionTypeId=TransactionTypesId,Name=txtName.Text,SpecificAccountIdF=SpecificAccountIdF ,Description=txtDescription.Text}, ListId))
+                    if (save.SaveOrUpdate(new SpecificAccountsGroup { Id = ListId, TransactionTypeId = TransactionTypesId, Name = txtName.Text, SpecificAccountIdF = SpecificAccountIdF, Description = txtDescription.Text }, ListId))
                     {
-                        
+
 
                         PublicClass.WindowAlart("1");
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
                         CelearItems();
                         FilldgvList();
@@ -212,7 +213,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
             txtDescription.ResetText();
             cmbSpecificAccountF.ResetText();
             //cmbSpecificAccountT.ResetText();
-            ListId=0;
+            ListId = 0;
             txtName.Focus();
         }
 
@@ -237,11 +238,11 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                 using (var db = new DBcontextModel())
                 {
                     var q = db.SpecificAccountsGroups.Where(c => c.Id == ListId).First();
-                    cmbTransactionTypes.Value=q.TransactionTypeId;
-                    txtName.Text=q.Name;
-                    cmbSpecificAccountF.Value=q.SpecificAccountIdF;
+                    cmbTransactionTypes.Value = q.TransactionTypeId;
+                    txtName.Text = q.Name;
+                    cmbSpecificAccountF.Value = q.SpecificAccountIdF;
                     //cmbSpecificAccountT.Value=q.SpecificAccountIdT;
-                    txtDescription.Text=q.Description;
+                    txtDescription.Text = q.Description;
                 }
             }
 
@@ -256,11 +257,12 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
                     //    return;
                     //}
 
-                    if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    string Item = dgvList.CurrentRow.Cells["Name"].Value.ToString();
+                    if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button1,MessageBoxOptions.RightAlign) == DialogResult.Yes)
                     {
                         var q = db.SpecificAccountsGroups.Where(c => c.Id == ListId).First();
                         db.SpecificAccountsGroups.Remove(q);
-                        
+
                         db.SaveChangesSafe();
                         FilldgvList();
                         CelearItems();
@@ -279,7 +281,7 @@ namespace HM_ERP_System.Forms.Accounts.SpecificAccount
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
-             PublicClass.SaveGridExToExcel(dgvList);
+            PublicClass.SaveGridExToExcel(dgvList);
         }
 
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)

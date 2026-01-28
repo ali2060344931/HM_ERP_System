@@ -187,7 +187,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                 pt.PostalCode,
                                 pt.Addres,
                                 User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
-                                FieldActivity= fa_ != null ? fa_.Name : "-",
+                                FieldActivity = fa_ != null ? fa_.Name : "-",
                             };
 
                     DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
@@ -232,7 +232,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     }
 
                     var userRepo = new Repository<Entity.PlaceTransfer.PlaceTransfer>(db);
-                    int id = userRepo.SaveOrUpdateRefId(new Entity.PlaceTransfer.PlaceTransfer { Id = ListId, Name = txtPlaceTransferName.Text, CiltyId = CityId1, PostalCode = txtPostalCode1.Text, Addres = txtAddres.Text,FieldActivityId=FieldActivityId, publicStatus = chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
+                    int id = userRepo.SaveOrUpdateRefId(new Entity.PlaceTransfer.PlaceTransfer { Id = ListId, Name = txtPlaceTransferName.Text, CiltyId = CityId1, PostalCode = txtPostalCode1.Text, Addres = txtAddres.Text, FieldActivityId = FieldActivityId, publicStatus = chkPublic.Checked, UserId = UserId_, RecordDateTime = DateTime.Now }, ListId);
 
                     if (chkPublic.Checked && dt_Citi.Rows.Count != 0)
                     {
@@ -318,7 +318,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         {
             CelearItems();
         }
-        
+
         /// <summary>
         /// ویرایش و حذف رکورد
         /// </summary>
@@ -341,7 +341,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                         chkPublic.Checked = q.publicStatus;
                         txtPostalCode1.Text = q.PostalCode;
                         txtAddres.Text = q.Addres;
-                        cmbFieldActivity.Value=q.FieldActivityId;
+                        cmbFieldActivity.Value = q.FieldActivityId;
                         if (q.publicStatus)
                         {
                             var srch = db.FloatingPublicCities.Where(c => c.PlaceTransferId == ListId).ToList();
@@ -365,18 +365,21 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     using (var db = new DBcontextModel())
                     {
 
+                        string Item ="نام انبار: " + dgvList.CurrentRow.Cells["PlaceTransferName"].Value.ToString();
+
                         if (db.ComersHs.Where(c => c.LoadingLocationId == ListId || c.UnLoadingLocationId == ListId).Count() != 0)
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            PublicClass.ErrorMesseg(ResourceCode.T004 + '\n' + Item);
                             return;
                         }
-                        if(db.FloatingPublicCities.Where(c=>c.PlaceTransferId==ListId).Count()!=0)
+                        if (db.FloatingPublicCities.Where(c => c.PlaceTransferId == ListId).Count() != 0)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T004);
                             return;
                         }
 
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
                         {
                             var q = db.PlaceTransfers.Where(c => c.Id == ListId).First();
                             db.PlaceTransfers.Remove(q);
@@ -599,11 +602,11 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            frmFieldActivity f=new frmFieldActivity(this);
+            frmFieldActivity f = new frmFieldActivity(this);
             f.ShowDialog();
 
         }
-        int FieldActivityId =0;
+        int FieldActivityId = 0;
         private void cmbFieldActivity_ValueChanged(object sender, EventArgs e)
         {
             try

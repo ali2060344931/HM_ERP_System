@@ -290,13 +290,16 @@ namespace HM_ERP_System.Forms.Draver
                     using (var db = new DBcontextModel())
                     {
 
+                        string Item = dgvList.CurrentRow.Cells["Name"].Value.ToString();
+
                         if (db.ComersHs.Where(c => c.DaraverId1 == ListId).Count() != 0)
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            PublicClass.ErrorMesseg(ResourceCode.T004 + '\n' + Item);
                             return;
                         }
 
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
                         {
                             var q = db.Dravers.Where(c => c.Id == ListId).First();
                             db.Dravers.Remove(q);

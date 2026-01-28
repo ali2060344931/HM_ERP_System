@@ -185,7 +185,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                                 g.BasicRole = false;
                             }
                             var br = db.CustomerToGroups.Where(c => c.CustomerId == cuId && c.PersonGroupId == BasicRoleId);
-                            if(br.Count() != 0)
+                            if (br.Count() != 0)
                             {
                                 br.First().BasicRole = true;
                             }
@@ -260,8 +260,8 @@ namespace HM_ERP_System.Forms.CustomerToGroup
             try
             {
                 ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
-                
-                
+
+
                 if (e.Column.Key == "btnBasicRole")
                 {
                     if (!PublicClass.SetPeremission("Node1_1_8_4", 1)) return;
@@ -269,7 +269,7 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                     {
                         var q = db.CustomerToGroups.Where(c => c.Id == ListId).First();
 
-                        if(q.BasicRole)
+                        if (q.BasicRole)
                         {
                             PublicClass.ErrorMesseg(ResourceCode.T189);
                             return;
@@ -277,9 +277,9 @@ namespace HM_ERP_System.Forms.CustomerToGroup
 
                         var qs = db.CustomerToGroups.Where(c => c.CustomerId == q.CustomerId && q.BasicRole);
                         string GroupName = "";
-                        if(qs.Count()!=0)
+                        if (qs.Count() != 0)
                         {
-                            GroupName=db.ProductGroups.Where(c=>c.Id==   qs.FirstOrDefault().PersonGroupId).First().Name;
+                            GroupName = db.ProductGroups.Where(c => c.Id == qs.FirstOrDefault().PersonGroupId).First().Name;
                         }
 
                         if (MessageBox.Show(ResourceCode.T188 /*+'\n'+ GroupName!=""?"عنوان نقش قبلی: "+ GroupName:""*/, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -318,7 +318,12 @@ namespace HM_ERP_System.Forms.CustomerToGroup
                     using (var db = new DBcontextModel())
                     {
 
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        string Item = dgvList.CurrentRow.Cells["personName"].Value.ToString();
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
+
+                        //if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                         {
                             var q = db.CustomerToGroups.Where(c => c.Id == ListId).First();
                             db.CustomerToGroups.Remove(q);

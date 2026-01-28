@@ -29,7 +29,7 @@ namespace HM_ERP_System.Forms.BlacList
         public frmBlacList(IUpdatableForms updatableForms)
         {
             InitializeComponent();
-            _updatableForms=updatableForms;
+            _updatableForms = updatableForms;
         }
 
         private void frmBlacList_Load(object sender, EventArgs e)
@@ -86,14 +86,14 @@ namespace HM_ERP_System.Forms.BlacList
                         select new
                         {
                             bl.Id,
-                            Name = (cu.Family+ " "+ cu.Name).Trim(),
+                            Name = (cu.Family + " " + cu.Name).Trim(),
                             des = bl.Description,
                             bl.status,
                             bl.NoSaveData,
                             User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                         };
-                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());dgvList.DataSource = dt;
-                PublicClass.SettingGridEX(dgvList,Name);
+                DataTable dt = PublicClass.EntityTableToDataTable(q.ToList()); dgvList.DataSource = dt;
+                PublicClass.SettingGridEX(dgvList, Name);
                 //dgvList.AutoSizeColumns();
             }
         }
@@ -139,10 +139,10 @@ namespace HM_ERP_System.Forms.BlacList
                     }
 
                     var userRepo = new Repository<Entity.BlacList.BlacList>(db);
-                    if (userRepo.SaveOrUpdate(new Entity.BlacList.BlacList { Id = ListId, CustomerId =PersonId, Description = txtDes.Text, status=chkStatus.Checked, NoSaveData=chkNoSaveData.Checked,UserId=PublicClass.UserId,RecordDateTime=DateTime.Now }, ListId))
+                    if (userRepo.SaveOrUpdate(new Entity.BlacList.BlacList { Id = ListId, CustomerId = PersonId, Description = txtDes.Text, status = chkStatus.Checked, NoSaveData = chkNoSaveData.Checked, UserId = PublicClass.UserId, RecordDateTime = DateTime.Now }, ListId))
                     {
                         PublicClass.WindowAlart("1");
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
                         CelearItems();
                     }
@@ -156,11 +156,11 @@ namespace HM_ERP_System.Forms.BlacList
 
         private void CelearItems()
         {
-            cmbPerson.SelectedIndex=-1;
+            cmbPerson.SelectedIndex = -1;
             txtDes.ResetText();
-            chkStatus.Checked=true;
-            chkNoSaveData.Checked=false;
-            ListId= 0;
+            chkStatus.Checked = true;
+            chkNoSaveData.Checked = false;
+            ListId = 0;
             cmbPerson.Focus();
             FilldgvList();
         }
@@ -191,8 +191,8 @@ namespace HM_ERP_System.Forms.BlacList
 
                         cmbPerson.Value = q.CustomerId;
                         txtDes.Text = q.Description;
-                        chkStatus.Checked=q.status;
-                        chkNoSaveData.Checked=q.NoSaveData;
+                        chkStatus.Checked = q.status;
+                        chkNoSaveData.Checked = q.NoSaveData;
                     }
                 }
 
@@ -207,8 +207,9 @@ namespace HM_ERP_System.Forms.BlacList
                         //    PublicClass.ErrorMesseg(ResourceCode.T004);
                         //    return;
                         //}
+                        string Item = dgvList.CurrentRow.Cells["Name"].Value.ToString();
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
 
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             var q = db.BlacLists.Where(c => c.Id == ListId).First();
                             db.BlacLists.Remove(q);

@@ -166,11 +166,11 @@ namespace HM_ERP_System.Forms.Commission
                             join pr in db.Products on cmh.ProductsId equals pr.Id
                             join dr1 in db.Dravers on cmb.DaraverId1_ equals dr1.Id
                             join cu1 in db.Customers on dr1.CustomerId equals cu1.Id
-                            
-                            join dr2 in db.Dravers 
+
+                            join dr2 in db.Dravers
                             on cmb.DaraverId2_ equals dr2.Id into dr2Group
                             from dr2_ in dr2Group.DefaultIfEmpty()
-                            
+
                             join cu2 in db.Customers
                             on dr2_.CustomerId equals cu2.Id into cu2Group
                             from cu2_ in cu2Group.DefaultIfEmpty()
@@ -180,7 +180,7 @@ namespace HM_ERP_System.Forms.Commission
                             join ga in db.Customers on cmb.GoodsAccountId equals ga.Id
                             join sd1 in db.Customers on cmb.SenderId equals sd1.Id
                             join rs1 in db.Customers on cmb.ResiverId equals rs1.Id
-                            
+
                             join rs2 in db.Customers on cmb.ResiverId2 equals rs2.Id into rs2Group
                             from rs2Left in rs2Group.DefaultIfEmpty()
 
@@ -195,7 +195,7 @@ namespace HM_ERP_System.Forms.Commission
                             join sh in db.Customers on cmh.ShiperId equals sh.Id into shGroup
                             from shLeft in shGroup.DefaultIfEmpty()
 
-                            // 🔸 اصلاح کامل بخش PaymentToOthers
+                                // 🔸 اصلاح کامل بخش PaymentToOthers
                             join ptonDA in db.DetailedAccounts
                             on cmb.PaymentToOthersId equals ptonDA.Id into ptonDAGroup
                             from ptonDA_Left in ptonDAGroup.DefaultIfEmpty()
@@ -214,9 +214,9 @@ namespace HM_ERP_System.Forms.Commission
                             join CuUser in db.Customers
                             on cuR_.CustomerId equals CuUser.Id into CuUserGroup
                             from CuUser_ in CuUserGroup.DefaultIfEmpty()
-                            
+
                                 //where string.Compare(co.Date, dateS) >= 0 && string.Compare(co.Date, dateE) <= 0
-                            where co.Date.CompareTo(dateS) >= 0   && co.Date.CompareTo(dateE) <= 0
+                            where co.Date.CompareTo(dateS) >= 0 && co.Date.CompareTo(dateE) <= 0
 
                             select new
                             {
@@ -242,8 +242,8 @@ namespace HM_ERP_System.Forms.Commission
                                 CarPlat = cr.CarPlat + "-" + cr.CarPlatSeryal,
                                 DaraverName = cu1.Family + " " + cu1.Name,
                                 TelDr1 = cu1.Tel,
-                                DaraverName2 = cu2_!=null ? cu2_.Family + " " + cu2_.Name:"-",
-                                TelDr2 = cu2_ != null ? cu2_.Tel:"-",
+                                DaraverName2 = cu2_ != null ? cu2_.Family + " " + cu2_.Name : "-",
+                                TelDr2 = cu2_ != null ? cu2_.Tel : "-",
                                 SenderName = sd1.Family + " " + sd1.Name,
                                 ResiverName = rs1.Family + " " + rs1.Name,
                                 SenderName2 = sd2Left != null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
@@ -251,7 +251,7 @@ namespace HM_ERP_System.Forms.Commission
                                 cmb.Bn,
                                 cmb.BaseFreight,
                                 User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
-                                
+
                             };
                     System.Data.DataTable dt = PublicClass.EntityTableToDataTable(q.ToList());
                     DG.DataSource = dt;
@@ -770,7 +770,13 @@ namespace HM_ERP_System.Forms.Commission
                             var q0 = db.Commissions.Where(c => c.Id == ListId).First();
                             if (q0.TransactionId == 0)
                             {
-                                if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                                var q_=db.Commissions.Where(c=>c.Id == ListId).First();
+
+                                var Item ="سریال حواله: "+ db.ComersBs.Where(c => c.Id == q_.ComersBId).First().SeryalH;
+                                
+                                if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
                                 {
                                     var q = db.Commissions.Where(c => c.Id == ListId).First();
                                     db.Commissions.Remove(q);

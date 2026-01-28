@@ -281,9 +281,9 @@ namespace HM_ERP_System.Forms.Car
                         join CuUser in db.Customers
                         on cuR_.CustomerId equals CuUser.Id into CuUserGroup
                         from CuUser_ in CuUserGroup.DefaultIfEmpty()
-                        
+
                         where cr.Status == true
-                        
+
                         select new
                         {
                             cr.Id,
@@ -569,14 +569,17 @@ namespace HM_ERP_System.Forms.Car
                     if (!PublicClass.SetPeremission("Node1_1_3_3", 1)) return;
                     using (var db = new DBcontextModel())
                     {
+                        string Item ="شماره پلاک: " + dgvList.CurrentRow.Cells["CarPlat"].Value.ToString();
 
                         if (db.ComersHs.Where(c => c.CarId == ListId).Count() != 0)
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T004);
+                            PublicClass.ErrorMesseg(ResourceCode.T004 + '\n' + Item);
                             return;
                         }
 
-                        if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+
+                        //if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             var q = db.Cars.Where(c => c.Id == ListId).First();
                             db.Cars.Remove(q);

@@ -1,17 +1,6 @@
-﻿using GridExEx;
-using GridExEx.GridForms;
-
-using HM_ERP_System.Class_General;
-using HM_ERP_System.Components;
-using HM_ERP_System.Entity.Accounts.DetailedAccount;
-using HM_ERP_System.Entity.Accounts.SpecificAccount;
+﻿using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.BillLadingWriterPercent;
-using HM_ERP_System.Entity.Ciltys;
 using HM_ERP_System.Entity.Comers;
-using HM_ERP_System.Entity.PaymentMethod;
-using HM_ERP_System.Entity.Provinces;
-using HM_ERP_System.Entity.TransactionFee;
-using HM_ERP_System.Entity.TypeCalcMethod;
 using HM_ERP_System.Forms.Accounts.DetailedAccount;
 using HM_ERP_System.Forms.AppointmentScheduling;
 using HM_ERP_System.Forms.BillLadingRequest;
@@ -21,44 +10,17 @@ using HM_ERP_System.Forms.PlaceTransfer;
 using HM_ERP_System.Forms.Reports;
 
 using Janus.Windows.GridEX;
-using Janus.Windows.UI.Dock;
-using Janus.Windows.UI.Tab;
-
-using K4os.Hash.xxHash;
-
-using Microsoft.Office.Interop.Excel;
 
 using MyClass;
-
-using NPOI.OpenXmlFormats.Vml;
-
-using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Crypto.Tls;
 
 using Progect_Manegment;
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
-
-using static ClosedXML.Excel.XLPredefinedFormat;
 namespace HM_ERP_System.Forms.Comers
 {
     public partial class frmComers : frmMasterForm, IUpdatableForms
@@ -67,7 +29,7 @@ namespace HM_ERP_System.Forms.Comers
         private IUpdatableForms _updatableForms;
         public int ListId = 0;
         public int ListId_ = 0;
-        int UserId_ = PublicClass.UserId;
+        //int UserId_ = PublicClass.UserId;
         public string Carplate_ = "";
         string ComerTabKey = "";
         //------------
@@ -712,9 +674,9 @@ namespace HM_ERP_System.Forms.Comers
                              join pr in db.Provinces
                              on ct.ProvincesId equals pr.Id
 
+                             //where dr.Status /*&& (!cr.StatusCarToComers || ListId!=0)*/
 
-                             where dr.Status /*&& (!cr.StatusCarToComers || ListId!=0)*/
-
+                             where cr.Status
                              select new
                              {
                                  cr.Id,
@@ -2617,7 +2579,8 @@ namespace HM_ERP_System.Forms.Comers
                     AccountingDocumentRegistration(newId);//ثبت سند حسابداری
 
                     FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
-                    CelearItemsB();
+                    //CelearItemsB();
+                    CelearItemsAllB();
                 }
             }
             catch (Exception er)
@@ -2913,8 +2876,8 @@ namespace HM_ERP_System.Forms.Comers
 
         private void CelearItemsH()
         {
-            //FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
-            //FillcmbCarplate();
+            //buttonX1_Click(null,null);
+
             cmbDraversH1.ResetText();
             cmbCarplateH.ResetText();
             txtNumberTranferForm.ResetText();
@@ -2927,6 +2890,7 @@ namespace HM_ERP_System.Forms.Comers
             txtDateH.Focus();
             CreatRemiaanceSeryal();
             CelearLableItemslH();
+
         }
 
         private void CelearLableItemslH()
@@ -2980,6 +2944,7 @@ namespace HM_ERP_System.Forms.Comers
 
         private void CelearItemsB()
         {
+
             ListId = 0;
             CelearLableItemslB();
             SeryalHId_ = 0;
@@ -2991,10 +2956,12 @@ namespace HM_ERP_System.Forms.Comers
             cmbCarplateB.ResetText();
             cmbCarplateB.Enabled = true;
             btnListSimilarComerB.Enabled = true;
+            txtPaymentToOthers1.ResetText();
+            txtAmountPaidTruckDriver.ResetText();
             txtAC.ResetText();
             txtAV.ResetText();
             txtAY.ResetText();
-
+            cmbCarplateB.Focus();
         }
         private void CelearLableItemslB()
         {
@@ -3287,7 +3254,6 @@ namespace HM_ERP_System.Forms.Comers
             catch (Exception)
             {
             }
-
         }
 
         private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
@@ -3424,18 +3390,15 @@ namespace HM_ERP_System.Forms.Comers
                 FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
             else if (ComerTabKey == "ComersB")
                 FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
-
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-
             if (ComerTabKey == "ComersH")
                 CelearItemsH();
             else if (ComerTabKey == "ComersB")
             {
                 CelearItemsB();
-                //CelearLableItemslB();
             }
         }
 
@@ -3450,9 +3413,7 @@ namespace HM_ERP_System.Forms.Comers
             {
                 cmbCarplateB.ResetText();
                 CelearItemsAllB();
-                //CelearItemsB();
                 CelearLableItemslB();
-
             }
         }
 
@@ -3491,7 +3452,6 @@ namespace HM_ERP_System.Forms.Comers
                         lblSeryalH.Text = cr2.CarPlatSeryal + " " + cr2.CarPlat;
                         lblDraverCarName.Text = qdn.Name + " " + qdn.Family;
                         lblDraver1Tel.Text = qdn.Tel;
-                        //lblLoadWeight.Text = q.LoadWeight.ToString();
                         lblProdectName.Text = pn.Name;
                         lblLoadingOrinig.Text = qct1.Name;
                         lblUnLoadingOrinig.Text = qct2.Name;
@@ -3501,7 +3461,6 @@ namespace HM_ERP_System.Forms.Comers
                 {
                     CelearLableItemslB();
                 }
-
             }
             catch (Exception)
             {
@@ -4809,7 +4768,7 @@ namespace HM_ERP_System.Forms.Comers
                     using (var db = new DBcontextModel())
                     {
 
-                        string Item ="شماره حواله: " + db.ComersHs.Where(c=>c.Id==ListId).First().RemiaanceSeryal.ToString();
+                        string Item = "شماره حواله: " + db.ComersHs.Where(c => c.Id == ListId).First().RemiaanceSeryal.ToString();
 
 
                         var search = db.ComersBs.Where(c => c.ComersHId == ListId);
@@ -4820,13 +4779,13 @@ namespace HM_ERP_System.Forms.Comers
 
 
                         var qs = db.ComersHs.Any(c => c.Id == ListId && c.Cancellation);
-                        
+
                         if (qs)
                         {
                             PublicClass.StopMesseg(ResourceCode.T004 + '\n' + Item); return;
                         }
 
-                        
+
                         if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
 
 
@@ -4917,7 +4876,7 @@ namespace HM_ERP_System.Forms.Comers
                     using (var db = new DBcontextModel())
                     {
                         var q = db.ComersHs.Where(c => c.Id == ListId).First();
-                        
+
                         string Item = "شماره حواله: " + q.RemiaanceSeryal.ToString();
 
                         var search = db.ComersBs.Any(c => c.ComersHId == ListId);

@@ -3856,8 +3856,8 @@
             this.txtBillLadingWriterPercent.Increment = 1D;
             this.txtBillLadingWriterPercent.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
             this.txtBillLadingWriterPercent.Location = new System.Drawing.Point(38, 161);
-            this.txtBillLadingWriterPercent.MaxValue = 1797693134862.3157D;
-            this.txtBillLadingWriterPercent.MinValue = 0D;
+            this.txtBillLadingWriterPercent.MaxValue = 100D;
+            this.txtBillLadingWriterPercent.MinValue = -100D;
             this.txtBillLadingWriterPercent.Name = "txtBillLadingWriterPercent";
             this.txtBillLadingWriterPercent.Size = new System.Drawing.Size(109, 28);
             this.txtBillLadingWriterPercent.TabIndex = 3;
@@ -4072,11 +4072,11 @@
             this.rdbShiper.AutoSize = true;
             this.rdbShiper.Enabled = false;
             this.rdbShiper.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.rdbShiper.Location = new System.Drawing.Point(46, 276);
+            this.rdbShiper.Location = new System.Drawing.Point(43, 277);
             this.rdbShiper.Name = "rdbShiper";
-            this.rdbShiper.Size = new System.Drawing.Size(29, 21);
+            this.rdbShiper.Size = new System.Drawing.Size(85, 21);
             this.rdbShiper.TabIndex = 115;
-            this.rdbShiper.Text = " ";
+            this.rdbShiper.Text = " بارنامه نویس";
             this.rdbShiper.UseVisualStyleBackColor = true;
             // 
             // rdbCostAccount
@@ -4714,11 +4714,11 @@
             this.btnCalculations.Size = new System.Drawing.Size(257, 28);
             this.btnCalculations.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCalculations.Symbol = "";
-            this.btnCalculations.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnCalculations.SymbolColor = System.Drawing.Color.Gold;
             this.btnCalculations.SymbolSize = 18F;
             this.btnCalculations.TabIndex = 15;
             this.btnCalculations.TabStop = false;
-            this.btnCalculations.Text = "محاسبات مقادیر بارنامه F3";
+            this.btnCalculations.Text = "محاسبات مقادیر بارنامه F3     ";
             this.btnCalculations.Visible = false;
             this.btnCalculations.Click += new System.EventHandler(this.btnCalculations_Click_1);
             // 

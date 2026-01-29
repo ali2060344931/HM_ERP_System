@@ -748,6 +748,9 @@
   <data name="T209" xml:space="preserve">
     <value>برای این بارنامه سند حسابداری ثبت نشده است.</value>
   </data>
+  <data name="T210" xml:space="preserve">
+    <value>آیا همه اسناد مشترک با این شماره سند حذف شوند؟</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

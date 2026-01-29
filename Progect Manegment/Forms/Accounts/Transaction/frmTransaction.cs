@@ -8,6 +8,8 @@ using HM_ERP_System.Forms.Main_Form;
 
 using MyClass;
 
+using Org.BouncyCastle.Asn1.Cmp;
+
 using Progect_Manegment;
 
 using System;
@@ -29,7 +31,7 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
     public partial class frmTransaction : frmAddItems, IUpdatableForms
     {
         private IUpdatableForms _updatableForms;
-        public int LisId = 0;
+        public int ListId = 0;
         public int TransactionsCode;
         public frmTransaction(IUpdatableForms updatableForms)
         {
@@ -427,6 +429,56 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
         {
             dgvList.ShowFieldChooser(this, ResourceCode.T158);
+        }
+
+        private void dgvList_ColumnButtonClick(object sender, Janus.Windows.GridEX.ColumnActionEventArgs e)
+        {
+            try
+            {
+                ListId = Convert.ToInt32(dgvList.CurrentRow.Cells["Id"].Value);
+                if (e.Column.Key == "Edit")
+                {
+                    if (!PublicClass.SetPeremission("Node1_1_3_2", 1)) return;
+                    using (var db = new DBcontextModel())
+                    {
+                    }
+
+                }
+
+                else if (e.Column.Key == "Delete")
+                {
+                    //if (!PublicClass.SetPeremission("Node1_1_3_3", 1)) return;
+                    using (var db = new DBcontextModel())
+                    {
+                        int TransactionCode_ = Convert.ToInt32(dgvList.CurrentRow.Cells["TransactionCode"].Value);
+                        string Item = "شماره سند: " + TransactionCode_.ToString();
+
+                        //if (db.ComersHs.Where(c => c.CarId == ListId).Count() != 0)
+                        //{
+                        //    PublicClass.ErrorMesseg(ResourceCode.T004 + '\n' + Item);
+                        //    return;
+                        //}
+                            var q = db.Transactions.Where(c => c.TransactionCode == TransactionCode_);
+
+                        if (MessageBox.Show(ResourceCode.T210 + '\n' + Item + '\n' +"تعداد سند: "+q.Count(), ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign) == DialogResult.Yes)
+                        {
+                            foreach (var item in q.ToList())
+                            {
+                                item.Status = true;
+                            }
+                            db.SaveChangesSafe();
+                            PublicClass.WindowAlart("2");
+                            FilldgvList();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+
         }
     }
 }

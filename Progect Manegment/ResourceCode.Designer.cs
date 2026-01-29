@@ -1951,6 +1951,15 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to آیا همه اسناد مشترک با این شماره سند حذف شوند؟.
+        /// </summary>
+        internal static string T210 {
+            get {
+                return ResourceManager.GetString("T210", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

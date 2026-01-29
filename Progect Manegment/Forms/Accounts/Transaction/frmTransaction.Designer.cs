@@ -32,6 +32,7 @@
             Janus.Windows.GridEX.GridEXLayout cmbContraAccountTo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSpecificAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvList_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            Janus.Windows.Common.Layouts.JanusLayoutReference dgvList_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column16.ButtonImage");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTransaction));
             this.cmbContraAccountFrom = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtTransactionDate = new Atf.UI.DateTimeSelector();
@@ -134,17 +135,17 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(556, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(426, 12);
             this.txtDateStart.Value = new System.DateTime(2025, 7, 12, 14, 13, 26, 322);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(354, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(224, 12);
             this.txtDateEnd.Value = new System.DateTime(2025, 7, 12, 14, 13, 26, 322);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(264, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(134, 15);
             this.btnShowListItems.Click += new System.EventHandler(this.btnShowListItems_Click);
             // 
             // labelX2
@@ -153,7 +154,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(484, 17);
+            this.labelX2.Location = new System.Drawing.Point(354, 15);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
             // labelX1
@@ -162,7 +163,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(686, 17);
+            this.labelX1.Location = new System.Drawing.Point(556, 15);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
@@ -510,6 +511,9 @@
             this.dgvList.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
             dgvList_Layout_0.IsCurrentLayout = true;
             dgvList_Layout_0.Key = "MyGrig";
+            dgvList_Layout_0_Reference_0.Instance = ((object)(resources.GetObject("dgvList_Layout_0_Reference_0.Instance")));
+            dgvList_Layout_0.LayoutReferences.AddRange(new Janus.Windows.Common.Layouts.JanusLayoutReference[] {
+            dgvList_Layout_0_Reference_0});
             dgvList_Layout_0.LayoutString = resources.GetString("dgvList_Layout_0.LayoutString");
             this.dgvList.Layouts.AddRange(new Janus.Windows.GridEX.GridEXLayout[] {
             dgvList_Layout_0});
@@ -528,6 +532,7 @@
             this.dgvList.TableHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvList.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
+            this.dgvList.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvList_ColumnButtonClick);
             // 
             // chkTax
             // 

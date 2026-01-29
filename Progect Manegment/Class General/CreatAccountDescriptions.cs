@@ -126,17 +126,6 @@ namespace HM_ERP_System.Class_General
                 var qB = db.ComersBs.Where(c => c.Id == comersBId).First();
                 var qH = db.ComersHs.Where(c => c.Id == qB.ComersHId).First();
                 
-                //مقصد2: کمیسیون،   لیست1: کرایه حمل
-                //string FareCalcMethodName = "";
-                //if (qB.MethodCalFareId == 1)
-                //    FareCalcMethodName = "کرایه حمل ";
-                //else
-                //    FareCalcMethodName = "کمیسیون";
-
-                //مقصد: کمیسیون،   لیست: کرایه حمل
-                //string FareCalcMethodName = db.FareCalcMethods.Where(c => c.Id == qB.MethodCalFareId).First().Name;
-
-
                 var car = db.Cars.Where(c => c.Id == qH.CarId).First();
                 
                 //سریال بارنامه
@@ -152,7 +141,12 @@ namespace HM_ERP_System.Class_General
                 //انبا مبدا
                 string LoadingLocation = db.PlaceTransfers.Where(c => c.Id == qH.LoadingLocationId).First().Name;
 
-                return  "هزینه بارنامه نویس به بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation+" کرایه پایه: "+ qB.BaseFreight.ToString("#,##0")+ " هزینه بیمه: " + qB.InsuranceAmount.ToString("#,##0") + (qB.BillLadingMethodId==3?" درصد: "+qB.BillLadingWriterPercent:"");
+                //شهر
+                string UnLoadingOrinig = db.Ciltys.Where(c => c.Id == qH.UnLoadingOrinigId).First().Name;
+                //انبار
+                string UnLoadingLocation = db.PlaceTransfers.Where(c => c.Id == qH.UnLoadingLocationId).First().Name;
+
+                return "هزینه بارنامه نویس، بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کرایه پایه: "+ qB.BaseFreight.ToString("#,##0")+ " هزینه بیمه: " + qB.InsuranceAmount.ToString("#,##0") + (qB.BillLadingMethodId==3?" درصد: "+qB.BillLadingWriterPercent+"%":"");
             }
         }
 

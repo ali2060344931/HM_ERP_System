@@ -4707,11 +4707,11 @@
             this.btnCalculations.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnCalculations.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnCalculations.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnCalculations.Location = new System.Drawing.Point(1574, 0);
+            this.btnCalculations.Location = new System.Drawing.Point(1619, 0);
             this.btnCalculations.Name = "btnCalculations";
             this.btnCalculations.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnCalculations.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F3);
-            this.btnCalculations.Size = new System.Drawing.Size(257, 28);
+            this.btnCalculations.Size = new System.Drawing.Size(212, 28);
             this.btnCalculations.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCalculations.Symbol = "";
             this.btnCalculations.SymbolColor = System.Drawing.Color.Gold;
@@ -5057,7 +5057,7 @@
             this.panelDeleteEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelDeleteEdit.Location = new System.Drawing.Point(0, 0);
             this.panelDeleteEdit.Name = "panelDeleteEdit";
-            this.panelDeleteEdit.Size = new System.Drawing.Size(366, 27);
+            this.panelDeleteEdit.Size = new System.Drawing.Size(346, 27);
             this.panelDeleteEdit.TabIndex = 16;
             this.panelDeleteEdit.Visible = false;
             // 

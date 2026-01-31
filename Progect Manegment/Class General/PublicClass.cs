@@ -3959,7 +3959,6 @@ namespace MyClass
                         //تاریخ صدور بارنامه
                         string TransactionDate = qcomB.DateB;
 
-
                         //AE سند طرف صاحب کالا
                         {//دریافت از صاحب کالا بابت حمل کالا.جزء درآمد می باشد
                             if (qcomB.AE != 0)
@@ -3985,7 +3984,6 @@ namespace MyClass
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomB.AE, qcomB.AE, 0, ComerBId, Description, "", Series, true);
 
-
                                 //*****************
                                 //سند بس
                                 Series++;
@@ -4005,7 +4003,6 @@ namespace MyClass
 
 
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomB.AE, 0, qcomB.AE, ComerBId, Description, "", Series, true);
-
                             }
                         }
 
@@ -4101,19 +4098,14 @@ namespace MyClass
 
                         //AZ سند بارنامه نویس
                         {
-
                             double AmountPaidTruckDriver_ = qcomB.AmountPaidTruckDriver;
-
-
                             //double qcomAZ = Math.Abs(qcomB.AZ);
                             double qcomAZ = Math.Abs(qcomB.AY);
                             ///وضعیت بارنامه:دارای بارنامه/فاقد بارنامه
                             var StatusLading = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First().StatusLading;
-                            Description = CreatAccountDescriptions.ShiperAccountDes(ComerBId);
-
+                            Description = CreatAccountDescriptions.ShiperAccountDes1(ComerBId);
                             if (!StatusLading)
                             {
-
                                 /// شرح سند بارنامه نویس
                                 //if (qcomB.AZ < 0)//(پرداخت شود(سند هزینه
                                 {
@@ -4194,7 +4186,10 @@ namespace MyClass
                                 ///بخش دریافت از راننده توسط بارنامه نویس
                                 if (AmountPaidTruckDriver_ != 0)
                                 {
+
                                     Series++;
+                                    Description = CreatAccountDescriptions.ShiperAccountDes2(ComerBId);
+
                                     //حساب معین
                                     SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;//بدهکاران تجاری، خریداران
 
@@ -4211,8 +4206,9 @@ namespace MyClass
 
                                     PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, AmountPaidTruckDriver_, AmountPaidTruckDriver_, 0, ComerBId, Description, "", Series, true);
                                     //*****************
-
                                     Series++;
+                                    
+                                    Description = CreatAccountDescriptions.ShiperAccountDes3(ComerBId);
                                     //حساب معین
                                     SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 60201).First().Id;//درآمد ارائه از خدمات داخلی
                                                                                                                   //حساب تفصیلی
@@ -4228,7 +4224,6 @@ namespace MyClass
 
                                     PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, AmountPaidTruckDriver_, 0, AmountPaidTruckDriver_, ComerBId, Description, "", Series, true);
                                 }
-
                             }
                         }
 

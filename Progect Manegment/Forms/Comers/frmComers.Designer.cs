@@ -2366,6 +2366,7 @@
             this.cmbFareCalcMethods.TabIndex = 7;
             this.cmbFareCalcMethods.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
             this.toolTip1.SetToolTip(this.cmbFareCalcMethods, "مقصد: کمیسیون،   لیست: کرایه حمل");
+            this.cmbFareCalcMethods.UseCompatibleTextRendering = false;
             this.cmbFareCalcMethods.ValueMember = "id";
             this.cmbFareCalcMethods.ValueChanged += new System.EventHandler(this.cmbFareCalcMethods_ValueChanged);
             this.cmbFareCalcMethods.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTypeDocument_KeyDown);

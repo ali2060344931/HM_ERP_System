@@ -221,7 +221,6 @@ namespace HM_ERP_System.Entity.Comers
         /// <summary>
         /// کرایه صافی راننده
         /// </summary>
-
         public double BO { get; set; }
         /// <summary>
         /// بدهی صاحب کالا بابت لیست

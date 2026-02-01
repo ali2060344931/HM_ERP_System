@@ -30,7 +30,7 @@ namespace HM_ERP_System.Class_General
 
                 //مقصد2: کمیسیون،   لیست1: کرایه حمل
                 //string FareCalcMethodName = "";
-                //if (qB.MethodCalFareId == 1)
+                //if (qB.TypeCalFareId == 1)
                 //    FareCalcMethodName = "کرایه حمل ";
                 //else
                 //    FareCalcMethodName = "کمیسیون";
@@ -76,10 +76,10 @@ namespace HM_ERP_System.Class_General
             {
                 var qB = db.ComersBs.Where(c => c.Id == comersBId).First();
                 var qH = db.ComersHs.Where(c => c.Id == qB.ComersHId).First();
-
+                //MethodCalFareId
                 //مقصد2: کمیسیون،   لیست1: کرایه حمل
                 string FareCalcMethodName = "";
-                if (qB.MethodCalFareId == 1)
+                if (qB.TypeCalFareId == 1)
                     FareCalcMethodName = "کرایه حمل ";
                 else
                     FareCalcMethodName = "کمیسیون";
@@ -107,7 +107,7 @@ namespace HM_ERP_System.Class_General
                 //وزن خالص بار
                 string LoadWeight = qB.LoadWeight.ToString();
 
-                return FareCalcMethodName + " ش بارنامه " + SeryalComerB + " ش حواله: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کالا: " + ProductName + " به وزن: " + LoadWeight + " کیلوگرم";
+                return FareCalcMethodName + " بارنامه " + SeryalComerB + " ش حواله: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کالا: " + ProductName + " به وزن: " + LoadWeight + " کیلوگرم";
             }
 
 
@@ -150,19 +150,40 @@ namespace HM_ERP_System.Class_General
             }
         }
 
-        public static string ShiperAccountDes2(int comersBId)
+        public static string ShiperAccountDes2_1(int comersBId)
         {
             using (var db = new DBcontextModel())
             {
                 var qB = db.ComersBs.Where(c => c.Id == comersBId).First();
                 var qH = db.ComersHs.Where(c => c.Id == qB.ComersHId).First();
+                
                 //راننده 1
-                var dr1 = db.Customers.Where(c => c.Id == qB.DaraverId1_).First();
+                var dr = db.Dravers.Where(c => c.Id == qB.DaraverId1_).First();
+                var dr1=db.Customers.Where(c=>c.Id == dr.CustomerId).First();
                 //بارنامه نویس
                 var Shiper = db.Customers.Where(c => c.Id == qH.ShiperId).First();
 
 
                 return "پرداخت توسط " + dr1.Name + " " + dr1.Family + " به " + Shiper.Name + " " + Shiper.Family + " ش ح " + qB.SeryalH;
+            }
+        }
+
+
+        public static string ShiperAccountDes2_2(int comersBId)
+        {
+            using (var db = new DBcontextModel())
+            {
+                var qB = db.ComersBs.Where(c => c.Id == comersBId).First();
+                var qH = db.ComersHs.Where(c => c.Id == qB.ComersHId).First();
+
+                //راننده 1
+                var dr = db.Dravers.Where(c => c.Id == qB.DaraverId1_).First();
+                var dr1 = db.Customers.Where(c => c.Id == dr.CustomerId).First();
+               
+                //پرداخت شده به سایر
+                var PaymentToOthers = db.Customers.Where(c => c.Id == db.DetailedAccounts.Where(x=>x.Id== qB.PaymentToOthersId).FirstOrDefault().CustomerId).First();
+
+                return "پرداخت توسط " + dr1.Name + " " + dr1.Family + " به " + PaymentToOthers.Name + " " + PaymentToOthers.Family + " ش ح " + qB.SeryalH;
             }
         }
 
@@ -194,7 +215,7 @@ namespace HM_ERP_System.Class_General
                 //وزن خالص بار
                 string LoadWeight = qB.LoadWeight.ToString();
 
-                return "کمیسیون بارنام " + qB.SeryalB + " ش ح " + qB.SeryalH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal +" از "+ LoadingOrinig+"، "+ LoadingLocation+" به "+ UnLoadingOrinig+"، "+ UnLoadingLocation + " وزن " + LoadWeight + " کیلوگرم " + LoadWeight;
+                return "کمیسیون بارنامه " + qB.SeryalB + " ش ح " + qB.SeryalH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal +" از "+ LoadingOrinig+"، "+ LoadingLocation+" به "+ UnLoadingOrinig+"، "+ UnLoadingLocation + " وزن " + LoadWeight + " کیلوگرم " + ProductName;
             }
 
         }

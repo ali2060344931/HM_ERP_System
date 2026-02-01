@@ -2520,7 +2520,10 @@ namespace HM_ERP_System.Forms.Comers
             if (ComerTabKey == "ComersH")
                 SaveFildsH();// متد ثبت اطلاعات حـــواله
             else if (ComerTabKey == "ComersB")
+            {
+                Calculations();
                 SaveFildsB();// متد ثبت اطلاعات بارنامه
+            }
         }
 
         /// <summary>

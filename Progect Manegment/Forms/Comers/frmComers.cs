@@ -2660,6 +2660,11 @@ namespace HM_ERP_System.Forms.Comers
                         //txtLoadWeightCapacity
                         CalculatComerB ccb = new CalculatComerB();
                         (AV, AC, AZ, BO, AE, AX, BK, BS, BT, AY, BV, BN, BP) = ccb.CalcComerFilds(ComersHId_, TypeCalFareId_: FareCalcMethod_, MethodCalFareId_: MethodCalFareBId_, LoadWeight_: txtLoadWeight.Value, WeightDeliveredGoods_: 0, TruckCapacity_: LoadWeightCapacity, FreightRate_: txtFreightRate.Value, CargoInsurance_: txtCargoInsurance.Value, LoadinCast_: txtLoadinCast.Value, Incentive_: txtIncentive.Value, StopCharge_: txtStopCharge.Value, Deduction_: txtDeduction.Value, BalanceAccount_: txtBalanceAccount.Value, TypeCalcMethodsBId_: MethodCalFareBId_, PaidFreightRate_: txtPaidFreightRate.Value, InsurancCost_: txtInsurancCost.Value, PaidIncentive_: txtPaidIncentive.Value, PaidStopCharge_: txtPaidStopCharge.Value, DriverDeduction_: txtDriverDeduction.Value, BillLadingMethodId_: BillLadingMethodId_, BillLadingCastId_: BillLadingCastId_, BaseFreight_: txtBaseFreight.Value, BillLadingAmount_: txtBillLadingAmount.Value, InsuranceAmount_: txtInsuranceAmount.Value, BillLadingWriterPercent_: txtBillLadingWriterPercent.Value, AmountPaidTruckDriver_: txtAmountPaidTruckDriver.Value, BalanceAccountDraver_: txtBalanceAccountِDraver.Value, OtherBillLadingCosts_: 0, BalanceBillLadingAmount_: _ = txtBalanceBillLadingAmount.Value);
+
+                        txtBO.Value = BO;
+                        txtBN.Value = BN;
+                        txtBV.Value = BV;
+                        txtBK.Value = BK;
                     }
                 }
             }
@@ -3028,6 +3033,12 @@ namespace HM_ERP_System.Forms.Comers
             cmbCostAccountB.SelectedIndex = -1;
             cmbGoodsAccountB.SelectedIndex = -1;
             lblShiperName.ResetText();
+            
+            txtBO.ResetText();
+            txtBN.ResetText();
+            txtBV.ResetText();
+            txtBK.ResetText();
+
             SenderB2Id_ = 0;
             ResiverB2Id_ = 0;
             PaymentToOthersId_ = 0;
@@ -3037,6 +3048,7 @@ namespace HM_ERP_System.Forms.Comers
             cmbBillLadingCast.SelectedIndex = 1;
             ListId = 0;
             ListId_ = 0;
+
         }
 
 
@@ -5501,6 +5513,8 @@ namespace HM_ERP_System.Forms.Comers
             txtBalanceAccount_Leave(null, null);
             txtBalanceBillLadingAmount_Leave(null, null);
             txtBalanceAccountِDraver_Leave(null, null);
+
+
         }
 
 

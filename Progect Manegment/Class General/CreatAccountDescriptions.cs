@@ -109,8 +109,6 @@ namespace HM_ERP_System.Class_General
 
                 return FareCalcMethodName + " بارنامه " + SeryalComerB + " ش حواله: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کالا: " + ProductName + " به وزن: " + LoadWeight + " کیلوگرم";
             }
-
-
         }
 
         /// <summary>
@@ -167,7 +165,6 @@ namespace HM_ERP_System.Class_General
                 return "پرداخت توسط " + dr1.Name + " " + dr1.Family + " به " + Shiper.Name + " " + Shiper.Family + " ش ح " + qB.SeryalH;
             }
         }
-
 
         public static string ShiperAccountDes2_2(int comersBId)
         {

@@ -3033,7 +3033,7 @@ namespace HM_ERP_System.Forms.Comers
             cmbCostAccountB.SelectedIndex = -1;
             cmbGoodsAccountB.SelectedIndex = -1;
             lblShiperName.ResetText();
-            
+
             txtBO.ResetText();
             txtBN.ResetText();
             txtBV.ResetText();
@@ -4960,12 +4960,12 @@ namespace HM_ERP_System.Forms.Comers
 
         private void cms_cmsDgvB_CommandClick(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            ListId = ListId_;
-            switch (e.Command.Key)
+            using (var db = new DBcontextModel())
             {
-                case "AccountingDocumentRegistration"://سند حسابداری
-                    using (var db = new DBcontextModel())
-                    {
+                ListId = ListId_;
+                switch (e.Command.Key)
+                {
+                    case "AccountingDocumentRegistration"://سند حسابداری
                         var q = db.Transactions.Any(c => c.ComerBId == ListId && c.Status == false);
                         if (q)
                         {
@@ -4976,20 +4976,19 @@ namespace HM_ERP_System.Forms.Comers
                             AccountingDocumentRegistration(ListId);
                             FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                         }
-                    }
+                        break;
+                    case "Delete"://حذف
+                                  //DeletegvListB(ListId);
+                        break;
+                    case "AddDocumentToBanck"://ثبت مدارک
+                        string lblCaption = "ش بارنامه: " + dgvListB.GetRow().Cells["SeryalB"].Value.ToString() + " س حواله: " + dgvListB.GetRow().Cells["SeryalH"].Value.ToString();
 
-                    break;
-                case "Delete"://حذف
-                    //DeletegvListB(ListId);
-                    break;
-                case "AddDocumentToBanck"://ثبت مدارک
-                    string lblCaption = "ش بارنامه: " + dgvListB.GetRow().Cells["SeryalB"].Value.ToString() + " س حواله: " + dgvListB.GetRow().Cells["SeryalH"].Value.ToString();
-
-                    PublicClass.AddDocumentToBanck(this.Name + "B", ListId, lblCaption);
-                    FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
-                    break;
+                        PublicClass.AddDocumentToBanck(this.Name + "B", ListId, lblCaption);
+                        FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
+                        break;
+                }
+                ListId = 0;
             }
-            ListId = 0;
         }
 
         /// <summary>

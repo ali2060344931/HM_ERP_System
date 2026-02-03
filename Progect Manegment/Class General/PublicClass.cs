@@ -4011,8 +4011,6 @@ namespace MyClass
                         {
                             // شرح سند مربوط به صاحب کامیون
                             Description = CreatAccountDescriptions.CostAccounDes(ComerBId);
-                            
-
                             /*
                             if (qcomB.BV < 0)//AXسند هرینه
                             {
@@ -4078,7 +4076,6 @@ namespace MyClass
                                         DetailedAccountId = AddToDetailedAccounts(SpecificAccountId, customertId);
                                     else
                                         DetailedAccountId = serch1.First().Id;
-
 
                                     PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, Description, "", Series, true);
 

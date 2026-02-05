@@ -133,24 +133,26 @@
             // 
             // txtCode
             // 
-            this.txtCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCode.Location = new System.Drawing.Point(614, 48);
+            this.txtCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtCode.Location = new System.Drawing.Point(3, 343);
             this.txtCode.Name = "txtCode";
             this.txtCode.PasswordChar = '*';
             this.txtCode.Size = new System.Drawing.Size(100, 28);
             this.txtCode.TabIndex = 2;
             this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCode.UseSystemPasswordChar = true;
+            this.txtCode.Visible = false;
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(720, 51);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(103, 343);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 23);
+            this.button1.Size = new System.Drawing.Size(99, 28);
             this.button1.TabIndex = 1;
             this.button1.Text = "حذف اسناد";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // chkShowAccountBalance

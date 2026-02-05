@@ -1,4 +1,6 @@
-﻿using HM_ERP_System.Class_General;
+﻿using DevComponents.Editors;
+
+using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.BillLadingWriterPercent;
 using HM_ERP_System.Entity.Comers;
 using HM_ERP_System.Forms.Accounts.DetailedAccount;
@@ -688,13 +690,13 @@ namespace HM_ERP_System.Forms.Comers
                                  DraverName = cu.Family + " " + cu.Name,
                                  //طرف حساب کامیون
                                  GoodsAccount = ga.Family + " " + ga.Name,
-                                 
+
                                  cu.CodMeli,
                                  cu.Tel,
                                  cr.Seryal,
                                  CityName = ct.Name,
                                  ProvinceName = pr.Name,
-                                 
+
                                  //cmb.StatusDeliveryGoods,
 
                              }).ToList();
@@ -2564,8 +2566,12 @@ namespace HM_ERP_System.Forms.Comers
                     var SeryalH = db.ComersHs.Where(c => c.Id == ComersHId_).First();
                     CalcComerFilds_();
 
+                    //rdbCostAccount
+                    //rdbShiper
+                    //chkIncomeDocument
+
                     var com = new Repository<ComersB>(db);
-                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, IncomeDocumentCode= IncomeDocumentCode, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
                     PublicClass.WindowAlart("1");
                     //TypeCalcMethodsBId_
 
@@ -2625,10 +2631,15 @@ namespace HM_ERP_System.Forms.Comers
         /// </summary>
         private void AccountingDocumentRegistration(int ComerB_Id)
         {
-            if (MessageBox.Show(ResourceCode.T111, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                return;
+            using (var db = new DBcontextModel())
+            {
+                var q = db.ComersBs.Where(c => c.Id == ComerB_Id).First();
 
-            PublicClass.ComerB_AccountingDocumentRegistration(ComerB_Id);
+                if (MessageBox.Show(ResourceCode.T111+'\n'+"شماره بارنامه:"+q.SeryalB + '\n' + "شماره حواله:" + q.SeryalH, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button1,MessageBoxOptions.RightAlign) == DialogResult.No)
+                    return;
+
+                PublicClass.ComerB_AccountingDocumentRegistration(ComerB_Id);
+            }
         }
 
         /// <summary>
@@ -3045,6 +3056,7 @@ namespace HM_ERP_System.Forms.Comers
             txtBV.ResetText();
             txtBK.ResetText();
 
+            chkIncomeDocument.Checked = false;
             SenderB2Id_ = 0;
             ResiverB2Id_ = 0;
             PaymentToOthersId_ = 0;
@@ -3494,6 +3506,15 @@ namespace HM_ERP_System.Forms.Comers
             if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
 
+            if (e.KeyCode == Keys.OemPeriod || e.KeyCode == Keys.Decimal)
+            {
+                if (sender is DoubleInput di)
+                {
+                    di.Value = di.Value * 1000;
+                }
+
+                e.SuppressKeyPress = true; // جلوگیری از ورود نقطه
+            }
         }
 
         private void cmbTypeCalcMethodsB_ValueChanged(object sender, EventArgs e)
@@ -5224,6 +5245,17 @@ namespace HM_ERP_System.Forms.Comers
                 //txtAC.Value=AC;
                 txtBalanceAccount.Value = AC;
             }
+
+            if (e.KeyCode == Keys.OemPeriod || e.KeyCode == Keys.Decimal)
+            {
+                if (sender is DoubleInput di)
+                {
+                    di.Value = di.Value * 1000;
+                }
+
+                e.SuppressKeyPress = true; // جلوگیری از ورود نقطه
+            }
+
         }
 
         private void txtBalanceBillLadingAmount_KeyDown(object sender, KeyEventArgs e)
@@ -5237,6 +5269,16 @@ namespace HM_ERP_System.Forms.Comers
                 //txtAY.Value=AY;
                 txtBalanceBillLadingAmount.Value = AY;
             }
+            if (e.KeyCode == Keys.OemPeriod || e.KeyCode == Keys.Decimal)
+            {
+                if (sender is DoubleInput di)
+                {
+                    di.Value = di.Value * 1000;
+                }
+
+                e.SuppressKeyPress = true; // جلوگیری از ورود نقطه
+            }
+
         }
 
         private void txtBalanceAccountِDraver_KeyDown(object sender, KeyEventArgs e)
@@ -5250,6 +5292,16 @@ namespace HM_ERP_System.Forms.Comers
                 //txtAV.Value=AV;
                 txtBalanceAccountِDraver.Value = AV;
             }
+            if (e.KeyCode == Keys.OemPeriod || e.KeyCode == Keys.Decimal)
+            {
+                if (sender is DoubleInput di)
+                {
+                    di.Value = di.Value * 1000;
+                }
+
+                e.SuppressKeyPress = true; // جلوگیری از ورود نقطه
+            }
+
         }
 
         private void cmbBillLadingCast_KeyDown(object sender, KeyEventArgs e)
@@ -5272,6 +5324,17 @@ namespace HM_ERP_System.Forms.Comers
         {
             if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
+
+            if (e.KeyCode == Keys.OemPeriod || e.KeyCode == Keys.Decimal)
+            {
+                if (sender is DoubleInput di)
+                {
+                    di.Value = di.Value * 1000;
+                }
+
+                e.SuppressKeyPress = true; // جلوگیری از ورود نقطه
+            }
+
 
         }
 
@@ -5465,11 +5528,10 @@ namespace HM_ERP_System.Forms.Comers
 
         private void chkIncomeDocument_CheckedChanged(object sender, EventArgs e)
         {
-            //if (chkIncomeDocument.Checked)
-            {
-                rdbCostAccount.Enabled = chkIncomeDocument.Checked;
-                rdbShiper.Enabled = chkIncomeDocument.Checked;
-            }
+            rdbCostAccount.Enabled = chkIncomeDocument.Checked;
+            rdbShiper.Enabled = chkIncomeDocument.Checked;
+            rdbCostAccount.Checked = chkIncomeDocument.Checked;
+            rdbShiper.Checked = false;
         }
 
         private void btnShowGridExHideColumns_Click(object sender, EventArgs e)
@@ -5698,6 +5760,24 @@ namespace HM_ERP_System.Forms.Comers
                     PublicClass.ErrorMesseg(ResourceCode.T209); return;
                 }
             }
+        }
+        /// <summary>
+        ///کد سند درآمدی: 1=راننده 2=بارنامه نویس
+        /// </summary>
+        int IncomeDocumentCode = 0;
+        private void rdbCostAccount_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbCostAccount.Checked)
+                if (chkIncomeDocument.Checked)
+                    IncomeDocumentCode = 1;
+        }
+
+        private void rdbShiper_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbShiper.Checked)
+                if (chkIncomeDocument.Checked)
+                    IncomeDocumentCode = 2;
+
         }
     }
 }

@@ -70,7 +70,7 @@ namespace HM_ERP_System.Entity.Comers
         public int GoodsAccountId { get; set; }
 
         /// <summary>
-        /// نوع محاسبه کرایه حمل/کمیسیون 
+        /// نوع محاسبه کرایه مقصد:کمیسیون2،   لیست:کرایه حمل1 
         /// </summary>
         public int TypeCalFareId { get; set; }
 
@@ -218,6 +218,10 @@ namespace HM_ERP_System.Entity.Comers
         /// توضیحات
         /// </summary>
         public string Description { get; set; }
+        /// <summary>
+        /// کد سند درآمدی: 1=راننده 2=بارنامه نویس
+        /// </summary>
+        public int IncomeDocumentCode { get; set; } = 0;
         /// <summary>
         /// کرایه صافی راننده
         /// </summary>

@@ -61,7 +61,7 @@ namespace HM_ERP_System.Class_General
                 //وزن خالص بار
                 string LoadWeight = qB.LoadWeight.ToString();
 
-                return "کرایه حمل بارنامه: " + SeryalComerB + " ش حواله: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + SenderName + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کالا: " + ProductName + " به وزن: " + LoadWeight + " کیلوگرم";
+                return "کرایه حمل بارنامه: " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + SenderName + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " - کالا: " + ProductName + " به وزن: " + LoadWeight + " کیلوگرم";
             }
         }
 
@@ -107,7 +107,7 @@ namespace HM_ERP_System.Class_General
                 //وزن خالص بار
                 string LoadWeight = qB.LoadWeight.ToString();
 
-                return FareCalcMethodName + " بارنامه " + SeryalComerB + " ش حواله: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کالا: " + ProductName + " به وزن: " + LoadWeight + " کیلوگرم";
+                return FareCalcMethodName + " بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " - کالا: " + ProductName + " به وزن: " + LoadWeight + " کیلوگرم";
             }
         }
 
@@ -122,7 +122,9 @@ namespace HM_ERP_System.Class_General
             {
                 var qB = db.ComersBs.Where(c => c.Id == comersBId).First();
                 var qH = db.ComersHs.Where(c => c.Id == qB.ComersHId).First();
-
+                string txt = "هزینه بارنامه نویس";
+                if(qB.BillLadingWriterPercent<0)
+                    txt = "کمیسیون";
                 var car = db.Cars.Where(c => c.Id == qH.CarId).First();
 
                 //سریال بارنامه
@@ -144,7 +146,7 @@ namespace HM_ERP_System.Class_General
                 //انبار
                 string UnLoadingLocation = db.PlaceTransfers.Where(c => c.Id == qH.UnLoadingLocationId).First().Name;
 
-                return "هزینه بارنامه نویس، بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کرایه پایه: " + qB.BaseFreight.ToString("#,##0") + " هزینه بیمه: " + qB.InsuranceAmount.ToString("#,##0") + (qB.BillLadingMethodId == 3 ? " درصد: " + qB.BillLadingWriterPercent + "%" : "");
+                return txt + " بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کرایه پایه: " + qB.BaseFreight.ToString("#,##0") + (qB.BillLadingMethodId == 3 ? " درصد: " + qB.BillLadingWriterPercent + "%" : "") + (qB.BillLadingWriterPercent > 0 ? " هزینه بیمه: "+  qB.InsuranceAmount.ToString("#,##0"):"" );
             }
         }
 
@@ -233,6 +235,44 @@ namespace HM_ERP_System.Class_General
             }
         }
 
+        /// <summary>
+        /// شرح سند سایر هزینه ها
+        /// </summary>
+        /// <param name="comersBId"></param>
+        /// <returns></returns>
+        public static string PaymentToOthersDes(int comersBId)
+        {
+            using (var db = new DBcontextModel())
+            {
+                var qB = db.ComersBs.Where(c => c.Id == comersBId).First();
+                var qH = db.ComersHs.Where(c => c.Id == qB.ComersHId).First();
+                var car = db.Cars.Where(c => c.Id == qH.CarId).First();
+
+                //پلاک
+                string CarPlat = car.CarPlat;
+                //سریال پلاک
+                string CarPlatSeryal = car.CarPlatSeryal;
+
+                //شهر مبدا
+                string LoadingOrinig = db.Ciltys.Where(c => c.Id == qH.LoadingOrinigId).First().Name;
+                //انبا مبدا
+                string LoadingLocation = db.PlaceTransfers.Where(c => c.Id == qH.LoadingLocationId).First().Name;
+
+                //شهر
+                string UnLoadingOrinig = db.Ciltys.Where(c => c.Id == qH.UnLoadingOrinigId).First().Name;
+                //انبار
+                string UnLoadingLocation = db.PlaceTransfers.Where(c => c.Id == qH.UnLoadingLocationId).First().Name;
+
+                //نام کالا
+                string ProductName = db.Products.Where(c => c.Id == qH.ProductsId).First().Name;
+                //وزن خالص بار
+                string LoadWeight = qB.LoadWeight.ToString();
+
+                return "کرایه حمل بارنامه " + qB.SeryalB + " ش ح " + qB.SeryalH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " وزن " + LoadWeight + " کیلوگرم " + ProductName;
+            }
+
+            return "";
+        }
 
 
     }

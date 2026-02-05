@@ -674,6 +674,8 @@ namespace HM_ERP_System.Forms.Comers
                              join pr in db.Provinces
                              on ct.ProvincesId equals pr.Id
 
+                             join ga in db.Customers
+                             on cr.GoodsAccountId equals ga.Id
                              //where dr.Status /*&& (!cr.StatusCarToComers || ListId!=0)*/
 
                              where cr.Status
@@ -684,11 +686,15 @@ namespace HM_ERP_System.Forms.Comers
                                  cr.CarName,
                                  CarPlat_CarPlatSeryal = cr.CarPlatSeryal + " " + ResourceCode.T016 + " " + cr.CarPlat.ToString().Substring(2, 3) + "ع" + cr.CarPlat.ToString().Substring(0, 2),
                                  DraverName = cu.Family + " " + cu.Name,
+                                 //طرف حساب کامیون
+                                 GoodsAccount = ga.Family + " " + ga.Name,
+                                 
                                  cu.CodMeli,
                                  cu.Tel,
                                  cr.Seryal,
                                  CityName = ct.Name,
                                  ProvinceName = pr.Name,
+                                 
                                  //cmb.StatusDeliveryGoods,
 
                              }).ToList();

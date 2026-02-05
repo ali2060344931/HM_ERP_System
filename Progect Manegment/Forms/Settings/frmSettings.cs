@@ -118,10 +118,10 @@ namespace HM_ERP_System.Forms.Settings
                 }
 
             }
-                catch (Exception er)
-                {
-                    PublicClass.ShowErrorMessage(er);
-                }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
         }
 
         /// <summary>
@@ -375,6 +375,38 @@ namespace HM_ERP_System.Forms.Settings
                 //        break;
                 //}
             }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtCode.Text == "")
+            {
+                PublicClass.ErrorMesseg("لطفا کد را وارد نمائید");
+                txtCode.Focus();
+                return;
+            }
+
+            if (txtCode.Text == "12345")
+                if (MessageBox.Show("آیا تمامی اسناد حواله، بارنامه و حسابداری حذف شوند؟", ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+
+            using (var db = new DBcontextModel())
+            {
+                var tr = db.Transactions.ToList();
+                var cmrB = db.ComersBs.ToList();
+                var cmrH = db.ComersHs.ToList();
+                var DB = db.DocumentBancks.ToList();
+
+                db.Transactions.RemoveRange(tr);
+                db.ComersBs.RemoveRange(cmrB);
+                db.ComersHs.RemoveRange(cmrH);
+                db.DocumentBancks.RemoveRange(DB);
+                db.SaveChangesSafe();
+                PublicClass.WindowAlart("2");
+                txtCode.ResetText();
+            }
+
+
 
         }
     }

@@ -35,6 +35,8 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnNew = new DevComponents.DotNetBar.ButtonX();
             this.uiTabPage2 = new Janus.Windows.UI.Tab.UITabPage();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.chkShowAccountBalance = new System.Windows.Forms.CheckBox();
             this.uiTabPage1 = new Janus.Windows.UI.Tab.UITabPage();
             this.dgvList = new GridExEx.GridExEx();
@@ -120,12 +122,36 @@
             // 
             // uiTabPage2
             // 
+            this.uiTabPage2.Controls.Add(this.txtCode);
+            this.uiTabPage2.Controls.Add(this.button1);
             this.uiTabPage2.Controls.Add(this.chkShowAccountBalance);
             this.uiTabPage2.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage2.Name = "uiTabPage2";
             this.uiTabPage2.Size = new System.Drawing.Size(830, 376);
             this.uiTabPage2.TabStop = true;
             this.uiTabPage2.Text = "حسابداری";
+            // 
+            // txtCode
+            // 
+            this.txtCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCode.Location = new System.Drawing.Point(614, 48);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.PasswordChar = '*';
+            this.txtCode.Size = new System.Drawing.Size(100, 28);
+            this.txtCode.TabIndex = 2;
+            this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCode.UseSystemPasswordChar = true;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(720, 51);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "حذف اسناد";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // chkShowAccountBalance
             // 
@@ -507,5 +533,7 @@
         private System.Windows.Forms.Label lblIEAmount;
         private System.Windows.Forms.Label label11;
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbDefultCompany;
+        private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -3956,6 +3956,8 @@ namespace MyClass
                         int DetailedAccountId = 0;
                         int customertId = 0;
                         var qcomB = db.ComersBs.Where(c => c.Id == ComerBId).First();
+                        var qcomH = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First();
+
                         //تاریخ صدور بارنامه
                         string TransactionDate = qcomB.DateB;
 
@@ -4011,8 +4013,8 @@ namespace MyClass
                         {
                             // شرح سند مربوط به صاحب کامیون
                             Description = CreatAccountDescriptions.CostAccounDes(ComerBId);
-                            /*
-                            if (qcomB.BV < 0)//AXسند هرینه
+                            
+                            if (qcomB.BV < 0 && qcomB.MethodCalFareId==1)//AXسند هرینه
                             {
                                 if (qcomB.AmountPaidTruckDriver != 0)
                                 {
@@ -4053,8 +4055,7 @@ namespace MyClass
 
                             }
                             
-                            else if (qcomB.BV > 0)//AV سند درآمد
-                            */
+                            if (qcomB.BV > 0)//AV سند درآمد
                             {
                                 if (qcomB.PaymentToOthers1 != qcomBV)
                                 {

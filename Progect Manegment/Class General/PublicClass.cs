@@ -4517,6 +4517,9 @@ namespace MyClass
                         int customertId = 0;
                         var qcomB = db.ComersBs.Where(c => c.Id == ComerBId).First();
                         var qcomH = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First();
+                        double qcomBV = Math.Abs(qcomB.BV);
+                        double AmountPaidTruckDriver_ = qcomB.AmountPaidTruckDriver;
+                        double PaymentToOthers1 = qcomB.PaymentToOthers1;
 
                         //تاریخ صدور بارنامه
                         string TransactionDate = qcomB.DateB;
@@ -4569,9 +4572,6 @@ namespace MyClass
                         }
 
                         //AV سند کرایه صاحب کامیون
-                        double qcomBV = Math.Abs(qcomB.BV);
-                        double AmountPaidTruckDriver_ = qcomB.AmountPaidTruckDriver;
-                        double PaymentToOthers1 = qcomB.PaymentToOthers1;
                         {
                             // شرح سند مربوط به صاحب کامیون
                             Description = CreatAccountDescriptions.CostAccounDes(ComerBId);
@@ -4746,7 +4746,6 @@ namespace MyClass
 
                         //AZ سند بارنامه نویس
                         {
-
                             //double qcomAZ = Math.Abs(qcomB.AZ);
                             double qcomAZ = Math.Abs(qcomB.AY);
 
@@ -4756,7 +4755,6 @@ namespace MyClass
 
                             if (!StatusLading)
                             {
-                                bool ImplementationThisSection = true;//اجرای این بخش
                                 //درصد بارنامه نویس
                                 if (qcomB.BillLadingWriterPercent >= 0)//(پرداخت شود(سند هزینه
                                 {

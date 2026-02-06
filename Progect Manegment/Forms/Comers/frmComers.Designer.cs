@@ -112,7 +112,6 @@
             this.txtCotajNumber = new Janus.Windows.GridEX.EditControls.EditBox();
             this.txtDateH = new Atf.UI.DateTimeSelector();
             this.txtDescriptionH = new System.Windows.Forms.RichTextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.lblTelDraver2 = new System.Windows.Forms.Label();
             this.lblTelDraver1 = new System.Windows.Forms.Label();
@@ -176,6 +175,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.uiTabPage2 = new Janus.Windows.UI.Tab.UITabPage();
             this.uiGroupBox6 = new Janus.Windows.EditControls.UIGroupBox();
             this.cmbBillLadingCast = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
@@ -403,7 +403,6 @@
             this.uiTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox1)).BeginInit();
             this.uiGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbResiver2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbResiver1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSender2)).BeginInit();
@@ -421,6 +420,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbTypeDocument)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDraversH2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDraversH1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.uiTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox6)).BeginInit();
             this.uiGroupBox6.SuspendLayout();
@@ -1207,18 +1207,6 @@
             this.txtDescriptionH.Size = new System.Drawing.Size(244, 56);
             this.txtDescriptionH.TabIndex = 21;
             this.txtDescriptionH.Text = "";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1624, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(227, 391);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 103;
-            this.pictureBox2.TabStop = false;
             // 
             // label14
             // 
@@ -2218,6 +2206,18 @@
             this.label1.Size = new System.Drawing.Size(71, 18);
             this.label1.TabIndex = 97;
             this.label1.Text = "تاریخ حـــواله:";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(1624, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(227, 391);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 103;
+            this.pictureBox2.TabStop = false;
             // 
             // uiTabPage2
             // 
@@ -3879,7 +3879,7 @@
             this.txtBillLadingWriterPercent.TabIndex = 3;
             this.txtBillLadingWriterPercent.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
             this.txtBillLadingWriterPercent.WatermarkText = "مبــــلغ";
-            this.txtBillLadingWriterPercent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeryalB_KeyDown);
+            this.txtBillLadingWriterPercent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBillLadingWriterPercent_KeyDown);
             // 
             // txtBalanceBillLadingAmount
             // 
@@ -5610,7 +5610,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox1)).EndInit();
             this.uiGroupBox1.ResumeLayout(false);
             this.uiGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbResiver2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbResiver1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbSender2)).EndInit();
@@ -5628,6 +5627,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbTypeDocument)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDraversH2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDraversH1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.uiTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox6)).EndInit();
             this.uiGroupBox6.ResumeLayout(false);

@@ -45,12 +45,13 @@ namespace HM_ERP_System.Class_General
         /// <param name="BalanceAccountDraver_">رند حساب راننده</param>
         /// <param name="OtherBillLadingCosts_">کسورات بارنامه نویسی</param>
         /// <param name="BalanceBillLadingAmount_">رند حساب بارنامه نویسی</param>
+        /// <param name="PaymentToOthers1">مبلغ پرداختی راننده به سایر</param>
 
-        public (double, double, double, double, double, double, double, double, double, double, double, double, double) CalcComerFilds(int ComersHId_, int TypeCalFareId_, int MethodCalFareId_, double LoadWeight_, double WeightDeliveredGoods_, int TruckCapacity_, double FreightRate_, double CargoInsurance_, double LoadinCast_, double Incentive_, double StopCharge_, double Deduction_, double BalanceAccount_, int TypeCalcMethodsBId_, double PaidFreightRate_, double InsurancCost_, double PaidIncentive_, double PaidStopCharge_, double DriverDeduction_, int BillLadingMethodId_, double BillLadingCastId_, double BaseFreight_, double BillLadingAmount_, double InsuranceAmount_, double BillLadingWriterPercent_, double AmountPaidTruckDriver_, double BalanceAccountDraver_, double OtherBillLadingCosts_, double BalanceBillLadingAmount_)
+        public (double, double, double, double, double, double, double, double, double, double, double, double, double) CalcComerFilds(int ComersHId_, int TypeCalFareId_, int MethodCalFareId_, double LoadWeight_, double WeightDeliveredGoods_, int TruckCapacity_, double FreightRate_, double CargoInsurance_, double LoadinCast_, double Incentive_, double StopCharge_, double Deduction_, double BalanceAccount_, int TypeCalcMethodsBId_, double PaidFreightRate_, double InsurancCost_, double PaidIncentive_, double PaidStopCharge_, double DriverDeduction_, int BillLadingMethodId_, double BillLadingCastId_, double BaseFreight_, double BillLadingAmount_, double InsuranceAmount_, double BillLadingWriterPercent_, double AmountPaidTruckDriver_, double BalanceAccountDraver_, double OtherBillLadingCosts_, double BalanceBillLadingAmount_, double PaymentToOthers1_)
 
         {
             //calGeneral();
-            ComersHId=ComersHId_; TypeCalFareId=TypeCalFareId_; MethodCalFareId=MethodCalFareId_; LoadWeight=LoadWeight_; WeightDeliveredGoods=WeightDeliveredGoods_; TruckCapacity=TruckCapacity_; FreightRate=FreightRate_; CargoInsurance=CargoInsurance_; LoadinCast=LoadinCast_; Incentive=Incentive_; StopCharge=StopCharge_; Deduction=Deduction_; BalanceAccount=BalanceAccount_; TypeCalcMethodsBId=TypeCalcMethodsBId_; PaidFreightRate=PaidFreightRate_; InsurancCost=InsurancCost_; PaidIncentive=PaidIncentive_; PaidStopCharge=PaidStopCharge_; DriverDeduction=DriverDeduction_; BillLadingMethodId=BillLadingMethodId_; BillLadingCastId=BillLadingCastId_; BaseFreight=BaseFreight_; BillLadingAmount=BillLadingAmount_; InsuranceAmount=InsuranceAmount_; BillLadingWriterPercent=BillLadingWriterPercent_; AmountPaidTruckDriver=AmountPaidTruckDriver_; BalanceAccountDraver=BalanceAccountDraver_; OtherBillLadingCosts=OtherBillLadingCosts_; BalanceBillLadingAmount=BalanceBillLadingAmount_;
+            ComersHId = ComersHId_; TypeCalFareId = TypeCalFareId_; MethodCalFareId = MethodCalFareId_; LoadWeight = LoadWeight_; WeightDeliveredGoods = WeightDeliveredGoods_; TruckCapacity = TruckCapacity_; FreightRate = FreightRate_; CargoInsurance = CargoInsurance_; LoadinCast = LoadinCast_; Incentive = Incentive_; StopCharge = StopCharge_; Deduction = Deduction_; BalanceAccount = BalanceAccount_; TypeCalcMethodsBId = TypeCalcMethodsBId_; PaidFreightRate = PaidFreightRate_; InsurancCost = InsurancCost_; PaidIncentive = PaidIncentive_; PaidStopCharge = PaidStopCharge_; DriverDeduction = DriverDeduction_; BillLadingMethodId = BillLadingMethodId_; BillLadingCastId = BillLadingCastId_; BaseFreight = BaseFreight_; BillLadingAmount = BillLadingAmount_; InsuranceAmount = InsuranceAmount_; BillLadingWriterPercent = BillLadingWriterPercent_; AmountPaidTruckDriver = AmountPaidTruckDriver_; BalanceAccountDraver = BalanceAccountDraver_; OtherBillLadingCosts = OtherBillLadingCosts_; BalanceBillLadingAmount = BalanceBillLadingAmount_; PaymentToOthers1 = PaymentToOthers1_;
 
             return (AV(), Ac(), AZ(), BO(), AE(), AX(), BK(), BS(), BT(), AY(), BV(), Bn(), BP());
 
@@ -173,28 +174,32 @@ namespace HM_ERP_System.Class_General
         /// رند حساب بارنامه نویس
         /// </summary>
         public double BalanceBillLadingAmount { get; set; } = 0;
+        /// <summary>
+        /// مبلغ پرداختی راننده به سایر
+        /// </summary>
+        public double PaymentToOthers1 { get; set; } = 0;
 
         /// <summary>
         /// بدهی / بستانکاری راننده بابت بارنامه نویسی
         /// </summary>
-        public  double BP()
+        public double BP()
         {
             try
             {
-                if (BillLadingCastId==1)
+                if (BillLadingCastId == 1)
                 {
                     return AmountPaidTruckDriver;
                 }
-                else if (BillLadingCastId==2)
+                else if (BillLadingCastId == 2)
                 {
-                    return AmountPaidTruckDriver-AY();
+                    return AmountPaidTruckDriver - AY();
                 }
                 else
                     return 0;
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage( er);
+                PublicClass.ShowErrorMessage(er);
                 return 0;
 
             }
@@ -206,24 +211,24 @@ namespace HM_ERP_System.Class_General
         {
             try
             {
-                if (TypeCalcMethodsBId==1)//تن
+                if (TypeCalcMethodsBId == 1)//تن
                 {
-                    if (TruckCapacity>LoadWeight)
+                    if (TruckCapacity > LoadWeight)
                     {
-                        double x = Math.Round(TruckCapacity*PaidFreightRate/1000,0);
+                        double x = Math.Round(TruckCapacity * PaidFreightRate / 1000, 0);
                         return x;
                     }
                     else
                     {
-                        double x = Math.Round(PaidFreightRate*LoadWeight/1000,0);
+                        double x = Math.Round(PaidFreightRate * LoadWeight / 1000, 0);
                         return x;
                     }
                 }
                 else
                 {
-                    if (TypeCalcMethodsBId==3)//درصدی
+                    if (TypeCalcMethodsBId == 3)//درصدی
                     {
-                        double x =Math.Round( Bn()-PaidFreightRate*Bn()/100,0);
+                        double x = Math.Round(Bn() - PaidFreightRate * Bn() / 100, 0);
                         return x;
                     }
                     else
@@ -234,7 +239,7 @@ namespace HM_ERP_System.Class_General
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage( er);
+                PublicClass.ShowErrorMessage(er);
                 return 0;
             }
 
@@ -246,7 +251,7 @@ namespace HM_ERP_System.Class_General
         {
             try
             {
-                if (TypeCalFareId==1)
+                if (TypeCalFareId == 1)
                 {
                     double x = Ac();
                     return x;
@@ -257,7 +262,7 @@ namespace HM_ERP_System.Class_General
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage( er);
+                PublicClass.ShowErrorMessage(er);
                 return 0;
             }
         }
@@ -268,11 +273,11 @@ namespace HM_ERP_System.Class_General
         {
             try
             {
-                if (TypeCalFareId==2)
+                if (TypeCalFareId == 2)
                 {
                     double bp = BP();
                     double bo = BO();
-                    double x = Ac()-(bp+bo+BalanceAccountDraver-DriverDeduction+PaidStopCharge+InsurancCost + PaidIncentive);
+                    double x = Ac() - (bp + bo + BalanceAccountDraver - DriverDeduction + PaidStopCharge + InsurancCost + PaidIncentive + PaymentToOthers1);
                     return x;
                 }
                 else
@@ -282,7 +287,7 @@ namespace HM_ERP_System.Class_General
             }
             catch (Exception er)
             {
-                PublicClass.ShowErrorMessage( er);
+                PublicClass.ShowErrorMessage(er);
                 return 0;
             }
         }
@@ -294,12 +299,12 @@ namespace HM_ERP_System.Class_General
             //پرداخت هزینه بارگیری توسط
             try
             {
-                if (TypeCalFareId==1)//کرایه حمل
+                if (TypeCalFareId == 1)//کرایه حمل
                 {
                     double bp = BP();
                     double bo = BO();
 
-                    double x = bp+bo+BalanceAccountDraver-DriverDeduction+PaidStopCharge+InsurancCost+PaidIncentive;
+                    double x = bp + bo + BalanceAccountDraver - DriverDeduction + PaidStopCharge + InsurancCost + PaidIncentive;
                     return -x;
                 }
                 else
@@ -321,7 +326,7 @@ namespace HM_ERP_System.Class_General
         {
             try
             {
-                double x = AmountPaidTruckDriver-AY();
+                double x = AmountPaidTruckDriver - AY();
                 return x;
 
             }
@@ -338,7 +343,7 @@ namespace HM_ERP_System.Class_General
         {
             try
             {
-                double x = Ac()+BS();
+                double x = Ac() + BS();
                 return x;
 
             }
@@ -355,17 +360,17 @@ namespace HM_ERP_System.Class_General
         {
             try
             {
-                double bo=BO();
-                double ay= AY();
+                double bo = BO();
+                double ay = AY();
 
-                if (BillLadingCastId==1)//پیمانکار
+                if (BillLadingCastId == 1)//پیمانکار
                 {
-                    double x = bo+InsurancCost+PaidIncentive+PaidStopCharge-DriverDeduction+BalanceAccountDraver+ay;
+                    double x = bo + InsurancCost + PaidIncentive + PaidStopCharge - DriverDeduction + BalanceAccountDraver + ay;
                     return -x;
                 }
                 else
                 {
-                    double x = bo+InsurancCost+PaidIncentive+PaidStopCharge-DriverDeduction+BalanceAccountDraver;
+                    double x = bo + InsurancCost + PaidIncentive + PaidStopCharge - DriverDeduction + BalanceAccountDraver;
                     return -x;
                 }
             }
@@ -382,7 +387,7 @@ namespace HM_ERP_System.Class_General
         {
             try
             {
-                if (BV()==1)
+                if (BV() == 0)
                 {
                     return 1;
                 }
@@ -406,16 +411,16 @@ namespace HM_ERP_System.Class_General
         {
             try
             {
-                if (BillLadingMethodId==3)//درصدی
+                if (BillLadingMethodId == 3)//درصدی
                 {
-                    double x = Math.Round((BaseFreight*BillLadingWriterPercent/100)+InsuranceAmount-OtherBillLadingCosts+BalanceBillLadingAmount,0);
+                    double x = Math.Round((BaseFreight * BillLadingWriterPercent / 100) + InsuranceAmount - OtherBillLadingCosts + BalanceBillLadingAmount, 0);
                     return x;
                 }
                 else
                 {
-                    if (BillLadingMethodId==2)//بارنامه ای
+                    if (BillLadingMethodId == 2)//بارنامه ای
                     {
-                        double x =Math.Round( BillLadingAmount+InsuranceAmount-OtherBillLadingCosts+BalanceBillLadingAmount,0);
+                        double x = Math.Round(BillLadingAmount + InsuranceAmount - OtherBillLadingCosts + BalanceBillLadingAmount, 0);
                         return x;
                     }
                     else//پیمانکار
@@ -437,7 +442,7 @@ namespace HM_ERP_System.Class_General
             try
             {
                 double y = AV();
-                if (y==0)
+                if (y == 0)
                 {
                     double x = AX();
                     return x;
@@ -461,7 +466,7 @@ namespace HM_ERP_System.Class_General
         {
             try
             {
-                double x = Bn() + BalanceAccount - Deduction+StopCharge+Incentive+LoadinCast+CargoInsurance;
+                double x = Bn() + BalanceAccount - Deduction + StopCharge + Incentive + LoadinCast + CargoInsurance;
                 return x;
 
             }
@@ -480,16 +485,16 @@ namespace HM_ERP_System.Class_General
             {
                 using (var DB = new DBcontextModel())
                 {
-                    if (MethodCalFareId==1)//نحوه محاسبه کرایه:تن
+                    if (MethodCalFareId == 1)//نحوه محاسبه کرایه:تن
                     {
-                        if (TruckCapacity>0)
+                        if (TruckCapacity > 0)
                         {
-                            double x = Math.Round(TruckCapacity*FreightRate/1000,0);
+                            double x = Math.Round(TruckCapacity * FreightRate / 1000, 0);
                             return x;
                         }
                         else
                         {
-                            double x = Math.Round(LoadWeight*FreightRate/1000,0);
+                            double x = Math.Round(LoadWeight * FreightRate / 1000, 0);
                             return x;
                         }
                     }

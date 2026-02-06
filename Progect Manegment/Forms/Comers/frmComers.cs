@@ -1577,6 +1577,7 @@ namespace HM_ERP_System.Forms.Comers
                             cmbCarplateB.Focus();
                         return;
                     }
+                    txtSeryalB.Focus();
                 }
             }
             catch (Exception er)
@@ -2168,6 +2169,7 @@ namespace HM_ERP_System.Forms.Comers
                             from ptonC_Left in ptonCGroup.DefaultIfEmpty()
 
                             join cr in db.Cars on cmh.CarId equals cr.Id
+                            
                             join tf in db.TransactionFees on cmb.BT equals tf.Id
 
                             join doc in db.DocumentBancks on cmb.Id equals doc.ListInFoemId into docGroup
@@ -2676,7 +2678,7 @@ namespace HM_ERP_System.Forms.Comers
                             StatusDeliveryGoods_ = db.ComersBs.Where(c => c.Id == ListId).First().StatusDeliveryGoods;
                         //txtLoadWeightCapacity
                         CalculatComerB ccb = new CalculatComerB();
-                        (AV, AC, AZ, BO, AE, AX, BK, BS, BT, AY, BV, BN, BP) = ccb.CalcComerFilds(ComersHId_, TypeCalFareId_: FareCalcMethod_, MethodCalFareId_: MethodCalFareBId_, LoadWeight_: txtLoadWeight.Value, WeightDeliveredGoods_: 0, TruckCapacity_: LoadWeightCapacity, FreightRate_: txtFreightRate.Value, CargoInsurance_: txtCargoInsurance.Value, LoadinCast_: txtLoadinCast.Value, Incentive_: txtIncentive.Value, StopCharge_: txtStopCharge.Value, Deduction_: txtDeduction.Value, BalanceAccount_: txtBalanceAccount.Value, TypeCalcMethodsBId_: MethodCalFareBId_, PaidFreightRate_: txtPaidFreightRate.Value, InsurancCost_: txtInsurancCost.Value, PaidIncentive_: txtPaidIncentive.Value, PaidStopCharge_: txtPaidStopCharge.Value, DriverDeduction_: txtDriverDeduction.Value, BillLadingMethodId_: BillLadingMethodId_, BillLadingCastId_: BillLadingCastId_, BaseFreight_: txtBaseFreight.Value, BillLadingAmount_: txtBillLadingAmount.Value, InsuranceAmount_: txtInsuranceAmount.Value, BillLadingWriterPercent_: txtBillLadingWriterPercent.Value, AmountPaidTruckDriver_: txtAmountPaidTruckDriver.Value, BalanceAccountDraver_: txtBalanceAccountِDraver.Value, OtherBillLadingCosts_: 0, BalanceBillLadingAmount_: _ = txtBalanceBillLadingAmount.Value);
+                        (AV, AC, AZ, BO, AE, AX, BK, BS, BT, AY, BV, BN, BP) = ccb.CalcComerFilds(ComersHId_, TypeCalFareId_: FareCalcMethod_, MethodCalFareId_: MethodCalFareBId_, LoadWeight_: txtLoadWeight.Value, WeightDeliveredGoods_: 0, TruckCapacity_: LoadWeightCapacity, FreightRate_: txtFreightRate.Value, CargoInsurance_: txtCargoInsurance.Value, LoadinCast_: txtLoadinCast.Value, Incentive_: txtIncentive.Value, StopCharge_: txtStopCharge.Value, Deduction_: txtDeduction.Value, BalanceAccount_: txtBalanceAccount.Value, TypeCalcMethodsBId_: MethodCalFareBId_, PaidFreightRate_: txtPaidFreightRate.Value, InsurancCost_: txtInsurancCost.Value, PaidIncentive_: txtPaidIncentive.Value, PaidStopCharge_: txtPaidStopCharge.Value, DriverDeduction_: txtDriverDeduction.Value, BillLadingMethodId_: BillLadingMethodId_, BillLadingCastId_: BillLadingCastId_, BaseFreight_: txtBaseFreight.Value, BillLadingAmount_: txtBillLadingAmount.Value, InsuranceAmount_: txtInsuranceAmount.Value, BillLadingWriterPercent_: txtBillLadingWriterPercent.Value, AmountPaidTruckDriver_: txtAmountPaidTruckDriver.Value, BalanceAccountDraver_: txtBalanceAccountِDraver.Value, OtherBillLadingCosts_: 0, BalanceBillLadingAmount_: _ = txtBalanceBillLadingAmount.Value, PaymentToOthers1_: txtPaymentToOthers1.Value);
 
                         txtBO.Value = BO;
                         txtBN.Value = BN;
@@ -5778,6 +5780,12 @@ namespace HM_ERP_System.Forms.Comers
                 if (chkIncomeDocument.Checked)
                     IncomeDocumentCode = 2;
 
+        }
+
+        private void txtBillLadingWriterPercent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
         }
     }
 }

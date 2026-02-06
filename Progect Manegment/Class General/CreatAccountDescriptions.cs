@@ -146,7 +146,7 @@ namespace HM_ERP_System.Class_General
                 //انبار
                 string UnLoadingLocation = db.PlaceTransfers.Where(c => c.Id == qH.UnLoadingLocationId).First().Name;
 
-                return txt + " بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کرایه پایه: " + qB.BaseFreight.ToString("#,##0") + (qB.BillLadingMethodId == 3 ? " درصد: " + qB.BillLadingWriterPercent + "%" : "") + (qB.BillLadingWriterPercent > 0 ? " هزینه بیمه: "+  qB.InsuranceAmount.ToString("#,##0"):"" );
+                return txt + " بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کرایه پایه: " + qB.BaseFreight.ToString("#,##0") + (qB.BillLadingMethodId == 3 ? " درصد: " + qB.BillLadingWriterPercent + "%" : "") + (qB.BillLadingWriterPercent != 0 ? " هزینه بیمه: "+  qB.InsuranceAmount.ToString("#,##0"):"" );
             }
         }
 

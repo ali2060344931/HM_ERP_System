@@ -107,22 +107,18 @@ namespace BotProgram
                     if (string.Equals(e.Message.Text, "/start", StringComparison.OrdinalIgnoreCase) && HM_ERP_System.Properties.Settings.Default.UsersId == 1)
                     {
                         await Bot.SendTextMessageAsync(e.Message.Chat.Id, "به ربات نرم افزار گروه *پیمانکاری شرکت ایران خزر* خوش آمدید" + '\n' + "این برنامه(ربات) به سفارش آقای *محمد حیدری* و با طراحی آقای *غلامزاده* انجام شده است. فعلا در وضعیت آزمایشی قرار دارد ");
-
                     }
-
-
 
                     if (string.Equals(e.Message.Text, "/inf", StringComparison.OrdinalIgnoreCase) && HM_ERP_System.Properties.Settings.Default.UsersId == 1)
                     {
                         var ComersHs = db.ComersHs.Count();
                         var ComersBs = db.ComersBs.Count();
-                        var Transactions = db.Transactions.Count();
+                        var Transactions = db.Transactions.Where(c=>!c.Status).Count();
                         var Commissions = db.Commissions.Count();
                         var Customers = db.Customers.Count();
 
                         await Bot.SendTextMessageAsync(e.Message.Chat.Id,
                            "تعداد حواله: " + ComersHs + '\n' + "تعداد بارنامه: " + ComersBs + '\n' + "تعداد تراکنش مالی: " + Transactions + '\n' + "تعداد پرسانت ها: " + Commissions + '\n' + "تعداد مشتری ها: " + Customers);
-
                         return;
                     }
 

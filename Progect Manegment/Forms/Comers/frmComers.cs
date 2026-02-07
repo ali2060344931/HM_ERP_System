@@ -1574,8 +1574,10 @@ namespace HM_ERP_System.Forms.Comers
                     if (count > 1)
                     {
                         if (MessageBox.Show(ResourceCode.T193 + '\n' + "تعداد حواله آزاد: " + count, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                        {
                             cmbCarplateB.Focus();
-                        return;
+                            return;
+                        }
                     }
                     txtSeryalB.Focus();
                 }

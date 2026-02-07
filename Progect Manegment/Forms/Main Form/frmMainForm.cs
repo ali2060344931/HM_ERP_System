@@ -102,7 +102,13 @@ namespace HM_ERP_System.Forms.Main_Form
                 WindowState = FormWindowState.Maximized;
                 setPeremissions();//تنظیمات سطوح دسترسی
                 SetRibbonStatusBar();
-                MetohdsClass.SendMessageForAdminAsync("✅برنامه اجرا شد", lblUserName.Text);
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.CustomerRoles.Where(c => c.Id == UsersId).First();
+                    var cu = db.Customers.Where(c => c.Id == q.CustomerId).First();
+                    if (cu.CodMeli != "2060344931")
+                     MetohdsClass.SendMessageForAdminAsync("✅برنامه اجرا شد", lblUserName.Text);
+                }
             }
             catch (Exception er)
             {
@@ -590,7 +596,13 @@ namespace HM_ERP_System.Forms.Main_Form
         {
             if (MessageBox.Show(ResourceCode.T151, MyClass.PublicClass.ProjectName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
-                //MetohdsClass.SendMessageForAdminAsync("❌برنامه بسته شد", lblUserName.Text);
+                using (var db = new DBcontextModel())
+                {
+                    var q = db.CustomerRoles.Where(c => c.Id == UsersId).First();
+                    var cu = db.Customers.Where(c => c.Id == q.CustomerId).First();
+                    if (cu.CodMeli != "2060344931")
+                        MetohdsClass.SendMessageForAdminAsync("❌برنامه بسته شد", lblUserName.Text);
+                }
                 Application.Exit();
             }
         }

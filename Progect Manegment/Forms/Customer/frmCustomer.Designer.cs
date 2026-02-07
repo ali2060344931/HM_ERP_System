@@ -108,7 +108,7 @@
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(737, 560);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(737, 582);
             // 
             // pnlViewItemHeder
             // 
@@ -119,7 +119,7 @@
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnAddCustomerByExcelFil);
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 610);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 632);
             this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4);
             this.pnlViewItemFoter.Size = new System.Drawing.Size(737, 28);
             this.pnlViewItemFoter.Controls.SetChildIndex(this.btnShowGridExHideColumns, 0);
@@ -174,11 +174,11 @@
             this.pnlAddItemBodi.Controls.Add(this.label14);
             this.pnlAddItemBodi.Controls.Add(this.label3);
             this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(350, 604);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(350, 626);
             // 
             // pnlAddItemFoter
             // 
-            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 604);
+            this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 626);
             this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4);
             this.pnlAddItemFoter.Size = new System.Drawing.Size(350, 34);
             // 
@@ -234,15 +234,14 @@
             // 
             // pnlViewItems
             // 
-            this.pnlViewItems.Location = new System.Drawing.Point(3, 25);
             this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItems.Size = new System.Drawing.Size(739, 666);
+            this.pnlViewItems.Size = new System.Drawing.Size(739, 688);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(742, 25);
+            this.pnlAddItems.Location = new System.Drawing.Point(742, 3);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlAddItems.Size = new System.Drawing.Size(356, 666);
+            this.pnlAddItems.Size = new System.Drawing.Size(356, 688);
             // 
             // btnExportToExcel
             // 
@@ -291,7 +290,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCustomer";
-            this.dgvList.Size = new System.Drawing.Size(737, 560);
+            this.dgvList.Size = new System.Drawing.Size(737, 582);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -912,7 +911,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(228, 571);
+            this.button1.Location = new System.Drawing.Point(228, 593);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 26);
             this.button1.TabIndex = 159;

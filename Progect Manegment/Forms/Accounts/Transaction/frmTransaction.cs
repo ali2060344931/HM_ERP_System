@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,16 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
         {
             txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
             txtDateEnd.Text = PersianDate.DateEnd();
+
+
+            string layoutPathComersB = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutTransaction.xml");
+
+            using (var fs = new FileStream(layoutPathComersB, FileMode.Create, FileAccess.Write))
+            {
+                dgvList.SaveLayoutFile(fs);
+            }
+
+
 
             txtTransactionDate.Value = DateTime.Now;
             //txtTransactionDate.Text = PersianDate.DateEnd();

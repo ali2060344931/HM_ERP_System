@@ -40,24 +40,12 @@ namespace HM_ERP_System.Forms.Comers
                 txtDateEnd.Text =PersianDate.DateEnd();
 
 
-                //string layoutPathComersB = Path.Combine(Application.StartupPath, "DefaultGridLayoutComersB.xml");
-
-                //using (var fs = new FileStream(layoutPathComersB, FileMode.OpenOrCreate, FileAccess.Read))
-                //{
-                //    dgvListB.LoadLayoutFile(fs);
-                //}
                 string layoutPathComersH = Path.Combine(Application.StartupPath, "DefaultGridLayoutComersH.xml");
 
                 using (var fs = new FileStream(layoutPathComersH, FileMode.OpenOrCreate, FileAccess.Read))
                 {
                     dgvListH.LoadLayoutFile(fs);
                 }
-
-                //string layoutPathCommission = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutCommission.xml");
-                //using (var fs = new FileStream(layoutPathCommission, FileMode.OpenOrCreate, FileAccess.Read))
-                //{
-                //    dgvListCommission.LoadLayoutFile(fs);
-                //}
 
 
                 UpdateData();

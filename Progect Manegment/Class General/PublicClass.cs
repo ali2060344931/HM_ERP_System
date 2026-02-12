@@ -3963,6 +3963,7 @@ namespace MyClass
                             {
                                 Description = CreatAccountDescriptions.GoodsAccountDes(ComerBId);
 
+                                
                                 Series++;
                                 customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().GoodsAccountId).FirstOrDefault().Id;
 
@@ -4042,11 +4043,11 @@ namespace MyClass
                             {
                                 if (qcomB.PaymentToOthers1 != qcomBV)
                                 {
-                                    if (qcomB.AmountPaidTruckDriver != 0)
+                                    if (qcomB.AmountPaidTruckDriver != 0  || qcomB.PaymentToOthers1 != 0)
                                     {
-                                        qcomBV = qcomB.Ac - qcomB.BO;
+                                        qcomBV = qcomB.Ac - qcomB.BO ;
                                     }
-
+                                    qcomBV = qcomBV - qcomB.BalanceAccountDraver;
                                     Series++;
                                     customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
                                     (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(10301, customertId);
@@ -4070,7 +4071,7 @@ namespace MyClass
 
                             if (!StatusLading)
                             {
-                                //درصد بارنامه نویس
+                                //درصد(ضریب) بارنامه نویس
                                 if (qcomB.BillLadingWriterPercent >= 0)//(پرداخت شود(سند هزینه
                                 {
                                     Series++;
@@ -4090,6 +4091,8 @@ namespace MyClass
                                 }
                                 else//(دریافت شود(سند درآمد
                                 {
+                                    Description = CreatAccountDescriptions.ShiperAccountDes1_1(ComerBId);
+
                                     Series++;
                                     customertId = db.Customers.Where(c => c.SecretCode == 3).First().Id;
                                     (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(60201, customertId);
@@ -4130,7 +4133,12 @@ namespace MyClass
                                     {
                                         Series++;
                                         Description = CreatAccountDescriptions.ShiperAccountDes2_1(ComerBId);
-                                        (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(10301, customertId);
+
+                                        SpecificAccountId = db.DetailedAccounts.Where(c => c.Id == qcomB.PaymentToOthersId).First().SpecificAccountId;
+                                        DetailedAccountId = qcomB.PaymentToOthersId;
+
+                                       
+                                        
                                         PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, PaymentToOthers1, PaymentToOthers1, 0, ComerBId, Description, "", Series, true);
 
 
@@ -4153,8 +4161,11 @@ namespace MyClass
 
                                         Series++;
                                         Description = CreatAccountDescriptions.ShiperAccountDes2_1(ComerBId);
-                                        customertId = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First().CostAccountId;
-                                        (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(10301, customertId);
+
+                                        SpecificAccountId = db.DetailedAccounts.Where(c => c.Id == qcomB.PaymentToOthersId).First().SpecificAccountId;
+                                        DetailedAccountId = qcomB.PaymentToOthersId;
+
+
                                         PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, PaymentToOthers1, PaymentToOthers1, 0, ComerBId, Description, "", Series, true);
 
 
@@ -4199,7 +4210,7 @@ namespace MyClass
 
 
                                         Series++;
-                                        Description = CreatAccountDescriptions.ShiperAccountDes2_1(ComerBId);
+                                        //Description = CreatAccountDescriptions.ShiperAccountDes2_1(ComerBId);
                                         customertId = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First().CostAccountId;
                                         (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(30101, customertId);
                                         PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomB.PaymentToOthers1, 0, qcomB.PaymentToOthers1, ComerBId, Description, "", Series, true);

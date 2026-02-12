@@ -146,9 +146,48 @@ namespace HM_ERP_System.Class_General
                 //انبار
                 string UnLoadingLocation = db.PlaceTransfers.Where(c => c.Id == qH.UnLoadingLocationId).First().Name;
 
-                return txt + " بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کرایه پایه: " + qB.BaseFreight.ToString("#,##0") + (qB.BillLadingMethodId == 3 ? " درصد: " + qB.BillLadingWriterPercent + "%" : "") + (qB.BillLadingWriterPercent != 0 ? " هزینه بیمه: "+  qB.InsuranceAmount.ToString("#,##0"):"" );
+                return txt + " بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation + " کرایه پایه: " + qB.BaseFreight.ToString("#,##0") + (qB.BillLadingMethodId == 3 ? " ضریب: " + qB.BillLadingWriterPercent + "%" : "") + (qB.BillLadingWriterPercent != 0 ? " هزینه بیمه: "+  qB.InsuranceAmount.ToString("#,##0"):"" );
             }
         }
+
+
+        /// <summary>
+        /// شرح سند بارنامه نویس با ضریب منفی
+        /// </summary>
+        /// <param name="comersBId"></param>
+        /// <returns></returns>
+        public static string ShiperAccountDes1_1(int comersBId)
+        {
+            using (var db = new DBcontextModel())
+            {
+                var qB = db.ComersBs.Where(c => c.Id == comersBId).First();
+                var qH = db.ComersHs.Where(c => c.Id == qB.ComersHId).First();
+                
+                var car = db.Cars.Where(c => c.Id == qH.CarId).First();
+
+                //سریال بارنامه
+                string SeryalComerB = qB.SeryalB.ToString();
+                //سریال حواله
+                string SeryalComerH = qH.RemiaanceSeryal.ToString();
+                //پلاک
+                string CarPlat = car.CarPlat;
+                //سریال پلاک
+                string CarPlatSeryal = car.CarPlatSeryal;
+
+                //شهر مبدا
+                string LoadingOrinig = db.Ciltys.Where(c => c.Id == qH.LoadingOrinigId).First().Name;
+                //انبا مبدا
+                string LoadingLocation = db.PlaceTransfers.Where(c => c.Id == qH.LoadingLocationId).First().Name;
+
+                //شهر
+                string UnLoadingOrinig = db.Ciltys.Where(c => c.Id == qH.UnLoadingOrinigId).First().Name;
+                //انبار
+                string UnLoadingLocation = db.PlaceTransfers.Where(c => c.Id == qH.UnLoadingLocationId).First().Name;
+
+                return  " کمیسیون بارنامه " + SeryalComerB + " ش ح: " + SeryalComerH + " کامیون " + CarPlat + " ایران " + CarPlatSeryal + " از " + LoadingOrinig + "، " + LoadingLocation + " به " + UnLoadingOrinig + "، " + UnLoadingLocation ;
+            }
+        }
+
 
         public static string ShiperAccountDes2_1(int comersBId)
         {

@@ -40,13 +40,14 @@ namespace HM_ERP_System.Forms.PlaceTransfer
         public System.Data.DataTable dt_Citi;
         private void frmPlaceTransfer_Load(object sender, EventArgs e)
         {
-            dt_Citi = new System.Data.DataTable();
-            dt_Citi.Columns.Add("Id", typeof(int));
-            dt_Citi.Columns.Add("Name", typeof(string));
-            dt_Citi.Columns.Add("PostalCode", typeof(string));
-
-            DataColumn productColumn1 = dt_Citi.Columns["Id"];
-            dt_Citi.PrimaryKey = new DataColumn[] { productColumn1 };
+            {
+                dt_Citi = new System.Data.DataTable();
+                dt_Citi.Columns.Add("Id", typeof(int));
+                dt_Citi.Columns.Add("Name", typeof(string));
+                dt_Citi.Columns.Add("PostalCode", typeof(string));
+                DataColumn productColumn1 = dt_Citi.Columns["Id"];
+                dt_Citi.PrimaryKey = new DataColumn[] { productColumn1 };
+            }
 
             UpdateData();
         }
@@ -212,23 +213,58 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     PublicClass.ErrorMesseg(ResourceCode.T178); return;
                 }
 
+
                 using (var db = new DBcontextModel())
                 {
                     if (ListId == 0)
                     {
-                        int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.CiltyId == CityId1);
+                        var query = db.PlaceTransfers.Where(c =>
+    c.Name == txtPlaceTransferName.Text &&
+    c.CiltyId == CityId1);
+
+                        if (!string.IsNullOrWhiteSpace(txtPostalCode1.Text))
+                        {
+                            query = query.Where(c => c.PostalCode == txtPostalCode1.Text);
+                        }
+
+                        int cont = query.Count();
+
                         if (cont > 0)
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T024); return;
+                            PublicClass.ErrorMesseg(ResourceCode.T024);
+                            return;
                         }
+                        //int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.CiltyId == CityId1 && c.PostalCode==txtPostalCode1.Text);
+
+
+                        //if (cont > 0)
+                        //{
+                        //    PublicClass.ErrorMesseg(ResourceCode.T024); return;
+                        //}
                     }
                     else
                     {
-                        int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.CiltyId == CityId1 && c.Id != ListId);
+                        var query = db.PlaceTransfers.Where(c =>
+    c.Name == txtPlaceTransferName.Text &&
+    c.CiltyId == CityId1 && c.Id != ListId);
+
+                        if (!string.IsNullOrWhiteSpace(txtPostalCode1.Text))
+                        {
+                            query = query.Where(c => c.PostalCode == txtPostalCode1.Text);
+                        }
+
+                        int cont = query.Count();
+
                         if (cont > 0)
                         {
-                            PublicClass.ErrorMesseg(ResourceCode.T006); return;
+                            PublicClass.ErrorMesseg(ResourceCode.T024);
+                            return;
                         }
+                        //int cont = db.PlaceTransfers.Count(c => c.Name == txtPlaceTransferName.Text && c.CiltyId == CityId1 && c.Id != ListId);
+                        //if (cont > 0)
+                        //{
+                        //    PublicClass.ErrorMesseg(ResourceCode.T006); return;
+                        //}
                     }
 
                     var userRepo = new Repository<Entity.PlaceTransfer.PlaceTransfer>(db);
@@ -248,6 +284,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                         }
 
                         db.SaveChangesSafe();
+
                         foreach (DataRow item in dt_Citi.Rows)
                         {
                             int citiid = Convert.ToInt32(item["Id"]);
@@ -259,7 +296,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                 else
                                     Id_0 = ListId;
 
-                                var serch = db.FloatingPublicCities.Where(c => c.PlaceTransferId == Id_0 && c.CiltysId == citiid);
+                                var serch = db0.FloatingPublicCities.Where(c => c.PlaceTransferId == Id_0 && c.CiltysId == citiid);
 
                                 if (serch.Count() == 0)
                                 {
@@ -269,7 +306,12 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                                     fpc.PostalCode = item["PostalCode"].ToString();
                                     db0.FloatingPublicCities.Add(fpc);
                                 }
-                                db0.SaveChangesSafe();
+                                else
+                                {
+                                    serch.First().PostalCode = item["PostalCode"].ToString();
+                                }
+                                db0.SaveChanges();
+
                             }
                         }
                     }
@@ -365,7 +407,7 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     using (var db = new DBcontextModel())
                     {
 
-                        string Item ="نام انبار: " + dgvList.CurrentRow.Cells["PlaceTransferName"].Value.ToString();
+                        string Item = "نام انبار: " + dgvList.CurrentRow.Cells["PlaceTransferName"].Value.ToString();
 
                         if (db.ComersHs.Where(c => c.LoadingLocationId == ListId || c.UnLoadingLocationId == ListId).Count() != 0)
                         {
@@ -587,7 +629,10 @@ namespace HM_ERP_System.Forms.PlaceTransfer
                     newrow["Name"] = cmbCity2.Text;
                     newrow["PostalCode"] = txtPostalCode2.Text;
                     dt_Citi.Rows.Add(newrow);
-                    dgvListCity.DataSource = dt_Citi;
+
+                    BindingSource bs = new BindingSource();
+                    bs.DataSource = dt_Citi;
+                    dgvListCity.DataSource = bs;
                 }
             }
             else
@@ -622,6 +667,49 @@ namespace HM_ERP_System.Forms.PlaceTransfer
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            if (PublicClass.FindEmptyControls(txtPostalCode3, ResourceCode.T174))
+                return;
+
+            string city = "";
+            using (var db = new DBcontextModel())
+            {
+                var q1 = db.PlaceTransfers.Where(c => c.PostalCode == txtPostalCode3.Text);
+                var q2 = db.FloatingPublicCities.Where(c => c.PostalCode == txtPostalCode3.Text);
+                if (q1.Count() != 0)
+                {
+                    city = "نام انبار: " + q1.First().Name +" (ذخیره در حافظه)"+ '\n';
+                    Clipboard.SetText(q1.First().Name);
+
+
+                }
+                if (q2.Count() != 0)
+                {
+                    if (q1.Count() == 0)
+                    {
+                        string txt = db.PlaceTransfers.Where(c => c.Id == q2.FirstOrDefault().PlaceTransferId).First().Name;
+                        city += "نام انبار: " + txt + " (ذخیره در حافظه)" + '\n';
+                        Clipboard.SetText(txt);
+                    }
+
+                    city += "نام شهر شناور: " + db.Ciltys.Where(c => c.Id == q2.FirstOrDefault().CiltysId).First().Name;
+                }
+
+                if(city!="")
+                {
+                    MessageBox.Show(city);
+                }
+                else
+                {
+                    MessageBox.Show("اطلاعاتی یافت نشد");
+
+                }
+
+            }
 
         }
     }

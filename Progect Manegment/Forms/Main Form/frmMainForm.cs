@@ -226,6 +226,8 @@ namespace HM_ERP_System.Forms.Main_Form
                         {
                             //مـــــرور حسابها
                             ribbon1.Tabs["Accounting"].Groups["Reports"].Commands["ReviewAccounts"].Visible = PublicClass.SetPeremission("Node2_3_1");
+                            //دفتر روزنامه
+                            ribbon1.Tabs["Accounting"].Groups["Reports"].Commands["Journal"].Visible = PublicClass.SetPeremission("Node2_3_2");
                         }
 
                     }
@@ -264,6 +266,9 @@ namespace HM_ERP_System.Forms.Main_Form
                             ribbon1.Tabs["Treasury"].Groups["Facilities"].Commands["ReviewAccounts2"].Visible = PublicClass.SetPeremission("Node3_3_1");
                             //مدیریت چک ها
                             ribbon1.Tabs["Treasury"].Groups["Facilities"].Commands["RegCheques"].Visible = PublicClass.SetPeremission("Node3_3_2");
+                            //دفتر روزنامه
+                            ribbon1.Tabs["Treasury"].Groups["Facilities"].Commands["Journal"].Visible = PublicClass.SetPeremission("Node3_3_3");
+
                         }
                     }
 
@@ -641,5 +646,16 @@ namespace HM_ERP_System.Forms.Main_Form
             f.ShowDialog();
         }
 
+        private void btnJournal_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            //frmJournal
+            FormManager.ShowMdiChildForm<frmJournal>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
+
+        }
+
+        private void btnJournal2_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
+        {
+            FormManager.ShowMdiChildForm<frmJournal>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
+        }
     }
 }

@@ -81,6 +81,7 @@
             this.btnTransactionIE = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnRecevingPayment = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup10 = new Janus.Windows.Ribbon.RibbonGroup();
+            this.btnJournal = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTab5 = new Janus.Windows.Ribbon.RibbonTab();
             this.ribbonGroup8 = new Janus.Windows.Ribbon.RibbonGroup();
             this.buttonCommand9 = new Janus.Windows.Ribbon.ButtonCommand();
@@ -94,6 +95,7 @@
             this.btnTransferBetweenBanks = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonGroup12 = new Janus.Windows.Ribbon.RibbonGroup();
             this.btnReviewAccounts2 = new Janus.Windows.Ribbon.ButtonCommand();
+            this.btnJournal2 = new Janus.Windows.Ribbon.ButtonCommand();
             this.btnRegCheques_ = new Janus.Windows.Ribbon.ButtonCommand();
             this.ribbonTab6 = new Janus.Windows.Ribbon.RibbonTab();
             this.ribbonGroup7 = new Janus.Windows.Ribbon.RibbonGroup();
@@ -202,7 +204,7 @@
             this.tabStrip1.Location = new System.Drawing.Point(0, 185);
             this.tabStrip1.Name = "tabStrip1";
             this.tabStrip1.SelectedTab = this.tabItem2;
-            this.tabStrip1.Size = new System.Drawing.Size(1633, 35);
+            this.tabStrip1.Size = new System.Drawing.Size(1681, 35);
             this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
             this.tabStrip1.TabIndex = 7;
             this.tabStrip1.Tabs.Add(this.tabItem2);
@@ -236,7 +238,7 @@
             this.ribbon1.QuickAccessCustomizeList.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.btnReviewAccounts});
             this.ribbon1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ribbon1.Size = new System.Drawing.Size(1633, 185);
+            this.ribbon1.Size = new System.Drawing.Size(1681, 185);
             // 
             // 
             // 
@@ -577,12 +579,21 @@
             // ribbonGroup10
             // 
             this.ribbonGroup10.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
-            this.btnReviewAccounts});
+            this.btnReviewAccounts,
+            this.btnJournal});
             this.ribbonGroup10.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup10;
             this.ribbonGroup10.ImageKey = "";
             this.ribbonGroup10.Key = "Reports";
             this.ribbonGroup10.Name = "ribbonGroup10";
             this.ribbonGroup10.Text = "گزارشــــــات";
+            // 
+            // btnJournal
+            // 
+            this.btnJournal.Image = ((System.Drawing.Image)(resources.GetObject("btnJournal.Image")));
+            this.btnJournal.Key = "Journal";
+            this.btnJournal.Name = "btnJournal";
+            this.btnJournal.Text = "دفتر روزنامه";
+            this.btnJournal.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnJournal_Click);
             // 
             // ribbonTab5
             // 
@@ -686,6 +697,7 @@
             // 
             this.ribbonGroup12.Commands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.btnReviewAccounts2,
+            this.btnJournal2,
             this.btnRegCheques_});
             this.ribbonGroup12.DialogButtonSuperTipSettings.ImageListProvider = this.ribbonGroup12;
             this.ribbonGroup12.ImageKey = "";
@@ -700,6 +712,14 @@
             this.btnReviewAccounts2.Name = "btnReviewAccounts2";
             this.btnReviewAccounts2.Text = "مـــرور حســـاب ها";
             this.btnReviewAccounts2.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnReviewAccounts2_Click);
+            // 
+            // btnJournal2
+            // 
+            this.btnJournal2.Image = ((System.Drawing.Image)(resources.GetObject("btnJournal2.Image")));
+            this.btnJournal2.Key = "Journal";
+            this.btnJournal2.Name = "btnJournal2";
+            this.btnJournal2.Text = "دفتر روزنامه";
+            this.btnJournal2.Click += new Janus.Windows.Ribbon.CommandEventHandler(this.btnJournal2_Click);
             // 
             // btnRegCheques_
             // 
@@ -887,14 +907,14 @@
             this.lblVersion_,
             this.buttonCommand16,
             this.btnCalculater});
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 1016);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 1040);
             this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.RightPanelCommands.AddRange(new Janus.Windows.Ribbon.CommandBase[] {
             this.lblUserRole,
             this.lblUserName,
             this.lblDate});
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1633, 30);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1681, 30);
             // 
             // 
             // 
@@ -960,7 +980,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1633, 1046);
+            this.ClientSize = new System.Drawing.Size(1681, 1070);
             this.Controls.Add(this.tabStrip1);
             this.Controls.Add(this.ribbon1);
             this.Controls.Add(this.ribbonStatusBar1);
@@ -1065,5 +1085,7 @@
         private Janus.Windows.Ribbon.RibbonGroup ribbonGroup14;
         private Janus.Windows.Ribbon.ButtonCommand btnGoodsIn;
         private Janus.Windows.Ribbon.ButtonCommand btnGoodsOut;
+        private Janus.Windows.Ribbon.ButtonCommand btnJournal;
+        private Janus.Windows.Ribbon.ButtonCommand btnJournal2;
     }
 }

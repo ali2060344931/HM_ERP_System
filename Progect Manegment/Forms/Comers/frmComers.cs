@@ -114,6 +114,8 @@ namespace HM_ERP_System.Forms.Comers
             {
                 dgvListB.SaveLayoutFile(fs);
             }
+
+
             string layoutPathComersH = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutComersH.xml");
 
             using (var fs = new FileStream(layoutPathComersH, FileMode.Create, FileAccess.Write))
@@ -122,6 +124,11 @@ namespace HM_ERP_System.Forms.Comers
             }
             FormLoded = true;
 
+
+
+
+
+
             //CallUpdateTataH();
             UpdateData();
 
@@ -129,6 +136,20 @@ namespace HM_ERP_System.Forms.Comers
         public void UpdateData()
         {
             uiTab1.SelectedIndex = 0;
+
+            //روئیت مانده سود و زیان
+            if (!PublicClass.SetPeremission("Node1_2_1_2_4", 0))
+            {
+                txtBK.Visible = false;
+                dgvListB.RootTable.Columns["BK"].Visible = false;
+            }
+
+            else
+            {
+                txtBK.Visible = true;
+                dgvListB.RootTable.Columns["BK"].Visible = true;
+            }
+
             CallUpdateTataH();
             //CallUpdateTataB();
         }
@@ -2171,7 +2192,7 @@ namespace HM_ERP_System.Forms.Comers
                             from ptonC_Left in ptonCGroup.DefaultIfEmpty()
 
                             join cr in db.Cars on cmh.CarId equals cr.Id
-                            
+
                             join tf in db.TransactionFees on cmb.BT equals tf.Id
 
                             join doc in db.DocumentBancks on cmb.Id equals doc.ListInFoemId into docGroup
@@ -2575,7 +2596,7 @@ namespace HM_ERP_System.Forms.Comers
                     //chkIncomeDocument
 
                     var com = new Repository<ComersB>(db);
-                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, IncomeDocumentCode= IncomeDocumentCode, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, IncomeDocumentCode = IncomeDocumentCode, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
                     PublicClass.WindowAlart("1");
                     //TypeCalcMethodsBId_
 
@@ -2639,7 +2660,7 @@ namespace HM_ERP_System.Forms.Comers
             {
                 var q = db.ComersBs.Where(c => c.Id == ComerB_Id).First();
 
-                if (MessageBox.Show(ResourceCode.T111+'\n'+"شماره بارنامه:"+q.SeryalB + '\n' + "شماره حواله:" + q.SeryalH, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question,MessageBoxDefaultButton.Button1,MessageBoxOptions.RightAlign) == DialogResult.No)
+                if (MessageBox.Show(ResourceCode.T111 + '\n' + "شماره بارنامه:" + q.SeryalB + '\n' + "شماره حواله:" + q.SeryalH, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.No)
                     return;
 
                 PublicClass.ComerB_AccountingDocumentRegistration(ComerB_Id);

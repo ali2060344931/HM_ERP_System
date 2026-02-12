@@ -59,7 +59,7 @@ namespace HM_ERP_System.Class_General
 
         public int ComersHId { get; set; } = 0;
         /// <summary>
-        /// نوع محاسبه کرایه حمل/کمیسیون 
+        /// نوع محاسبه کرایه حمل(لیست)1 کمیسیون(مقصد)2  
         /// </summary>
         public int TypeCalFareId { get; set; } = 0;
         /// <summary>

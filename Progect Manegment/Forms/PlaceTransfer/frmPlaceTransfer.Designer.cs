@@ -62,6 +62,12 @@
             this.cmbFieldActivity = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPostalCode3 = new HM_ERP_System.Class_General.MyTextBoxJanus(this.components);
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.pnlViewItemBody.SuspendLayout();
             this.pnlViewItemHeder.SuspendLayout();
             this.pnlViewItemFoter.SuspendLayout();
@@ -82,19 +88,29 @@
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
             this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(766, 647);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(917, 647);
             // 
             // pnlViewItemHeder
             // 
+            this.pnlViewItemHeder.Controls.Add(this.buttonX2);
+            this.pnlViewItemHeder.Controls.Add(this.txtPostalCode3);
+            this.pnlViewItemHeder.Controls.Add(this.label10);
             this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(766, 50);
-            this.pnlViewItemHeder.Visible = false;
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(917, 50);
+            this.pnlViewItemHeder.Controls.SetChildIndex(this.label10, 0);
+            this.pnlViewItemHeder.Controls.SetChildIndex(this.labelX2, 0);
+            this.pnlViewItemHeder.Controls.SetChildIndex(this.labelX1, 0);
+            this.pnlViewItemHeder.Controls.SetChildIndex(this.txtDateStart, 0);
+            this.pnlViewItemHeder.Controls.SetChildIndex(this.txtPostalCode3, 0);
+            this.pnlViewItemHeder.Controls.SetChildIndex(this.btnShowListItems, 0);
+            this.pnlViewItemHeder.Controls.SetChildIndex(this.txtDateEnd, 0);
+            this.pnlViewItemHeder.Controls.SetChildIndex(this.buttonX2, 0);
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 697);
             this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(766, 28);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(917, 28);
             // 
             // pnlAddItemBodi
             // 
@@ -115,6 +131,9 @@
             this.pnlAddItemBodi.Controls.Add(this.cmbEvacuationDeployment);
             this.pnlAddItemBodi.Controls.Add(this.txtPlaceTransferName);
             this.pnlAddItemBodi.Controls.Add(this.chkPublic);
+            this.pnlAddItemBodi.Controls.Add(this.label13);
+            this.pnlAddItemBodi.Controls.Add(this.label12);
+            this.pnlAddItemBodi.Controls.Add(this.label11);
             this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4);
             this.pnlAddItemBodi.Size = new System.Drawing.Size(514, 697);
             this.pnlAddItemBodi.TabIndex = 0;
@@ -138,20 +157,23 @@
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(435, 12);
+            this.txtDateStart.Location = new System.Drawing.Point(298, 10);
             this.txtDateStart.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 22, 23, 2, 54, 641);
+            this.txtDateStart.Visible = false;
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(233, 12);
+            this.txtDateEnd.Location = new System.Drawing.Point(96, 10);
             this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 22, 23, 2, 54, 641);
+            this.txtDateEnd.Visible = false;
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(143, 15);
+            this.btnShowListItems.Location = new System.Drawing.Point(6, 13);
             this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4);
+            this.btnShowListItems.Visible = false;
             // 
             // labelX2
             // 
@@ -159,9 +181,10 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(363, 17);
+            this.labelX2.Location = new System.Drawing.Point(226, 15);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
+            this.labelX2.Visible = false;
             // 
             // labelX1
             // 
@@ -169,36 +192,37 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(565, 17);
+            this.labelX1.Location = new System.Drawing.Point(428, 15);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
+            this.labelX1.Visible = false;
             // 
             // pnlViewItems
             // 
             this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlViewItems.Size = new System.Drawing.Size(768, 753);
+            this.pnlViewItems.Size = new System.Drawing.Size(919, 753);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(771, 3);
+            this.pnlAddItems.Location = new System.Drawing.Point(922, 3);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlAddItems.Size = new System.Drawing.Size(520, 753);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(732, 0);
+            this.btnExportToExcel.Location = new System.Drawing.Point(883, 0);
             this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(698, 0);
+            this.buttonX01.Location = new System.Drawing.Point(849, 0);
             this.buttonX01.Margin = new System.Windows.Forms.Padding(4);
             this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(663, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(814, 0);
             this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
@@ -222,7 +246,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmPlaceTransfer";
-            this.dgvList.Size = new System.Drawing.Size(766, 647);
+            this.dgvList.Size = new System.Drawing.Size(917, 647);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 84;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -610,11 +634,103 @@
             this.buttonX1.Tooltip = "ثبت آیتم جدید";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label10.Location = new System.Drawing.Point(773, 14);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(101, 18);
+            this.label10.TabIndex = 106;
+            this.label10.Text = "جستجوی کد پستی:";
+            // 
+            // txtPostalCode3
+            // 
+            this.txtPostalCode3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtPostalCode3.CheackCodeMeli = false;
+            this.txtPostalCode3.Day = 0;
+            this.txtPostalCode3.Location = new System.Drawing.Point(647, 11);
+            this.txtPostalCode3.MaxLength = 10;
+            this.txtPostalCode3.Miladi = new System.DateTime(((long)(0)));
+            this.txtPostalCode3.Month = 0;
+            this.txtPostalCode3.Name = "txtPostalCode3";
+            this.txtPostalCode3.NowDateSelected = false;
+            this.txtPostalCode3.Number = null;
+            this.txtPostalCode3.SelectedDate = null;
+            this.txtPostalCode3.Shamsi = null;
+            this.txtPostalCode3.Size = new System.Drawing.Size(126, 28);
+            this.txtPostalCode3.TabIndex = 1;
+            this.txtPostalCode3.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.txtPostalCode3.TextBoxBackColorEnter = System.Drawing.Color.Yellow;
+            this.txtPostalCode3.TextDigitGroup = false;
+            this.txtPostalCode3.TextMode = HM_ERP_System.Class_General.MyTextBoxJanus.TextBoxMode.IntNumber;
+            this.txtPostalCode3.TextSimple = "";
+            this.txtPostalCode3.TextWatermark = null;
+            this.txtPostalCode3.TextWatermarkForeColor = System.Drawing.Color.Gray;
+            this.txtPostalCode3.Year = 0;
+            this.txtPostalCode3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbEvacuationDeployment_KeyDown);
+            this.txtPostalCode3.Leave += new System.EventHandler(this.txtPostalCode_Leave);
+            // 
+            // buttonX2
+            // 
+            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.buttonX2.Location = new System.Drawing.Point(619, 11);
+            this.buttonX2.Name = "buttonX2";
+            this.buttonX2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.buttonX2.Size = new System.Drawing.Size(28, 28);
+            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX2.Symbol = "";
+            this.buttonX2.SymbolSize = 15F;
+            this.buttonX2.TabIndex = 107;
+            this.buttonX2.Tooltip = "جستجو";
+            this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(451, 83);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(19, 25);
+            this.label11.TabIndex = 106;
+            this.label11.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(436, 120);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(19, 25);
+            this.label12.TabIndex = 106;
+            this.label12.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(457, 154);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(19, 25);
+            this.label13.TabIndex = 106;
+            this.label13.Text = "*";
+            // 
             // frmPlaceTransfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1294, 759);
+            this.ClientSize = new System.Drawing.Size(1445, 759);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "frmPlaceTransfer";
@@ -672,5 +788,11 @@
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbFieldActivity;
         private Class_General.MyTextBoxJanus txtPostalCode2;
         private System.Windows.Forms.Label label9;
+        public DevComponents.DotNetBar.ButtonX buttonX2;
+        private Class_General.MyTextBoxJanus txtPostalCode3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }

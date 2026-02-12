@@ -757,6 +757,12 @@
     <Compile Include="Forms\Accounts\RecevingPayment\frmRecevingPaymentNew.Designer.cs">
       <DependentUpon>frmRecevingPaymentNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Accounts\ReviewAccounts\frmJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounts\ReviewAccounts\frmJournal.Designer.cs">
+      <DependentUpon>frmJournal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Accounts\ReviewAccounts\frmReviewAccounts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1103,6 +1109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Accounts\RecevingPayment\frmRecevingPaymentNew.resx">
       <DependentUpon>frmRecevingPaymentNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Accounts\ReviewAccounts\frmJournal.resx">
+      <DependentUpon>frmJournal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Accounts\ReviewAccounts\frmReviewAccounts.resx">
       <DependentUpon>frmReviewAccounts.cs</DependentUpon>

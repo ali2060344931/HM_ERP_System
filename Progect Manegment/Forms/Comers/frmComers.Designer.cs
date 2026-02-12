@@ -334,13 +334,13 @@
             this.label86 = new System.Windows.Forms.Label();
             this.label89 = new System.Windows.Forms.Label();
             this.pnlAddItemFoter = new System.Windows.Forms.Panel();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnCalculations = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.btnNew = new DevComponents.DotNetBar.ButtonX();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.chkDocumentBanck = new System.Windows.Forms.CheckBox();
             this.uiPanel2 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel2Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
@@ -3564,7 +3564,7 @@
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label26.Location = new System.Drawing.Point(146, 69);
+            this.label26.Location = new System.Drawing.Point(153, 291);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(46, 15);
             this.label26.TabIndex = 98;
@@ -4649,9 +4649,9 @@
             this.label124.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label124.Location = new System.Drawing.Point(137, 133);
             this.label124.Name = "label124";
-            this.label124.Size = new System.Drawing.Size(28, 15);
+            this.label124.Size = new System.Drawing.Size(47, 15);
             this.label124.TabIndex = 98;
-            this.label124.Text = "مبلغ:";
+            this.label124.Text = "کمیسیون:";
             // 
             // txtBN
             // 
@@ -4667,7 +4667,7 @@
             this.txtBN.Increment = 1D;
             this.txtBN.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
             this.txtBN.IsInputReadOnly = true;
-            this.txtBN.Location = new System.Drawing.Point(6, 88);
+            this.txtBN.Location = new System.Drawing.Point(6, 53);
             this.txtBN.MaxValue = 1797693134862.3157D;
             this.txtBN.MinValue = -1797693134862.3157D;
             this.txtBN.Name = "txtBN";
@@ -4684,7 +4684,7 @@
             this.label122.AutoSize = true;
             this.label122.BackColor = System.Drawing.Color.Transparent;
             this.label122.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label122.Location = new System.Drawing.Point(137, 96);
+            this.label122.Location = new System.Drawing.Point(137, 61);
             this.label122.Name = "label122";
             this.label122.Size = new System.Drawing.Size(57, 15);
             this.label122.TabIndex = 98;
@@ -4704,7 +4704,7 @@
             this.txtBO.Increment = 1D;
             this.txtBO.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
             this.txtBO.IsInputReadOnly = true;
-            this.txtBO.Location = new System.Drawing.Point(6, 52);
+            this.txtBO.Location = new System.Drawing.Point(6, 88);
             this.txtBO.MaxValue = 1797693134862.3157D;
             this.txtBO.MinValue = -1797693134862.3157D;
             this.txtBO.Name = "txtBO";
@@ -4721,7 +4721,7 @@
             this.label121.AutoSize = true;
             this.label121.BackColor = System.Drawing.Color.Transparent;
             this.label121.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label121.Location = new System.Drawing.Point(137, 57);
+            this.label121.Location = new System.Drawing.Point(137, 93);
             this.label121.Name = "label121";
             this.label121.Size = new System.Drawing.Size(77, 15);
             this.label121.TabIndex = 98;
@@ -4786,13 +4786,13 @@
             // 
             // pnlAddItemFoter
             // 
+            this.pnlAddItemFoter.Controls.Add(this.btnSave);
             this.pnlAddItemFoter.Controls.Add(this.checkBox3);
             this.pnlAddItemFoter.Controls.Add(this.checkBox2);
             this.pnlAddItemFoter.Controls.Add(this.checkBox1);
             this.pnlAddItemFoter.Controls.Add(this.btnCalculations);
             this.pnlAddItemFoter.Controls.Add(this.buttonX1);
             this.pnlAddItemFoter.Controls.Add(this.btnNew);
-            this.pnlAddItemFoter.Controls.Add(this.btnSave);
             this.pnlAddItemFoter.Controls.Add(this.chkDocumentBanck);
             this.pnlAddItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 393);
@@ -4800,13 +4800,32 @@
             this.pnlAddItemFoter.Size = new System.Drawing.Size(1916, 28);
             this.pnlAddItemFoter.TabIndex = 0;
             // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnSave.Location = new System.Drawing.Point(541, 0);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnSave.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
+            this.btnSave.Size = new System.Drawing.Size(88, 28);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.Symbol = "";
+            this.btnSave.SymbolSize = 15F;
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "ذخیره F5";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Checked = true;
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox3.Location = new System.Drawing.Point(655, 0);
+            this.checkBox3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.checkBox3.Location = new System.Drawing.Point(1589, 0);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(89, 28);
             this.checkBox3.TabIndex = 16;
@@ -4821,8 +4840,8 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox2.Location = new System.Drawing.Point(555, 0);
+            this.checkBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.checkBox2.Location = new System.Drawing.Point(1678, 0);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(100, 28);
             this.checkBox2.TabIndex = 16;
@@ -4837,8 +4856,8 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox1.Location = new System.Drawing.Point(417, 0);
+            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.checkBox1.Location = new System.Drawing.Point(1778, 0);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(138, 28);
             this.checkBox1.TabIndex = 16;
@@ -4851,11 +4870,11 @@
             // btnCalculations
             // 
             this.btnCalculations.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCalculations.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
-            this.btnCalculations.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCalculations.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground;
+            this.btnCalculations.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnCalculations.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnCalculations.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnCalculations.Location = new System.Drawing.Point(1704, 0);
+            this.btnCalculations.Location = new System.Drawing.Point(329, 0);
             this.btnCalculations.Name = "btnCalculations";
             this.btnCalculations.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnCalculations.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F3);
@@ -4876,7 +4895,7 @@
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX1.Location = new System.Drawing.Point(267, 0);
+            this.buttonX1.Location = new System.Drawing.Point(179, 0);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX1.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlF4);
@@ -4896,7 +4915,7 @@
             this.btnNew.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnNew.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnNew.Location = new System.Drawing.Point(192, 0);
+            this.btnNew.Location = new System.Drawing.Point(104, 0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Padding = new System.Windows.Forms.Padding(5);
             this.btnNew.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -4910,25 +4929,6 @@
             this.btnNew.TabStop = false;
             this.btnNew.Text = "جدید F4";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSave.Location = new System.Drawing.Point(104, 0);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnSave.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
-            this.btnSave.Size = new System.Drawing.Size(88, 28);
-            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.Symbol = "";
-            this.btnSave.SymbolSize = 15F;
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "ذخیره F5";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // chkDocumentBanck
             // 

@@ -63,8 +63,8 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         {
             try
             {
-                List<int> requiredIds = new List<int> { 1, 2 };
-                PublicClass.FilldgvListTransaction(dgvList, txtDateStart.Text, txtDateEnd.Text, requiredIds);
+                List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
+                PublicClass.FilldgvListTransaction_Journal(dgvList, txtDateStart.Text, txtDateEnd.Text, requiredIds);
                 dgvList.Dock = DockStyle.Fill;
                 this.Text = "دفتـــــر روزنامه";
             }

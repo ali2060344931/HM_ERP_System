@@ -51,7 +51,11 @@ namespace HM_ERP_System.Forms.Commission
         {
             txtDate.Value = DateTime.Now;
             //chkSelectList.Checked= true;
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList() * -1);
+
+            //txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList() * -1);
+
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
+
             txtDateEnd.Text = PersianDate.DateEnd();
 
             string layoutPathCommission = Path.Combine(System.Windows.Forms.Application.StartupPath, "DefaultGridLayoutCommission.xml");

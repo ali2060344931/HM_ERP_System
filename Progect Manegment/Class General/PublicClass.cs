@@ -1404,6 +1404,9 @@ namespace MyClass
                 {
                     // تعریف مجموعه شناسه های تراکنش مورد نظر (برای خوانایی بهتر)
                     var targetTransactionTypeIds = new List<int> { 4, 5 };
+                    //var targetTransactionTypeIds = transactionTypeIds;
+                    
+                    
                     var q = from tr in db.Transactions
 
                             join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
@@ -1432,6 +1435,89 @@ namespace MyClass
                             && string.Compare(tr.TransactionDate, DateStart) >= 0
                             && string.Compare(tr.TransactionDate, DateEnd) <= 0
                             && (!(targetTransactionTypeIds.Contains(tr.TransactionTypeId)) || (tr.Series == 1))
+
+                            orderby tr.Series ascending, tr.Id ascending
+
+                            select new
+                            {
+                                tr.Id,
+                                tr.Series,
+                                tr.TransactionCode,
+                                tr.TransactionDate,
+                                TransactionType = tt.Name,
+                                SpecificAccountName = sp.Name,
+                                ContraAccountName = (cu.Family + " " + cu.Name).Trim(),
+                                TotalAmount = tr.Amount,
+                                tr.PaymentBed,
+                                tr.PaymentBes,
+                                tr.Description,
+                                AccountCode = da.CodeAccount,
+                                tr.IsAutoRejDoc,
+                                ComerSeryal = tr.ComerBId == 0 ? 0 : (coH_ != null ? coH_.RemiaanceSeryal : 0),
+                                User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
+                            };
+                    gx.DataSource = q.ToList();
+                    SettingGridEX(gx);
+                    gx.MoveTo(0);
+                    return gx;
+                }
+
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return null;
+
+            }
+        }
+
+        /// <summary>
+        /// نمایش اطلاعات در جدول روزنامه
+        /// </summary>
+        /// <param name="gx"></param>
+        /// <param name="DateStart"></param>
+        /// <param name="DateEnd"></param>
+        /// <param name="transactionTypeIds"></param>
+        /// <returns></returns>
+        public static GridExEx.GridExEx FilldgvListTransaction_Journal(GridExEx.GridExEx gx, string DateStart, string DateEnd, IEnumerable<int> transactionTypeIds)
+        {
+            try
+            {
+                using (var db = new DBcontextModel())
+                {
+                    // تعریف مجموعه شناسه های تراکنش مورد نظر (برای خوانایی بهتر)
+                    //var targetTransactionTypeIds = new List<int> { 4, 5 };
+                    var targetTransactionTypeIds = transactionTypeIds;
+                    
+                    
+                    var q = from tr in db.Transactions
+
+                            join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
+                            join da in db.DetailedAccounts on tr.DetailedAccountId equals da.Id
+                            join cu in db.Customers on da.CustomerId equals cu.Id
+                            join tt in db.TransactionTypes on tr.TransactionTypeId equals tt.Id
+
+                            join coB in db.ComersBs
+                            on tr.ComerBId equals coB.Id into coBGroup
+                            from coB_ in coBGroup.DefaultIfEmpty()
+
+                            join coH in db.ComersHs
+                            on coB_.ComersHId equals coH.Id into coHGroup
+                            from coH_ in coHGroup.DefaultIfEmpty()
+
+                            join cuR in db.CustomerRoles
+                            on tr.UserId equals cuR.Id into cuRGroup
+                            from cuR_ in cuRGroup.DefaultIfEmpty()
+
+                            join CuUser in db.Customers
+                            on cuR_.CustomerId equals CuUser.Id into CuUserGroup
+                            from CuUser_ in CuUserGroup.DefaultIfEmpty()
+
+
+                            where !tr.Status && transactionTypeIds.Contains(tr.TransactionTypeId)
+                            && string.Compare(tr.TransactionDate, DateStart) >= 0
+                            && string.Compare(tr.TransactionDate, DateEnd) <= 0
+                            && targetTransactionTypeIds.Contains(tr.TransactionTypeId)
 
                             orderby tr.Series ascending, tr.Id ascending
 

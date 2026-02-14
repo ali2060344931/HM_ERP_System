@@ -648,7 +648,6 @@ namespace HM_ERP_System.Forms.Main_Form
 
         private void btnJournal_Click(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
-            //frmJournal
             FormManager.ShowMdiChildForm<frmJournal>(mdiParent: this, activeMdiChild: this.ActiveMdiChild);
 
         }

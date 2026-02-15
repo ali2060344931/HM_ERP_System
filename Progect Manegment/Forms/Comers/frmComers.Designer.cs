@@ -360,6 +360,7 @@
             this.dgvListB = new GridExEx.GridExEx();
             this.pnlViewItemFoter = new System.Windows.Forms.Panel();
             this.panelDeleteEdit = new System.Windows.Forms.Panel();
+            this.btnAccountingDocumentRegistrationGroup = new DevComponents.DotNetBar.ButtonX();
             this.btnEditItem = new DevComponents.DotNetBar.ButtonX();
             this.btnDeleteItem = new DevComponents.DotNetBar.ButtonX();
             this.btnDeleteComers = new DevComponents.DotNetBar.ButtonItem();
@@ -5199,15 +5200,35 @@
             // 
             // panelDeleteEdit
             // 
+            this.panelDeleteEdit.Controls.Add(this.btnAccountingDocumentRegistrationGroup);
             this.panelDeleteEdit.Controls.Add(this.btnEditItem);
             this.panelDeleteEdit.Controls.Add(this.btnDeleteItem);
             this.panelDeleteEdit.Controls.Add(this.txtSeryalH_DE);
             this.panelDeleteEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelDeleteEdit.Location = new System.Drawing.Point(0, 0);
             this.panelDeleteEdit.Name = "panelDeleteEdit";
-            this.panelDeleteEdit.Size = new System.Drawing.Size(346, 27);
+            this.panelDeleteEdit.Size = new System.Drawing.Size(557, 27);
             this.panelDeleteEdit.TabIndex = 16;
             this.panelDeleteEdit.Visible = false;
+            // 
+            // btnAccountingDocumentRegistrationGroup
+            // 
+            this.btnAccountingDocumentRegistrationGroup.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAccountingDocumentRegistrationGroup.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAccountingDocumentRegistrationGroup.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAccountingDocumentRegistrationGroup.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnAccountingDocumentRegistrationGroup.Location = new System.Drawing.Point(327, 0);
+            this.btnAccountingDocumentRegistrationGroup.Name = "btnAccountingDocumentRegistrationGroup";
+            this.btnAccountingDocumentRegistrationGroup.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnAccountingDocumentRegistrationGroup.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F8);
+            this.btnAccountingDocumentRegistrationGroup.Size = new System.Drawing.Size(190, 27);
+            this.btnAccountingDocumentRegistrationGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAccountingDocumentRegistrationGroup.Symbol = "";
+            this.btnAccountingDocumentRegistrationGroup.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnAccountingDocumentRegistrationGroup.SymbolSize = 15F;
+            this.btnAccountingDocumentRegistrationGroup.TabIndex = 16;
+            this.btnAccountingDocumentRegistrationGroup.Text = "ثبت گروهی سند حسابداری";
+            this.btnAccountingDocumentRegistrationGroup.Click += new System.EventHandler(this.btnAccountingDocumentRegistrationGroup_Click);
             // 
             // btnEditItem
             // 
@@ -6012,5 +6033,6 @@
         private System.Windows.Forms.Label label123;
         private DevComponents.Editors.DoubleInput txtBV;
         private System.Windows.Forms.Label label124;
+        public DevComponents.DotNetBar.ButtonX btnAccountingDocumentRegistrationGroup;
     }
 }

@@ -751,6 +751,12 @@
   <data name="T210" xml:space="preserve">
     <value>آیا همه اسناد مشترک با این شماره سند حذف شوند؟</value>
   </data>
+  <data name="T211" xml:space="preserve">
+    <value>تمامی آیتم های انتخاب شده دارای سند حسابداری می باشند.</value>
+  </data>
+  <data name="T212" xml:space="preserve">
+    <value>آیا سندهای حسابداری تمامی آیتم های انتخاب شده ثبت شوند؟</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

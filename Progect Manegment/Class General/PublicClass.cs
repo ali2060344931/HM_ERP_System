@@ -4018,7 +4018,7 @@ namespace MyClass
         /// ثبت اسناد حسابداری بارنامه ها
         /// </summary>
         /// <param name="ComerBId"></param>
-        public static void ComerB_AccountingDocumentRegistration(int ComerBId)
+        public static bool ComerB_AccountingDocumentRegistration(int ComerBId)
         {
             using (var db = new DBcontextModel())
             {
@@ -4049,12 +4049,12 @@ namespace MyClass
                             {
                                 Description = CreatAccountDescriptions.GoodsAccountDes(ComerBId);
 
-                                
+
                                 Series++;
                                 customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().GoodsAccountId).FirstOrDefault().Id;
 
                                 (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(10301, customertId);
-                                
+
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomB.AE, qcomB.AE, 0, ComerBId, Description, "", Series, true);
 
                                 Series++;
@@ -4112,7 +4112,7 @@ namespace MyClass
                                 else if (qcomB.TypeCalFareId == 1)
                                 {
                                     qcomBV = Math.Abs(qcomB.BV) - qcomB.AmountPaidTruckDriver;
-                                    
+
                                     Series++;
                                     customertId = db.Customers.Where(c => c.SecretCode == 4).First().Id;
                                     (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(80801, customertId);
@@ -4129,9 +4129,9 @@ namespace MyClass
                             {
                                 if (qcomB.PaymentToOthers1 != qcomBV)
                                 {
-                                    if (qcomB.AmountPaidTruckDriver != 0  || qcomB.PaymentToOthers1 != 0)
+                                    if (qcomB.AmountPaidTruckDriver != 0 || qcomB.PaymentToOthers1 != 0)
                                     {
-                                        qcomBV = qcomB.Ac - qcomB.BO ;
+                                        qcomBV = qcomB.Ac - qcomB.BO;
                                     }
                                     qcomBV = qcomBV - qcomB.BalanceAccountDraver;
                                     Series++;
@@ -4223,8 +4223,8 @@ namespace MyClass
                                         SpecificAccountId = db.DetailedAccounts.Where(c => c.Id == qcomB.PaymentToOthersId).First().SpecificAccountId;
                                         DetailedAccountId = qcomB.PaymentToOthersId;
 
-                                       
-                                        
+
+
                                         PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, PaymentToOthers1, PaymentToOthers1, 0, ComerBId, Description, "", Series, true);
 
 
@@ -4358,15 +4358,16 @@ namespace MyClass
                                 PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 2, SpecificAccountId, DetailedAccountId, PaymentToOthers.PaymentToOthers2, 0, PaymentToOthers.PaymentToOthers2, ComerBId, (Description + " " + qcomB.DesToOthers).Trim(), "", Series, true);
                             }
                         }
-                        WindowAlart("1");
-
                         db.SaveChangesSafe();
                         transaction.Commit();
+                        return true;
                     }
                     catch (Exception er)
                     {
                         transaction.Rollback();
                         PublicClass.ShowErrorMessage(er);
+                        return false;
+
                     }
                 }
             }

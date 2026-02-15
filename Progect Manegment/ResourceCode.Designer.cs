@@ -1960,6 +1960,24 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to تمامی آیتم های انتخاب شده دارای سند حسابداری می باشند..
+        /// </summary>
+        internal static string T211 {
+            get {
+                return ResourceManager.GetString("T211", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to آیا سندهای حسابداری تمامی آیتم های انتخاب شده ثبت شوند؟.
+        /// </summary>
+        internal static string T212 {
+            get {
+                return ResourceManager.GetString("T212", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

@@ -1,5 +1,7 @@
 ﻿using DevComponents.Editors;
 
+using DocumentFormat.OpenXml.Office2010.Excel;
+
 using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.BillLadingWriterPercent;
 using HM_ERP_System.Entity.Comers;
@@ -2663,7 +2665,9 @@ namespace HM_ERP_System.Forms.Comers
                 if (MessageBox.Show(ResourceCode.T111 + '\n' + "شماره بارنامه:" + q.SeryalB + '\n' + "شماره حواله:" + q.SeryalH, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.No)
                     return;
 
-                PublicClass.ComerB_AccountingDocumentRegistration(ComerB_Id);
+                if (PublicClass.ComerB_AccountingDocumentRegistration(ComerB_Id))
+                    PublicClass.WindowAlart("1");
+
             }
         }
 
@@ -4482,16 +4486,6 @@ namespace HM_ERP_System.Forms.Comers
             }
             ListId = Convert.ToInt32(dgvListB.GetCheckedRows().First().Cells["Id"].Value);
 
-            //using (var db = new DBcontextModel())
-            //{
-            //    var q = db.Transactions.Where(c => c.ComerBId == ListId);
-            //    if (q.Count() != 0)
-            //    {
-            //        PublicClass.ErrorMesseg(ResourceCode.T115);
-            //        return;
-            //    }
-            //}
-
             using (var db = new DBcontextModel())
             {
                 var q = db.Transactions.Any(c => c.ComerBId == ListId && !c.Status);
@@ -4768,8 +4762,6 @@ namespace HM_ERP_System.Forms.Comers
             ListId = ListId_;
             switch (e.Command.Key)
             {
-
-
                 case "Edit":
                     if (!PublicClass.SetPeremission("Node1_2_1_1_2", 1)) return;
                     using (var db = new DBcontextModel())
@@ -4781,52 +4773,6 @@ namespace HM_ERP_System.Forms.Comers
                         }
                     }
                     LoadComersHToForm(ListId);
-                    /*
-                    using (var db = new DBcontextModel())
-                    {
-
-                        var q = db.ComersHs.Where(c => c.Id == ListId).First();
-                        var search = db.ComersBs.Where(c => c.ComersHId == ListId);
-                        if (search.Count() != 0)
-                        {
-                            PublicClass.StopMesseg(ResourceCode.T037); return;
-                        }
-                        FillcmbCarplate();
-                        txtDateH.Text = q.date;
-                        cmbTypeDocument.Value = q.TypeDocumentId;
-                        cmbLoadingOrinig.Value = q.LoadingOrinigId;
-                        cmbLoadingLocation.Value = q.LoadingLocationId;
-                        cmbUnLoadingOrinig.Value = q.UnLoadingOrinigId;
-                        cmbUnLoadingLocation.Value = q.UnLoadingLocationId;
-                        cmbCostAccountH.Value = q.CostAccountId;
-                        cmbGoodsAccountH.Value = q.GoodsAccountId;
-                        cmbSender1.Value = q.SenderId;
-                        cmbResiver1.Value = q.ResiverId;
-                        cmbSender2.Value = q.Sender2Id;
-                        cmbResiver2.Value = q.Resiver2Id;
-                        if (q.ShiperId == 0)
-                            chkStatusLading.Checked = true;
-                        cmbShiper.Value = q.ShiperId;
-                        {//محاسبه پلاک
-                            var cmh = db.ComersHs.Where(c => c.Id == q.Id).First();
-                            var cr = db.Cars.Where(c => c.Id == cmh.CarId).First();
-                            cmbCarplateH.Value = cr.Id;
-                        }
-
-                        cmbDraversH1.Value = q.DaraverId1;
-                        DaraverIdH1_ = q.DaraverId1;
-                        cmbDraversH2.Value = q.DaraverId2;
-                        DaraverIdH2_ = q.DaraverId2;
-
-                        txtNumberTranferForm.Text = q.RemiaanceSeryal.ToString();
-
-                        cmbProducts.Value = q.ProductsId;
-                        txtTruckCapacity.Value = q.LoadWeightCapacity;
-                        txtDescriptionH.Text = q.Description;
-                        txtCotajNumber.Text = q.CotajNumber.ToString();
-                        
-                    }
-                    */
                     break;
                 case "Delete":
 
@@ -4987,28 +4933,7 @@ namespace HM_ERP_System.Forms.Comers
                     break;
 
             }
-            //ListId=0;
         }
-        /// <summary>
-        /// ثبت بارنامه از بخش حواله
-        /// </summary>
-        bool IsRegComerB_Of_ComersH = false;
-        private void SetCurrentRowById(int id)
-        {
-            foreach (GridEXRow row in dgvListH.GetRows())
-            {
-                if (row.RowType != Janus.Windows.GridEX.RowType.Record)
-                    continue;
-
-                if (Convert.ToInt32(row.Cells["Id"].Value) == id)
-                {
-                    dgvListH.Row = row.Position;
-                    dgvListH.Focus();
-                    break;
-                }
-            }
-        }
-
 
         private void cms_cmsDgvB_CommandClick(object sender, Janus.Windows.Ribbon.CommandEventArgs e)
         {
@@ -5018,6 +4943,7 @@ namespace HM_ERP_System.Forms.Comers
                 switch (e.Command.Key)
                 {
                     case "AccountingDocumentRegistration"://سند حسابداری
+                        if (!PublicClass.SetPeremission("Node1_2_1_2_5", 1)) return;
                         var q = db.Transactions.Any(c => c.ComerBId == ListId && c.Status == false);
                         if (q)
                         {
@@ -5809,6 +5735,75 @@ namespace HM_ERP_System.Forms.Comers
         {
             if (e.KeyCode == Keys.Enter)
                 SendKeys.Send("{TAB}");
+        }
+
+        private void btnAccountingDocumentRegistrationGroup_Click(object sender, EventArgs e)
+        {
+            if (!PublicClass.SetPeremission("Node1_2_1_2_5", 1)) return;
+
+
+
+            try
+            {
+                if (dgvListB.GetCheckedRows().Count() == 0)
+                {
+                    PublicClass.ErrorMesseg(ResourceCode.T041); return;
+                }
+
+                System.Data.DataTable dt = new System.Data.DataTable();
+                dt.Columns.Add("ListId", typeof(int));
+
+                int TransactionCode = Convert.ToInt32(PublicClass.CreatTransactionCode());
+                using (var db = new DBcontextModel())
+                {
+
+
+                    var userRepo = new Repository<Entity.Accounts.Transaction.Transaction>(db);
+                    int n = 0;
+                    foreach (GridEXRow item in dgvListB.GetCheckedRows())
+                    {
+                        int id = Convert.ToInt32(item.Cells["Id"].Value);
+                        if (!db.Transactions.Any(c => c.ComerBId == id))
+                        {
+                            n++;
+                        }
+                    }
+
+                    if (n == 0)
+                    {
+                        PublicClass.ErrorMesseg(ResourceCode.T211);
+                        return;
+                    }
+
+
+                    if (MessageBox.Show(ResourceCode.T212 + '\n' + "تعداد: " + n, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+                    int countsave = 0;
+                    foreach (GridEXRow item in dgvListB.GetCheckedRows())
+                    {
+                        int id = Convert.ToInt32(item.Cells["Id"].Value);
+
+                        if (!db.Transactions.Any(c => c.ComerBId == id))
+                        {
+                            if (PublicClass.ComerB_AccountingDocumentRegistration(id))
+                                countsave++;
+
+                        }
+                    }
+                    if (countsave != 0)
+
+                    {
+                        FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
+                        PublicClass.WindowAlart("1");
+                        dgvListB.UnCheckAllRecords();
+                    }
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+
+
         }
     }
 }

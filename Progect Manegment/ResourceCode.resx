@@ -757,6 +757,9 @@
   <data name="T212" xml:space="preserve">
     <value>آیا سندهای حسابداری تمامی آیتم های انتخاب شده ثبت شوند؟</value>
   </data>
+  <data name="T213" xml:space="preserve">
+    <value>سند مورد نظر فاقد حواله و بارنامه می باشد.</value>
+  </data>
   <data name="TRappointmentScheduling" xml:space="preserve">
     <value>لیست نوبت دهی کامیـــون ها</value>
   </data>

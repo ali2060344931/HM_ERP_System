@@ -5126,7 +5126,7 @@
             this.dgvListH.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
             this.dgvListH.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.dgvListH.FindCondition = null;
-            this.dgvListH.FrozenColumns = 10;
+            this.dgvListH.FrozenColumns = 9;
             this.dgvListH.GroupTotals = Janus.Windows.GridEX.GroupTotals.Always;
             this.dgvListH.HiddenColumnSortingEnabled = false;
             this.dgvListH.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;
@@ -5158,7 +5158,7 @@
             this.dgvListB.FilterMode = Janus.Windows.GridEX.FilterMode.Automatic;
             this.dgvListB.FilterRowButtonStyle = Janus.Windows.GridEX.FilterRowButtonStyle.ConditionOperatorDropDown;
             this.dgvListB.FindCondition = null;
-            this.dgvListB.FrozenColumns = 9;
+            this.dgvListB.FrozenColumns = 14;
             this.dgvListB.GroupTotals = Janus.Windows.GridEX.GroupTotals.Always;
             this.dgvListB.HiddenColumnSortingEnabled = false;
             this.dgvListB.IncrementalSearchMode = Janus.Windows.GridEX.IncrementalSearchMode.AllCharacters;

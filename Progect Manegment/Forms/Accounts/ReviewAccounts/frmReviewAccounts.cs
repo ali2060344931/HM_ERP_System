@@ -1,6 +1,7 @@
 ﻿using GridExEx;
 
 using HM_ERP_System.Class_General;
+using HM_ERP_System.Forms.Accounts.RecevingPayment;
 using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.Reports;
 
@@ -607,6 +608,46 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             {
                 PublicClass.ErrorMesseg(ResourceCode.T208); return;
             }
+        }
+
+        private void dgvListTransaction_ColumnButtonClick_1(object sender, ColumnActionEventArgs e)
+        {
+            try
+            {
+                ListId = Convert.ToInt32(dgvListTransaction.CurrentRow.Cells["Id"].Value);
+
+                if (e.Column.Key == "ShowListcmHB")//Parent
+                {
+                    using (var db = new DBcontextModel())
+                    {
+                        try
+                        {
+
+                            var q = db.Transactions.Where(c => c.Id == ListId).First().ComerBId;
+                            if (q != 0)
+                            {
+                                var ComersHId = db.ComersBs.Where(c => c.Id == q).First().ComersHId;
+                                frmRecevingPaymentDoc f = new frmRecevingPaymentDoc();
+                                f.IdH = ComersHId;
+                                f.ShowDialog();
+                            }
+                            else
+                            {
+                                PublicClass.ErrorMesseg(ResourceCode.T213);
+                            }
+                        }
+                        catch (Exception er)
+                        {
+                            PublicClass.ShowErrorMessage(er);
+                        }
+                    }
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+            }
+
         }
     }
 }

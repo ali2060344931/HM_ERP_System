@@ -4246,7 +4246,7 @@ namespace MyClass
                                         PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, AmountPaidTruckDriver_, AmountPaidTruckDriver_, 0, ComerBId, Description, "", Series, true);
 
                                         Series++;
-                                        Description = CreatAccountDescriptions.ShiperAccountDes2_1(ComerBId);
+                                        Description = CreatAccountDescriptions.ShiperAccountDes2_2(ComerBId);
 
                                         SpecificAccountId = db.DetailedAccounts.Where(c => c.Id == qcomB.PaymentToOthersId).First().SpecificAccountId;
                                         DetailedAccountId = qcomB.PaymentToOthersId;

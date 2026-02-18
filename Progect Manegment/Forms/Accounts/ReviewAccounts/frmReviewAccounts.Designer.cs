@@ -860,6 +860,7 @@
             this.dgvListTransaction.TabStop = false;
             this.dgvListTransaction.TotalRow = Janus.Windows.GridEX.InheritableBoolean.True;
             this.dgvListTransaction.TotalRowPosition = Janus.Windows.GridEX.TotalRowPosition.BottomFixed;
+            this.dgvListTransaction.ColumnButtonClick += new Janus.Windows.GridEX.ColumnActionEventHandler(this.dgvListTransaction_ColumnButtonClick_1);
             // 
             // panel1
             // 

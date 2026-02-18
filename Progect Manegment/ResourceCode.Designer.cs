@@ -1978,6 +1978,15 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to سند مورد نظر فاقد حواله و بارنامه می باشد..
+        /// </summary>
+        internal static string T213 {
+            get {
+                return ResourceManager.GetString("T213", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست نوبت دهی کامیـــون ها.
         /// </summary>
         internal static string TRappointmentScheduling {

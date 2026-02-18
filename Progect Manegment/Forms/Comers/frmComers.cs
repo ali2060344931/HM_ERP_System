@@ -5,6 +5,8 @@ using DocumentFormat.OpenXml.Office2010.Excel;
 using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.BillLadingWriterPercent;
 using HM_ERP_System.Entity.Comers;
+using HM_ERP_System.Entity.Draver;
+using HM_ERP_System.Entity.Gender;
 using HM_ERP_System.Forms.Accounts.DetailedAccount;
 using HM_ERP_System.Forms.AppointmentScheduling;
 using HM_ERP_System.Forms.BillLadingRequest;
@@ -25,6 +27,8 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+
+using Ubiety.Dns.Core;
 namespace HM_ERP_System.Forms.Comers
 {
     public partial class frmComers : frmMasterForm, IUpdatableForms
@@ -2008,6 +2012,11 @@ namespace HM_ERP_System.Forms.Comers
                                 ShiperName = shLeft != null
         ? (shLeft.Family != "" ? (shLeft.Family + "، " + shLeft.Name).Trim() : shLeft.Name)
         : "-",
+                                ShiperCodMeli = shLeft.CodMeli,//
+                                ShiperSeryalShaba = shLeft.SeryalShaba,//
+                                ShiperDabitCardNumber = shLeft.DabitCardNumber,//
+                                ShiperTel = shLeft.Tel,//
+
 
                                 //آمار تعداد مدارک پیوست
                                 CountDoc = docGroup.Where(c => c.FormName == "frmComersH").Count(),
@@ -2024,26 +2033,74 @@ namespace HM_ERP_System.Forms.Comers
                                 UnLoadingLocationName = ull.Name,
 
                                 CostAccountName = ca.Family != "" ? (ca.Family + " " + ca.Name).Trim() : ca.Name,
+
+                                CostAccountCodMeli = ca.CodMeli,//
+                                CostAccountSeryalShaba = ca.SeryalShaba,//
+                                CostAccountDabitCardNumber = ca.DabitCardNumber,//
+                                CostAccountTel = ca.Tel,//
+
                                 GoodsAccountName = ga.Family != "" ? (ga.Family + " " + ga.Name).Trim() : ga.Name,
 
-                                SenderName = sr1.Family != "" ? (sr1.Family + " " + sr1.Name).Trim() : sr1.Name,
-                                ResiverName = rs1.Family != "" ? (rs1.Family + " " + rs1.Name).Trim() : rs1.Name,
+                                GoodsAccountCodMeli = ga.CodMeli,//
+                                GoodsAccountSeryalShaba = ga.SeryalShaba,//
+                                GoodsAccountDabitCardNumber = ga.DabitCardNumber,//
+                                GoodsAccountTel = ga.Tel,//
 
-                                SenderName2 = sender2 != null
+
+                                Sender1Name = sr1.Family != "" ? (sr1.Family + " " + sr1.Name).Trim() : sr1.Name,
+                                Sender1CodMeli = sr1.CodMeli,//
+                                Sender1SeryalShaba = sr1.SeryalShaba,//
+                                Sender1DabitCardNumber = sr1.DabitCardNumber,//
+                                Sender1Tel = sr1.Tel,//
+
+
+                                Resiver1Name = rs1.Family != "" ? (rs1.Family + " " + rs1.Name).Trim() : rs1.Name,
+                                Resiver1CodMeli = rs1.CodMeli,//
+                                Resiver1SeryalShaba = rs1.SeryalShaba,//
+                                Resiver1DabitCardNumber = rs1.DabitCardNumber,//
+                                Resiver1Tel = rs1.Tel,//
+
+
+
+                                Sender2Name = sender2 != null
         ? (sender2.Family != "" ? (sender2.Family + " " + sender2.Name).Trim() : sender2.Name)
         : "-",
 
-                                ResiverName2 = reciver2 != null
+                                Sender2CodMeli = sender2.CodMeli,//
+                                Sender2SeryalShaba = sender2.SeryalShaba,//
+                                Sender2DabitCardNumber = sender2.DabitCardNumber,//
+                                Sender2Tel = sender2.Tel,//
+
+                                Resiver2Name = reciver2 != null
         ? (reciver2.Family != "" ? (reciver2.Family + " " + reciver2.Name).Trim() : reciver2.Name)
         : "-",
+                                Resiver2CodMeli = reciver2.CodMeli,//
+                                Resiver2SeryalShaba = reciver2.SeryalShaba,//
+                                Resiver2DabitCardNumber = reciver2.DabitCardNumber,//
+                                Resiver2Tel = reciver2.Tel,//
 
-                                DaraverName1 = cu1.Family != "" ? (cu1.Family + " " + cu1.Name).Trim() : cu1.Name,
-                                DaraverName2 = cu2_ != null
-        ? (cu2_.Family != "" ? (cu2_.Family + " " + cu2_.Name).Trim() : cu2_.Name)
+                                Daraver1Name = cu1.Family != "" ? (cu1.Family + " " + cu1.Name).Trim() : cu1.Name,
+                                Daraver2Name = cu2_ != null ? (cu2_.Family != "" ? (cu2_.Family + " " + cu2_.Name).Trim() : cu2_.Name)
         : "-",
+
+                                Daraver2CodMeli = cu2_ != null ? cu2_.CodMeli : "-",//
+                                Daraver2SeryalShaba = cu2_ != null ? cu2_.SeryalShaba : "-",//
+                                Daraver2DabitCardNumber = cu2_ != null ? cu2_.DabitCardNumber : "-",//
+                                Daraver2Tel = cu2_ != null ? cu2_.Tel : "-",//
+                                Daraver2SmartCard= dr2_ != null ? dr2_.SmartCard:"",///
+                                Daraver2SeryalGovahiname= dr2_ != null ? dr2_.SeryalGovahiname : "",///
+
+
+
 
                                 Daraver1Tel = cu1.Tel,
                                 Daraver1Codmeli = cu1.CodMeli,
+
+                                Daraver1SeryalShaba = cu1.SeryalShaba,//
+                                Daraver1DabitCardNumber = cu1.DabitCardNumber,//
+                                Daraver1SmartCard =  dr1.SmartCard,///
+                                Daraver1SeryalGovahiname = dr1.SeryalGovahiname,///
+
 
                                 ProductsName = pr.Name,
                                 CarPlat = cr.CarPlat,
@@ -2066,6 +2123,10 @@ namespace HM_ERP_System.Forms.Comers
                     var result = list.Select(x => new
                     {
                         x.ShiperName,
+                        x.ShiperCodMeli,//
+                        x.ShiperSeryalShaba,//
+                        x.ShiperDabitCardNumber,//
+                        x.ShiperTel,//
                         x.ComersBStatus,
                         x.Id,
                         x.date,
@@ -2075,15 +2136,58 @@ namespace HM_ERP_System.Forms.Comers
                         x.UnLoadingOrinigName,
                         x.UnLoadingLocationName,
                         x.CostAccountName,
+                        x.CostAccountCodMeli,//
+                        x.CostAccountSeryalShaba,//
+                        x.CostAccountDabitCardNumber,//
+                        x.CostAccountTel,//
+
                         x.GoodsAccountName,
-                        x.SenderName,
-                        x.ResiverName,
-                        x.SenderName2,
-                        x.ResiverName2,
-                        x.DaraverName1,
-                        x.DaraverName2,
+                        x.GoodsAccountCodMeli,//      
+                        x.GoodsAccountSeryalShaba, //   
+                        x.GoodsAccountDabitCardNumber,//
+                        x.GoodsAccountTel,//
+
+                        x.Sender1Name,
+                        x.Sender1CodMeli, //      
+                        x.Sender1SeryalShaba, //  
+                        x.Sender1DabitCardNumber,//
+                        x.Sender1Tel,//
+
+                        x.Resiver1Name,
+                        x.Resiver1CodMeli,//        
+                        x.Resiver1SeryalShaba,//    
+                        x.Resiver1DabitCardNumber,//
+                        x.Resiver1Tel,//
+
+                        x.Sender2Name,
+                        x.Sender2CodMeli,//        
+                        x.Sender2SeryalShaba,//    
+                        x.Sender2DabitCardNumber,//
+                        x.Sender2Tel,//
+
+                        x.Resiver2Name,
+                        x.Resiver2CodMeli,//
+                        x.Resiver2SeryalShaba,//
+                        x.Resiver2DabitCardNumber,//
+                        x.Resiver2Tel,//
+
+                        x.Daraver1Name,
+                        x.Daraver1SeryalShaba,//
+                        x.Daraver1DabitCardNumber,//
                         x.Daraver1Tel,
                         x.Daraver1Codmeli,
+                        
+                        x.Daraver1SmartCard,///
+                        x.Daraver1SeryalGovahiname,///
+
+                        x.Daraver2Name,
+                        x.Daraver2CodMeli, //       
+                        x.Daraver2SeryalShaba, //   
+                        x.Daraver2DabitCardNumber,//
+                        x.Daraver2Tel,//
+                        x.Daraver2SmartCard,///
+                        x.Daraver2SeryalGovahiname,///
+
                         x.ProductsName,
                         x.CarPlat,
                         x.CarPlatSeryal,
@@ -2234,38 +2338,88 @@ namespace HM_ERP_System.Forms.Comers
                                 UnLoadingLocationName = pt2.Name,
 
                                 CostAccountName = ca.Family != "" ? (ca.Family + "، " + ca.Name).Trim() : ca.Name,
-                                //(ca.Family + " " + ca.Name).Trim(),
+                                
+                                CostAccountCodMeli = ca.CodMeli,//
+                                CostAccountSeryalShaba = ca.SeryalShaba,//
+                                CostAccountDabitCardNumber = ca.DabitCardNumber,//
+                                CostAccountTel = ca.Tel,//
+
+
+
+
 
                                 GoodsAccountName = ga.Family != "" ? (ga.Family + "، " + ga.Name).Trim() : ga.Name,
-                                //(ga.Family + " " + ga.Name).Trim(),
+                                GoodsAccountCodMeli = ga.CodMeli,//
+                                GoodsAccountSeryalShaba = ga.SeryalShaba,//
+                                GoodsAccountDabitCardNumber = ga.DabitCardNumber,//
+                                GoodsAccountTel = ga.Tel,//
+
+
 
                                 ShiperName = shLeft != null ? (shLeft.Family != "" ? (shLeft.Family + "، " + shLeft.Name).Trim() : shLeft.Name).Trim() : "-",
+
+                                ShiperCodMeli = shLeft != null ? shLeft.CodMeli:"",//
+                                ShiperSeryalShaba = shLeft != null ? shLeft.SeryalShaba:"",//
+                                ShiperDabitCardNumber = shLeft != null ? shLeft.DabitCardNumber:"",//
+                                ShiperTel = shLeft != null ? shLeft.Tel:"",//
+
+
+
+
+
+
+
                                 CarPlat = cr.CarPlat,
                                 CarPlatSeryal = "ایران" + cr.CarPlatSeryal,
 
-                                DaraverName = cu1.Family != "" ? (cu1.Family + "، " + cu1.Name).Trim() : cu1.Name,
-                                //cu1.Family + " " + cu1.Name,
-                                DaraverTel = cu1.Tel,
+                                Daraver1Name = cu1.Family != "" ? (cu1.Family + "، " + cu1.Name).Trim() : cu1.Name,
+                                Daraver1Tel = cu1.Tel,
+                                Daraver1SeryalShaba = cu1.SeryalShaba,//
+                                Daraver1DabitCardNumber = cu1.DabitCardNumber,//
+                                Daraver1SmartCard = dr1.SmartCard,///
+                                Daraver1SeryalGovahiname = dr1.SeryalGovahiname,///
 
-                                DaraverName2 = cu2_.Family != "" ? (cu2_.Family + "، " + cu2_.Name).Trim() : cu2_.Name,
-                                //cu2.Family + " " + cu2.Name,
 
-                                DaraverTel2 = cu2_.Tel,
 
-                                SenderName = sd1.Family != "" ? (sd1.Family + "، " + sd1.Name).Trim() : sd1.Name,
-                                //sd1.Family + " " + sd1.Name,
+                                Daraver2Name = cu2_ != null ? (cu2_.Family != "" ? (cu2_.Family + " " + cu2_.Name).Trim() : cu2_.Name):"",
 
-                                ResiverName = rs1.Family != "" ? (rs1.Family + "، " + rs1.Name).Trim() : rs1.Name,
-                                //rs1.Family + " " + rs1.Name,
+                                Daraver2Tel = cu2_.Tel,
+                                Daraver2CodMeli = cu2_ != null ? cu2_.CodMeli : "-",//
+                                Daraver2SeryalShaba = cu2_ != null ? cu2_.SeryalShaba : "-",//
+                                Daraver2DabitCardNumber = cu2_ != null ? cu2_.DabitCardNumber : "-",//
+                                Daraver2SmartCard = dr2_ != null ? dr2_.SmartCard : "",///
+                                Daraver2SeryalGovahiname = dr2_ != null ? dr2_.SeryalGovahiname : "",///
 
-                                SenderName2 = sd2Left.Family != "" ? (sd2Left.Family + "، " + sd2Left.Name).Trim() : sd2Left.Name,
-                                //sd2Left != null ? (sd2Left.Family + " " + sd2Left.Name).Trim() : "-",
 
-                                ResiverName2 = rs2Left.Family != "" ? (rs2Left.Family + "، " + rs2Left.Name).Trim() : rs2Left.Name,
-                                //rs2Left != null ? (rs2Left.Family + " " + rs2Left.Name).Trim() : "-",
 
-                                //                                StatusDeliveryGoods
-                                //Transaction
+
+                                Sender1Name = sd1.Family != "" ? (sd1.Family + "، " + sd1.Name).Trim() : sd1.Name,
+                                Sender1CodMeli = sd1.CodMeli,//
+                                Sender1SeryalShaba = sd1.SeryalShaba,//
+                                Sender1DabitCardNumber = sd1.DabitCardNumber,//
+                                Sender1Tel = sd1.Tel,//
+
+
+
+                                Resiver1Name = rs1.Family != "" ? (rs1.Family + "، " + rs1.Name).Trim() : rs1.Name,
+                                Resiver1CodMeli = rs1.CodMeli,//
+                                Resiver1SeryalShaba = rs1.SeryalShaba,//
+                                Resiver1DabitCardNumber = rs1.DabitCardNumber,//
+                                Resiver1Tel = rs1.Tel,//
+
+
+                                Sender2Name = sd2Left.Family != "" ? (sd2Left.Family + "، " + sd2Left.Name).Trim() : sd2Left.Name,
+                                Sender2CodMeli = sd2Left.CodMeli,//
+                                Sender2SeryalShaba = sd2Left.SeryalShaba,//
+                                Sender2DabitCardNumber = sd2Left.DabitCardNumber,//
+                                Sender2Tel = sd2Left.Tel,//
+
+                                Resiver2Name = rs2Left.Family != "" ? (rs2Left.Family + "، " + rs2Left.Name).Trim() : rs2Left.Name,
+                                Resiver2CodMeli = rs2Left.CodMeli,//
+                                Resiver2SeryalShaba = rs2Left.SeryalShaba,//
+                                Resiver2DabitCardNumber = rs2Left.DabitCardNumber,//
+                                Resiver2Tel = rs2Left.Tel,//
+
                                 ProductsName = pr.Name,
                                 FareCalcMethodName = tcf.Name,
                                 MethodCalFareName = mcf.Name,
@@ -2319,6 +2473,56 @@ namespace HM_ERP_System.Forms.Comers
 
                     var result = list.Select(x => new
                     {
+
+                        //*****
+                        x.ShiperCodMeli,//
+                        x.ShiperSeryalShaba,//
+                        x.ShiperDabitCardNumber,//
+                        x.ShiperTel,//
+
+                        x.CostAccountCodMeli,//
+                        x.CostAccountSeryalShaba,//
+                        x.CostAccountDabitCardNumber,//
+                        x.CostAccountTel,//
+
+                        x.GoodsAccountCodMeli,//      
+                        x.GoodsAccountSeryalShaba, //   
+                        x.GoodsAccountDabitCardNumber,//
+                        x.GoodsAccountTel,//
+
+                        x.Sender1CodMeli, //      
+                        x.Sender1SeryalShaba, //  
+                        x.Sender1DabitCardNumber,//
+                        x.Sender1Tel,//
+
+                        x.Resiver1CodMeli,//        
+                        x.Resiver1SeryalShaba,//    
+                        x.Resiver1DabitCardNumber,//
+                        x.Resiver1Tel,//
+
+                        x.Sender2CodMeli,//        
+                        x.Sender2SeryalShaba,//    
+                        x.Sender2DabitCardNumber,//
+                        x.Sender2Tel,//
+
+                        x.Resiver2CodMeli,//
+                        x.Resiver2SeryalShaba,//
+                        x.Resiver2DabitCardNumber,//
+                        x.Resiver2Tel,//
+
+                        x.Daraver1SeryalShaba,//
+                        x.Daraver1DabitCardNumber,//
+                        x.Daraver1SmartCard,///
+                        x.Daraver1SeryalGovahiname,///
+
+                        x.Daraver2CodMeli, //       
+                        x.Daraver2SeryalShaba, //   
+                        x.Daraver2DabitCardNumber,//
+                        x.Daraver2Tel,//
+                        x.Daraver2SmartCard,//
+                        x.Daraver2SeryalGovahiname,//
+
+                        //*****
                         x.Id,
                         x.dateB,
                         x.SeryalB,
@@ -2333,14 +2537,13 @@ namespace HM_ERP_System.Forms.Comers
                         x.ShiperName,
                         x.CarPlat,
                         x.CarPlatSeryal,
-                        x.DaraverName,
-                        x.DaraverTel,
-                        x.DaraverName2,
-                        x.DaraverTel2,
-                        x.SenderName,
-                        x.ResiverName,
-                        x.SenderName2,
-                        x.ResiverName2,
+                        x.Daraver1Name,
+                        x.Daraver1Tel,
+                        x.Daraver2Name,
+                        x.Sender1Name,
+                        x.Resiver1Name,
+                        x.Sender2Name,
+                        x.Resiver2Name,
                         x.ProductsName,
                         x.FareCalcMethodName,
                         x.MethodCalFareName,

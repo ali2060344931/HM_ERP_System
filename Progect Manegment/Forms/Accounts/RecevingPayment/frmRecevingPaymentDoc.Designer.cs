@@ -162,9 +162,8 @@
             this.ClientSize = new System.Drawing.Size(1642, 505);
             this.Controls.Add(this.GroupBoxComersB);
             this.Controls.Add(this.GroupBoxComersH);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmRecevingPaymentDoc";
-            this.Text = "لیست اسناد";
+            this.Text = "لیست حواله و بارنامه";
             this.Load += new System.EventHandler(this.frmRecevingPaymentDoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GroupBoxComersH)).EndInit();
             this.GroupBoxComersH.ResumeLayout(false);

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,25 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         private void frmRecevingPaymentDoc_Load(object sender, EventArgs e)
         {
             this.WindowState= FormWindowState.Normal;
+
+
+            string layoutPathComersH = Path.Combine(Application.StartupPath, "DefaultGridLayoutComersH.xml");
+
+            using (var fs = new FileStream(layoutPathComersH, FileMode.OpenOrCreate, FileAccess.Read))
+            {
+                dgvListH.LoadLayoutFile(fs);
+            }
+
+            string layoutPathComersB = Path.Combine(Application.StartupPath, "DefaultGridLayoutComersB.xml");
+
+            using (var fs = new FileStream(layoutPathComersB, FileMode.OpenOrCreate, FileAccess.Read))
+            {
+                dgvListB.LoadLayoutFile(fs);
+            }
+
+
+
+
             FillGroupBoxComersH();
             FillGroupBoxComersB();
             if (DocTitel!="")
@@ -51,14 +71,20 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             //GroupBoxComersH.Visible=true;
             //GroupBoxComersH.Dock=DockStyle.Fill;
             
-            frmComers.FilldgvListH(dgvListH,"1400/01/01","1500/01/01", IdH);
+            frmComers.FilldgvListH(dgvListH,"1400/01/01","1500/01/01", IdH, "ComersH");
+            //frmComers.FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text, null, "ComersH");
+
 
         }
         void FillGroupBoxComersB()
         {
             //GroupBoxComersB.Visible=true;
             //GroupBoxComersB.Dock=DockStyle.Fill;
-            frmComers.FilldgvListB(dgvListB, "1400/01/01", "1500/01/01", IdH, null);
+            frmComers.FilldgvListB(dgvListB, "1400/01/01", "1500/01/01", IdH, "", false, "ComersB");
+            
+            //frmComers.FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, "", false, "ComersB");
+
+
 
         }
     }

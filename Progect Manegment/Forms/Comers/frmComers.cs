@@ -1921,8 +1921,6 @@ namespace HM_ERP_System.Forms.Comers
         }
 
 
-
-
         public static GridEX FilldgvListH(GridExEx.GridExEx dx, string dateS, string dateE, int? Id = null, string formname = null)
         {
             try
@@ -1931,7 +1929,7 @@ namespace HM_ERP_System.Forms.Comers
                 using (var db = new DBcontextModel())
                 {
                     var q = from cmh in db.ComersHs
-                            //PlaceTransfer
+                                //PlaceTransfer
                             join cuR in db.CustomerRoles
                             on cmh.UserId equals cuR.Id into cuRGroup
                             from cuR_ in cuRGroup.DefaultIfEmpty()
@@ -1957,29 +1955,69 @@ namespace HM_ERP_System.Forms.Comers
 
                             join ca in db.Customers
                             on cmh.CostAccountId equals ca.Id
+                            //نام بانک طرف حساب کامیون
+                            join baca_ in db.Bancks
+                            on ca.BanckId equals baca_.Id into bank7Group
+                            from baca in bank7Group.DefaultIfEmpty()
+
+
 
                             join ga in db.Customers
                             on cmh.GoodsAccountId equals ga.Id
 
+                            //نام بانک طرف حساب کالا
+                            join baga_ in db.Bancks
+                            on ga.BanckId equals baga_.Id into bank8Group
+                            from baga in bank8Group.DefaultIfEmpty()
+
                             join sr1 in db.Customers
                             on cmh.SenderId equals sr1.Id
+                            //نام بانک فرستنده1
+                            join basd1 in db.Bancks
+                            on sr1.BanckId equals basd1.Id into bank3Group
+                            from basd1 in bank3Group.DefaultIfEmpty()
+
+
+
 
                             join rs1 in db.Customers
                             on cmh.ResiverId equals rs1.Id
+                            //نام بانک گیزنده1
+                            join bars1 in db.Bancks
+                            on rs1.BanckId equals bars1.Id into bank4Group
+                            from bars1 in bank4Group.DefaultIfEmpty()
 
                             join sr2 in db.Customers
                             on cmh.Sender2Id equals sr2.Id into sr2Group
                             from sender2 in sr2Group.DefaultIfEmpty()
+                                //نام بانک فرستنده2
+                            join basd2_ in db.Bancks
+                            on sender2.BanckId equals basd2_.Id into bank6Group
+                            from basd2 in bank6Group.DefaultIfEmpty()
+
+
 
                             join rs2 in db.Customers
                             on cmh.Resiver2Id equals rs2.Id into rs2Group
                             from reciver2 in rs2Group.DefaultIfEmpty()
+                                //نام بانک گیزنده2
+                            join bars2 in db.Bancks
+                            on reciver2.BanckId equals bars2.Id into bank5Group
+                            from bars2 in bank5Group.DefaultIfEmpty()
+
+
 
                             join dr1 in db.Dravers
                             on cmh.DaraverId1 equals dr1.Id
 
                             join cu1 in db.Customers
                             on dr1.CustomerId equals cu1.Id
+
+                            //نام بانک راننده1
+                            join bacu1 in db.Bancks
+                            on cu1.BanckId equals bacu1.Id into bank1Group
+                            from bacu1 in bank1Group.DefaultIfEmpty()
+
 
                             join dr2 in db.Dravers
                             on cmh.DaraverId2 equals dr2.Id into dr2Group
@@ -1988,6 +2026,14 @@ namespace HM_ERP_System.Forms.Comers
                             join cu2 in db.Customers
                             on dr2_.CustomerId equals cu2.Id into cu2Group
                             from cu2_ in cu2Group.DefaultIfEmpty()
+
+                                //نام بانک راننده2
+                            join bacu2 in db.Bancks
+                            on cu2_.BanckId equals bacu2.Id into bank2Group
+                            from bacu2 in bank2Group.DefaultIfEmpty()
+
+
+
 
                             join pr in db.Products
                             on cmh.ProductsId equals pr.Id
@@ -2003,6 +2049,12 @@ namespace HM_ERP_System.Forms.Comers
                             join sh in db.Customers
                             on cmh.ShiperId equals sh.Id into shGroup
                             from shLeft in shGroup.DefaultIfEmpty()
+                            
+                            //نام بانک بارنامه نویس
+                            join bash_ in db.Bancks
+                            on shLeft.BanckId equals bash_.Id into bank9Group
+                            from bash in bank9Group.DefaultIfEmpty()
+
 
 
                             where string.Compare(cmh.date, dateS) >= 0 && string.Compare(cmh.date, dateE) <= 0 && (Id == null || cmh.Id == Id.Value)
@@ -2089,8 +2141,8 @@ namespace HM_ERP_System.Forms.Comers
                                 Daraver2SeryalShaba = cu2_ != null ? cu2_.SeryalShaba : "-",//
                                 Daraver2DabitCardNumber = cu2_ != null ? cu2_.DabitCardNumber : "-",//
                                 Daraver2Tel = cu2_ != null ? cu2_.Tel : "-",//
-                                Daraver2SmartCard= dr2_ != null ? dr2_.SmartCard:"",///
-                                Daraver2SeryalGovahiname= dr2_ != null ? dr2_.SeryalGovahiname : "",///
+                                Daraver2SmartCard = dr2_ != null ? dr2_.SmartCard : "",///
+                                Daraver2SeryalGovahiname = dr2_ != null ? dr2_.SeryalGovahiname : "",///
 
                                 PostalCode1 = ll.PostalCode,//0
                                 PostalCode2 = ull.PostalCode,//0
@@ -2100,12 +2152,12 @@ namespace HM_ERP_System.Forms.Comers
 
 
 
-                                Daraver1Tel = cu1.Tel,
                                 Daraver1Codmeli = cu1.CodMeli,
+                                Daraver1Tel = cu1.Tel,
 
                                 Daraver1SeryalShaba = cu1.SeryalShaba,//
                                 Daraver1DabitCardNumber = cu1.DabitCardNumber,//
-                                Daraver1SmartCard =  dr1.SmartCard,///
+                                Daraver1SmartCard = dr1.SmartCard,///
                                 Daraver1SeryalGovahiname = dr1.SeryalGovahiname,///
 
 
@@ -2123,6 +2175,15 @@ namespace HM_ERP_System.Forms.Comers
         : "-",
                                 Date_Time = cmh.RecordDateTime,
                                 cmh.Cancellation,
+                                bacu1 = bacu1 != null ? bacu1.Name : "",//نام بانک راننده1
+                                bacu2 = bacu2 != null ? bacu2.Name : "",//نام بانک راننده2
+                                baca = baca != null ? baca.Name : "",//نام بانک طرف حساب کامیون
+                                baga = baga != null ? baga.Name : "",//نام بانک طرف حساب کالا
+                                basd1 = basd1 != null ? basd1.Name : "",//نام بانک فرستنده1
+                                basd2 = basd2 != null ? basd2.Name : "",//نام بانک فرستنده2
+                                bars1 = bars1 != null ? bars1.Name : "",//نام بانک گیزنده1
+                                bars2 = bars2 != null ? bars2.Name : "",//نام بانک گیزنده2
+                                bash = bash != null ? bash.Name : "",//نام بانک بارنامه نویس
                             };
 
                     var list = q.ToList();
@@ -2179,11 +2240,10 @@ namespace HM_ERP_System.Forms.Comers
                         x.Resiver2Tel,//
 
                         x.Daraver1Name,
+                        x.Daraver1Codmeli,
                         x.Daraver1SeryalShaba,//
                         x.Daraver1DabitCardNumber,//
                         x.Daraver1Tel,
-                        x.Daraver1Codmeli,
-                        
                         x.Daraver1SmartCard,///
                         x.Daraver1SeryalGovahiname,///
 
@@ -2200,6 +2260,16 @@ namespace HM_ERP_System.Forms.Comers
                         x.PostalCode2,//0
                         x.Addres1,//0
                         x.Addres2,//0
+                        x.bacu1,
+                        x.bacu2,
+                        x.baca,
+                        x.baga,
+                        x.basd1,
+                        x.basd2,
+                        x.bars1,
+                        x.bars2,
+                        x.bash,
+
 
                         x.ProductsName,
                         x.CarPlat,
@@ -2254,7 +2324,7 @@ namespace HM_ERP_System.Forms.Comers
                 using (var db = new DBcontextModel())
                 {
                     var q = from cmb in db.ComersBs
-                            //PlaceTransfer
+                                //PlaceTransfer
                             join cuR in db.CustomerRoles
                             on cmb.UserId equals cuR.Id into cuRGroup
                             from cuR_ in cuRGroup.DefaultIfEmpty()
@@ -2270,28 +2340,76 @@ namespace HM_ERP_System.Forms.Comers
                             join pt2 in db.PlaceTransfers on cmh.UnLoadingLocationId equals pt2.Id
                             join pr in db.Products on cmh.ProductsId equals pr.Id
                             join dr1 in db.Dravers on cmb.DaraverId1_ equals dr1.Id
+
                             join cu1 in db.Customers on dr1.CustomerId equals cu1.Id
+                            //نام بانک راننده1
+                            join bacu1 in db.Bancks
+                            on cu1.BanckId equals bacu1.Id into bank1Group
+                            from bacu1 in bank1Group.DefaultIfEmpty()
 
                             join dr2 in db.Dravers
-    on cmb.DaraverId2_ equals dr2.Id into dr2Group
+                            on cmb.DaraverId2_ equals dr2.Id into dr2Group
                             from dr2_ in dr2Group.DefaultIfEmpty()
 
                                 // LEFT JOIN برای مشتری راننده دوم
                             join cu2 in db.Customers
-                                on dr2_.CustomerId equals cu2.Id into cu2Group
+                            on dr2_.CustomerId equals cu2.Id into cu2Group
                             from cu2_ in cu2Group.DefaultIfEmpty()
+                                //نام بانک راننده2
+                            join bacu2 in db.Bancks
+                            on cu2_.BanckId equals bacu2.Id into bank2Group
+                            from bacu2 in bank2Group.DefaultIfEmpty()
+
 
 
                             join ca in db.Customers on cmb.CostAccountId equals ca.Id
+
+                            //نام بانک طرف حساب کامیون
+                            join baca_ in db.Bancks
+                            on ca.BanckId equals baca_.Id into bank7Group
+                            from baca in bank7Group.DefaultIfEmpty()
+
+
+
                             join ga in db.Customers on cmb.GoodsAccountId equals ga.Id
+
+                            //نام بانک طرف حساب کالا
+                            join baga_ in db.Bancks
+                            on ga.BanckId equals baga_.Id into bank8Group
+                            from baga in bank8Group.DefaultIfEmpty()
+
+
+
+
                             join sd1 in db.Customers on cmb.SenderId equals sd1.Id
+                            //نام بانک فرستنده1
+                            join basd1 in db.Bancks
+                            on sd1.BanckId equals basd1.Id into bank3Group
+                            from basd1 in bank3Group.DefaultIfEmpty()
+
                             join rs1 in db.Customers on cmb.ResiverId equals rs1.Id
+                            //نام بانک گیزنده1
+                            join bars1 in db.Bancks
+                            on rs1.BanckId equals bars1.Id into bank4Group
+                            from bars1 in bank4Group.DefaultIfEmpty()
 
                             join rs2 in db.Customers on cmb.ResiverId2 equals rs2.Id into rs2Group
                             from rs2Left in rs2Group.DefaultIfEmpty()
+                                //نام بانک گیزنده2
+                            join bars2 in db.Bancks
+                            on rs2Left.BanckId equals bars2.Id into bank5Group
+                            from bars2 in bank5Group.DefaultIfEmpty()
+
+
+
 
                             join sd2 in db.Customers on cmb.SenderId2 equals sd2.Id into sd2Group
                             from sd2Left in sd2Group.DefaultIfEmpty()
+                                //نام بانک فرستنده2
+                            join basd2_ in db.Bancks
+                            on sd2Left.BanckId equals basd2_.Id into bank6Group
+                            from basd2 in bank6Group.DefaultIfEmpty()
+
 
                             join tcf in db.FareCalcMethods on cmb.TypeCalFareId equals tcf.Id
                             join mcf in db.TypeCalcMethods on cmb.MethodCalFareId equals mcf.Id
@@ -2300,6 +2418,14 @@ namespace HM_ERP_System.Forms.Comers
 
                             join sh in db.Customers on cmh.ShiperId equals sh.Id into shGroup
                             from shLeft in shGroup.DefaultIfEmpty()
+
+
+                                //نام بانک بارنامه نویس
+                            join bash_ in db.Bancks
+                            on shLeft.BanckId equals bash_.Id into bank9Group
+                            from bash in bank9Group.DefaultIfEmpty()
+
+
 
                                 // 🔸 اصلاح کامل بخش PaymentToOthers
                             join ptonDA in db.DetailedAccounts
@@ -2347,26 +2473,22 @@ namespace HM_ERP_System.Forms.Comers
                                 Transaction = TrGroup.Any(x => !x.Status) ? "بله" : "",
                                 LoadingOrinigName = ct1.Name,
                                 LoadingLocationName = pt1.Name,
-                                
-                                PostalCode1= pt1.PostalCode,//0
-                                PostalCode2= pt2.PostalCode,//0
-                                Addres1= pt1.Addres,//0
-                                Addres2= pt2.Addres,//0
+
+                                PostalCode1 = pt1.PostalCode,//0
+                                PostalCode2 = pt2.PostalCode,//0
+                                Addres1 = pt1.Addres,//0
+                                Addres2 = pt2.Addres,//0
                                 cr.Seryal,//0
 
                                 UnLoadingOrinigName = ct2.Name,
                                 UnLoadingLocationName = pt2.Name,
 
                                 CostAccountName = ca.Family != "" ? (ca.Family + "، " + ca.Name).Trim() : ca.Name,
-                                
+
                                 CostAccountCodMeli = ca.CodMeli,
                                 CostAccountSeryalShaba = ca.SeryalShaba,
                                 CostAccountDabitCardNumber = ca.DabitCardNumber,
                                 CostAccountTel = ca.Tel,
-
-
-
-
 
                                 GoodsAccountName = ga.Family != "" ? (ga.Family + "، " + ga.Name).Trim() : ga.Name,
                                 GoodsAccountCodMeli = ga.CodMeli,
@@ -2374,14 +2496,12 @@ namespace HM_ERP_System.Forms.Comers
                                 GoodsAccountDabitCardNumber = ga.DabitCardNumber,
                                 GoodsAccountTel = ga.Tel,
 
-
-
                                 ShiperName = shLeft != null ? (shLeft.Family != "" ? (shLeft.Family + "، " + shLeft.Name).Trim() : shLeft.Name).Trim() : "-",
 
-                                ShiperCodMeli = shLeft != null ? shLeft.CodMeli:"",
-                                ShiperSeryalShaba = shLeft != null ? shLeft.SeryalShaba:"",
-                                ShiperDabitCardNumber = shLeft != null ? shLeft.DabitCardNumber:"",
-                                ShiperTel = shLeft != null ? shLeft.Tel:"",
+                                ShiperCodMeli = shLeft != null ? shLeft.CodMeli : "",
+                                ShiperSeryalShaba = shLeft != null ? shLeft.SeryalShaba : "",
+                                ShiperDabitCardNumber = shLeft != null ? shLeft.DabitCardNumber : "",
+                                ShiperTel = shLeft != null ? shLeft.Tel : "",
 
 
 
@@ -2393,6 +2513,7 @@ namespace HM_ERP_System.Forms.Comers
                                 CarPlatSeryal = "ایران" + cr.CarPlatSeryal,
 
                                 Daraver1Name = cu1.Family != "" ? (cu1.Family + "، " + cu1.Name).Trim() : cu1.Name,
+                                Daraver1CodMeli = cu1.CodMeli,
                                 Daraver1Tel = cu1.Tel,
                                 Daraver1SeryalShaba = cu1.SeryalShaba,
                                 Daraver1DabitCardNumber = cu1.DabitCardNumber,
@@ -2401,7 +2522,7 @@ namespace HM_ERP_System.Forms.Comers
 
 
 
-                                Daraver2Name = cu2_ != null ? (cu2_.Family != "" ? (cu2_.Family + " " + cu2_.Name).Trim() : cu2_.Name):"",
+                                Daraver2Name = cu2_ != null ? (cu2_.Family != "" ? (cu2_.Family + " " + cu2_.Name).Trim() : cu2_.Name) : "",
 
                                 Daraver2Tel = cu2_.Tel,
                                 Daraver2CodMeli = cu2_ != null ? cu2_.CodMeli : "-",
@@ -2491,6 +2612,16 @@ namespace HM_ERP_System.Forms.Comers
                                 CountDoc = docGroup.Count(c => c.FormName == "frmComersB"),
                                 User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                                 Date_Time = cmb.RecordDateTime,
+                                
+                                bacu1 = bacu1 != null ? bacu1.Name : "",//نام بانک راننده1
+                                bacu2 = bacu2 != null ? bacu2.Name : "",//نام بانک راننده2
+                                baca = baca != null ? baca.Name : "",//نام بانک طرف حساب کامیون
+                                baga = baga != null ? baga.Name : "",//نام بانک طرف حساب کالا
+                                basd1 = basd1 != null ? basd1.Name : "",//نام بانک فرستنده1
+                                basd2 = basd2 != null ? basd2.Name : "",//نام بانک فرستنده2
+                                bars1 = bars1 != null ? bars1.Name : "",//نام بانک گیرنده1
+                                bars2 = bars2 != null ? bars2.Name : "",//نام بانک گیرنده2
+                                bash = bash != null ? bash.Name : "",//نام بانک بارنامه نویس
                             };
                     var list = q.ToList();
 
@@ -2537,6 +2668,7 @@ namespace HM_ERP_System.Forms.Comers
                         x.Daraver1DabitCardNumber,//
                         x.Daraver1SmartCard,///
                         x.Daraver1SeryalGovahiname,///
+                        x.Daraver1CodMeli,///
 
                         x.Daraver2CodMeli, //       
                         x.Daraver2SeryalShaba, //   
@@ -2550,7 +2682,15 @@ namespace HM_ERP_System.Forms.Comers
                         x.PostalCode2,//0
                         x.Addres1,//0
                         x.Addres2,//0
-
+                        x.bacu1,
+                        x.bacu2,
+                        x.baca,
+                        x.baga,
+                        x.basd1,
+                        x.basd2,
+                        x.bars1,
+                        x.bars2,
+                        x.bash,
                         //*****
                         x.Id,
                         x.dateB,

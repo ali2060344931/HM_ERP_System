@@ -60,6 +60,9 @@
             this.cmbDefultCompany = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
             this.txtSetDayToReportList = new DevComponents.Editors.IntegerInput();
             this.lblIEAmount = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.uiTabPage2.SuspendLayout();
             this.uiTabPage1.SuspendLayout();
@@ -122,6 +125,9 @@
             // 
             // uiTabPage2
             // 
+            this.uiTabPage2.Controls.Add(this.checkBox3);
+            this.uiTabPage2.Controls.Add(this.checkBox2);
+            this.uiTabPage2.Controls.Add(this.checkBox1);
             this.uiTabPage2.Controls.Add(this.txtCode);
             this.uiTabPage2.Controls.Add(this.button1);
             this.uiTabPage2.Controls.Add(this.chkShowAccountBalance);
@@ -134,25 +140,23 @@
             // txtCode
             // 
             this.txtCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtCode.Location = new System.Drawing.Point(3, 343);
+            this.txtCode.Location = new System.Drawing.Point(124, 345);
             this.txtCode.Name = "txtCode";
             this.txtCode.PasswordChar = '*';
             this.txtCode.Size = new System.Drawing.Size(100, 28);
             this.txtCode.TabIndex = 2;
             this.txtCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCode.UseSystemPasswordChar = true;
-            this.txtCode.Visible = false;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(103, 343);
+            this.button1.Location = new System.Drawing.Point(224, 345);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 28);
+            this.button1.Size = new System.Drawing.Size(69, 28);
             this.button1.TabIndex = 1;
-            this.button1.Text = "حذف اسناد";
+            this.button1.Text = "حذف";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // chkShowAccountBalance
@@ -476,6 +480,39 @@
             this.lblIEAmount.TabIndex = 111;
             this.lblIEAmount.Text = "تعداد روز قبل از تاریخ جاری سیستم جهت نمایش لیست جداول";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 249);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(287, 26);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "حذف حواله ها، بارنامه ها و سندهای حسابداری";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(62, 281);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(231, 26);
+            this.checkBox2.TabIndex = 3;
+            this.checkBox2.Text = "حذف بارنامه ها و سندهای حسابداری";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(128, 313);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(165, 26);
+            this.checkBox3.TabIndex = 3;
+            this.checkBox3.Text = "حذف سندهای حسابداری";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -537,5 +574,8 @@
         private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbDefultCompany;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

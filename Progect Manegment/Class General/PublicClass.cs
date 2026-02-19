@@ -4160,6 +4160,12 @@ namespace MyClass
                                 //درصد(ضریب) بارنامه نویس
                                 if (qcomB.BillLadingWriterPercent >= 0)//(پرداخت شود(سند هزینه
                                 {
+                                    if (qcomB.IncomeDocumentCode == 2 || qcomB.IncomeDocumentCode == 0)
+                                        Description = CreatAccountDescriptions.ShiperAccountDes1(ComerBId);
+                                    else
+                                        Description = CreatAccountDescriptions.ShiperAccountDes1_1(ComerBId);
+
+
                                     Series++;
                                     customertId = db.Customers.Where(c => c.SecretCode == 9).First().Id;
                                     (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(80801, customertId);
@@ -4177,7 +4183,10 @@ namespace MyClass
                                 }
                                 else//(دریافت شود(سند درآمد
                                 {
-                                    Description = CreatAccountDescriptions.ShiperAccountDes1_1(ComerBId);
+                                    if (qcomB.IncomeDocumentCode == 2 || qcomB.IncomeDocumentCode == 0)
+                                        Description = CreatAccountDescriptions.ShiperAccountDes1(ComerBId);
+                                    else
+                                        Description = CreatAccountDescriptions.ShiperAccountDes1_1(ComerBId);
 
                                     Series++;
                                     customertId = db.Customers.Where(c => c.SecretCode == 3).First().Id;
@@ -4190,6 +4199,7 @@ namespace MyClass
                                         customertId = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First().ShiperId;
                                     else///طرف حساب صاحب کامیون
                                         customertId = db.ComersHs.Where(c => c.Id == qcomB.ComersHId).First().CostAccountId;
+
                                     (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(10301, customertId);
                                     PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomAZ, qcomAZ, 0, ComerBId, Description, "", Series, true);
                                 }

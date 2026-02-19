@@ -4807,7 +4807,7 @@
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSave.Location = new System.Drawing.Point(541, 0);
+            this.btnSave.Location = new System.Drawing.Point(587, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -4875,7 +4875,7 @@
             this.btnCalculations.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnCalculations.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnCalculations.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnCalculations.Location = new System.Drawing.Point(329, 0);
+            this.btnCalculations.Location = new System.Drawing.Point(375, 0);
             this.btnCalculations.Name = "btnCalculations";
             this.btnCalculations.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnCalculations.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F3);
@@ -4900,14 +4900,14 @@
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX1.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlF4);
-            this.buttonX1.Size = new System.Drawing.Size(150, 28);
+            this.buttonX1.Size = new System.Drawing.Size(196, 28);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.Symbol = "";
             this.buttonX1.SymbolColor = System.Drawing.Color.Red;
             this.buttonX1.SymbolSize = 15F;
             this.buttonX1.TabIndex = 2;
             this.buttonX1.TabStop = false;
-            this.buttonX1.Text = "حذف آیتم ها Ctrl+F4";
+            this.buttonX1.Text = "حذف آیتم ها و جدید Ctrl+F4";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
             // btnNew
@@ -4929,6 +4929,7 @@
             this.btnNew.TabIndex = 1;
             this.btnNew.TabStop = false;
             this.btnNew.Text = "جدید F4";
+            this.btnNew.Visible = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // chkDocumentBanck

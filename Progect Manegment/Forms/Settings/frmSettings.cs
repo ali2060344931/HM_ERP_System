@@ -392,21 +392,41 @@ namespace HM_ERP_System.Forms.Settings
 
             using (var db = new DBcontextModel())
             {
-                var tr = db.Transactions.ToList();
+                var tr = db.Transactions.Where(c=>c.ComerBId!=0).ToList();
                 var cmrB = db.ComersBs.ToList();
                 var cmrH = db.ComersHs.ToList();
                 var DB = db.DocumentBancks.ToList();
 
-                db.Transactions.RemoveRange(tr);
-                db.ComersBs.RemoveRange(cmrB);
-                db.ComersHs.RemoveRange(cmrH);
+                if (checkBox1.Checked)
+                {
+                    db.ComersBs.RemoveRange(cmrB);
+                    db.ComersHs.RemoveRange(cmrH);
+                    db.Transactions.RemoveRange(tr);
+
+                }
+                if (checkBox2.Checked)
+                {
+                    db.ComersBs.RemoveRange(cmrB);
+                    db.Transactions.RemoveRange(tr);
+
+                }
+                if (checkBox3.Checked)
+                {
+                    db.Transactions.RemoveRange(tr);
+                }
+
+                //db.Transactions.RemoveRange(tr);
+                //db.ComersBs.RemoveRange(cmrB);
+                //db.ComersHs.RemoveRange(cmrH);
                 db.DocumentBancks.RemoveRange(DB);
                 db.SaveChangesSafe();
                 PublicClass.WindowAlart("2");
                 txtCode.ResetText();
             }
+        }
 
-
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
     }

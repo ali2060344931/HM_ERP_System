@@ -15,7 +15,9 @@ using HM_ERP_System.Forms.Main_Form;
 using HM_ERP_System.Forms.PlaceTransfer;
 using HM_ERP_System.Forms.Reports;
 
+using Janus.Windows.EditControls;
 using Janus.Windows.GridEX;
+using Janus.Windows.UI.Tab;
 
 using MyClass;
 
@@ -2973,7 +2975,7 @@ namespace HM_ERP_System.Forms.Comers
                     int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, IncomeDocumentCode = IncomeDocumentCode, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
                     PublicClass.WindowAlart("1");
                     //TypeCalcMethodsBId_
-
+                    
                     var q = db.ComersHs.Where(c => c.Id == ComersHId_).First();
                     q.LoadWeightCapacity = txtLoadWeightCapacity.Value;
                     db.SaveChangesSafe();
@@ -2993,8 +2995,14 @@ namespace HM_ERP_System.Forms.Comers
                     AccountingDocumentRegistration(newId);//ثبت سند حسابداری
 
                     FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
-                    //CelearItemsB();
-                    CelearItemsAllB();
+                    btnSave.Enabled=false;
+                    uiGroupBox6.Enabled = false;
+                    uiGroupBox2.Enabled = false;
+                    uiGroupBox3.Enabled = false;
+                    panelLanding.Enabled = false;
+                    uiGroupBox4.Enabled = false;
+                    uiGroupBox5.Enabled = false;
+                    //CelearItemsAllB();
                 }
             }
             catch (Exception er)
@@ -3148,6 +3156,8 @@ namespace HM_ERP_System.Forms.Comers
                         _updatableForms.UpdateData();
                     FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
                     FillcmbCarplate();
+                    btnSave.Enabled=false;
+                    uiTabPage1.Enabled = false;
                     CelearItemsH();
                 }
             }
@@ -3341,6 +3351,10 @@ namespace HM_ERP_System.Forms.Comers
         }
         private void CelearItemsAllH()
         {
+
+            btnSave.Enabled = true;
+            uiTabPage1.Enabled = true;
+
             txtDateB.Value = System.DateTime.Now;
 
             CelearItemsH();
@@ -3416,6 +3430,14 @@ namespace HM_ERP_System.Forms.Comers
 
         private void CelearItemsAllB()
         {
+            btnSave.Enabled = true;
+            uiGroupBox6.Enabled = true;
+            uiGroupBox2.Enabled = true;
+            uiGroupBox3.Enabled = true;
+            panelLanding.Enabled = true;
+            uiGroupBox4.Enabled = true;
+            uiGroupBox5.Enabled = true;
+
             CelearItemsB();
             txtFreightRate.ResetText();
             txtCargoInsurance.ResetText();
@@ -3467,7 +3489,7 @@ namespace HM_ERP_System.Forms.Comers
             cmbBillLadingCast.SelectedIndex = 1;
             ListId = 0;
             ListId_ = 0;
-
+            IncomeDocumentCode = 0;
         }
 
 
@@ -6090,6 +6112,7 @@ namespace HM_ERP_System.Forms.Comers
         int IncomeDocumentCode = 0;
         private void rdbCostAccount_CheckedChanged(object sender, EventArgs e)
         {
+            IncomeDocumentCode = 0;
             if (rdbCostAccount.Checked)
                 if (chkIncomeDocument.Checked)
                     IncomeDocumentCode = 1;
@@ -6097,6 +6120,8 @@ namespace HM_ERP_System.Forms.Comers
 
         private void rdbShiper_CheckedChanged(object sender, EventArgs e)
         {
+            IncomeDocumentCode = 0;
+
             if (rdbShiper.Checked)
                 if (chkIncomeDocument.Checked)
                     IncomeDocumentCode = 2;

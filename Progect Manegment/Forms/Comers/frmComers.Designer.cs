@@ -323,7 +323,7 @@
             this.uiGroupBox7 = new Janus.Windows.EditControls.UIGroupBox();
             this.txtBK = new DevComponents.Editors.DoubleInput();
             this.label123 = new System.Windows.Forms.Label();
-            this.txtBV = new DevComponents.Editors.DoubleInput();
+            this.txtCA = new DevComponents.Editors.DoubleInput();
             this.label124 = new System.Windows.Forms.Label();
             this.txtBN = new DevComponents.Editors.DoubleInput();
             this.label122 = new System.Windows.Forms.Label();
@@ -479,7 +479,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uiGroupBox7)).BeginInit();
             this.uiGroupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBK)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaymentToOthers2)).BeginInit();
@@ -4567,7 +4567,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.uiGroupBox7.Controls.Add(this.txtBK);
             this.uiGroupBox7.Controls.Add(this.label123);
-            this.uiGroupBox7.Controls.Add(this.txtBV);
+            this.uiGroupBox7.Controls.Add(this.txtCA);
             this.uiGroupBox7.Controls.Add(this.label124);
             this.uiGroupBox7.Controls.Add(this.txtBN);
             this.uiGroupBox7.Controls.Add(this.label122);
@@ -4617,30 +4617,30 @@
             this.label123.TabIndex = 98;
             this.label123.Text = "مانده سود و زیان:";
             // 
-            // txtBV
+            // txtCA
             // 
-            this.txtBV.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtCA.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
-            this.txtBV.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(132)))));
-            this.txtBV.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtBV.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBV.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtBV.DisplayFormat = "#,##0;(#,##0)";
-            this.txtBV.Increment = 1D;
-            this.txtBV.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtBV.IsInputReadOnly = true;
-            this.txtBV.Location = new System.Drawing.Point(6, 124);
-            this.txtBV.MaxValue = 1797693134862.3157D;
-            this.txtBV.MinValue = -1797693134862.3157D;
-            this.txtBV.Name = "txtBV";
-            this.txtBV.Size = new System.Drawing.Size(126, 28);
-            this.txtBV.TabIndex = 13;
-            this.txtBV.TabStop = false;
-            this.txtBV.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
-            this.txtBV.WatermarkText = "BV";
-            this.txtBV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeryalB_KeyDown);
+            this.txtCA.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(132)))));
+            this.txtCA.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtCA.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCA.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtCA.DisplayFormat = "#,##0;(#,##0)";
+            this.txtCA.Increment = 1D;
+            this.txtCA.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
+            this.txtCA.IsInputReadOnly = true;
+            this.txtCA.Location = new System.Drawing.Point(6, 124);
+            this.txtCA.MaxValue = 1797693134862.3157D;
+            this.txtCA.MinValue = -1797693134862.3157D;
+            this.txtCA.Name = "txtCA";
+            this.txtCA.Size = new System.Drawing.Size(126, 28);
+            this.txtCA.TabIndex = 13;
+            this.txtCA.TabStop = false;
+            this.txtCA.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
+            this.txtCA.WatermarkText = "CA";
+            this.txtCA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeryalB_KeyDown);
             // 
             // label124
             // 
@@ -5677,7 +5677,7 @@
             this.uiGroupBox7.ResumeLayout(false);
             this.uiGroupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBK)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaymentToOthers2)).EndInit();
@@ -6032,7 +6032,7 @@
         private System.Windows.Forms.Label label121;
         private DevComponents.Editors.DoubleInput txtBK;
         private System.Windows.Forms.Label label123;
-        private DevComponents.Editors.DoubleInput txtBV;
+        private DevComponents.Editors.DoubleInput txtCA;
         private System.Windows.Forms.Label label124;
         public DevComponents.DotNetBar.ButtonX btnAccountingDocumentRegistrationGroup;
     }

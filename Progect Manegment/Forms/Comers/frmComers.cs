@@ -91,6 +91,13 @@ namespace HM_ERP_System.Forms.Comers
         double AC = 0;
         double BN = 0;
         double BP = 0;
+
+        double BY = 0;
+        double BZ = 0;
+        double CA = 0;
+        double CB = 0;
+        double CC = 0;
+        
         bool StatusDeliveryGoods_ = false;
 
 
@@ -2515,6 +2522,7 @@ namespace HM_ERP_System.Forms.Comers
                                 CarPlatSeryal = "ایران" + cr.CarPlatSeryal,
 
                                 Daraver1Name = cu1.Family != "" ? (cu1.Family + "، " + cu1.Name).Trim() : cu1.Name,
+
                                 Daraver1CodMeli = cu1.CodMeli,
                                 Daraver1Tel = cu1.Tel,
                                 Daraver1SeryalShaba = cu1.SeryalShaba,
@@ -2527,6 +2535,7 @@ namespace HM_ERP_System.Forms.Comers
                                 Daraver2Name = cu2_ != null ? (cu2_.Family != "" ? (cu2_.Family + " " + cu2_.Name).Trim() : cu2_.Name) : "",
 
                                 Daraver2Tel = cu2_.Tel,
+
                                 Daraver2CodMeli = cu2_ != null ? cu2_.CodMeli : "-",
                                 Daraver2SeryalShaba = cu2_ != null ? cu2_.SeryalShaba : "-",
                                 Daraver2DabitCardNumber = cu2_ != null ? cu2_.DabitCardNumber : "-",
@@ -2537,6 +2546,7 @@ namespace HM_ERP_System.Forms.Comers
 
 
                                 Sender1Name = sd1.Family != "" ? (sd1.Family + "، " + sd1.Name).Trim() : sd1.Name,
+
                                 Sender1CodMeli = sd1.CodMeli,
                                 Sender1SeryalShaba = sd1.SeryalShaba,
                                 Sender1DabitCardNumber = sd1.DabitCardNumber,
@@ -2545,6 +2555,7 @@ namespace HM_ERP_System.Forms.Comers
 
 
                                 Resiver1Name = rs1.Family != "" ? (rs1.Family + "، " + rs1.Name).Trim() : rs1.Name,
+
                                 Resiver1CodMeli = rs1.CodMeli,
                                 Resiver1SeryalShaba = rs1.SeryalShaba,
                                 Resiver1DabitCardNumber = rs1.DabitCardNumber,
@@ -2552,12 +2563,14 @@ namespace HM_ERP_System.Forms.Comers
 
 
                                 Sender2Name = sd2Left.Family != "" ? (sd2Left.Family + "، " + sd2Left.Name).Trim() : sd2Left.Name,
+
                                 Sender2CodMeli = sd2Left.CodMeli,
                                 Sender2SeryalShaba = sd2Left.SeryalShaba,
                                 Sender2DabitCardNumber = sd2Left.DabitCardNumber,
                                 Sender2Tel = sd2Left.Tel,
 
                                 Resiver2Name = rs2Left.Family != "" ? (rs2Left.Family + "، " + rs2Left.Name).Trim() : rs2Left.Name,
+
                                 Resiver2CodMeli = rs2Left.CodMeli,
                                 Resiver2SeryalShaba = rs2Left.SeryalShaba,
                                 Resiver2DabitCardNumber = rs2Left.DabitCardNumber,
@@ -2611,10 +2624,12 @@ namespace HM_ERP_System.Forms.Comers
                                 cmb.BV,
                                 cmb.Ac,
                                 cmb.Bn,
+                                cmb.CA,
+
                                 CountDoc = docGroup.Count(c => c.FormName == "frmComersB"),
                                 User = CuUser_ != null ? CuUser_.Family + " " + CuUser_.Name : "-",
                                 Date_Time = cmb.RecordDateTime,
-                                
+
                                 bacu1 = bacu1 != null ? bacu1.Name : "",//نام بانک راننده1
                                 bacu2 = bacu2 != null ? bacu2.Name : "",//نام بانک راننده2
                                 baca = baca != null ? baca.Name : "",//نام بانک طرف حساب کامیون
@@ -2629,8 +2644,9 @@ namespace HM_ERP_System.Forms.Comers
 
                     var result = list.Select(x => new
                     {
-
+                        
                         //*****
+                        
                         x.ShiperCodMeli,//
                         x.ShiperSeryalShaba,//
                         x.ShiperDabitCardNumber,//
@@ -2677,13 +2693,16 @@ namespace HM_ERP_System.Forms.Comers
                         x.Daraver2DabitCardNumber,//
                         x.Daraver2Tel,//
                         x.Daraver2SmartCard,//
-                        x.Daraver2SeryalGovahiname,//
+                        x.Daraver2SeryalGovahiname,//     
+                        x.Daraver1Tel,
 
+                        
                         x.Seryal,//0
                         x.PostalCode1,//0
                         x.PostalCode2,//0
                         x.Addres1,//0
                         x.Addres2,//0
+
                         x.bacu1,
                         x.bacu2,
                         x.baca,
@@ -2709,7 +2728,6 @@ namespace HM_ERP_System.Forms.Comers
                         x.CarPlat,
                         x.CarPlatSeryal,
                         x.Daraver1Name,
-                        x.Daraver1Tel,
                         x.Daraver2Name,
                         x.Sender1Name,
                         x.Resiver1Name,
@@ -2760,6 +2778,7 @@ namespace HM_ERP_System.Forms.Comers
                         x.BV,
                         x.Ac,
                         x.Bn,
+                        x.CA,
                         x.CountDoc,
                         x.User,
                         Date_Time = PersianDate.ToPersianDateTime(x.Date_Time),
@@ -2972,7 +2991,7 @@ namespace HM_ERP_System.Forms.Comers
                     //chkIncomeDocument
 
                     var com = new Repository<ComersB>(db);
-                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, IncomeDocumentCode = IncomeDocumentCode, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, IncomeDocumentCode = IncomeDocumentCode, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP,BY=BY,BZ=BZ,CA=CA,CB=CB,CC=CC, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
                     PublicClass.WindowAlart("1");
                     //TypeCalcMethodsBId_
                     
@@ -3002,6 +3021,7 @@ namespace HM_ERP_System.Forms.Comers
                     panelLanding.Enabled = false;
                     uiGroupBox4.Enabled = false;
                     uiGroupBox5.Enabled = false;
+                    btnCalculations.Enabled = false;
                     //CelearItemsAllB();
                 }
             }
@@ -3071,6 +3091,12 @@ namespace HM_ERP_System.Forms.Comers
                 AC = 0;
                 BN = 0;
                 BP = 0;
+                BY = 0;
+                BZ = 0;
+                CA = 0;
+                CB = 0;
+                CC = 0;
+
                 using (var db = new DBcontextModel())
                 {
                     var SeryalH = db.ComersHs.Where(c => c.Id == ComersHId_);
@@ -3085,11 +3111,11 @@ namespace HM_ERP_System.Forms.Comers
                             StatusDeliveryGoods_ = db.ComersBs.Where(c => c.Id == ListId).First().StatusDeliveryGoods;
                         //txtLoadWeightCapacity
                         CalculatComerB ccb = new CalculatComerB();
-                        (AV, AC, AZ, BO, AE, AX, BK, BS, BT, AY, BV, BN, BP) = ccb.CalcComerFilds(ComersHId_, TypeCalFareId_: FareCalcMethod_, MethodCalFareId_: MethodCalFareBId_, LoadWeight_: txtLoadWeight.Value, WeightDeliveredGoods_: 0, TruckCapacity_: LoadWeightCapacity, FreightRate_: txtFreightRate.Value, CargoInsurance_: txtCargoInsurance.Value, LoadinCast_: txtLoadinCast.Value, Incentive_: txtIncentive.Value, StopCharge_: txtStopCharge.Value, Deduction_: txtDeduction.Value, BalanceAccount_: txtBalanceAccount.Value, TypeCalcMethodsBId_: MethodCalFareBId_, PaidFreightRate_: txtPaidFreightRate.Value, InsurancCost_: txtInsurancCost.Value, PaidIncentive_: txtPaidIncentive.Value, PaidStopCharge_: txtPaidStopCharge.Value, DriverDeduction_: txtDriverDeduction.Value, BillLadingMethodId_: BillLadingMethodId_, BillLadingCastId_: BillLadingCastId_, BaseFreight_: txtBaseFreight.Value, BillLadingAmount_: txtBillLadingAmount.Value, InsuranceAmount_: txtInsuranceAmount.Value, BillLadingWriterPercent_: txtBillLadingWriterPercent.Value, AmountPaidTruckDriver_: txtAmountPaidTruckDriver.Value, BalanceAccountDraver_: txtBalanceAccountِDraver.Value, OtherBillLadingCosts_: 0, BalanceBillLadingAmount_: _ = txtBalanceBillLadingAmount.Value, PaymentToOthers1_: txtPaymentToOthers1.Value);
+                        (AV, AC, AZ, BO, AE, AX, BK, BS, BT, AY, BV, BN, BP, BY, BZ, CA, CB, CC) = ccb.CalcComerFilds(ComersHId_, TypeCalFareId_: FareCalcMethod_, MethodCalFareId_: MethodCalFareBId_, LoadWeight_: txtLoadWeight.Value, WeightDeliveredGoods_: 0, TruckCapacity_: LoadWeightCapacity, FreightRate_: txtFreightRate.Value, CargoInsurance_: txtCargoInsurance.Value, LoadinCast_: txtLoadinCast.Value, Incentive_: txtIncentive.Value, StopCharge_: txtStopCharge.Value, Deduction_: txtDeduction.Value, BalanceAccount_: txtBalanceAccount.Value, TypeCalcMethodsBId_: MethodCalFareBId_, PaidFreightRate_: txtPaidFreightRate.Value, InsurancCost_: txtInsurancCost.Value, PaidIncentive_: txtPaidIncentive.Value, PaidStopCharge_: txtPaidStopCharge.Value, DriverDeduction_: txtDriverDeduction.Value, BillLadingMethodId_: BillLadingMethodId_, BillLadingCastId_: BillLadingCastId_, BaseFreight_: txtBaseFreight.Value, BillLadingAmount_: txtBillLadingAmount.Value, InsuranceAmount_: txtInsuranceAmount.Value, BillLadingWriterPercent_: txtBillLadingWriterPercent.Value, AmountPaidTruckDriver_: txtAmountPaidTruckDriver.Value, BalanceAccountDraver_: txtBalanceAccountِDraver.Value, OtherBillLadingCosts_: 0, BalanceBillLadingAmount_: _ = txtBalanceBillLadingAmount.Value, PaymentToOthers1_: txtPaymentToOthers1.Value);
 
                         txtBO.Value = BO;
                         txtBN.Value = BN;
-                        txtBV.Value = BV;
+                        txtCA.Value = CA;
                         txtBK.Value = BK;
                     }
                 }
@@ -3384,7 +3410,6 @@ namespace HM_ERP_System.Forms.Comers
 
         private void CelearItemsB()
         {
-
             ListId = 0;
             CelearLableItemslB();
             SeryalHId_ = 0;
@@ -3401,7 +3426,6 @@ namespace HM_ERP_System.Forms.Comers
             txtAC.ResetText();
             txtAV.ResetText();
             txtAY.ResetText();
-            cmbCarplateB.Focus();
         }
         private void CelearLableItemslB()
         {
@@ -3437,6 +3461,8 @@ namespace HM_ERP_System.Forms.Comers
             panelLanding.Enabled = true;
             uiGroupBox4.Enabled = true;
             uiGroupBox5.Enabled = true;
+            btnCalculations.Enabled = true;
+
 
             CelearItemsB();
             txtFreightRate.ResetText();
@@ -3476,7 +3502,7 @@ namespace HM_ERP_System.Forms.Comers
 
             txtBO.ResetText();
             txtBN.ResetText();
-            txtBV.ResetText();
+            txtCA.ResetText();
             txtBK.ResetText();
 
             chkIncomeDocument.Checked = false;
@@ -3490,6 +3516,7 @@ namespace HM_ERP_System.Forms.Comers
             ListId = 0;
             ListId_ = 0;
             IncomeDocumentCode = 0;
+            cmbCarplateB.Focus();
         }
 
 

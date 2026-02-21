@@ -276,7 +276,35 @@ namespace HM_ERP_System.Entity.Comers
         /// بدهی / بستانکاری راننده بابت بارنامه نویسی
         /// </summary>
         public double BP { get; set; }
+        /// <summary>
+        /// مبلغی که باید راننده بابت کمیسیون بپردازد
+        /// </summary>
+        public double BY { get; set; }
+        /// <summary>
+        /// مبلغی که راننده باید بابت کرایه دریافت کند
+        /// </summary>
+        public double BZ { get; set; }
+        /// <summary>
+        /// مبلغ تراکنش راننده بابت کمیسیون یا کرایه حمل
+        /// </summary>
+        public double CA { get; set; }
+        /// <summary>
+        /// جمع پرداختی راننده
+        /// </summary>
+        public double CB { get; set; }
+        /// <summary>
+        /// مانده حساب بارنامه
+        /// </summary>
+        public double CC { get; set; }
 
+        
+        
+        
+        
+        
+        
+        
+        
         /// <summary>
         /// تاریخ ثبت
         /// </summary>

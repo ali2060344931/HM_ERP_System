@@ -47,13 +47,13 @@ namespace HM_ERP_System.Class_General
         /// <param name="BalanceBillLadingAmount_">رند حساب بارنامه نویسی</param>
         /// <param name="PaymentToOthers1">مبلغ پرداختی راننده به سایر</param>
 
-        public (double, double, double, double, double, double, double, double, double, double, double, double, double) CalcComerFilds(int ComersHId_, int TypeCalFareId_, int MethodCalFareId_, double LoadWeight_, double WeightDeliveredGoods_, int TruckCapacity_, double FreightRate_, double CargoInsurance_, double LoadinCast_, double Incentive_, double StopCharge_, double Deduction_, double BalanceAccount_, int TypeCalcMethodsBId_, double PaidFreightRate_, double InsurancCost_, double PaidIncentive_, double PaidStopCharge_, double DriverDeduction_, int BillLadingMethodId_, double BillLadingCastId_, double BaseFreight_, double BillLadingAmount_, double InsuranceAmount_, double BillLadingWriterPercent_, double AmountPaidTruckDriver_, double BalanceAccountDraver_, double OtherBillLadingCosts_, double BalanceBillLadingAmount_, double PaymentToOthers1_)
+        public (double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double) CalcComerFilds(int ComersHId_, int TypeCalFareId_, int MethodCalFareId_, double LoadWeight_, double WeightDeliveredGoods_, int TruckCapacity_, double FreightRate_, double CargoInsurance_, double LoadinCast_, double Incentive_, double StopCharge_, double Deduction_, double BalanceAccount_, int TypeCalcMethodsBId_, double PaidFreightRate_, double InsurancCost_, double PaidIncentive_, double PaidStopCharge_, double DriverDeduction_, int BillLadingMethodId_, double BillLadingCastId_, double BaseFreight_, double BillLadingAmount_, double InsuranceAmount_, double BillLadingWriterPercent_, double AmountPaidTruckDriver_, double BalanceAccountDraver_, double OtherBillLadingCosts_, double BalanceBillLadingAmount_, double PaymentToOthers1_)
 
         {
             //calGeneral();
             ComersHId = ComersHId_; TypeCalFareId = TypeCalFareId_; MethodCalFareId = MethodCalFareId_; LoadWeight = LoadWeight_; WeightDeliveredGoods = WeightDeliveredGoods_; TruckCapacity = TruckCapacity_; FreightRate = FreightRate_; CargoInsurance = CargoInsurance_; LoadinCast = LoadinCast_; Incentive = Incentive_; StopCharge = StopCharge_; Deduction = Deduction_; BalanceAccount = BalanceAccount_; TypeCalcMethodsBId = TypeCalcMethodsBId_; PaidFreightRate = PaidFreightRate_; InsurancCost = InsurancCost_; PaidIncentive = PaidIncentive_; PaidStopCharge = PaidStopCharge_; DriverDeduction = DriverDeduction_; BillLadingMethodId = BillLadingMethodId_; BillLadingCastId = BillLadingCastId_; BaseFreight = BaseFreight_; BillLadingAmount = BillLadingAmount_; InsuranceAmount = InsuranceAmount_; BillLadingWriterPercent = BillLadingWriterPercent_; AmountPaidTruckDriver = AmountPaidTruckDriver_; BalanceAccountDraver = BalanceAccountDraver_; OtherBillLadingCosts = OtherBillLadingCosts_; BalanceBillLadingAmount = BalanceBillLadingAmount_; PaymentToOthers1 = PaymentToOthers1_;
 
-            return (AV(), Ac(), AZ(), BO(), AE(), AX(), BK(), BS(), BT(), AY(), BV(), Bn(), BP());
+            return (AV(), Ac(), AZ(), BO(), AE(), AX(), BK(), BS(), BT(), AY(), BV(), Bn(), BP(), BY(), BZ(), CA(), CB(), CC());
 
         }
 
@@ -277,7 +277,7 @@ namespace HM_ERP_System.Class_General
                 {
                     double bp = BP();
                     double bo = BO();
-                    double x = Ac() - (bp + bo + BalanceAccountDraver - DriverDeduction + PaidStopCharge + InsurancCost + PaidIncentive + PaymentToOthers1);
+                    double x = Ac() - (bp + bo + BalanceAccountDraver - DriverDeduction + PaidStopCharge + InsurancCost + PaidIncentive+ PaymentToOthers1 );
                     return x;
                 }
                 else
@@ -304,7 +304,7 @@ namespace HM_ERP_System.Class_General
                     double bp = BP();
                     double bo = BO();
 
-                    double x = bp + bo + BalanceAccountDraver - DriverDeduction + PaidStopCharge + InsurancCost + PaidIncentive;
+                    double x = bp + bo + BalanceAccountDraver - DriverDeduction + PaidStopCharge + InsurancCost + PaidIncentive + PaymentToOthers1;
                     return -x;
                 }
                 else
@@ -511,5 +511,113 @@ namespace HM_ERP_System.Class_General
                 return 0;
             }
         }
+        /// <summary>
+        /// مبلغی که باید راننده بابت کمیسیون بپردازد
+        /// </summary>
+        /// <returns></returns>
+        public double BY()
+        {
+            try
+            {
+                if (TypeCalFareId == 2)
+                {
+                    double x = Ac() - (BO() + BalanceAccountDraver - DriverDeduction + PaidStopCharge + InsurancCost + PaidIncentive );
+                    return x;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// مبلغی که راننده باید بابت کرایه دریافت کند
+        /// </summary>
+        /// <returns></returns>
+        public double BZ()
+        {
+            try
+            {
+                if (TypeCalFareId == 1)
+                {
+                    double x = BO() + BalanceAccountDraver - DriverDeduction + PaidStopCharge + InsurancCost + PaidIncentive;
+                    return x;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return 0;
+            }
+        }
+        /// <summary>
+        /// مبلغ تراکنش راننده بابت کمیسیون یا کرایه حمل
+        /// </summary>
+        /// <returns></returns>
+        public double CA()
+        {
+            try
+            {
+                double by = BY();
+                double bz = BZ();
+                if (by!=0)
+                {
+                    return by;
+                }
+                else
+                {
+                    return bz;
+                }
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return 0;
+            }
+        }
+        /// <summary>
+        /// جمع پرداختی راننده
+        /// </summary>
+        /// <returns></returns>
+        public double CB()
+        {
+            try
+            {
+                return PaymentToOthers1 + AmountPaidTruckDriver;
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return 0;
+            }
+        }
+        /// <summary>
+        /// مانده حساب بارنامه
+        /// </summary>
+        /// <returns></returns>
+        public double CC()
+        {
+            try
+            {
+                return CA() -CB();
+            }
+            catch (Exception er)
+            {
+                PublicClass.ShowErrorMessage(er);
+                return 0;
+            }
+        }
+
+
     }
 }

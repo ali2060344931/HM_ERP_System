@@ -917,7 +917,6 @@
             this.Controls.Add(this.uiPanelGroup1);
             this.Controls.Add(this.uiPanel2);
             this.Controls.Add(this.uiPanel0);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmTransferBetweenPersons";
             this.Text = "خزانه داری - اعلامی جابجایی بین اشخــاص";
             this.Load += new System.EventHandler(this.frmTransferBetweenPersons_Load);

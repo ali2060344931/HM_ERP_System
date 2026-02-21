@@ -782,7 +782,6 @@
             this.ClientSize = new System.Drawing.Size(1360, 450);
             this.Controls.Add(this.uiPanelGroup1);
             this.Controls.Add(this.uiPanel0);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "frmTransferBetweenBanks";
             this.Text = "خزانه داری - اعلامی جابجــــایی بین بانکی ها";
             this.Load += new System.EventHandler(this.frmTransferBetweenBanks_Load);

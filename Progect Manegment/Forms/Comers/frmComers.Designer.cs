@@ -558,7 +558,8 @@
             this.uiTabPage1,
             this.uiTabPage2});
             this.uiTab1.TabStripAlignment = Janus.Windows.UI.Tab.TabStripAlignment.Right;
-            this.uiTab1.VisualStyle = Janus.Windows.UI.Tab.TabVisualStyle.Office2003;
+            this.uiTab1.TextOrientation = Janus.Windows.UI.Tab.TextOrientation.Horizontal;
+            this.uiTab1.VisualStyle = Janus.Windows.UI.Tab.TabVisualStyle.Office2010;
             this.uiTab1.SelectedTabChanged += new Janus.Windows.UI.Tab.TabEventHandler(this.uiTab1_SelectedTabChanged);
             // 
             // uiTabPage1
@@ -648,14 +649,13 @@
             this.uiTabPage1.Controls.Add(this.label18);
             this.uiTabPage1.Controls.Add(this.label1);
             this.uiTabPage1.Controls.Add(this.pictureBox2);
-            this.uiTabPage1.Icon = ((System.Drawing.Icon)(resources.GetObject("uiTabPage1.Icon")));
             this.uiTabPage1.Key = "ComersH";
             this.uiTabPage1.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage1.Name = "uiTabPage1";
             this.uiTabPage1.PanelFormatStyle.BackColor = System.Drawing.Color.White;
-            this.uiTabPage1.Size = new System.Drawing.Size(1885, 391);
+            this.uiTabPage1.Size = new System.Drawing.Size(1873, 391);
             this.uiTabPage1.TabStop = true;
-            this.uiTabPage1.Text = "ثبت حواله";
+            this.uiTabPage1.Text = "حواله";
             // 
             // label96
             // 
@@ -663,7 +663,7 @@
             this.label96.BackColor = System.Drawing.Color.Transparent;
             this.label96.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label96.ForeColor = System.Drawing.Color.Red;
-            this.label96.Location = new System.Drawing.Point(636, 175);
+            this.label96.Location = new System.Drawing.Point(630, 175);
             this.label96.Name = "label96";
             this.label96.Size = new System.Drawing.Size(15, 15);
             this.label96.TabIndex = 104;
@@ -676,7 +676,7 @@
             this.label95.BackColor = System.Drawing.Color.Transparent;
             this.label95.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label95.ForeColor = System.Drawing.Color.Red;
-            this.label95.Location = new System.Drawing.Point(636, 114);
+            this.label95.Location = new System.Drawing.Point(630, 114);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(15, 15);
             this.label95.TabIndex = 104;
@@ -689,7 +689,7 @@
             this.label93.BackColor = System.Drawing.Color.Transparent;
             this.label93.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label93.ForeColor = System.Drawing.Color.Red;
-            this.label93.Location = new System.Drawing.Point(664, 81);
+            this.label93.Location = new System.Drawing.Point(658, 81);
             this.label93.Name = "label93";
             this.label93.Size = new System.Drawing.Size(15, 15);
             this.label93.TabIndex = 104;
@@ -702,7 +702,7 @@
             this.label107.BackColor = System.Drawing.Color.Transparent;
             this.label107.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label107.ForeColor = System.Drawing.Color.Red;
-            this.label107.Location = new System.Drawing.Point(1474, 72);
+            this.label107.Location = new System.Drawing.Point(1468, 72);
             this.label107.Name = "label107";
             this.label107.Size = new System.Drawing.Size(15, 15);
             this.label107.TabIndex = 104;
@@ -715,7 +715,7 @@
             this.label106.BackColor = System.Drawing.Color.Transparent;
             this.label106.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label106.ForeColor = System.Drawing.Color.Red;
-            this.label106.Location = new System.Drawing.Point(1470, 123);
+            this.label106.Location = new System.Drawing.Point(1464, 123);
             this.label106.Name = "label106";
             this.label106.Size = new System.Drawing.Size(15, 15);
             this.label106.TabIndex = 104;
@@ -728,7 +728,7 @@
             this.label104.BackColor = System.Drawing.Color.Transparent;
             this.label104.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label104.ForeColor = System.Drawing.Color.Red;
-            this.label104.Location = new System.Drawing.Point(1463, 205);
+            this.label104.Location = new System.Drawing.Point(1457, 205);
             this.label104.Name = "label104";
             this.label104.Size = new System.Drawing.Size(15, 15);
             this.label104.TabIndex = 104;
@@ -741,7 +741,7 @@
             this.label103.BackColor = System.Drawing.Color.Transparent;
             this.label103.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label103.ForeColor = System.Drawing.Color.Red;
-            this.label103.Location = new System.Drawing.Point(998, 243);
+            this.label103.Location = new System.Drawing.Point(992, 243);
             this.label103.Name = "label103";
             this.label103.Size = new System.Drawing.Size(15, 15);
             this.label103.TabIndex = 104;
@@ -754,7 +754,7 @@
             this.label102.BackColor = System.Drawing.Color.Transparent;
             this.label102.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label102.ForeColor = System.Drawing.Color.Red;
-            this.label102.Location = new System.Drawing.Point(976, 207);
+            this.label102.Location = new System.Drawing.Point(970, 207);
             this.label102.Name = "label102";
             this.label102.Size = new System.Drawing.Size(15, 15);
             this.label102.TabIndex = 104;
@@ -767,7 +767,7 @@
             this.label101.BackColor = System.Drawing.Color.Transparent;
             this.label101.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label101.ForeColor = System.Drawing.Color.Red;
-            this.label101.Location = new System.Drawing.Point(988, 177);
+            this.label101.Location = new System.Drawing.Point(982, 177);
             this.label101.Name = "label101";
             this.label101.Size = new System.Drawing.Size(15, 15);
             this.label101.TabIndex = 104;
@@ -780,7 +780,7 @@
             this.label100.BackColor = System.Drawing.Color.Transparent;
             this.label100.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label100.ForeColor = System.Drawing.Color.Red;
-            this.label100.Location = new System.Drawing.Point(998, 145);
+            this.label100.Location = new System.Drawing.Point(992, 145);
             this.label100.Name = "label100";
             this.label100.Size = new System.Drawing.Size(15, 15);
             this.label100.TabIndex = 104;
@@ -793,7 +793,7 @@
             this.label99.BackColor = System.Drawing.Color.Transparent;
             this.label99.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label99.ForeColor = System.Drawing.Color.Red;
-            this.label99.Location = new System.Drawing.Point(998, 112);
+            this.label99.Location = new System.Drawing.Point(992, 112);
             this.label99.Name = "label99";
             this.label99.Size = new System.Drawing.Size(15, 15);
             this.label99.TabIndex = 104;
@@ -806,7 +806,7 @@
             this.label98.BackColor = System.Drawing.Color.Transparent;
             this.label98.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label98.ForeColor = System.Drawing.Color.Red;
-            this.label98.Location = new System.Drawing.Point(998, 80);
+            this.label98.Location = new System.Drawing.Point(992, 80);
             this.label98.Name = "label98";
             this.label98.Size = new System.Drawing.Size(15, 15);
             this.label98.TabIndex = 104;
@@ -819,7 +819,7 @@
             this.label97.BackColor = System.Drawing.Color.Transparent;
             this.label97.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label97.ForeColor = System.Drawing.Color.Red;
-            this.label97.Location = new System.Drawing.Point(988, 49);
+            this.label97.Location = new System.Drawing.Point(982, 49);
             this.label97.Name = "label97";
             this.label97.Size = new System.Drawing.Size(15, 15);
             this.label97.TabIndex = 104;
@@ -832,7 +832,7 @@
             this.label92.BackColor = System.Drawing.Color.Transparent;
             this.label92.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label92.ForeColor = System.Drawing.Color.Red;
-            this.label92.Location = new System.Drawing.Point(679, 48);
+            this.label92.Location = new System.Drawing.Point(673, 48);
             this.label92.Name = "label92";
             this.label92.Size = new System.Drawing.Size(15, 15);
             this.label92.TabIndex = 104;
@@ -844,7 +844,7 @@
             this.chkStatusLading.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chkStatusLading.AutoSize = true;
             this.chkStatusLading.BackColor = System.Drawing.Color.Transparent;
-            this.chkStatusLading.Location = new System.Drawing.Point(483, 232);
+            this.chkStatusLading.Location = new System.Drawing.Point(477, 232);
             this.chkStatusLading.Name = "chkStatusLading";
             this.chkStatusLading.Size = new System.Drawing.Size(90, 26);
             this.chkStatusLading.TabIndex = 19;
@@ -882,7 +882,7 @@
             this.uiGroupBox1.Controls.Add(this.lblCarName);
             this.uiGroupBox1.Font = new System.Drawing.Font("Vazir FD", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.uiGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.uiGroupBox1.Location = new System.Drawing.Point(786, 265);
+            this.uiGroupBox1.Location = new System.Drawing.Point(780, 265);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Size = new System.Drawing.Size(705, 98);
             this.uiGroupBox1.TabIndex = 98;
@@ -1180,7 +1180,7 @@
             // txtCotajNumber
             // 
             this.txtCotajNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtCotajNumber.Location = new System.Drawing.Point(1260, 170);
+            this.txtCotajNumber.Location = new System.Drawing.Point(1254, 170);
             this.txtCotajNumber.MaxLength = 7;
             this.txtCotajNumber.Name = "txtCotajNumber";
             this.txtCotajNumber.Size = new System.Drawing.Size(145, 28);
@@ -1192,7 +1192,7 @@
             // 
             this.txtDateH.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateH.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateH.Location = new System.Drawing.Point(1260, 65);
+            this.txtDateH.Location = new System.Drawing.Point(1254, 65);
             this.txtDateH.Name = "txtDateH";
             this.txtDateH.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDateH.Size = new System.Drawing.Size(145, 29);
@@ -1203,7 +1203,7 @@
             // txtDescriptionH
             // 
             this.txtDescriptionH.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtDescriptionH.Location = new System.Drawing.Point(329, 295);
+            this.txtDescriptionH.Location = new System.Drawing.Point(323, 295);
             this.txtDescriptionH.Name = "txtDescriptionH";
             this.txtDescriptionH.Size = new System.Drawing.Size(244, 56);
             this.txtDescriptionH.TabIndex = 21;
@@ -1215,7 +1215,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(907, 240);
+            this.label14.Location = new System.Drawing.Point(901, 240);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(94, 18);
             this.label14.TabIndex = 97;
@@ -1227,7 +1227,7 @@
             this.lblTelDraver2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblTelDraver2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTelDraver2.ForeColor = System.Drawing.Color.Maroon;
-            this.lblTelDraver2.Location = new System.Drawing.Point(1065, 235);
+            this.lblTelDraver2.Location = new System.Drawing.Point(1059, 235);
             this.lblTelDraver2.Name = "lblTelDraver2";
             this.lblTelDraver2.Size = new System.Drawing.Size(95, 18);
             this.lblTelDraver2.TabIndex = 97;
@@ -1239,7 +1239,7 @@
             this.lblTelDraver1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblTelDraver1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.lblTelDraver1.ForeColor = System.Drawing.Color.Maroon;
-            this.lblTelDraver1.Location = new System.Drawing.Point(1065, 204);
+            this.lblTelDraver1.Location = new System.Drawing.Point(1059, 204);
             this.lblTelDraver1.Name = "lblTelDraver1";
             this.lblTelDraver1.Size = new System.Drawing.Size(95, 18);
             this.lblTelDraver1.TabIndex = 97;
@@ -1251,7 +1251,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label11.Location = new System.Drawing.Point(576, 267);
+            this.label11.Location = new System.Drawing.Point(570, 267);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 18);
             this.label11.TabIndex = 97;
@@ -1274,7 +1274,7 @@
             this.label88.AutoSize = true;
             this.label88.BackColor = System.Drawing.Color.Transparent;
             this.label88.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label88.Location = new System.Drawing.Point(576, 205);
+            this.label88.Location = new System.Drawing.Point(570, 205);
             this.label88.Name = "label88";
             this.label88.Size = new System.Drawing.Size(66, 18);
             this.label88.TabIndex = 97;
@@ -1286,7 +1286,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label10.Location = new System.Drawing.Point(576, 174);
+            this.label10.Location = new System.Drawing.Point(570, 174);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 18);
             this.label10.TabIndex = 97;
@@ -1309,7 +1309,7 @@
             this.label87.AutoSize = true;
             this.label87.BackColor = System.Drawing.Color.Transparent;
             this.label87.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label87.Location = new System.Drawing.Point(576, 143);
+            this.label87.Location = new System.Drawing.Point(570, 143);
             this.label87.Name = "label87";
             this.label87.Size = new System.Drawing.Size(64, 18);
             this.label87.TabIndex = 97;
@@ -1321,7 +1321,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label9.Location = new System.Drawing.Point(576, 113);
+            this.label9.Location = new System.Drawing.Point(570, 113);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 18);
             this.label9.TabIndex = 97;
@@ -1343,7 +1343,7 @@
             this.lblCarPlatH.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCarPlatH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblCarPlatH.Font = new System.Drawing.Font("Vazir FD", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCarPlatH.Location = new System.Drawing.Point(1260, 148);
+            this.lblCarPlatH.Location = new System.Drawing.Point(1254, 148);
             this.lblCarPlatH.Name = "lblCarPlatH";
             this.lblCarPlatH.Size = new System.Drawing.Size(145, 20);
             this.lblCarPlatH.TabIndex = 97;
@@ -1366,7 +1366,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(576, 81);
+            this.label8.Location = new System.Drawing.Point(570, 81);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 18);
             this.label8.TabIndex = 97;
@@ -1378,7 +1378,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label7.Location = new System.Drawing.Point(576, 47);
+            this.label7.Location = new System.Drawing.Point(570, 47);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 18);
             this.label7.TabIndex = 97;
@@ -1391,7 +1391,7 @@
             this.label64.BackColor = System.Drawing.Color.Transparent;
             this.label64.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label64.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label64.Location = new System.Drawing.Point(1255, 97);
+            this.label64.Location = new System.Drawing.Point(1249, 97);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(150, 18);
             this.label64.TabIndex = 97;
@@ -1405,7 +1405,7 @@
             this.cmbResiver2.DesignTimeLayout = cmbResiver2_DesignTimeLayout;
             this.cmbResiver2.DisplayMember = "Name";
             this.cmbResiver2.Image = ((System.Drawing.Image)(resources.GetObject("cmbResiver2.Image")));
-            this.cmbResiver2.Location = new System.Drawing.Point(350, 198);
+            this.cmbResiver2.Location = new System.Drawing.Point(344, 198);
             this.cmbResiver2.Name = "cmbResiver2";
             this.cmbResiver2.SelectedIndex = -1;
             this.cmbResiver2.SelectedItem = null;
@@ -1424,7 +1424,7 @@
             this.cmbResiver1.DesignTimeLayout = cmbResiver1_DesignTimeLayout;
             this.cmbResiver1.DisplayMember = "Name";
             this.cmbResiver1.Image = ((System.Drawing.Image)(resources.GetObject("cmbResiver1.Image")));
-            this.cmbResiver1.Location = new System.Drawing.Point(350, 167);
+            this.cmbResiver1.Location = new System.Drawing.Point(344, 167);
             this.cmbResiver1.Name = "cmbResiver1";
             this.cmbResiver1.SelectedIndex = -1;
             this.cmbResiver1.SelectedItem = null;
@@ -1443,7 +1443,7 @@
             this.cmbSender2.DesignTimeLayout = cmbSender2_DesignTimeLayout;
             this.cmbSender2.DisplayMember = "Name";
             this.cmbSender2.Image = ((System.Drawing.Image)(resources.GetObject("cmbSender2.Image")));
-            this.cmbSender2.Location = new System.Drawing.Point(350, 136);
+            this.cmbSender2.Location = new System.Drawing.Point(344, 136);
             this.cmbSender2.Name = "cmbSender2";
             this.cmbSender2.SelectedIndex = -1;
             this.cmbSender2.SelectedItem = null;
@@ -1462,7 +1462,7 @@
             this.cmbSender1.DesignTimeLayout = cmbSender1_DesignTimeLayout;
             this.cmbSender1.DisplayMember = "Name";
             this.cmbSender1.Image = ((System.Drawing.Image)(resources.GetObject("cmbSender1.Image")));
-            this.cmbSender1.Location = new System.Drawing.Point(350, 106);
+            this.cmbSender1.Location = new System.Drawing.Point(344, 106);
             this.cmbSender1.Name = "cmbSender1";
             this.cmbSender1.SelectedIndex = -1;
             this.cmbSender1.SelectedItem = null;
@@ -1480,7 +1480,7 @@
             this.btnAddResiver2.BackColor = System.Drawing.Color.Transparent;
             this.btnAddResiver2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddResiver2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddResiver2.Location = new System.Drawing.Point(331, 198);
+            this.btnAddResiver2.Location = new System.Drawing.Point(325, 198);
             this.btnAddResiver2.Name = "btnAddResiver2";
             this.btnAddResiver2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddResiver2.Size = new System.Drawing.Size(18, 28);
@@ -1500,7 +1500,7 @@
             this.cmbShiper.DesignTimeLayout = cmbShiper_DesignTimeLayout;
             this.cmbShiper.DisplayMember = "Name";
             this.cmbShiper.Image = ((System.Drawing.Image)(resources.GetObject("cmbShiper.Image")));
-            this.cmbShiper.Location = new System.Drawing.Point(350, 260);
+            this.cmbShiper.Location = new System.Drawing.Point(344, 260);
             this.cmbShiper.Name = "cmbShiper";
             this.cmbShiper.SelectedIndex = -1;
             this.cmbShiper.SelectedItem = null;
@@ -1518,7 +1518,7 @@
             this.btnAddResiver1.BackColor = System.Drawing.Color.Transparent;
             this.btnAddResiver1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddResiver1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddResiver1.Location = new System.Drawing.Point(331, 167);
+            this.btnAddResiver1.Location = new System.Drawing.Point(325, 167);
             this.btnAddResiver1.Name = "btnAddResiver1";
             this.btnAddResiver1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddResiver1.Size = new System.Drawing.Size(18, 28);
@@ -1537,7 +1537,7 @@
             this.btnAddSender2.BackColor = System.Drawing.Color.Transparent;
             this.btnAddSender2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddSender2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddSender2.Location = new System.Drawing.Point(331, 136);
+            this.btnAddSender2.Location = new System.Drawing.Point(325, 136);
             this.btnAddSender2.Name = "btnAddSender2";
             this.btnAddSender2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddSender2.Size = new System.Drawing.Size(18, 28);
@@ -1557,7 +1557,7 @@
             this.cmbGoodsAccountH.DesignTimeLayout = cmbGoodsAccountH_DesignTimeLayout;
             this.cmbGoodsAccountH.DisplayMember = "Name";
             this.cmbGoodsAccountH.Image = ((System.Drawing.Image)(resources.GetObject("cmbGoodsAccountH.Image")));
-            this.cmbGoodsAccountH.Location = new System.Drawing.Point(350, 74);
+            this.cmbGoodsAccountH.Location = new System.Drawing.Point(344, 74);
             this.cmbGoodsAccountH.Name = "cmbGoodsAccountH";
             this.cmbGoodsAccountH.SelectedIndex = -1;
             this.cmbGoodsAccountH.SelectedItem = null;
@@ -1575,7 +1575,7 @@
             this.btnAddSender1.BackColor = System.Drawing.Color.Transparent;
             this.btnAddSender1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddSender1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddSender1.Location = new System.Drawing.Point(331, 106);
+            this.btnAddSender1.Location = new System.Drawing.Point(325, 106);
             this.btnAddSender1.Name = "btnAddSender1";
             this.btnAddSender1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddSender1.Size = new System.Drawing.Size(18, 28);
@@ -1594,7 +1594,7 @@
             this.btnAddPerson5.BackColor = System.Drawing.Color.Transparent;
             this.btnAddPerson5.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddPerson5.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddPerson5.Location = new System.Drawing.Point(329, 260);
+            this.btnAddPerson5.Location = new System.Drawing.Point(323, 260);
             this.btnAddPerson5.Name = "btnAddPerson5";
             this.btnAddPerson5.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddPerson5.Size = new System.Drawing.Size(18, 28);
@@ -1614,7 +1614,7 @@
             this.cmbCostAccountH.DesignTimeLayout = cmbCostAccountH_DesignTimeLayout;
             this.cmbCostAccountH.DisplayMember = "Name";
             this.cmbCostAccountH.Image = ((System.Drawing.Image)(resources.GetObject("cmbCostAccountH.Image")));
-            this.cmbCostAccountH.Location = new System.Drawing.Point(351, 40);
+            this.cmbCostAccountH.Location = new System.Drawing.Point(345, 40);
             this.cmbCostAccountH.Name = "cmbCostAccountH";
             this.cmbCostAccountH.SelectedIndex = -1;
             this.cmbCostAccountH.SelectedItem = null;
@@ -1633,7 +1633,7 @@
             this.btnAddPerson2.BackColor = System.Drawing.Color.Transparent;
             this.btnAddPerson2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddPerson2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddPerson2.Location = new System.Drawing.Point(331, 74);
+            this.btnAddPerson2.Location = new System.Drawing.Point(325, 74);
             this.btnAddPerson2.Name = "btnAddPerson2";
             this.btnAddPerson2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddPerson2.Size = new System.Drawing.Size(18, 28);
@@ -1652,7 +1652,7 @@
             this.btnAddPerson1.BackColor = System.Drawing.Color.Transparent;
             this.btnAddPerson1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddPerson1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddPerson1.Location = new System.Drawing.Point(331, 40);
+            this.btnAddPerson1.Location = new System.Drawing.Point(325, 40);
             this.btnAddPerson1.Name = "btnAddPerson1";
             this.btnAddPerson1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddPerson1.Size = new System.Drawing.Size(18, 28);
@@ -1675,7 +1675,7 @@
             this.txtTruckCapacity.ButtonCalculator.Visible = true;
             this.txtTruckCapacity.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.txtTruckCapacity.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtTruckCapacity.Location = new System.Drawing.Point(786, 234);
+            this.txtTruckCapacity.Location = new System.Drawing.Point(780, 234);
             this.txtTruckCapacity.MaxValue = 99999;
             this.txtTruckCapacity.MinValue = 0;
             this.txtTruckCapacity.Name = "txtTruckCapacity";
@@ -1692,7 +1692,7 @@
             this.btnSelectAppointmentScheduling.BackColor = System.Drawing.Color.Transparent;
             this.btnSelectAppointmentScheduling.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSelectAppointmentScheduling.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSelectAppointmentScheduling.Location = new System.Drawing.Point(1065, 117);
+            this.btnSelectAppointmentScheduling.Location = new System.Drawing.Point(1059, 117);
             this.btnSelectAppointmentScheduling.Name = "btnSelectAppointmentScheduling";
             this.btnSelectAppointmentScheduling.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnSelectAppointmentScheduling.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlL);
@@ -1713,7 +1713,7 @@
             this.btnAddCare.BackColor = System.Drawing.Color.Transparent;
             this.btnAddCare.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddCare.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddCare.Location = new System.Drawing.Point(1242, 116);
+            this.btnAddCare.Location = new System.Drawing.Point(1236, 116);
             this.btnAddCare.Name = "btnAddCare";
             this.btnAddCare.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddCare.Size = new System.Drawing.Size(18, 28);
@@ -1732,7 +1732,7 @@
             this.btnAddDraverH2.BackColor = System.Drawing.Color.Transparent;
             this.btnAddDraverH2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddDraverH2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddDraverH2.Location = new System.Drawing.Point(1163, 230);
+            this.btnAddDraverH2.Location = new System.Drawing.Point(1157, 230);
             this.btnAddDraverH2.Name = "btnAddDraverH2";
             this.btnAddDraverH2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddDraverH2.Size = new System.Drawing.Size(18, 28);
@@ -1751,7 +1751,7 @@
             this.btnAddDraverH1.BackColor = System.Drawing.Color.Transparent;
             this.btnAddDraverH1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddDraverH1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddDraverH1.Location = new System.Drawing.Point(1163, 199);
+            this.btnAddDraverH1.Location = new System.Drawing.Point(1157, 199);
             this.btnAddDraverH1.Name = "btnAddDraverH1";
             this.btnAddDraverH1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddDraverH1.Size = new System.Drawing.Size(18, 28);
@@ -1770,7 +1770,7 @@
             this.btnAddProducts.BackColor = System.Drawing.Color.Transparent;
             this.btnAddProducts.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddProducts.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddProducts.Location = new System.Drawing.Point(765, 202);
+            this.btnAddProducts.Location = new System.Drawing.Point(759, 202);
             this.btnAddProducts.Name = "btnAddProducts";
             this.btnAddProducts.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddProducts.Size = new System.Drawing.Size(18, 28);
@@ -1789,7 +1789,7 @@
             this.btnAddPlaceTransfersT.BackColor = System.Drawing.Color.Transparent;
             this.btnAddPlaceTransfersT.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddPlaceTransfersT.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddPlaceTransfersT.Location = new System.Drawing.Point(765, 171);
+            this.btnAddPlaceTransfersT.Location = new System.Drawing.Point(759, 171);
             this.btnAddPlaceTransfersT.Name = "btnAddPlaceTransfersT";
             this.btnAddPlaceTransfersT.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddPlaceTransfersT.Size = new System.Drawing.Size(18, 28);
@@ -1808,7 +1808,7 @@
             this.btnAddPlaceTransfersB.BackColor = System.Drawing.Color.Transparent;
             this.btnAddPlaceTransfersB.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddPlaceTransfersB.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddPlaceTransfersB.Location = new System.Drawing.Point(765, 107);
+            this.btnAddPlaceTransfersB.Location = new System.Drawing.Point(759, 107);
             this.btnAddPlaceTransfersB.Name = "btnAddPlaceTransfersB";
             this.btnAddPlaceTransfersB.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddPlaceTransfersB.Size = new System.Drawing.Size(18, 28);
@@ -1827,7 +1827,7 @@
             this.btnAddNewCity2.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewCity2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewCity2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddNewCity2.Location = new System.Drawing.Point(765, 139);
+            this.btnAddNewCity2.Location = new System.Drawing.Point(759, 139);
             this.btnAddNewCity2.Name = "btnAddNewCity2";
             this.btnAddNewCity2.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddNewCity2.Size = new System.Drawing.Size(18, 28);
@@ -1846,7 +1846,7 @@
             this.btnAddNewCity1.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewCity1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewCity1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddNewCity1.Location = new System.Drawing.Point(765, 75);
+            this.btnAddNewCity1.Location = new System.Drawing.Point(759, 75);
             this.btnAddNewCity1.Name = "btnAddNewCity1";
             this.btnAddNewCity1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddNewCity1.Size = new System.Drawing.Size(18, 28);
@@ -1866,7 +1866,7 @@
             this.cmbCarplateH.DesignTimeLayout = cmbCarplateH_DesignTimeLayout;
             this.cmbCarplateH.DisplayMember = "CarPlat";
             this.cmbCarplateH.Image = ((System.Drawing.Image)(resources.GetObject("cmbCarplateH.Image")));
-            this.cmbCarplateH.Location = new System.Drawing.Point(1260, 116);
+            this.cmbCarplateH.Location = new System.Drawing.Point(1254, 116);
             this.cmbCarplateH.MaxLength = 8;
             this.cmbCarplateH.Name = "cmbCarplateH";
             this.cmbCarplateH.SelectedIndex = -1;
@@ -1888,7 +1888,7 @@
             this.cmbProducts.DesignTimeLayout = cmbProducts_DesignTimeLayout;
             this.cmbProducts.DisplayMember = "Name";
             this.cmbProducts.Image = ((System.Drawing.Image)(resources.GetObject("cmbProducts.Image")));
-            this.cmbProducts.Location = new System.Drawing.Point(786, 202);
+            this.cmbProducts.Location = new System.Drawing.Point(780, 202);
             this.cmbProducts.Name = "cmbProducts";
             this.cmbProducts.SelectedIndex = -1;
             this.cmbProducts.SelectedItem = null;
@@ -1907,7 +1907,7 @@
             this.cmbUnLoadingLocation.DesignTimeLayout = cmbUnLoadingLocation_DesignTimeLayout;
             this.cmbUnLoadingLocation.DisplayMember = "Name";
             this.cmbUnLoadingLocation.Image = ((System.Drawing.Image)(resources.GetObject("cmbUnLoadingLocation.Image")));
-            this.cmbUnLoadingLocation.Location = new System.Drawing.Point(785, 170);
+            this.cmbUnLoadingLocation.Location = new System.Drawing.Point(779, 170);
             this.cmbUnLoadingLocation.Name = "cmbUnLoadingLocation";
             this.cmbUnLoadingLocation.SelectedIndex = -1;
             this.cmbUnLoadingLocation.SelectedItem = null;
@@ -1927,7 +1927,7 @@
             this.cmbLoadingLocation.DesignTimeLayout = cmbLoadingLocation_DesignTimeLayout;
             this.cmbLoadingLocation.DisplayMember = "Name";
             this.cmbLoadingLocation.Image = ((System.Drawing.Image)(resources.GetObject("cmbLoadingLocation.Image")));
-            this.cmbLoadingLocation.Location = new System.Drawing.Point(785, 106);
+            this.cmbLoadingLocation.Location = new System.Drawing.Point(779, 106);
             this.cmbLoadingLocation.Name = "cmbLoadingLocation";
             this.cmbLoadingLocation.SelectedIndex = -1;
             this.cmbLoadingLocation.SelectedItem = null;
@@ -1947,7 +1947,7 @@
             this.cmbUnLoadingOrinig.DesignTimeLayout = cmbUnLoadingOrinig_DesignTimeLayout;
             this.cmbUnLoadingOrinig.DisplayMember = "CiltyName";
             this.cmbUnLoadingOrinig.Image = ((System.Drawing.Image)(resources.GetObject("cmbUnLoadingOrinig.Image")));
-            this.cmbUnLoadingOrinig.Location = new System.Drawing.Point(785, 138);
+            this.cmbUnLoadingOrinig.Location = new System.Drawing.Point(779, 138);
             this.cmbUnLoadingOrinig.Name = "cmbUnLoadingOrinig";
             this.cmbUnLoadingOrinig.SelectedIndex = -1;
             this.cmbUnLoadingOrinig.SelectedItem = null;
@@ -1970,7 +1970,7 @@
             this.cmbLoadingOrinig.DesignTimeLayout = cmbLoadingOrinig_DesignTimeLayout;
             this.cmbLoadingOrinig.DisplayMember = "CiltyName";
             this.cmbLoadingOrinig.Image = ((System.Drawing.Image)(resources.GetObject("cmbLoadingOrinig.Image")));
-            this.cmbLoadingOrinig.Location = new System.Drawing.Point(785, 74);
+            this.cmbLoadingOrinig.Location = new System.Drawing.Point(779, 74);
             this.cmbLoadingOrinig.Name = "cmbLoadingOrinig";
             this.cmbLoadingOrinig.SelectedIndex = -1;
             this.cmbLoadingOrinig.SelectedItem = null;
@@ -1989,7 +1989,7 @@
             cmbTypeDocument_DesignTimeLayout.LayoutString = resources.GetString("cmbTypeDocument_DesignTimeLayout.LayoutString");
             this.cmbTypeDocument.DesignTimeLayout = cmbTypeDocument_DesignTimeLayout;
             this.cmbTypeDocument.DisplayMember = "Name";
-            this.cmbTypeDocument.Location = new System.Drawing.Point(786, 42);
+            this.cmbTypeDocument.Location = new System.Drawing.Point(780, 42);
             this.cmbTypeDocument.Name = "cmbTypeDocument";
             this.cmbTypeDocument.SelectedIndex = -1;
             this.cmbTypeDocument.SelectedItem = null;
@@ -2009,7 +2009,7 @@
             this.cmbDraversH2.DesignTimeLayout = cmbDraversH2_DesignTimeLayout;
             this.cmbDraversH2.DisplayMember = "Name";
             this.cmbDraversH2.Image = ((System.Drawing.Image)(resources.GetObject("cmbDraversH2.Image")));
-            this.cmbDraversH2.Location = new System.Drawing.Point(1183, 230);
+            this.cmbDraversH2.Location = new System.Drawing.Point(1177, 230);
             this.cmbDraversH2.Name = "cmbDraversH2";
             this.cmbDraversH2.SelectedIndex = -1;
             this.cmbDraversH2.SelectedItem = null;
@@ -2027,7 +2027,7 @@
             this.cmbDraversH1.DesignTimeLayout = cmbDraversH1_DesignTimeLayout;
             this.cmbDraversH1.DisplayMember = "Name";
             this.cmbDraversH1.Image = ((System.Drawing.Image)(resources.GetObject("cmbDraversH1.Image")));
-            this.cmbDraversH1.Location = new System.Drawing.Point(1183, 199);
+            this.cmbDraversH1.Location = new System.Drawing.Point(1177, 199);
             this.cmbDraversH1.Name = "cmbDraversH1";
             this.cmbDraversH1.SelectedIndex = -1;
             this.cmbDraversH1.SelectedItem = null;
@@ -2043,7 +2043,7 @@
             this.txtNumberTranferForm.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtNumberTranferForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtNumberTranferForm.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.txtNumberTranferForm.Location = new System.Drawing.Point(1259, 31);
+            this.txtNumberTranferForm.Location = new System.Drawing.Point(1253, 31);
             this.txtNumberTranferForm.Name = "txtNumberTranferForm";
             this.txtNumberTranferForm.ReadOnly = true;
             this.txtNumberTranferForm.Size = new System.Drawing.Size(146, 32);
@@ -2058,7 +2058,7 @@
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label22.Location = new System.Drawing.Point(928, 207);
+            this.label22.Location = new System.Drawing.Point(922, 207);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(45, 18);
             this.label22.TabIndex = 97;
@@ -2070,7 +2070,7 @@
             this.label51.AutoSize = true;
             this.label51.BackColor = System.Drawing.Color.Transparent;
             this.label51.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label51.Location = new System.Drawing.Point(576, 300);
+            this.label51.Location = new System.Drawing.Point(570, 300);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(57, 18);
             this.label51.TabIndex = 97;
@@ -2082,7 +2082,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label6.Location = new System.Drawing.Point(928, 175);
+            this.label6.Location = new System.Drawing.Point(922, 175);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 18);
             this.label6.TabIndex = 97;
@@ -2094,7 +2094,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(928, 143);
+            this.label5.Location = new System.Drawing.Point(922, 143);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 18);
             this.label5.TabIndex = 97;
@@ -2106,7 +2106,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(928, 111);
+            this.label4.Location = new System.Drawing.Point(922, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 18);
             this.label4.TabIndex = 97;
@@ -2118,7 +2118,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(928, 79);
+            this.label3.Location = new System.Drawing.Point(922, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 18);
             this.label3.TabIndex = 97;
@@ -2130,7 +2130,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(928, 47);
+            this.label2.Location = new System.Drawing.Point(922, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 18);
             this.label2.TabIndex = 97;
@@ -2142,7 +2142,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label13.Location = new System.Drawing.Point(1405, 122);
+            this.label13.Location = new System.Drawing.Point(1399, 122);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 18);
             this.label13.TabIndex = 97;
@@ -2154,7 +2154,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(1405, 175);
+            this.label12.Location = new System.Drawing.Point(1399, 175);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(66, 18);
             this.label12.TabIndex = 97;
@@ -2166,7 +2166,7 @@
             this.label32.AutoSize = true;
             this.label32.BackColor = System.Drawing.Color.Transparent;
             this.label32.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label32.Location = new System.Drawing.Point(1405, 235);
+            this.label32.Location = new System.Drawing.Point(1399, 235);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(66, 18);
             this.label32.TabIndex = 97;
@@ -2178,7 +2178,7 @@
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label20.Location = new System.Drawing.Point(1405, 38);
+            this.label20.Location = new System.Drawing.Point(1399, 38);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(69, 18);
             this.label20.TabIndex = 97;
@@ -2190,7 +2190,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label18.Location = new System.Drawing.Point(1405, 204);
+            this.label18.Location = new System.Drawing.Point(1399, 204);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(63, 18);
             this.label18.TabIndex = 97;
@@ -2202,7 +2202,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(1405, 72);
+            this.label1.Location = new System.Drawing.Point(1399, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 18);
             this.label1.TabIndex = 97;
@@ -2213,7 +2213,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1658, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(1646, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(227, 391);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2230,20 +2230,18 @@
             this.uiTabPage2.Controls.Add(this.panelLanding);
             this.uiTabPage2.Controls.Add(this.uiGroupBox4);
             this.uiTabPage2.Controls.Add(this.uiGroupBox5);
-            this.uiTabPage2.Icon = ((System.Drawing.Icon)(resources.GetObject("uiTabPage2.Icon")));
-            this.uiTabPage2.Image = ((System.Drawing.Image)(resources.GetObject("uiTabPage2.Image")));
             this.uiTabPage2.Key = "ComersB";
             this.uiTabPage2.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage2.Name = "uiTabPage2";
             this.uiTabPage2.Padding = new System.Windows.Forms.Padding(5);
             this.uiTabPage2.PanelFormatStyle.BackColor = System.Drawing.Color.Transparent;
-            this.uiTabPage2.Size = new System.Drawing.Size(1885, 391);
+            this.uiTabPage2.Size = new System.Drawing.Size(1873, 391);
             this.uiTabPage2.StateStyles.DisabledFormatStyle.BackColor = System.Drawing.Color.White;
             this.uiTabPage2.StateStyles.FormatStyle.BackColor = System.Drawing.Color.White;
             this.uiTabPage2.StateStyles.HotFormatStyle.BackColor = System.Drawing.Color.White;
             this.uiTabPage2.StateStyles.PressedFormatStyle.BackColor = System.Drawing.Color.White;
             this.uiTabPage2.TabStop = true;
-            this.uiTabPage2.Text = "ثبت بارنامه";
+            this.uiTabPage2.Text = "بارنامه";
             // 
             // uiGroupBox6
             // 

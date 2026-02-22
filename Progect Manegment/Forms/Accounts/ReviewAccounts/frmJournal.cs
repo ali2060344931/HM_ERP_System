@@ -24,7 +24,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         public int ListId = 0;
         int UserId_ = PublicClass.UserId;
         public string FormName = "ComersH";
-
+        public int TransactionCode = 0;
         public frmJournal()
         {
             InitializeComponent();
@@ -36,18 +36,19 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             {
                 txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
                 txtDateEnd.Text = PersianDate.DateEnd();
-
-
+                if(TransactionCode!=0)
+                {
+                    pnlViewItemHeder.Visible = false;
+                }
                 string layoutPathComersH = Path.Combine(Application.StartupPath, "DefaultGridLayoutTransaction.xml");
 
                 using (var fs = new FileStream(layoutPathComersH, FileMode.OpenOrCreate, FileAccess.Read))
                 {
                     dgvList.LoadLayoutFile(fs);
                 }
-
-
                 UpdateData();
 
+                dgvList.RootTable.Columns["Delete"].Visible = false;
             }
             catch (Exception er)
             {
@@ -55,6 +56,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             }
 
         }
+
         public void UpdateData()
         {
             CallUpdateTata();
@@ -63,8 +65,9 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         {
             try
             {
+
                 List<int> requiredIds = new List<int> { 1, 2, 3, 4, 5 };
-                PublicClass.FilldgvListTransaction_Journal(dgvList, txtDateStart.Text, txtDateEnd.Text, requiredIds);
+                PublicClass.FilldgvListTransaction_Journal(dgvList, txtDateStart.Text, txtDateEnd.Text, requiredIds, TransactionCode);
                 dgvList.Dock = DockStyle.Fill;
                 this.Text = "دفتـــــر روزنامه";
             }
@@ -88,13 +91,17 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         private void buttonX01_Click(object sender, EventArgs e)
         {
             frmReport f = new frmReport();
-            //f.grid = dgvListB;
-            //f.DateReport = ResourceCode.T159 + txtDateStart.Text + ResourceCode.T160 + txtDateEnd.Text;
-            //f.TitelString = ResourceCode.TRcomerB;
-            //f.Description = TxtDescription.Text != "" ? TxtDescription.Text : " ";
-            //f.ReporFileName = "HM_ERP_System.ReportViewer.Report_ComersB.rdlc";
             f.ShowDialog();
 
+        }
+
+        private void frmJournal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (PublicClass.CloseForm(false))
+                    this.Close();
+            }
         }
     }
 }

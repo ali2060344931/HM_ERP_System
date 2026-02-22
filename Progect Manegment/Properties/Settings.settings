@@ -42,5 +42,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=.\MSSQLSERVER2025;Initial Catalog=HM_ERP_System1;Integrated Security=True;TrustServerCertificate=True</Value>
     </Setting>
+    <Setting Name="ShowAccountingDocumentRegistration" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

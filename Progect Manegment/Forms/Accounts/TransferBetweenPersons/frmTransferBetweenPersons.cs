@@ -684,11 +684,11 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                             var list = db.Transactions.Where(c => c.TransactionCode==q).ToList();
                             if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                foreach (var item in list)
-                                {
-                                    item.Status=true;
-                                }
-                                //db.Transactions.RemoveRange(list);
+                                //foreach (var item in list)
+                                //{
+                                //    item.Status=true;
+                                //}
+                                db.Transactions.RemoveRange(list);
                                 PublicClass.WindowAlart("2");
                                 db.SaveChangesSafe();
                                 FilldgvList();

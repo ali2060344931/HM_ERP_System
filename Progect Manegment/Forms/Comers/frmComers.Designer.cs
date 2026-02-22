@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout cmbResiver2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbResiver1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSender2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -62,7 +63,6 @@
             Janus.Windows.GridEX.GridEXLayout cmbCostAccountB_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbPaymentToOthers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
@@ -395,6 +395,8 @@
             this.separatorCommand3 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.btnAddDocCB = new Janus.Windows.Ribbon.DropDownCommand();
             this.btnAccountingDocumentRegistration = new Janus.Windows.Ribbon.DropDownCommand();
+            this.dropDownCommand7 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.chkShowAccountingDocumentRegistration = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -4793,6 +4795,7 @@
             this.pnlAddItemFoter.Controls.Add(this.buttonX1);
             this.pnlAddItemFoter.Controls.Add(this.btnNew);
             this.pnlAddItemFoter.Controls.Add(this.chkDocumentBanck);
+            this.pnlAddItemFoter.Controls.Add(this.chkShowAccountingDocumentRegistration);
             this.pnlAddItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 393);
             this.pnlAddItemFoter.Name = "pnlAddItemFoter";
@@ -4805,7 +4808,7 @@
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSave.Location = new System.Drawing.Point(587, 0);
+            this.btnSave.Location = new System.Drawing.Point(754, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -4873,7 +4876,7 @@
             this.btnCalculations.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnCalculations.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.btnCalculations.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnCalculations.Location = new System.Drawing.Point(375, 0);
+            this.btnCalculations.Location = new System.Drawing.Point(542, 0);
             this.btnCalculations.Name = "btnCalculations";
             this.btnCalculations.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnCalculations.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F3);
@@ -4894,7 +4897,7 @@
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX1.Location = new System.Drawing.Point(179, 0);
+            this.buttonX1.Location = new System.Drawing.Point(346, 0);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.buttonX1.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlF4);
@@ -4914,7 +4917,7 @@
             this.btnNew.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnNew.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnNew.Location = new System.Drawing.Point(104, 0);
+            this.btnNew.Location = new System.Drawing.Point(271, 0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Padding = new System.Windows.Forms.Padding(5);
             this.btnNew.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -4934,7 +4937,7 @@
             // 
             this.chkDocumentBanck.AutoSize = true;
             this.chkDocumentBanck.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkDocumentBanck.Location = new System.Drawing.Point(0, 0);
+            this.chkDocumentBanck.Location = new System.Drawing.Point(167, 0);
             this.chkDocumentBanck.Name = "chkDocumentBanck";
             this.chkDocumentBanck.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
             this.chkDocumentBanck.Size = new System.Drawing.Size(104, 28);
@@ -5533,7 +5536,8 @@
             this.btnDeleteCB,
             this.separatorCommand3,
             this.btnAddDocCB,
-            this.btnAccountingDocumentRegistration});
+            this.btnAccountingDocumentRegistration,
+            this.dropDownCommand7});
             this.cms_cmsDgvB.Name = "cms_cmsDgvB";
             this.cms_cmsDgvB.CommandClick += new Janus.Windows.Ribbon.CommandEventHandler(this.cms_cmsDgvB_CommandClick);
             // 
@@ -5564,9 +5568,32 @@
             // 
             // btnAccountingDocumentRegistration
             // 
+            this.btnAccountingDocumentRegistration.Image = ((System.Drawing.Image)(resources.GetObject("btnAccountingDocumentRegistration.Image")));
             this.btnAccountingDocumentRegistration.Key = "AccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Name = "btnAccountingDocumentRegistration";
             this.btnAccountingDocumentRegistration.Text = "ثبت سند حسابداری";
+            // 
+            // dropDownCommand7
+            // 
+            this.dropDownCommand7.Image = ((System.Drawing.Image)(resources.GetObject("dropDownCommand7.Image")));
+            this.dropDownCommand7.Key = "ShowAccountingDocumentRegistration";
+            this.dropDownCommand7.Name = "dropDownCommand7";
+            this.dropDownCommand7.Text = "نمایش سند حسابداری";
+            // 
+            // chkShowAccountingDocumentRegistration
+            // 
+            this.chkShowAccountingDocumentRegistration.AutoSize = true;
+            this.chkShowAccountingDocumentRegistration.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkShowAccountingDocumentRegistration.Location = new System.Drawing.Point(0, 0);
+            this.chkShowAccountingDocumentRegistration.Name = "chkShowAccountingDocumentRegistration";
+            this.chkShowAccountingDocumentRegistration.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.chkShowAccountingDocumentRegistration.Size = new System.Drawing.Size(167, 28);
+            this.chkShowAccountingDocumentRegistration.TabIndex = 17;
+            this.chkShowAccountingDocumentRegistration.Text = "نمایش سند حسابداری";
+            this.toolTip1.SetToolTip(this.chkShowAccountingDocumentRegistration, "نمایش اسناد حسابداری پس ثبت");
+            this.chkShowAccountingDocumentRegistration.UseVisualStyleBackColor = true;
+            this.chkShowAccountingDocumentRegistration.Visible = false;
+            this.chkShowAccountingDocumentRegistration.CheckedChanged += new System.EventHandler(this.chkShowAccountingDocumentRegistration_CheckedChanged);
             // 
             // frmComers
             // 
@@ -6033,5 +6060,7 @@
         private DevComponents.Editors.DoubleInput txtCA;
         private System.Windows.Forms.Label label124;
         public DevComponents.DotNetBar.ButtonX btnAccountingDocumentRegistrationGroup;
+        private Janus.Windows.Ribbon.DropDownCommand dropDownCommand7;
+        private System.Windows.Forms.CheckBox chkShowAccountingDocumentRegistration;
     }
 }

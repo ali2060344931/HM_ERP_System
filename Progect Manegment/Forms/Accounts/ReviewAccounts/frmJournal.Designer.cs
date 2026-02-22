@@ -69,7 +69,7 @@
             this.dgvList.RecordNavigator = true;
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvList.Size = new System.Drawing.Size(933, 600);
+            this.dgvList.Size = new System.Drawing.Size(1540, 440);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 92;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -93,14 +93,14 @@
             this.pnlViewItemHeder.Location = new System.Drawing.Point(0, 0);
             this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlViewItemHeder.Name = "pnlViewItemHeder";
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(933, 44);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(1540, 44);
             this.pnlViewItemHeder.TabIndex = 93;
             // 
             // txtDateEnd
             // 
             this.txtDateEnd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateEnd.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateEnd.Location = new System.Drawing.Point(272, 7);
+            this.txtDateEnd.Location = new System.Drawing.Point(576, 7);
             this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDateEnd.Name = "txtDateEnd";
             this.txtDateEnd.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -114,7 +114,7 @@
             this.btnShowListItems.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnShowListItems.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnShowListItems.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowListItems.Location = new System.Drawing.Point(167, 4);
+            this.btnShowListItems.Location = new System.Drawing.Point(471, 4);
             this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnShowListItems.Name = "btnShowListItems";
             this.btnShowListItems.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -131,7 +131,7 @@
             // 
             this.txtDateStart.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDateStart.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDateStart.Location = new System.Drawing.Point(507, 7);
+            this.txtDateStart.Location = new System.Drawing.Point(811, 7);
             this.txtDateStart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDateStart.Name = "txtDateStart";
             this.txtDateStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -147,7 +147,7 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(659, 10);
+            this.labelX1.Location = new System.Drawing.Point(963, 10);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(105, 23);
@@ -165,7 +165,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(423, 10);
+            this.labelX2.Location = new System.Drawing.Point(727, 10);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(65, 23);
@@ -183,10 +183,10 @@
             this.panel1.Controls.Add(this.buttonX1);
             this.panel1.Controls.Add(this.btnShowGridExHideColumns);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 644);
+            this.panel1.Location = new System.Drawing.Point(0, 484);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(933, 48);
+            this.panel1.Size = new System.Drawing.Size(1540, 48);
             this.panel1.TabIndex = 94;
             // 
             // TxtDescription
@@ -198,7 +198,7 @@
             this.TxtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtDescription.MaxLength = 36000000;
             this.TxtDescription.Name = "TxtDescription";
-            this.TxtDescription.Size = new System.Drawing.Size(670, 28);
+            this.TxtDescription.Size = new System.Drawing.Size(1277, 28);
             this.TxtDescription.TabIndex = 98;
             this.TxtDescription.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
             this.TxtDescription.Visible = false;
@@ -209,7 +209,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(684, 9);
+            this.label12.Location = new System.Drawing.Point(1291, 9);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(91, 18);
@@ -224,7 +224,7 @@
             this.buttonX01.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX01.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonX01.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX01.Location = new System.Drawing.Point(812, 0);
+            this.buttonX01.Location = new System.Drawing.Point(1419, 0);
             this.buttonX01.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonX01.Name = "buttonX01";
             this.buttonX01.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -245,7 +245,7 @@
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.buttonX1.Location = new System.Drawing.Point(852, 0);
+            this.buttonX1.Location = new System.Drawing.Point(1459, 0);
             this.buttonX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -266,7 +266,7 @@
             this.btnShowGridExHideColumns.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnShowGridExHideColumns.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnShowGridExHideColumns.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(892, 0);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(1499, 0);
             this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnShowGridExHideColumns.Name = "btnShowGridExHideColumns";
             this.btnShowGridExHideColumns.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -284,14 +284,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 692);
+            this.ClientSize = new System.Drawing.Size(1540, 532);
             this.Controls.Add(this.dgvList);
             this.Controls.Add(this.pnlViewItemHeder);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.Name = "frmJournal";
             this.Text = "دفتر روزنامه";
             this.Load += new System.EventHandler(this.frmJournal_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmJournal_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.pnlViewItemHeder.ResumeLayout(false);
             this.pnlViewItemHeder.PerformLayout();

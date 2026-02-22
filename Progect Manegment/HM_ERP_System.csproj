@@ -1298,6 +1298,7 @@
     <EmbeddedResource Include="ResourceCode.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceCode.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>

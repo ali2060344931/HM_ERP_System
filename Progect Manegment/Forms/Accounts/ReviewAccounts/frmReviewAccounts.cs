@@ -593,10 +593,11 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 {
                     int TransactionCode=Convert.ToInt32(txtTransactionCode.Text);
                     var q=db.Transactions.Where(c=>c.TransactionCode== TransactionCode).ToList();
-                    foreach (var item in q)
-                    {
-                        item.Status = true;
-                    }
+                    //foreach (var item in q)
+                    //{
+                    //    item.Status = true;
+                    //}
+                    db.Transactions.RemoveRange(q);
                     db.SaveChangesSafe();
                     FilldgvListTransaction(TransactionCode, lblDate.Text,1);
                     PublicClass.WindowAlart("2");

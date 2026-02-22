@@ -196,7 +196,7 @@ namespace MyClass
 
         }
         //_______________________________________________________
-        
+
         public static bool ChekUrlAdres(string UrlAdres)
         {
             try
@@ -1405,8 +1405,8 @@ namespace MyClass
                     // تعریف مجموعه شناسه های تراکنش مورد نظر (برای خوانایی بهتر)
                     var targetTransactionTypeIds = new List<int> { 4, 5 };
                     //var targetTransactionTypeIds = transactionTypeIds;
-                    
-                    
+
+
                     var q = from tr in db.Transactions
 
                             join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
@@ -1479,17 +1479,14 @@ namespace MyClass
         /// <param name="DateEnd"></param>
         /// <param name="transactionTypeIds"></param>
         /// <returns></returns>
-        public static GridExEx.GridExEx FilldgvListTransaction_Journal(GridExEx.GridExEx gx, string DateStart, string DateEnd, IEnumerable<int> transactionTypeIds)
+        public static GridExEx.GridExEx FilldgvListTransaction_Journal(GridExEx.GridExEx gx, string DateStart, string DateEnd, IEnumerable<int> transactionTypeIds, int TransactionCode = 0)
         {
             try
             {
                 using (var db = new DBcontextModel())
                 {
-                    // تعریف مجموعه شناسه های تراکنش مورد نظر (برای خوانایی بهتر)
-                    //var targetTransactionTypeIds = new List<int> { 4, 5 };
                     var targetTransactionTypeIds = transactionTypeIds;
-                    
-                    
+
                     var q = from tr in db.Transactions
 
                             join sp in db.SpecificAccounts on tr.SpecificAccountId equals sp.Id
@@ -1514,10 +1511,16 @@ namespace MyClass
                             from CuUser_ in CuUserGroup.DefaultIfEmpty()
 
 
-                            where !tr.Status && transactionTypeIds.Contains(tr.TransactionTypeId)
-                            && string.Compare(tr.TransactionDate, DateStart) >= 0
-                            && string.Compare(tr.TransactionDate, DateEnd) <= 0
-                            && targetTransactionTypeIds.Contains(tr.TransactionTypeId)
+                                //where !tr.Status && transactionTypeIds.Contains(tr.TransactionTypeId)
+                                //&& string.Compare(tr.TransactionDate, DateStart) >= 0
+                                //&& string.Compare(tr.TransactionDate, DateEnd) <= 0
+                                //&& targetTransactionTypeIds.Contains(tr.TransactionTypeId)
+                            where !tr.Status
+      && transactionTypeIds.Contains(tr.TransactionTypeId)
+      && string.Compare(tr.TransactionDate, DateStart) >= 0
+      && string.Compare(tr.TransactionDate, DateEnd) <= 0
+      && targetTransactionTypeIds.Contains(tr.TransactionTypeId)
+      && (TransactionCode == 0 || tr.TransactionCode == TransactionCode)
 
                             orderby tr.Series ascending, tr.Id ascending
 
@@ -3996,15 +3999,21 @@ namespace MyClass
         /// بستن فرم ها
         /// </summary>
         /// <returns></returns>
-        public static bool CloseForm()
+        public static bool CloseForm(bool ShowMessageBox=true)
         {
             try
             {
-                DialogResult result = MessageBox.Show(ResourceCode.T100, "هشدار", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
-                if (result == DialogResult.Yes)
-                    return true;
+                if (ShowMessageBox)
+                {
+                    DialogResult result = MessageBox.Show(ResourceCode.T100, "هشدار", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
+                    if (result == DialogResult.Yes)
+                        return true;
+                    else
+                        return false;
+                }
                 else
-                    return false;
+                    return true;
+
 
             }
             catch (Exception er)
@@ -4068,87 +4077,18 @@ namespace MyClass
                         {
                             // شرح سند مربوط به صاحب کامیون
                             Description = CreatAccountDescriptions.CostAccounDes(ComerBId);
-                            /*
-                            if (qcomB.CA < 0)//AXسند هرینه
+                            if (qcomB.CA > 0 && qcomBV != 0)//AV سند درآمد
                             {
-                                
-                                if (qcomB.TypeCalFareId == 2)
-                                {
-                                    if (qcomB.FreightRate != qcomB.PaidFreightRate)
-                                    {
-                                        if (qcomB.AmountPaidTruckDriver != 0)
-                                        {
-                                            if (qcomB.TypeCalFareId == 2)//مقصد یا کمیسیون
-                                                qcomBV = qcomB.Ac - qcomB.BO;
-                                            else//لیست یا کرایه حمل
-                                                qcomBV = Math.Abs(qcomB.BV) - qcomB.AmountPaidTruckDriver;
-                                        }
 
-                                        
-                                        if (AmountPaidTruckDriver_ != 0 && (AmountPaidTruckDriver_ - Math.Abs(qcomB.AV)) <= 0)
-                                        {
-                                            Series++;
-                                            customertId = db.Customers.Where(c => c.SecretCode == 4).First().Id;
-                                            (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(80801, customertId);
-                                            PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, Description, "", Series, true);
+                                Series++;
+                                customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
+                                (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(10301, customertId);
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomB.CA, qcomB.CA, 0, ComerBId, Description, "", Series, true);
 
-                                            Series++;
-                                            customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
-                                            (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(30101, customertId);
-                                            PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 2, SpecificAccountId, DetailedAccountId, qcomBV, 0, qcomBV, ComerBId, Description, "", Series, true);
-                                        }
-                                        else
-                                        {
-                                            Series++;
-                                            customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
-                                            (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(10301, customertId);
-                                            PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomBV, qcomBV, 0, ComerBId, Description, "", Series, true);
-
-                                            Series++;
-                                            customertId = db.Customers.Where(c => c.SecretCode == 3).First().Id;
-                                            (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(60201, customertId);
-                                            PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomBV, 0, qcomBV, ComerBId, Description, "", Series, true);
-                                        }
-                                    }
-                                }
-                                
-                                //else if (qcomB.TypeCalFareId == 1)
-                                {
-                                    //qcomBV = Math.Abs(qcomB.BV) - qcomB.AmountPaidTruckDriver;
-
-                                    Series++;
-                                    customertId = db.Customers.Where(c => c.SecretCode == 4).First().Id;
-                                    (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(80801, customertId);
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 2, SpecificAccountId, DetailedAccountId, qcomB.CA, qcomB.CA, 0, ComerBId, Description, "", Series, true);
-
-                                    //*****************
-                                    Series++;
-                                    customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
-                                    (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(30101, customertId);
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 2, SpecificAccountId, DetailedAccountId, qcomB.CA, 0, qcomB.CA, ComerBId, Description, "", Series, true);
-                                }
-                            }
-                            */
-                            if (qcomB.CA > 0 && qcomBV!=0)//AV سند درآمد
-                            {
-                                //if (qcomB.PaymentToOthers1 != qcomBV)
-                                {
-                                    //if (qcomB.AmountPaidTruckDriver != 0 || qcomB.PaymentToOthers1 != 0)
-                                    //{
-                                    //    qcomBV = qcomB.Ac - qcomB.BO;
-                                    //}
-                                    //qcomBV = qcomBV - qcomB.BalanceAccountDraver;
-                                    
-                                    Series++;
-                                    customertId = db.Customers.Where(c => c.Id == db.ComersBs.Where(x => x.Id == ComerBId).FirstOrDefault().CostAccountId).FirstOrDefault().Id;
-                                    (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(10301, customertId);
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomB.CA, qcomB.CA, 0, ComerBId, Description, "", Series, true);
-
-                                    Series++;
-                                    customertId = db.Customers.Where(c => c.SecretCode == 3).First().Id;
-                                    (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(60201, customertId);
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomB.CA, 0, qcomB.CA, ComerBId, Description, "", Series, true);
-                                }
+                                Series++;
+                                customertId = db.Customers.Where(c => c.SecretCode == 3).First().Id;
+                                (SpecificAccountId, DetailedAccountId) = CreatSpecificDetailedAccount(60201, customertId);
+                                PublicClass.AccountingDocumentRegistration(db, ListId, TransactionCode, TransactionDate, 1, SpecificAccountId, DetailedAccountId, qcomB.CA, 0, qcomB.CA, ComerBId, Description, "", Series, true);
                             }
                         }
 
@@ -4397,11 +4337,11 @@ namespace MyClass
         /// <param name="SpecificAccountCode">کد حساب معین</param>
         /// <param name="customertId">کد مشتری</param>
         /// <returns>کد تفیصلی، کد معین</returns>
-        static (int,int) CreatSpecificDetailedAccount(int SpecificAccountCode, int customertId)
+        static (int, int) CreatSpecificDetailedAccount(int SpecificAccountCode, int customertId)
         {
             using (var db = new DBcontextModel())
             {
-               var  SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == SpecificAccountCode).First().Id;
+                var SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == SpecificAccountCode).First().Id;
                 var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
                 int DetailedAccountId = 0;
                 if (serch1.Count() == 0)
@@ -4409,7 +4349,7 @@ namespace MyClass
                 else
                     DetailedAccountId = serch1.First().Id;
 
-                return (SpecificAccountId,DetailedAccountId);
+                return (SpecificAccountId, DetailedAccountId);
             }
         }
 

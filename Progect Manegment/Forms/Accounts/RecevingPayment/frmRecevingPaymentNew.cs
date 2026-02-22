@@ -1,9 +1,21 @@
 ﻿using HM_ERP_System.Class_General;
+using HM_ERP_System.Entity.Accounts.Cheque;
+using HM_ERP_System.Entity.Accounts.DetailedAccount;
+using HM_ERP_System.Entity.Accounts.TransactionType;
 using HM_ERP_System.Entity.FinancialYear;
 using HM_ERP_System.Entity.TypeDocument;
+using HM_ERP_System.Forms.Accounts.Banck;
+using HM_ERP_System.Forms.Accounts.ContraAccounts;
 using HM_ERP_System.Forms.Accounts.DetailedAccount;
+using HM_ERP_System.Forms.Accounts.ReviewAccounts;
 using HM_ERP_System.Forms.Accounts.SpecificAccount;
 using HM_ERP_System.Forms.Main_Form;
+
+using Janus.Windows.GridEX;
+using Janus.Windows.UI.Dock;
+using Janus.Windows.UI.Tab;
+
+using Microsoft.Office.Interop.Excel;
 
 using MyClass;
 
@@ -18,17 +30,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
-using System.Windows.Forms;
-using Janus.Windows.GridEX;
-using HM_ERP_System.Entity.Accounts.Cheque;
-using HM_ERP_System.Entity.Accounts.TransactionType;
-using HM_ERP_System.Entity.Accounts.DetailedAccount;
-using Janus.Windows.UI.Dock;
-using Janus.Windows.UI.Tab;
-using Microsoft.Office.Interop.Excel;
-using HM_ERP_System.Forms.Accounts.ContraAccounts;
 using System.Windows.Controls;
-using HM_ERP_System.Forms.Accounts.Banck;
+using System.Windows.Forms;
+
 using DataTable = System.Data.DataTable;
 
 namespace HM_ERP_System.Forms.Accounts.RecevingPayment
@@ -357,6 +361,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             CheangRDB_ = "rdbIncomr";
             if (rdbIncomr.Checked) CheangRDB(CheangRDB_);
+            lblCaption.Text= rdbIncomr.Text;
         }
 
         void CheangRDB(string Code)
@@ -1340,6 +1345,8 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             CheangRDB_ = "rdbExpense";
             if (rdbExpense.Checked) CheangRDB(CheangRDB_);
+            lblCaption.Text = rdbExpense.Text;
+
         }
 
         string TabKey = "";
@@ -1905,11 +1912,12 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                             string Item = "شماره سند: " + q;
                             if (MessageBox.Show(ResourceCode.T003 + '\n' + Item, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign) == DialogResult.Yes)
                             {
-                                foreach (var item in list)
-                                {
-                                    item.Status = true;
-                                }
-                                //db.Transactions.RemoveRange(list);
+                                //foreach (var item in list)
+                                //{
+                                //    item.Status = true;
+                                //}
+
+                                db.Transactions.RemoveRange(list);
                                 PublicClass.WindowAlart("2");
                                 db.SaveChangesSafe();
                                 FilldgvList();
@@ -1929,7 +1937,10 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     case "DocViow":
                         using (var db = new DBcontextModel())
                         {
-
+                            var TransactionCode = db.Transactions.Where(c=>c.Id == ListId).First().TransactionCode;
+                            frmJournal f=new frmJournal();
+                            f.TransactionCode = TransactionCode;
+                            f.ShowDialog();
                         }
                         break;
                 }

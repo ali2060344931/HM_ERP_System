@@ -473,10 +473,13 @@ namespace HM_ERP_System.Forms.Accounts.Transaction
 
                         if (MessageBox.Show(ResourceCode.T210 + '\n' + Item + '\n' +"تعداد سند: "+q.Count(), ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign) == DialogResult.Yes)
                         {
-                            foreach (var item in q.ToList())
-                            {
-                                item.Status = true;
-                            }
+                            //foreach (var item in q.ToList())
+                            //{
+                            //    item.Status = true;
+                            //}
+
+                            db.Transactions.RemoveRange(q);
+
                             db.SaveChangesSafe();
                             PublicClass.WindowAlart("2");
                             FilldgvList();

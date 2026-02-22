@@ -8,6 +8,7 @@ using HM_ERP_System.Entity.Comers;
 using HM_ERP_System.Entity.Draver;
 using HM_ERP_System.Entity.Gender;
 using HM_ERP_System.Forms.Accounts.DetailedAccount;
+using HM_ERP_System.Forms.Accounts.ReviewAccounts;
 using HM_ERP_System.Forms.AppointmentScheduling;
 using HM_ERP_System.Forms.BillLadingRequest;
 using HM_ERP_System.Forms.Ciltys;
@@ -97,7 +98,7 @@ namespace HM_ERP_System.Forms.Comers
         double CA = 0;
         double CB = 0;
         double CC = 0;
-        
+
         bool StatusDeliveryGoods_ = false;
 
 
@@ -120,7 +121,8 @@ namespace HM_ERP_System.Forms.Comers
             txtDateEnd.Text = PersianDate.DateEnd();
 
             chkDocumentBanck.Checked = Properties.Settings.Default.SetDocumentBan;
-            //cmbListSimilarComerB.Size = new Size(126, 30);
+            chkShowAccountingDocumentRegistration.Checked = Properties.Settings.Default.ShowAccountingDocumentRegistration;
+
             btnEditCB.Visible = true;
             btnDeleteCB.Visible = true;
 
@@ -207,6 +209,7 @@ namespace HM_ERP_System.Forms.Comers
             checkBox1.Visible = false;
             checkBox2.Visible = false;
             checkBox3.Visible = false;
+            chkShowAccountingDocumentRegistration.Visible = false;
             CreatRemiaanceSeryal();
             FillcmbTypeDocument();
             FillcmbCity1();
@@ -391,6 +394,7 @@ namespace HM_ERP_System.Forms.Comers
             checkBox1.Visible = true;
             checkBox2.Visible = true;
             checkBox3.Visible = true;
+            chkShowAccountingDocumentRegistration.Visible = true;
 
             FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);//لیست اسناد
             FillcmbCarPlatB();
@@ -2058,8 +2062,8 @@ namespace HM_ERP_System.Forms.Comers
                             join sh in db.Customers
                             on cmh.ShiperId equals sh.Id into shGroup
                             from shLeft in shGroup.DefaultIfEmpty()
-                            
-                            //نام بانک بارنامه نویس
+
+                                //نام بانک بارنامه نویس
                             join bash_ in db.Bancks
                             on shLeft.BanckId equals bash_.Id into bank9Group
                             from bash in bank9Group.DefaultIfEmpty()
@@ -2644,9 +2648,9 @@ namespace HM_ERP_System.Forms.Comers
 
                     var result = list.Select(x => new
                     {
-                        
+
                         //*****
-                        
+
                         x.ShiperCodMeli,//
                         x.ShiperSeryalShaba,//
                         x.ShiperDabitCardNumber,//
@@ -2696,7 +2700,7 @@ namespace HM_ERP_System.Forms.Comers
                         x.Daraver2SeryalGovahiname,//     
                         x.Daraver1Tel,
 
-                        
+
                         x.Seryal,//0
                         x.PostalCode1,//0
                         x.PostalCode2,//0
@@ -2991,10 +2995,10 @@ namespace HM_ERP_System.Forms.Comers
                     //chkIncomeDocument
 
                     var com = new Repository<ComersB>(db);
-                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, IncomeDocumentCode = IncomeDocumentCode, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP,BY=BY,BZ=BZ,CA=CA,CB=CB,CC=CC, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
+                    int newId = com.SaveOrUpdateRefId(new ComersB { Id = ListId, ComersHId = ComersHId_, DateB = txtDateB.Text, SeryalB = Convert.ToInt32(txtSeryalB.Text), SeryalH = SeryalH.RemiaanceSeryal, FreightRate = txtFreightRate.Value, CargoInsurance = txtCargoInsurance.Value, LoadinCast = txtLoadinCast.Value, Incentive = txtIncentive.Value, StopCharge = txtStopCharge.Value, Deduction = txtDeduction.Value, BalanceAccount = txtBalanceAccount.Value, PaidFreightRate = txtPaidFreightRate.Value, InsurancCost = txtInsurancCost.Value, /*PaymentMethodId = PaymentMethodId_,*/ PaidIncentive = txtPaidIncentive.Value, PaidStopCharge = txtPaidStopCharge.Value, PaymentToOthers1 = txtPaymentToOthers1.Value, PaymentToOthersId = PaymentToOthersId_, PaymentToOthers2 = txtPaymentToOthers2.Value, DriverDeduction = txtDriverDeduction.Value, BillLadingMethodId = BillLadingMethodId, BillLadingCastId = BillLadingCastId_, BaseFreight = txtBaseFreight.Value, BillLadingAmount = txtBillLadingAmount.Value, InsuranceAmount = txtInsuranceAmount.Value, BillLadingWriterPercent = txtBillLadingWriterPercent.Value, AmountPaidTruckDriver = txtAmountPaidTruckDriver.Value, BalanceAccountDraver = txtBalanceAccountِDraver.Value, StatusDeliveryGoods = StatusDeliveryGoods_, Description = txtDescriptionB.Text, DaraverId1_ = DaraverIdB1_, DaraverId2_ = DaraverIdB2_, SenderId = SenderB1Id_, ResiverId = ResiverBId_, SenderId2 = SenderB2Id_, ResiverId2 = ResiverB2Id_, CostAccountId = CostAccountIdB_, GoodsAccountId = GoodsAccountIdB_, LoadWeight = txtLoadWeight.Value, LoadWeightCapacityB = txtLoadWeightCapacity.Value, WeightDeliveredGoods = txtWeightDeliveredGoodsMain.Value, MethodCalFareId = MethodCalFareBId_, TypeCalFareId = FareCalcMethod_, DesToOthers = txtDesToOthers.Text, OtherBillLadingCosts = 0, IncomeDocumentCode = IncomeDocumentCode, Ac = AC, AE = AE, BK = BK, AV = AV, AX = AX, AY = AY, AZ = AZ, Bn = BN, BO = BO, BS = BS, BT = BT, BV = BV, BP = BP, BY = BY, BZ = BZ, CA = CA, CB = CB, CC = CC, UserId = PublicClass.UserId, RecordDateTime = System.DateTime.Now }, ListId);
                     PublicClass.WindowAlart("1");
                     //TypeCalcMethodsBId_
-                    
+
                     var q = db.ComersHs.Where(c => c.Id == ComersHId_).First();
                     q.LoadWeightCapacity = txtLoadWeightCapacity.Value;
                     db.SaveChangesSafe();
@@ -3013,8 +3017,23 @@ namespace HM_ERP_System.Forms.Comers
 
                     AccountingDocumentRegistration(newId);//ثبت سند حسابداری
 
+
+                   //if( chkShowAccountingDocumentRegistration.Checked)
+                   // {
+                   //     var q0 = db.Transactions.Any(c => c.ComerBId == newId && c.Status == false);
+                   //     if (q0)
+                   //     {
+                   //         var TransactionCode = db.Transactions.Where(c => c.ComerBId == ListId).First().TransactionCode;
+
+                   //         frmJournal f = new frmJournal();
+                   //         f.TransactionCode = TransactionCode;
+                   //         f.ShowDialog();
+                   //     }
+                   // }
+
+
                     FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
-                    btnSave.Enabled=false;
+                    btnSave.Enabled = false;
                     uiGroupBox6.Enabled = false;
                     uiGroupBox2.Enabled = false;
                     uiGroupBox3.Enabled = false;
@@ -3067,6 +3086,30 @@ namespace HM_ERP_System.Forms.Comers
 
                 if (PublicClass.ComerB_AccountingDocumentRegistration(ComerB_Id))
                     PublicClass.WindowAlart("1");
+
+
+
+              
+
+
+                if (chkShowAccountingDocumentRegistration.Checked)
+                {
+                    using (var db0 = new DBcontextModel())
+                    {
+
+
+                        var q0 = db0.Transactions.Any(c => c.ComerBId == ComerB_Id && c.Status == false);
+                        if (q0)
+                        {
+                            var TransactionCode = db0.Transactions.Where(c => c.ComerBId == ComerB_Id).First().TransactionCode;
+
+                            frmJournal f = new frmJournal();
+                            f.TransactionCode = TransactionCode;
+                            f.ShowDialog();
+                        }
+                    }
+                }
+
 
             }
         }
@@ -3182,7 +3225,7 @@ namespace HM_ERP_System.Forms.Comers
                         _updatableForms.UpdateData();
                     FilldgvListH(dgvListH, txtDateStart.Text, txtDateEnd.Text);
                     FillcmbCarplate();
-                    btnSave.Enabled=false;
+                    btnSave.Enabled = false;
                     uiTabPage1.Enabled = false;
                     CelearItemsH();
                 }
@@ -4701,6 +4744,7 @@ namespace HM_ERP_System.Forms.Comers
         {
             Properties.Settings.Default.SetDocumentBan = chkDocumentBanck.Checked;
             Properties.Settings.Default.Save();
+            //ShowAccountingDocumentRegistration
         }
 
         private void cmbListSimilarComerB_ValueChanged(object sender, EventArgs e)
@@ -4885,10 +4929,13 @@ namespace HM_ERP_System.Forms.Comers
             using (var db = new DBcontextModel())
             {
                 var q = db.Transactions.Where(c => c.ComerBId == ListId).ToList();
-                foreach (var item in q)
-                {
-                    item.Status = true;
-                }
+
+                db.Transactions.RemoveRange(q);
+
+                //foreach (var item in q)
+                //{
+                //    item.Status = true;
+                //}
                 if (db.SaveChangesSafe())
                 {
                     return true;
@@ -5385,6 +5432,26 @@ namespace HM_ERP_System.Forms.Comers
                         PublicClass.AddDocumentToBanck(this.Name + "B", ListId, lblCaption);
                         FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                         break;
+                    case "ShowAccountingDocumentRegistration"://نمایش سند حسابداری
+
+                        using (var db0 = new DBcontextModel())
+                        {
+                            var q0 = db0.Transactions.Any(c => c.ComerBId == ListId && c.Status == false);
+                            if (q0)
+                            {
+                                var TransactionCode = db0.Transactions.Where(c => c.ComerBId == ListId).First().TransactionCode;
+
+                                frmJournal f = new frmJournal();
+                                f.TransactionCode = TransactionCode;
+                                f.ShowDialog();
+                            }
+                            else
+                            {
+                                PublicClass.ErrorMesseg(ResourceCode.T209);
+                            }
+                        }
+                        break;
+
                 }
                 ListId = 0;
             }
@@ -6227,6 +6294,13 @@ namespace HM_ERP_System.Forms.Comers
                 PublicClass.ShowErrorMessage(er);
             }
 
+
+        }
+
+        private void chkShowAccountingDocumentRegistration_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShowAccountingDocumentRegistration = chkShowAccountingDocumentRegistration.Checked;
+            Properties.Settings.Default.Save();
 
         }
     }

@@ -50,7 +50,10 @@ namespace HM_ERP_System.Forms.Accounts.Cheque
         {
 
 
-            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList() * -1);
+            
+            txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
+
+
             //txtDateEnd.Value = DateTime.Now;
             txtDateEnd.Text = PersianDate.DateEnd();
             txtDueDate.Value = DateTime.Now;

@@ -1,4 +1,6 @@
-﻿using HM_ERP_System.Class_General;
+﻿using BehComponents;
+
+using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.Accounts.Cheque;
 using HM_ERP_System.Entity.Accounts.DetailedAccount;
 using HM_ERP_System.Entity.Accounts.TransactionType;
@@ -55,7 +57,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void frmRecevingPaymentNew_Load(object sender, EventArgs e)
         {
-            int width = 400;
+            int width = 430;
             //uiPanel3.Width=panel1.Width;
             panel2.Width = width;
             panel5.Width = width;
@@ -63,6 +65,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             txtTransactionDate.Value = DateTime.Now;
             txtDueDate.Value = DateTime.Now;
             txtTransactionCode.Text = PublicClass.CreatTransactionCode();
+            chkShowAccountingDocumentRegistration.Checked = Properties.Settings.Default.ShowAccountingDocumentRegistration;
 
             txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
             //txtDateEnd.Value = DateTime.Now;
@@ -361,7 +364,7 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
         {
             CheangRDB_ = "rdbIncomr";
             if (rdbIncomr.Checked) CheangRDB(CheangRDB_);
-            lblCaption.Text= rdbIncomr.Text;
+            lblCaption.Text = rdbIncomr.Text;
         }
 
         void CheangRDB(string Code)
@@ -864,11 +867,33 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!PublicClass.SetPeremission("Node3_2_1_1", 1)) return;
-            if (ControlFildes()) return;
+            SaveData();
+                //if (chkShowAccountingDocumentRegistration.Checked)
+                //    ShowAccountingDocumentRegistration(Convert.ToInt32(txtTransactionCode.Text));
+        }
+
+
+        void ShowAccountingDocumentRegistration(int TransactionCode)
+        {
+            frmJournal f = new frmJournal();
+            f.TransactionCode = TransactionCode;
+            f.ShowDialog();
+        }
+
+
+
+        /// <summary>
+        /// ذخیره اطلاعات
+        /// </summary>
+        bool SaveData()
+        {
+            if (!PublicClass.SetPeremission("Node3_2_1_1", 1)) return false;
+
+            if (ControlFildes()) return false;
+
             txtTransactionCode.Text = PublicClass.CreatTransactionCode();
             int Series = 0;
-            if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
+            if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return false;
 
             using (var db = new DBcontextModel())
             {
@@ -883,23 +908,26 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                         {
 
 
-                            (Amount, cuont) = CalcTotalAmount();
-
-                            Series++;
-                            PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountIdF, DetailedAccountsFromId_, Amount, TransactionsCode == 4 ? 0 : Amount, TransactionsCode == 4 ? Amount : 0, 0, txtDescription.Text, "", Series, false);
 
                             //ثبت مبالغ نقدی
                             if (dt_MultipleAccount != null)
                             {
                                 foreach (DataRow r in dt_MultipleAccount.Rows)
                                 {
-                                    Series++;
                                     int SpecificAccountId_ = Convert.ToInt32(r["SpecificAccountId"]);
                                     int DetailedAccountId_ = Convert.ToInt32(r["DetailedAccountId"]);
 
 
                                     Amount = Convert.ToDouble(r["Amount1"]);
 
+
+                                    Series++;
+                                    PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountIdF, DetailedAccountsFromId_, TotalAmountCash1, TransactionsCode == 4 ? 0 : Amount, TransactionsCode == 4 ? Amount : 0, 0, r["Des"].ToString(), "", Series, false);
+
+
+
+
+                                    Series++;
                                     PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId_, DetailedAccountId_, Amount, TransactionsCode == 4 ? Amount : 0, TransactionsCode == 4 ? 0 : Amount, 0, r["Des"].ToString(), r["SeryalNumber"].ToString(), Series, false);
 
                                     //ثبت کارمزد
@@ -936,6 +964,16 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                                     {
                                         foreach (DataRow r in dt_Cheque1.Rows)
                                         {
+                                            Amount = Convert.ToDouble(r["Amount"]);
+
+
+                                            Series++;
+                                            PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountIdF, DetailedAccountsFromId_, TotalAmountCash1, TransactionsCode == 4 ? 0 : Amount, TransactionsCode == 4 ? Amount : 0, 0, r["Description"].ToString(), "", Series, false);
+
+
+
+
+
                                             Series++;
                                             //اسناد دریافتنی در جریان وصول
                                             int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 10302).First().Id;
@@ -948,7 +986,6 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                                                 DetailedAccountId = serch1.First().Id;
                                             //==================
 
-                                            Amount = Convert.ToDouble(r["Amount"]);
                                             //-------ثبت در دیتابیس--------
                                             int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountId, Amount, TransactionsCode == 4 ? Amount : 0, TransactionsCode == 4 ? 0 : Amount, 0, r["Description"].ToString(), Series, false);
 
@@ -981,6 +1018,15 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                                     {
                                         foreach (DataRow r in dt_Cheque1.Rows)
                                         {
+
+                                            Amount = Convert.ToDouble(r["Amount"]);
+
+                                            Series++;
+                                            PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountIdF, DetailedAccountsFromId_, TotalAmountCash1, TransactionsCode == 4 ? 0 : Amount, TransactionsCode == 4 ? Amount : 0, 0, r["Description"].ToString(), "", Series, false);
+
+
+
+
                                             Series++;
                                             //حساب ها و اسناد پرداختنی بلند مدت
                                             int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 40101).First().Id;
@@ -993,7 +1039,6 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                                             else
                                                 DetailedAccountId = serch1.First().Id;
 
-                                            Amount = Convert.ToDouble(r["Amount"]);
 
                                             int TransactionId = PublicClass.AccountingDocumentRegistrationById(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, TransactionsCode, SpecificAccountId, DetailedAccountId, Amount, TransactionsCode == 4 ? Amount : 0, TransactionsCode == 4 ? 0 : Amount, 0, r["Description"].ToString(), Series, false);
 
@@ -1003,18 +1048,6 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                                             else
                                                 ChequeTypeId_ = 2;
                                             PublicClass.AddCheuqeToDatabase(db, ListId, ChequeTypeId_, r["ChequeNumber"].ToString(), Amount, r["DueDate"].ToString(), Convert.ToInt32(r["AccountId"]), DetailedAccountId, r["ChequeOwner"].ToString(), r["Description"].ToString(), TransactionId);
-
-                                            /*
-                                            var ChequeSave = new Repository<Entity.Accounts.Cheque.Cheque>(db);
-                                            int ChequeId = ChequeSave.SaveOrUpdateRefIdByCommit(new Entity.Accounts.Cheque.Cheque { Id = ListId, ChequeTypeId = ChequeTypeId_, ChequeNumber = r["ChequeNumber"].ToString(), Amount = Amount, DueDate = r["DueDate"].ToString(), IssueDate = PersianDate.NowPersianDate, AccountId = Convert.ToInt32(r["AccountId"]), Payer_Payee_AccId = DetailedAccountId, ChequeOwner = r["ChequeOwner"].ToString(), Description = r["Description"].ToString(), CurrentStatusID = 0 }, ListId);
-
-
-                                            var ADR = new Repository<ChequeStatus>(db);
-                                            int CurrentStatusID = ADR.SaveOrUpdateRefIdByCommit(new ChequeStatus { Id = 0, ChequeId = ChequeId, StatusDate = TransactionDate, StatusCodeId = 1, TransactionId = TransactionId }, 0);
-
-                                            var ch = db.Cheques.Where(c => c.Id == ChequeId).First();
-                                            ch.CurrentStatusID = CurrentStatusID;
-                                            */
 
                                         }
                                     }
@@ -1070,23 +1103,25 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                             PublicClass.WindowAlart("1");
                             if (_updatableForms != null)
                                 _updatableForms.UpdateData();
+
+                            if (chkShowAccountingDocumentRegistration.Checked)
+                                ShowAccountingDocumentRegistration(Convert.ToInt32(txtTransactionCode.Text));
+
+
                             CelearItems();
-
-                            //FilldgvListMulti();
-                            //FilldgvListCheque1();
-                            //FilldgvListCheque2();
-                            //FillcmbDetailedAccountsTo();
-                            //FilldgvList();
-
+                            return true;
                         }
                     }
                     catch (Exception er)
                     {
                         transaction.Rollback();
                         PublicClass.ShowErrorMessage(er);
+                        return false;
+
                     }
             }
         }
+
 
         /// <summary>
         /// بررسی فیلدهای ثبت اسناد
@@ -1115,7 +1150,6 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     PublicClass.ErrorMesseg(ResourceCode.T118);
                     return true;
                 }
-
                 if (cmbTypeDocument.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T135);
@@ -1128,12 +1162,12 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     cmbDetailedAccountsFrom.Focus();
                     return true;
                 }
-                if (txtDescription.Text == "")
-                {
-                    PublicClass.ErrorMesseg(ResourceCode.T143);
-                    txtDescription.Focus();
-                    return true;
-                }
+                //if (txtDescription.Text == "")
+                //{
+                //    PublicClass.ErrorMesseg(ResourceCode.T143);
+                //    txtDescription.Focus();
+                //    return true;
+                //}
 
                 double Amount = 0;
                 int count = 0;
@@ -1392,23 +1426,20 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                 {
                     TotalAmounDT1 = 0;
                     TotalAmounDT2 = 0;
-                    //ToDo به همراه شرط Data Table محاسبه مجموع مقادیر در ستون 
-                    //مبلغ سند
-                    //TotalAmounDT1 = dt_MultipleAccount.AsEnumerable().Where(row => row.Field<int>("DetailedAccountId") ==DetailedAccountsToId).Sum(row => row.Field<long>("Amount1"));
-                    ////مبلغ کارمزد
-                    //TotalAmounDT2 = dt_MultipleAccount.AsEnumerable().Where(row => row.Field<int>("DetailedAccountId") ==DetailedAccountsToId).Sum(row => row.Field<long>("Amount2"));
 
 
                     double TotalAmount = Convert.ToDouble(txtAmount1.TextSimple) + Convert.ToDouble(txtAmount2.TextSimple);
+
                     if (TotalAmount > AccountBalancT || TotalAmount == 0)
                     {
-                        PublicClass.StopMesseg(ResourceCode.T116);
-                        txtAmount1.Focus();
-                        return;
+                        if (PublicClass.ErrorMessegYesNo(ResourceCode.T116) == DialogResult.No)
+                        {
+                            txtAmount1.Focus();
+                            return;
+                        }
                     }
                 }
 
-                //if (MessageBox.Show(ResourceCode.T122, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
                 DataRow newrow = dt_MultipleAccount.NewRow();
                 using (var db = new DBcontextModel())
@@ -1937,10 +1968,8 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
                     case "DocViow":
                         using (var db = new DBcontextModel())
                         {
-                            var TransactionCode = db.Transactions.Where(c=>c.Id == ListId).First().TransactionCode;
-                            frmJournal f=new frmJournal();
-                            f.TransactionCode = TransactionCode;
-                            f.ShowDialog();
+                            var TransactionCode = db.Transactions.Where(c => c.Id == ListId).First().TransactionCode;
+                            ShowAccountingDocumentRegistration(TransactionCode);
                         }
                         break;
                 }
@@ -1984,5 +2013,10 @@ namespace HM_ERP_System.Forms.Accounts.RecevingPayment
             f.ShowDialog();
         }
 
+        private void chkShowAccountingDocumentRegistration_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShowAccountingDocumentRegistration = chkShowAccountingDocumentRegistration.Checked;
+            Properties.Settings.Default.Save();
+        }
     }
 }

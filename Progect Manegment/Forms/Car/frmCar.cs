@@ -1,4 +1,6 @@
-﻿using HM_ERP_System.Class_General;
+﻿using BehComponents;
+
+using HM_ERP_System.Class_General;
 using HM_ERP_System.Forms.Color;
 using HM_ERP_System.Forms.Customer;
 using HM_ERP_System.Forms.CustomerToGroup;
@@ -885,9 +887,11 @@ namespace HM_ERP_System.Forms.Car
                     var q = db.Cars.Where(c => c.Seryal == txtSeryal.Text);
                     if (q.Count() != 0)
                     {
-                        PublicClass.StopMesseg(ResourceCode.T166);
-                        txtSeryal.ResetText();
-                        txtSeryal.Focus();
+                        if (PublicClass.ErrorMessegYesNo(ResourceCode.T166, MessageBoxFarsiDefaultButton.Button1) == DialogResult.No)
+                        {
+                            txtSeryal.ResetText();
+                            txtSeryal.Focus();
+                        }
                     }
                 }
 

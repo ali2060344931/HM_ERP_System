@@ -817,7 +817,7 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to آیا موافق به ادامه و ثبت حواله جدید می باشید؟.
+        ///   Looks up a localized string similar to آیا موافق به ادامه و ثبت جدید می باشید؟.
         /// </summary>
         internal static string T084 {
             get {
@@ -1105,7 +1105,7 @@ namespace HM_ERP_System {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to مبلغ وارد شده بیش از مانده حساب می باشد..
+        ///   Looks up a localized string similar to مبلغ وارد شده بیش از مانده حساب می باشد. آیا موافق به ثبت و ادامه عملیات می باشید؟.
         /// </summary>
         internal static string T116 {
             get {

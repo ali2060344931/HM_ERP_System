@@ -370,7 +370,7 @@
     <value>تاریخ بارنامه نمی تواند قبل از تاریخ حواله باشد.</value>
   </data>
   <data name="T084" xml:space="preserve">
-    <value>آیا موافق به ادامه و ثبت حواله جدید می باشید؟</value>
+    <value>آیا موافق به ادامه و ثبت جدید می باشید؟</value>
   </data>
   <data name="T085" xml:space="preserve">
     <value>مقدار بار را وارد نمائید.</value>
@@ -466,7 +466,7 @@
     <value>بدلیل ثبت سند حسابداری بارنامه مورد نظر امکان ویرایش/حـــذف نمی باشد.</value>
   </data>
   <data name="T116" xml:space="preserve">
-    <value>مبلغ وارد شده بیش از مانده حساب می باشد.</value>
+    <value>مبلغ وارد شده بیش از مانده حساب می باشد. آیا موافق به ثبت و ادامه عملیات می باشید؟</value>
   </data>
   <data name="T117" xml:space="preserve">
     <value>لطفا توضیحات راجع به قسط را وارد نمائید.</value>

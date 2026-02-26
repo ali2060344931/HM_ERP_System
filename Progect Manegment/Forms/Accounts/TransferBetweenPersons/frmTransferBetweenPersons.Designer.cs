@@ -68,9 +68,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnNew = new DevComponents.DotNetBar.ButtonX();
             this.chkDocumentBanck = new System.Windows.Forms.CheckBox();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.chkShowAccountingDocumentRegistration = new System.Windows.Forms.CheckBox();
             this.uiPanelGroup1 = new Janus.Windows.UI.Dock.UIPanelGroup();
             this.uiPanel1 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel1Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
@@ -89,6 +90,7 @@
             this.dropDownCommand2 = new Janus.Windows.Ribbon.DropDownCommand();
             this.separatorCommand1 = new Janus.Windows.Ribbon.SeparatorCommand();
             this.dropDownCommand3 = new Janus.Windows.Ribbon.DropDownCommand();
+            this.dropDownCommand4 = new Janus.Windows.Ribbon.DropDownCommand();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
@@ -133,10 +135,10 @@
             // Design Time Panel Info:
             // 
             this.uiPanelManager1.BeginPanelInfo();
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("fb46283f-9213-4676-9d84-7e3f49da5949"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1195, 368), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("fb46283f-9213-4676-9d84-7e3f49da5949"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1195, 406), true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("3b435119-54b0-4782-9307-ec733193115b"), new System.Guid("fb46283f-9213-4676-9d84-7e3f49da5949"), 883, true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("ca10a25e-afb6-4488-8cec-5558e59ec64c"), new System.Guid("fb46283f-9213-4676-9d84-7e3f49da5949"), 160, true);
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("f6d490e7-e68c-4adf-974d-ccc8f73ffa6a"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1195, 114), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("f6d490e7-e68c-4adf-974d-ccc8f73ffa6a"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1195, 98), true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("fc89f575-1a42-406a-aec8-921719b261da"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1195, 235), true);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("f6d490e7-e68c-4adf-974d-ccc8f73ffa6a"), new System.Drawing.Point(475, 142), new System.Drawing.Size(200, 200), false);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("fb46283f-9213-4676-9d84-7e3f49da5949"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, false, new System.Drawing.Point(291, 689), new System.Drawing.Size(709, 200), false);
@@ -150,9 +152,9 @@
             this.uiPanel0.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
             this.uiPanel0.FloatingLocation = new System.Drawing.Point(475, 142);
             this.uiPanel0.InnerContainer = this.uiPanel0Container;
-            this.uiPanel0.Location = new System.Drawing.Point(3, 25);
+            this.uiPanel0.Location = new System.Drawing.Point(3, 3);
             this.uiPanel0.Name = "uiPanel0";
-            this.uiPanel0.Size = new System.Drawing.Size(1195, 114);
+            this.uiPanel0.Size = new System.Drawing.Size(1195, 98);
             this.uiPanel0.TabIndex = 4;
             this.uiPanel0.Text = "جابجـــــــــایی از";
             this.uiPanel0.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
@@ -172,7 +174,7 @@
             this.uiPanel0Container.Controls.Add(this.label25);
             this.uiPanel0Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel0Container.Name = "uiPanel0Container";
-            this.uiPanel0Container.Size = new System.Drawing.Size(1193, 82);
+            this.uiPanel0Container.Size = new System.Drawing.Size(1193, 66);
             this.uiPanel0Container.TabIndex = 0;
             // 
             // pictureBox1
@@ -181,7 +183,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(1114, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 82);
+            this.pictureBox1.Size = new System.Drawing.Size(79, 66);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 191;
             this.pictureBox1.TabStop = false;
@@ -190,19 +192,20 @@
             // 
             this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.ButtonText = "..";
-            this.txtDescription.Location = new System.Drawing.Point(462, 46);
+            this.txtDescription.Location = new System.Drawing.Point(319, 11);
             this.txtDescription.MaxLength = 32768;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(541, 28);
+            this.txtDescription.Size = new System.Drawing.Size(54, 28);
             this.txtDescription.TabIndex = 1;
             this.txtDescription.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            this.txtDescription.Visible = false;
             // 
             // lblAccountBalancF
             // 
             this.lblAccountBalancF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAccountBalancF.BackColor = System.Drawing.Color.LightGray;
             this.lblAccountBalancF.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblAccountBalancF.Location = new System.Drawing.Point(462, 13);
+            this.lblAccountBalancF.Location = new System.Drawing.Point(462, 21);
             this.lblAccountBalancF.Name = "lblAccountBalancF";
             this.lblAccountBalancF.Size = new System.Drawing.Size(154, 25);
             this.lblAccountBalancF.TabIndex = 183;
@@ -217,7 +220,7 @@
             this.cmbDetailedAccountsFrom.DesignTimeLayout = cmbDetailedAccountsFrom_DesignTimeLayout;
             this.cmbDetailedAccountsFrom.DisplayMember = "Name";
             this.cmbDetailedAccountsFrom.Image = ((System.Drawing.Image)(resources.GetObject("cmbDetailedAccountsFrom.Image")));
-            this.cmbDetailedAccountsFrom.Location = new System.Drawing.Point(634, 10);
+            this.cmbDetailedAccountsFrom.Location = new System.Drawing.Point(634, 18);
             this.cmbDetailedAccountsFrom.MaxLength = 8;
             this.cmbDetailedAccountsFrom.Name = "cmbDetailedAccountsFrom";
             this.cmbDetailedAccountsFrom.SelectedIndex = -1;
@@ -235,11 +238,12 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(1003, 51);
+            this.label2.Location = new System.Drawing.Point(373, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 18);
             this.label2.TabIndex = 185;
             this.label2.Text = "توضیحات:";
+            this.label2.Visible = false;
             // 
             // label5
             // 
@@ -247,7 +251,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label5.Location = new System.Drawing.Point(1002, 16);
+            this.label5.Location = new System.Drawing.Point(1002, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 18);
             this.label5.TabIndex = 185;
@@ -260,7 +264,7 @@
             this.btnAddNewCustomer.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewCustomer.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddNewCustomer.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddNewCustomer.Location = new System.Drawing.Point(616, 11);
+            this.btnAddNewCustomer.Location = new System.Drawing.Point(616, 19);
             this.btnAddNewCustomer.Name = "btnAddNewCustomer";
             this.btnAddNewCustomer.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnAddNewCustomer.Size = new System.Drawing.Size(18, 28);
@@ -275,7 +279,7 @@
             // txtTransactionDate
             // 
             this.txtTransactionDate.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTransactionDate.Location = new System.Drawing.Point(3, 44);
+            this.txtTransactionDate.Location = new System.Drawing.Point(8, 34);
             this.txtTransactionDate.Name = "txtTransactionDate";
             this.txtTransactionDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTransactionDate.Size = new System.Drawing.Size(124, 29);
@@ -286,7 +290,7 @@
             // 
             this.txtTransactionCode.BackColor = System.Drawing.Color.Gainsboro;
             this.txtTransactionCode.Enabled = false;
-            this.txtTransactionCode.Location = new System.Drawing.Point(3, 10);
+            this.txtTransactionCode.Location = new System.Drawing.Point(8, 3);
             this.txtTransactionCode.MaxLength = 7;
             this.txtTransactionCode.Name = "txtTransactionCode";
             this.txtTransactionCode.Size = new System.Drawing.Size(124, 28);
@@ -298,7 +302,7 @@
             this.label50.AutoSize = true;
             this.label50.BackColor = System.Drawing.Color.Transparent;
             this.label50.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label50.Location = new System.Drawing.Point(133, 15);
+            this.label50.Location = new System.Drawing.Point(138, 10);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(62, 18);
             this.label50.TabIndex = 176;
@@ -309,7 +313,7 @@
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label25.Location = new System.Drawing.Point(133, 49);
+            this.label25.Location = new System.Drawing.Point(137, 40);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(36, 18);
             this.label25.TabIndex = 177;
@@ -320,7 +324,7 @@
             this.uiPanel2.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
             this.uiPanel2.FloatingLocation = new System.Drawing.Point(459, 589);
             this.uiPanel2.InnerContainer = this.uiPanel2Container;
-            this.uiPanel2.Location = new System.Drawing.Point(3, 139);
+            this.uiPanel2.Location = new System.Drawing.Point(3, 101);
             this.uiPanel2.Name = "uiPanel2";
             this.uiPanel2.Size = new System.Drawing.Size(1195, 235);
             this.uiPanel2.TabIndex = 4;
@@ -361,7 +365,7 @@
             this.dgvListMulti.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListMulti.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvListMulti.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListMulti.Size = new System.Drawing.Size(616, 163);
+            this.dgvListMulti.Size = new System.Drawing.Size(616, 173);
             this.dgvListMulti.Sortable = true;
             this.dgvListMulti.TabIndex = 16;
             this.dgvListMulti.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -391,7 +395,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.Location = new System.Drawing.Point(616, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(577, 163);
+            this.panel5.Size = new System.Drawing.Size(577, 173);
             this.panel5.TabIndex = 0;
             // 
             // btnAddToList
@@ -628,14 +632,34 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnSave);
             this.panel3.Controls.Add(this.btnNew);
             this.panel3.Controls.Add(this.chkDocumentBanck);
-            this.panel3.Controls.Add(this.btnSave);
+            this.panel3.Controls.Add(this.chkShowAccountingDocumentRegistration);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 163);
+            this.panel3.Location = new System.Drawing.Point(0, 173);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1193, 40);
+            this.panel3.Size = new System.Drawing.Size(1193, 30);
             this.panel3.TabIndex = 1;
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
+            this.btnSave.Location = new System.Drawing.Point(347, 0);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
+            this.btnSave.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
+            this.btnSave.Size = new System.Drawing.Size(144, 28);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.Symbol = "";
+            this.btnSave.SymbolSize = 15F;
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "ذخیره(ثبت نهایی) F5";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnNew
             // 
@@ -643,12 +667,12 @@
             this.btnNew.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnNew.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnNew.Location = new System.Drawing.Point(144, 0);
+            this.btnNew.Location = new System.Drawing.Point(271, 0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Padding = new System.Windows.Forms.Padding(5);
             this.btnNew.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnNew.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F4);
-            this.btnNew.Size = new System.Drawing.Size(76, 38);
+            this.btnNew.Size = new System.Drawing.Size(76, 28);
             this.btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnNew.Symbol = "57390";
             this.btnNew.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
@@ -660,43 +684,38 @@
             // 
             // chkDocumentBanck
             // 
-            this.chkDocumentBanck.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.chkDocumentBanck.AutoSize = true;
-            this.chkDocumentBanck.Location = new System.Drawing.Point(226, 5);
+            this.chkDocumentBanck.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkDocumentBanck.Location = new System.Drawing.Point(167, 0);
             this.chkDocumentBanck.Name = "chkDocumentBanck";
             this.chkDocumentBanck.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.chkDocumentBanck.Size = new System.Drawing.Size(104, 26);
+            this.chkDocumentBanck.Size = new System.Drawing.Size(104, 28);
             this.chkDocumentBanck.TabIndex = 190;
             this.chkDocumentBanck.Text = "ثبت مدارک";
             this.chkDocumentBanck.UseVisualStyleBackColor = true;
             // 
-            // btnSave
+            // chkShowAccountingDocumentRegistration
             // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSave.Location = new System.Drawing.Point(0, 0);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
-            this.btnSave.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
-            this.btnSave.Size = new System.Drawing.Size(144, 38);
-            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.Symbol = "";
-            this.btnSave.SymbolSize = 15F;
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "ذخیره(ثبت نهایی) F5";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.chkShowAccountingDocumentRegistration.AutoSize = true;
+            this.chkShowAccountingDocumentRegistration.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkShowAccountingDocumentRegistration.Location = new System.Drawing.Point(0, 0);
+            this.chkShowAccountingDocumentRegistration.Name = "chkShowAccountingDocumentRegistration";
+            this.chkShowAccountingDocumentRegistration.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.chkShowAccountingDocumentRegistration.Size = new System.Drawing.Size(167, 28);
+            this.chkShowAccountingDocumentRegistration.TabIndex = 192;
+            this.chkShowAccountingDocumentRegistration.Text = "نمایش سند حسابداری";
+            this.toolTip1.SetToolTip(this.chkShowAccountingDocumentRegistration, "نمایش اسناد حسابداری پس ثبت");
+            this.chkShowAccountingDocumentRegistration.UseVisualStyleBackColor = true;
+            this.chkShowAccountingDocumentRegistration.CheckedChanged += new System.EventHandler(this.chkShowAccountingDocumentRegistration_CheckedChanged);
             // 
             // uiPanelGroup1
             // 
             this.uiPanelGroup1.FloatingLocation = new System.Drawing.Point(291, 689);
             this.uiPanelGroup1.FloatingSize = new System.Drawing.Size(709, 200);
             this.uiPanelGroup1.GroupStyle = Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles;
-            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 374);
+            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 336);
             this.uiPanelGroup1.Name = "uiPanelGroup1";
-            this.uiPanelGroup1.Size = new System.Drawing.Size(1195, 368);
+            this.uiPanelGroup1.Size = new System.Drawing.Size(1195, 406);
             this.uiPanelGroup1.TabIndex = 4;
             // 
             // uiPanel1
@@ -705,7 +724,7 @@
             this.uiPanel1.InnerContainer = this.uiPanel1Container;
             this.uiPanel1.Location = new System.Drawing.Point(0, 0);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(1009, 368);
+            this.uiPanel1.Size = new System.Drawing.Size(1009, 406);
             this.uiPanel1.TabIndex = 4;
             this.uiPanel1.Text = "لیست اسناد";
             this.uiPanel1.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
@@ -716,7 +735,7 @@
             this.uiPanel1Container.Controls.Add(this.pnlViewItemFoter);
             this.uiPanel1Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel1Container.Name = "uiPanel1Container";
-            this.uiPanel1Container.Size = new System.Drawing.Size(1007, 340);
+            this.uiPanel1Container.Size = new System.Drawing.Size(1007, 378);
             this.uiPanel1Container.TabIndex = 0;
             // 
             // dgvList
@@ -746,7 +765,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.Size = new System.Drawing.Size(1007, 312);
+            this.dgvList.Size = new System.Drawing.Size(1007, 350);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 87;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -762,7 +781,7 @@
             // 
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 312);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 350);
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
             this.pnlViewItemFoter.Size = new System.Drawing.Size(1007, 28);
             this.pnlViewItemFoter.TabIndex = 90;
@@ -792,7 +811,7 @@
             this.uiPanel3.InnerContainer = this.uiPanel3Container;
             this.uiPanel3.Location = new System.Drawing.Point(1013, 0);
             this.uiPanel3.Name = "uiPanel3";
-            this.uiPanel3.Size = new System.Drawing.Size(182, 368);
+            this.uiPanel3.Size = new System.Drawing.Size(182, 406);
             this.uiPanel3.TabIndex = 4;
             this.uiPanel3.Text = "نمایش اسناد";
             this.uiPanel3.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Center;
@@ -806,7 +825,7 @@
             this.uiPanel3Container.Controls.Add(this.label47);
             this.uiPanel3Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel3Container.Name = "uiPanel3Container";
-            this.uiPanel3Container.Size = new System.Drawing.Size(180, 340);
+            this.uiPanel3Container.Size = new System.Drawing.Size(180, 378);
             this.uiPanel3Container.TabIndex = 0;
             this.uiPanel3Container.TabStop = false;
             // 
@@ -880,7 +899,8 @@
             this.dropDownCommand1,
             this.dropDownCommand2,
             this.separatorCommand1,
-            this.dropDownCommand3});
+            this.dropDownCommand3,
+            this.dropDownCommand4});
             this.rcmDetails.Name = "rcmDetails";
             this.rcmDetails.ShowShortcutInMenus = true;
             this.rcmDetails.ShowShortcutInToolTips = true;
@@ -908,6 +928,12 @@
             this.dropDownCommand3.Key = "AddDocumentToBanck";
             this.dropDownCommand3.Name = "dropDownCommand3";
             this.dropDownCommand3.Text = "ثبت مدارک";
+            // 
+            // dropDownCommand4
+            // 
+            this.dropDownCommand4.Key = "DocViow";
+            this.dropDownCommand4.Name = "dropDownCommand4";
+            this.dropDownCommand4.Text = "نمایش اسناد";
             // 
             // frmTransferBetweenPersons
             // 
@@ -1009,5 +1035,7 @@
         private Janus.Windows.Ribbon.SeparatorCommand separatorCommand1;
         private Janus.Windows.Ribbon.DropDownCommand dropDownCommand3;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.CheckBox chkShowAccountingDocumentRegistration;
+        private Janus.Windows.Ribbon.DropDownCommand dropDownCommand4;
     }
 }

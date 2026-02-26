@@ -21,6 +21,7 @@ namespace HM_ERP_System.Forms.SearchCombos
         public DataTable dt;
         public string ColItems = "";
         public int ColumnsCount = 0;
+        public string ActiveColumns = "";
         public string TypeControl = "";
         string Key_ = "";
 
@@ -60,9 +61,9 @@ namespace HM_ERP_System.Forms.SearchCombos
                 grList.RootTable.Columns[i + 1].DataMember = txt[i * 5 + 2];
                 grList.RootTable.Columns[i + 1].Visible = Convert.ToBoolean(txt[i * 5 + 3]);
                 grList.RootTable.Columns[i + 1].Width = Convert.ToInt32(txt[i * 5 + 4]);
-                grList.RootTable.Columns[i + 1].FilterRowComparison =ConditionOperator.Contains;
-                grList.RootTable.Columns[i + 1].CellStyle.TextAlignment= TextAlignment.Center;
-                grList.RootTable.Columns[i + 1].HeaderStyle.TextAlignment= TextAlignment.Center;
+                grList.RootTable.Columns[i + 1].FilterRowComparison = ConditionOperator.Contains;
+                grList.RootTable.Columns[i + 1].CellStyle.TextAlignment = TextAlignment.Center;
+                grList.RootTable.Columns[i + 1].HeaderStyle.TextAlignment = TextAlignment.Center;
                 grList.RootTable.Columns[i + 1].FilterEditType = FilterEditType.Combo;
                 //grList.RootTable.Columns[i + 1].Tag = txt[i * 5 + 5];
                 if (Convert.ToBoolean(txt[i * 5 + 3]))
@@ -79,6 +80,9 @@ namespace HM_ERP_System.Forms.SearchCombos
             cmbSub.DisplayMember = "Name";
             cmbSub.ValueMember = "Key";
             cmbSub.SelectedIndex = 0;
+            if (ActiveColumns != "")
+                cmbSub.Text = ActiveColumns;
+
             txtSub.Focus();
         }
 
@@ -115,7 +119,7 @@ namespace HM_ERP_System.Forms.SearchCombos
         }
 
         int id = 0;
-        string  text = "";
+        string text = "";
         private void grList_ColumnButtonClick(object sender, ColumnActionEventArgs e)
         {
 
@@ -132,7 +136,7 @@ namespace HM_ERP_System.Forms.SearchCombos
 
                     PublicClass.text_ = text;
                 }
-                    this.Close();
+                this.Close();
             }
         }
 
@@ -147,11 +151,11 @@ namespace HM_ERP_System.Forms.SearchCombos
 
         private void grList_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode== Keys.Insert)
+            if (e.KeyCode == Keys.Insert)
             {
                 //int id=Convert.ToInt32( (grList.GetRow().Cells["id"].Value.ToString()));
                 id = Convert.ToInt32(grList.GetRow().Cells["Id"].Value);
-                PublicClass.Id_=id;
+                PublicClass.Id_ = id;
                 this.Close();
 
             }

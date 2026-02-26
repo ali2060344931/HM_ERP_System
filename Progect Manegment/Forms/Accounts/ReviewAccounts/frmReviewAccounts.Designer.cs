@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout dgvListT_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReviewAccounts));
+            Janus.Windows.GridEX.GridEXLayout cmbGroupR_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListG_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListS_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.Common.Layouts.JanusLayoutReference dgvListS_Layout_0_Reference_0 = new Janus.Windows.Common.Layouts.JanusLayoutReference("GridEXLayoutData.RootTable.Columns.Column2.ButtonImage");
@@ -48,6 +49,8 @@
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel0Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
+            this.cmbGroupR = new Janus.Windows.GridEX.EditControls.MultiColumnCombo();
+            this.lblGroupR = new System.Windows.Forms.Label();
             this.chkShowZeroBalance = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -109,6 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
             this.uiPanel0Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGroupR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTransactionCodeE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTransactionCodeS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel1)).BeginInit();
@@ -176,8 +180,8 @@
             // Design Time Panel Info:
             // 
             this.uiPanelManager1.BeginPanelInfo();
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("029bc363-69d3-42c5-a21b-404540aa2b66"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1152, 119), true);
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("fb77c602-4c2b-4e9d-aa28-b76c0fac58a8"), Janus.Windows.UI.Dock.PanelDockStyle.Fill, new System.Drawing.Size(1152, 504), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("029bc363-69d3-42c5-a21b-404540aa2b66"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1152, 148), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("fb77c602-4c2b-4e9d-aa28-b76c0fac58a8"), Janus.Windows.UI.Dock.PanelDockStyle.Fill, new System.Drawing.Size(1152, 475), true);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("029bc363-69d3-42c5-a21b-404540aa2b66"), new System.Drawing.Point(319, 307), new System.Drawing.Size(200, 200), false);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("fb77c602-4c2b-4e9d-aa28-b76c0fac58a8"), new System.Drawing.Point(295, 413), new System.Drawing.Size(200, 200), false);
             this.uiPanelManager1.EndPanelInfo();
@@ -189,13 +193,15 @@
             this.uiPanel0.InnerContainer = this.uiPanel0Container;
             this.uiPanel0.Location = new System.Drawing.Point(3, 3);
             this.uiPanel0.Name = "uiPanel0";
-            this.uiPanel0.Size = new System.Drawing.Size(1152, 119);
+            this.uiPanel0.Size = new System.Drawing.Size(1152, 148);
             this.uiPanel0.TabIndex = 4;
             this.uiPanel0.Text = "فیلتر";
             this.uiPanel0.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Far;
             // 
             // uiPanel0Container
             // 
+            this.uiPanel0Container.Controls.Add(this.cmbGroupR);
+            this.uiPanel0Container.Controls.Add(this.lblGroupR);
             this.uiPanel0Container.Controls.Add(this.chkShowZeroBalance);
             this.uiPanel0Container.Controls.Add(this.checkBox2);
             this.uiPanel0Container.Controls.Add(this.checkBox1);
@@ -213,8 +219,40 @@
             this.uiPanel0Container.Controls.Add(this.label25);
             this.uiPanel0Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel0Container.Name = "uiPanel0Container";
-            this.uiPanel0Container.Size = new System.Drawing.Size(1150, 87);
+            this.uiPanel0Container.Size = new System.Drawing.Size(1150, 116);
             this.uiPanel0Container.TabIndex = 0;
+            // 
+            // cmbGroupR
+            // 
+            this.cmbGroupR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbGroupR.DataMember = "id";
+            cmbGroupR_DesignTimeLayout.LayoutString = resources.GetString("cmbGroupR_DesignTimeLayout.LayoutString");
+            this.cmbGroupR.DesignTimeLayout = cmbGroupR_DesignTimeLayout;
+            this.cmbGroupR.DisplayMember = "Name";
+            this.cmbGroupR.Location = new System.Drawing.Point(691, 81);
+            this.cmbGroupR.Name = "cmbGroupR";
+            this.cmbGroupR.SelectedIndex = -1;
+            this.cmbGroupR.SelectedItem = null;
+            this.cmbGroupR.Size = new System.Drawing.Size(318, 28);
+            this.cmbGroupR.TabIndex = 206;
+            this.cmbGroupR.TabStop = false;
+            this.cmbGroupR.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center;
+            this.cmbGroupR.ValueMember = "id";
+            this.cmbGroupR.Visible = false;
+            this.cmbGroupR.ValueChanged += new System.EventHandler(this.cmbGroupR_ValueChanged);
+            // 
+            // lblGroupR
+            // 
+            this.lblGroupR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblGroupR.AutoSize = true;
+            this.lblGroupR.BackColor = System.Drawing.Color.Transparent;
+            this.lblGroupR.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.lblGroupR.Location = new System.Drawing.Point(1009, 87);
+            this.lblGroupR.Name = "lblGroupR";
+            this.lblGroupR.Size = new System.Drawing.Size(57, 18);
+            this.lblGroupR.TabIndex = 205;
+            this.lblGroupR.Text = "نقش پایه:";
+            this.lblGroupR.Visible = false;
             // 
             // chkShowZeroBalance
             // 
@@ -364,7 +402,7 @@
             this.btnListRefresh.Name = "btnListRefresh";
             this.btnListRefresh.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnListRefresh.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
-            this.btnListRefresh.Size = new System.Drawing.Size(34, 67);
+            this.btnListRefresh.Size = new System.Drawing.Size(34, 68);
             this.btnListRefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnListRefresh.Symbol = "";
             this.btnListRefresh.SymbolSize = 20F;
@@ -449,9 +487,9 @@
             this.uiPanel1.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
             this.uiPanel1.FloatingLocation = new System.Drawing.Point(295, 413);
             this.uiPanel1.InnerContainer = this.uiPanel1Container;
-            this.uiPanel1.Location = new System.Drawing.Point(3, 122);
+            this.uiPanel1.Location = new System.Drawing.Point(3, 151);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(1152, 504);
+            this.uiPanel1.Size = new System.Drawing.Size(1152, 475);
             this.uiPanel1.TabIndex = 4;
             this.uiPanel1.Text = "گزارش";
             this.uiPanel1.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Far;
@@ -462,7 +500,7 @@
             this.uiPanel1Container.Controls.Add(this.pnlViewItemFoter);
             this.uiPanel1Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel1Container.Name = "uiPanel1Container";
-            this.uiPanel1Container.Size = new System.Drawing.Size(1150, 476);
+            this.uiPanel1Container.Size = new System.Drawing.Size(1150, 447);
             this.uiPanel1Container.TabIndex = 0;
             // 
             // uiTab1
@@ -471,7 +509,7 @@
             this.uiTab1.FirstTabOffset = 10;
             this.uiTab1.Location = new System.Drawing.Point(0, 0);
             this.uiTab1.Name = "uiTab1";
-            this.uiTab1.Size = new System.Drawing.Size(1150, 448);
+            this.uiTab1.Size = new System.Drawing.Size(1150, 419);
             this.uiTab1.TabIndex = 0;
             this.uiTab1.TabPages.AddRange(new Janus.Windows.UI.Tab.UITabPage[] {
             this.uiTabPage1,
@@ -493,7 +531,7 @@
             this.uiTabPage1.Key = "G";
             this.uiTabPage1.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage1.Name = "uiTabPage1";
-            this.uiTabPage1.Size = new System.Drawing.Size(1026, 446);
+            this.uiTabPage1.Size = new System.Drawing.Size(1026, 417);
             this.uiTabPage1.TabStop = true;
             this.uiTabPage1.Text = "گروه";
             // 
@@ -517,7 +555,7 @@
             this.dgvListG.RecordNavigator = true;
             this.dgvListG.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListG.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListG.Size = new System.Drawing.Size(1026, 446);
+            this.dgvListG.Size = new System.Drawing.Size(1026, 417);
             this.dgvListG.Sortable = true;
             this.dgvListG.TabIndex = 87;
             this.dgvListG.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -594,7 +632,7 @@
             this.uiTabPage4.Key = "D";
             this.uiTabPage4.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage4.Name = "uiTabPage4";
-            this.uiTabPage4.Size = new System.Drawing.Size(1026, 446);
+            this.uiTabPage4.Size = new System.Drawing.Size(1026, 417);
             this.uiTabPage4.TabStop = true;
             this.uiTabPage4.Text = "تفصیلــــی";
             // 
@@ -626,7 +664,7 @@
             this.dgvListD.RecordNavigator = true;
             this.dgvListD.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListD.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
-            this.dgvListD.Size = new System.Drawing.Size(1026, 405);
+            this.dgvListD.Size = new System.Drawing.Size(1026, 376);
             this.dgvListD.Sortable = true;
             this.dgvListD.TabIndex = 90;
             this.dgvListD.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -1011,7 +1049,7 @@
             this.pnlViewItemFoter.Controls.Add(this.buttonX01);
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 448);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 419);
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
             this.pnlViewItemFoter.Size = new System.Drawing.Size(1150, 28);
             this.pnlViewItemFoter.TabIndex = 2;
@@ -1157,6 +1195,7 @@
             this.uiPanel0.ResumeLayout(false);
             this.uiPanel0Container.ResumeLayout(false);
             this.uiPanel0Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbGroupR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTransactionCodeE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTransactionCodeS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel1)).EndInit();
@@ -1249,5 +1288,7 @@
         public DevComponents.DotNetBar.ButtonX btnDeleteTransaction;
         private Class_General.MyTextBoxJanus txtTransactionCode;
         private System.Windows.Forms.Label label6;
+        private Janus.Windows.GridEX.EditControls.MultiColumnCombo cmbGroupR;
+        private System.Windows.Forms.Label lblGroupR;
     }
 }

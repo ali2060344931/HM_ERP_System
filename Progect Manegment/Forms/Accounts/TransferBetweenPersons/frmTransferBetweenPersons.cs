@@ -1,7 +1,10 @@
-﻿using HM_ERP_System.Class_General;
+﻿using BehComponents;
+
+using HM_ERP_System.Class_General;
 using HM_ERP_System.Entity.Accounts.Cheque;
 using HM_ERP_System.Entity.Customer;
 using HM_ERP_System.Entity.TypeDocument;
+using HM_ERP_System.Forms.Accounts.ReviewAccounts;
 using HM_ERP_System.Forms.Customer;
 using HM_ERP_System.Forms.Main_Form;
 
@@ -47,10 +50,10 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
         {
 
             txtTransactionDate.Value = DateTime.Now;
-            txtTransactionCode.Text=PublicClass.CreatTransactionCode();
+            txtTransactionCode.Text = PublicClass.CreatTransactionCode();
 
             txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
-            //txtDateEnd.Value = DateTime.Now;
+            chkShowAccountingDocumentRegistration.Checked = Properties.Settings.Default.ShowAccountingDocumentRegistration;
             txtDateEnd.Text = PersianDate.DateEnd();
             WindowState = FormWindowState.Maximized;
 
@@ -68,7 +71,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
 
         void AddColumnsToDataTable()
         {
-            dt_MultipleAccount=new System.Data.DataTable();
+            dt_MultipleAccount = new System.Data.DataTable();
             dt_MultipleAccount.Columns.Add("SpecificAccountId", typeof(int));
             dt_MultipleAccount.Columns.Add("DetailedAccountId", typeof(int));
             dt_MultipleAccount.Columns.Add("SpecificAccount", typeof(string));
@@ -76,8 +79,9 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
             dt_MultipleAccount.Columns.Add("Amount", typeof(long));
             dt_MultipleAccount.Columns.Add("SeryalNumber", typeof(string));
             dt_MultipleAccount.Columns.Add("Des", typeof(string));
-            DataColumn productColumn = dt_MultipleAccount.Columns["DetailedAccountId"];
-            dt_MultipleAccount.PrimaryKey = new DataColumn[] { productColumn };
+
+            //DataColumn productColumn = dt_MultipleAccount.Columns["DetailedAccountId"];
+            //dt_MultipleAccount.PrimaryKey = new DataColumn[] { productColumn };
         }
 
 
@@ -116,7 +120,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                         join ta in db.TotalAccounts
                         on sp.Id_TotalAccount equals ta.Id
 
-                        where (sp.Cod==10301 || sp.Cod==30101)
+                        where (sp.Cod == 10301 || sp.Cod == 30101)
                         select new
                         {
                             sp.Id,
@@ -125,7 +129,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                             TotalAccountName = ta.Name,
 
                         };
-                cmbSpecificAccountTo.DataSource=q.ToList();
+                cmbSpecificAccountTo.DataSource = q.ToList();
                 dt_SpecificAccountTo = new System.Data.DataTable();
                 dt_SpecificAccountTo = PublicClass.AddEntityTableToDataTable(q.ToList());
             }
@@ -141,17 +145,17 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                     var q = from cu in db.Customers
                             join tc in db.TypeCustomers
                             on cu.id_TypeCustomer equals tc.Id
-                            where cu.id_TypeCustomer<=2
+                            where cu.id_TypeCustomer <= 2
                             orderby cu.Name, cu.Family
                             select new
                             {
                                 cu.Id,
-                                Name = (cu.Family.Trim()+" " + cu.Name.Trim()).Trim(),
+                                Name = (cu.Family.Trim() + " " + cu.Name.Trim()).Trim(),
                                 cu.CodMeli,
                                 TypeAccount = tc.Name,
                             };
 
-                    cmbDetailedAccountsFrom.DataSource=q.ToList();
+                    cmbDetailedAccountsFrom.DataSource = q.ToList();
                     dt_DetailedAccountsFrom = new System.Data.DataTable();
                     dt_DetailedAccountsFrom = PublicClass.AddEntityTableToDataTable(q.ToList());
                 }
@@ -174,16 +178,16 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                             join tc in db.TypeCustomers
                             on cu.id_TypeCustomer equals tc.Id
 
-                            where cu.id_TypeCustomer<=2
+                            where cu.id_TypeCustomer <= 2
                             orderby cu.Name, cu.Family
                             select new
                             {
                                 cu.Id,
-                                Name = (cu.Family.Trim()+" " + cu.Name.Trim()).Trim(),
+                                Name = (cu.Family.Trim() + " " + cu.Name.Trim()).Trim(),
                                 cu.CodMeli,
                                 TypeAccount = tc.Name,
                             };
-                    cmbDetailedAccountsTo.DataSource=q.ToList();
+                    cmbDetailedAccountsTo.DataSource = q.ToList();
                     dt_DetailedAccountsTo = new System.Data.DataTable();
                     dt_DetailedAccountsTo = PublicClass.AddEntityTableToDataTable(q.ToList());
                 }
@@ -216,35 +220,35 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
 
             try
             {
-                if (cmbDetailedAccountsFrom.SelectedIndex==-1)
+                if (cmbDetailedAccountsFrom.SelectedIndex == -1)
                 {
-                    lblAccountBalancF.Text="0";
+                    lblAccountBalancF.Text = "0";
                     return;
                 }
                 customerIdFr = Convert.ToInt32(cmbDetailedAccountsFrom.Value);
 
-                AccountBalancP=0; AccountBalancD=0;
+                AccountBalancP = 0; AccountBalancD = 0;
 
                 using (var db = new DBcontextModel())
                 {
-                    var SpecificAccountIdD = db.SpecificAccounts.Where(c => c.Cod==10301).First().Id;
+                    var SpecificAccountIdD = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;
 
-                    var SpecificAccountIdP = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;
+                    var SpecificAccountIdP = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id;
 
-                    var DetailedAccountsFromIdD_ = db.DetailedAccounts.Where(c => c.CustomerId==customerIdFr && c.SpecificAccountId==SpecificAccountIdD);
+                    var DetailedAccountsFromIdD_ = db.DetailedAccounts.Where(c => c.CustomerId == customerIdFr && c.SpecificAccountId == SpecificAccountIdD);
 
-                    var DetailedAccountsFromIdP_ = db.DetailedAccounts.Where(c => c.CustomerId==customerIdFr && c.SpecificAccountId==SpecificAccountIdP);
+                    var DetailedAccountsFromIdP_ = db.DetailedAccounts.Where(c => c.CustomerId == customerIdFr && c.SpecificAccountId == SpecificAccountIdP);
 
-                    if (DetailedAccountsFromIdD_.Count()!=0)
+                    if (DetailedAccountsFromIdD_.Count() != 0)
                     {
-                        AccountBalancD=PublicClass.DetailedAccountsBalance(SpecificAccountIdD, DetailedAccountsFromIdD_.First().Id);
+                        AccountBalancD = PublicClass.DetailedAccountsBalance(SpecificAccountIdD, DetailedAccountsFromIdD_.First().Id);
                     }
-                    if (DetailedAccountsFromIdP_.Count()!=0)
+                    if (DetailedAccountsFromIdP_.Count() != 0)
                     {
-                        AccountBalancP=PublicClass.DetailedAccountsBalance(SpecificAccountIdP, DetailedAccountsFromIdP_.First().Id);
+                        AccountBalancP = PublicClass.DetailedAccountsBalance(SpecificAccountIdP, DetailedAccountsFromIdP_.First().Id);
                     }
 
-                    lblAccountBalancF.Text=(AccountBalancP-AccountBalancD).ToString("#,##0;(#,##0)");
+                    lblAccountBalancF.Text = (AccountBalancP - AccountBalancD).ToString("#,##0;(#,##0)");
 
                 }
             }
@@ -263,7 +267,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbDetailedAccountsFrom, dt_DetailedAccountsFrom);
+                PublicClass.SearchCmbId(cmbDetailedAccountsFrom, dt_DetailedAccountsFrom, "", "");
             }
         }
 
@@ -300,41 +304,41 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
         {
             try
             {
-                if (cmbDetailedAccountsTo.SelectedIndex!=-1)
+                if (cmbDetailedAccountsTo.SelectedIndex != -1)
                 {
                     customerToId = Convert.ToInt32(cmbDetailedAccountsTo.Value);
 
                     //cmbSpecificAccountTo.ResetText();
                     //FillcmbSpecificAccountTo();
 
-                    AccountBalancP=0; AccountBalancD=0;
+                    AccountBalancP = 0; AccountBalancD = 0;
 
                     using (var db = new DBcontextModel())
                     {
-                        var SpecificAccountIdD = db.SpecificAccounts.Where(c => c.Cod==10301).First().Id;
+                        var SpecificAccountIdD = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;
 
-                        var SpecificAccountIdP = db.SpecificAccounts.Where(c => c.Cod==30101).First().Id;
+                        var SpecificAccountIdP = db.SpecificAccounts.Where(c => c.Cod == 30101).First().Id;
 
-                        var DetailedAccountsFromIdD_ = db.DetailedAccounts.Where(c => c.CustomerId==customerToId && c.SpecificAccountId==SpecificAccountIdD);
+                        var DetailedAccountsFromIdD_ = db.DetailedAccounts.Where(c => c.CustomerId == customerToId && c.SpecificAccountId == SpecificAccountIdD);
 
-                        var DetailedAccountsFromIdP_ = db.DetailedAccounts.Where(c => c.CustomerId==customerToId && c.SpecificAccountId==SpecificAccountIdP);
+                        var DetailedAccountsFromIdP_ = db.DetailedAccounts.Where(c => c.CustomerId == customerToId && c.SpecificAccountId == SpecificAccountIdP);
 
-                        if (DetailedAccountsFromIdD_.Count()!=0)
+                        if (DetailedAccountsFromIdD_.Count() != 0)
                         {
-                            AccountBalancD=PublicClass.DetailedAccountsBalance(SpecificAccountIdD, DetailedAccountsFromIdD_.First().Id);
+                            AccountBalancD = PublicClass.DetailedAccountsBalance(SpecificAccountIdD, DetailedAccountsFromIdD_.First().Id);
                         }
-                        if (DetailedAccountsFromIdP_.Count()!=0)
+                        if (DetailedAccountsFromIdP_.Count() != 0)
                         {
-                            AccountBalancP=PublicClass.DetailedAccountsBalance(SpecificAccountIdP, DetailedAccountsFromIdP_.First().Id);
+                            AccountBalancP = PublicClass.DetailedAccountsBalance(SpecificAccountIdP, DetailedAccountsFromIdP_.First().Id);
                         }
 
-                        lblAccountBalancT.Text=(AccountBalancP-AccountBalancD).ToString("#,##0;(#,##0)");
+                        lblAccountBalancT.Text = (AccountBalancP - AccountBalancD).ToString("#,##0;(#,##0)");
 
                     }
 
                 }
                 else
-                    lblAccountBalancT.Text="0";
+                    lblAccountBalancT.Text = "0";
 
 
             }
@@ -360,7 +364,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
         {
             try
             {
-                if (cmbSpecificAccountTo.SelectedIndex!=-1)
+                if (cmbSpecificAccountTo.SelectedIndex != -1)
                 {
                     SpecificAccountToId = Convert.ToInt32(cmbSpecificAccountTo.Value);
                 }
@@ -388,40 +392,55 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
 
         private void AddDataToCashTable()
         {
-            if (PublicClass.FindEmptyControls(cmbDetailedAccountsTo, ResourceCode.T078,cmbSpecificAccountTo, ResourceCode.T127,  txtAmount, ResourceCode.T081, txtDescriptionCa, ResourceCode.T136))
-                return;
-
-
-            DataRow existingRowF = dt_MultipleAccount.Rows.Find(customerIdFr);
-
-            DataRow existingRowT = dt_MultipleAccount.Rows.Find(customerToId);
-            if (customerIdFr == customerToId)
+            try
             {
-                PublicClass.StopMesseg(ResourceCode.T144);
-                return;
-            }
+                if (PublicClass.FindEmptyControls(cmbDetailedAccountsTo, ResourceCode.T078, cmbSpecificAccountTo, ResourceCode.T127, txtAmount, ResourceCode.T081, txtDescriptionCa, ResourceCode.T136))
+                    return;
 
-            if (existingRowT == null)
-            {
+                //DataRow existingRowF = dt_MultipleAccount.Rows.Find(customerIdFr);
+
+                //DataRow existingRowT = dt_MultipleAccount.Rows.Find(customerToId);
+                //if (customerIdFr == customerToId)
+                //{
+                //    PublicClass.StopMesseg(ResourceCode.T144);
+                //    return;
+                //}
+
+                //if (existingRowT != null)
+                //{
+                //    if (PublicClass.ErrorMessegYesNo(ResourceCode.T142 + '\n' + ResourceCode.T084) == DialogResult.No)
+                //        return;
+                //}
+
+                DataRow[] existingRows = dt_MultipleAccount.Select(
+    "DetailedAccountId = " + customerToId);
+
+                if (existingRows.Length > 0)
+                {
+                    if (PublicClass.ErrorMessegYesNo(ResourceCode.T142 + '\n' + ResourceCode.T084) == DialogResult.No)
+                        return;
+                }
+
+
                 DataRow newrow = dt_MultipleAccount.NewRow();
-                newrow["SpecificAccountId"]=SpecificAccountToId;
-                newrow["DetailedAccountId"]=customerToId;
-                newrow["SpecificAccount"]=cmbSpecificAccountTo.Text;
-                newrow["DetailedAccount"]=cmbDetailedAccountsTo.Text;
-                newrow["Amount"]=txtAmount.TextSimple;
-                newrow["SeryalNumber"]=txtSeryalNumber.Text;
-                newrow["Des"]=txtDescriptionCa.Text;
+                newrow["SpecificAccountId"] = SpecificAccountToId;
+                newrow["DetailedAccountId"] = customerToId;
+                newrow["SpecificAccount"] = cmbSpecificAccountTo.Text;
+                newrow["DetailedAccount"] = cmbDetailedAccountsTo.Text;
+                newrow["Amount"] = txtAmount.TextSimple;
+                newrow["SeryalNumber"] = txtSeryalNumber.Text;
+                newrow["Des"] = txtDescriptionCa.Text;
                 dt_MultipleAccount.Rows.Add(newrow);
-                dgvListMulti.DataSource=dt_MultipleAccount;
+                dgvListMulti.DataSource = dt_MultipleAccount;
                 dgvListMulti.AutoSizeColumns();
                 CalcTotalAmountAddToItems();
                 celerCashItems();
             }
-            else
+            catch (Exception er)
             {
-                PublicClass.StopMesseg(ResourceCode.T142);
-                return;
+                PublicClass.ShowErrorMessage(er);
             }
+
         }
 
         double TotalAmountCash1 = 0;
@@ -438,13 +457,13 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
         /// <summary>
         /// نمایش مجموع مبالغ
         /// </summary>
-        
+
         void CalcTotalAmountAddToItems()
         {
             //CelearItemslblAmounts();
             double S = 0;
             double C = 0;
-            (S, C)=CalcTotalAmount();
+            (S, C) = CalcTotalAmount();
 
             //lblTotlSum.Text=(Convert.ToInt64(txtTotalAmount.TextSimple) -S).ToString("#,##0");
             //lblTotlSumC.Text=C.ToString();
@@ -475,7 +494,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
         {
             if (!PublicClass.SetPeremission("Node3_2_2_1", 1)) return;
             if (ControlFildes()) return;
-            txtTransactionCode.Text=PublicClass.CreatTransactionCode();
+            txtTransactionCode.Text = PublicClass.CreatTransactionCode();
             int Series = 0;
             if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
@@ -484,48 +503,53 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
 
                 string TransactionCode = txtTransactionCode.Text;
                 string TransactionDate = txtTransactionDate.Text;
-                double Amount =0;
-                int Count =0;
+                double Amount = 0;
+                int Count = 0;
                 using (var transaction = db.Database.BeginTransaction())
                     try
                     {
-                        (Amount, Count)=CalcTotalAmount(); 
-                        {
-                            Series++;
+                        //(Amount, Count) = CalcTotalAmount();
 
-                            int DetailedAccountId = 0;
+                        //Series++;
 
-                            var SpecificAccountIdF_ = db.SpecificAccounts.Where(c => c.Cod==10301).First().Id;
+                        int DetailedAccountId_ = 0;
 
-                            var customertId = customerIdFr;
-                            var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountIdF_ && c.CustomerId==customertId);
-                            if (serch1.Count()==0)
-                                DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountIdF_, customertId);
-                            else
-                                DetailedAccountId=serch1.First().Id;
+                        var SpecificAccountIdF_ = db.SpecificAccounts.Where(c => c.Cod == 10301).First().Id;
 
-                            PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 3, SpecificAccountIdF_, DetailedAccountId, Amount, Amount, 0, 0, txtDescription.Text, "", Series, false);
-                        }
+                        var customertId = customerIdFr;
+                        var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountIdF_ && c.CustomerId == customertId);
+                        if (serch1.Count() == 0)
+                            DetailedAccountId_ = PublicClass.AddToDetailedAccounts(SpecificAccountIdF_, customertId);
+                        else
+                            DetailedAccountId_ = serch1.First().Id;
+
                         //ثبت مبالغ لیست
-                        if (dt_MultipleAccount!=null)
+                        if (dt_MultipleAccount != null)
                         {
                             foreach (DataRow r in dt_MultipleAccount.Rows)
                             {
+                                Amount = Convert.ToDouble(r["Amount"]);
+
+
+                                Series++;
+
+                                PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 3, SpecificAccountIdF_, DetailedAccountId_, Amount, Amount, 0, 0, r["Des"].ToString(), "", Series, false);
+
+
+
+
                                 Series++;
                                 int SpecificAccountId_ = Convert.ToInt32(r["SpecificAccountId"]);
                                 int DetailedAccountId = 0;
 
-                                var customertId = Convert.ToInt32(r["DetailedAccountId"]);
-                                var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId_ && c.CustomerId==customertId);
-                                if (serch1.Count()==0)
-                                    DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId_, customertId);
+                                customertId = Convert.ToInt32(r["DetailedAccountId"]);
+                                serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId_ && c.CustomerId == customertId);
+                                if (serch1.Count() == 0)
+                                    DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId_, customertId);
                                 else
-                                    DetailedAccountId=serch1.First().Id;
+                                    DetailedAccountId = serch1.First().Id;
 
 
-
-
-                                Amount = Convert.ToDouble(r["Amount"]);
                                 PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 3, SpecificAccountId_, DetailedAccountId, Amount, 0, Amount, 0, r["Des"].ToString(), r["SeryalNumber"].ToString(), Series, false);
                             }
                         }
@@ -533,8 +557,13 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                         transaction.Commit();
 
                         PublicClass.WindowAlart("1");
-                        if (_updatableForms!=null)
+                        if (_updatableForms != null)
                             _updatableForms.UpdateData();
+
+
+                        if (chkShowAccountingDocumentRegistration.Checked)
+                            ShowAccountingDocumentRegistration(Convert.ToInt32(txtTransactionCode.Text));
+
                         CelearItems();
                         FilldgvList();
                     }
@@ -545,10 +574,18 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                     }
             }
         }
+
+        void ShowAccountingDocumentRegistration(int TransactionCode)
+        {
+            frmJournal f = new frmJournal();
+            f.TransactionCode = TransactionCode;
+            f.ShowDialog();
+        }
+
         void FilldgvListMulti()
         {
-            dgvListMulti.DataSource=null;
-            dgvListMulti.DataSource= dt_MultipleAccount;
+            dgvListMulti.DataSource = null;
+            dgvListMulti.DataSource = dt_MultipleAccount;
         }
 
         private void CelearItems()
@@ -574,7 +611,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
         {
             try
             {
-                if (txtTransactionDate.Text.Length!=10)
+                if (txtTransactionDate.Text.Length != 10)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T020);
                     return true;
@@ -586,23 +623,23 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                     return true;
                 }
 
-                if (cmbDetailedAccountsFrom.SelectedIndex==-1)
+                if (cmbDetailedAccountsFrom.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T078);
                     cmbDetailedAccountsFrom.Focus();
                     return true;
                 }
-                if (dt_MultipleAccount.Rows.Count==0)
+                if (dt_MultipleAccount.Rows.Count == 0)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T144);
                     return true;
 
                 }
-                
+
                 //double Amount = 0;
                 //int count = 0;
                 //(Amount, count)= CalcTotalAmount();
-                
+
                 //if (Convert.ToInt64(txtTotalAmount.TextSimple)!= Amount)
                 //{
                 //    PublicClass.ErrorMesseg(ResourceCode.T134);
@@ -610,13 +647,14 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
 
                 //}
 
-                if (txtDescription.Text=="")
-                {
-                    PublicClass.ErrorMesseg(ResourceCode.T143);
-                    txtDescription.Focus();
-                    return true;
+                //if (txtDescription.Text == "")
+                //{
+                //    PublicClass.ErrorMesseg(ResourceCode.T143);
+                //    txtDescription.Focus();
+                //    return true;
 
-                }
+                //}
+
                 return false;
 
             }
@@ -658,7 +696,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
         {
             try
             {
-                ListId=ListId_;
+                ListId = ListId_;
                 switch (e.Command.Key)
                 {
                     case "Edit":
@@ -673,15 +711,15 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
                         if (!PublicClass.SetPeremission("Node3_2_2_3", 1)) return;
                         using (var db = new DBcontextModel())
                         {
-                            if (db.DocumentBancks.Where(c => c.FormName == Name && c.ListInFoemId==ListId).Count() != 0)
+                            if (db.DocumentBancks.Where(c => c.FormName == Name && c.ListInFoemId == ListId).Count() != 0)
                             {
                                 PublicClass.ErrorMesseg(ResourceCode.T149);
                                 return;
                             }
 
-                            var q = db.Transactions.Where(c => c.Id==ListId).First().TransactionCode;
+                            var q = db.Transactions.Where(c => c.Id == ListId).First().TransactionCode;
 
-                            var list = db.Transactions.Where(c => c.TransactionCode==q).ToList();
+                            var list = db.Transactions.Where(c => c.TransactionCode == q).ToList();
                             if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 //foreach (var item in list)
@@ -703,12 +741,13 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
 
                         PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
                         //FilldgvList();
-                        ListId=0;
+                        ListId = 0;
                         break;
                     case "DocViow":
                         using (var db = new DBcontextModel())
                         {
-
+                            var TransactionCode = db.Transactions.Where(c => c.Id == ListId).First().TransactionCode;
+                            ShowAccountingDocumentRegistration(TransactionCode);
                         }
                         break;
                 }
@@ -735,5 +774,11 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenPersons
             }
         }
 
+        private void chkShowAccountingDocumentRegistration_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShowAccountingDocumentRegistration = chkShowAccountingDocumentRegistration.Checked;
+            Properties.Settings.Default.Save();
+
+        }
     }
 }

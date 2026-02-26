@@ -630,6 +630,7 @@
     <Compile Include="Entity\Accounts\Cheque\ChequeStatusType.cs" />
     <Compile Include="Entity\Accounts\Cheque\ChequeType.cs" />
     <Compile Include="Entity\Accounts\DetailedAccount\DetailedAccount.cs" />
+    <Compile Include="Entity\Accounts\FinancialDocumentRegistrationUnit\FDRU.cs" />
     <Compile Include="Entity\Accounts\GroupAccount\GroupAccount.cs" />
     <Compile Include="Entity\Accounts\NatureAccount\NatureAccount.cs" />
     <Compile Include="Entity\Accounts\SpecificAccount\SpecificAccount.cs" />

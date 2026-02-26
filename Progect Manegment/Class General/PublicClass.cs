@@ -225,9 +225,9 @@ namespace MyClass
             MessageBoxFarsi.Show(textError, ResourceCode.ProgName, MessageBoxFarsiButtons.OK, MessageBoxFarsiIcon.Warning);
         }
 
-        public static DialogResult ErrorMessegYesNo(string textError)
+        public static DialogResult ErrorMessegYesNo(string textError, MessageBoxFarsiDefaultButton messageBoxFarsiDefaultButton = MessageBoxFarsiDefaultButton.Button2)
         {
-            if (MessageBoxFarsi.Show(textError, ResourceCode.ProgName, MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Warning, MessageBoxFarsiDefaultButton.Button2) == DialogResult.Yes)
+            if (MessageBoxFarsi.Show(textError, ResourceCode.ProgName, MessageBoxFarsiButtons.YesNo, MessageBoxFarsiIcon.Warning, messageBoxFarsiDefaultButton) == DialogResult.Yes)
                 return DialogResult.Yes;
             else
                 return DialogResult.No;
@@ -643,7 +643,7 @@ namespace MyClass
             }
         }
 
-        public static object SearchToCmb(object comboControl, System.Data.DataTable dt)
+        public static object SearchToCmb(object comboControl, System.Data.DataTable dt,string ActiveColumns = "")
         {
             try
             {
@@ -671,6 +671,7 @@ namespace MyClass
                         f.ColItems = txt;
                         f.ColumnsCount = cn;
                         f.TypeControl = "mcc";
+                        f.ActiveColumns = ActiveColumns;
                         f.ShowDialog();
                     }
 
@@ -918,7 +919,7 @@ namespace MyClass
         /// <param name="dataTable"></param>
         /// <param name="textValue">CheckedComboBox مقدار اولیه در داخل</param>
         /// <returns></returns>
-        public static object SearchCmbId(object comboControl, System.Data.DataTable dataTable, string textValue = "")
+        public static object SearchCmbId(object comboControl, System.Data.DataTable dataTable, string textValue = "", string ActiveColumns = "")
         {
             try
             {
@@ -930,7 +931,7 @@ namespace MyClass
                 }
 
                 // خروجی SearchToCmb به نوع کنترل بستگی دارد
-                object result = SearchToCmb(comboControl, dataTable);
+                object result = SearchToCmb(comboControl, dataTable, ActiveColumns);
 
                 if (comboControl is MultiColumnCombo)
                 {
@@ -3123,6 +3124,18 @@ namespace MyClass
             return ds;
         }
 
+        /// <summary>
+        /// نمایش لیست حساب های تفصیلی
+        /// </summary>
+        /// <param name="DateS"></param>
+        /// <param name="DateE"></param>
+        /// <param name="TransactionCodeS"></param>
+        /// <param name="TransactionCodeE"></param>
+        /// <param name="ShowZeroBalance"></param>
+        /// <param name="IsBeginningBalanceFilter"></param>
+        /// <param name="txtSearch"></param>
+        /// <param name="BasicRoleId">نقش ها اشخاص</param>
+        /// <returns></returns>
         public static DataSet DetailedAccountTransactionsTree(
     string DateS,
     string DateE,
@@ -3130,7 +3143,7 @@ namespace MyClass
     int? TransactionCodeE = 0,
     bool ShowZeroBalance = false,
     bool IsBeginningBalanceFilter = false,
-    string txtSearch = "")
+    string txtSearch = "", int BasicRoleId = 0)
         {
             DataSet ds = new DataSet("AccountingDataSet");
 
@@ -3167,6 +3180,8 @@ namespace MyClass
                     join cu in db.Customers on da.CustomerId equals cu.Id
                     join sp in db.SpecificAccounts on da.SpecificAccountId equals sp.Id
 
+                    where BasicRoleId == 0 || db.CustomerToGroups.Any(ctg => ctg.CustomerId == cu.Id && ctg.BasicRole && ctg.PersonGroupId == BasicRoleId)
+
                     group new { da, sp, trGroup, cu } by new
                     {
                         da.Id,
@@ -3174,6 +3189,7 @@ namespace MyClass
                         da.CodeAccount,
                         sp.Name,
                         cu.SecretCode,
+
                     }
                     into g
 
@@ -3187,6 +3203,7 @@ namespace MyClass
                           DebitTurnover != 0 ||
                           CreditTurnover != 0 ||
                           Balance != 0
+
                     select new
                     {
                         ParentCustomerId = g.Key.CustomerId,
@@ -3236,19 +3253,52 @@ namespace MyClass
                 // -------------------------------------------------
                 ds.Tables.Add(PublicClass.EntityTableToDataTable(qCustomers.ToList(), "Customers"));
                 ds.Tables.Add(PublicClass.EntityTableToDataTable(detailedList, "DetailedAccounts"));
+
+
+                if (detailedList.Any())
+                {
+                    ds.Relations.Add(
+                        new DataRelation(
+                            "CustomerToDetailed",
+                            ds.Tables["Customers"].Columns["Id"],
+                            ds.Tables["DetailedAccounts"].Columns["ParentCustomerId"],
+                            false
+                        )
+                    );
+                }
             }
 
             // -------------------------------------------------
             // 5️⃣ Relation
             // -------------------------------------------------
-            ds.Relations.Add(
-                new DataRelation(
-                    "CustomerToDetailed",
-                    ds.Tables["Customers"].Columns["Id"],
-                    ds.Tables["DetailedAccounts"].Columns["ParentCustomerId"],
-                    false
-                )
-            );
+            //ds.Relations.Add(
+            //    new DataRelation(
+            //        "CustomerToDetailed",
+            //        ds.Tables["Customers"].Columns["Id"],
+            //        ds.Tables["DetailedAccounts"].Columns["ParentCustomerId"],
+            //        false
+            //    )
+            //);
+
+
+            //*******
+
+            //        if (ds.Tables.Contains("Customers") &&
+            //ds.Tables.Contains("DetailedAccounts") &&
+            //ds.Tables["Customers"].Columns.Contains("Id") &&
+            //ds.Tables["DetailedAccounts"].Columns.Contains("ParentCustomerId"))
+            //        {
+            //            ds.Relations.Add(
+            //                new DataRelation(
+            //                    "CustomerToDetailed",
+            //                    ds.Tables["Customers"].Columns["Id"],
+            //                    ds.Tables["DetailedAccounts"].Columns["ParentCustomerId"],
+            //                    false
+            //                )
+            //            );
+            //        }
+
+
 
             return ds;
         }
@@ -3999,7 +4049,7 @@ namespace MyClass
         /// بستن فرم ها
         /// </summary>
         /// <returns></returns>
-        public static bool CloseForm(bool ShowMessageBox=true)
+        public static bool CloseForm(bool ShowMessageBox = true)
         {
             try
             {

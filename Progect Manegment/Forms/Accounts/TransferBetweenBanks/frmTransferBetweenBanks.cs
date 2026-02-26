@@ -1,6 +1,7 @@
 ﻿using HM_ERP_System.Class_General;
 using HM_ERP_System.Forms.Accounts.ContraAccounts;
 using HM_ERP_System.Forms.Accounts.DetailedAccount;
+using HM_ERP_System.Forms.Accounts.ReviewAccounts;
 using HM_ERP_System.Forms.Main_Form;
 
 using MyClass;
@@ -38,9 +39,12 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
             try
             {
                 txtTransactionDate.Value = DateTime.Now;
-                txtTransactionCode.Text=PublicClass.CreatTransactionCode();
+                txtTransactionCode.Text = PublicClass.CreatTransactionCode();
                 txtDateStart.Text = PersianDate.AddDaysToShamsiDate(PersianDate.NowPersianDate, PublicClass.SetDayToReportList());
-                //txtDateEnd.Value = DateTime.Now;
+
+                chkShowAccountingDocumentRegistration.Checked = Properties.Settings.Default.ShowAccountingDocumentRegistration;
+
+
                 txtDateEnd.Text = PersianDate.DateEnd();
                 WindowState = FormWindowState.Maximized;
                 UpdateData();
@@ -120,7 +124,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
                                 AccountBalance = Math.Abs((trGroup.Sum(t => (double?)t.PaymentBes) ?? 0) - (trGroup.Where(c => c.FinancialYear == FinancialYear).Sum(t => (double?)t.PaymentBed) ?? 0))
                             };
 
-                    cmbDetailedAccountsTo.DataSource= q.ToList();
+                    cmbDetailedAccountsTo.DataSource = q.ToList();
 
                     dt_DetailedAccountsTo = new System.Data.DataTable();
                     dt_DetailedAccountsTo = PublicClass.AddEntityTableToDataTable(q.ToList());
@@ -142,8 +146,8 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
                 string FinancialYear = PublicClass.FinancialYear;
                 using (var db = new DBcontextModel())
                 {
-                    var spid1 = db.SpecificAccounts.Where(c => c.Cod==10101).First().Id;
-                    var spid2 = db.SpecificAccounts.Where(c => c.Cod==10102).First().Id;
+                    var spid1 = db.SpecificAccounts.Where(c => c.Cod == 10101).First().Id;
+                    var spid2 = db.SpecificAccounts.Where(c => c.Cod == 10102).First().Id;
                     var q = from dt in db.DetailedAccounts
 
                             join cu in db.Customers
@@ -151,7 +155,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
 
                             //                            from shLeft in shGroup.DefaultIfEmpty()
 
-                            join brb in db.BankBranches 
+                            join brb in db.BankBranches
                             on cu.BanckId equals brb.Id into brbGroup
                             from brb_ in brbGroup.DefaultIfEmpty()
 
@@ -166,21 +170,21 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
                             on dt.Id equals tr.DetailedAccountId
                             into trGroup
 
-                            where dt.SpecificAccountId==spid1 || dt.SpecificAccountId==spid2
+                            where dt.SpecificAccountId == spid1 || dt.SpecificAccountId == spid2
 
                             select new
                             {
                                 dt.Id,
-                                name = (cu.Family+" "+cu.Name).Trim(),
+                                name = (cu.Family + " " + cu.Name).Trim(),
                                 TypeAccount = tc.Name,
                                 AccountCode = dt.CodeAccount,
                                 AccountNumber = cu.AccountNumber,
-                                BanckName=brb_!=null ? brb_.Name +" - "+ba_.Name:"-",
+                                BanckName = brb_ != null ? brb_.Name + " - " + ba_.Name : "-",
 
-                                AccountBalance = Math.Abs((trGroup.Sum(t => (double?)t.PaymentBes) ?? 0) - (trGroup.Where(c => c.FinancialYear == FinancialYear).Sum(t => (double?)t.PaymentBed) ?? 0)) 
+                                AccountBalance = Math.Abs((trGroup.Sum(t => (double?)t.PaymentBes) ?? 0) - (trGroup.Where(c => c.FinancialYear == FinancialYear).Sum(t => (double?)t.PaymentBed) ?? 0))
                             };
 
-                    cmbDetailedAccountsFr.DataSource= q.ToList();
+                    cmbDetailedAccountsFr.DataSource = q.ToList();
                     dt_DetailedAccountsFr = new System.Data.DataTable();
                     dt_DetailedAccountsFr = PublicClass.AddEntityTableToDataTable(q.ToList());
 
@@ -229,21 +233,21 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
         {
             try
             {
-                if (cmbDetailedAccountsFr.SelectedIndex!=-1)
+                if (cmbDetailedAccountsFr.SelectedIndex != -1)
                 {
                     DetailedAccountsFrId = Convert.ToInt32(cmbDetailedAccountsFr.Value);
 
                     using (var db = new DBcontextModel())
                     {
-                        var spid = db.DetailedAccounts.Where(c => c.Id==DetailedAccountsFrId).First().SpecificAccountId;
-                        AccountBalancF=PublicClass.DetailedAccountsBalance(spid, DetailedAccountsFrId);
+                        var spid = db.DetailedAccounts.Where(c => c.Id == DetailedAccountsFrId).First().SpecificAccountId;
+                        AccountBalancF = PublicClass.DetailedAccountsBalance(spid, DetailedAccountsFrId);
 
-                        lblAccountBalancF.Text=AccountBalancF.ToString("#,##0;(#,##0)");
+                        lblAccountBalancF.Text = AccountBalancF.ToString("#,##0;(#,##0)");
                     }
 
                 }
                 else
-                    lblAccountBalancF.Text="0";
+                    lblAccountBalancF.Text = "0";
             }
             catch (Exception)
             {
@@ -255,21 +259,21 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
         {
             try
             {
-                if (cmbDetailedAccountsTo.SelectedIndex!=-1)
+                if (cmbDetailedAccountsTo.SelectedIndex != -1)
                 {
                     DetailedAccountsToId = Convert.ToInt32(cmbDetailedAccountsTo.Value);
 
                     using (var db = new DBcontextModel())
                     {
-                        var spid = db.DetailedAccounts.Where(c => c.Id==DetailedAccountsToId).First().SpecificAccountId;
-                        AccountBalancT=PublicClass.DetailedAccountsBalance(spid, DetailedAccountsToId);
+                        var spid = db.DetailedAccounts.Where(c => c.Id == DetailedAccountsToId).First().SpecificAccountId;
+                        AccountBalancT = PublicClass.DetailedAccountsBalance(spid, DetailedAccountsToId);
 
-                        lblAccountBalancT.Text=AccountBalancT.ToString("#,##0;(#,##0)");
+                        lblAccountBalancT.Text = AccountBalancT.ToString("#,##0;(#,##0)");
                     }
 
                 }
                 else
-                    lblAccountBalancT.Text="0";
+                    lblAccountBalancT.Text = "0";
 
 
             }
@@ -285,7 +289,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
             {
                 if (!PublicClass.SetPeremission("Node3_2_3_1", 1)) return;
                 if (ControlFildes()) return;
-                txtTransactionCode.Text=PublicClass.CreatTransactionCode();
+                txtTransactionCode.Text = PublicClass.CreatTransactionCode();
                 int Series = 0;
                 if (MessageBox.Show(ResourceCode.T015, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) return;
 
@@ -299,8 +303,8 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
                         try
                         {
                             {
-                                var SpecificAccountIdF_ = db.DetailedAccounts.Where(c => c.Id==DetailedAccountsFrId).First().SpecificAccountId;
-                                var SpecificAccountIdT_ = db.DetailedAccounts.Where(c => c.Id==DetailedAccountsToId).First().SpecificAccountId;
+                                var SpecificAccountIdF_ = db.DetailedAccounts.Where(c => c.Id == DetailedAccountsFrId).First().SpecificAccountId;
+                                var SpecificAccountIdT_ = db.DetailedAccounts.Where(c => c.Id == DetailedAccountsToId).First().SpecificAccountId;
 
 
                                 Series++;
@@ -311,30 +315,28 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
 
 
                                 double Amount2 = 0;
-                                if (txtAmount2.Text!="")
+                                if (txtAmount2.Text != "")
                                     Amount2 = Convert.ToDouble(txtAmount2.TextSimple);
 
-                                if (Amount2!=0)
+                                if (Amount2 != 0)
                                 {
                                     string txtKrmozd = "کارمز انتقال وجه ";
-                                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod==80802).First().Id;
+                                    int SpecificAccountId = db.SpecificAccounts.Where(c => c.Cod == 80802).First().Id;
                                     int DetailedAccountId = 0;
-                                    int customertId = db.Customers.Where(c => c.SecretCode==7).First().Id;
+                                    int customertId = db.Customers.Where(c => c.SecretCode == 7).First().Id;
 
-                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId==SpecificAccountId && c.CustomerId==customertId);
-                                    if (serch1.Count()==0)
-                                        DetailedAccountId=PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
+                                    var serch1 = db.DetailedAccounts.Where(c => c.SpecificAccountId == SpecificAccountId && c.CustomerId == customertId);
+                                    if (serch1.Count() == 0)
+                                        DetailedAccountId = PublicClass.AddToDetailedAccounts(SpecificAccountId, customertId);
                                     else
-                                        DetailedAccountId=serch1.First().Id;
-                                    
-                                    
-                                    Series++;
-                                    PublicClass.AccountingDocumentRegistration(db, ListId, Convert.ToInt32(TransactionCode), TransactionDate, 5, SpecificAccountIdF_, DetailedAccountsFrId, Amount2,  0, Amount2,0, txtKrmozd+txtDescription.Text, txtSeryalNumber.Text, Series, false);
+                                        DetailedAccountId = serch1.First().Id;
+
 
                                     Series++;
-                                    PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 5, SpecificAccountId, DetailedAccountId, Amount2,  Amount2,  0, 0, txtKrmozd+txtDescription.Text, txtSeryalNumber.Text, Series, false);
+                                    PublicClass.AccountingDocumentRegistration(db, ListId, Convert.ToInt32(TransactionCode), TransactionDate, 5, SpecificAccountIdF_, DetailedAccountsFrId, Amount2, 0, Amount2, 0, txtKrmozd + txtDescription.Text, txtSeryalNumber.Text, Series, false);
 
-
+                                    Series++;
+                                    PublicClass.AccountingDocumentRegistration(db, 0, Convert.ToInt32(TransactionCode), TransactionDate, 5, SpecificAccountId, DetailedAccountId, Amount2, Amount2, 0, 0, txtKrmozd + txtDescription.Text, txtSeryalNumber.Text, Series, false);
 
                                 }
                             }
@@ -342,8 +344,13 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
                             transaction.Commit();
 
                             PublicClass.WindowAlart("1");
-                            if (_updatableForms!=null)
+                            if (_updatableForms != null)
                                 _updatableForms.UpdateData();
+
+                            if (chkShowAccountingDocumentRegistration.Checked)
+                                ShowAccountingDocumentRegistration(Convert.ToInt32(txtTransactionCode.Text));
+
+
                             CelearItems();
                         }
                         catch (Exception er)
@@ -357,6 +364,14 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
             {
                 PublicClass.ShowErrorMessage(er);
             }
+        }
+
+
+        void ShowAccountingDocumentRegistration(int TransactionCode)
+        {
+            frmJournal f = new frmJournal();
+            f.TransactionCode = TransactionCode;
+            f.ShowDialog();
         }
 
         private void CelearItems()
@@ -388,7 +403,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
         {
             try
             {
-                if (txtTransactionDate.Text.Length!=10)
+                if (txtTransactionDate.Text.Length != 10)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T020);
                     return true;
@@ -400,48 +415,50 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
                     return true;
                 }
 
-                if (cmbDetailedAccountsFr.SelectedIndex==-1)
+                if (cmbDetailedAccountsFr.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T078);
                     cmbDetailedAccountsFr.Focus();
                     return true;
                 }
-                if (cmbDetailedAccountsTo.SelectedIndex==-1)
+                if (cmbDetailedAccountsTo.SelectedIndex == -1)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T078);
                     cmbDetailedAccountsTo.Focus();
                     return true;
                 }
-                if (cmbDetailedAccountsFr.Value==cmbDetailedAccountsTo.Value)
+                if (cmbDetailedAccountsFr.Value == cmbDetailedAccountsTo.Value)
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T145);
                     return true;
                 }
 
-                if (txtAmount1.Text=="")
+                if (txtAmount1.Text == "")
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T081);
                     txtAmount1.Focus();
                     return true;
                 }
-                if (txtSeryalNumber.Text=="")
+                if (txtSeryalNumber.Text == "")
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T146);
                     txtSeryalNumber.Focus();
                     return true;
                 }
-                if (txtDescription.Text=="")
+                if (txtDescription.Text == "")
                 {
                     PublicClass.ErrorMesseg(ResourceCode.T143);
                     txtDescription.Focus();
                     return true;
                 }
 
-                if(Convert.ToInt64(txtAmount1.TextSimple)>AccountBalancF)
+                if (Convert.ToInt64(txtAmount1.TextSimple) > AccountBalancF)
                 {
-                    PublicClass.ErrorMesseg(ResourceCode.T116);
-                    txtAmount1.Focus();
-                    return true;
+                    if (PublicClass.ErrorMessegYesNo(ResourceCode.T116) == DialogResult.No)
+                    {
+                        txtAmount1.Focus();
+                        return true;
+                    }
 
                 }
                 return false;
@@ -465,7 +482,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
 
         private void btnCreatDescription_Click(object sender, EventArgs e)
         {
-            txtDescription.Text= "سند جابجایی به مبلغ "+ txtAmount1.Text +" ریال در مورخ "+txtTransactionDate.Text+" به شماره سند "+txtTransactionCode.Text + " بابت  ";
+            txtDescription.Text = "سند جابجایی به مبلغ " + txtAmount1.Text + " ریال در مورخ " + txtTransactionDate.Text + " به شماره سند " + txtTransactionCode.Text + " بابت  ";
         }
 
         private void btnShowListItems_Click(object sender, EventArgs e)
@@ -502,8 +519,8 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
             if (!PublicClass.SetPeremission("Node2_1_2", 1)) return;
             frmContraAccounts f = new frmContraAccounts(this);
             f.cmbTypeAccounts.Enabled = false;
-            f.TypeAccounts_Id=3;
-            f.SpecificAccountCode=10102;//بانک
+            f.TypeAccounts_Id = 3;
+            f.SpecificAccountCode = 10102;//بانک
             f.ShowList(3);
             f.ShowDialog();
             FillcmbDetailedAccountsTo();
@@ -515,8 +532,8 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
 
             frmContraAccounts f = new frmContraAccounts(this);
             f.cmbTypeAccounts.Enabled = false;
-            f.TypeAccounts_Id=3;
-            f.SpecificAccountCode=10102;//بانک
+            f.TypeAccounts_Id = 3;
+            f.SpecificAccountCode = 10102;//بانک
             f.ShowList(3);
             f.ShowDialog();
             FillcmbDetailedAccountsTo();
@@ -527,8 +544,8 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
         {
             frmContraAccounts f = new frmContraAccounts(this);
             f.cmbTypeAccounts.Enabled = false;
-            f.TypeAccounts_Id=4;
-            f.SpecificAccountCode=10101;//صندوق
+            f.TypeAccounts_Id = 4;
+            f.SpecificAccountCode = 10101;//صندوق
             f.ShowList(4);
             f.ShowDialog();
             FillcmbDetailedAccountsTo();
@@ -538,8 +555,8 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
         {
             frmContraAccounts f = new frmContraAccounts(this);
             f.cmbTypeAccounts.Enabled = false;
-            f.TypeAccounts_Id=4;
-            f.SpecificAccountCode=10101;//صندوق
+            f.TypeAccounts_Id = 4;
+            f.SpecificAccountCode = 10101;//صندوق
             f.ShowList(4);
             f.ShowDialog();
             FillcmbDetailedAccountsTo();
@@ -549,7 +566,7 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
         {
             try
             {
-                ListId=ListId_;
+                ListId = ListId_;
                 switch (e.Command.Key)
                 {
                     case "Edit":
@@ -564,15 +581,15 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
                         if (!PublicClass.SetPeremission("Node3_2_3_3", 1)) return;
                         using (var db = new DBcontextModel())
                         {
-                            if (db.DocumentBancks.Where(c => c.FormName == Name && c.ListInFoemId==ListId).Count() != 0)
+                            if (db.DocumentBancks.Where(c => c.FormName == Name && c.ListInFoemId == ListId).Count() != 0)
                             {
                                 PublicClass.ErrorMesseg(ResourceCode.T149);
                                 return;
                             }
 
-                            var q = db.Transactions.Where(c => c.Id==ListId).First().TransactionCode;
+                            var q = db.Transactions.Where(c => c.Id == ListId).First().TransactionCode;
 
-                            var list = db.Transactions.Where(c => c.TransactionCode==q).ToList();
+                            var list = db.Transactions.Where(c => c.TransactionCode == q).ToList();
                             if (MessageBox.Show(ResourceCode.T003, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 //foreach (var item in list)
@@ -595,12 +612,13 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
 
                         PublicClass.AddDocumentToBanck(this.Name, ListId, lblCaption);
                         //FilldgvList();
-                        ListId=0;
+                        ListId = 0;
                         break;
                     case "DocViow":
                         using (var db = new DBcontextModel())
                         {
-
+                            var TransactionCode = db.Transactions.Where(c => c.Id == ListId).First().TransactionCode;
+                            ShowAccountingDocumentRegistration(TransactionCode);
                         }
                         break;
                 }
@@ -626,6 +644,13 @@ namespace HM_ERP_System.Forms.Accounts.TransferBetweenBanks
             {
                 PublicClass.ShowErrorMessage(er);
             }
+        }
+
+        private void chkShowAccountingDocumentRegistration_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShowAccountingDocumentRegistration = chkShowAccountingDocumentRegistration.Checked;
+            Properties.Settings.Default.Save();
+
         }
     }
 }

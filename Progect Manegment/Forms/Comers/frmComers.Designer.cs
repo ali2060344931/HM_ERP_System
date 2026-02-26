@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout cmbResiver2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbResiver1_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSender2_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -63,6 +62,7 @@
             Janus.Windows.GridEX.GridEXLayout cmbCostAccountB_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbPaymentToOthers_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListH_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComers));
             Janus.Windows.GridEX.GridEXLayout dgvListB_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.uiPanel0 = new Janus.Windows.UI.Dock.UIPanel();
@@ -325,6 +325,10 @@
             this.label123 = new System.Windows.Forms.Label();
             this.txtCA = new DevComponents.Editors.DoubleInput();
             this.label124 = new System.Windows.Forms.Label();
+            this.txtBY = new DevComponents.Editors.DoubleInput();
+            this.label126 = new System.Windows.Forms.Label();
+            this.txtBZ = new DevComponents.Editors.DoubleInput();
+            this.label125 = new System.Windows.Forms.Label();
             this.txtBN = new DevComponents.Editors.DoubleInput();
             this.label122 = new System.Windows.Forms.Label();
             this.txtBO = new DevComponents.Editors.DoubleInput();
@@ -342,6 +346,7 @@
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.btnNew = new DevComponents.DotNetBar.ButtonX();
             this.chkDocumentBanck = new System.Windows.Forms.CheckBox();
+            this.chkShowAccountingDocumentRegistration = new System.Windows.Forms.CheckBox();
             this.uiPanel2 = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel2Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -396,11 +401,6 @@
             this.btnAddDocCB = new Janus.Windows.Ribbon.DropDownCommand();
             this.btnAccountingDocumentRegistration = new Janus.Windows.Ribbon.DropDownCommand();
             this.dropDownCommand7 = new Janus.Windows.Ribbon.DropDownCommand();
-            this.chkShowAccountingDocumentRegistration = new System.Windows.Forms.CheckBox();
-            this.label125 = new System.Windows.Forms.Label();
-            this.txtBZ = new DevComponents.Editors.DoubleInput();
-            this.label126 = new System.Windows.Forms.Label();
-            this.txtBY = new DevComponents.Editors.DoubleInput();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanelManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiPanel0)).BeginInit();
             this.uiPanel0.SuspendLayout();
@@ -486,6 +486,8 @@
             this.uiGroupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaymentToOthers2)).BeginInit();
@@ -504,8 +506,6 @@
             this.panelDeleteEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSeryalH_DE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWeightDeliveredGoods)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBY)).BeginInit();
             this.SuspendLayout();
             // 
             // uiPanelManager1
@@ -4664,6 +4664,82 @@
             this.label124.TabIndex = 98;
             this.label124.Text = "کمیسیون:";
             // 
+            // txtBY
+            // 
+            this.txtBY.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            // 
+            // 
+            // 
+            this.txtBY.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(132)))));
+            this.txtBY.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtBY.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBY.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtBY.DisplayFormat = "#,##0;(#,##0)";
+            this.txtBY.Increment = 1D;
+            this.txtBY.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
+            this.txtBY.IsInputReadOnly = true;
+            this.txtBY.Location = new System.Drawing.Point(6, 50);
+            this.txtBY.MaxValue = 1797693134862.3157D;
+            this.txtBY.MinValue = -1797693134862.3157D;
+            this.txtBY.Name = "txtBY";
+            this.txtBY.Size = new System.Drawing.Size(108, 28);
+            this.txtBY.TabIndex = 13;
+            this.txtBY.TabStop = false;
+            this.txtBY.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
+            this.txtBY.WatermarkText = "BY";
+            this.txtBY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeryalB_KeyDown);
+            // 
+            // label126
+            // 
+            this.label126.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label126.AutoSize = true;
+            this.label126.BackColor = System.Drawing.Color.Transparent;
+            this.label126.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label126.Location = new System.Drawing.Point(116, 58);
+            this.label126.Name = "label126";
+            this.label126.Size = new System.Drawing.Size(117, 15);
+            this.label126.TabIndex = 98;
+            this.label126.Text = "راننده بابت کمیسیون بپردازد";
+            this.toolTip1.SetToolTip(this.label126, "مبلغی که باید راننده بابت کمیسیون بپردازد");
+            // 
+            // txtBZ
+            // 
+            this.txtBZ.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            // 
+            // 
+            // 
+            this.txtBZ.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(132)))));
+            this.txtBZ.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.txtBZ.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBZ.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.txtBZ.DisplayFormat = "#,##0;(#,##0)";
+            this.txtBZ.Increment = 1D;
+            this.txtBZ.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
+            this.txtBZ.IsInputReadOnly = true;
+            this.txtBZ.Location = new System.Drawing.Point(6, 79);
+            this.txtBZ.MaxValue = 1797693134862.3157D;
+            this.txtBZ.MinValue = -1797693134862.3157D;
+            this.txtBZ.Name = "txtBZ";
+            this.txtBZ.Size = new System.Drawing.Size(108, 28);
+            this.txtBZ.TabIndex = 13;
+            this.txtBZ.TabStop = false;
+            this.txtBZ.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
+            this.txtBZ.WatermarkText = "BZ";
+            this.txtBZ.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeryalB_KeyDown);
+            // 
+            // label125
+            // 
+            this.label125.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label125.AutoSize = true;
+            this.label125.BackColor = System.Drawing.Color.Transparent;
+            this.label125.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label125.Location = new System.Drawing.Point(116, 87);
+            this.label125.Name = "label125";
+            this.label125.Size = new System.Drawing.Size(134, 15);
+            this.label125.TabIndex = 98;
+            this.label125.Text = "راننده باید بابت کرایه دریافت کند";
+            this.toolTip1.SetToolTip(this.label125, "مبلغی که راننده باید بابت کرایه دریافت کند");
+            // 
             // txtBN
             // 
             this.txtBN.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -4956,6 +5032,21 @@
             this.toolTip1.SetToolTip(this.chkDocumentBanck, "ثبت اسناد و مدارک به همراه ثبت اطلاعات");
             this.chkDocumentBanck.UseVisualStyleBackColor = true;
             this.chkDocumentBanck.CheckedChanged += new System.EventHandler(this.chkDocumentBanck_CheckedChanged);
+            // 
+            // chkShowAccountingDocumentRegistration
+            // 
+            this.chkShowAccountingDocumentRegistration.AutoSize = true;
+            this.chkShowAccountingDocumentRegistration.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkShowAccountingDocumentRegistration.Location = new System.Drawing.Point(0, 0);
+            this.chkShowAccountingDocumentRegistration.Name = "chkShowAccountingDocumentRegistration";
+            this.chkShowAccountingDocumentRegistration.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.chkShowAccountingDocumentRegistration.Size = new System.Drawing.Size(167, 28);
+            this.chkShowAccountingDocumentRegistration.TabIndex = 17;
+            this.chkShowAccountingDocumentRegistration.Text = "نمایش سند حسابداری";
+            this.toolTip1.SetToolTip(this.chkShowAccountingDocumentRegistration, "نمایش اسناد حسابداری پس ثبت");
+            this.chkShowAccountingDocumentRegistration.UseVisualStyleBackColor = true;
+            this.chkShowAccountingDocumentRegistration.Visible = false;
+            this.chkShowAccountingDocumentRegistration.CheckedChanged += new System.EventHandler(this.chkShowAccountingDocumentRegistration_CheckedChanged);
             // 
             // uiPanel2
             // 
@@ -5590,97 +5681,6 @@
             this.dropDownCommand7.Name = "dropDownCommand7";
             this.dropDownCommand7.Text = "نمایش سند حسابداری";
             // 
-            // chkShowAccountingDocumentRegistration
-            // 
-            this.chkShowAccountingDocumentRegistration.AutoSize = true;
-            this.chkShowAccountingDocumentRegistration.Dock = System.Windows.Forms.DockStyle.Left;
-            this.chkShowAccountingDocumentRegistration.Location = new System.Drawing.Point(0, 0);
-            this.chkShowAccountingDocumentRegistration.Name = "chkShowAccountingDocumentRegistration";
-            this.chkShowAccountingDocumentRegistration.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.chkShowAccountingDocumentRegistration.Size = new System.Drawing.Size(167, 28);
-            this.chkShowAccountingDocumentRegistration.TabIndex = 17;
-            this.chkShowAccountingDocumentRegistration.Text = "نمایش سند حسابداری";
-            this.toolTip1.SetToolTip(this.chkShowAccountingDocumentRegistration, "نمایش اسناد حسابداری پس ثبت");
-            this.chkShowAccountingDocumentRegistration.UseVisualStyleBackColor = true;
-            this.chkShowAccountingDocumentRegistration.Visible = false;
-            this.chkShowAccountingDocumentRegistration.CheckedChanged += new System.EventHandler(this.chkShowAccountingDocumentRegistration_CheckedChanged);
-            // 
-            // label125
-            // 
-            this.label125.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label125.AutoSize = true;
-            this.label125.BackColor = System.Drawing.Color.Transparent;
-            this.label125.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label125.Location = new System.Drawing.Point(116, 87);
-            this.label125.Name = "label125";
-            this.label125.Size = new System.Drawing.Size(134, 15);
-            this.label125.TabIndex = 98;
-            this.label125.Text = "راننده باید بابت کرایه دریافت کند";
-            this.toolTip1.SetToolTip(this.label125, "مبلغی که راننده باید بابت کرایه دریافت کند");
-            // 
-            // txtBZ
-            // 
-            this.txtBZ.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            // 
-            // 
-            // 
-            this.txtBZ.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(132)))));
-            this.txtBZ.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtBZ.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBZ.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtBZ.DisplayFormat = "#,##0;(#,##0)";
-            this.txtBZ.Increment = 1D;
-            this.txtBZ.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtBZ.IsInputReadOnly = true;
-            this.txtBZ.Location = new System.Drawing.Point(6, 79);
-            this.txtBZ.MaxValue = 1797693134862.3157D;
-            this.txtBZ.MinValue = -1797693134862.3157D;
-            this.txtBZ.Name = "txtBZ";
-            this.txtBZ.Size = new System.Drawing.Size(108, 28);
-            this.txtBZ.TabIndex = 13;
-            this.txtBZ.TabStop = false;
-            this.txtBZ.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
-            this.txtBZ.WatermarkText = "BZ";
-            this.txtBZ.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeryalB_KeyDown);
-            // 
-            // label126
-            // 
-            this.label126.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label126.AutoSize = true;
-            this.label126.BackColor = System.Drawing.Color.Transparent;
-            this.label126.Font = new System.Drawing.Font("Vazir FD", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label126.Location = new System.Drawing.Point(116, 58);
-            this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(117, 15);
-            this.label126.TabIndex = 98;
-            this.label126.Text = "راننده بابت کمیسیون بپردازد";
-            this.toolTip1.SetToolTip(this.label126, "مبلغی که باید راننده بابت کمیسیون بپردازد");
-            // 
-            // txtBY
-            // 
-            this.txtBY.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            // 
-            // 
-            // 
-            this.txtBY.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(132)))));
-            this.txtBY.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.txtBY.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtBY.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.txtBY.DisplayFormat = "#,##0;(#,##0)";
-            this.txtBY.Increment = 1D;
-            this.txtBY.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.txtBY.IsInputReadOnly = true;
-            this.txtBY.Location = new System.Drawing.Point(6, 50);
-            this.txtBY.MaxValue = 1797693134862.3157D;
-            this.txtBY.MinValue = -1797693134862.3157D;
-            this.txtBY.Name = "txtBY";
-            this.txtBY.Size = new System.Drawing.Size(108, 28);
-            this.txtBY.TabIndex = 13;
-            this.txtBY.TabStop = false;
-            this.txtBY.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center;
-            this.txtBY.WatermarkText = "BY";
-            this.txtBY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSeryalB_KeyDown);
-            // 
             // frmComers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -5789,6 +5789,8 @@
             this.uiGroupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaymentToOthers2)).EndInit();
@@ -5809,8 +5811,6 @@
             this.panelDeleteEdit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtSeryalH_DE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtWeightDeliveredGoods)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBY)).EndInit();
             this.ResumeLayout(false);
 
         }

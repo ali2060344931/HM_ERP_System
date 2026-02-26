@@ -676,7 +676,7 @@ namespace HM_ERP_System.Forms.Comers
                                 cmh.Id,
                                 Name = cmh.RemiaanceSeryal,
                                 CarPlat = cr.CarPlat + cr.CarPlatSeryal,
-                                DraverName = cu.Family != "" ? (cu.Family + "، " + cu.Name).Trim() : cu.Name,
+                                DraverName = cu.Family != "" ? (cu.Family + " " + cu.Name).Trim() : cu.Name,
                                 LoadingOrinig = ct1.Name,
                                 UnLoadingOrinig = ct2.Name,
                                 ProductName = pr.Name,
@@ -3018,21 +3018,7 @@ namespace HM_ERP_System.Forms.Comers
                     AccountingDocumentRegistration(newId);//ثبت سند حسابداری
 
 
-                    //if( chkShowAccountingDocumentRegistration.Checked)
-                    // {
-                    //     var q0 = db.Transactions.Any(c => c.ComerBId == newId && c.Status == false);
-                    //     if (q0)
-                    //     {
-                    //         var TransactionCode = db.Transactions.Where(c => c.ComerBId == ListId).First().TransactionCode;
-
-                    //         frmJournal f = new frmJournal();
-                    //         f.TransactionCode = TransactionCode;
-                    //         f.ShowDialog();
-                    //     }
-                    // }
-
-
-                    FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
+                   FilldgvListB(dgvListB, txtDateStart.Text, txtDateEnd.Text, null, txtSearch.Text);
                     btnSave.Enabled = false;
                     uiGroupBox6.Enabled = false;
                     uiGroupBox2.Enabled = false;
@@ -4214,7 +4200,7 @@ namespace HM_ERP_System.Forms.Comers
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbCarplateB, dt_SeryalH);
+                PublicClass.SearchCmbId(cmbCarplateB, dt_SeryalH, "", "راننده");
             }
 
         }
@@ -4274,7 +4260,7 @@ namespace HM_ERP_System.Forms.Comers
 
             if (e.KeyCode == Keys.F2)
             {
-                PublicClass.SearchCmbId(cmbCarplateH, dt_Carplate);
+                PublicClass.SearchCmbId(cmbCarplateH, dt_Carplate,"", "راننـــده");
 
             }
         }

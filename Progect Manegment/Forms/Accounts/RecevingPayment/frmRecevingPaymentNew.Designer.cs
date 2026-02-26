@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             Janus.Windows.GridEX.GridEXLayout cmbDetailedAccountsFrom_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecevingPaymentNew));
             Janus.Windows.GridEX.GridEXLayout cmbTypeDocument_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbListDoc_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbSpecificAccountFrom_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListMulti_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecevingPaymentNew));
             Janus.Windows.GridEX.GridEXLayout cmbDetailedAccountsTo_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout dgvListCheque1_Layout_0 = new Janus.Windows.GridEX.GridEXLayout();
             Janus.Windows.GridEX.GridEXLayout cmbAccount_DesignTimeLayout = new Janus.Windows.GridEX.GridEXLayout();
@@ -44,6 +44,7 @@
             this.uiPanelManager1 = new Janus.Windows.UI.Dock.UIPanelManager(this.components);
             this.pnlFrom = new Janus.Windows.UI.Dock.UIPanel();
             this.uiPanel0Container = new Janus.Windows.UI.Dock.UIPanelInnerContainer();
+            this.chkShowAccountingDocumentRegistration = new System.Windows.Forms.CheckBox();
             this.rdbExpense = new System.Windows.Forms.RadioButton();
             this.btnShowDocList = new DevComponents.DotNetBar.ButtonX();
             this.rdbIncomr = new System.Windows.Forms.RadioButton();
@@ -220,9 +221,9 @@
             // Design Time Panel Info:
             // 
             this.uiPanelManager1.BeginPanelInfo();
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("b7d9cbdd-dfbf-4d6a-94a0-b81ab0c0ebe7"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1337, 178), true);
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("0b438063-86f6-414c-bef5-5baf18e89615"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1337, 239), true);
-            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1337, 304), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("b7d9cbdd-dfbf-4d6a-94a0-b81ab0c0ebe7"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1337, 153), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("0b438063-86f6-414c-bef5-5baf18e89615"), Janus.Windows.UI.Dock.PanelDockStyle.Top, new System.Drawing.Size(1337, 257), true);
+            this.uiPanelManager1.AddDockPanelInfo(new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles, Janus.Windows.UI.Dock.PanelDockStyle.Fill, false, new System.Drawing.Size(1337, 333), true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("dc368c76-0c76-4827-ac96-b7ce6c5815cd"), new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), 951, true);
             this.uiPanelManager1.AddDockPanelInfo(new System.Guid("65b84ce1-93bf-4bc4-87d3-d85b8093962d"), new System.Guid("1bc3968c-a922-4bcb-b8b6-cd6761bea428"), 152, true);
             this.uiPanelManager1.AddFloatingPanelInfo(new System.Guid("dc368c76-0c76-4827-ac96-b7ce6c5815cd"), new System.Drawing.Point(435, 444), new System.Drawing.Size(200, 200), false);
@@ -238,15 +239,16 @@
             this.pnlFrom.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
             this.pnlFrom.FloatingLocation = new System.Drawing.Point(426, 174);
             this.pnlFrom.InnerContainer = this.uiPanel0Container;
-            this.pnlFrom.Location = new System.Drawing.Point(3, 25);
+            this.pnlFrom.Location = new System.Drawing.Point(3, 3);
             this.pnlFrom.Name = "pnlFrom";
-            this.pnlFrom.Size = new System.Drawing.Size(1337, 178);
+            this.pnlFrom.Size = new System.Drawing.Size(1337, 153);
             this.pnlFrom.TabIndex = 4;
             this.pnlFrom.Text = "دریافت/پرداخت از";
             this.pnlFrom.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Far;
             // 
             // uiPanel0Container
             // 
+            this.uiPanel0Container.Controls.Add(this.chkShowAccountingDocumentRegistration);
             this.uiPanel0Container.Controls.Add(this.rdbExpense);
             this.uiPanel0Container.Controls.Add(this.btnShowDocList);
             this.uiPanel0Container.Controls.Add(this.rdbIncomr);
@@ -275,8 +277,21 @@
             this.uiPanel0Container.Controls.Add(this.label20);
             this.uiPanel0Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel0Container.Name = "uiPanel0Container";
-            this.uiPanel0Container.Size = new System.Drawing.Size(1335, 146);
+            this.uiPanel0Container.Size = new System.Drawing.Size(1335, 121);
             this.uiPanel0Container.TabIndex = 0;
+            // 
+            // chkShowAccountingDocumentRegistration
+            // 
+            this.chkShowAccountingDocumentRegistration.AutoSize = true;
+            this.chkShowAccountingDocumentRegistration.Location = new System.Drawing.Point(3, 93);
+            this.chkShowAccountingDocumentRegistration.Name = "chkShowAccountingDocumentRegistration";
+            this.chkShowAccountingDocumentRegistration.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.chkShowAccountingDocumentRegistration.Size = new System.Drawing.Size(167, 26);
+            this.chkShowAccountingDocumentRegistration.TabIndex = 18;
+            this.chkShowAccountingDocumentRegistration.Text = "نمایش سند حسابداری";
+            this.toolTip1.SetToolTip(this.chkShowAccountingDocumentRegistration, "نمایش اسناد حسابداری پس ثبت");
+            this.chkShowAccountingDocumentRegistration.UseVisualStyleBackColor = true;
+            this.chkShowAccountingDocumentRegistration.CheckedChanged += new System.EventHandler(this.chkShowAccountingDocumentRegistration_CheckedChanged);
             // 
             // rdbExpense
             // 
@@ -334,7 +349,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1213, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(55, 146);
+            this.panel4.Size = new System.Drawing.Size(55, 121);
             this.panel4.TabIndex = 104;
             // 
             // labelX3
@@ -371,7 +386,7 @@
             // chkDocumentBanck
             // 
             this.chkDocumentBanck.AutoSize = true;
-            this.chkDocumentBanck.Location = new System.Drawing.Point(51, 67);
+            this.chkDocumentBanck.Location = new System.Drawing.Point(71, 68);
             this.chkDocumentBanck.Name = "chkDocumentBanck";
             this.chkDocumentBanck.Size = new System.Drawing.Size(89, 26);
             this.chkDocumentBanck.TabIndex = 169;
@@ -382,12 +397,13 @@
             // 
             this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.ButtonText = "..";
-            this.txtDescription.Location = new System.Drawing.Point(475, 116);
+            this.txtDescription.Location = new System.Drawing.Point(261, 79);
             this.txtDescription.MaxLength = 32768;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(654, 28);
+            this.txtDescription.Size = new System.Drawing.Size(69, 28);
             this.txtDescription.TabIndex = 5;
             this.txtDescription.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near;
+            this.txtDescription.Visible = false;
             this.txtDescription.Enter += new System.EventHandler(this.txtDescription_Enter);
             // 
             // buttonX3
@@ -466,11 +482,12 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label4.Location = new System.Drawing.Point(1129, 120);
+            this.label4.Location = new System.Drawing.Point(330, 83);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 160;
             this.label4.Text = "توضیحـــــــات:";
+            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -531,7 +548,7 @@
             // txtTransactionDate
             // 
             this.txtTransactionDate.CalendarRightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTransactionDate.Location = new System.Drawing.Point(3, 35);
+            this.txtTransactionDate.Location = new System.Drawing.Point(23, 36);
             this.txtTransactionDate.Name = "txtTransactionDate";
             this.txtTransactionDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTransactionDate.Size = new System.Drawing.Size(137, 29);
@@ -542,7 +559,7 @@
             // 
             this.txtTransactionCode.BackColor = System.Drawing.Color.Gainsboro;
             this.txtTransactionCode.Enabled = false;
-            this.txtTransactionCode.Location = new System.Drawing.Point(3, 3);
+            this.txtTransactionCode.Location = new System.Drawing.Point(23, 4);
             this.txtTransactionCode.MaxLength = 7;
             this.txtTransactionCode.Name = "txtTransactionCode";
             this.txtTransactionCode.Size = new System.Drawing.Size(137, 28);
@@ -615,7 +632,7 @@
             this.label50.AutoSize = true;
             this.label50.BackColor = System.Drawing.Color.Transparent;
             this.label50.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label50.Location = new System.Drawing.Point(141, 11);
+            this.label50.Location = new System.Drawing.Point(161, 12);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(62, 18);
             this.label50.TabIndex = 138;
@@ -626,7 +643,7 @@
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label25.Location = new System.Drawing.Point(140, 40);
+            this.label25.Location = new System.Drawing.Point(160, 41);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(36, 18);
             this.label25.TabIndex = 139;
@@ -638,7 +655,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(1268, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 146);
+            this.pictureBox1.Size = new System.Drawing.Size(67, 121);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 172;
             this.pictureBox1.TabStop = false;
@@ -664,7 +681,7 @@
             this.lblCaption.Name = "lblCaption";
             this.lblCaption.Size = new System.Drawing.Size(202, 60);
             this.lblCaption.TabIndex = 161;
-            this.lblCaption.Text = "حـــــواله";
+            this.lblCaption.Text = "عنوان سند";
             this.lblCaption.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label20
@@ -684,9 +701,9 @@
             this.pnlTo.CloseButtonVisible = Janus.Windows.UI.InheritableBoolean.False;
             this.pnlTo.FloatingLocation = new System.Drawing.Point(482, 64);
             this.pnlTo.InnerContainer = this.uiPanel20Container;
-            this.pnlTo.Location = new System.Drawing.Point(3, 203);
+            this.pnlTo.Location = new System.Drawing.Point(3, 156);
             this.pnlTo.Name = "pnlTo";
-            this.pnlTo.Size = new System.Drawing.Size(1337, 239);
+            this.pnlTo.Size = new System.Drawing.Size(1337, 257);
             this.pnlTo.TabIndex = 4;
             this.pnlTo.Text = "دریافت/پرداخت به";
             this.pnlTo.TextAlignment = Janus.Windows.UI.Dock.PanelTextAlignment.Far;
@@ -697,7 +714,7 @@
             this.uiPanel20Container.Controls.Add(this.panel3);
             this.uiPanel20Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel20Container.Name = "uiPanel20Container";
-            this.uiPanel20Container.Size = new System.Drawing.Size(1335, 207);
+            this.uiPanel20Container.Size = new System.Drawing.Size(1335, 225);
             this.uiPanel20Container.TabIndex = 0;
             // 
             // uiTab1
@@ -707,7 +724,7 @@
             this.uiTab1.Location = new System.Drawing.Point(0, 0);
             this.uiTab1.Name = "uiTab1";
             this.uiTab1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.uiTab1.Size = new System.Drawing.Size(1335, 167);
+            this.uiTab1.Size = new System.Drawing.Size(1335, 195);
             this.uiTab1.TabIndex = 5;
             this.uiTab1.TabPages.AddRange(new Janus.Windows.UI.Tab.UITabPage[] {
             this.uiTabPage1,
@@ -727,7 +744,7 @@
             this.uiTabPage1.Key = "Cash";
             this.uiTabPage1.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage1.Name = "uiTabPage1";
-            this.uiTabPage1.Size = new System.Drawing.Size(1269, 165);
+            this.uiTabPage1.Size = new System.Drawing.Size(1269, 193);
             this.uiTabPage1.TabStop = true;
             this.uiTabPage1.Text = "نقد و بانک";
             this.toolTip1.SetToolTip(this.uiTabPage1, "واریز/برداشت نقدیا بانک");
@@ -756,7 +773,7 @@
             this.dgvListMulti.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListMulti.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvListMulti.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListMulti.Size = new System.Drawing.Size(869, 165);
+            this.dgvListMulti.Size = new System.Drawing.Size(869, 193);
             this.dgvListMulti.Sortable = true;
             this.dgvListMulti.TabIndex = 13;
             this.dgvListMulti.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -788,13 +805,12 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.Location = new System.Drawing.Point(869, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(400, 165);
+            this.panel5.Size = new System.Drawing.Size(400, 193);
             this.panel5.TabIndex = 14;
             // 
             // btnAddNewCustomer
             // 
             this.btnAddNewCustomer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddNewCustomer.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddNewCustomer.AutoExpandOnClick = true;
             this.btnAddNewCustomer.BackColor = System.Drawing.Color.Transparent;
             this.btnAddNewCustomer.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
@@ -1023,7 +1039,7 @@
             this.uiTabPage2.Key = "Cheque";
             this.uiTabPage2.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage2.Name = "uiTabPage2";
-            this.uiTabPage2.Size = new System.Drawing.Size(1269, 165);
+            this.uiTabPage2.Size = new System.Drawing.Size(1269, 182);
             this.uiTabPage2.TabStop = true;
             this.uiTabPage2.Text = "چک";
             // 
@@ -1050,7 +1066,7 @@
             this.dgvListCheque1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListCheque1.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvListCheque1.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListCheque1.Size = new System.Drawing.Size(843, 165);
+            this.dgvListCheque1.Size = new System.Drawing.Size(843, 182);
             this.dgvListCheque1.Sortable = true;
             this.dgvListCheque1.TabIndex = 14;
             this.dgvListCheque1.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -1084,7 +1100,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel7.Location = new System.Drawing.Point(843, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(426, 165);
+            this.panel7.Size = new System.Drawing.Size(426, 182);
             this.panel7.TabIndex = 0;
             // 
             // txtAmount3
@@ -1299,7 +1315,7 @@
             this.uiTabPage3.Key = "Documents";
             this.uiTabPage3.Location = new System.Drawing.Point(1, 1);
             this.uiTabPage3.Name = "uiTabPage3";
-            this.uiTabPage3.Size = new System.Drawing.Size(1269, 165);
+            this.uiTabPage3.Size = new System.Drawing.Size(1269, 182);
             this.uiTabPage3.TabStop = true;
             this.uiTabPage3.Text = "اسناد";
             this.toolTip1.SetToolTip(this.uiTabPage3, "چک خرج شدنی");
@@ -1327,7 +1343,7 @@
             this.dgvListCheque2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvListCheque2.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvListCheque2.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvListCheque2.Size = new System.Drawing.Size(869, 165);
+            this.dgvListCheque2.Size = new System.Drawing.Size(869, 182);
             this.dgvListCheque2.Sortable = true;
             this.dgvListCheque2.TabIndex = 15;
             this.dgvListCheque2.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -1353,7 +1369,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(869, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(400, 165);
+            this.panel2.Size = new System.Drawing.Size(400, 182);
             this.panel2.TabIndex = 0;
             // 
             // txtDescriptionDoc
@@ -1405,7 +1421,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Vazir FD", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label16.Location = new System.Drawing.Point(158, 55);
+            this.label16.Location = new System.Drawing.Point(158, 64);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(33, 18);
             this.label16.TabIndex = 161;
@@ -1468,7 +1484,7 @@
             this.lblCeackDocName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblCeackDocName.BackColor = System.Drawing.Color.LightGray;
             this.lblCeackDocName.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblCeackDocName.Location = new System.Drawing.Point(6, 83);
+            this.lblCeackDocName.Location = new System.Drawing.Point(6, 92);
             this.lblCeackDocName.Name = "lblCeackDocName";
             this.lblCeackDocName.Size = new System.Drawing.Size(314, 25);
             this.lblCeackDocName.TabIndex = 165;
@@ -1479,7 +1495,7 @@
             this.lblAmontCheckDoc.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblAmontCheckDoc.BackColor = System.Drawing.Color.LightGray;
             this.lblAmontCheckDoc.Font = new System.Drawing.Font("Vazir FD", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.lblAmontCheckDoc.Location = new System.Drawing.Point(6, 52);
+            this.lblAmontCheckDoc.Location = new System.Drawing.Point(6, 61);
             this.lblAmontCheckDoc.Name = "lblAmontCheckDoc";
             this.lblAmontCheckDoc.Size = new System.Drawing.Size(152, 25);
             this.lblAmontCheckDoc.TabIndex = 165;
@@ -1490,13 +1506,13 @@
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btnAddToList);
-            this.panel3.Controls.Add(this.btnNew);
             this.panel3.Controls.Add(this.btnSave);
             this.panel3.Controls.Add(this.panelT);
+            this.panel3.Controls.Add(this.btnNew);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 167);
+            this.panel3.Location = new System.Drawing.Point(0, 195);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1335, 40);
+            this.panel3.Size = new System.Drawing.Size(1335, 30);
             this.panel3.TabIndex = 6;
             // 
             // btnAddToList
@@ -1506,7 +1522,7 @@
             this.btnAddToList.BackColor = System.Drawing.Color.Transparent;
             this.btnAddToList.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground;
             this.btnAddToList.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnAddToList.Location = new System.Drawing.Point(889, 3);
+            this.btnAddToList.Location = new System.Drawing.Point(889, -2);
             this.btnAddToList.Name = "btnAddToList";
             this.btnAddToList.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.btnAddToList.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
@@ -1536,12 +1552,12 @@
             this.btnNew.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnNew.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnNew.Location = new System.Drawing.Point(142, 0);
+            this.btnNew.Location = new System.Drawing.Point(0, 0);
             this.btnNew.Name = "btnNew";
             this.btnNew.Padding = new System.Windows.Forms.Padding(5);
             this.btnNew.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnNew.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F4);
-            this.btnNew.Size = new System.Drawing.Size(80, 38);
+            this.btnNew.Size = new System.Drawing.Size(80, 28);
             this.btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnNew.Symbol = "57390";
             this.btnNew.SymbolSet = DevComponents.DotNetBar.eSymbolSet.Material;
@@ -1557,12 +1573,12 @@
             this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb;
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btnSave.Location = new System.Drawing.Point(0, 0);
+            this.btnSave.Location = new System.Drawing.Point(80, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.btnSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8);
             this.btnSave.Shortcuts.Add(DevComponents.DotNetBar.eShortcut.F5);
-            this.btnSave.Size = new System.Drawing.Size(142, 38);
+            this.btnSave.Size = new System.Drawing.Size(142, 28);
             this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSave.Symbol = "";
             this.btnSave.SymbolSize = 15F;
@@ -1582,7 +1598,7 @@
             this.panelT.Controls.Add(this.lblTotalCashC);
             this.panelT.Controls.Add(this.lblTotalCash);
             this.panelT.Controls.Add(this.label12);
-            this.panelT.Location = new System.Drawing.Point(142, 1);
+            this.panelT.Location = new System.Drawing.Point(142, -4);
             this.panelT.Name = "panelT";
             this.panelT.Size = new System.Drawing.Size(730, 37);
             this.panelT.TabIndex = 169;
@@ -1699,9 +1715,9 @@
             // uiPanelGroup1
             // 
             this.uiPanelGroup1.GroupStyle = Janus.Windows.UI.Dock.PanelGroupStyle.VerticalTiles;
-            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 442);
+            this.uiPanelGroup1.Location = new System.Drawing.Point(3, 413);
             this.uiPanelGroup1.Name = "uiPanelGroup1";
-            this.uiPanelGroup1.Size = new System.Drawing.Size(1337, 304);
+            this.uiPanelGroup1.Size = new System.Drawing.Size(1337, 333);
             this.uiPanelGroup1.TabIndex = 5;
             // 
             // uiPanel1
@@ -1711,7 +1727,7 @@
             this.uiPanel1.InnerContainer = this.uiPanel1Container;
             this.uiPanel1.Location = new System.Drawing.Point(0, 0);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(1150, 304);
+            this.uiPanel1.Size = new System.Drawing.Size(1150, 333);
             this.uiPanel1.TabIndex = 4;
             this.uiPanel1.TabStop = false;
             this.uiPanel1.Text = "لیست اسناد";
@@ -1723,7 +1739,7 @@
             this.uiPanel1Container.Controls.Add(this.pnlViewItemFoter);
             this.uiPanel1Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel1Container.Name = "uiPanel1Container";
-            this.uiPanel1Container.Size = new System.Drawing.Size(1148, 276);
+            this.uiPanel1Container.Size = new System.Drawing.Size(1148, 305);
             this.uiPanel1Container.TabIndex = 0;
             // 
             // dgvList
@@ -1752,7 +1768,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaderContent = Janus.Windows.GridEX.RowHeaderContent.RowIndex;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.True;
-            this.dgvList.Size = new System.Drawing.Size(1148, 248);
+            this.dgvList.Size = new System.Drawing.Size(1148, 277);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 86;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
@@ -1769,7 +1785,7 @@
             this.pnlViewItemFoter.Controls.Add(this.buttonX1);
             this.pnlViewItemFoter.Controls.Add(this.btnExportToExcel);
             this.pnlViewItemFoter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 248);
+            this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 277);
             this.pnlViewItemFoter.Name = "pnlViewItemFoter";
             this.pnlViewItemFoter.Size = new System.Drawing.Size(1148, 28);
             this.pnlViewItemFoter.TabIndex = 90;
@@ -1816,7 +1832,7 @@
             this.uiPanel3.InnerContainer = this.uiPanel3Container;
             this.uiPanel3.Location = new System.Drawing.Point(1154, 0);
             this.uiPanel3.Name = "uiPanel3";
-            this.uiPanel3.Size = new System.Drawing.Size(183, 304);
+            this.uiPanel3.Size = new System.Drawing.Size(183, 333);
             this.uiPanel3.TabIndex = 4;
             this.uiPanel3.TabStop = false;
             this.uiPanel3.Text = "نمایش اسناد";
@@ -1833,7 +1849,7 @@
             this.uiPanel3Container.Controls.Add(this.label47);
             this.uiPanel3Container.Location = new System.Drawing.Point(1, 27);
             this.uiPanel3Container.Name = "uiPanel3Container";
-            this.uiPanel3Container.Size = new System.Drawing.Size(181, 276);
+            this.uiPanel3Container.Size = new System.Drawing.Size(181, 305);
             this.uiPanel3Container.TabIndex = 0;
             this.uiPanel3Container.TabStop = false;
             // 
@@ -2157,5 +2173,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblCaption;
+        private System.Windows.Forms.CheckBox chkShowAccountingDocumentRegistration;
     }
 }

@@ -1,4 +1,6 @@
-﻿using HM_ERP_System.Class_General;
+﻿using BehComponents;
+
+using HM_ERP_System.Class_General;
 using HM_ERP_System.Components;
 using HM_ERP_System.Entity.Provinces;
 using HM_ERP_System.Entity.TruckUsageType;

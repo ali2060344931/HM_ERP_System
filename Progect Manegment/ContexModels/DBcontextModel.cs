@@ -3,6 +3,7 @@ using HM_ERP_System.Entity.Accessibility;
 using HM_ERP_System.Entity.Accounts.Banck;
 using HM_ERP_System.Entity.Accounts.Cheque;
 using HM_ERP_System.Entity.Accounts.DetailedAccount;
+using HM_ERP_System.Entity.Accounts.FinancialDocumentRegistrationUnit;
 using HM_ERP_System.Entity.Accounts.GroupAccount;
 using HM_ERP_System.Entity.Accounts.NatureAccount;
 using HM_ERP_System.Entity.Accounts.SpecificAccount;
@@ -143,6 +144,7 @@ namespace Progect_Manegment
             modelBuilder.Configurations.Add(new WarehouseTypeConfig());
             modelBuilder.Configurations.Add(new FieldActivityConfig());
             modelBuilder.Configurations.Add(new AiQuestionLogConfig());
+            modelBuilder.Configurations.Add(new FDRUConfig());
 
 
             base.OnModelCreating(modelBuilder);
@@ -431,6 +433,10 @@ namespace Progect_Manegment
         /// </summary>
         public virtual DbSet<FieldActivity> FieldActivities { get; set; }
         public virtual DbSet<AiQuestionLog> AiQuestionLogs { get; set; }
+        /// <summary>
+        /// FinancialDocumentRegistrationUnit واحد ثبت سند مالی
+        /// </summary>
+        public virtual DbSet<FDRU> FDRUs { get; set; }
 
         #endregion
 

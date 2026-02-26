@@ -143,6 +143,8 @@ namespace Progect_Manegment
                     HM_ERP_System.Properties.Settings.Default.ConnectionString = connectionstring_db;
                     HM_ERP_System.Properties.Settings.Default.Save();
 
+                    Basic_information.basic_information();
+                    MyClass.Add_Edit_Bancks.BanckEdid();
 
                     // بارگذاری اسمبلی‌های مورد نیاز برای انواع جغرافیایی SQL Server
                     AppDomain.CurrentDomain.SetData("SQLServerTypesAssemblyFileName",

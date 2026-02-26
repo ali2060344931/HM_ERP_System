@@ -1,9 +1,18 @@
-﻿using HM_ERP_System.Entity.Ciltys;
+﻿using HM_ERP_System.Entity.Accounts.DetailedAccount;
+using HM_ERP_System.Entity.Accounts.FinancialDocumentRegistrationUnit;
+using HM_ERP_System.Entity.Accounts.GroupAccount;
+using HM_ERP_System.Entity.Accounts.SpecificAccount;
+using HM_ERP_System.Entity.Accounts.TotalAccount;
+using HM_ERP_System.Entity.Accounts.TransactionType;
+using HM_ERP_System.Entity.Ciltys;
 using HM_ERP_System.Entity.EvacuationDeployment;
 using HM_ERP_System.Entity.Provinces;
+using HM_ERP_System.Entity.Role;
+using HM_ERP_System.Entity.Spare;
 using HM_ERP_System.Entity.TransactionFee;
 using HM_ERP_System.Entity.TruckUsageType;
-using HM_ERP_System.Entity.Role;
+
+using MyClass;
 
 using Progect_Manegment;
 
@@ -13,14 +22,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HM_ERP_System.Entity.Accounts.TotalAccount;
 using System.Windows.Forms;
-using HM_ERP_System.Entity.Accounts.SpecificAccount;
-using HM_ERP_System.Entity.Accounts.GroupAccount;
-using MyClass;
-using HM_ERP_System.Entity.Accounts.TransactionType;
-using HM_ERP_System.Entity.Accounts.DetailedAccount;
-using HM_ERP_System.Entity.Spare;
 
 namespace HM_ERP_System.Entity.Basic_information
 {
@@ -397,6 +399,15 @@ namespace HM_ERP_System.Entity.Basic_information
                 {
                     db.RentalTypes.Add(new RentalType { Name = "اجــاره داده" });
                     db.RentalTypes.Add(new RentalType { Name = "اجـاره شـده" });
+                    db.SaveChangesSafe();
+                }
+                var q27 = db.FDRUs.Count();
+                if (q27 == 0)
+                {
+                    db.FDRUs.Add(new FDRU { Name = "حمل و نقل" });
+                    db.FDRUs.Add(new FDRU { Name = "حسابداری" });
+                    db.FDRUs.Add(new FDRU { Name = "خزانه داری" });
+                    db.FDRUs.Add(new FDRU { Name = "یدک ها" });
                     db.SaveChangesSafe();
                 }
 

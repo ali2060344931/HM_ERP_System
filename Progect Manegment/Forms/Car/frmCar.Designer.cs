@@ -103,20 +103,20 @@
             // pnlViewItemBody
             // 
             this.pnlViewItemBody.Controls.Add(this.dgvList);
-            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItemBody.Size = new System.Drawing.Size(620, 527);
+            this.pnlViewItemBody.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemBody.Size = new System.Drawing.Size(733, 527);
             // 
             // pnlViewItemHeder
             // 
-            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItemHeder.Size = new System.Drawing.Size(620, 50);
+            this.pnlViewItemHeder.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemHeder.Size = new System.Drawing.Size(733, 50);
             this.pnlViewItemHeder.Visible = false;
             // 
             // pnlViewItemFoter
             // 
             this.pnlViewItemFoter.Location = new System.Drawing.Point(0, 577);
-            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlViewItemFoter.Size = new System.Drawing.Size(620, 28);
+            this.pnlViewItemFoter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlViewItemFoter.Size = new System.Drawing.Size(733, 28);
             // 
             // pnlAddItemBodi
             // 
@@ -161,16 +161,16 @@
             this.pnlAddItemBodi.Controls.Add(this.txtDes);
             this.pnlAddItemBodi.Controls.Add(this.label17);
             this.pnlAddItemBodi.Controls.Add(this.label14);
-            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlAddItemBodi.Size = new System.Drawing.Size(548, 577);
+            this.pnlAddItemBodi.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItemBodi.Size = new System.Drawing.Size(435, 577);
             this.pnlAddItemBodi.TabIndex = 0;
             this.pnlAddItemBodi.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlAddItemBodi_Paint);
             // 
             // pnlAddItemFoter
             // 
             this.pnlAddItemFoter.Location = new System.Drawing.Point(0, 577);
-            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlAddItemFoter.Size = new System.Drawing.Size(548, 28);
+            this.pnlAddItemFoter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAddItemFoter.Size = new System.Drawing.Size(435, 28);
             this.pnlAddItemFoter.TabIndex = 1;
             // 
             // btnSave
@@ -179,26 +179,26 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(473, 0);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNew.Location = new System.Drawing.Point(360, 0);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtDateStart
             // 
-            this.txtDateStart.Location = new System.Drawing.Point(350, 12);
-            this.txtDateStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDateStart.Location = new System.Drawing.Point(406, 12);
+            this.txtDateStart.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateStart.Value = new System.DateTime(2025, 6, 21, 8, 39, 40, 911);
             // 
             // txtDateEnd
             // 
-            this.txtDateEnd.Location = new System.Drawing.Point(148, 12);
-            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDateEnd.Location = new System.Drawing.Point(204, 12);
+            this.txtDateEnd.Margin = new System.Windows.Forms.Padding(4);
             this.txtDateEnd.Value = new System.DateTime(2025, 6, 21, 8, 39, 40, 911);
             // 
             // btnShowListItems
             // 
-            this.btnShowListItems.Location = new System.Drawing.Point(58, 15);
-            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowListItems.Location = new System.Drawing.Point(114, 15);
+            this.btnShowListItems.Margin = new System.Windows.Forms.Padding(4);
             // 
             // labelX2
             // 
@@ -206,7 +206,7 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(278, 17);
+            this.labelX2.Location = new System.Drawing.Point(334, 17);
             this.labelX2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX2.Size = new System.Drawing.Size(65, 23);
             // 
@@ -216,37 +216,37 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(480, 17);
+            this.labelX1.Location = new System.Drawing.Point(536, 17);
             this.labelX1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.labelX1.Size = new System.Drawing.Size(105, 23);
             // 
             // pnlViewItems
             // 
             this.pnlViewItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlViewItems.Size = new System.Drawing.Size(622, 633);
+            this.pnlViewItems.Size = new System.Drawing.Size(735, 633);
             // 
             // pnlAddItems
             // 
-            this.pnlAddItems.Location = new System.Drawing.Point(625, 3);
+            this.pnlAddItems.Location = new System.Drawing.Point(738, 3);
             this.pnlAddItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlAddItems.Size = new System.Drawing.Size(554, 633);
+            this.pnlAddItems.Size = new System.Drawing.Size(441, 633);
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(586, 0);
-            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportToExcel.Location = new System.Drawing.Point(699, 0);
+            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // buttonX01
             // 
-            this.buttonX01.Location = new System.Drawing.Point(552, 0);
-            this.buttonX01.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonX01.Location = new System.Drawing.Point(665, 0);
+            this.buttonX01.Margin = new System.Windows.Forms.Padding(4);
             this.buttonX01.Click += new System.EventHandler(this.buttonX01_Click);
             // 
             // btnShowGridExHideColumns
             // 
-            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(517, 0);
-            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowGridExHideColumns.Location = new System.Drawing.Point(630, 0);
+            this.btnShowGridExHideColumns.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowGridExHideColumns.Click += new System.EventHandler(this.btnShowGridExHideColumns_Click);
             // 
             // dgvList
@@ -270,7 +270,7 @@
             this.dgvList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvList.RowHeaders = Janus.Windows.GridEX.InheritableBoolean.Default;
             this.dgvList.SettingsKey = "frmCar";
-            this.dgvList.Size = new System.Drawing.Size(620, 527);
+            this.dgvList.Size = new System.Drawing.Size(733, 527);
             this.dgvList.Sortable = true;
             this.dgvList.TabIndex = 86;
             this.dgvList.TableHeaderFormatStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);

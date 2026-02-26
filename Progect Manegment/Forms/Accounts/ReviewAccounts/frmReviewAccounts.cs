@@ -92,6 +92,21 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         private void uiTab1_SelectedTabChanged(object sender, Janus.Windows.UI.Tab.TabEventArgs e)
         {
             TabKey = uiTab1.SelectedTab.Key;
+            if(TabKey== "D")
+            {
+                lblGroupR.Visible = true;
+                cmbGroupR.Visible = true;
+                btnListRefresh.Height = 102;
+            }
+            else
+
+            {
+                lblGroupR.Visible = false;
+                cmbGroupR.Visible = false;
+                btnListRefresh.Height = 68;
+
+            }
+
         }
 
         void FillAllList()
@@ -102,8 +117,23 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             FilldgvListS();//معیین
             FilldgvListD();//تفصیلی
             FilldgvListAllAcconts();//تفصیلی
+            FillcmbGroupR();
             dgvList.DataSource = null;
             dgvListTransaction.DataSource = null;
+        }
+
+        /// <summary>
+        /// گروه اشخاص
+        /// </summary>
+        private void FillcmbGroupR()
+        {
+            using (var db = new DBcontextModel())
+            {
+                var q = db.PersonGroups;
+                cmbGroupR.DataSource = q.ToList();
+                dt_Group = new DataTable();
+                dt_Group = PublicClass.AddEntityTableToDataTable(q.ToList());
+            }
         }
 
         /// <summary>
@@ -189,13 +219,17 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         {
             try
             {
-                DataSet ds = PublicClass.DetailedAccountTransactionsTree(txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value, chkShowZeroBalance.Checked, chkIsBeginningBalanceFilter.Checked);
+                DataSet ds = PublicClass.DetailedAccountTransactionsTree(txtDateS.Text, txtDateE.Text, txtTransactionCodeS.Value, txtTransactionCodeE.Value, chkShowZeroBalance.Checked, chkIsBeginningBalanceFilter.Checked, "", BasicRoleId);
                 if (ds != null)
                 {
                     dgvListD.DataMember = "Customers";
-                    dgvListD.RootTable.ChildTables[0].DataMember = ds.Relations[0].RelationName;
+                    if (ds.Relations.Contains("CustomerToDetailed"))
+                    {
+                        dgvListD.RootTable.ChildTables[0].DataMember = "CustomerToDetailed";
+                    }
+
+                    //dgvListD.RootTable.ChildTables[0].DataMember = ds.Relations[0].RelationName;
                     dgvListD.DataSource = ds;
-                    //dgvListD.AutoSizeColumns();
                 }
 
                 PublicClass.SettingGridEX(dgvListD);
@@ -204,6 +238,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             {
                 PublicClass.ShowErrorMessage(er);
             }
+
 
         }
 
@@ -316,7 +351,7 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
         /// </summary>
         /// <param name="TransactionCode"></param>
         /// <param name="Date"></param>
-        void FilldgvListTransaction(int TransactionCode, string Date,int code=0)
+        void FilldgvListTransaction(int TransactionCode, string Date, int code = 0)
         {
             using (var db = new DBcontextModel())
             {
@@ -591,19 +626,13 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                 if (MessageBox.Show(ResourceCode.T053, ResourceCode.ProgName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
                 using (var db = new DBcontextModel())
                 {
-                    int TransactionCode=Convert.ToInt32(txtTransactionCode.Text);
-                    var q=db.Transactions.Where(c=>c.TransactionCode== TransactionCode).ToList();
-                    //foreach (var item in q)
-                    //{
-                    //    item.Status = true;
-                    //}
+                    int TransactionCode = Convert.ToInt32(txtTransactionCode.Text);
+                    var q = db.Transactions.Where(c => c.TransactionCode == TransactionCode).ToList();
                     db.Transactions.RemoveRange(q);
                     db.SaveChangesSafe();
-                    FilldgvListTransaction(TransactionCode, lblDate.Text,1);
+                    FilldgvListTransaction(TransactionCode, lblDate.Text, 1);
                     PublicClass.WindowAlart("2");
                 }
-
-
             }
             else
             {
@@ -623,7 +652,6 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
                     {
                         try
                         {
-
                             var q = db.Transactions.Where(c => c.Id == ListId).First().ComerBId;
                             if (q != 0)
                             {
@@ -648,7 +676,23 @@ namespace HM_ERP_System.Forms.Accounts.ReviewAccounts
             {
                 PublicClass.ShowErrorMessage(er);
             }
+        }
+
+        int BasicRoleId = 0;
+        private void cmbGroupR_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                BasicRoleId = 0;
+                if (cmbGroupR.SelectedIndex != -1)
+                    BasicRoleId = Convert.ToInt32(cmbGroupR.Value);
+            }
+            catch (Exception)
+            {
+            }
 
         }
+
     }
 }
+
